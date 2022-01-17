@@ -1,0 +1,40 @@
+@mixin flex($direction, $align, $justify) {
+  display: flex;
+  align-items: $align;
+  justify-content: $justify;
+  flex-direction: $direction;
+}
+
+@mixin fade($transform, $time) {
+  transition: $time;
+  &[niv-fade] {
+    opacity: 0;
+    transform: $transform;
+  }
+}
+
+@mixin picframe() {
+  overflow: hidden;
+
+  img {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+  }
+}
+
+@mixin responsive($screenWIDTH) {
+  @media (max-width: $screenWIDTH) {
+    @content;
+  }
+
+  /**
+  
+  @include responsive(1400px) {}
+  @include responsive(1200px) {}
+  @include responsive(992px) {}
+  @include responsive(730px) {}
+  @include responsive(600px) {}
+
+  **/
+}
