@@ -74,7 +74,8 @@ section.timelapse {
             div.box {
                 picture {
                     height: 36.1rem;
-                    width: 48.4rem;
+                    width: 100%;
+                    max-width: 48.4rem;
 
                     @include picframe();
 
@@ -114,6 +115,24 @@ section.timelapse {
 
         div.niv-right {
             gap: 41rem;
+        }
+    }
+
+    @include responsive(800px) {
+        div.niv {
+            flex-direction: column;
+            align-items: center;
+
+            div.niv-left,
+            div.niv-right {
+                gap: 6rem;
+            }
+
+            div.niv-mid {
+                div.line {
+                    display: none;
+                }
+            }
         }
     }
 }

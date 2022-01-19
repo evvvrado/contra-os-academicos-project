@@ -198,4 +198,32 @@
     </div>
 </section>
 
+<section class="parceiros">
+    <div class="niv">
+        <div class="niv-top">
+            <h2>Nossos parceiros</h2>
+        </div>
+
+        <div class="niv-content">
+            <div class="scroll">
+                <picture>
+                    <img src="{{ asset('site/assets/img/parceiro_1.png') }}" alt="parceiro logo">
+                </picture>
+                <picture>
+                    <img src="{{ asset('site/assets/img/parceiro_2.png') }}" alt="parceiro logo">
+                </picture>
+                <picture>
+                    <img src="{{ asset('site/assets/img/parceiro_3.png') }}" alt="parceiro logo">
+                </picture>
+                <picture>
+                    <img src="{{ asset('site/assets/img/parceiro_4.png') }}" alt="parceiro logo">
+                </picture>
+                <picture>
+                    <img src="{{ asset('site/assets/img/parceiro_5.png') }}" alt="parceiro logo">
+                </picture>
+            </div>
+        </div>
+    </div>
+</section>
+
 @endsection

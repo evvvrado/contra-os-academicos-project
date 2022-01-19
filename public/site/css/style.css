@@ -1851,6 +1851,17 @@ section.sobre div.niv div.niv-left h2 {
   }
 }
 
+section.timelapse {
+  /**
+
+  @include responsive(1400px) {}
+  @include responsive(1200px) {}
+  @include responsive(992px) {}
+  @include responsive(730px) {}
+  @include responsive(600px) {}
+
+  **/
+}
 section.timelapse div.niv {
   padding-bottom: 7rem;
   position: relative;
@@ -1926,7 +1937,8 @@ section.timelapse div.niv div.niv-right {
 section.timelapse div.niv div.niv-left div.box picture,
 section.timelapse div.niv div.niv-right div.box picture {
   height: 36.1rem;
-  width: 48.4rem;
+  width: 100%;
+  max-width: 48.4rem;
   overflow: hidden;
   border-radius: 2rem;
 }
@@ -1964,10 +1976,41 @@ section.timelapse div.niv div.niv-left {
 section.timelapse div.niv div.niv-right {
   gap: 41rem;
 }
+@media (max-width: 800px) {
+  section.timelapse div.niv {
+    flex-direction: column;
+    align-items: center;
+  }
+  section.timelapse div.niv div.niv-left,
+section.timelapse div.niv div.niv-right {
+    gap: 6rem;
+  }
+  section.timelapse div.niv div.niv-mid div.line {
+    display: none;
+  }
+}
 
 section.depoimentos {
   padding-bottom: 7rem;
   padding-top: 7rem;
+  /**
+
+  @include responsive(1400px) {}
+  @include responsive(1200px) {}
+  @include responsive(992px) {}
+  @include responsive(730px) {}
+  @include responsive(600px) {}
+
+  **/
+  /**
+
+  @include responsive(1400px) {}
+  @include responsive(1200px) {}
+  @include responsive(992px) {}
+  @include responsive(730px) {}
+  @include responsive(600px) {}
+
+  **/
 }
 section.depoimentos div.niv {
   display: flex;
@@ -2061,4 +2104,119 @@ section.depoimentos div.niv::before {
   position: absolute;
   left: 28rem;
   top: 8rem;
+}
+@media (max-width: 800px) {
+  section.depoimentos div.niv::after {
+    right: 0;
+  }
+  section.depoimentos div.niv::before {
+    left: 0;
+  }
+}
+@media (max-width: 600px) {
+  section.depoimentos div.niv::after, section.depoimentos div.niv::before {
+    opacity: 0.4;
+  }
+  section.depoimentos div.niv::after {
+    top: unset;
+    bottom: 4rem;
+  }
+  section.depoimentos div.niv::before {
+    top: 4rem;
+  }
+  section.depoimentos div.niv div.niv-top {
+    text-align: center;
+  }
+  section.depoimentos div.niv div.niv-content {
+    max-width: calc(100vw - 7rem);
+  }
+  section.depoimentos div.niv div.niv-content div.scroll div.depoimento {
+    max-width: calc(100vw - 7rem);
+  }
+}
+
+section.parceiros {
+  padding-top: 7.5rem;
+  padding-bottom: 17.5rem;
+  /**
+
+  @include responsive(1400px) {}
+  @include responsive(1200px) {}
+  @include responsive(992px) {}
+  @include responsive(730px) {}
+  @include responsive(600px) {}
+
+  **/
+  /**
+
+  @include responsive(1400px) {}
+  @include responsive(1200px) {}
+  @include responsive(992px) {}
+  @include responsive(730px) {}
+  @include responsive(600px) {}
+
+  **/
+}
+section.parceiros div.niv div.niv-top {
+  width: 100%;
+}
+section.parceiros div.niv div.niv-top h2 {
+  width: 100%;
+  font-size: 3.6rem;
+  text-align: center;
+  color: #260530;
+}
+section.parceiros div.niv div.niv-content {
+  margin-top: 5rem;
+  max-width: 100%;
+}
+section.parceiros div.niv div.niv-content div.scroll {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+  gap: 1.7rem;
+}
+section.parceiros div.niv div.niv-content div.scroll picture {
+  height: 9.9rem;
+  width: 22.8rem;
+  display: block;
+  box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.1);
+  border-radius: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+  transition: 0.32s;
+}
+section.parceiros div.niv div.niv-content div.scroll picture:hover {
+  transform: scale(1.1);
+  cursor: pointer;
+}
+@media (max-width: 1150px) {
+  section.parceiros div.niv div.niv-content div.scroll {
+    max-width: 100%;
+    flex-wrap: wrap;
+  }
+}
+@media (max-width: 400px) {
+  section.parceiros div.niv div.niv-content {
+    overflow: scroll;
+    height: 12rem;
+    -ms-scroll-snap-type: x mandatory;
+        scroll-snap-type: x mandatory;
+  }
+  section.parceiros div.niv div.niv-content::-webkit-scrollbar {
+    display: none;
+  }
+  section.parceiros div.niv div.niv-content div.scroll {
+    max-width: unset;
+    width: -webkit-max-content;
+    width: -moz-max-content;
+    width: max-content;
+    flex-wrap: nowrap;
+  }
+  section.parceiros div.niv div.niv-content div.scroll picture {
+    scroll-snap-align: center;
+  }
 }

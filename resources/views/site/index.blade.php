@@ -290,7 +290,7 @@
                 <img src="{{ asset('/site/assets/img/selo 2.png') }}" alt="imagem de um selo">
             </picture>
 
-            <button>Saiba mais</button>
+            <button onclick="window.location.href = '{{ route('site.sobre')}}'">Saiba mais</button>
         </div>
     </div>
 </section>

@@ -1,0 +1,81 @@
+section.parceiros {
+    padding-top: 7.5rem;
+    padding-bottom: 17.5rem;
+    div.niv {
+        div.niv-top {
+            width: 100%;
+            h2 {
+                width: 100%;
+
+                font-size: 3.6rem;
+                text-align: center;
+
+                color: $dark-purple;
+            }
+        }
+
+        div.niv-content {
+            margin-top: 5rem;
+            max-width: 100%;
+
+            div.scroll {
+                @include flex(row, center, center);
+                gap: 1.7rem;
+
+                picture {
+                    height: 9.9rem;
+                    width: 22.8rem;
+
+                    display: block;
+
+                    box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.1);
+                    border-radius: 18px;
+
+                    @include flex(row, center, center);
+                    transition: 0.32s;
+
+                    &:hover {
+                        transform: scale(1.1);
+                        cursor: pointer;
+                    }
+                }
+            }
+        }
+    }
+
+    @include responsive(1150px) {
+        div.niv {
+            div.niv-content {
+                div.scroll {
+                    max-width: 100%;
+                    flex-wrap: wrap;
+                }
+            }
+        }
+    }
+
+    @include responsive(400px) {
+        div.niv {
+            div.niv-content {
+                overflow: scroll;
+                height: 12rem;
+
+                scroll-snap-type: x mandatory;
+
+                &::-webkit-scrollbar {
+                    display: none;
+                }
+
+                div.scroll {
+                    max-width: unset;
+                    width: max-content;
+                    flex-wrap: nowrap;
+
+                    picture {
+                        scroll-snap-align: center;
+                    }
+                }
+            }
+        }
+    }
+}

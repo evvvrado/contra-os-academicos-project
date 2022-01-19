@@ -89,4 +89,46 @@ section.depoimentos {
             top: 8rem;
         }
     }
+
+    @include responsive(800px) {
+        div.niv {
+            &::after {
+                right: 0;
+            }
+            &::before {
+                left: 0;
+            }
+        }
+    }
+
+    @include responsive(600px) {
+        div.niv {
+            &::after,
+            &::before {
+                opacity: 0.4;
+            }
+
+            &::after {
+                top: unset;
+                bottom: 4rem;
+            }
+
+            &::before {
+                top: 4rem;
+            }
+
+            div.niv-top {
+                text-align: center;
+            }
+
+            div.niv-content {
+                max-width: calc(100vw - 7rem);
+                div.scroll {
+                    div.depoimento {
+                        max-width: calc(100vw - 7rem);
+                    }
+                }
+            }
+        }
+    }
 }
