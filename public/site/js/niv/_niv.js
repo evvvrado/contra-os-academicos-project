@@ -1,7 +1,7 @@
 // NIV-FADE
 
 $(document).ready(() => {
-  $("[niv-fade]:first-child").removeAttr("niv-fade");
+  $("section.hero div.niv div.niv-text[niv-fade], section.hero div.niv div.niv-form[niv-fade]").removeAttr("niv-fade");
 
   $(".backdrop").animate(
     {
@@ -15,7 +15,7 @@ $(document).ready(() => {
     $("[niv-fade]").each(function () {
       if (
         $(document).scrollTop() >=
-        $(this).closest("div.container-fav").offset().top -
+        $(this).closest("div.niv").offset().top -
         ($(window).height() * 3) / 4
       ) {
         $(this).removeAttr("niv-fade");
@@ -23,3 +23,51 @@ $(document).ready(() => {
     });
   })
 })
+
+
+
+// NIV-FOLLOW
+
+
+
+// ACTION
+
+
+$(document).ready(() => {
+
+  // SET
+  $('[niv-follow]').each(function () {
+    var min = $(this).attr('niv-follow').split('-')[0];
+    var max = $(this).attr('niv-follow').split('-')[1];
+
+    $(this).css('transform', `translateY(${min}px)`);
+  })
+
+
+})
+
+
+
+
+function nivFollow(scrollDirection) {
+  $('[niv-follow]').each(function () {
+    var min = $(this).attr('niv-follow').split('-')[0];
+    var atual = parseInt($(this).css('transform').split(',')[5]);
+    var max = $(this).attr('niv-follow').split('-')[1];
+
+    var statementUP = atual > min ? true : false;
+    var statementDOWN = atual < max ? true : false;
+
+
+    if (!scrollDirection) {
+      if (statementDOWN) {
+        $(this).css('transform', `translateY(${atual + 20}px)`);
+      }
+    }
+    else {
+      if (statementUP) {
+        $(this).css('transform', `translateY(${atual - 40}px)`);
+      }
+    }
+  })
+}

@@ -1,0 +1,72 @@
+section.video {
+    padding-top: 5.3rem;
+    padding-bottom: 4rem;
+
+    background: linear-gradient(180deg, #260530 0%, #260530 100%);
+    background-size: 100% 50%;
+    background-repeat: no-repeat;
+
+    div.niv {
+        max-width: 98.8rem;
+        div.niv-top {
+            color: $white;
+            @include flex(row, flex-end, space-between);
+
+            margin-bottom: 3.5rem;
+
+            p {
+                max-width: 41rem;
+            }
+
+            h2 {
+                max-width: 34.3rem;
+                font-size: 3.6rem;
+            }
+        }
+
+        div.niv-video {
+            @include fade(translateY(-300px), 1s);
+            transition-timing-function: cubic-bezier(0.5, 0, 0, 1);
+            border-radius: 0.8rem;
+            overflow: hidden;
+            box-shadow: 0 1.2rem 6rem $dark-purple;
+
+            picture {
+                height: 100%;
+                width: 100%;
+
+                @include picframe();
+            }
+        }
+
+        div.niv-button {
+            margin-top: 5.8rem;
+            width: 100%;
+
+            a {
+                display: block;
+                margin: 0 auto;
+
+                @include h1-btn(6rem, 37.9rem);
+                border-radius: 3rem;
+            }
+        }
+    }
+
+    @include responsive(800px) {
+        background-size: 100% 70%;
+
+        div.niv {
+            div.niv-top {
+                flex-direction: column;
+                align-items: center;
+
+                text-align: center;
+            }
+
+            div.niv-video {
+                aspect-ratio: 1 / 1;
+            }
+        }
+    }
+}

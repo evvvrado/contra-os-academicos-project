@@ -1,0 +1,192 @@
+section.funcionamento {
+    padding-top: 5.3rem;
+    padding-bottom: 5.3rem;
+
+    background-color: $dark-purple;
+
+    div.niv {
+        @include flex(row, center, space-between);
+
+        aside {
+            max-width: 44.5rem;
+            color: $white;
+
+            h2 {
+                span {
+                    font-size: 3.8rem;
+                    display: block;
+
+                    transform-origin: left;
+                    &:first-child {
+                        @include fade(rotate(45deg), 1s);
+                    }
+                    &:nth-child(2) {
+                        @include fade(rotate(45deg), 1s, 0.32s);
+                    }
+                }
+
+                height: 8.3rem;
+                @include flex(column, flex-start, center);
+                overflow: hidden;
+                margin-top: 2.7rem;
+                margin-bottom: 6rem;
+            }
+
+            p {
+                max-width: 41.4rem;
+
+                i {
+                    color: $main-yellow;
+                    font-style: normal;
+                    position: relative;
+
+                    &::after {
+                        height: 1.2rem;
+                        width: 12.6rem;
+
+                        content: "";
+                        position: absolute;
+
+                        background: url("/site/assets/img/text_draw.svg");
+                        background-size: 100% 100%;
+
+                        bottom: -1.2rem;
+                        right: -1rem;
+                    }
+                }
+            }
+
+            ul {
+                @include flex(column, flex-start, flex-start);
+                margin-top: 5.3rem;
+
+                li {
+                    opacity: 0.3;
+                    max-width: 28.3rem;
+                    transition: 0.32s;
+
+                    padding: 4.1rem 0;
+                    padding-left: 6.2rem;
+
+                    border-left: solid 0.2rem $light-grey;
+
+                    cursor: pointer;
+
+                    &:hover {
+                        opacity: 1;
+                    }
+
+                    strong {
+                        font-size: 2.4rem;
+                        margin-bottom: 0.4rem;
+                        position: relative;
+
+                        &::after {
+                            left: -3.4rem;
+                            top: 0;
+
+                            position: absolute;
+                        }
+
+                        &.corporativos::after {
+                            content: url("/site/assets/img/icon_corporativos.svg");
+                        }
+                        &.aniversarios::after {
+                            content: url("/site/assets/img/icon_aniversarios.svg");
+                        }
+                        &.formatura::after {
+                            content: url("/site/assets/img/icon_formatura.svg");
+                        }
+                        &.casamentos::after {
+                            content: url("/site/assets/img/icon_casamentos.svg");
+                        }
+                    }
+                    button {
+                        margin-top: 1rem;
+                        color: $dark-purple;
+                        height: 3.9rem;
+                        width: 100%;
+                        max-width: 15.3rem;
+
+                        font-weight: bold;
+
+                        padding: 1rem 4.5rem;
+
+                        background: $main-yellow;
+
+                        font-size: 1.4rem;
+                        border-radius: 1.5rem;
+                    }
+                    &[active] {
+                        opacity: 1;
+                        border-color: $main-yellow;
+                    }
+                }
+            }
+        }
+
+        main {
+            picture {
+                animation: upandown 5s linear infinite;
+            }
+        }
+    }
+
+    @include responsive(1150px) {
+        div.niv {
+            aside {
+                h2 {
+                    span {
+                        font-size: 3rem;
+                    }
+                }
+            }
+        }
+    }
+
+    @include responsive(800px) {
+        div.niv {
+            flex-direction: column;
+            gap: 4rem;
+
+            aside {
+                overflow: hidden;
+                .title {
+                    text-align: center;
+
+                    h2 {
+                        align-items: center;
+                    }
+                }
+
+                ul {
+                    flex-direction: row;
+                    width: max-content;
+                    li {
+                        border-left: none;
+                        border-bottom: solid 0.2rem $middle-grey;
+                        padding-right: 3rem;
+
+                        height: 21rem;
+                    }
+                }
+            }
+        }
+    }
+
+    @include responsive(800px) {
+        div.niv {
+            aside {
+                max-width: 100%;
+
+                p {
+                    max-width: unset;
+                }
+
+                ul {
+                    display: none;
+                }
+            }
+        }
+    }
+}

@@ -1,5 +1,5 @@
 .backdrop {
-    background: white;
+    background: $dark-purple;
     top: 0;
     position: fixed;
     width: 100%;
@@ -9,12 +9,13 @@
     z-index: 666;
 
     svg {
+        width: 12rem;
         align-self: center;
         margin: 0 auto;
         path {
             fill: transparent;
-            stroke: green;
-            animation: svganimation linear 1 3s;
+            stroke: $white;
+            animation: svganimation linear 1 6s;
         }
     }
 }

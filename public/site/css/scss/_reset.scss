@@ -6,12 +6,12 @@
 
 html {
   font-size: 62.5%;
-  font-family: "Gilroy", sans-serif;
+  font-family: "Inter", sans-serif;
   scroll-behavior: smooth;
 
   ::selection {
-    color: black;
-    background: black;
+    color: $dark-purple;
+    background: $main-orange;
   }
 
   &::-webkit-scrollbar {
@@ -20,18 +20,19 @@ html {
 
   /* Track */
   &::-webkit-scrollbar-track {
-    background: #f1f1f1;
+    background: $dark-purple;
   }
 
   /* Handle */
   &::-webkit-scrollbar-thumb {
-    background: black;
+    background: $main-orange;
+    border-radius: 25%;
   }
 
   /* Handle on hover */
   &::-webkit-scrollbar-thumb:hover {
     cursor: pointer;
-    background: black;
+    background: $dark-purple;
   }
 
   * {
@@ -42,8 +43,12 @@ html {
     list-style: none;
     outline: none;
     text-decoration: none;
-
+    color: unset;
     font-size: 1.6rem;
+  }
+
+  picture {
+    display: block;
   }
 
   img {
@@ -77,6 +82,10 @@ html {
       margin: 0 auto;
       padding: 0 15px;
     }
+  }
+
+  [niv-follow] {
+    transition: 0.32s;
   }
 
   @include responsive(600px) {

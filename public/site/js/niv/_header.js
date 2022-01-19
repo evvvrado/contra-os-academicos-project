@@ -24,8 +24,16 @@ $(document).scroll(() => {
     let currentScroll = document.documentElement.scrollTop || document.body.scrollTop; // Get Current Scroll Value
 
     if (currentScroll > 0 && oS <= currentScroll) {
+        //DOWN
+        nivFollow(false);
+
+
         oS = currentScroll;
     } else {
+        //UP
+        nivFollow(true);
+
+
         $("header").removeClass("_hi");
         oS = currentScroll;
 

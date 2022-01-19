@@ -5,7 +5,7 @@
 }
 html {
   font-size: 62.5%;
-  font-family: "Gilroy", sans-serif;
+  font-family: "Inter", sans-serif;
   scroll-behavior: smooth;
   /* Track */
   /* Handle */
@@ -22,25 +22,26 @@ html {
   **/
 }
 html ::-moz-selection {
-  color: black;
-  background: black;
+  color: #260530;
+  background: #dbbf00;
 }
 html ::selection {
-  color: black;
-  background: black;
+  color: #260530;
+  background: #dbbf00;
 }
 html::-webkit-scrollbar {
   width: 0.5rem;
 }
 html::-webkit-scrollbar-track {
-  background: #f1f1f1;
+  background: #260530;
 }
 html::-webkit-scrollbar-thumb {
-  background: black;
+  background: #dbbf00;
+  border-radius: 25%;
 }
 html::-webkit-scrollbar-thumb:hover {
   cursor: pointer;
-  background: black;
+  background: #260530;
 }
 html * {
   margin: 0;
@@ -50,7 +51,11 @@ html * {
   list-style: none;
   outline: none;
   text-decoration: none;
+  color: unset;
   font-size: 1.6rem;
+}
+html picture {
+  display: block;
 }
 html img {
   max-width: 100%;
@@ -78,6 +83,9 @@ html div[fluid] .niv {
   max-width: 1246px;
   margin: 0 auto;
   padding: 0 15px;
+}
+html [niv-follow] {
+  transition: 0.32s;
 }
 @media (max-width: 600px) {
   html {
@@ -122,7 +130,7 @@ html div[fluid] .niv {
     stroke-dasharray: 400;
   }
   100% {
-    fill: white;
+    fill: #fff;
     stroke: 1px;
   }
 }
@@ -134,7 +142,7 @@ html div[fluid] .niv {
     stroke-dasharray: 400;
   }
   100% {
-    fill: white;
+    fill: #fff;
     stroke: 1px;
   }
 }
@@ -183,21 +191,1626 @@ html div[fluid] .niv {
   }
 }
 h1 {
-  color: red;
+  font-family: "Anton", sans-serif;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 4.7rem;
+  line-height: 121.7%;
+  letter-spacing: 0.055em;
 }
 
 h2 {
-  color: red;
+  font-family: "Anton", sans-serif;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 2.8rem;
+  line-height: 121.7%;
+  letter-spacing: 0.055em;
 }
 
 h3 {
-  color: red;
+  font-family: "Anton", sans-serif;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 2.2rem;
+  line-height: 121.7%;
+  letter-spacing: 0.055em;
 }
 
 h4 {
-  color: red;
+  font-weight: 500;
+  font-size: 1.8rem;
+  line-height: 121.7%;
+  letter-spacing: 0.055em;
+  color: #e5db00;
 }
 
 p {
-  color: red;
+  line-height: 150%;
+  letter-spacing: 0.02em;
+}
+
+header {
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 6;
+  transition: 0.3s;
+  background-color: #260530;
+  filter: drop-shadow(6px 14px 19px rgba(0, 0, 0, 0.25));
+  /**
+
+  @include responsive(1400px) {}
+  @include responsive(1200px) {}
+  @include responsive(992px) {}
+  @include responsive(730px) {}
+  @include responsive(600px) {}
+
+  **/
+  /**
+
+  @include responsive(1400px) {}
+  @include responsive(1200px) {}
+  @include responsive(992px) {}
+  @include responsive(730px) {}
+  @include responsive(600px) {}
+
+  **/
+}
+header._hi {
+  top: -100rem;
+}
+header div[fluid] div.niv:not(.supermenu div.niv) {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-direction: row;
+  height: 11.3rem;
+}
+header div[fluid] div.niv:not(.supermenu div.niv) nav {
+  width: 100%;
+  max-width: 68.9rem;
+}
+header div[fluid] div.niv:not(.supermenu div.niv) nav ul {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  flex-direction: row;
+  gap: 5rem;
+}
+header div[fluid] div.niv:not(.supermenu div.niv) nav ul a:not(.supermenu a) {
+  color: #fff;
+  font-style: normal;
+  font-size: 1.1rem;
+  letter-spacing: 0.16em;
+  position: relative;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+header div[fluid] div.niv:not(.supermenu div.niv) nav ul a:not(.supermenu a):not(.button)::after {
+  content: "";
+  position: absolute;
+  bottom: -0.8rem;
+  width: 0;
+  height: 0.2rem;
+  background-color: #dbbf00;
+  transform-origin: center;
+  border-radius: 1rem;
+  transition: 0.2s ease-in-out;
+}
+header div[fluid] div.niv:not(.supermenu div.niv) nav ul a:not(.supermenu a):hover:not(.button)::after {
+  width: 80%;
+}
+header div[fluid] div.niv:not(.supermenu div.niv) nav ul a.button {
+  height: 4rem;
+  border-radius: 1.9rem;
+  background-color: #079e43;
+  color: #fff;
+  font-style: normal;
+  font-size: 1.1rem;
+  letter-spacing: 0.16em;
+  padding-left: 1.7rem;
+  padding-right: 1.7rem;
+  transition: 0.32s ease-in-out;
+}
+header div[fluid] div.niv:not(.supermenu div.niv) nav ul a.button:hover {
+  background: #0c6f34;
+}
+header div[fluid] div.niv:not(.supermenu div.niv) button {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  flex-direction: row;
+  transition: 0.32s ease-in-out;
+  width: 100%;
+  max-width: 20.8rem;
+  gap: 0.4rem;
+}
+header div[fluid] div.niv:not(.supermenu div.niv) button:active picture {
+  transform: scale(0);
+}
+header div[fluid] div.niv:not(.supermenu div.niv) button span {
+  color: #fff;
+  font-style: normal;
+  font-size: 1.1rem;
+  letter-spacing: 0.16em;
+  position: relative;
+}
+header div[fluid] div.niv:not(.supermenu div.niv) button picture {
+  transition: 0.32s;
+}
+header div[fluid] div.niv:not(.supermenu div.niv) button picture svg {
+  transition: 0.32s;
+}
+header div[fluid] div.niv:not(.supermenu div.niv) button picture svg path {
+  transition: 0.32s;
+}
+header div[fluid] div.niv:not(.supermenu div.niv) button[clicked] svg path[d="M5 16H27"] {
+  d: path("M5 8L27 24");
+}
+header div[fluid] div.niv:not(.supermenu div.niv) button[clicked] svg path[d="M5 24H27"] {
+  d: path("M5 24L27 8");
+}
+header div[fluid] div.niv:not(.supermenu div.niv) button[clicked] svg path[d="M5 8H27"] {
+  opacity: 0;
+}
+header div[fluid] div.niv:not(.supermenu div.niv) button:hover {
+  opacity: 0.7;
+}
+@media (max-width: 900px) {
+  header div[fluid] div.niv:not(.supermenu div.niv) button {
+    max-width: unset;
+    width: unset;
+  }
+  header div[fluid] div.niv:not(.supermenu div.niv) nav {
+    max-width: unset;
+    width: unset;
+  }
+  header div[fluid] div.niv:not(.supermenu div.niv) nav ul {
+    gap: 0;
+  }
+  header div[fluid] div.niv:not(.supermenu div.niv) nav ul a:not(.supermenu a):not(.button) {
+    display: none;
+  }
+}
+@media (max-width: 400px) {
+  header div[fluid] div.niv:not(.supermenu div.niv) button {
+    max-width: unset;
+    width: unset;
+  }
+  header div[fluid] div.niv:not(.supermenu div.niv) nav {
+    display: none;
+  }
+}
+
+div.supermenu {
+  position: fixed;
+  z-index: 5;
+  top: 11.3rem;
+  transition: 0.32s;
+  width: 100%;
+  /**
+
+  @include responsive(1400px) {}
+  @include responsive(1200px) {}
+  @include responsive(992px) {}
+  @include responsive(730px) {}
+  @include responsive(600px) {}
+
+  **/
+  /**
+
+  @include responsive(1400px) {}
+  @include responsive(1200px) {}
+  @include responsive(992px) {}
+  @include responsive(730px) {}
+  @include responsive(600px) {}
+
+  **/
+}
+div.supermenu div.niv {
+  min-height: 47.9rem;
+  background: #fff;
+  padding-top: 4.8rem;
+  padding-left: 6rem;
+  padding-right: 6rem;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  flex-direction: row;
+}
+div.supermenu div.niv div h3 {
+  font-family: Inter;
+  font-weight: bold;
+  margin-bottom: 3.8rem;
+  position: relative;
+  font-size: 3rem;
+}
+div.supermenu div.niv div h3::after {
+  height: 0.1rem;
+  width: 2.2rem;
+  top: -1.5rem;
+  left: 0;
+  background: #260530;
+  content: "";
+  position: absolute;
+}
+div.supermenu div.niv div div {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  flex-direction: row;
+}
+div.supermenu div.niv div div nav:not(.toggled) {
+  max-height: 23.3rem;
+}
+div.supermenu div.niv div div nav:not(.toggled) ul {
+  width: 100%;
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  flex-direction: row;
+  gap: 2rem;
+  flex-wrap: wrap;
+  max-width: 23rem;
+}
+div.supermenu div.niv div div nav:not(.toggled) ul li {
+  opacity: 0.7;
+  width: 18.7rem;
+  list-style: url("/site/assets/img/supermenu_list.svg") inside;
+}
+div.supermenu div.niv div div nav:not(.toggled) ul li:last-child {
+  grid-row-start: 5;
+  grid-row-end: 6;
+}
+div.supermenu div.niv div div nav:not(.toggled) ul li a {
+  font-size: 2rem;
+  line-height: 160%;
+  color: #343a40;
+  position: relative;
+  cursor: pointer;
+}
+div.supermenu div.niv div div nav:not(.toggled) ul li a:not(.button)::after {
+  content: "";
+  position: absolute;
+  bottom: -0.8rem;
+  width: 0;
+  height: 0.2rem;
+  display: block;
+  margin: auto 0;
+  background-color: #dbbf00;
+  transform-origin: center;
+  border-radius: 1rem;
+  transition: 0.2s ease-in-out;
+}
+div.supermenu div.niv div div nav:not(.toggled) ul li a:hover:not(.button)::after {
+  width: 80%;
+}
+div.supermenu div.niv div div nav:not(.toggled) ul li:hover {
+  opacity: 1;
+}
+div.supermenu div.niv div div nav:not(.toggled) ul li.toggle {
+  position: relative;
+}
+div.supermenu div.niv div div nav:not(.toggled) ul li.toggle::after {
+  position: absolute;
+  content: url("/site/img/supermenu_toggle.svg");
+  right: 0;
+  bottom: 0;
+  top: 0;
+  display: block;
+  padding: 0.7rem 0 0 0;
+}
+div.supermenu div.niv picture {
+  -webkit-animation: upandown infinite 6s linear;
+          animation: upandown infinite 6s linear;
+}
+div.supermenu[hide] {
+  opacity: 0;
+  pointer-events: none;
+  top: -40rem;
+}
+div.supermenu div.mobile-close {
+  display: none;
+}
+@media (max-width: 800px) {
+  div.supermenu {
+    top: 0 !important;
+    width: 100vw;
+    height: 100vh;
+    background: white;
+  }
+  div.supermenu div.niv {
+    align-items: center;
+  }
+  div.supermenu div.niv picture {
+    -webkit-animation: none;
+            animation: none;
+    margin: 0 auto;
+  }
+  div.supermenu div.mobile-close {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+    width: 100%;
+    position: absolute;
+    bottom: 3rem;
+  }
+  div.supermenu div.mobile-close img {
+    margin: 0 auto;
+    transform: scale(1.5);
+    background: white;
+    border-radius: 100px;
+    padding: 1rem;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.521);
+    height: 3.1rem;
+    width: 3.1rem;
+  }
+}
+@media (max-width: 400px) {
+  div.supermenu div.niv {
+    flex-direction: column;
+    gap: 4rem;
+  }
+  div.supermenu div.niv div div nav:not(.toggled) {
+    max-height: unset;
+  }
+  div.supermenu div.mobile-close {
+    transform: scale(1.5);
+  }
+}
+
+.backdrop {
+  background: #260530;
+  top: 0;
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  pointer-events: none;
+  z-index: 666;
+}
+.backdrop svg {
+  width: 12rem;
+  align-self: center;
+  margin: 0 auto;
+}
+.backdrop svg path {
+  fill: transparent;
+  stroke: #fff;
+  -webkit-animation: svganimation linear 1 6s;
+          animation: svganimation linear 1 6s;
+}
+
+section.hero {
+  background-image: url("../assets/img/hero_background.jpg");
+  background-repeat: no-repeat;
+  background-color: #260530;
+  padding-top: 11.3rem;
+  padding-bottom: 5.1rem;
+  /**
+
+  @include responsive(1400px) {}
+  @include responsive(1200px) {}
+  @include responsive(992px) {}
+  @include responsive(730px) {}
+  @include responsive(600px) {}
+
+  **/
+  /**
+
+  @include responsive(1400px) {}
+  @include responsive(1200px) {}
+  @include responsive(992px) {}
+  @include responsive(730px) {}
+  @include responsive(600px) {}
+
+  **/
+}
+section.hero div.niv {
+  margin-top: 12.2rem;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  flex-direction: row;
+}
+section.hero div.niv div.niv-text {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  flex-direction: column;
+  position: relative;
+  transition: 1s;
+  transition-delay: 0.5s;
+  padding-left: 11.1rem;
+  width: 100%;
+  max-width: 65.5rem;
+  position: relative;
+}
+section.hero div.niv div.niv-text[niv-fade] {
+  opacity: 0;
+  transform: translateY(-200px);
+}
+section.hero div.niv div.niv-text h1 {
+  text-align: center;
+  z-index: 3;
+  color: #fff;
+}
+section.hero div.niv div.niv-text picture {
+  position: relative;
+  z-index: 2;
+}
+section.hero div.niv div.niv-text picture::after {
+  content: "";
+  top: 0;
+  position: absolute;
+  z-index: -1;
+  height: 44.4rem;
+  width: 44.3rem;
+  border-radius: 100%;
+  background: #3c1f5a;
+  mix-blend-mode: exclusion;
+  filter: blur(186.233px);
+}
+section.hero div.niv div.niv-text picture img {
+  opacity: 0;
+  position: absolute;
+  transition: 0.32s;
+  transition: opacity 0.7s;
+  height: 37.8rem;
+  top: 0;
+  pointer-events: none;
+}
+section.hero div.niv div.niv-text picture img[active] {
+  opacity: 1;
+  pointer-events: all;
+  position: static;
+  transform: none;
+}
+section.hero div.niv div.niv-text div.float {
+  position: absolute;
+  transition: 0.32s;
+  z-index: 2;
+}
+section.hero div.niv div.niv-text div.float:nth-child(2) {
+  top: 9.8rem;
+  right: -5.6rem;
+}
+section.hero div.niv div.niv-text div.float:nth-child(4) {
+  top: 34.8rem;
+  left: 2.7rem;
+}
+section.hero div.niv div.niv-text div.float:hover {
+  cursor: pointer;
+  transform: scale(1.1);
+}
+section.hero div.niv div.niv-text div.indicador {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+  height: 0.5rem;
+  gap: 0.3rem;
+  margin-top: 3.7rem;
+}
+section.hero div.niv div.niv-text div.indicador span {
+  display: block;
+  height: 0.2rem;
+  width: 6.3rem;
+  transition: 0.32s;
+  cursor: pointer;
+  background: #c4c4c4;
+}
+section.hero div.niv div.niv-text div.indicador span[active] {
+  background: #e5db00;
+}
+section.hero div.niv div.niv-text div.indicador span:hover {
+  opacity: 0.7;
+  height: 0.5rem;
+}
+section.hero div.niv div.niv-form {
+  width: 100%;
+  max-width: 48.7rem;
+  transition: 1s;
+  transition-delay: 0s;
+}
+section.hero div.niv div.niv-form[niv-fade] {
+  opacity: 0;
+  transform: translateY(200px);
+}
+section.hero div.niv div.niv-form form {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  flex-direction: column;
+  width: 48.7rem;
+  height: 45.7rem;
+  gap: 2.6rem;
+  padding: 4.7rem 4.8rem;
+  border-radius: 2.7rem;
+  background: #fff;
+}
+section.hero div.niv div.niv-form form label {
+  width: 100%;
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+section.hero div.niv div.niv-form form label span {
+  font-style: normal;
+  font-weight: bold;
+  font-size: 1.4rem;
+  line-height: 140%;
+  letter-spacing: 0.01em;
+  color: #260530;
+}
+section.hero div.niv div.niv-form form label input {
+  width: 100%;
+  height: 4.8rem;
+  padding-left: 3.4rem;
+  border: solid 0.1rem #260530;
+  border-radius: 1.5rem;
+}
+section.hero div.niv div.niv-form form button {
+  font-style: normal;
+  font-weight: bold;
+  font-size: 2rem;
+  line-height: 6rem;
+  letter-spacing: 0.01em;
+  text-align: center;
+  color: #260530;
+  height: 6rem;
+  background: #e5db00;
+  border-bottom: 3.2rem;
+  width: 100%;
+  max-width: 37.9rem;
+  transition: 0.32s;
+  padding: 0 4.1rem;
+  border-radius: 3rem;
+}
+section.hero div.niv div.niv-form form button:hover {
+  color: #fff;
+  background: #56076d;
+}
+section.hero div.niv div.niv-form p {
+  font-size: 18px;
+  line-height: 121.7%;
+  text-align: center;
+  letter-spacing: 0.055em;
+  margin-top: 2.1rem;
+  color: #fff;
+}
+@media (max-width: 900px) {
+  section.hero div.niv {
+    margin-top: 4.3rem;
+    flex-direction: column;
+    align-items: center;
+    gap: 3rem;
+  }
+  section.hero div.niv div.niv-text {
+    padding-left: 0;
+  }
+  section.hero div.niv div.niv-text div.float:nth-child(2) {
+    right: 4.3rem;
+  }
+}
+@media (max-width: 400px) {
+  section.hero div.niv div.niv-text picture::after {
+    width: 100%;
+  }
+  section.hero div.niv div.niv-text div.float {
+    width: 7.1rem;
+  }
+  section.hero div.niv div.niv-form form {
+    width: 100%;
+  }
+  section.hero div.niv div.niv-form form button {
+    line-height: 100%;
+    height: auto;
+    padding: 2.5rem;
+  }
+}
+
+section.drinks {
+  background-color: #260530;
+  padding-top: 5rem;
+  padding-bottom: 5rem;
+  /**
+
+  @include responsive(1400px) {}
+  @include responsive(1200px) {}
+  @include responsive(992px) {}
+  @include responsive(730px) {}
+  @include responsive(600px) {}
+
+  **/
+  /**
+
+  @include responsive(1400px) {}
+  @include responsive(1200px) {}
+  @include responsive(992px) {}
+  @include responsive(730px) {}
+  @include responsive(600px) {}
+
+  **/
+  /**
+
+  @include responsive(1400px) {}
+  @include responsive(1200px) {}
+  @include responsive(992px) {}
+  @include responsive(730px) {}
+  @include responsive(600px) {}
+
+  **/
+}
+section.drinks div.niv div.niv-top {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  flex-direction: row;
+  margin-bottom: 2.6rem;
+  color: #fff;
+}
+section.drinks div.niv div.niv-top div.title {
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  flex-direction: column;
+  gap: 1rem;
+}
+section.drinks div.niv div.niv-top div.button a {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  flex-direction: row;
+  gap: 1rem;
+  position: relative;
+}
+section.drinks div.niv div.niv-top div.button a::after {
+  content: "";
+  position: absolute;
+  bottom: -0.8rem;
+  left: 0;
+  right: 0;
+  width: 0;
+  height: 0.2rem;
+  background-color: #dbbf00;
+  transform-origin: center;
+  border-radius: 1rem;
+  transition: 0.2s ease-in-out;
+  margin: 0 auto;
+}
+section.drinks div.niv div.niv-top div.button a:hover {
+  opacity: 0.7;
+}
+section.drinks div.niv div.niv-top div.button a:hover:not(.button)::after {
+  width: 80%;
+}
+section.drinks div.niv div.niv-list {
+  overflow: hidden;
+  scroll-behavior: smooth;
+  -ms-scroll-snap-type: x mandatory;
+      scroll-snap-type: x mandatory;
+  width: 100%;
+}
+section.drinks div.niv div.niv-list div.content {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  flex-direction: row;
+  gap: 1.5rem;
+  width: -webkit-max-content;
+  width: -moz-max-content;
+  width: max-content;
+}
+section.drinks div.niv div.niv-list div.content div.box {
+  cursor: pointer;
+  height: 41.1rem;
+  width: 100%;
+  transition: 0.32s;
+  max-width: 29.1rem;
+  transition: 1s;
+  transition-delay: 0s;
+  scroll-snap-align: start;
+  background-color: #f6f6f8;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  flex-direction: column;
+  border-radius: 2rem;
+  box-shadow: 6px 9px 16px rgba(0, 0, 0, 0.1);
+  padding: 2.2rem 2.7rem;
+}
+section.drinks div.niv div.niv-list div.content div.box[niv-fade] {
+  opacity: 0;
+  transform: translateY(200px);
+}
+section.drinks div.niv div.niv-list div.content div.box picture {
+  height: 24.1rem;
+  width: 23.6rem;
+  overflow: hidden;
+}
+section.drinks div.niv div.niv-list div.content div.box picture img {
+  height: 100%;
+  width: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+section.drinks div.niv div.niv-list div.content div.box strong {
+  font-size: 1.8rem;
+  letter-spacing: 0.05em;
+  color: #151515;
+  margin-top: 0.8rem;
+}
+section.drinks div.niv div.niv-list div.content div.box p {
+  font-weight: 300;
+  font-size: 1.5rem;
+  line-height: 120%;
+  letter-spacing: 0.05em;
+  color: #3c1f5a;
+  margin-top: 1.2rem;
+}
+section.drinks div.niv div.niv-list div.content div.box:hover {
+  transform: scale(0.98);
+}
+section.drinks div.niv div.niv-controller {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+  gap: 3.2rem;
+  margin-top: 3.5rem;
+}
+section.drinks div.niv div.niv-controller picture img {
+  filter: grayscale(100%) brightness(100);
+  cursor: pointer;
+}
+section.drinks div.niv div.niv-controller picture:active img {
+  filter: none;
+}
+section.drinks div.niv div.niv-controller picture:hover {
+  opacity: 0.7;
+}
+@media (max-width: 1150px) {
+  section.drinks div.niv div.niv-list div.content div.box {
+    max-width: 35rem;
+  }
+}
+@media (max-width: 800px) {
+  section.drinks div.niv div.niv-list div.content div.box {
+    max-width: 36rem;
+  }
+}
+@media (max-width: 600px) {
+  section.drinks div.niv div.niv-list {
+    overflow: scroll;
+  }
+  section.drinks div.niv div.niv-list::-webkit-scrollbar {
+    display: none;
+  }
+  section.drinks div.niv div.niv-list div.content div.box {
+    max-width: calc(100vw - 8rem);
+  }
+}
+
+section.funcionamento {
+  padding-top: 5.3rem;
+  padding-bottom: 5.3rem;
+  background-color: #260530;
+  /**
+
+  @include responsive(1400px) {}
+  @include responsive(1200px) {}
+  @include responsive(992px) {}
+  @include responsive(730px) {}
+  @include responsive(600px) {}
+
+  **/
+  /**
+
+  @include responsive(1400px) {}
+  @include responsive(1200px) {}
+  @include responsive(992px) {}
+  @include responsive(730px) {}
+  @include responsive(600px) {}
+
+  **/
+  /**
+
+  @include responsive(1400px) {}
+  @include responsive(1200px) {}
+  @include responsive(992px) {}
+  @include responsive(730px) {}
+  @include responsive(600px) {}
+
+  **/
+}
+section.funcionamento div.niv {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-direction: row;
+}
+section.funcionamento div.niv aside {
+  max-width: 44.5rem;
+  color: #fff;
+}
+section.funcionamento div.niv aside h2 {
+  height: 8.3rem;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  flex-direction: column;
+  overflow: hidden;
+  margin-top: 2.7rem;
+  margin-bottom: 6rem;
+}
+section.funcionamento div.niv aside h2 span {
+  font-size: 3.8rem;
+  display: block;
+  transform-origin: left;
+}
+section.funcionamento div.niv aside h2 span:first-child {
+  transition: 1s;
+  transition-delay: 0s;
+}
+section.funcionamento div.niv aside h2 span:first-child[niv-fade] {
+  opacity: 0;
+  transform: rotate(45deg);
+}
+section.funcionamento div.niv aside h2 span:nth-child(2) {
+  transition: 1s;
+  transition-delay: 0.32s;
+}
+section.funcionamento div.niv aside h2 span:nth-child(2)[niv-fade] {
+  opacity: 0;
+  transform: rotate(45deg);
+}
+section.funcionamento div.niv aside p {
+  max-width: 41.4rem;
+}
+section.funcionamento div.niv aside p i {
+  color: #e5db00;
+  font-style: normal;
+  position: relative;
+}
+section.funcionamento div.niv aside p i::after {
+  height: 1.2rem;
+  width: 12.6rem;
+  content: "";
+  position: absolute;
+  background: url("/site/assets/img/text_draw.svg");
+  background-size: 100% 100%;
+  bottom: -1.2rem;
+  right: -1rem;
+}
+section.funcionamento div.niv aside ul {
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  flex-direction: column;
+  margin-top: 5.3rem;
+}
+section.funcionamento div.niv aside ul li {
+  opacity: 0.3;
+  max-width: 28.3rem;
+  transition: 0.32s;
+  padding: 4.1rem 0;
+  padding-left: 6.2rem;
+  border-left: solid 0.2rem #c4c4c4;
+  cursor: pointer;
+}
+section.funcionamento div.niv aside ul li:hover {
+  opacity: 1;
+}
+section.funcionamento div.niv aside ul li strong {
+  font-size: 2.4rem;
+  margin-bottom: 0.4rem;
+  position: relative;
+}
+section.funcionamento div.niv aside ul li strong::after {
+  left: -3.4rem;
+  top: 0;
+  position: absolute;
+}
+section.funcionamento div.niv aside ul li strong.corporativos::after {
+  content: url("/site/assets/img/icon_corporativos.svg");
+}
+section.funcionamento div.niv aside ul li strong.aniversarios::after {
+  content: url("/site/assets/img/icon_aniversarios.svg");
+}
+section.funcionamento div.niv aside ul li strong.formatura::after {
+  content: url("/site/assets/img/icon_formatura.svg");
+}
+section.funcionamento div.niv aside ul li strong.casamentos::after {
+  content: url("/site/assets/img/icon_casamentos.svg");
+}
+section.funcionamento div.niv aside ul li button {
+  margin-top: 1rem;
+  color: #260530;
+  height: 3.9rem;
+  width: 100%;
+  max-width: 15.3rem;
+  font-weight: bold;
+  padding: 1rem 4.5rem;
+  background: #e5db00;
+  font-size: 1.4rem;
+  border-radius: 1.5rem;
+}
+section.funcionamento div.niv aside ul li[active] {
+  opacity: 1;
+  border-color: #e5db00;
+}
+section.funcionamento div.niv main picture {
+  -webkit-animation: upandown 5s linear infinite;
+          animation: upandown 5s linear infinite;
+}
+@media (max-width: 1150px) {
+  section.funcionamento div.niv aside h2 span {
+    font-size: 3rem;
+  }
+}
+@media (max-width: 800px) {
+  section.funcionamento div.niv {
+    flex-direction: column;
+    gap: 4rem;
+  }
+  section.funcionamento div.niv aside {
+    overflow: hidden;
+  }
+  section.funcionamento div.niv aside .title {
+    text-align: center;
+  }
+  section.funcionamento div.niv aside .title h2 {
+    align-items: center;
+  }
+  section.funcionamento div.niv aside ul {
+    flex-direction: row;
+    width: -webkit-max-content;
+    width: -moz-max-content;
+    width: max-content;
+  }
+  section.funcionamento div.niv aside ul li {
+    border-left: none;
+    border-bottom: solid 0.2rem #f6f6f8;
+    padding-right: 3rem;
+    height: 21rem;
+  }
+}
+@media (max-width: 800px) {
+  section.funcionamento div.niv aside {
+    max-width: 100%;
+  }
+  section.funcionamento div.niv aside p {
+    max-width: unset;
+  }
+  section.funcionamento div.niv aside ul {
+    display: none;
+  }
+}
+
+section.video {
+  padding-top: 5.3rem;
+  padding-bottom: 4rem;
+  background: linear-gradient(180deg, #260530 0%, #260530 100%);
+  background-size: 100% 50%;
+  background-repeat: no-repeat;
+  /**
+
+  @include responsive(1400px) {}
+  @include responsive(1200px) {}
+  @include responsive(992px) {}
+  @include responsive(730px) {}
+  @include responsive(600px) {}
+
+  **/
+}
+section.video div.niv {
+  max-width: 98.8rem;
+}
+section.video div.niv div.niv-top {
+  color: #fff;
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  flex-direction: row;
+  margin-bottom: 3.5rem;
+}
+section.video div.niv div.niv-top p {
+  max-width: 41rem;
+}
+section.video div.niv div.niv-top h2 {
+  max-width: 34.3rem;
+  font-size: 3.6rem;
+}
+section.video div.niv div.niv-video {
+  transition: 1s;
+  transition-delay: 0s;
+  transition-timing-function: cubic-bezier(0.5, 0, 0, 1);
+  border-radius: 0.8rem;
+  overflow: hidden;
+  box-shadow: 0 1.2rem 6rem #260530;
+}
+section.video div.niv div.niv-video[niv-fade] {
+  opacity: 0;
+  transform: translateY(-300px);
+}
+section.video div.niv div.niv-video picture {
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+}
+section.video div.niv div.niv-video picture img {
+  height: 100%;
+  width: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+section.video div.niv div.niv-button {
+  margin-top: 5.8rem;
+  width: 100%;
+}
+section.video div.niv div.niv-button a {
+  display: block;
+  margin: 0 auto;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 2rem;
+  line-height: 6rem;
+  letter-spacing: 0.01em;
+  text-align: center;
+  color: #260530;
+  height: 6rem;
+  background: #e5db00;
+  border-bottom: 3.2rem;
+  width: 100%;
+  max-width: 37.9rem;
+  transition: 0.32s;
+  padding: 0 4.1rem;
+  border-radius: 3rem;
+}
+section.video div.niv div.niv-button a:hover {
+  color: #fff;
+  background: #56076d;
+}
+@media (max-width: 800px) {
+  section.video {
+    background-size: 100% 70%;
+  }
+  section.video div.niv div.niv-top {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+  section.video div.niv div.niv-video {
+    aspect-ratio: 1/1;
+  }
+}
+
+section.tempo {
+  padding-top: 4rem;
+  padding-bottom: 4rem;
+  /**
+
+  @include responsive(1400px) {}
+  @include responsive(1200px) {}
+  @include responsive(992px) {}
+  @include responsive(730px) {}
+  @include responsive(600px) {}
+
+  **/
+}
+section.tempo div.niv div.niv-top h2 {
+  margin-bottom: 1.4rem;
+  color: #56076d;
+  font-size: 3.6rem;
+}
+section.tempo div.niv div.niv-workflow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+  margin-top: 11.2rem;
+}
+section.tempo div.niv div.niv-button {
+  margin-top: 9.1rem;
+  width: 100%;
+}
+section.tempo div.niv div.niv-button a {
+  display: block;
+  margin: 0 auto;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 2rem;
+  line-height: 6rem;
+  letter-spacing: 0.01em;
+  text-align: center;
+  color: #260530;
+  height: 6rem;
+  background: #e5db00;
+  border-bottom: 3.2rem;
+  width: 100%;
+  max-width: 37.9rem;
+  transition: 0.32s;
+  padding: 0 4.1rem;
+  border-radius: 3rem;
+}
+section.tempo div.niv div.niv-button a:hover {
+  color: #fff;
+  background: #56076d;
+}
+@media (max-width: 600px) {
+  section.tempo div.niv div.niv-top {
+    text-align: center;
+  }
+}
+
+section.historia {
+  padding-top: 4rem;
+  padding-bottom: 10rem;
+  /**
+
+  @include responsive(1400px) {}
+  @include responsive(1200px) {}
+  @include responsive(992px) {}
+  @include responsive(730px) {}
+  @include responsive(600px) {}
+
+  **/
+}
+section.historia div.niv {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  flex-direction: row;
+}
+section.historia div.niv div.niv-nossa {
+  max-width: 59.2rem;
+  width: 100%;
+}
+section.historia div.niv div.niv-nossa h2 {
+  color: #260530;
+  margin-bottom: 1.6rem;
+}
+section.historia div.niv div.niv-nossa p {
+  max-width: 49rem;
+  margin-bottom: 7.6rem;
+}
+section.historia div.niv div.niv-nossa picture {
+  border-radius: 2.7rem;
+  overflow: hidden;
+  transition: 1s;
+  transition-delay: 0s;
+}
+section.historia div.niv div.niv-nossa picture img {
+  height: 100%;
+  width: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+section.historia div.niv div.niv-nossa picture[niv-fade] {
+  opacity: 0;
+  transform: translateX(-200px);
+}
+section.historia div.niv div.niv-diferente {
+  max-width: 52.3rem;
+}
+section.historia div.niv div.niv-diferente h3 {
+  color: #260530;
+}
+section.historia div.niv div.niv-diferente p {
+  margin-top: 2.7rem;
+}
+section.historia div.niv div.niv-diferente picture {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  flex-direction: row;
+  gap: 2rem;
+  margin-top: 2.7rem;
+}
+section.historia div.niv div.niv-diferente button {
+  margin-top: 3.2rem;
+  color: #260530;
+  height: 5rem;
+  width: 100%;
+  max-width: 22.3rem;
+  font-weight: bold;
+  padding: 1rem 4.5rem;
+  background: #dbbf00;
+  font-size: 1.4rem;
+  border-radius: 2.5rem;
+  transition: 0.32s;
+}
+section.historia div.niv div.niv-diferente button:hover {
+  background-color: #260530;
+  color: #fff;
+}
+@media (max-width: 800px) {
+  section.historia div.niv {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    flex-direction: column;
+    text-align: center;
+    gap: 3rem;
+  }
+  section.historia div.niv div.niv-nossa {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+  }
+  section.historia div.niv div.niv-diferente picture {
+    justify-content: center;
+    max-width: 100%;
+  }
+  section.historia div.niv div.niv-diferente picture img {
+    max-width: 30%;
+  }
+}
+
+section.leve {
+  background: url("/site/assets/img/leva_background.jpg");
+  background-size: 100% 90%;
+  background-position-y: bottom;
+  background-repeat: no-repeat;
+  padding-bottom: 7.8rem;
+}
+section.leve div.niv {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  flex-direction: column;
+  gap: 4.9rem;
+}
+section.leve div.niv h2 {
+  color: #260530;
+  font-size: 3.6rem;
+  text-align: center;
+}
+section.leve div.niv picture {
+  overflow: hidden;
+  border-radius: 2rem;
+}
+section.leve div.niv button {
+  font-style: normal;
+  font-weight: bold;
+  font-size: 2rem;
+  line-height: 6rem;
+  letter-spacing: 0.01em;
+  text-align: center;
+  color: #260530;
+  height: 6rem;
+  background: #e5db00;
+  border-bottom: 3.2rem;
+  width: 100%;
+  max-width: 37.9rem;
+  transition: 0.32s;
+  padding: 0 4.1rem;
+  background: #56076d;
+  color: #fff;
+  border-radius: 3rem;
+}
+section.leve div.niv button:hover {
+  color: #fff;
+  background: #56076d;
+}
+section.leve div.niv button:hover {
+  background: #e5db00;
+  color: #260530;
+}
+
+section.noticias {
+  /**
+
+  @include responsive(1400px) {}
+  @include responsive(1200px) {}
+  @include responsive(992px) {}
+  @include responsive(730px) {}
+  @include responsive(600px) {}
+
+  **/
+  /**
+
+  @include responsive(1400px) {}
+  @include responsive(1200px) {}
+  @include responsive(992px) {}
+  @include responsive(730px) {}
+  @include responsive(600px) {}
+
+  **/
+  /**
+
+  @include responsive(1400px) {}
+  @include responsive(1200px) {}
+  @include responsive(992px) {}
+  @include responsive(730px) {}
+  @include responsive(600px) {}
+
+  **/
+}
+section.noticias div.niv {
+  padding-top: 12.3rem;
+  padding-bottom: 5.8rem;
+}
+section.noticias div.niv div.niv-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-direction: row;
+  margin-bottom: 3.9rem;
+}
+section.noticias div.niv div.niv-top a {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  flex-direction: row;
+  gap: 1rem;
+}
+section.noticias div.niv div.niv-top h2 {
+  color: #260530;
+}
+section.noticias div.niv div.niv-content {
+  max-width: 100%;
+  overflow: hidden;
+  margin-bottom: 1.5rem;
+  -ms-scroll-snap-type: x mandatory;
+      scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+}
+section.noticias div.niv div.niv-content div.scroll {
+  width: -webkit-max-content;
+  width: -moz-max-content;
+  width: max-content;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  flex-direction: row;
+  gap: 3.2rem;
+}
+section.noticias div.niv div.niv-content div.scroll div.box {
+  height: 41.7rem;
+  width: 38.5rem;
+  scroll-snap-align: start;
+  cursor: pointer;
+  border-radius: 2rem;
+  transition: 0.32s;
+  padding: 2rem 2.7rem;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  flex-direction: column;
+  background-position: center;
+  position: relative;
+}
+section.noticias div.niv div.niv-content div.scroll div.box::after {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  bottom: 0;
+  border-radius: 2rem;
+  left: 0;
+  transition: 0.32s;
+  content: "";
+  background: linear-gradient(360deg, #260530 -9.34%, rgba(38, 5, 48, 0) 104%);
+  opacity: 0;
+}
+section.noticias div.niv div.niv-content div.scroll div.box:hover {
+  background-size: 120% 120%;
+  z-index: 1;
+}
+section.noticias div.niv div.niv-content div.scroll div.box:hover::after {
+  opacity: 1;
+}
+section.noticias div.niv div.niv-content div.scroll div.box div {
+  cursor: pointer;
+  background: #fff;
+  border-radius: 2.2rem;
+  padding: 2.1rem 3.6rem;
+  z-index: 2;
+}
+section.noticias div.niv div.niv-content div.scroll div.box div span {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  flex-direction: row;
+  gap: 1rem;
+}
+section.noticias div.niv div.niv-content div.scroll div.box div span small {
+  font-size: 1.6rem;
+  line-height: 150%;
+  letter-spacing: 0.02em;
+  color: #9a95aa;
+}
+section.noticias div.niv div.niv-content div.scroll div.box div strong {
+  display: block;
+  font-weight: bold;
+  font-size: 1.8rem;
+  letter-spacing: 0.02em;
+  color: #260530;
+  margin-top: 1.7rem;
+  max-width: 24.1rem;
+  height: 4.2rem;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  text-overflow: ellipsis;
+}
+section.noticias div.niv div.niv-controller {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  flex-direction: row;
+  gap: 2rem;
+}
+section.noticias div.niv div.niv-controller picture {
+  cursor: pointer;
+}
+section.noticias div.niv div.niv-controller picture:hover {
+  opacity: 0.7;
+}
+@media (max-width: 1150px) {
+  section.noticias div.niv div.niv-content div.scroll div.box {
+    width: 52.5rem;
+    background-size: cover;
+  }
+}
+@media (max-width: 800px) {
+  section.noticias div.niv div.niv-content {
+    overflow: scroll;
+  }
+  section.noticias div.niv div.niv-content::-webkit-scrollbar {
+    display: none;
+  }
+  section.noticias div.niv div.niv-content div.scroll div.box {
+    width: 72.5rem;
+  }
+}
+@media (max-width: 600px) {
+  section.noticias div.niv div.niv-content div.scroll div.box {
+    width: calc(100vw - 7rem);
+  }
+}
+
+footer {
+  /**
+
+  @include responsive(1400px) {}
+  @include responsive(1200px) {}
+  @include responsive(992px) {}
+  @include responsive(730px) {}
+  @include responsive(600px) {}
+
+  **/
+  /**
+
+  @include responsive(1400px) {}
+  @include responsive(1200px) {}
+  @include responsive(992px) {}
+  @include responsive(730px) {}
+  @include responsive(600px) {}
+
+  **/
+}
+footer div[fluid] {
+  background: linear-gradient(29.43deg, #260530 -10.45%, #45244f 159.12%);
+}
+footer div[fluid] div.niv {
+  padding-top: 5.7rem;
+  padding-bottom: 2.9rem;
+}
+footer div[fluid] div.niv div.niv-row,
+footer div[fluid] div.niv nav ul,
+footer div[fluid] div.niv div.certificate {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-direction: row;
+}
+footer div[fluid] div.niv div.niv-row:last-child {
+  margin-top: 4.7rem;
+}
+footer div[fluid] div.niv div.niv-row ul {
+  gap: 4rem;
+}
+footer div[fluid] div.niv div.niv-row ul li a {
+  font-weight: 600;
+  font-size: 1.1rem;
+  letter-spacing: 0.16em;
+  color: #fff;
+  position: relative;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+footer div[fluid] div.niv div.niv-row ul li a:not(.button)::after {
+  content: "";
+  position: absolute;
+  bottom: -0.8rem;
+  width: 0;
+  height: 0.2rem;
+  background-color: #dbbf00;
+  transform-origin: center;
+  border-radius: 1rem;
+  transition: 0.2s ease-in-out;
+}
+footer div[fluid] div.niv div.niv-row ul li a:hover:not(.button)::after {
+  width: 80%;
+}
+footer div[fluid] div.niv div.niv-row div.certificate {
+  gap: 1.3rem;
+}
+footer div[fluid] div.niv div.niv-row div.social span p {
+  display: block;
+  color: #fff;
+  font-size: 1.4rem;
+}
+footer div[fluid] div.niv div.niv-row div.social div.midias {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  flex-direction: row;
+  gap: 2.5rem;
+  margin-top: 2.2rem;
+}
+footer div[fluid] div.niv.copyright {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-direction: row;
+  padding-top: 1.9rem;
+  padding-bottom: 3.6rem;
+  position: relative;
+}
+footer div[fluid] div.niv.copyright::after {
+  width: 100%;
+  max-width: 121.7rem;
+  height: 1px;
+  content: "";
+  position: absolute;
+  border-top: solid 0.1rem #c4c4c4;
+  top: 0;
+}
+footer div[fluid] div.niv.copyright p {
+  font-size: 1.4rem;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  flex-direction: row;
+  gap: 1rem;
+}
+footer div[fluid] div.niv.copyright a {
+  display: block;
+  transition: 0.32s;
+}
+footer div[fluid] div.niv.copyright a:hover {
+  transform: scale(1.1);
+}
+@media (max-width: 800px) {
+  footer div[fluid] div.niv div.niv-row,
+footer div[fluid] div.niv nav ul,
+footer div[fluid] div.niv div.certificate {
+    flex-direction: column;
+    gap: 2rem;
+  }
+}
+@media (max-width: 400px) {
+  footer div[fluid] div.niv.copyright {
+    flex-direction: column;
+    gap: 2rem;
+  }
 }

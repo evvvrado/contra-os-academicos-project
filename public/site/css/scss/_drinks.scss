@@ -1,0 +1,182 @@
+section.drinks {
+    background-color: $dark-purple;
+    padding-top: 5rem;
+    padding-bottom: 5rem;
+
+    div.niv {
+        div.niv-top {
+            @include flex(row, flex-end, space-between);
+            margin-bottom: 2.6rem;
+            color: $white;
+
+            div.title {
+                @include flex(column, flex-start, flex-start);
+                gap: 1rem;
+            }
+
+            div.button {
+                a {
+                    @include flex(row, center, flex-start);
+                    gap: 1rem;
+                    position: relative;
+
+                    &::after {
+                        content: "";
+                        position: absolute;
+
+                        bottom: -0.8rem;
+
+                        left: 0;
+                        right: 0;
+                        width: 0;
+                        height: 0.2rem;
+
+                        background-color: $main-orange;
+                        transform-origin: center;
+                        border-radius: 1rem;
+                        transition: 0.2s ease-in-out;
+                        margin: 0 auto;
+                    }
+
+                    &:hover {
+                        opacity: 0.7;
+                        &:not(.button)::after {
+                            width: 80%;
+                        }
+                    }
+                }
+            }
+        }
+
+        div.niv-list {
+            overflow: hidden;
+            scroll-behavior: smooth;
+            scroll-snap-type: x mandatory;
+            width: 100%;
+            div.content {
+                @include flex(row, center, flex-start);
+                gap: 1.5rem;
+                width: max-content;
+
+                div.box {
+                    cursor: pointer;
+                    height: 41.1rem;
+                    width: 100%;
+                    transition: 0.32s;
+                    max-width: 29.1rem;
+
+                    @include fade(translateY(200px), 1s);
+
+                    scroll-snap-align: start;
+
+                    background-color: $middle-grey;
+
+                    text-align: center;
+
+                    @include flex(column, center, flex-start);
+                    border-radius: 2rem;
+
+                    box-shadow: 6px 9px 16px rgba(0, 0, 0, 0.1);
+
+                    padding: 2.2rem 2.7rem;
+
+                    picture {
+                        height: 24.1rem;
+                        width: 23.6rem;
+
+                        @include picframe();
+                    }
+
+                    strong {
+                        font-size: 1.8rem;
+                        letter-spacing: 0.05em;
+
+                        color: $dark-grey;
+                        margin-top: 0.8rem;
+                    }
+
+                    p {
+                        font-weight: 300;
+                        font-size: 1.5rem;
+                        line-height: 120%;
+                        letter-spacing: 0.05em;
+                        color: $light-purple;
+
+                        margin-top: 1.2rem;
+                    }
+
+                    &:hover {
+                        transform: scale(0.98);
+                    }
+                }
+            }
+        }
+
+        div.niv-controller {
+            width: 100%;
+            @include flex(row, center, center);
+            gap: 3.2rem;
+
+            margin-top: 3.5rem;
+
+            picture {
+                img {
+                    filter: grayscale(100%) brightness(100);
+                    cursor: pointer;
+                }
+
+                &:active {
+                    img {
+                        filter: none;
+                    }
+                }
+
+                &:hover {
+                    opacity: 0.7;
+                }
+            }
+        }
+    }
+
+    @include responsive(1150px) {
+        div.niv {
+            div.niv-list {
+                div.content {
+                    div.box {
+                        max-width: 35rem;
+                    }
+                }
+            }
+        }
+    }
+
+    @include responsive(800px) {
+        div.niv {
+            div.niv-list {
+                div.content {
+                    div.box {
+                        max-width: 36rem;
+                    }
+                }
+            }
+        }
+    }
+
+    @include responsive(600px) {
+        div.niv {
+            div.niv-list {
+                overflow: scroll;
+
+                &::-webkit-scrollbar {
+                    display: none;
+                }
+
+                div.content {
+                    div.box {
+                        max-width: calc(100vw - 8rem);
+                    }
+                }
+            }
+        }
+    }
+}

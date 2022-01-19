@@ -9,14 +9,6 @@ use Illuminate\Support\Facades\Storage;
 
 class SiteController extends Controller
 {
-    //
-    public function __construct()
-    {
-        View::share('configuracoes', \App\Models\Configuracao::first());
-    }
-
-
-
     public function mapa()
     {
         return view("site.mapa");

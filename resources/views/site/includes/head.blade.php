@@ -18,8 +18,8 @@
 
     <meta property="og:title" content="{{ Definition::TITLE }}" />
     <meta property='og:site_name' content='{{ Definition::TITLE }}'>
-    <meta property="og:image" content="{{ asset('/site/img/_og140.jpg') }}" />
-    <meta property='og:image:secure_url' content='{{ asset(' /site/img/_og140.jpg') }}'>
+    <meta property="og:image" content="{{ asset('/site/assets/img/_og140.jpg') }}" />
+    <meta property='og:image:secure_url' content='{{ asset(' /site/assets/img/_og140.jpg') }}'>
     <meta property='og:image:type' content='png'>
     <meta property='og:image:alt' content='{{  Definition::IMGALT }}'>
     <meta property="og:url" content="{{  Definition::URL }}" />
@@ -29,7 +29,7 @@
     <meta name='twitter:title' content='{{ Definition::TITLE }}'>
     <meta name='twitter:description' content='{{ Definition::DESCRIPTION }}'>
     <meta name='twitter:card' content='summary'>
-    <meta name='twitter:image' content='{{ asset(' /site/img/_og140.jpg') }}'>
+    <meta name='twitter:image' content='{{ asset(' /site/assets/img/_og140.jpg') }}'>
     <meta name='twitter:image:alt' content='{{  Definition::IMGALT }}'>
 
 
@@ -55,5 +55,6 @@
     <!-- Fontes -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@400;700&display=swap" rel="stylesheet">
     <!-- Fontes -->
 </head>

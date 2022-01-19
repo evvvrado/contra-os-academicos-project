@@ -1,15 +1,37 @@
 h1 {
-  color: red;
+  font-family: "Anton", sans-serif;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 4.7rem;
+  line-height: 121.7%;
+  letter-spacing: 0.055em;
 }
+
 h2 {
-  color: red;
+  font-family: "Anton", sans-serif;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 2.8rem;
+  line-height: 121.7%;
+  letter-spacing: 0.055em;
 }
 h3 {
-  color: red;
+  font-family: "Anton", sans-serif;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 2.2rem;
+  line-height: 121.7%;
+  letter-spacing: 0.055em;
 }
 h4 {
-  color: red;
+  font-weight: 500;
+  font-size: 1.8rem;
+  line-height: 121.7%;
+  letter-spacing: 0.055em;
+
+  color: $main-yellow;
 }
 p {
-  color: red;
+  line-height: 150%;
+  letter-spacing: 0.02em;
 }

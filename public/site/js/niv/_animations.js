@@ -1,4 +1,4 @@
-//CONTADOR DE NÚMEROS
+//CONTADOR DE NULMEROS
 
 function animateValue(obj, start, end, duration) {
     let startTimestamp = null;

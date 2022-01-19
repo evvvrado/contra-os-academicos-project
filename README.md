@@ -4,7 +4,7 @@
 <br />
 <div align="center">
   <a href="https://hyp8.com.br">
-    <img src="/public/site/assets/default/_hyp8.png" alt="Logo" width="80" height="80">
+    <img src="/public/site/assets/default/_hyp8.png" alt="Logo" height="80">
   </a>
 
   <h3 align="center">Desenvolvido a partir do Niv.Template @hyp8tec</h3>

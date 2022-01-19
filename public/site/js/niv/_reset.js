@@ -62,4 +62,19 @@ function number_format(number, decimals, dec_point, thousands_sep) {
     return s.join(dec);
 }
 
+
+
+(function ($) {
+    $.fn.toggleAttr = function (attr) {
+        if ($(this).attr(attr) == '') {
+            $(this).removeAttr(attr)
+        } else {
+            $(this).attr(attr, '')
+        }
+        return this;
+    }
+
+})(jQuery);
+
+
 console.log("%c👋 Opa, bom dia!\n%cEstá perdido? a estrada é pelo %coutro lado!!\n%cMas já que já está aqui, da uma olhadinha no nosso site\n%chttps://hyp8.com.br ✨", "font-family: consolas;", "font-family: consolas;", "font-family: consolas; font-weight: bold;color: red;", "font-family: consolas;", "font-family: consolas; color:$FF3434; ")
