@@ -235,6 +235,8 @@ console.log("%c👋 Opa, bom dia!\n%cEstá perdido? a estrada é pelo %coutro la
 
 // MODALS
 
+// const { Logger } = require("sass");
+
 setTimeout(() => {
     $('.modal_box').showModal()
 }, 3000);
@@ -327,3 +329,39 @@ function setCaseOrder() {
     }
 
 }
+
+
+
+
+//DEPOIMENTOS
+
+var i_N = 1;
+var i_B = 1;
+setInterval(() => {
+    if (i_N < 3) {
+        console.log(i_N);
+        $('section.depoimentos div.niv div.niv-content')
+            .scrollLeft(500 + $('section.depoimentos div.niv div.niv-content').scrollLeft())
+
+        $('section.depoimentos div.niv div.niv-indicator img').removeAttr('active')
+        $($('section.depoimentos div.niv div.niv-indicator img')[i_N]).attr('active', '');
+
+
+        i_N++;
+    } else if (i_B >= 0) {
+        console.log(i_B);
+        $('section.depoimentos div.niv div.niv-content')
+            .scrollLeft($('section.depoimentos div.niv div.niv-content').scrollLeft() - 500)
+
+        $('section.depoimentos div.niv div.niv-indicator img').removeAttr('active')
+        $($('section.depoimentos div.niv div.niv-indicator img')[i_B]).attr('active', '');
+
+        i_B--;
+
+
+    } else {
+        clearInterval()
+        i_B = 1;
+        i_N = 1;
+    }
+}, 5000)

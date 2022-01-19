@@ -18,4 +18,9 @@ class SiteController extends Controller
     {
         return view("site.index");
     }
+
+    public function sobre()
+    {
+        return view("site.sobre");
+    }
 }

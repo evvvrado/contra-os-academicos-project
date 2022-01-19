@@ -12,7 +12,9 @@
     <div fluid>
         <div class="niv">
             <picture class="logo">
-                <img src="{{ asset('/site/assets/img/_logoBIRITTAS.svg')}}" alt="logo birittas">
+                <a href="/">
+                    <img src="{{ asset('/site/assets/img/_logoBIRITTAS.svg')}}" alt="logo birittas">
+                </a>
             </picture>
 
             <button>

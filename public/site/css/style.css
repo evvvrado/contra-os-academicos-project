@@ -37,7 +37,7 @@ html::-webkit-scrollbar-track {
 }
 html::-webkit-scrollbar-thumb {
   background: #dbbf00;
-  border-radius: 25%;
+  border-radius: 15rem;
 }
 html::-webkit-scrollbar-thumb:hover {
   cursor: pointer;
@@ -1813,4 +1813,252 @@ footer div[fluid] div.niv div.certificate {
     flex-direction: column;
     gap: 2rem;
   }
+}
+
+section.sobre {
+  padding-top: 15.8rem;
+  padding-bottom: 16.1rem;
+  border-bottom: 0.1rem solid #c4c4c4;
+  /**
+
+  @include responsive(1400px) {}
+  @include responsive(1200px) {}
+  @include responsive(992px) {}
+  @include responsive(730px) {}
+  @include responsive(600px) {}
+
+  **/
+}
+section.sobre div.niv {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-direction: row;
+}
+section.sobre div.niv div.niv-left {
+  max-width: 48.8rem;
+}
+section.sobre div.niv div.niv-left p {
+  margin-bottom: 4.4rem;
+}
+section.sobre div.niv div.niv-left h2 {
+  color: #260530;
+  margin-bottom: 1.6rem;
+}
+@media (max-width: 800px) {
+  section.sobre div.niv {
+    flex-direction: column;
+  }
+}
+
+section.timelapse div.niv {
+  padding-bottom: 7rem;
+  position: relative;
+  padding-top: 7.3rem;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  flex-direction: row;
+  min-height: 228.9rem;
+}
+section.timelapse div.niv div.niv-mid {
+  text-align: center;
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  flex-direction: column;
+  left: 0;
+  right: 0;
+  margin: auto 0;
+}
+section.timelapse div.niv div.niv-mid .title h2 {
+  color: #56076d;
+}
+section.timelapse div.niv div.niv-mid .title p {
+  font-size: 1.8rem;
+  color: #151515;
+  margin-bottom: 1.3rem;
+}
+section.timelapse div.niv div.niv-mid .line {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  flex-direction: column;
+  gap: 65.2rem;
+  position: relative;
+  margin-top: 2.8rem;
+}
+section.timelapse div.niv div.niv-mid .line::after {
+  height: 100%;
+  width: 1px;
+  content: "";
+  position: absolute;
+  z-index: 1;
+  border-right: 0.1rem dashed #985394;
+}
+section.timelapse div.niv div.niv-mid .line span {
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+  background: #985394;
+  height: 5.5rem;
+  padding: 0 5rem;
+  font-family: "Anton", sans-serif;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 2.2rem;
+  letter-spacing: 0.055em;
+  color: #fff;
+  border-radius: 0.9rem;
+  cursor: default;
+}
+section.timelapse div.niv div.niv-left,
+section.timelapse div.niv div.niv-right {
+  margin-top: 18.5rem;
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  flex-direction: column;
+}
+section.timelapse div.niv div.niv-left div.box picture,
+section.timelapse div.niv div.niv-right div.box picture {
+  height: 36.1rem;
+  width: 48.4rem;
+  overflow: hidden;
+  border-radius: 2rem;
+}
+section.timelapse div.niv div.niv-left div.box picture img,
+section.timelapse div.niv div.niv-right div.box picture img {
+  height: 100%;
+  width: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+section.timelapse div.niv div.niv-left div.box strong,
+section.timelapse div.niv div.niv-right div.box strong {
+  font-family: Anton;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 2.2rem;
+  line-height: 121.7%;
+  letter-spacing: 0.055em;
+  color: #56076d;
+  max-width: 33.3rem;
+  display: block;
+  margin: 3.7rem 0;
+}
+section.timelapse div.niv div.niv-left div.box p,
+section.timelapse div.niv div.niv-right div.box p {
+  font-size: 1.8rem;
+  line-height: 150%;
+  letter-spacing: 0.02em;
+  max-width: 39.6rem;
+  color: #151515;
+}
+section.timelapse div.niv div.niv-left {
+  gap: 5.9rem;
+}
+section.timelapse div.niv div.niv-right {
+  gap: 41rem;
+}
+
+section.depoimentos {
+  padding-bottom: 7rem;
+  padding-top: 7rem;
+}
+section.depoimentos div.niv {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  flex-direction: column;
+  position: relative;
+}
+section.depoimentos div.niv div.niv-top h2 {
+  color: #3a3a3a;
+  margin-bottom: 6rem;
+}
+section.depoimentos div.niv div.niv-content {
+  max-width: 48.7rem;
+  position: relative;
+  overflow: hidden;
+  scroll-behavior: smooth;
+  -ms-scroll-snap-type: x mandatory;
+      scroll-snap-type: x mandatory;
+}
+section.depoimentos div.niv div.niv-content div.scroll {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  flex-direction: row;
+  width: -webkit-max-content;
+  width: -moz-max-content;
+  width: max-content;
+}
+section.depoimentos div.niv div.niv-content div.depoimento {
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 2.7rem;
+  max-width: 48.7rem;
+  scroll-snap-align: center;
+}
+section.depoimentos div.niv div.niv-content div.depoimento p {
+  display: block;
+  color: #6c7175;
+  max-width: 100%;
+}
+section.depoimentos div.niv div.niv-content div.depoimento div {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+section.depoimentos div.niv div.niv-content div.depoimento div picture {
+  border-radius: 100%;
+  width: 4.8rem;
+  height: 4.8rem;
+  overflow: hidden;
+}
+section.depoimentos div.niv div.niv-content div.depoimento div picture img {
+  height: 100%;
+  width: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+section.depoimentos div.niv div.niv-content div.depoimento div span {
+  font-size: 16px;
+  line-height: 150%;
+  letter-spacing: 0.02em;
+  color: black;
+}
+section.depoimentos div.niv div.niv-indicator {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+  gap: 2rem;
+  margin-top: 2.5rem;
+}
+section.depoimentos div.niv div.niv-indicator img:not([active]) {
+  filter: grayscale(100);
+  opacity: 0.3;
+}
+section.depoimentos div.niv::after {
+  content: url("/site/assets/img/aspas.svg");
+  position: absolute;
+  right: 29rem;
+  top: 16rem;
+  transform: rotate(180deg);
+}
+section.depoimentos div.niv::before {
+  content: url("/site/assets/img/aspas.svg");
+  position: absolute;
+  left: 28rem;
+  top: 8rem;
 }

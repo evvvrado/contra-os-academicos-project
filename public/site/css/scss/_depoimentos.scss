@@ -1,0 +1,92 @@
+section.depoimentos {
+    padding-bottom: 7rem;
+    padding-top: 7rem;
+    div.niv {
+        @include flex(column, center, flex-start);
+        position: relative;
+
+        div.niv-top {
+            h2 {
+                color: $saturated-grey;
+                margin-bottom: 6rem;
+            }
+        }
+
+        div.niv-content {
+            max-width: 48.7rem;
+            position: relative;
+            overflow: hidden;
+            scroll-behavior: smooth;
+            scroll-snap-type: x mandatory;
+
+            div.scroll {
+                @include flex(row, center, flex-start);
+                width: max-content;
+            }
+
+            div.depoimento {
+                text-align: center;
+                @include flex(column, center, center);
+                gap: 2.7rem;
+                max-width: 48.7rem;
+
+                scroll-snap-align: center;
+
+                p {
+                    display: block;
+                    color: $text-grey;
+                    max-width: 100%;
+                }
+
+                div {
+                    @include flex(column, center, center);
+                    gap: 0.4rem;
+
+                    picture {
+                        border-radius: 100%;
+
+                        width: 4.8rem;
+                        height: 4.8rem;
+                        @include picframe();
+                    }
+
+                    span {
+                        font-size: 16px;
+                        line-height: 150%;
+                        letter-spacing: 0.02em;
+
+                        color: $black;
+                    }
+                }
+            }
+        }
+
+        div.niv-indicator {
+            @include flex(row, center, center);
+            gap: 2rem;
+
+            margin-top: 2.5rem;
+
+            img:not([active]) {
+                filter: grayscale(100);
+                opacity: 0.3;
+            }
+        }
+
+        &::after {
+            content: url("/site/assets/img/aspas.svg");
+            position: absolute;
+            right: 29rem;
+            top: 16rem;
+
+            transform: rotate(180deg);
+        }
+
+        &::before {
+            content: url("/site/assets/img/aspas.svg");
+            position: absolute;
+            left: 28rem;
+            top: 8rem;
+        }
+    }
+}
