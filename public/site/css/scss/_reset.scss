@@ -66,6 +66,14 @@ html {
     margin: 0;
   }
 
+  select,
+  input {
+    appearance: none;
+    line-height: normal;
+    border: none;
+    position: relative;
+  }
+
   /* GRID */
 
   section,

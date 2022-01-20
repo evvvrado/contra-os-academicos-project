@@ -1,0 +1,50 @@
+section.destaque-blog {
+    background-image: url("../assets/img/hero_background.jpg");
+    background-repeat: no-repeat;
+    background-size: 100% 80%;
+
+    padding-top: 17.4rem;
+    margin-bottom: 3.3rem;
+    div.niv {
+        @include flex(row, center, center);
+        div.banner {
+            height: 47.6rem;
+            width: 100%;
+            max-width: 121.4rem;
+
+            border-radius: 2rem;
+
+            padding: 7.7rem 5.8rem;
+
+            div {
+                max-width: 34.4rem;
+
+                span {
+                    @include flex(row, center, flex-start);
+                    gap: 1.2rem;
+                    color: $white;
+
+                    margin-bottom: 1rem;
+                }
+
+                h2 {
+                    color: $white;
+                    margin-bottom: 1rem;
+
+                    @include limitText(12.6rem, 3);
+
+                    font-family: Inter;
+                    font-weight: bold;
+                    font-size: 3.2rem;
+                    line-height: 130%;
+
+                    letter-spacing: -0.01em;
+                }
+
+                p {
+                    color: $white;
+                }
+            }
+        }
+    }
+}

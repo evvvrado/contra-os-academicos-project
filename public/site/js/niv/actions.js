@@ -36,6 +36,22 @@ $(document).ready(function () {
             $('section.noticias div.niv div.niv-content').scrollLeft($('section.noticias div.niv div.niv-content').scrollLeft() + $('section.noticias div.niv div.niv-content div.scroll div.box').width());
         }
     })
+
+    $('section.servicos div.niv div.niv-top nav ul li').click(function () {
+        $('section.servicos div.niv div.niv-top nav ul li').removeAttr('active');
+        $(this).attr('active', '');
+
+        $('section.servicos div.niv div.niv-content').hide();
+        $(`section.servicos div.niv div.niv-content.${$(this).data('nav')}`).show();
+
+    })
+
+    $('section.lista-blog div.niv div.niv-top div select[name="categorias"]').change(function () {
+        var categoria = $(this).val();
+
+        $(`section.lista-blog div.niv div.niv-content div.box`).show();
+        $(`section.lista-blog div.niv div.niv-content div.box:not(.${categoria})`).hide();
+    })
 })
 
 
@@ -105,7 +121,6 @@ var i_N = 1;
 var i_B = 1;
 setInterval(() => {
     if (i_N < 3) {
-        console.log(i_N);
         $('section.depoimentos div.niv div.niv-content')
             .scrollLeft(500 + $('section.depoimentos div.niv div.niv-content').scrollLeft())
 
@@ -115,7 +130,6 @@ setInterval(() => {
 
         i_N++;
     } else if (i_B >= 0) {
-        console.log(i_B);
         $('section.depoimentos div.niv div.niv-content')
             .scrollLeft($('section.depoimentos div.niv div.niv-content').scrollLeft() - 500)
 

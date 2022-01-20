@@ -23,4 +23,18 @@ class SiteController extends Controller
     {
         return view("site.sobre");
     }
+
+    public function servicos()
+    {
+        return view("site.servicos");
+    }
+
+    public function blog()
+    {
+        return view("site.blog");
+    }
+    public function blogDetalhes()
+    {
+        return view("site.blog-detalhes");
+    }
 }
