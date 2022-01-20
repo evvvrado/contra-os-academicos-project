@@ -33,8 +33,14 @@ class SiteController extends Controller
     {
         return view("site.blog");
     }
+
     public function blogDetalhes()
     {
         return view("site.blog-detalhes");
+    }
+
+    public function contato()
+    {
+        return view("site.contato");
     }
 }

@@ -9,6 +9,7 @@ Route::get('/sobre', [\App\Http\Controllers\SiteController::class, 'sobre'])->na
 Route::get('/servicos', [\App\Http\Controllers\SiteController::class, 'servicos'])->name("site.servicos");
 Route::get('/blog', [\App\Http\Controllers\SiteController::class, 'blog'])->name("site.blog");
 Route::get('/blog/detalhes', [\App\Http\Controllers\SiteController::class, 'blogDetalhes'])->name("site.blog-detalhes");
+Route::get('/contato', [\App\Http\Controllers\SiteController::class, 'contato'])->name("site.contato");
 
 Route::middleware(['aluno'])->group(function () {
     Route::get('/sistema', [\App\Http\Controllers\PainelController::class, 'index'])->name("painel.index");

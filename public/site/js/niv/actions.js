@@ -52,8 +52,35 @@ $(document).ready(function () {
         $(`section.lista-blog div.niv div.niv-content div.box`).show();
         $(`section.lista-blog div.niv div.niv-content div.box:not(.${categoria})`).hide();
     })
-})
 
+
+
+    $('body#curso-detalhes section.s_curso-content .container-fluid .container-fav div.aba.instrutores .buttons').click(function () {
+
+        if ($(this).index() == 0) {
+            $('body#curso-detalhes section.s_curso-content .container-fluid .container-fav div.aba.instrutores .content').scrollLeft($('body#curso-detalhes section.s_curso-content .container-fluid .container-fav div.aba.instrutores .content').scrollLeft() - 400)
+        }
+
+        else if ($(this).index() == 1) {
+            $('body#curso-detalhes section.s_curso-content .container-fluid .container-fav div.aba.instrutores .content').scrollLeft($('body#curso-detalhes section.s_curso-content .container-fluid .container-fav div.aba.instrutores .content').scrollLeft() + 400)
+        }
+    })
+
+    $('section.contato div.niv div.niv-nav nav h2').click(function () {
+        $('section.contato div.niv div.niv-nav nav h2').removeAttr('active');
+        $(this).attr('active', '');
+
+        if ($(this).index() == 0) {
+            $('section.contato div.niv div.niv-content.faq').hide();
+            $('section.contato div.niv div.niv-content.contato').show();
+        }
+
+        else if ($(this).index() == 1) {
+            $('section.contato div.niv div.niv-content.faq').css('display', 'flex');
+            $('section.contato div.niv div.niv-content.contato').hide();
+        }
+    })
+})
 
 
 // HERO CASES

@@ -2691,3 +2691,380 @@ section.lista-blog div.niv div.niv-content div.box div strong {
     width: 100%;
   }
 }
+
+section.conteudo-blog div.niv {
+  max-width: 79.9rem;
+  padding-bottom: 9.9rem;
+}
+section.conteudo-blog div.niv div.niv-content h2 {
+  font-family: "Inter";
+  font-weight: 600;
+  font-size: 3.4rem;
+  line-height: 128%;
+  color: #56076d;
+  letter-spacing: 0%;
+  max-width: 47.9rem;
+  padding-bottom: 2.4rem;
+  margin-bottom: 2.4rem;
+  border-bottom: solid 0.1rem #c4c4c4;
+}
+section.conteudo-blog div.niv div.niv-content strong {
+  font-family: Inter;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 2.8rem;
+  line-height: 130%;
+  letter-spacing: -0.01em;
+  color: #56076d;
+  display: block;
+  margin-bottom: 2.2rem;
+  margin-top: 2.2rem;
+}
+section.conteudo-blog div.niv div.niv-content picture {
+  margin-bottom: 3.1rem;
+}
+
+section.orcamento {
+  /**
+
+  @include responsive(1400px) {}
+  @include responsive(1200px) {}
+  @include responsive(992px) {}
+  @include responsive(730px) {}
+  @include responsive(600px) {}
+
+  **/
+}
+section.orcamento div.niv {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  flex-direction: column;
+  padding-top: 6.4rem;
+  padding-bottom: 6.3rem;
+  border-bottom: solid 0.1rem #c4c4c4;
+  border-top: solid 0.1rem #c4c4c4;
+}
+section.orcamento div.niv div.niv-top h2 {
+  font-family: Inter;
+  font-weight: 600;
+  font-size: 3.2rem;
+  line-height: 119.02%;
+  letter-spacing: 0.02em;
+  color: #260530;
+}
+section.orcamento div.niv div.niv-top p {
+  line-height: 150%;
+  letter-spacing: 0.02em;
+  color: #6c7175;
+  margin-top: 1rem;
+}
+section.orcamento div.niv div.niv-form {
+  width: 100%;
+  max-width: 100.8rem;
+  margin-top: 3rem;
+  transition: 1s;
+  transition-delay: 0s;
+}
+section.orcamento div.niv div.niv-form[niv-fade] {
+  opacity: 0;
+  transform: translateY(200px);
+}
+section.orcamento div.niv div.niv-form form {
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  flex-direction: row;
+  flex-wrap: wrap;
+  width: 100%;
+  max-width: 100.8rem;
+  min-height: 28.7rem;
+  gap: 2.6rem;
+  padding: 4.5rem 9.3rem;
+  border-radius: 2.7rem;
+  background: #fff;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+section.orcamento div.niv div.niv-form form label {
+  width: 100%;
+  max-width: 37.9rem;
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+section.orcamento div.niv div.niv-form form label span {
+  font-style: normal;
+  font-weight: bold;
+  font-size: 1.4rem;
+  line-height: 140%;
+  letter-spacing: 0.01em;
+  color: #260530;
+}
+section.orcamento div.niv div.niv-form form label input {
+  width: 100%;
+  height: 4.8rem;
+  padding-left: 3.4rem;
+  border: solid 0.1rem #260530;
+  border-radius: 1.5rem;
+}
+section.orcamento div.niv div.niv-form form button {
+  font-style: normal;
+  font-weight: bold;
+  font-size: 2rem;
+  line-height: 6rem;
+  letter-spacing: 0.01em;
+  text-align: center;
+  color: #260530;
+  height: 6rem;
+  background: #e5db00;
+  border-bottom: 3.2rem;
+  width: 100%;
+  max-width: 37.9rem;
+  transition: 0.32s;
+  padding: 0 4.1rem;
+  border-radius: 3rem;
+  line-height: 100%;
+}
+section.orcamento div.niv div.niv-form form button:hover {
+  color: #fff;
+  background: #56076d;
+}
+section.orcamento div.niv div.niv-form p {
+  font-size: 18px;
+  line-height: 121.7%;
+  text-align: center;
+  letter-spacing: 0.055em;
+  margin-top: 2.1rem;
+  color: #fff;
+}
+@media (max-width: 400px) {
+  section.orcamento div.niv div.niv-form form {
+    padding: 5.2rem 2.2rem;
+  }
+}
+
+section.contato {
+  padding-top: 21.5rem;
+  padding-bottom: 10rem;
+  background: linear-gradient(29.43deg, #45244f -10.45%, #45244f 159.12%);
+  /**
+
+  @include responsive(1400px) {}
+  @include responsive(1200px) {}
+  @include responsive(992px) {}
+  @include responsive(730px) {}
+  @include responsive(600px) {}
+
+  **/
+  /**
+
+  @include responsive(1400px) {}
+  @include responsive(1200px) {}
+  @include responsive(992px) {}
+  @include responsive(730px) {}
+  @include responsive(600px) {}
+
+  **/
+}
+section.contato div.niv div.niv-nav {
+  margin-bottom: 9.8rem;
+}
+section.contato div.niv div.niv-nav nav {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+}
+section.contato div.niv div.niv-nav nav h2 {
+  color: #fff;
+  width: 23.8rem;
+  display: block;
+  padding-bottom: 1.3rem;
+  font-size: 2.8rem;
+  border-bottom: solid 0.1rem #c4c4c4;
+  text-align: center;
+  cursor: pointer;
+  transition: 0.32s;
+}
+section.contato div.niv div.niv-nav nav h2:hover {
+  opacity: 0.7;
+}
+section.contato div.niv div.niv-nav nav h2[active] {
+  color: #e5db00;
+  border-bottom-color: #e5db00;
+}
+section.contato div.niv div.niv-content {
+  display: none;
+}
+section.contato div.niv div.niv-content.contato {
+  display: block;
+}
+section.contato div.niv div.niv-content.contato div.title {
+  color: #fff;
+  margin-bottom: 5.2rem;
+}
+section.contato div.niv div.niv-content.contato main {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  flex-direction: row;
+}
+section.contato div.niv div.niv-content.contato main form {
+  max-width: 77rem;
+}
+section.contato div.niv div.niv-content.contato main form input {
+  font-family: "Inter";
+  width: 100%;
+  max-width: 37rem;
+  height: 6.3rem;
+  font-size: 1.8rem;
+  line-height: 135%;
+  letter-spacing: 0.075em;
+  padding-left: 1.6rem;
+  margin-right: 1rem;
+  margin-bottom: 3.2rem;
+}
+section.contato div.niv div.niv-content.contato main form textarea {
+  font-family: "Inter";
+  width: calc(100% - 1.5rem);
+  height: 40rem;
+  font-size: 1.8rem;
+  line-height: 135%;
+  letter-spacing: 0.075em;
+  padding-top: 1.9rem;
+  padding-left: 1.6rem;
+}
+section.contato div.niv div.niv-content.contato main form button {
+  margin-top: 3rem;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 2rem;
+  line-height: 6rem;
+  letter-spacing: 0.01em;
+  text-align: center;
+  color: #260530;
+  height: 6rem;
+  background: #e5db00;
+  border-bottom: 3.2rem;
+  width: 100%;
+  max-width: 37.9rem;
+  transition: 0.32s;
+  padding: 0 4.1rem;
+  border-radius: 3rem;
+}
+section.contato div.niv div.niv-content.contato main form button:hover {
+  color: #fff;
+  background: #56076d;
+}
+section.contato div.niv div.niv-content.contato main .atendimento {
+  max-width: 34.6rem;
+  width: 100%;
+}
+section.contato div.niv div.niv-content.contato main .atendimento span {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  flex-direction: row;
+  margin-bottom: 4.1rem;
+  gap: 1.4rem;
+}
+section.contato div.niv div.niv-content.contato main .atendimento span p {
+  color: #fff;
+  max-width: 20.9rem;
+}
+section.contato div.niv div.niv-content.contato main .atendimento p,
+section.contato div.niv div.niv-content.contato main .atendimento h2 {
+  color: #fff;
+}
+section.contato div.niv div.niv-content.contato main .atendimento h2 {
+  margin-top: 28.4rem;
+}
+section.contato div.niv div.niv-content.faq {
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+section.contato div.niv div.niv-content.faq div.top {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 2.6rem;
+  text-align: center;
+}
+section.contato div.niv div.niv-content.faq div.top h2 {
+  max-width: 48.8rem;
+  color: #fff;
+}
+section.contato div.niv div.niv-content.faq div.top p {
+  color: #fff;
+}
+section.contato div.niv div.niv-content.faq div.content {
+  max-width: 80rem;
+  width: 100%;
+  margin-top: 5.2rem;
+}
+section.contato div.niv div.niv-content.faq div.content details {
+  width: 100%;
+  transition: 0.32s;
+}
+section.contato div.niv div.niv-content.faq div.content details summary {
+  width: 100%;
+  font-weight: bold;
+  font-size: 1.8rem;
+  line-height: 150%;
+  letter-spacing: 0.02em;
+  color: #f6f6f8;
+  cursor: pointer;
+  padding: 1.9rem 0;
+  padding-left: 16.6rem;
+  border-bottom: 0.1rem solid #c4c4c4;
+  position: relative;
+}
+section.contato div.niv div.niv-content.faq div.content details summary::after {
+  content: url("/site/assets/img/icon_circle_arrow.svg");
+  position: absolute;
+  right: 2.3rem;
+  transition: 0.32s;
+  transform-origin: center;
+  filter: grayscale(100) brightness(30);
+  opacity: 0.6;
+}
+section.contato div.niv div.niv-content.faq div.content details p {
+  padding: 1.9rem 0;
+  margin-left: 16.6rem;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 1.6rem;
+  line-height: 150%;
+  /* or 24px */
+  letter-spacing: 0.02em;
+  color: #fff;
+  max-width: 55.8rem;
+}
+section.contato div.niv div.niv-content.faq div.content details[open] summary::after {
+  transform: rotate(90deg);
+  filter: none;
+  opacity: 1;
+}
+@media (max-width: 600px) {
+  section.contato div.niv div.niv-content.contato main {
+    flex-direction: column;
+    gap: 4rem;
+  }
+}
+@media (max-width: 400px) {
+  section.contato div.niv div.niv-content.faq div.content details summary {
+    padding: 4rem;
+  }
+  section.contato div.niv div.niv-content.faq div.content details p {
+    margin-left: 4rem;
+  }
+}
+
+section.mapa {
+  padding-bottom: 11.6rem;
+  background: linear-gradient(29.43deg, #45244f -10.45%, #45244f 159.12%);
+}

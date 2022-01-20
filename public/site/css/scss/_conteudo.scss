@@ -1,0 +1,42 @@
+section.conteudo-blog {
+    div.niv {
+        max-width: 79.9rem;
+
+        padding-bottom: 9.9rem;
+
+        div.niv-content {
+            h2 {
+                font-family: "Inter";
+                font-weight: 600;
+                font-size: 3.4rem;
+                line-height: 128%;
+                color: $main-purple;
+                letter-spacing: 0%;
+                max-width: 47.9rem;
+
+                padding-bottom: 2.4rem;
+                margin-bottom: 2.4rem;
+                border-bottom: solid 0.1rem $light-grey;
+            }
+
+            strong {
+                font-family: Inter;
+                font-style: normal;
+                font-weight: 600;
+                font-size: 2.8rem;
+                line-height: 130%;
+                letter-spacing: -0.01em;
+                color: $main-purple;
+
+                display: block;
+
+                margin-bottom: 2.2rem;
+                margin-top: 2.2rem;
+            }
+
+            picture {
+                margin-bottom: 3.1rem;
+            }
+        }
+    }
+}
