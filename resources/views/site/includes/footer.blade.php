@@ -12,8 +12,8 @@
                         <li><a href="/">ORÇAMENTO</a></li>
                         <li><a href="/">LOJA BIRITTAS</a></li>
                         <li><a href="/">CURSOS BIRITTAS</a></li>
-                        <li><a href="/">CONTATO</a></li>
-                        <li><a href="/">BLOG</a></li>
+                        <li><a href="{{ route('site.contato') }}">CONTATO</a></li>
+                        <li><a href="{{ route('site.blog') }}">BLOG</a></li>
                     </ul>
                 </nav>
 

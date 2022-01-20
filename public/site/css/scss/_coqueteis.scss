@@ -1,0 +1,164 @@
+section.coqueteis-lista {
+    padding-top: 12.4rem;
+
+    background: $middle-grey;
+
+    div.niv {
+        @include flex(row, center, space-between);
+
+        div.list {
+            overflow: hidden;
+            max-width: 91.4rem;
+            scroll-behavior: smooth;
+
+            scroll-snap-type: x mandatory;
+
+            div.scroll {
+                max-width: max-content;
+                @include flex(row, center, flex-start);
+                gap: 11.6rem;
+
+                div.box {
+                    @include flex(column, center, flex-start);
+                    gap: 0.5rem;
+                    text-align: center;
+
+                    scroll-snap-align: center;
+
+                    width: 9rem;
+                    height: 27.6rem;
+
+                    strong {
+                        font-size: 1.8rem;
+                        line-height: 120%;
+                        letter-spacing: 0.05em;
+                        color: $text-grey;
+                    }
+
+                    input[type="checkbox"] {
+                        height: 2.3rem;
+                        width: 3.8rem;
+
+                        margin-top: 1.7rem;
+
+                        border: solid 0.4rem #eb5757;
+
+                        border-radius: 2rem;
+                        position: relative;
+                        transition: 0.32s;
+
+                        cursor: pointer;
+
+                        @include flex(row, center, center);
+
+                        &::after {
+                            width: 1.1rem;
+                            height: 1.1rem;
+                            background: #eb5757;
+
+                            border-radius: 100%;
+                            transition: 0.32s;
+
+                            position: absolute;
+                            content: "";
+
+                            left: 0.2rem;
+                        }
+
+                        &:checked {
+                            border-color: #27ae60;
+
+                            &::after {
+                                background: #27ae60;
+                                left: 1.8rem;
+                            }
+                        }
+                    }
+
+                    picture {
+                        width: 9rem;
+                        height: 20.5rem;
+                    }
+                }
+            }
+        }
+
+        div.list-button {
+            img {
+                cursor: pointer;
+                transition: 0.32s;
+
+                &:hover {
+                    opacity: 0.7;
+                }
+            }
+        }
+    }
+}
+
+section.coqueteis-filtro {
+    background: $filter-grey;
+    box-shadow: 6px 9px 16px rgba(0, 0, 0, 0.1);
+    margin-bottom: 5.2rem;
+
+    div.niv {
+        padding-top: 2rem;
+        padding-bottom: 2rem;
+
+        @include flex(row, center, space-between);
+
+        div.filtro {
+            @include flex(row, center, flex-start);
+            gap: 1rem;
+            strong {
+                font-weight: 600;
+                font-size: 1.8rem;
+                line-height: 2.2rem;
+                letter-spacing: 0.16em;
+                text-transform: uppercase;
+
+                color: $dark-grey;
+            }
+
+            cursor: pointer;
+        }
+
+        div.filtros {
+            @include flex(row, center, space-between);
+            gap: 3.9rem;
+
+            input[type="range"] {
+                appearance: none;
+
+                background: $range-gradient;
+                background-size: 100% 0.3rem;
+                background-position: center;
+                background-repeat: no-repeat;
+
+                &::-webkit-slider-thumb {
+                    height: 1.4rem;
+                    width: 1.4rem;
+
+                    appearance: none;
+                    background: url(/site/assets/img/range_button.svg);
+                    border-radius: 100%;
+                }
+            }
+
+            input[type="checkbox"] {
+                height: 1.5rem;
+                width: 1.5rem;
+
+                border: 1px solid #6f939a;
+
+                border-radius: 0.4rem;
+            }
+
+            span:nth-child(1),
+            span:nth-child(2) {
+                @include flex(row, center, flex-start);
+                gap: 1.1rem;
+            }
+        }
+    }
+}

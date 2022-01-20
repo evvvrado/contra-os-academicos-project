@@ -1224,6 +1224,9 @@ section.video {
 
   **/
 }
+body#coquetel section.video {
+  background-size: 100% 100%;
+}
 section.video div.niv {
   max-width: 98.8rem;
 }
@@ -1264,6 +1267,9 @@ section.video div.niv div.niv-video picture img {
   width: 100%;
   -o-object-fit: cover;
      object-fit: cover;
+}
+section.video div.niv div.niv-video.fade picture {
+  pointer-events: none;
 }
 section.video div.niv div.niv-button {
   margin-top: 5.8rem;
@@ -3067,4 +3073,159 @@ section.contato div.niv div.niv-content.faq div.content details[open] summary::a
 section.mapa {
   padding-bottom: 11.6rem;
   background: linear-gradient(29.43deg, #45244f -10.45%, #45244f 159.12%);
+}
+
+section.coqueteis-lista {
+  padding-top: 12.4rem;
+  background: #f6f6f8;
+}
+section.coqueteis-lista div.niv {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-direction: row;
+}
+section.coqueteis-lista div.niv div.list {
+  overflow: hidden;
+  max-width: 91.4rem;
+  scroll-behavior: smooth;
+  -ms-scroll-snap-type: x mandatory;
+      scroll-snap-type: x mandatory;
+}
+section.coqueteis-lista div.niv div.list div.scroll {
+  max-width: -webkit-max-content;
+  max-width: -moz-max-content;
+  max-width: max-content;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  flex-direction: row;
+  gap: 11.6rem;
+}
+section.coqueteis-lista div.niv div.list div.scroll div.box {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  flex-direction: column;
+  gap: 0.5rem;
+  text-align: center;
+  scroll-snap-align: center;
+  width: 9rem;
+  height: 27.6rem;
+}
+section.coqueteis-lista div.niv div.list div.scroll div.box strong {
+  font-size: 1.8rem;
+  line-height: 120%;
+  letter-spacing: 0.05em;
+  color: #6c7175;
+}
+section.coqueteis-lista div.niv div.list div.scroll div.box input[type=checkbox] {
+  height: 2.3rem;
+  width: 3.8rem;
+  margin-top: 1.7rem;
+  border: solid 0.4rem #eb5757;
+  border-radius: 2rem;
+  position: relative;
+  transition: 0.32s;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+}
+section.coqueteis-lista div.niv div.list div.scroll div.box input[type=checkbox]::after {
+  width: 1.1rem;
+  height: 1.1rem;
+  background: #eb5757;
+  border-radius: 100%;
+  transition: 0.32s;
+  position: absolute;
+  content: "";
+  left: 0.2rem;
+}
+section.coqueteis-lista div.niv div.list div.scroll div.box input[type=checkbox]:checked {
+  border-color: #27ae60;
+}
+section.coqueteis-lista div.niv div.list div.scroll div.box input[type=checkbox]:checked::after {
+  background: #27ae60;
+  left: 1.8rem;
+}
+section.coqueteis-lista div.niv div.list div.scroll div.box picture {
+  width: 9rem;
+  height: 20.5rem;
+}
+section.coqueteis-lista div.niv div.list-button img {
+  cursor: pointer;
+  transition: 0.32s;
+}
+section.coqueteis-lista div.niv div.list-button img:hover {
+  opacity: 0.7;
+}
+
+section.coqueteis-filtro {
+  background: #ededf1;
+  box-shadow: 6px 9px 16px rgba(0, 0, 0, 0.1);
+  margin-bottom: 5.2rem;
+}
+section.coqueteis-filtro div.niv {
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-direction: row;
+}
+section.coqueteis-filtro div.niv div.filtro {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  flex-direction: row;
+  gap: 1rem;
+  cursor: pointer;
+}
+section.coqueteis-filtro div.niv div.filtro strong {
+  font-weight: 600;
+  font-size: 1.8rem;
+  line-height: 2.2rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: #151515;
+}
+section.coqueteis-filtro div.niv div.filtros {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-direction: row;
+  gap: 3.9rem;
+}
+section.coqueteis-filtro div.niv div.filtros input[type=range] {
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+  background: linear-gradient(270deg, #540000 0%, #aa2020 44.05%, #e07159 68.07%, #75ed2b 95.51%);
+  background-size: 100% 0.3rem;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+section.coqueteis-filtro div.niv div.filtros input[type=range]::-webkit-slider-thumb {
+  height: 1.4rem;
+  width: 1.4rem;
+  -webkit-appearance: none;
+          appearance: none;
+  background: url(/site/assets/img/range_button.svg);
+  border-radius: 100%;
+}
+section.coqueteis-filtro div.niv div.filtros input[type=checkbox] {
+  height: 1.5rem;
+  width: 1.5rem;
+  border: 1px solid #6f939a;
+  border-radius: 0.4rem;
+}
+section.coqueteis-filtro div.niv div.filtros span:nth-child(1),
+section.coqueteis-filtro div.niv div.filtros span:nth-child(2) {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  flex-direction: row;
+  gap: 1.1rem;
 }

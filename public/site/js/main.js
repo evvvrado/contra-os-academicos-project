@@ -314,6 +314,19 @@ $(document).ready(function () {
             $('section.contato div.niv div.niv-content.contato').hide();
         }
     })
+
+
+    $('section.coqueteis-lista div.niv div.list-button').click(function () {
+
+        if ($(this).index() == 0) {
+            $('section.coqueteis-lista div.niv div.list').scrollLeft($('section.coqueteis-lista div.niv div.list').scrollLeft() - 400)
+        }
+
+        else if ($(this).index() == 2) {
+            $('section.coqueteis-lista div.niv div.list').scrollLeft($('section.coqueteis-lista div.niv div.list').scrollLeft() + 400)
+        }
+    })
+
 })
 
 

@@ -6,6 +6,10 @@ section.video {
     background-size: 100% 50%;
     background-repeat: no-repeat;
 
+    body#coquetel & {
+        background-size: 100% 100%;
+    }
+
     div.niv {
         max-width: 98.8rem;
         div.niv-top {
@@ -36,6 +40,12 @@ section.video {
                 width: 100%;
 
                 @include picframe();
+            }
+
+            &.fade {
+                picture {
+                    pointer-events: none;
+                }
             }
         }
 
