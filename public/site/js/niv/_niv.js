@@ -1,7 +1,7 @@
 // NIV-FADE
 
 $(document).ready(() => {
-  $("section.hero div.niv div.niv-text[niv-fade], section.hero div.niv div.niv-form[niv-fade]").removeAttr("niv-fade");
+  $("section.hero div.niv div.niv-text[niv-fade], section.hero div.niv div.niv-form[niv-fade], section.coqueteis-lista div.niv div.list div.scroll div.box[niv-fade]").removeAttr("niv-fade");
 
   $(".backdrop").animate(
     {

@@ -85,11 +85,11 @@ $(document).ready(function () {
     $('section.coqueteis-lista div.niv div.list-button').click(function () {
 
         if ($(this).index() == 0) {
-            $('section.coqueteis-lista div.niv div.list').scrollLeft($('section.coqueteis-lista div.niv div.list').scrollLeft() - 400)
+            $('section.coqueteis-lista div.niv div.list').scrollLeft($('section.coqueteis-lista div.niv div.list').scrollLeft() - 150)
         }
 
         else if ($(this).index() == 2) {
-            $('section.coqueteis-lista div.niv div.list').scrollLeft($('section.coqueteis-lista div.niv div.list').scrollLeft() + 400)
+            $('section.coqueteis-lista div.niv div.list').scrollLeft($('section.coqueteis-lista div.niv div.list').scrollLeft() + 150)
         }
     })
 

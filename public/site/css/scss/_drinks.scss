@@ -3,6 +3,36 @@ section.drinks {
     padding-top: 5rem;
     padding-bottom: 5rem;
 
+    body#coquetel & {
+        background-color: $white;
+
+        div.niv {
+            div.niv-top {
+                h2 {
+                    color: $main-purple;
+                }
+
+                a {
+                    color: $main-purple;
+                }
+            }
+
+            div.content {
+                div.box {
+                    box-shadow: none;
+                }
+            }
+
+            div.niv-controller {
+                picture {
+                    img {
+                        filter: none;
+                    }
+                }
+            }
+        }
+    }
+
     div.niv {
         div.niv-top {
             @include flex(row, flex-end, space-between);

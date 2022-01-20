@@ -48,4 +48,9 @@ class SiteController extends Controller
     {
         return view("site.coqueteis");
     }
+
+    public function coquetel()
+    {
+        return view("site.coquetel");
+    }
 }

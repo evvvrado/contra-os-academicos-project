@@ -1,6 +1,6 @@
-@extends('site.template.main', ['titulo' => Definition::NAME.' | Montar coquetel'])
+@extends('site.template.main', ['titulo' => Definition::NAME.' | Montar coqueteis'])
 
-@section("body_attr", "id=coquetel")
+@section("body_attr", "id=coqueteis")
 
 
 @section('content')
@@ -12,7 +12,7 @@
         </div>
         <div class="list">
             <div class="scroll">
-                <div class="box">
+                <div class="box" niv-fade>
                     <div>
 
                         <picture>
@@ -26,7 +26,7 @@
                 </div>
 
 
-                <div class="box">
+                <div class="box" niv-fade>
                     <div>
 
                         <picture>
@@ -40,7 +40,7 @@
                 </div>
 
 
-                <div class="box">
+                <div class="box" niv-fade>
                     <div>
 
                         <picture>
@@ -54,7 +54,7 @@
                 </div>
 
 
-                <div class="box">
+                <div class="box" niv-fade>
                     <div>
 
                         <picture>
@@ -68,7 +68,7 @@
                 </div>
 
 
-                <div class="box">
+                <div class="box" niv-fade>
                     <div>
 
                         <picture>
@@ -82,7 +82,7 @@
                 </div>
 
 
-                <div class="box">
+                <div class="box" niv-fade>
                     <div>
 
                         <picture>
@@ -96,7 +96,7 @@
                 </div>
 
 
-                <div class="box">
+                <div class="box" niv-fade>
                     <div>
 
                         <picture>
@@ -110,7 +110,7 @@
                 </div>
 
 
-                <div class="box">
+                <div class="box" niv-fade>
                     <div>
 
                         <picture>
@@ -124,7 +124,7 @@
                 </div>
 
 
-                <div class="box">
+                <div class="box" niv-fade>
                     <div>
 
                         <picture>
@@ -138,7 +138,7 @@
                 </div>
 
 
-                <div class="box">
+                <div class="box" niv-fade>
                     <div>
 
                         <picture>
@@ -152,7 +152,7 @@
                 </div>
 
 
-                <div class="box">
+                <div class="box" niv-fade>
                     <div>
 
                         <picture>
@@ -166,7 +166,7 @@
                 </div>
 
 
-                <div class="box">
+                <div class="box" niv-fade>
                     <div>
 
                         <picture>
@@ -180,7 +180,7 @@
                 </div>
 
 
-                <div class="box">
+                <div class="box" niv-fade>
                     <div>
 
                         <picture>
@@ -235,11 +235,295 @@
     </div>
 </section>
 
+<section class="coqueteis-drinks">
+    <div class="niv">
+        <div class="niv-top">
+            <h4>Drinks</h4>
+            <h2>Recomendados</h2>
+        </div>
 
-{{--
+        <div class="niv-content">
+
+            <div class="box">
+                <picture>
+                    <img src="{{ asset('/site/assets/img/drink_4.png') }}" alt="imagem representativa">
+                </picture>
+
+                <strong>APEROL SPRITZ</strong>
+                <p>Um coquetel que caiu no gosto dos brasileiros, devido a seu sabor agradável...</p>
+            </div>
+            <div class="box">
+                <picture>
+                    <img src="{{ asset('/site/assets/img/drink_3.png') }}" alt="imagem representativa">
+                </picture>
+
+                <strong>CARUSO</strong>
+                <p>Criado nos EUA em meados de 1920, foi uma homenagem ao famoso tenor italiano...</p>
+            </div>
+            <div class="box">
+                <picture>
+                    <img src="{{ asset('/site/assets/img/drink_2.png') }}" alt="imagem representativa">
+                </picture>
+
+                <strong>CARUSO</strong>
+                <p>Um coquetel moderno, que recebeu este nome devido á sua cor, associada...</p>
+            </div>
+            <div class="box">
+                <picture>
+                    <img src="{{ asset('/site/assets/img/drink_1.png') }}" alt="imagem representativa">
+                </picture>
+
+                <strong>NEGRONI</strong>
+                <p>Criado me 1920 em Florença, por um bartender chamado Fosco Scarselli, na Itália...</p>
+            </div>
+
+
+            <div class="box">
+                <picture>
+                    <img src="{{ asset('/site/assets/img/drink_4.png') }}" alt="imagem representativa">
+                </picture>
+
+                <strong>APEROL SPRITZ</strong>
+                <p>Um coquetel que caiu no gosto dos brasileiros, devido a seu sabor agradável...</p>
+            </div>
+            <div class="box">
+                <picture>
+                    <img src="{{ asset('/site/assets/img/drink_3.png') }}" alt="imagem representativa">
+                </picture>
+
+                <strong>CARUSO</strong>
+                <p>Criado nos EUA em meados de 1920, foi uma homenagem ao famoso tenor italiano...</p>
+            </div>
+            <div class="box">
+                <picture>
+                    <img src="{{ asset('/site/assets/img/drink_2.png') }}" alt="imagem representativa">
+                </picture>
+
+                <strong>CARUSO</strong>
+                <p>Um coquetel moderno, que recebeu este nome devido á sua cor, associada...</p>
+            </div>
+            <div class="box">
+                <picture>
+                    <img src="{{ asset('/site/assets/img/drink_1.png') }}" alt="imagem representativa">
+                </picture>
+
+                <strong>NEGRONI</strong>
+                <p>Criado me 1920 em Florença, por um bartender chamado Fosco Scarselli, na Itália...</p>
+            </div>
+
+
+            <div class="box">
+                <picture>
+                    <img src="{{ asset('/site/assets/img/drink_4.png') }}" alt="imagem representativa">
+                </picture>
+
+                <strong>APEROL SPRITZ</strong>
+                <p>Um coquetel que caiu no gosto dos brasileiros, devido a seu sabor agradável...</p>
+            </div>
+            <div class="box">
+                <picture>
+                    <img src="{{ asset('/site/assets/img/drink_3.png') }}" alt="imagem representativa">
+                </picture>
+
+                <strong>CARUSO</strong>
+                <p>Criado nos EUA em meados de 1920, foi uma homenagem ao famoso tenor italiano...</p>
+            </div>
+            <div class="box">
+                <picture>
+                    <img src="{{ asset('/site/assets/img/drink_2.png') }}" alt="imagem representativa">
+                </picture>
+
+                <strong>CARUSO</strong>
+                <p>Um coquetel moderno, que recebeu este nome devido á sua cor, associada...</p>
+            </div>
+            <div class="box">
+                <picture>
+                    <img src="{{ asset('/site/assets/img/drink_1.png') }}" alt="imagem representativa">
+                </picture>
+
+                <strong>NEGRONI</strong>
+                <p>Criado me 1920 em Florença, por um bartender chamado Fosco Scarselli, na Itália...</p>
+            </div>
+
+
+            <div class="box">
+                <picture>
+                    <img src="{{ asset('/site/assets/img/drink_4.png') }}" alt="imagem representativa">
+                </picture>
+
+                <strong>APEROL SPRITZ</strong>
+                <p>Um coquetel que caiu no gosto dos brasileiros, devido a seu sabor agradável...</p>
+            </div>
+            <div class="box">
+                <picture>
+                    <img src="{{ asset('/site/assets/img/drink_3.png') }}" alt="imagem representativa">
+                </picture>
+
+                <strong>CARUSO</strong>
+                <p>Criado nos EUA em meados de 1920, foi uma homenagem ao famoso tenor italiano...</p>
+            </div>
+            <div class="box">
+                <picture>
+                    <img src="{{ asset('/site/assets/img/drink_2.png') }}" alt="imagem representativa">
+                </picture>
+
+                <strong>CARUSO</strong>
+                <p>Um coquetel moderno, que recebeu este nome devido á sua cor, associada...</p>
+            </div>
+            <div class="box">
+                <picture>
+                    <img src="{{ asset('/site/assets/img/drink_1.png') }}" alt="imagem representativa">
+                </picture>
+
+                <strong>NEGRONI</strong>
+                <p>Criado me 1920 em Florença, por um bartender chamado Fosco Scarselli, na Itália...</p>
+            </div>
+
+
+            <div class="box">
+                <picture>
+                    <img src="{{ asset('/site/assets/img/drink_4.png') }}" alt="imagem representativa">
+                </picture>
+
+                <strong>APEROL SPRITZ</strong>
+                <p>Um coquetel que caiu no gosto dos brasileiros, devido a seu sabor agradável...</p>
+            </div>
+            <div class="box">
+                <picture>
+                    <img src="{{ asset('/site/assets/img/drink_3.png') }}" alt="imagem representativa">
+                </picture>
+
+                <strong>CARUSO</strong>
+                <p>Criado nos EUA em meados de 1920, foi uma homenagem ao famoso tenor italiano...</p>
+            </div>
+            <div class="box">
+                <picture>
+                    <img src="{{ asset('/site/assets/img/drink_2.png') }}" alt="imagem representativa">
+                </picture>
+
+                <strong>CARUSO</strong>
+                <p>Um coquetel moderno, que recebeu este nome devido á sua cor, associada...</p>
+            </div>
+            <div class="box">
+                <picture>
+                    <img src="{{ asset('/site/assets/img/drink_1.png') }}" alt="imagem representativa">
+                </picture>
+
+                <strong>NEGRONI</strong>
+                <p>Criado me 1920 em Florença, por um bartender chamado Fosco Scarselli, na Itália...</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
 @include('site.includes.video')
 
-@include('site.includes.tempo') --}}
+@include('site.includes.tempo')
 
+<section class="coqueteis-cocktails">
+    <div class="niv">
+        <div class="niv-top">
+            <h2>Bebidas e cocktails famosos</h2>
+        </div>
+
+        <div class="niv-content">
+            <div class="scroll">
+
+                <div class="box" style="background-image: url('{{ asset('/site/assets/img/cocktail_1.jpg')}}')">
+
+                    <div>
+                        <strong>Whiskey Sour</strong>
+                        <p>Bourbon, suco de limea-da-pérsia, Xarope</p>
+                    </div>
+
+
+                </div>
+                <div class="box" style="background-image: url('{{ asset('/site/assets/img/cocktail_2.jpg')}}')">
+
+                    <div>
+                        <strong>Whiskey Sour</strong>
+                        <p>Bourbon, suco de limea-da-pérsia, Xarope</p>
+                    </div>
+
+
+                </div>
+                <div class="box" style="background-image: url('{{ asset('/site/assets/img/cocktail_3.jpg')}}')">
+
+                    <div>
+                        <strong>Whiskey Sour</strong>
+                        <p>Bourbon, suco de limea-da-pérsia, Xarope</p>
+                    </div>
+
+
+                </div>
+
+
+                <div class="box" style="background-image: url('{{ asset('/site/assets/img/cocktail_1.jpg')}}')">
+
+                    <div>
+                        <strong>Whiskey Sour</strong>
+                        <p>Bourbon, suco de limea-da-pérsia, Xarope</p>
+                    </div>
+
+
+                </div>
+                <div class="box" style="background-image: url('{{ asset('/site/assets/img/cocktail_2.jpg')}}')">
+
+                    <div>
+                        <strong>Whiskey Sour</strong>
+                        <p>Bourbon, suco de limea-da-pérsia, Xarope</p>
+                    </div>
+
+
+                </div>
+                <div class="box" style="background-image: url('{{ asset('/site/assets/img/cocktail_3.jpg')}}')">
+
+                    <div>
+                        <strong>Whiskey Sour</strong>
+                        <p>Bourbon, suco de limea-da-pérsia, Xarope</p>
+                    </div>
+
+
+                </div>
+
+
+
+                <div class="box" style="background-image: url('{{ asset('/site/assets/img/cocktail_1.jpg')}}')">
+
+                    <div>
+                        <strong>Whiskey Sour</strong>
+                        <p>Bourbon, suco de limea-da-pérsia, Xarope</p>
+                    </div>
+
+
+                </div>
+                <div class="box" style="background-image: url('{{ asset('/site/assets/img/cocktail_2.jpg')}}')">
+
+                    <div>
+                        <strong>Whiskey Sour</strong>
+                        <p>Bourbon, suco de limea-da-pérsia, Xarope</p>
+                    </div>
+
+
+                </div>
+                <div class="box" style="background-image: url('{{ asset('/site/assets/img/cocktail_3.jpg')}}')">
+
+                    <div>
+                        <strong>Whiskey Sour</strong>
+                        <p>Bourbon, suco de limea-da-pérsia, Xarope</p>
+                    </div>
+
+
+                </div>
+
+
+
+
+            </div>
+        </div>
+    </div>
+</section>
 
 @endsection
