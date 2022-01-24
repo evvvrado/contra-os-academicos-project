@@ -15,7 +15,11 @@ var empty;
 
 })(jQuery);
 
-$('.close-modal').click(() => {
-  $('.modal_box').hideModal()
+$('.modal .close-modal').click(function () {
+  $($(this).closest('.modal')).hideModal()
 })
 
+
+$('.modal button.cancel').click(function () {
+  $($(this).closest('.modal')).hideModal()
+})

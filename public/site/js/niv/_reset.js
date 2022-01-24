@@ -39,6 +39,7 @@ $('a[href*="#"]')
 $('form label input[name = "telefone"]').mask("(00) 00000-0000");
 $('form label input[name = "expiracao"]').mask("00/0000");
 $('form label input[name= "numero"]').mask("0000 0000 0000 0000");
+$('form label input[name= "cep"]').mask("00.000-000");
 
 function number_format(number, decimals, dec_point, thousands_sep) {
     number = (number + '').replace(/[^0-9+\-Ee.]/g, '');

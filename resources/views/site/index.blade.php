@@ -69,7 +69,7 @@
             </div>
 
             <div class="button">
-                <a href="/">
+                <a href="{{ route('site.coqueteis')}}">
                     Ver todos
 
                     <picture>
@@ -292,4 +292,16 @@
 @include('site.includes.noticias')
 
 
+@endsection
+
+@section('scripts')
+<script>
+    $('section.funcionamento div.niv aside ul li').click(()=>{
+        window.location.href = '{{ route('site.servicos')}}';
+    })
+
+    $('section.drinks div.niv div.niv-list div.content div.box').click(()=>{
+        window.location.href = '{{ route('site.coquetel')}}';
+    })
+</script>
 @endsection

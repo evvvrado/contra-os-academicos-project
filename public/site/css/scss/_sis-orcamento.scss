@@ -1,0 +1,2297 @@
+section.identificacao {
+    padding-top: 17.1rem;
+
+    div.niv {
+        div.niv-top {
+            @include flex(row, flex-end, space-between);
+            margin-bottom: 2.9rem;
+
+            span {
+                @include flex(column, flex-start, flex-start);
+                gap: 2rem;
+
+                h2 {
+                    font-family: "Inter";
+                    font-style: normal;
+                    font-weight: 600;
+                    font-size: 3.2rem;
+                    line-height: 120%;
+                    color: $dark-grey;
+                }
+
+                p {
+                    font-weight: 500;
+                    font-size: 1.8rem;
+                    line-height: 120%;
+                    /* identical to box height, or 22px */
+
+                    /* Cinza 1 */
+
+                    color: $dark-grey;
+                }
+            }
+
+            p {
+                font-size: 1.8rem;
+                line-height: 150%;
+                /* or 27px */
+
+                text-align: right;
+                letter-spacing: 0.02em;
+
+                color: $dark-purple;
+
+                i {
+                    font-weight: bold;
+                    font-style: normal;
+                    position: relative;
+
+                    &::after {
+                        height: 1.2rem;
+                        width: 12.6rem;
+
+                        content: "";
+                        position: absolute;
+
+                        background: url("/site/assets/img/text_draw.svg");
+                        background-size: 100% 100%;
+
+                        bottom: -1.2rem;
+                        right: -1rem;
+                    }
+                }
+            }
+        }
+
+        div.niv-form {
+            width: 100%;
+            padding-bottom: 7.3rem;
+            @include flex(column, center, center);
+
+            form {
+                @include flex(column, center, flex-start);
+                width: 48.7rem;
+                // height: 45.7rem;
+
+                gap: 2.6rem;
+
+                padding: 4.7rem 4.8rem;
+                border-radius: 2.7rem;
+
+                background: $form-purple;
+
+                label {
+                    width: 100%;
+                    @include flex(column, flex-start, flex-start);
+                    gap: 0.6rem;
+
+                    span {
+                        font-style: normal;
+                        font-weight: bold;
+                        font-size: 1.4rem;
+                        line-height: 140%;
+                        letter-spacing: 0.01em;
+                        color: $white;
+                    }
+
+                    input {
+                        width: 100%;
+                        height: 4.8rem;
+
+                        padding-left: 3.4rem;
+                        border: solid 0.1rem $white;
+                        border-radius: 1.5rem;
+
+                        background: transparent;
+
+                        color: $white;
+
+                        &::placeholder {
+                            color: $white;
+                        }
+                    }
+                }
+
+                button {
+                    @include h1-btn(6rem, 37.9rem);
+                    border-radius: 3rem;
+                }
+            }
+
+            p {
+                line-height: 121.7%;
+                text-align: center;
+                letter-spacing: 0.055em;
+
+                margin-top: 2.1rem;
+
+                color: $white;
+            }
+        }
+    }
+
+    @include responsive(400px) {
+        div.niv {
+            div.niv-top {
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                gap: 1rem;
+
+                span {
+                    justify-content: center;
+                    align-items: center;
+
+                    h2 {
+                        text-align: center;
+                    }
+                    p {
+                        text-align: center;
+                    }
+                }
+
+                p {
+                    text-align: center;
+                }
+            }
+
+            div.niv-form {
+                form {
+                    width: 100%;
+
+                    button {
+                        line-height: 100%;
+                        height: auto;
+                        padding: 2.5rem;
+                        max-width: 24rem;
+                    }
+                }
+            }
+        }
+    }
+}
+
+section.tipo {
+    padding-top: 17.1rem;
+    padding-bottom: 11.3rem;
+
+    div.niv {
+        div.niv-top {
+            @include flex(row, flex-end, space-between);
+            margin-bottom: 4.9rem;
+
+            span {
+                @include flex(column, flex-start, flex-start);
+                gap: 2rem;
+
+                h2 {
+                    font-family: "Inter";
+                    font-style: normal;
+                    font-weight: 600;
+                    font-size: 3.2rem;
+                    line-height: 120%;
+                    color: $dark-grey;
+                }
+
+                p {
+                    font-weight: 500;
+                    font-size: 1.8rem;
+                    line-height: 120%;
+                    /* identical to box height, or 22px */
+
+                    /* Cinza 1 */
+
+                    color: $dark-grey;
+                }
+            }
+
+            p {
+                font-size: 1.8rem;
+                line-height: 150%;
+                /* or 27px */
+
+                text-align: right;
+                letter-spacing: 0.02em;
+
+                color: $dark-purple;
+
+                i {
+                    font-weight: bold;
+                    font-style: normal;
+                    position: relative;
+
+                    &::after {
+                        height: 1.2rem;
+                        width: 12.6rem;
+
+                        content: "";
+                        position: absolute;
+
+                        background: url("/site/assets/img/text_draw.svg");
+                        background-size: 100% 100%;
+
+                        bottom: -1.2rem;
+                        right: -1rem;
+                    }
+                }
+            }
+        }
+
+        div.niv-content {
+            max-width: 100%;
+            overflow: hidden;
+
+            scroll-snap-type: x mandatory;
+
+            div.scroll {
+                @include flex(row, center, flex-start);
+                width: max-content;
+                gap: 3.2rem;
+
+                div.box {
+                    scroll-snap-align: start;
+                    height: 45.6rem;
+                    width: 100%;
+                    border-radius: 2.2rem;
+                    max-width: 38.2rem;
+
+                    @include fade(translateY(200px), 1s);
+                    opacity: 1 !important;
+
+                    @for $i from 1 through 15 {
+                        &:nth-child(#{$i}) {
+                            transition-delay: calc($i * 0.1s);
+                        }
+                    }
+
+                    position: relative;
+
+                    &::after {
+                        width: 100%;
+                        height: 100%;
+                        position: absolute;
+                        bottom: 0;
+                        border-radius: 2rem;
+                        left: 0;
+
+                        transition: 0.32s;
+
+                        content: "";
+                        background: linear-gradient(360deg, #260530 -9.34%, rgba(38, 5, 48, 0) 104%);
+                        opacity: 0;
+                    }
+
+                    &:hover {
+                        background-size: 120% 120%;
+
+                        z-index: 1;
+
+                        &::after {
+                            opacity: 1;
+                        }
+                    }
+
+                    @include flex(column, flex-start, flex-end);
+
+                    background: $form-purple;
+
+                    padding: 6.7rem 5.1rem;
+
+                    strong {
+                        z-index: 2;
+                        font-weight: 900;
+                        font-size: 2rem;
+                        line-height: 150%;
+                        letter-spacing: 0.02em;
+                        text-transform: uppercase;
+                        color: $white;
+
+                        margin-bottom: 1rem;
+                    }
+
+                    p {
+                        z-index: 2;
+                        font-family: Inter;
+                        font-size: 1.6rem;
+                        line-height: 121.7%;
+                        letter-spacing: 0.055em;
+                        color: #b5aeae;
+
+                        @include limitText(6.3rem, 3);
+                    }
+
+                    a {
+                        display: block;
+                        margin-top: 0.7rem;
+                        color: $white;
+                        height: 5rem;
+                        width: 100%;
+                        max-width: 19.8rem;
+
+                        z-index: 2;
+
+                        font-weight: bold;
+
+                        padding: 1.6rem 5.5rem;
+
+                        background: $lighter-purple;
+
+                        font-size: 1.4rem;
+                        border-radius: 2.5rem;
+
+                        transition: 0.32s;
+
+                        &:hover {
+                            background-color: $dark-purple;
+                            color: $main-orange;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    @include responsive(400px) {
+        div.niv {
+            div.niv-top {
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                gap: 1rem;
+
+                span {
+                    justify-content: center;
+                    align-items: center;
+
+                    h2 {
+                        text-align: center;
+                    }
+                    p {
+                        text-align: center;
+                    }
+                }
+
+                p {
+                    text-align: center;
+                }
+            }
+
+            div.niv-content {
+                overflow: scroll;
+                div.scroll {
+                    div.box {
+                        max-width: calc(100vw - 8rem);
+                    }
+                }
+            }
+        }
+    }
+}
+
+section.conte {
+    div.niv {
+        padding-top: 17.1rem;
+        padding-bottom: 11.3rem;
+
+        div.niv-top {
+            @include flex(row, flex-end, space-between);
+            margin-bottom: 4.9rem;
+
+            span {
+                @include flex(column, flex-start, flex-start);
+                gap: 2rem;
+
+                h2 {
+                    font-family: "Inter";
+                    font-style: normal;
+                    font-weight: 600;
+                    font-size: 3.2rem;
+                    line-height: 120%;
+                    color: $dark-grey;
+                }
+
+                p {
+                    font-weight: 500;
+                    font-size: 1.8rem;
+                    line-height: 120%;
+                    /* identical to box height, or 22px */
+
+                    /* Cinza 1 */
+
+                    color: $dark-grey;
+                }
+            }
+
+            p {
+                font-size: 1.8rem;
+                line-height: 150%;
+                /* or 27px */
+
+                text-align: right;
+                letter-spacing: 0.02em;
+
+                color: $dark-purple;
+
+                i {
+                    font-weight: bold;
+                    font-style: normal;
+                    position: relative;
+
+                    &::after {
+                        height: 1.2rem;
+                        width: 12.6rem;
+
+                        content: "";
+                        position: absolute;
+
+                        background: url("/site/assets/img/text_draw.svg");
+                        background-size: 100% 100%;
+
+                        bottom: -1.2rem;
+                        right: -1rem;
+                    }
+                }
+            }
+        }
+        div.niv-content {
+            @include flex(row, flex-start, space-between);
+
+            div.niv-picture {
+                height: 100%;
+                picture {
+                    width: 100%;
+                    max-width: 49.2rem;
+                    height: 48.4rem;
+                    border-radius: 2rem;
+
+                    overflow: hidden;
+
+                    position: sticky;
+                    top: 0;
+                }
+            }
+
+            div.niv-form {
+                max-width: 60rem;
+
+                form {
+                    @include flex(column, flex-start, flex-start);
+                    gap: 4.7rem;
+
+                    font-weight: 500;
+                    font-size: 1.8rem;
+                    line-height: 120%;
+                    color: $grey;
+
+                    strong {
+                        font-weight: 600;
+                        font-size: 3.2rem;
+                        line-height: 120%;
+                        color: $grey;
+
+                        margin-bottom: 1.7rem;
+                        display: block;
+                    }
+
+                    label {
+                        width: 100%;
+                    }
+
+                    input {
+                        height: 6.3rem;
+                        background: #e9e9e9;
+
+                        width: 100%;
+                        max-width: 37rem;
+
+                        padding-left: 2.5rem;
+
+                        font-family: "Inter";
+                        font-style: normal;
+                        font-weight: 500;
+                        font-size: 1.8rem;
+                        line-height: 120%;
+                        /* identical to box height, or 22px */
+
+                        color: $grey;
+
+                        position: relative;
+
+                        &[type="date"] {
+                            &::-webkit-calendar-picker-indicator {
+                                background: none;
+                                content: url("/site/assets/img/icon_calendar_form.svg");
+                                margin-right: 1.7rem;
+
+                                height: 2.5rem;
+                                width: 2.5rem;
+                            }
+                        }
+
+                        &[type="radio"] {
+                            height: 1.3rem;
+                            max-width: 1.3rem;
+
+                            padding: 0;
+
+                            background: none;
+                            border: 0.1rem solid $main-purple;
+                            border-radius: 100%;
+
+                            &:checked {
+                                background: $lighter-purple;
+                                background-size: 0.3rem 0.3rem;
+                                background-position: center;
+                                background-repeat: no-repeat;
+                            }
+                        }
+                    }
+
+                    button {
+                        @include h1-btn(6rem, 37.9rem);
+                        border-radius: 3rem;
+                    }
+
+                    fieldset {
+                        @include flex(row, center, flex-start);
+                        gap: 1.8rem;
+
+                        span {
+                            @include flex(row, center, flex-start);
+                            gap: 0.6rem;
+
+                            width: 100%;
+                            max-width: 11.6rem;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    @include responsive(800px) {
+        div.niv {
+            div.niv-content {
+                flex-direction: column;
+                gap: 3rem;
+                align-items: center;
+            }
+        }
+    }
+
+    @include responsive(400px) {
+        div.niv {
+            div.niv-top {
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                gap: 1rem;
+
+                span {
+                    justify-content: center;
+                    align-items: center;
+
+                    h2 {
+                        text-align: center;
+                    }
+                    p {
+                        text-align: center;
+                    }
+                }
+
+                p {
+                    text-align: center;
+                }
+            }
+
+            div.niv-content {
+                flex-direction: column;
+            }
+        }
+    }
+}
+
+section.carrinho {
+    padding-top: 25.6rem;
+    padding-bottom: 29rem;
+
+    div.niv {
+        @include flex(column, flex-end, flex-start);
+
+        div.niv-top {
+            @include flex(row, flex-end, space-between);
+            margin-bottom: 4.9rem;
+            width: 100%;
+
+            span {
+                @include flex(column, flex-start, flex-start);
+                gap: 2rem;
+
+                h2 {
+                    font-family: "Inter";
+                    font-style: normal;
+                    font-weight: 600;
+                    font-size: 3.2rem;
+                    line-height: 120%;
+                    color: $dark-grey;
+                }
+
+                p {
+                    font-size: 1.8rem;
+                    line-height: 150%;
+                    /* or 27px */
+
+                    text-align: right;
+                    letter-spacing: 0.02em;
+
+                    color: $dark-purple;
+
+                    i {
+                        font-weight: bold;
+                        font-style: normal;
+                        position: relative;
+
+                        &::after {
+                            height: 1.2rem;
+                            width: 12.6rem;
+
+                            content: "";
+                            position: absolute;
+
+                            background: url("/site/assets/img/text_draw.svg");
+                            background-size: 100% 100%;
+
+                            bottom: -1.2rem;
+                            right: -1rem;
+                        }
+                    }
+                }
+            }
+
+            button {
+                @include flex(column, center, center);
+                gap: 1rem;
+
+                p {
+                    font-size: 1.4rem;
+                    line-height: 100%;
+                    color: $grey;
+                }
+            }
+        }
+
+        div.niv-table {
+            width: 100%;
+            div.scroll {
+                width: 100%;
+                table {
+                    width: 100%;
+                    border: solid 0.1rem $table-border;
+
+                    thead {
+                        tr {
+                            th {
+                                padding-top: 2.2rem;
+                                padding-bottom: 1.6rem;
+                                border-bottom: solid 0.1rem $table-border;
+
+                                font-family: "Inter";
+                                font-style: normal;
+                                font-weight: normal;
+                                font-size: 1.4rem;
+                                line-height: 100%;
+                                text-align: center;
+
+                                color: $grey;
+                            }
+                        }
+                    }
+
+                    tbody {
+                        tr {
+                            height: 12.1rem;
+
+                            &:not(:last-child) {
+                                td {
+                                    border-bottom: solid 0.1rem $table-border;
+                                }
+                            }
+                            td {
+                                picture.foto-produto {
+                                    height: 8.4rem;
+                                    width: 100%;
+                                    max-width: 8.1rem;
+                                    border-radius: 2rem;
+                                    @include picframe();
+                                }
+
+                                strong.nome-produto {
+                                    font-weight: 500;
+                                    font-size: 1.6rem;
+                                    line-height: 100%;
+                                    color: $grey;
+                                }
+
+                                p.descricao-produto {
+                                    font-size: 1.4rem;
+                                    line-height: 100%;
+                                    text-align: center;
+                                    color: $grey;
+                                }
+
+                                input {
+                                    height: 4.8rem;
+                                    width: 11.4rem;
+
+                                    margin: auto auto;
+
+                                    border: 0.1rem solid #cfdbdd;
+                                    border-radius: 0.8rem;
+
+                                    text-align: center;
+
+                                    font-style: normal;
+                                    font-weight: 500;
+                                    font-size: 1.6rem;
+                                    line-height: 100%;
+                                    color: $grey;
+                                }
+                                text-align: center;
+                            }
+                        }
+                    }
+                }
+            }
+
+            span.resumo-evento {
+                padding: 5.1rem;
+                border: solid 0.1rem $table-border;
+                width: 100%;
+                border-top: none;
+
+                display: block;
+
+                strong {
+                    font-style: normal;
+                    font-weight: 600;
+                    font-size: 1.6rem;
+                    color: $grey;
+                }
+
+                p {
+                    font-style: normal;
+                    font-size: 1.4rem;
+                    line-height: 140%;
+                    color: $grey;
+
+                    max-width: 61.7rem;
+
+                    margin-top: 1.7rem;
+                }
+            }
+
+            @include responsive(800px) {
+                overflow: scroll;
+                div.scroll {
+                    width: max-content;
+                }
+            }
+        }
+
+        div.niv-send {
+            border: 0.1rem solid $table-border;
+            margin-top: 2.6rem;
+            height: 29.7rem;
+            width: 100%;
+            max-width: 48.9rem;
+
+            .top {
+                padding: 2.4rem;
+                width: 100%;
+                border-bottom: 0.1rem solid $table-border;
+
+                span {
+                    font-weight: 600;
+                    font-size: 1.6rem;
+                    line-height: 100%;
+                    color: $grey;
+                }
+            }
+
+            .content {
+                padding: 3rem 5.2rem 0;
+
+                div {
+                    width: 100%;
+
+                    @include flex(row, center, space-between);
+                    margin-bottom: 4rem;
+
+                    p {
+                        font-style: normal;
+                        font-weight: normal;
+                        font-size: 1.4rem;
+                        line-height: 100%;
+
+                        color: $grey;
+                    }
+
+                    strong {
+                        font-weight: 600;
+                        font-size: 1.6rem;
+                        line-height: 100%;
+                        color: $grey;
+                    }
+                }
+            }
+
+            button {
+                margin: auto auto;
+                display: block;
+
+                @include h1-btn(6.7rem, 34.2rem);
+
+                margin-top: 0;
+                border-radius: 2.3rem;
+                background: $lighter-purple;
+                color: $white;
+            }
+        }
+    }
+
+    @include responsive(400px) {
+        div.niv {
+            div.niv-top {
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                gap: 2rem;
+
+                span {
+                    justify-content: center;
+                    align-items: center;
+
+                    h2 {
+                        text-align: center;
+                    }
+                    p {
+                        text-align: center;
+                    }
+                }
+
+                p {
+                    text-align: center;
+                }
+            }
+        }
+    }
+}
+
+div.up {
+    height: 100vh;
+    width: 100vw;
+
+    background: rgba(0, 0, 0, 0.226);
+
+    position: fixed;
+    z-index: 66;
+
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+
+    transition: 0.32s;
+    @include flex(row, center, center);
+
+    [fluid] {
+        position: relative;
+        div.niv {
+            height: 87.3rem;
+            max-width: 45.7rem;
+            width: 100%;
+            padding: 0;
+            background: $white;
+            position: relative;
+
+            box-shadow: 0.4rem 0.9rem 1.3rem rgba(0, 0, 0, 0.1);
+            border-radius: 1.9rem;
+
+            width: 100%;
+            max-width: 45.7rem;
+
+            background: $white;
+
+            padding: 2.8rem 5.2rem;
+
+            h2 {
+                text-align: center;
+                font-family: "Inter";
+                font-weight: 600;
+                font-size: 3.2rem;
+                line-height: 100%;
+                color: $grey;
+
+                margin-bottom: 2.1rem;
+            }
+
+            div.drinks {
+                @include flex(row, center, flex-start);
+                gap: 8rem;
+                padding-bottom: 5rem;
+
+                border-bottom: 0.0662319rem solid $middle-grey;
+
+                div.box {
+                    @include flex(column, center, flex-start);
+                    gap: 1rem;
+                    text-align: center;
+
+                    strong {
+                        font-size: 1.8rem;
+                        line-height: 120%;
+                        letter-spacing: 0.05em;
+                        color: $text-grey;
+                    }
+
+                    p {
+                        font-weight: 500;
+                        font-size: 1.1rem;
+                        line-height: 120%;
+                        letter-spacing: 0.05em;
+                        color: $details-grey;
+                    }
+
+                    input[type="checkbox"] {
+                        height: 2.3rem;
+                        width: 3.8rem;
+
+                        border: solid 0.4rem #eb5757;
+
+                        border-radius: 2rem;
+                        position: relative;
+                        transition: 0.32s;
+
+                        cursor: pointer;
+
+                        @include flex(row, center, center);
+
+                        &::after {
+                            width: 1.1rem;
+                            height: 1.1rem;
+                            background: #eb5757;
+
+                            border-radius: 100%;
+                            transition: 0.32s;
+
+                            position: absolute;
+                            content: "";
+
+                            left: 0.2rem;
+                        }
+
+                        &:checked {
+                            border-color: #27ae60;
+
+                            &::after {
+                                background: #27ae60;
+                                left: 1.8rem;
+                            }
+                        }
+                    }
+
+                    picture {
+                        width: 5.9rem;
+                        height: 11.9rem;
+
+                        @include picframe();
+                    }
+                }
+            }
+
+            div.frutas,
+            div.adicionais {
+                padding-top: 2.5rem;
+                padding-bottom: 2.1rem;
+
+                &:not(.adicionais) {
+                    border-bottom: 0.0662319rem solid $middle-grey;
+                }
+
+                strong {
+                    font-style: normal;
+                    font-weight: bold;
+                    font-size: 1.1rem;
+                    line-height: 120%;
+                    letter-spacing: 0.05em;
+                    color: $details-grey;
+
+                    margin-bottom: 2.1rem;
+                }
+
+                div.boxes {
+                    @include flex(row, center, flex-start);
+                    gap: 4.3rem;
+
+                    .box {
+                        width: 100%;
+                        max-width: 11.7rem;
+
+                        @include flex(column, center, center);
+                        gap: 0.7rem;
+
+                        span {
+                            font-weight: 500;
+                            font-size: 1.1rem;
+                            line-height: 120%;
+                            text-align: center;
+                            letter-spacing: 0.05em;
+                            color: $details-grey;
+                        }
+
+                        picture {
+                            height: 8.61rem;
+                            width: 8.61rem;
+
+                            @include picframe();
+                        }
+
+                        input[type="checkbox"] {
+                            width: 0.927rem;
+                            height: 0.927rem;
+
+                            border: 0.1rem solid #d5d5d5;
+                            border-radius: 0.1rem;
+
+                            position: relative;
+                            transition: 0.32s;
+
+                            cursor: pointer;
+
+                            @include flex(row, center, center);
+
+                            &:checked {
+                                border-color: #27ae60;
+
+                                background: url("/site/assets/img/check_v.svg");
+                                background-position: 0 center;
+                                background-repeat: no-repeat;
+                            }
+                        }
+                    }
+                }
+            }
+
+            button {
+                height: 4.3rem;
+                width: 100%;
+                max-width: 21.1rem;
+
+                margin: 0 auto;
+                margin-top: 3.4rem;
+                @include flex(row, center, center);
+
+                background: $lighter-purple;
+                border-radius: 1.5rem;
+
+                font-style: normal;
+                font-size: 1.3rem;
+                line-height: 120%;
+                letter-spacing: 0.065em;
+
+                color: $white;
+
+                transition: 0.32s;
+
+                &:hover {
+                    opacity: 0.7;
+                }
+            }
+        }
+
+        div.close {
+            position: absolute;
+
+            top: 2.6rem;
+            right: 2.8rem;
+            cursor: pointer;
+
+            &:hover {
+                opacity: 0.7;
+            }
+        }
+    }
+
+    &[hide] {
+        transform: scale(0);
+        opacity: 0;
+        pointer-events: none;
+        background: none;
+    }
+
+    @include responsive(1350px) {
+        [fluid] {
+            div.niv {
+                height: auto;
+
+                main {
+                    width: 100%;
+                    max-height: 47rem;
+                    overflow-y: scroll;
+                }
+            }
+        }
+    }
+
+    @include responsive(400px) {
+        [fluid] {
+            div.niv {
+                padding: 2.8rem 3rem;
+
+                main {
+                    max-height: unset;
+                }
+            }
+        }
+    }
+}
+
+div.super-up {
+    height: 100vh;
+    width: 100vw;
+
+    background: rgba(0, 0, 0, 0.226);
+
+    position: fixed;
+    z-index: 66;
+
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+
+    transition: 0.32s;
+    @include flex(row, center, center);
+
+    [fluid] {
+        position: relative;
+        width: 100%;
+        div.niv {
+            height: 80rem;
+            padding: 0;
+            background: $white;
+            position: relative;
+
+            box-shadow: 0.4rem 0.9rem 1.3rem rgba(0, 0, 0, 0.1);
+            border-radius: 1.9rem;
+
+            width: 100%;
+
+            background: $white;
+
+            padding: 8.4rem 8.7rem 2.4rem;
+
+            @include flex(row, flex-start, center);
+
+            main {
+                height: 100%;
+                h2 {
+                    text-align: center;
+                    font-family: "Inter";
+                    font-weight: 600;
+                    font-size: 3.2rem;
+                    line-height: 100%;
+                    color: $grey;
+
+                    margin-bottom: 2.1rem;
+                }
+
+                div.drinks {
+                    @include flex(row, center, flex-start);
+                    gap: 8rem;
+                    padding-bottom: 5rem;
+
+                    border-bottom: 0.0662319rem solid $middle-grey;
+
+                    div.box {
+                        @include flex(column, center, flex-start);
+                        gap: 1rem;
+                        text-align: center;
+
+                        strong {
+                            font-size: 1.8rem;
+                            line-height: 120%;
+                            letter-spacing: 0.05em;
+                            color: $text-grey;
+                        }
+
+                        p {
+                            font-weight: 500;
+                            font-size: 1.1rem;
+                            line-height: 120%;
+                            letter-spacing: 0.05em;
+                            color: $details-grey;
+                        }
+
+                        input[type="checkbox"] {
+                            height: 2.3rem;
+                            width: 3.8rem;
+
+                            border: solid 0.4rem #eb5757;
+
+                            border-radius: 2rem;
+                            position: relative;
+                            transition: 0.32s;
+
+                            cursor: pointer;
+
+                            @include flex(row, center, center);
+
+                            &::after {
+                                width: 1.1rem;
+                                height: 1.1rem;
+                                background: #eb5757;
+
+                                border-radius: 100%;
+                                transition: 0.32s;
+
+                                position: absolute;
+                                content: "";
+
+                                left: 0.2rem;
+                            }
+
+                            &:checked {
+                                border-color: #27ae60;
+
+                                &::after {
+                                    background: #27ae60;
+                                    left: 1.8rem;
+                                }
+                            }
+                        }
+
+                        picture {
+                            width: 5.9rem;
+                            height: 11.9rem;
+
+                            @include picframe();
+                        }
+                    }
+                }
+
+                div.frutas,
+                div.adicionais {
+                    padding-top: 2.5rem;
+                    padding-bottom: 2.1rem;
+
+                    &:not(.adicionais) {
+                        border-bottom: 0.0662319rem solid $middle-grey;
+                    }
+
+                    strong {
+                        font-style: normal;
+                        font-weight: bold;
+                        font-size: 1.1rem;
+                        line-height: 120%;
+                        letter-spacing: 0.05em;
+                        color: $details-grey;
+
+                        margin-bottom: 2.1rem;
+                    }
+
+                    div.boxes {
+                        @include flex(row, center, flex-start);
+                        gap: 4.3rem;
+
+                        .box {
+                            width: 100%;
+                            max-width: 11.7rem;
+
+                            @include flex(column, center, center);
+                            gap: 0.7rem;
+
+                            span {
+                                font-weight: 500;
+                                font-size: 1.1rem;
+                                line-height: 120%;
+                                text-align: center;
+                                letter-spacing: 0.05em;
+                                color: $details-grey;
+                            }
+
+                            picture {
+                                height: 8.61rem;
+                                width: 8.61rem;
+
+                                @include picframe();
+                            }
+
+                            input[type="checkbox"] {
+                                width: 0.927rem;
+                                height: 0.927rem;
+
+                                border: 0.1rem solid #d5d5d5;
+                                border-radius: 0.1rem;
+
+                                position: relative;
+                                transition: 0.32s;
+
+                                cursor: pointer;
+
+                                @include flex(row, center, center);
+
+                                &:checked {
+                                    border-color: #27ae60;
+
+                                    background: url("/site/assets/img/check_v.svg");
+                                    background-position: 0 center;
+                                    background-repeat: no-repeat;
+                                }
+                            }
+                        }
+                    }
+                }
+
+                button {
+                    height: 4.3rem;
+                    width: 100%;
+                    max-width: 21.1rem;
+
+                    margin: 0 auto;
+                    margin-top: 3.4rem;
+                    @include flex(row, center, center);
+
+                    background: $lighter-purple;
+                    border-radius: 1.5rem;
+
+                    font-style: normal;
+                    font-size: 1.3rem;
+                    line-height: 120%;
+                    letter-spacing: 0.065em;
+
+                    color: $white;
+
+                    transition: 0.32s;
+
+                    &:hover {
+                        opacity: 0.7;
+                    }
+                }
+            }
+
+            aside {
+                width: 100%;
+                overflow: scroll;
+                max-height: 100%;
+
+                &::-webkit-scrollbar {
+                    display: none;
+                }
+
+                table {
+                    width: 100%;
+                    max-width: 56rem;
+                    height: 100%;
+
+                    thead {
+                        tr {
+                            th {
+                                padding-top: 2.2rem;
+                                padding-bottom: 1.6rem;
+                                border-bottom: solid 0.1rem $table-border;
+
+                                font-family: "Inter";
+                                font-style: normal;
+                                font-weight: normal;
+                                font-size: 1.4rem;
+                                line-height: 100%;
+                                text-align: center;
+
+                                color: $grey;
+                            }
+                        }
+                    }
+
+                    tbody {
+                        tr {
+                            height: 12.1rem;
+
+                            &:not(:last-child) {
+                                td {
+                                    border-bottom: solid 0.1rem $table-border;
+                                }
+                            }
+                            td {
+                                picture.foto-produto {
+                                    height: 8.4rem;
+                                    width: 100%;
+                                    max-width: 8.1rem;
+                                    border-radius: 2rem;
+                                    @include picframe();
+                                }
+
+                                strong.nome-produto {
+                                    font-weight: 500;
+                                    font-size: 1.6rem;
+                                    line-height: 100%;
+                                    color: $grey;
+                                }
+
+                                p.descricao-produto {
+                                    font-size: 1.4rem;
+                                    line-height: 100%;
+                                    text-align: center;
+                                    color: $grey;
+                                }
+
+                                input {
+                                    height: 4.8rem;
+                                    width: 11.4rem;
+
+                                    margin: auto auto;
+
+                                    border: 0.1rem solid #cfdbdd;
+                                    border-radius: 0.8rem;
+
+                                    text-align: center;
+
+                                    font-style: normal;
+                                    font-weight: 500;
+                                    font-size: 1.6rem;
+                                    line-height: 100%;
+                                    color: $grey;
+                                }
+                                text-align: center;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        div.close {
+            position: absolute;
+
+            top: 2.6rem;
+            right: 2.8rem;
+            cursor: pointer;
+
+            &:hover {
+                opacity: 0.7;
+            }
+        }
+    }
+
+    &[hide] {
+        transform: scale(0);
+        opacity: 0;
+        pointer-events: none;
+        background: none;
+    }
+
+    @include responsive(1280px) {
+        [fluid] {
+            background: $white;
+            overflow: scroll;
+            height: 100vh;
+
+            padding: 0;
+
+            div.niv {
+                box-shadow: none;
+                width: 100vw;
+
+                height: unset;
+                @include flex(column-reverse, center, flex-start);
+                gap: 6rem;
+
+                aside {
+                    height: 70rem;
+                    overflow: unset;
+                    display: block;
+
+                    overflow-x: scroll;
+                    &::-webkit-scrollbar {
+                        display: unset;
+                    }
+
+                    table {
+                        width: 56rem;
+                    }
+                }
+            }
+        }
+    }
+}
+
+body#orcamento-lista {
+    section.coqueteis-lista {
+        div.niv {
+            div.list-top {
+                padding-top: 3.5rem;
+                @include flex(row, flex-end, space-between);
+                margin-bottom: 4.9rem;
+                width: 100%;
+
+                span {
+                    @include flex(column, flex-start, flex-start);
+                    gap: 2rem;
+
+                    h2 {
+                        font-family: "Inter";
+                        font-style: normal;
+                        font-weight: 600;
+                        font-size: 3.2rem;
+                        line-height: 120%;
+                        color: $dark-grey;
+                    }
+
+                    p {
+                        font-weight: 500;
+                        font-size: 1.8rem;
+                        line-height: 120%;
+                        /* identical to box height, or 22px */
+
+                        /* Cinza 1 */
+
+                        color: $dark-grey;
+                    }
+                }
+
+                p {
+                    font-size: 1.8rem;
+                    line-height: 150%;
+                    /* or 27px */
+
+                    text-align: right;
+                    letter-spacing: 0.02em;
+
+                    color: $dark-purple;
+
+                    i {
+                        font-weight: bold;
+                        font-style: normal;
+                        position: relative;
+
+                        &::after {
+                            height: 1.2rem;
+                            width: 12.6rem;
+
+                            content: "";
+                            position: absolute;
+
+                            background: url("/site/assets/img/text_draw.svg");
+                            background-size: 100% 100%;
+
+                            bottom: -1.2rem;
+                            right: -1rem;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    section.coqueteis-drinks {
+        overflow: hidden;
+        div.niv {
+            div.niv-top {
+                @include flex(column, flex-start, flex-start);
+                gap: 1rem;
+
+                margin-bottom: 6.5rem;
+
+                h2 {
+                    font-family: "Inter";
+                    font-style: normal;
+                    font-weight: 600;
+                    font-size: 3.2rem;
+                    line-height: 120%;
+
+                    color: $dark-purple;
+                    i {
+                        font-family: "Inter";
+                        font-style: normal;
+                        font-weight: 600;
+                        font-size: 3.2rem;
+                        line-height: 120%;
+                        /* or 38px */
+
+                        color: $grey;
+
+                        position: relative;
+
+                        &::after {
+                            height: 1.2rem;
+                            width: 12.6rem;
+
+                            content: "";
+                            position: absolute;
+
+                            background: url("/site/assets/img/text_draw_purple.svg");
+                            background-size: 100% 100%;
+
+                            bottom: -1.2rem;
+                            right: -1rem;
+                        }
+                    }
+                }
+            }
+
+            div.niv-content {
+                div.box {
+                    height: 66.3rem;
+                    @include fade(translateY(45px), 1s);
+
+                    &:hover {
+                        transform: none;
+                    }
+
+                    div {
+                        margin-top: 2.9rem;
+
+                        @include flex(column, center, center);
+
+                        strong {
+                            margin-top: 1.2rem;
+
+                            font-family: Inter;
+                            font-style: normal;
+                            font-weight: 500;
+                            font-size: 15px;
+                            line-height: 120%;
+                            /* identical to box height, or 18px */
+
+                            text-align: center;
+                            letter-spacing: 0.05em;
+
+                            /* Cinza */
+
+                            color: $details-grey;
+                        }
+
+                        p,
+                        img {
+                            margin-top: 0.9rem;
+
+                            font-family: Inter;
+                            font-style: normal;
+                            font-weight: 300;
+                            font-size: 15px;
+                            line-height: 120%;
+                            /* identical to box height, or 18px */
+
+                            text-align: center;
+                            letter-spacing: 0.05em;
+
+                            /* Cinza */
+
+                            color: $details-grey;
+                        }
+
+                        span {
+                            @include flex(row, center, center);
+                            gap: 0.7rem;
+                        }
+                    }
+
+                    input[type="checkbox"] {
+                        height: 3.9rem;
+                        width: 6.1rem;
+
+                        margin-top: 2.7rem;
+
+                        border: solid 0.6rem #eb5757;
+
+                        border-radius: 2rem;
+                        position: relative;
+                        transition: 0.32s;
+
+                        cursor: pointer;
+
+                        @include flex(row, center, center);
+
+                        &::after {
+                            width: 2.1rem;
+                            height: 2.1rem;
+                            background: #eb5757;
+
+                            border-radius: 100%;
+                            transition: 0.32s;
+
+                            position: absolute;
+                            content: "";
+
+                            left: 0.4rem;
+                        }
+
+                        &:checked {
+                            border-color: #27ae60;
+
+                            &::after {
+                                background: #27ae60;
+                                left: 2.5rem;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    div.next-step {
+        position: fixed;
+
+        height: 27.8rem;
+        width: 27.8rem;
+
+        top: 0;
+        bottom: 0;
+
+        margin: auto 0;
+
+        right: 3.2rem;
+
+        z-index: 6;
+
+        filter: drop-shadow(4px 8px 11px rgba(69, 36, 79, 0.3));
+
+        border-radius: 2.3rem;
+
+        background: $form-purple;
+
+        padding: 5.1rem 3.9rem;
+
+        h2 {
+            color: $white;
+            font-size: 3.1rem;
+            line-height: 100%;
+            letter-spacing: 0.05em;
+
+            i {
+                color: $main-yellow;
+                font-style: normal;
+                font-size: 3.1rem;
+                line-height: 100%;
+                letter-spacing: 0.05em;
+            }
+        }
+
+        p {
+            font-style: normal;
+            font-weight: 300;
+            font-size: 1.2rem;
+            line-height: 120%;
+            letter-spacing: 0.05em;
+            color: $white;
+
+            margin-top: 2rem;
+        }
+
+        a {
+            width: 20rem;
+            height: 3.4rem;
+
+            color: $white;
+            background: $lighter-purple;
+            font-size: 1.5rem;
+
+            border-radius: 1.1rem;
+
+            @include flex(row, center, center);
+            margin-top: 5.3rem;
+
+            transition: 0.32s;
+
+            &:hover {
+                background: $main-yellow;
+                color: $dark-purple;
+            }
+        }
+    }
+
+    @include responsive(1280px) {
+        section.coqueteis-drinks {
+            div.niv {
+                div.niv-content {
+                    max-width: 85%;
+                }
+            }
+        }
+        div.next-step {
+            top: unset;
+            bottom: 1.5rem;
+        }
+    }
+
+    @include responsive(800px) {
+        section.coqueteis-lista {
+            div.niv {
+                div.list-top {
+                    flex-direction: column;
+                    align-items: center;
+
+                    justify-content: center;
+                    text-align: center;
+                    gap: 2rem;
+                }
+            }
+        }
+        section.coqueteis-drinks {
+            div.niv {
+                div.niv-content {
+                    max-width: 100%;
+
+                    div.box {
+                        box-shadow: none;
+                    }
+                }
+            }
+        }
+    }
+
+    @include responsive(400px) {
+        section.coqueteis-drinks {
+            div.niv {
+                div.niv-top {
+                    flex-direction: column;
+                    align-items: center;
+                    justify-content: center;
+                    text-align: center;
+
+                    h2 {
+                        font-size: 2.5rem;
+
+                        i {
+                            font-size: 2.5rem;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+body#orcamento-confirm {
+    div.next-step {
+        position: fixed;
+
+        height: 31rem;
+        width: 27.8rem;
+
+        top: 0;
+        bottom: 0;
+
+        margin: auto 0;
+
+        right: 3.2rem;
+
+        z-index: 6;
+
+        filter: drop-shadow(4px 8px 11px rgba(69, 36, 79, 0.3));
+
+        border-radius: 2.3rem;
+
+        background: $form-purple;
+
+        padding: 4.4rem 3.9rem;
+
+        h2 {
+            color: $white;
+            font-size: 3.1rem;
+            line-height: 100%;
+            letter-spacing: 0.05em;
+
+            font-family: "Inter", sans-serif;
+            font-weight: bold;
+
+            i {
+                color: $main-yellow;
+                font-style: normal;
+                font-size: 3.1rem;
+                line-height: 100%;
+                letter-spacing: 0.05em;
+            }
+        }
+
+        p {
+            font-style: normal;
+            font-weight: 300;
+            font-size: 1.2rem;
+            line-height: 120%;
+            letter-spacing: 0.05em;
+            color: $white;
+
+            margin-top: 2rem;
+
+            &:last-child {
+                font-size: 1rem;
+            }
+        }
+
+        a {
+            width: 20rem;
+            height: 3.4rem;
+
+            color: $white;
+            background: $lighter-purple;
+            font-size: 1.5rem;
+
+            border-radius: 1.1rem;
+
+            @include flex(row, center, center);
+            margin-top: 5.3rem;
+
+            transition: 0.32s;
+
+            &:hover {
+                background: $main-yellow;
+                color: $dark-purple;
+            }
+        }
+    }
+
+    section.coqueteis-lista {
+        div.niv {
+            div.list-top {
+                padding-top: 3.5rem;
+                @include flex(row, flex-end, space-between);
+                margin-bottom: 4.9rem;
+                width: 100%;
+
+                span {
+                    @include flex(column, flex-start, flex-start);
+                    gap: 2rem;
+
+                    h2 {
+                        font-family: "Inter";
+                        font-style: normal;
+                        font-weight: 600;
+                        font-size: 3.2rem;
+                        line-height: 120%;
+                        color: $dark-grey;
+                    }
+
+                    p {
+                        font-weight: 500;
+                        font-size: 1.8rem;
+                        line-height: 120%;
+                        /* identical to box height, or 22px */
+
+                        /* Cinza 1 */
+
+                        color: $dark-grey;
+                    }
+                }
+
+                p {
+                    font-size: 1.8rem;
+                    line-height: 150%;
+                    /* or 27px */
+
+                    text-align: right;
+                    letter-spacing: 0.02em;
+
+                    color: $dark-purple;
+
+                    i {
+                        font-weight: bold;
+                        font-style: normal;
+                        position: relative;
+
+                        &::after {
+                            height: 1.2rem;
+                            width: 12.6rem;
+
+                            content: "";
+                            position: absolute;
+
+                            background: url("/site/assets/img/text_draw.svg");
+                            background-size: 100% 100%;
+
+                            bottom: -1.2rem;
+                            right: -1rem;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    section.coqueteis-filtro {
+        padding-top: 11.9rem;
+
+        div.niv {
+            justify-content: flex-end;
+
+            div.filtro {
+                strong {
+                    color: red;
+                }
+            }
+        }
+    }
+
+    section.coqueteis-drinks {
+        overflow: hidden;
+        min-height: 100rem;
+        div.niv {
+            div.niv-top {
+                @include flex(column, flex-start, flex-start);
+                gap: 1rem;
+
+                margin-bottom: 6.5rem;
+
+                h2 {
+                    font-family: "Inter";
+                    font-style: normal;
+                    font-weight: 600;
+                    font-size: 3.2rem;
+                    line-height: 120%;
+
+                    color: $dark-purple;
+                    i {
+                        font-family: "Inter";
+                        font-style: normal;
+                        font-weight: 600;
+                        font-size: 3.2rem;
+                        line-height: 120%;
+                        /* or 38px */
+
+                        color: $grey;
+
+                        position: relative;
+
+                        &::after {
+                            height: 1.2rem;
+                            width: 12.6rem;
+
+                            content: "";
+                            position: absolute;
+
+                            background: url("/site/assets/img/text_draw_purple.svg");
+                            background-size: 100% 100%;
+
+                            bottom: -1.2rem;
+                            right: -1rem;
+                        }
+                    }
+                }
+            }
+
+            div.niv-content {
+                gap: 0;
+                div.box {
+                    height: 26.8rem;
+                    max-width: 59.2rem;
+                    @include fade(translateY(45px), 1s);
+                    @include flex(row, center, space-between);
+                    position: relative;
+
+                    margin-left: 1.5rem;
+                    margin-top: 1.5rem;
+
+                    cursor: default;
+
+                    padding: 2.6rem 2.5rem 2.5rem 3.2rem;
+
+                    picture {
+                        max-width: 14.4rem;
+                        height: 21.7rem;
+                    }
+
+                    &:hover {
+                        transform: none;
+                    }
+
+                    main {
+                        margin-top: 2.9rem;
+
+                        background: #fafafa;
+                        box-shadow: 2.2388px 3.35821px 5.97014px rgba(0, 0, 0, 0.1);
+                        border-radius: 7.46268px;
+
+                        padding: 2.4rem 1.7rem;
+
+                        height: 8.4rem;
+                        @include flex(row, center, space-between);
+
+                        strong {
+                            font-family: Inter;
+                            font-style: normal;
+                            font-weight: 500;
+                            font-size: 1.2rem;
+                            line-height: 120%;
+                            /* identical to box height, or 18px */
+
+                            text-align: center;
+                            letter-spacing: 0.05em;
+
+                            /* Cinza */
+
+                            color: $details-grey;
+                            margin-top: 0;
+                        }
+
+                        p,
+                        img {
+                            font-family: Inter;
+                            font-style: normal;
+                            font-weight: 300;
+                            font-size: 1.2rem;
+                            line-height: 120%;
+                            /* identical to box height, or 18px */
+
+                            text-align: center;
+                            letter-spacing: 0.05em;
+
+                            /* Cinza */
+
+                            color: $details-grey;
+
+                            margin-top: 0;
+                        }
+
+                        span {
+                            @include flex(row, center, center);
+                            gap: 0.7rem;
+                        }
+
+                        div {
+                            gap: 0.72rem;
+                            @include flex(column, center, center);
+
+                            max-width: 36.6rem;
+                        }
+                    }
+
+                    span {
+                        text-align: left;
+                        max-width: 36.6rem;
+
+                        p {
+                            color: $details-grey;
+                        }
+                    }
+
+                    button.remove {
+                        position: absolute;
+                        right: 2.5rem;
+                        top: 2.6rem;
+
+                        svg {
+                            path {
+                                transition: 0.32s;
+                            }
+                        }
+
+                        &:hover {
+                            svg {
+                                path {
+                                    stroke: red;
+                                }
+                            }
+                        }
+                    }
+
+                    div.stars {
+                        @include flex(row, center, center);
+                        gap: 0.5rem;
+
+                        img {
+                            height: 1.8rem;
+                            width: 1.8rem;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    @include responsive(1280px) {
+        section.coqueteis-drinks {
+            div.niv {
+                div.niv-content {
+                    max-width: 85%;
+                }
+            }
+        }
+        div.next-step {
+            top: unset;
+            bottom: 1.5rem;
+        }
+    }
+
+    @include responsive(800px) {
+        section.coqueteis-lista {
+            div.niv {
+                div.list-top {
+                    flex-direction: column;
+                    align-items: center;
+
+                    justify-content: center;
+                    text-align: center;
+                    gap: 2rem;
+                }
+            }
+        }
+        section.coqueteis-drinks {
+            div.niv {
+                div.niv-content {
+                    max-width: 100%;
+
+                    div.box {
+                        box-shadow: none;
+                    }
+                }
+            }
+        }
+    }
+
+    @include responsive(400px) {
+        section.coqueteis-drinks {
+            div.niv {
+                div.niv-top {
+                    flex-direction: column;
+                    align-items: center;
+                    justify-content: center;
+                    text-align: center;
+
+                    h2 {
+                        font-size: 2.5rem;
+
+                        i {
+                            font-size: 2.5rem;
+                        }
+                    }
+                }
+
+                div.niv-content {
+                    div.box {
+                        flex-direction: column;
+                        height: unset;
+                        gap: 2rem;
+                    }
+                }
+            }
+        }
+    }
+}
+
+body#orcamento-carrinho {
+    div.next-step {
+        position: fixed;
+        top: 0;
+        bottom: 0;
+
+        margin: auto 0;
+        right: 0;
+        z-index: 6;
+        display: block;
+
+        height: 17.4rem;
+
+        cursor: pointer;
+    }
+}

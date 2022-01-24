@@ -3392,6 +3392,7 @@ section.coqueteis-drinks div.niv div.niv-content {
   gap: 1.5rem;
   flex-wrap: wrap;
   margin-top: 3.3rem;
+  min-height: 40rem;
 }
 section.coqueteis-drinks div.niv div.niv-content div.box {
   cursor: pointer;
@@ -3399,6 +3400,8 @@ section.coqueteis-drinks div.niv div.niv-content div.box {
   width: 100%;
   transition: 0.32s;
   max-width: 29.1rem;
+  transition: opacity 0.32s;
+  transition: transform 0.32s;
   transition: 1s;
   transition-delay: 0s;
   scroll-snap-align: start;
@@ -3411,6 +3414,16 @@ section.coqueteis-drinks div.niv div.niv-content div.box {
   border-radius: 2rem;
   box-shadow: 6px 9px 16px rgba(0, 0, 0, 0.1);
   padding: 2.2rem 2.7rem;
+}
+section.coqueteis-drinks div.niv div.niv-content div.box[hide] {
+  transform: translateY(300px);
+  opacity: 0;
+  pointer-events: none;
+  width: 0 !important;
+  height: 0 !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  position: absolute;
 }
 section.coqueteis-drinks div.niv div.niv-content div.box[niv-fade] {
   opacity: 0;
@@ -3807,4 +3820,2483 @@ section.coquetel-especificacoes div.niv div.niv-content span p {
   section.coquetel-especificacoes div.niv div.niv-content span p:first-child {
     font-weight: bold;
   }
+}
+
+div.modal-filtro {
+  height: 100vh;
+  width: 100vw;
+  background: rgba(0, 0, 0, 0.226);
+  position: fixed;
+  z-index: 66;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  transition: 0.32s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+  /**
+
+  @include responsive(1400px) {}
+  @include responsive(1200px) {}
+  @include responsive(992px) {}
+  @include responsive(730px) {}
+  @include responsive(600px) {}
+
+  **/
+}
+div.modal-filtro [fluid] div.niv {
+  height: 62rem;
+  width: 100%;
+  padding: 0;
+  background: #fff;
+  position: relative;
+}
+div.modal-filtro [fluid] div.niv main {
+  padding: 3.6rem 6.1rem;
+}
+div.modal-filtro [fluid] div.niv main .scroll {
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  flex-direction: row;
+  gap: 3.4rem;
+  height: 52.3rem;
+}
+div.modal-filtro [fluid] div.niv main .scroll div.col {
+  width: 100%;
+  max-width: 29.4rem;
+}
+div.modal-filtro [fluid] div.niv main .scroll div.col div.title {
+  width: 100%;
+  padding: 0 0 2.2rem 0.8rem;
+  border-bottom: solid 1px #e7ebee;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 1.8rem;
+  line-height: 100%;
+  letter-spacing: 0.02em;
+  color: #323b4b;
+  margin-bottom: 3.1rem;
+}
+div.modal-filtro [fluid] div.niv main .scroll div.col ul:not(:last-child) {
+  margin-bottom: 1.9rem;
+}
+div.modal-filtro [fluid] div.niv main .scroll div.col ul li {
+  margin-bottom: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  flex-direction: row;
+  gap: 0.8rem;
+  font-family: "Inter", sans-serif;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 1.6rem;
+  letter-spacing: 0.01em;
+  color: #323b4b;
+}
+div.modal-filtro [fluid] div.niv main .scroll div.col ul li input[type=checkbox] {
+  height: 1.5rem;
+  width: 1.5rem;
+  cursor: pointer;
+  border: 1px solid #6f939a;
+  border-radius: 0.4rem;
+}
+div.modal-filtro [fluid] div.niv main .scroll div.col ul li input[type=checkbox]:checked {
+  background: #56076d;
+}
+div.modal-filtro [fluid] div.niv div.end {
+  width: 100%;
+  background: #45244f;
+  height: 9.7rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+div.modal-filtro [fluid] div.niv div.end button {
+  display: block;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 2rem;
+  line-height: 5.2rem;
+  letter-spacing: 0.01em;
+  text-align: center;
+  color: #260530;
+  height: 5.2rem;
+  background: #e5db00;
+  border-bottom: 3.2rem;
+  width: 100%;
+  max-width: 30rem;
+  transition: 0.32s;
+  padding: 0 4.1rem;
+  margin-top: 0;
+  border-radius: 0.4rem;
+  background: #985394;
+  color: #fff;
+  font-weight: 500;
+  font-size: 1.8rem;
+  letter-spacing: 0.02em;
+}
+div.modal-filtro [fluid] div.niv div.end button:hover {
+  color: #fff;
+  background: #56076d;
+}
+div.modal-filtro [fluid] div.niv div.close {
+  position: absolute;
+  top: 3.6rem;
+  right: 5.8rem;
+  cursor: pointer;
+}
+div.modal-filtro [fluid] div.niv div.close:hover {
+  opacity: 0.7;
+}
+div.modal-filtro[hide] {
+  transform: scale(0);
+  opacity: 0;
+  pointer-events: none;
+  background: none;
+}
+@media (max-width: 400px) {
+  div.modal-filtro [fluid] div.niv main {
+    overflow: scroll;
+  }
+  div.modal-filtro [fluid] div.niv main .scroll {
+    flex-wrap: wrap;
+  }
+}
+
+section.identificacao {
+  padding-top: 17.1rem;
+  /**
+
+  @include responsive(1400px) {}
+  @include responsive(1200px) {}
+  @include responsive(992px) {}
+  @include responsive(730px) {}
+  @include responsive(600px) {}
+
+  **/
+}
+section.identificacao div.niv div.niv-top {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  flex-direction: row;
+  margin-bottom: 2.9rem;
+}
+section.identificacao div.niv div.niv-top span {
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  flex-direction: column;
+  gap: 2rem;
+}
+section.identificacao div.niv div.niv-top span h2 {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 3.2rem;
+  line-height: 120%;
+  color: #151515;
+}
+section.identificacao div.niv div.niv-top span p {
+  font-weight: 500;
+  font-size: 1.8rem;
+  line-height: 120%;
+  /* identical to box height, or 22px */
+  /* Cinza 1 */
+  color: #151515;
+}
+section.identificacao div.niv div.niv-top p {
+  font-size: 1.8rem;
+  line-height: 150%;
+  /* or 27px */
+  text-align: right;
+  letter-spacing: 0.02em;
+  color: #260530;
+}
+section.identificacao div.niv div.niv-top p i {
+  font-weight: bold;
+  font-style: normal;
+  position: relative;
+}
+section.identificacao div.niv div.niv-top p i::after {
+  height: 1.2rem;
+  width: 12.6rem;
+  content: "";
+  position: absolute;
+  background: url("/site/assets/img/text_draw.svg");
+  background-size: 100% 100%;
+  bottom: -1.2rem;
+  right: -1rem;
+}
+section.identificacao div.niv div.niv-form {
+  width: 100%;
+  padding-bottom: 7.3rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+section.identificacao div.niv div.niv-form form {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  flex-direction: column;
+  width: 48.7rem;
+  gap: 2.6rem;
+  padding: 4.7rem 4.8rem;
+  border-radius: 2.7rem;
+  background: #45244f;
+}
+section.identificacao div.niv div.niv-form form label {
+  width: 100%;
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+section.identificacao div.niv div.niv-form form label span {
+  font-style: normal;
+  font-weight: bold;
+  font-size: 1.4rem;
+  line-height: 140%;
+  letter-spacing: 0.01em;
+  color: #fff;
+}
+section.identificacao div.niv div.niv-form form label input {
+  width: 100%;
+  height: 4.8rem;
+  padding-left: 3.4rem;
+  border: solid 0.1rem #fff;
+  border-radius: 1.5rem;
+  background: transparent;
+  color: #fff;
+}
+section.identificacao div.niv div.niv-form form label input::-moz-placeholder {
+  color: #fff;
+}
+section.identificacao div.niv div.niv-form form label input:-ms-input-placeholder {
+  color: #fff;
+}
+section.identificacao div.niv div.niv-form form label input::placeholder {
+  color: #fff;
+}
+section.identificacao div.niv div.niv-form form button {
+  font-style: normal;
+  font-weight: bold;
+  font-size: 2rem;
+  line-height: 6rem;
+  letter-spacing: 0.01em;
+  text-align: center;
+  color: #260530;
+  height: 6rem;
+  background: #e5db00;
+  border-bottom: 3.2rem;
+  width: 100%;
+  max-width: 37.9rem;
+  transition: 0.32s;
+  padding: 0 4.1rem;
+  border-radius: 3rem;
+}
+section.identificacao div.niv div.niv-form form button:hover {
+  color: #fff;
+  background: #56076d;
+}
+section.identificacao div.niv div.niv-form p {
+  line-height: 121.7%;
+  text-align: center;
+  letter-spacing: 0.055em;
+  margin-top: 2.1rem;
+  color: #fff;
+}
+@media (max-width: 400px) {
+  section.identificacao div.niv div.niv-top {
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+  }
+  section.identificacao div.niv div.niv-top span {
+    justify-content: center;
+    align-items: center;
+  }
+  section.identificacao div.niv div.niv-top span h2 {
+    text-align: center;
+  }
+  section.identificacao div.niv div.niv-top span p {
+    text-align: center;
+  }
+  section.identificacao div.niv div.niv-top p {
+    text-align: center;
+  }
+  section.identificacao div.niv div.niv-form form {
+    width: 100%;
+  }
+  section.identificacao div.niv div.niv-form form button {
+    line-height: 100%;
+    height: auto;
+    padding: 2.5rem;
+    max-width: 24rem;
+  }
+}
+
+section.tipo {
+  padding-top: 17.1rem;
+  padding-bottom: 11.3rem;
+  /**
+
+  @include responsive(1400px) {}
+  @include responsive(1200px) {}
+  @include responsive(992px) {}
+  @include responsive(730px) {}
+  @include responsive(600px) {}
+
+  **/
+}
+section.tipo div.niv div.niv-top {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  flex-direction: row;
+  margin-bottom: 4.9rem;
+}
+section.tipo div.niv div.niv-top span {
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  flex-direction: column;
+  gap: 2rem;
+}
+section.tipo div.niv div.niv-top span h2 {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 3.2rem;
+  line-height: 120%;
+  color: #151515;
+}
+section.tipo div.niv div.niv-top span p {
+  font-weight: 500;
+  font-size: 1.8rem;
+  line-height: 120%;
+  /* identical to box height, or 22px */
+  /* Cinza 1 */
+  color: #151515;
+}
+section.tipo div.niv div.niv-top p {
+  font-size: 1.8rem;
+  line-height: 150%;
+  /* or 27px */
+  text-align: right;
+  letter-spacing: 0.02em;
+  color: #260530;
+}
+section.tipo div.niv div.niv-top p i {
+  font-weight: bold;
+  font-style: normal;
+  position: relative;
+}
+section.tipo div.niv div.niv-top p i::after {
+  height: 1.2rem;
+  width: 12.6rem;
+  content: "";
+  position: absolute;
+  background: url("/site/assets/img/text_draw.svg");
+  background-size: 100% 100%;
+  bottom: -1.2rem;
+  right: -1rem;
+}
+section.tipo div.niv div.niv-content {
+  max-width: 100%;
+  overflow: hidden;
+  -ms-scroll-snap-type: x mandatory;
+      scroll-snap-type: x mandatory;
+}
+section.tipo div.niv div.niv-content div.scroll {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  flex-direction: row;
+  width: -webkit-max-content;
+  width: -moz-max-content;
+  width: max-content;
+  gap: 3.2rem;
+}
+section.tipo div.niv div.niv-content div.scroll div.box {
+  scroll-snap-align: start;
+  height: 45.6rem;
+  width: 100%;
+  border-radius: 2.2rem;
+  max-width: 38.2rem;
+  transition: 1s;
+  transition-delay: 0s;
+  opacity: 1 !important;
+  position: relative;
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-end;
+  flex-direction: column;
+  background: #45244f;
+  padding: 6.7rem 5.1rem;
+}
+section.tipo div.niv div.niv-content div.scroll div.box[niv-fade] {
+  opacity: 0;
+  transform: translateY(200px);
+}
+section.tipo div.niv div.niv-content div.scroll div.box:nth-child(1) {
+  transition-delay: 0.1s;
+}
+section.tipo div.niv div.niv-content div.scroll div.box:nth-child(2) {
+  transition-delay: 0.2s;
+}
+section.tipo div.niv div.niv-content div.scroll div.box:nth-child(3) {
+  transition-delay: 0.3s;
+}
+section.tipo div.niv div.niv-content div.scroll div.box:nth-child(4) {
+  transition-delay: 0.4s;
+}
+section.tipo div.niv div.niv-content div.scroll div.box:nth-child(5) {
+  transition-delay: 0.5s;
+}
+section.tipo div.niv div.niv-content div.scroll div.box:nth-child(6) {
+  transition-delay: 0.6s;
+}
+section.tipo div.niv div.niv-content div.scroll div.box:nth-child(7) {
+  transition-delay: 0.7s;
+}
+section.tipo div.niv div.niv-content div.scroll div.box:nth-child(8) {
+  transition-delay: 0.8s;
+}
+section.tipo div.niv div.niv-content div.scroll div.box:nth-child(9) {
+  transition-delay: 0.9s;
+}
+section.tipo div.niv div.niv-content div.scroll div.box:nth-child(10) {
+  transition-delay: 1s;
+}
+section.tipo div.niv div.niv-content div.scroll div.box:nth-child(11) {
+  transition-delay: 1.1s;
+}
+section.tipo div.niv div.niv-content div.scroll div.box:nth-child(12) {
+  transition-delay: 1.2s;
+}
+section.tipo div.niv div.niv-content div.scroll div.box:nth-child(13) {
+  transition-delay: 1.3s;
+}
+section.tipo div.niv div.niv-content div.scroll div.box:nth-child(14) {
+  transition-delay: 1.4s;
+}
+section.tipo div.niv div.niv-content div.scroll div.box:nth-child(15) {
+  transition-delay: 1.5s;
+}
+section.tipo div.niv div.niv-content div.scroll div.box::after {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  bottom: 0;
+  border-radius: 2rem;
+  left: 0;
+  transition: 0.32s;
+  content: "";
+  background: linear-gradient(360deg, #260530 -9.34%, rgba(38, 5, 48, 0) 104%);
+  opacity: 0;
+}
+section.tipo div.niv div.niv-content div.scroll div.box:hover {
+  background-size: 120% 120%;
+  z-index: 1;
+}
+section.tipo div.niv div.niv-content div.scroll div.box:hover::after {
+  opacity: 1;
+}
+section.tipo div.niv div.niv-content div.scroll div.box strong {
+  z-index: 2;
+  font-weight: 900;
+  font-size: 2rem;
+  line-height: 150%;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  color: #fff;
+  margin-bottom: 1rem;
+}
+section.tipo div.niv div.niv-content div.scroll div.box p {
+  z-index: 2;
+  font-family: Inter;
+  font-size: 1.6rem;
+  line-height: 121.7%;
+  letter-spacing: 0.055em;
+  color: #b5aeae;
+  height: 6.3rem;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  text-overflow: ellipsis;
+}
+section.tipo div.niv div.niv-content div.scroll div.box a {
+  display: block;
+  margin-top: 0.7rem;
+  color: #fff;
+  height: 5rem;
+  width: 100%;
+  max-width: 19.8rem;
+  z-index: 2;
+  font-weight: bold;
+  padding: 1.6rem 5.5rem;
+  background: #985394;
+  font-size: 1.4rem;
+  border-radius: 2.5rem;
+  transition: 0.32s;
+}
+section.tipo div.niv div.niv-content div.scroll div.box a:hover {
+  background-color: #260530;
+  color: #dbbf00;
+}
+@media (max-width: 400px) {
+  section.tipo div.niv div.niv-top {
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+  }
+  section.tipo div.niv div.niv-top span {
+    justify-content: center;
+    align-items: center;
+  }
+  section.tipo div.niv div.niv-top span h2 {
+    text-align: center;
+  }
+  section.tipo div.niv div.niv-top span p {
+    text-align: center;
+  }
+  section.tipo div.niv div.niv-top p {
+    text-align: center;
+  }
+  section.tipo div.niv div.niv-content {
+    overflow: scroll;
+  }
+  section.tipo div.niv div.niv-content div.scroll div.box {
+    max-width: calc(100vw - 8rem);
+  }
+}
+
+section.conte {
+  /**
+
+  @include responsive(1400px) {}
+  @include responsive(1200px) {}
+  @include responsive(992px) {}
+  @include responsive(730px) {}
+  @include responsive(600px) {}
+
+  **/
+  /**
+
+  @include responsive(1400px) {}
+  @include responsive(1200px) {}
+  @include responsive(992px) {}
+  @include responsive(730px) {}
+  @include responsive(600px) {}
+
+  **/
+}
+section.conte div.niv {
+  padding-top: 17.1rem;
+  padding-bottom: 11.3rem;
+}
+section.conte div.niv div.niv-top {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  flex-direction: row;
+  margin-bottom: 4.9rem;
+}
+section.conte div.niv div.niv-top span {
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  flex-direction: column;
+  gap: 2rem;
+}
+section.conte div.niv div.niv-top span h2 {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 3.2rem;
+  line-height: 120%;
+  color: #151515;
+}
+section.conte div.niv div.niv-top span p {
+  font-weight: 500;
+  font-size: 1.8rem;
+  line-height: 120%;
+  /* identical to box height, or 22px */
+  /* Cinza 1 */
+  color: #151515;
+}
+section.conte div.niv div.niv-top p {
+  font-size: 1.8rem;
+  line-height: 150%;
+  /* or 27px */
+  text-align: right;
+  letter-spacing: 0.02em;
+  color: #260530;
+}
+section.conte div.niv div.niv-top p i {
+  font-weight: bold;
+  font-style: normal;
+  position: relative;
+}
+section.conte div.niv div.niv-top p i::after {
+  height: 1.2rem;
+  width: 12.6rem;
+  content: "";
+  position: absolute;
+  background: url("/site/assets/img/text_draw.svg");
+  background-size: 100% 100%;
+  bottom: -1.2rem;
+  right: -1rem;
+}
+section.conte div.niv div.niv-content {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  flex-direction: row;
+}
+section.conte div.niv div.niv-content div.niv-picture {
+  height: 100%;
+}
+section.conte div.niv div.niv-content div.niv-picture picture {
+  width: 100%;
+  max-width: 49.2rem;
+  height: 48.4rem;
+  border-radius: 2rem;
+  overflow: hidden;
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
+}
+section.conte div.niv div.niv-content div.niv-form {
+  max-width: 60rem;
+}
+section.conte div.niv div.niv-content div.niv-form form {
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  flex-direction: column;
+  gap: 4.7rem;
+  font-weight: 500;
+  font-size: 1.8rem;
+  line-height: 120%;
+  color: #323b4b;
+}
+section.conte div.niv div.niv-content div.niv-form form strong {
+  font-weight: 600;
+  font-size: 3.2rem;
+  line-height: 120%;
+  color: #323b4b;
+  margin-bottom: 1.7rem;
+  display: block;
+}
+section.conte div.niv div.niv-content div.niv-form form label {
+  width: 100%;
+}
+section.conte div.niv div.niv-content div.niv-form form input {
+  height: 6.3rem;
+  background: #e9e9e9;
+  width: 100%;
+  max-width: 37rem;
+  padding-left: 2.5rem;
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 1.8rem;
+  line-height: 120%;
+  /* identical to box height, or 22px */
+  color: #323b4b;
+  position: relative;
+}
+section.conte div.niv div.niv-content div.niv-form form input[type=date]::-webkit-calendar-picker-indicator {
+  background: none;
+  content: url("/site/assets/img/icon_calendar_form.svg");
+  margin-right: 1.7rem;
+  height: 2.5rem;
+  width: 2.5rem;
+}
+section.conte div.niv div.niv-content div.niv-form form input[type=radio] {
+  height: 1.3rem;
+  max-width: 1.3rem;
+  padding: 0;
+  background: none;
+  border: 0.1rem solid #56076d;
+  border-radius: 100%;
+}
+section.conte div.niv div.niv-content div.niv-form form input[type=radio]:checked {
+  background: #985394;
+  background-size: 0.3rem 0.3rem;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+section.conte div.niv div.niv-content div.niv-form form button {
+  font-style: normal;
+  font-weight: bold;
+  font-size: 2rem;
+  line-height: 6rem;
+  letter-spacing: 0.01em;
+  text-align: center;
+  color: #260530;
+  height: 6rem;
+  background: #e5db00;
+  border-bottom: 3.2rem;
+  width: 100%;
+  max-width: 37.9rem;
+  transition: 0.32s;
+  padding: 0 4.1rem;
+  border-radius: 3rem;
+}
+section.conte div.niv div.niv-content div.niv-form form button:hover {
+  color: #fff;
+  background: #56076d;
+}
+section.conte div.niv div.niv-content div.niv-form form fieldset {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  flex-direction: row;
+  gap: 1.8rem;
+}
+section.conte div.niv div.niv-content div.niv-form form fieldset span {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  flex-direction: row;
+  gap: 0.6rem;
+  width: 100%;
+  max-width: 11.6rem;
+}
+@media (max-width: 800px) {
+  section.conte div.niv div.niv-content {
+    flex-direction: column;
+    gap: 3rem;
+    align-items: center;
+  }
+}
+@media (max-width: 400px) {
+  section.conte div.niv div.niv-top {
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+  }
+  section.conte div.niv div.niv-top span {
+    justify-content: center;
+    align-items: center;
+  }
+  section.conte div.niv div.niv-top span h2 {
+    text-align: center;
+  }
+  section.conte div.niv div.niv-top span p {
+    text-align: center;
+  }
+  section.conte div.niv div.niv-top p {
+    text-align: center;
+  }
+  section.conte div.niv div.niv-content {
+    flex-direction: column;
+  }
+}
+
+section.carrinho {
+  padding-top: 25.6rem;
+  padding-bottom: 29rem;
+  /**
+
+  @include responsive(1400px) {}
+  @include responsive(1200px) {}
+  @include responsive(992px) {}
+  @include responsive(730px) {}
+  @include responsive(600px) {}
+
+  **/
+}
+section.carrinho div.niv {
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-start;
+  flex-direction: column;
+}
+section.carrinho div.niv div.niv-top {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  flex-direction: row;
+  margin-bottom: 4.9rem;
+  width: 100%;
+}
+section.carrinho div.niv div.niv-top span {
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  flex-direction: column;
+  gap: 2rem;
+}
+section.carrinho div.niv div.niv-top span h2 {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 3.2rem;
+  line-height: 120%;
+  color: #151515;
+}
+section.carrinho div.niv div.niv-top span p {
+  font-size: 1.8rem;
+  line-height: 150%;
+  /* or 27px */
+  text-align: right;
+  letter-spacing: 0.02em;
+  color: #260530;
+}
+section.carrinho div.niv div.niv-top span p i {
+  font-weight: bold;
+  font-style: normal;
+  position: relative;
+}
+section.carrinho div.niv div.niv-top span p i::after {
+  height: 1.2rem;
+  width: 12.6rem;
+  content: "";
+  position: absolute;
+  background: url("/site/assets/img/text_draw.svg");
+  background-size: 100% 100%;
+  bottom: -1.2rem;
+  right: -1rem;
+}
+section.carrinho div.niv div.niv-top button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 1rem;
+}
+section.carrinho div.niv div.niv-top button p {
+  font-size: 1.4rem;
+  line-height: 100%;
+  color: #323b4b;
+}
+section.carrinho div.niv div.niv-table {
+  width: 100%;
+  /**
+
+  @include responsive(1400px) {}
+  @include responsive(1200px) {}
+  @include responsive(992px) {}
+  @include responsive(730px) {}
+  @include responsive(600px) {}
+
+  **/
+}
+section.carrinho div.niv div.niv-table div.scroll {
+  width: 100%;
+}
+section.carrinho div.niv div.niv-table div.scroll table {
+  width: 100%;
+  border: solid 0.1rem #e7ebee;
+}
+section.carrinho div.niv div.niv-table div.scroll table thead tr th {
+  padding-top: 2.2rem;
+  padding-bottom: 1.6rem;
+  border-bottom: solid 0.1rem #e7ebee;
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: normal;
+  font-size: 1.4rem;
+  line-height: 100%;
+  text-align: center;
+  color: #323b4b;
+}
+section.carrinho div.niv div.niv-table div.scroll table tbody tr {
+  height: 12.1rem;
+}
+section.carrinho div.niv div.niv-table div.scroll table tbody tr:not(:last-child) td {
+  border-bottom: solid 0.1rem #e7ebee;
+}
+section.carrinho div.niv div.niv-table div.scroll table tbody tr td {
+  text-align: center;
+}
+section.carrinho div.niv div.niv-table div.scroll table tbody tr td picture.foto-produto {
+  height: 8.4rem;
+  width: 100%;
+  max-width: 8.1rem;
+  border-radius: 2rem;
+  overflow: hidden;
+}
+section.carrinho div.niv div.niv-table div.scroll table tbody tr td picture.foto-produto img {
+  height: 100%;
+  width: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+section.carrinho div.niv div.niv-table div.scroll table tbody tr td strong.nome-produto {
+  font-weight: 500;
+  font-size: 1.6rem;
+  line-height: 100%;
+  color: #323b4b;
+}
+section.carrinho div.niv div.niv-table div.scroll table tbody tr td p.descricao-produto {
+  font-size: 1.4rem;
+  line-height: 100%;
+  text-align: center;
+  color: #323b4b;
+}
+section.carrinho div.niv div.niv-table div.scroll table tbody tr td input {
+  height: 4.8rem;
+  width: 11.4rem;
+  margin: auto auto;
+  border: 0.1rem solid #cfdbdd;
+  border-radius: 0.8rem;
+  text-align: center;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 1.6rem;
+  line-height: 100%;
+  color: #323b4b;
+}
+section.carrinho div.niv div.niv-table span.resumo-evento {
+  padding: 5.1rem;
+  border: solid 0.1rem #e7ebee;
+  width: 100%;
+  border-top: none;
+  display: block;
+}
+section.carrinho div.niv div.niv-table span.resumo-evento strong {
+  font-style: normal;
+  font-weight: 600;
+  font-size: 1.6rem;
+  color: #323b4b;
+}
+section.carrinho div.niv div.niv-table span.resumo-evento p {
+  font-style: normal;
+  font-size: 1.4rem;
+  line-height: 140%;
+  color: #323b4b;
+  max-width: 61.7rem;
+  margin-top: 1.7rem;
+}
+@media (max-width: 800px) {
+  section.carrinho div.niv div.niv-table {
+    overflow: scroll;
+  }
+  section.carrinho div.niv div.niv-table div.scroll {
+    width: -webkit-max-content;
+    width: -moz-max-content;
+    width: max-content;
+  }
+}
+section.carrinho div.niv div.niv-send {
+  border: 0.1rem solid #e7ebee;
+  margin-top: 2.6rem;
+  height: 29.7rem;
+  width: 100%;
+  max-width: 48.9rem;
+}
+section.carrinho div.niv div.niv-send .top {
+  padding: 2.4rem;
+  width: 100%;
+  border-bottom: 0.1rem solid #e7ebee;
+}
+section.carrinho div.niv div.niv-send .top span {
+  font-weight: 600;
+  font-size: 1.6rem;
+  line-height: 100%;
+  color: #323b4b;
+}
+section.carrinho div.niv div.niv-send .content {
+  padding: 3rem 5.2rem 0;
+}
+section.carrinho div.niv div.niv-send .content div {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-direction: row;
+  margin-bottom: 4rem;
+}
+section.carrinho div.niv div.niv-send .content div p {
+  font-style: normal;
+  font-weight: normal;
+  font-size: 1.4rem;
+  line-height: 100%;
+  color: #323b4b;
+}
+section.carrinho div.niv div.niv-send .content div strong {
+  font-weight: 600;
+  font-size: 1.6rem;
+  line-height: 100%;
+  color: #323b4b;
+}
+section.carrinho div.niv div.niv-send button {
+  margin: auto auto;
+  display: block;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 2rem;
+  line-height: 6.7rem;
+  letter-spacing: 0.01em;
+  text-align: center;
+  color: #260530;
+  height: 6.7rem;
+  background: #e5db00;
+  border-bottom: 3.2rem;
+  width: 100%;
+  max-width: 34.2rem;
+  transition: 0.32s;
+  padding: 0 4.1rem;
+  margin-top: 0;
+  border-radius: 2.3rem;
+  background: #985394;
+  color: #fff;
+}
+section.carrinho div.niv div.niv-send button:hover {
+  color: #fff;
+  background: #56076d;
+}
+@media (max-width: 400px) {
+  section.carrinho div.niv div.niv-top {
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 2rem;
+  }
+  section.carrinho div.niv div.niv-top span {
+    justify-content: center;
+    align-items: center;
+  }
+  section.carrinho div.niv div.niv-top span h2 {
+    text-align: center;
+  }
+  section.carrinho div.niv div.niv-top span p {
+    text-align: center;
+  }
+  section.carrinho div.niv div.niv-top p {
+    text-align: center;
+  }
+}
+
+div.up {
+  height: 100vh;
+  width: 100vw;
+  background: rgba(0, 0, 0, 0.226);
+  position: fixed;
+  z-index: 66;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  transition: 0.32s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+  /**
+
+  @include responsive(1400px) {}
+  @include responsive(1200px) {}
+  @include responsive(992px) {}
+  @include responsive(730px) {}
+  @include responsive(600px) {}
+
+  **/
+  /**
+
+  @include responsive(1400px) {}
+  @include responsive(1200px) {}
+  @include responsive(992px) {}
+  @include responsive(730px) {}
+  @include responsive(600px) {}
+
+  **/
+}
+div.up [fluid] {
+  position: relative;
+}
+div.up [fluid] div.niv {
+  height: 87.3rem;
+  max-width: 45.7rem;
+  width: 100%;
+  padding: 0;
+  background: #fff;
+  position: relative;
+  box-shadow: 0.4rem 0.9rem 1.3rem rgba(0, 0, 0, 0.1);
+  border-radius: 1.9rem;
+  width: 100%;
+  max-width: 45.7rem;
+  background: #fff;
+  padding: 2.8rem 5.2rem;
+}
+div.up [fluid] div.niv h2 {
+  text-align: center;
+  font-family: "Inter";
+  font-weight: 600;
+  font-size: 3.2rem;
+  line-height: 100%;
+  color: #323b4b;
+  margin-bottom: 2.1rem;
+}
+div.up [fluid] div.niv div.drinks {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  flex-direction: row;
+  gap: 8rem;
+  padding-bottom: 5rem;
+  border-bottom: 0.0662319rem solid #f6f6f8;
+}
+div.up [fluid] div.niv div.drinks div.box {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  flex-direction: column;
+  gap: 1rem;
+  text-align: center;
+}
+div.up [fluid] div.niv div.drinks div.box strong {
+  font-size: 1.8rem;
+  line-height: 120%;
+  letter-spacing: 0.05em;
+  color: #6c7175;
+}
+div.up [fluid] div.niv div.drinks div.box p {
+  font-weight: 500;
+  font-size: 1.1rem;
+  line-height: 120%;
+  letter-spacing: 0.05em;
+  color: #808080;
+}
+div.up [fluid] div.niv div.drinks div.box input[type=checkbox] {
+  height: 2.3rem;
+  width: 3.8rem;
+  border: solid 0.4rem #eb5757;
+  border-radius: 2rem;
+  position: relative;
+  transition: 0.32s;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+}
+div.up [fluid] div.niv div.drinks div.box input[type=checkbox]::after {
+  width: 1.1rem;
+  height: 1.1rem;
+  background: #eb5757;
+  border-radius: 100%;
+  transition: 0.32s;
+  position: absolute;
+  content: "";
+  left: 0.2rem;
+}
+div.up [fluid] div.niv div.drinks div.box input[type=checkbox]:checked {
+  border-color: #27ae60;
+}
+div.up [fluid] div.niv div.drinks div.box input[type=checkbox]:checked::after {
+  background: #27ae60;
+  left: 1.8rem;
+}
+div.up [fluid] div.niv div.drinks div.box picture {
+  width: 5.9rem;
+  height: 11.9rem;
+  overflow: hidden;
+}
+div.up [fluid] div.niv div.drinks div.box picture img {
+  height: 100%;
+  width: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+div.up [fluid] div.niv div.frutas,
+div.up [fluid] div.niv div.adicionais {
+  padding-top: 2.5rem;
+  padding-bottom: 2.1rem;
+}
+div.up [fluid] div.niv div.frutas:not(.adicionais),
+div.up [fluid] div.niv div.adicionais:not(.adicionais) {
+  border-bottom: 0.0662319rem solid #f6f6f8;
+}
+div.up [fluid] div.niv div.frutas strong,
+div.up [fluid] div.niv div.adicionais strong {
+  font-style: normal;
+  font-weight: bold;
+  font-size: 1.1rem;
+  line-height: 120%;
+  letter-spacing: 0.05em;
+  color: #808080;
+  margin-bottom: 2.1rem;
+}
+div.up [fluid] div.niv div.frutas div.boxes,
+div.up [fluid] div.niv div.adicionais div.boxes {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  flex-direction: row;
+  gap: 4.3rem;
+}
+div.up [fluid] div.niv div.frutas div.boxes .box,
+div.up [fluid] div.niv div.adicionais div.boxes .box {
+  width: 100%;
+  max-width: 11.7rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 0.7rem;
+}
+div.up [fluid] div.niv div.frutas div.boxes .box span,
+div.up [fluid] div.niv div.adicionais div.boxes .box span {
+  font-weight: 500;
+  font-size: 1.1rem;
+  line-height: 120%;
+  text-align: center;
+  letter-spacing: 0.05em;
+  color: #808080;
+}
+div.up [fluid] div.niv div.frutas div.boxes .box picture,
+div.up [fluid] div.niv div.adicionais div.boxes .box picture {
+  height: 8.61rem;
+  width: 8.61rem;
+  overflow: hidden;
+}
+div.up [fluid] div.niv div.frutas div.boxes .box picture img,
+div.up [fluid] div.niv div.adicionais div.boxes .box picture img {
+  height: 100%;
+  width: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+div.up [fluid] div.niv div.frutas div.boxes .box input[type=checkbox],
+div.up [fluid] div.niv div.adicionais div.boxes .box input[type=checkbox] {
+  width: 0.927rem;
+  height: 0.927rem;
+  border: 0.1rem solid #d5d5d5;
+  border-radius: 0.1rem;
+  position: relative;
+  transition: 0.32s;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+}
+div.up [fluid] div.niv div.frutas div.boxes .box input[type=checkbox]:checked,
+div.up [fluid] div.niv div.adicionais div.boxes .box input[type=checkbox]:checked {
+  border-color: #27ae60;
+  background: url("/site/assets/img/check_v.svg");
+  background-position: 0 center;
+  background-repeat: no-repeat;
+}
+div.up [fluid] div.niv button {
+  height: 4.3rem;
+  width: 100%;
+  max-width: 21.1rem;
+  margin: 0 auto;
+  margin-top: 3.4rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+  background: #985394;
+  border-radius: 1.5rem;
+  font-style: normal;
+  font-size: 1.3rem;
+  line-height: 120%;
+  letter-spacing: 0.065em;
+  color: #fff;
+  transition: 0.32s;
+}
+div.up [fluid] div.niv button:hover {
+  opacity: 0.7;
+}
+div.up [fluid] div.close {
+  position: absolute;
+  top: 2.6rem;
+  right: 2.8rem;
+  cursor: pointer;
+}
+div.up [fluid] div.close:hover {
+  opacity: 0.7;
+}
+div.up[hide] {
+  transform: scale(0);
+  opacity: 0;
+  pointer-events: none;
+  background: none;
+}
+@media (max-width: 1350px) {
+  div.up [fluid] div.niv {
+    height: auto;
+  }
+  div.up [fluid] div.niv main {
+    width: 100%;
+    max-height: 47rem;
+    overflow-y: scroll;
+  }
+}
+@media (max-width: 400px) {
+  div.up [fluid] div.niv {
+    padding: 2.8rem 3rem;
+  }
+  div.up [fluid] div.niv main {
+    max-height: unset;
+  }
+}
+
+div.super-up {
+  height: 100vh;
+  width: 100vw;
+  background: rgba(0, 0, 0, 0.226);
+  position: fixed;
+  z-index: 66;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  transition: 0.32s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+  /**
+
+  @include responsive(1400px) {}
+  @include responsive(1200px) {}
+  @include responsive(992px) {}
+  @include responsive(730px) {}
+  @include responsive(600px) {}
+
+  **/
+}
+div.super-up [fluid] {
+  position: relative;
+  width: 100%;
+}
+div.super-up [fluid] div.niv {
+  height: 80rem;
+  padding: 0;
+  background: #fff;
+  position: relative;
+  box-shadow: 0.4rem 0.9rem 1.3rem rgba(0, 0, 0, 0.1);
+  border-radius: 1.9rem;
+  width: 100%;
+  background: #fff;
+  padding: 8.4rem 8.7rem 2.4rem;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  flex-direction: row;
+}
+div.super-up [fluid] div.niv main {
+  height: 100%;
+}
+div.super-up [fluid] div.niv main h2 {
+  text-align: center;
+  font-family: "Inter";
+  font-weight: 600;
+  font-size: 3.2rem;
+  line-height: 100%;
+  color: #323b4b;
+  margin-bottom: 2.1rem;
+}
+div.super-up [fluid] div.niv main div.drinks {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  flex-direction: row;
+  gap: 8rem;
+  padding-bottom: 5rem;
+  border-bottom: 0.0662319rem solid #f6f6f8;
+}
+div.super-up [fluid] div.niv main div.drinks div.box {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  flex-direction: column;
+  gap: 1rem;
+  text-align: center;
+}
+div.super-up [fluid] div.niv main div.drinks div.box strong {
+  font-size: 1.8rem;
+  line-height: 120%;
+  letter-spacing: 0.05em;
+  color: #6c7175;
+}
+div.super-up [fluid] div.niv main div.drinks div.box p {
+  font-weight: 500;
+  font-size: 1.1rem;
+  line-height: 120%;
+  letter-spacing: 0.05em;
+  color: #808080;
+}
+div.super-up [fluid] div.niv main div.drinks div.box input[type=checkbox] {
+  height: 2.3rem;
+  width: 3.8rem;
+  border: solid 0.4rem #eb5757;
+  border-radius: 2rem;
+  position: relative;
+  transition: 0.32s;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+}
+div.super-up [fluid] div.niv main div.drinks div.box input[type=checkbox]::after {
+  width: 1.1rem;
+  height: 1.1rem;
+  background: #eb5757;
+  border-radius: 100%;
+  transition: 0.32s;
+  position: absolute;
+  content: "";
+  left: 0.2rem;
+}
+div.super-up [fluid] div.niv main div.drinks div.box input[type=checkbox]:checked {
+  border-color: #27ae60;
+}
+div.super-up [fluid] div.niv main div.drinks div.box input[type=checkbox]:checked::after {
+  background: #27ae60;
+  left: 1.8rem;
+}
+div.super-up [fluid] div.niv main div.drinks div.box picture {
+  width: 5.9rem;
+  height: 11.9rem;
+  overflow: hidden;
+}
+div.super-up [fluid] div.niv main div.drinks div.box picture img {
+  height: 100%;
+  width: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+div.super-up [fluid] div.niv main div.frutas,
+div.super-up [fluid] div.niv main div.adicionais {
+  padding-top: 2.5rem;
+  padding-bottom: 2.1rem;
+}
+div.super-up [fluid] div.niv main div.frutas:not(.adicionais),
+div.super-up [fluid] div.niv main div.adicionais:not(.adicionais) {
+  border-bottom: 0.0662319rem solid #f6f6f8;
+}
+div.super-up [fluid] div.niv main div.frutas strong,
+div.super-up [fluid] div.niv main div.adicionais strong {
+  font-style: normal;
+  font-weight: bold;
+  font-size: 1.1rem;
+  line-height: 120%;
+  letter-spacing: 0.05em;
+  color: #808080;
+  margin-bottom: 2.1rem;
+}
+div.super-up [fluid] div.niv main div.frutas div.boxes,
+div.super-up [fluid] div.niv main div.adicionais div.boxes {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  flex-direction: row;
+  gap: 4.3rem;
+}
+div.super-up [fluid] div.niv main div.frutas div.boxes .box,
+div.super-up [fluid] div.niv main div.adicionais div.boxes .box {
+  width: 100%;
+  max-width: 11.7rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 0.7rem;
+}
+div.super-up [fluid] div.niv main div.frutas div.boxes .box span,
+div.super-up [fluid] div.niv main div.adicionais div.boxes .box span {
+  font-weight: 500;
+  font-size: 1.1rem;
+  line-height: 120%;
+  text-align: center;
+  letter-spacing: 0.05em;
+  color: #808080;
+}
+div.super-up [fluid] div.niv main div.frutas div.boxes .box picture,
+div.super-up [fluid] div.niv main div.adicionais div.boxes .box picture {
+  height: 8.61rem;
+  width: 8.61rem;
+  overflow: hidden;
+}
+div.super-up [fluid] div.niv main div.frutas div.boxes .box picture img,
+div.super-up [fluid] div.niv main div.adicionais div.boxes .box picture img {
+  height: 100%;
+  width: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+div.super-up [fluid] div.niv main div.frutas div.boxes .box input[type=checkbox],
+div.super-up [fluid] div.niv main div.adicionais div.boxes .box input[type=checkbox] {
+  width: 0.927rem;
+  height: 0.927rem;
+  border: 0.1rem solid #d5d5d5;
+  border-radius: 0.1rem;
+  position: relative;
+  transition: 0.32s;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+}
+div.super-up [fluid] div.niv main div.frutas div.boxes .box input[type=checkbox]:checked,
+div.super-up [fluid] div.niv main div.adicionais div.boxes .box input[type=checkbox]:checked {
+  border-color: #27ae60;
+  background: url("/site/assets/img/check_v.svg");
+  background-position: 0 center;
+  background-repeat: no-repeat;
+}
+div.super-up [fluid] div.niv main button {
+  height: 4.3rem;
+  width: 100%;
+  max-width: 21.1rem;
+  margin: 0 auto;
+  margin-top: 3.4rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+  background: #985394;
+  border-radius: 1.5rem;
+  font-style: normal;
+  font-size: 1.3rem;
+  line-height: 120%;
+  letter-spacing: 0.065em;
+  color: #fff;
+  transition: 0.32s;
+}
+div.super-up [fluid] div.niv main button:hover {
+  opacity: 0.7;
+}
+div.super-up [fluid] div.niv aside {
+  width: 100%;
+  overflow: scroll;
+  max-height: 100%;
+}
+div.super-up [fluid] div.niv aside::-webkit-scrollbar {
+  display: none;
+}
+div.super-up [fluid] div.niv aside table {
+  width: 100%;
+  max-width: 56rem;
+  height: 100%;
+}
+div.super-up [fluid] div.niv aside table thead tr th {
+  padding-top: 2.2rem;
+  padding-bottom: 1.6rem;
+  border-bottom: solid 0.1rem #e7ebee;
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: normal;
+  font-size: 1.4rem;
+  line-height: 100%;
+  text-align: center;
+  color: #323b4b;
+}
+div.super-up [fluid] div.niv aside table tbody tr {
+  height: 12.1rem;
+}
+div.super-up [fluid] div.niv aside table tbody tr:not(:last-child) td {
+  border-bottom: solid 0.1rem #e7ebee;
+}
+div.super-up [fluid] div.niv aside table tbody tr td {
+  text-align: center;
+}
+div.super-up [fluid] div.niv aside table tbody tr td picture.foto-produto {
+  height: 8.4rem;
+  width: 100%;
+  max-width: 8.1rem;
+  border-radius: 2rem;
+  overflow: hidden;
+}
+div.super-up [fluid] div.niv aside table tbody tr td picture.foto-produto img {
+  height: 100%;
+  width: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+div.super-up [fluid] div.niv aside table tbody tr td strong.nome-produto {
+  font-weight: 500;
+  font-size: 1.6rem;
+  line-height: 100%;
+  color: #323b4b;
+}
+div.super-up [fluid] div.niv aside table tbody tr td p.descricao-produto {
+  font-size: 1.4rem;
+  line-height: 100%;
+  text-align: center;
+  color: #323b4b;
+}
+div.super-up [fluid] div.niv aside table tbody tr td input {
+  height: 4.8rem;
+  width: 11.4rem;
+  margin: auto auto;
+  border: 0.1rem solid #cfdbdd;
+  border-radius: 0.8rem;
+  text-align: center;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 1.6rem;
+  line-height: 100%;
+  color: #323b4b;
+}
+div.super-up [fluid] div.close {
+  position: absolute;
+  top: 2.6rem;
+  right: 2.8rem;
+  cursor: pointer;
+}
+div.super-up [fluid] div.close:hover {
+  opacity: 0.7;
+}
+div.super-up[hide] {
+  transform: scale(0);
+  opacity: 0;
+  pointer-events: none;
+  background: none;
+}
+@media (max-width: 1280px) {
+  div.super-up [fluid] {
+    background: #fff;
+    overflow: scroll;
+    height: 100vh;
+    padding: 0;
+  }
+  div.super-up [fluid] div.niv {
+    box-shadow: none;
+    width: 100vw;
+    height: unset;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    flex-direction: column-reverse;
+    gap: 6rem;
+  }
+  div.super-up [fluid] div.niv aside {
+    height: 70rem;
+    overflow: unset;
+    display: block;
+    overflow-x: scroll;
+  }
+  div.super-up [fluid] div.niv aside::-webkit-scrollbar {
+    display: unset;
+  }
+  div.super-up [fluid] div.niv aside table {
+    width: 56rem;
+  }
+}
+
+body#orcamento-lista {
+  /**
+
+  @include responsive(1400px) {}
+  @include responsive(1200px) {}
+  @include responsive(992px) {}
+  @include responsive(730px) {}
+  @include responsive(600px) {}
+
+  **/
+  /**
+
+  @include responsive(1400px) {}
+  @include responsive(1200px) {}
+  @include responsive(992px) {}
+  @include responsive(730px) {}
+  @include responsive(600px) {}
+
+  **/
+  /**
+
+  @include responsive(1400px) {}
+  @include responsive(1200px) {}
+  @include responsive(992px) {}
+  @include responsive(730px) {}
+  @include responsive(600px) {}
+
+  **/
+}
+body#orcamento-lista section.coqueteis-lista div.niv div.list-top {
+  padding-top: 3.5rem;
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  flex-direction: row;
+  margin-bottom: 4.9rem;
+  width: 100%;
+}
+body#orcamento-lista section.coqueteis-lista div.niv div.list-top span {
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  flex-direction: column;
+  gap: 2rem;
+}
+body#orcamento-lista section.coqueteis-lista div.niv div.list-top span h2 {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 3.2rem;
+  line-height: 120%;
+  color: #151515;
+}
+body#orcamento-lista section.coqueteis-lista div.niv div.list-top span p {
+  font-weight: 500;
+  font-size: 1.8rem;
+  line-height: 120%;
+  /* identical to box height, or 22px */
+  /* Cinza 1 */
+  color: #151515;
+}
+body#orcamento-lista section.coqueteis-lista div.niv div.list-top p {
+  font-size: 1.8rem;
+  line-height: 150%;
+  /* or 27px */
+  text-align: right;
+  letter-spacing: 0.02em;
+  color: #260530;
+}
+body#orcamento-lista section.coqueteis-lista div.niv div.list-top p i {
+  font-weight: bold;
+  font-style: normal;
+  position: relative;
+}
+body#orcamento-lista section.coqueteis-lista div.niv div.list-top p i::after {
+  height: 1.2rem;
+  width: 12.6rem;
+  content: "";
+  position: absolute;
+  background: url("/site/assets/img/text_draw.svg");
+  background-size: 100% 100%;
+  bottom: -1.2rem;
+  right: -1rem;
+}
+body#orcamento-lista section.coqueteis-drinks {
+  overflow: hidden;
+}
+body#orcamento-lista section.coqueteis-drinks div.niv div.niv-top {
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  flex-direction: column;
+  gap: 1rem;
+  margin-bottom: 6.5rem;
+}
+body#orcamento-lista section.coqueteis-drinks div.niv div.niv-top h2 {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 3.2rem;
+  line-height: 120%;
+  color: #260530;
+}
+body#orcamento-lista section.coqueteis-drinks div.niv div.niv-top h2 i {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 3.2rem;
+  line-height: 120%;
+  /* or 38px */
+  color: #323b4b;
+  position: relative;
+}
+body#orcamento-lista section.coqueteis-drinks div.niv div.niv-top h2 i::after {
+  height: 1.2rem;
+  width: 12.6rem;
+  content: "";
+  position: absolute;
+  background: url("/site/assets/img/text_draw_purple.svg");
+  background-size: 100% 100%;
+  bottom: -1.2rem;
+  right: -1rem;
+}
+body#orcamento-lista section.coqueteis-drinks div.niv div.niv-content div.box {
+  height: 66.3rem;
+  transition: 1s;
+  transition-delay: 0s;
+}
+body#orcamento-lista section.coqueteis-drinks div.niv div.niv-content div.box[niv-fade] {
+  opacity: 0;
+  transform: translateY(45px);
+}
+body#orcamento-lista section.coqueteis-drinks div.niv div.niv-content div.box:hover {
+  transform: none;
+}
+body#orcamento-lista section.coqueteis-drinks div.niv div.niv-content div.box div {
+  margin-top: 2.9rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+body#orcamento-lista section.coqueteis-drinks div.niv div.niv-content div.box div strong {
+  margin-top: 1.2rem;
+  font-family: Inter;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 15px;
+  line-height: 120%;
+  /* identical to box height, or 18px */
+  text-align: center;
+  letter-spacing: 0.05em;
+  /* Cinza */
+  color: #808080;
+}
+body#orcamento-lista section.coqueteis-drinks div.niv div.niv-content div.box div p,
+body#orcamento-lista section.coqueteis-drinks div.niv div.niv-content div.box div img {
+  margin-top: 0.9rem;
+  font-family: Inter;
+  font-style: normal;
+  font-weight: 300;
+  font-size: 15px;
+  line-height: 120%;
+  /* identical to box height, or 18px */
+  text-align: center;
+  letter-spacing: 0.05em;
+  /* Cinza */
+  color: #808080;
+}
+body#orcamento-lista section.coqueteis-drinks div.niv div.niv-content div.box div span {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+  gap: 0.7rem;
+}
+body#orcamento-lista section.coqueteis-drinks div.niv div.niv-content div.box input[type=checkbox] {
+  height: 3.9rem;
+  width: 6.1rem;
+  margin-top: 2.7rem;
+  border: solid 0.6rem #eb5757;
+  border-radius: 2rem;
+  position: relative;
+  transition: 0.32s;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+}
+body#orcamento-lista section.coqueteis-drinks div.niv div.niv-content div.box input[type=checkbox]::after {
+  width: 2.1rem;
+  height: 2.1rem;
+  background: #eb5757;
+  border-radius: 100%;
+  transition: 0.32s;
+  position: absolute;
+  content: "";
+  left: 0.4rem;
+}
+body#orcamento-lista section.coqueteis-drinks div.niv div.niv-content div.box input[type=checkbox]:checked {
+  border-color: #27ae60;
+}
+body#orcamento-lista section.coqueteis-drinks div.niv div.niv-content div.box input[type=checkbox]:checked::after {
+  background: #27ae60;
+  left: 2.5rem;
+}
+body#orcamento-lista div.next-step {
+  position: fixed;
+  height: 27.8rem;
+  width: 27.8rem;
+  top: 0;
+  bottom: 0;
+  margin: auto 0;
+  right: 3.2rem;
+  z-index: 6;
+  filter: drop-shadow(4px 8px 11px rgba(69, 36, 79, 0.3));
+  border-radius: 2.3rem;
+  background: #45244f;
+  padding: 5.1rem 3.9rem;
+}
+body#orcamento-lista div.next-step h2 {
+  color: #fff;
+  font-size: 3.1rem;
+  line-height: 100%;
+  letter-spacing: 0.05em;
+}
+body#orcamento-lista div.next-step h2 i {
+  color: #e5db00;
+  font-style: normal;
+  font-size: 3.1rem;
+  line-height: 100%;
+  letter-spacing: 0.05em;
+}
+body#orcamento-lista div.next-step p {
+  font-style: normal;
+  font-weight: 300;
+  font-size: 1.2rem;
+  line-height: 120%;
+  letter-spacing: 0.05em;
+  color: #fff;
+  margin-top: 2rem;
+}
+body#orcamento-lista div.next-step a {
+  width: 20rem;
+  height: 3.4rem;
+  color: #fff;
+  background: #985394;
+  font-size: 1.5rem;
+  border-radius: 1.1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+  margin-top: 5.3rem;
+  transition: 0.32s;
+}
+body#orcamento-lista div.next-step a:hover {
+  background: #e5db00;
+  color: #260530;
+}
+@media (max-width: 1280px) {
+  body#orcamento-lista section.coqueteis-drinks div.niv div.niv-content {
+    max-width: 85%;
+  }
+  body#orcamento-lista div.next-step {
+    top: unset;
+    bottom: 1.5rem;
+  }
+}
+@media (max-width: 800px) {
+  body#orcamento-lista section.coqueteis-lista div.niv div.list-top {
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    gap: 2rem;
+  }
+  body#orcamento-lista section.coqueteis-drinks div.niv div.niv-content {
+    max-width: 100%;
+  }
+  body#orcamento-lista section.coqueteis-drinks div.niv div.niv-content div.box {
+    box-shadow: none;
+  }
+}
+@media (max-width: 400px) {
+  body#orcamento-lista section.coqueteis-drinks div.niv div.niv-top {
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+  }
+  body#orcamento-lista section.coqueteis-drinks div.niv div.niv-top h2 {
+    font-size: 2.5rem;
+  }
+  body#orcamento-lista section.coqueteis-drinks div.niv div.niv-top h2 i {
+    font-size: 2.5rem;
+  }
+}
+
+body#orcamento-confirm {
+  /**
+
+  @include responsive(1400px) {}
+  @include responsive(1200px) {}
+  @include responsive(992px) {}
+  @include responsive(730px) {}
+  @include responsive(600px) {}
+
+  **/
+  /**
+
+  @include responsive(1400px) {}
+  @include responsive(1200px) {}
+  @include responsive(992px) {}
+  @include responsive(730px) {}
+  @include responsive(600px) {}
+
+  **/
+  /**
+
+  @include responsive(1400px) {}
+  @include responsive(1200px) {}
+  @include responsive(992px) {}
+  @include responsive(730px) {}
+  @include responsive(600px) {}
+
+  **/
+}
+body#orcamento-confirm div.next-step {
+  position: fixed;
+  height: 31rem;
+  width: 27.8rem;
+  top: 0;
+  bottom: 0;
+  margin: auto 0;
+  right: 3.2rem;
+  z-index: 6;
+  filter: drop-shadow(4px 8px 11px rgba(69, 36, 79, 0.3));
+  border-radius: 2.3rem;
+  background: #45244f;
+  padding: 4.4rem 3.9rem;
+}
+body#orcamento-confirm div.next-step h2 {
+  color: #fff;
+  font-size: 3.1rem;
+  line-height: 100%;
+  letter-spacing: 0.05em;
+  font-family: "Inter", sans-serif;
+  font-weight: bold;
+}
+body#orcamento-confirm div.next-step h2 i {
+  color: #e5db00;
+  font-style: normal;
+  font-size: 3.1rem;
+  line-height: 100%;
+  letter-spacing: 0.05em;
+}
+body#orcamento-confirm div.next-step p {
+  font-style: normal;
+  font-weight: 300;
+  font-size: 1.2rem;
+  line-height: 120%;
+  letter-spacing: 0.05em;
+  color: #fff;
+  margin-top: 2rem;
+}
+body#orcamento-confirm div.next-step p:last-child {
+  font-size: 1rem;
+}
+body#orcamento-confirm div.next-step a {
+  width: 20rem;
+  height: 3.4rem;
+  color: #fff;
+  background: #985394;
+  font-size: 1.5rem;
+  border-radius: 1.1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+  margin-top: 5.3rem;
+  transition: 0.32s;
+}
+body#orcamento-confirm div.next-step a:hover {
+  background: #e5db00;
+  color: #260530;
+}
+body#orcamento-confirm section.coqueteis-lista div.niv div.list-top {
+  padding-top: 3.5rem;
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  flex-direction: row;
+  margin-bottom: 4.9rem;
+  width: 100%;
+}
+body#orcamento-confirm section.coqueteis-lista div.niv div.list-top span {
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  flex-direction: column;
+  gap: 2rem;
+}
+body#orcamento-confirm section.coqueteis-lista div.niv div.list-top span h2 {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 3.2rem;
+  line-height: 120%;
+  color: #151515;
+}
+body#orcamento-confirm section.coqueteis-lista div.niv div.list-top span p {
+  font-weight: 500;
+  font-size: 1.8rem;
+  line-height: 120%;
+  /* identical to box height, or 22px */
+  /* Cinza 1 */
+  color: #151515;
+}
+body#orcamento-confirm section.coqueteis-lista div.niv div.list-top p {
+  font-size: 1.8rem;
+  line-height: 150%;
+  /* or 27px */
+  text-align: right;
+  letter-spacing: 0.02em;
+  color: #260530;
+}
+body#orcamento-confirm section.coqueteis-lista div.niv div.list-top p i {
+  font-weight: bold;
+  font-style: normal;
+  position: relative;
+}
+body#orcamento-confirm section.coqueteis-lista div.niv div.list-top p i::after {
+  height: 1.2rem;
+  width: 12.6rem;
+  content: "";
+  position: absolute;
+  background: url("/site/assets/img/text_draw.svg");
+  background-size: 100% 100%;
+  bottom: -1.2rem;
+  right: -1rem;
+}
+body#orcamento-confirm section.coqueteis-filtro {
+  padding-top: 11.9rem;
+}
+body#orcamento-confirm section.coqueteis-filtro div.niv {
+  justify-content: flex-end;
+}
+body#orcamento-confirm section.coqueteis-filtro div.niv div.filtro strong {
+  color: red;
+}
+body#orcamento-confirm section.coqueteis-drinks {
+  overflow: hidden;
+  min-height: 100rem;
+}
+body#orcamento-confirm section.coqueteis-drinks div.niv div.niv-top {
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  flex-direction: column;
+  gap: 1rem;
+  margin-bottom: 6.5rem;
+}
+body#orcamento-confirm section.coqueteis-drinks div.niv div.niv-top h2 {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 3.2rem;
+  line-height: 120%;
+  color: #260530;
+}
+body#orcamento-confirm section.coqueteis-drinks div.niv div.niv-top h2 i {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 3.2rem;
+  line-height: 120%;
+  /* or 38px */
+  color: #323b4b;
+  position: relative;
+}
+body#orcamento-confirm section.coqueteis-drinks div.niv div.niv-top h2 i::after {
+  height: 1.2rem;
+  width: 12.6rem;
+  content: "";
+  position: absolute;
+  background: url("/site/assets/img/text_draw_purple.svg");
+  background-size: 100% 100%;
+  bottom: -1.2rem;
+  right: -1rem;
+}
+body#orcamento-confirm section.coqueteis-drinks div.niv div.niv-content {
+  gap: 0;
+}
+body#orcamento-confirm section.coqueteis-drinks div.niv div.niv-content div.box {
+  height: 26.8rem;
+  max-width: 59.2rem;
+  transition: 1s;
+  transition-delay: 0s;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-direction: row;
+  position: relative;
+  margin-left: 1.5rem;
+  margin-top: 1.5rem;
+  cursor: default;
+  padding: 2.6rem 2.5rem 2.5rem 3.2rem;
+}
+body#orcamento-confirm section.coqueteis-drinks div.niv div.niv-content div.box[niv-fade] {
+  opacity: 0;
+  transform: translateY(45px);
+}
+body#orcamento-confirm section.coqueteis-drinks div.niv div.niv-content div.box picture {
+  max-width: 14.4rem;
+  height: 21.7rem;
+}
+body#orcamento-confirm section.coqueteis-drinks div.niv div.niv-content div.box:hover {
+  transform: none;
+}
+body#orcamento-confirm section.coqueteis-drinks div.niv div.niv-content div.box main {
+  margin-top: 2.9rem;
+  background: #fafafa;
+  box-shadow: 2.2388px 3.35821px 5.97014px rgba(0, 0, 0, 0.1);
+  border-radius: 7.46268px;
+  padding: 2.4rem 1.7rem;
+  height: 8.4rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-direction: row;
+}
+body#orcamento-confirm section.coqueteis-drinks div.niv div.niv-content div.box main strong {
+  font-family: Inter;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 1.2rem;
+  line-height: 120%;
+  /* identical to box height, or 18px */
+  text-align: center;
+  letter-spacing: 0.05em;
+  /* Cinza */
+  color: #808080;
+  margin-top: 0;
+}
+body#orcamento-confirm section.coqueteis-drinks div.niv div.niv-content div.box main p,
+body#orcamento-confirm section.coqueteis-drinks div.niv div.niv-content div.box main img {
+  font-family: Inter;
+  font-style: normal;
+  font-weight: 300;
+  font-size: 1.2rem;
+  line-height: 120%;
+  /* identical to box height, or 18px */
+  text-align: center;
+  letter-spacing: 0.05em;
+  /* Cinza */
+  color: #808080;
+  margin-top: 0;
+}
+body#orcamento-confirm section.coqueteis-drinks div.niv div.niv-content div.box main span {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+  gap: 0.7rem;
+}
+body#orcamento-confirm section.coqueteis-drinks div.niv div.niv-content div.box main div {
+  gap: 0.72rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  max-width: 36.6rem;
+}
+body#orcamento-confirm section.coqueteis-drinks div.niv div.niv-content div.box span {
+  text-align: left;
+  max-width: 36.6rem;
+}
+body#orcamento-confirm section.coqueteis-drinks div.niv div.niv-content div.box span p {
+  color: #808080;
+}
+body#orcamento-confirm section.coqueteis-drinks div.niv div.niv-content div.box button.remove {
+  position: absolute;
+  right: 2.5rem;
+  top: 2.6rem;
+}
+body#orcamento-confirm section.coqueteis-drinks div.niv div.niv-content div.box button.remove svg path {
+  transition: 0.32s;
+}
+body#orcamento-confirm section.coqueteis-drinks div.niv div.niv-content div.box button.remove:hover svg path {
+  stroke: red;
+}
+body#orcamento-confirm section.coqueteis-drinks div.niv div.niv-content div.box div.stars {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+  gap: 0.5rem;
+}
+body#orcamento-confirm section.coqueteis-drinks div.niv div.niv-content div.box div.stars img {
+  height: 1.8rem;
+  width: 1.8rem;
+}
+@media (max-width: 1280px) {
+  body#orcamento-confirm section.coqueteis-drinks div.niv div.niv-content {
+    max-width: 85%;
+  }
+  body#orcamento-confirm div.next-step {
+    top: unset;
+    bottom: 1.5rem;
+  }
+}
+@media (max-width: 800px) {
+  body#orcamento-confirm section.coqueteis-lista div.niv div.list-top {
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    gap: 2rem;
+  }
+  body#orcamento-confirm section.coqueteis-drinks div.niv div.niv-content {
+    max-width: 100%;
+  }
+  body#orcamento-confirm section.coqueteis-drinks div.niv div.niv-content div.box {
+    box-shadow: none;
+  }
+}
+@media (max-width: 400px) {
+  body#orcamento-confirm section.coqueteis-drinks div.niv div.niv-top {
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+  }
+  body#orcamento-confirm section.coqueteis-drinks div.niv div.niv-top h2 {
+    font-size: 2.5rem;
+  }
+  body#orcamento-confirm section.coqueteis-drinks div.niv div.niv-top h2 i {
+    font-size: 2.5rem;
+  }
+  body#orcamento-confirm section.coqueteis-drinks div.niv div.niv-content div.box {
+    flex-direction: column;
+    height: unset;
+    gap: 2rem;
+  }
+}
+
+body#orcamento-carrinho div.next-step {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  margin: auto 0;
+  right: 0;
+  z-index: 6;
+  display: block;
+  height: 17.4rem;
+  cursor: pointer;
+}
+
+div.modal {
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  right: 0;
+  z-index: 7;
+  opacity: 0;
+  pointer-events: none;
+  transition: 0.32s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+}
+div.modal[show] {
+  opacity: 1;
+  pointer-events: all;
+}
+div.modal[show] div.niv .box {
+  top: 0;
+  opacity: 1;
+}
+div.modal .niv {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+}
+div.modal .niv .box {
+  z-index: 2;
+  height: 55.3rem;
+  width: 100%;
+  max-width: 59.6rem;
+  transition: 0.32s;
+  background: #fff;
+  border: 1px solid #dfdfdf;
+  box-sizing: border-box;
+  box-shadow: 0px 4px 80px 20px rgba(0, 0, 0, 0.25);
+  border-radius: 15px;
+  position: relative;
+  top: -15rem;
+  opacity: 0;
+  padding: 3rem;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 3rem;
+}
+div.modal .niv .box h2,
+div.modal .niv .box p {
+  max-width: 34.2rem;
+}
+div.modal .niv .box p {
+  font-weight: 500;
+  font-size: 1.8rem;
+  line-height: 120%;
+  text-align: center;
+  color: #323b4b;
+}
+div.modal .niv .box h2 {
+  font-family: Inter;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 3.2rem;
+  line-height: 120%;
+  text-align: center;
+  color: #323b4b;
+}
+div.modal .niv .box button {
+  font-style: normal;
+  font-weight: bold;
+  font-size: 2rem;
+  line-height: 6rem;
+  letter-spacing: 0.01em;
+  text-align: center;
+  color: #260530;
+  height: 6rem;
+  background: #e5db00;
+  border-bottom: 3.2rem;
+  width: 100%;
+  max-width: 30.9rem;
+  transition: 0.32s;
+  padding: 0 4.1rem;
+  border-radius: 3rem;
+}
+div.modal .niv .box button:hover {
+  color: #fff;
+  background: #56076d;
+}
+div.modal .niv .box div.button_list {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+  gap: 2rem;
+  flex-wrap: nowrap;
+  /**
+
+  @include responsive(1400px) {}
+  @include responsive(1200px) {}
+  @include responsive(992px) {}
+  @include responsive(730px) {}
+  @include responsive(600px) {}
+
+  **/
+}
+div.modal .niv .box div.button_list button.alert {
+  background: #985394;
+  color: #fff;
+}
+div.modal .niv .box div.button_list button.alert:hover {
+  border: 0.1rem solid darkred;
+}
+div.modal .niv .box div.button_list button.cancel {
+  background: #fff;
+  color: #6c7175;
+}
+div.modal .niv .box div.button_list button.cancel:hover {
+  opacity: 0.7;
+}
+@media (max-width: 400px) {
+  div.modal .niv .box div.button_list {
+    flex-direction: column;
+  }
+}
+div.modal .close-modal {
+  background-color: rgba(0, 0, 0, 0.39);
+  cursor: pointer;
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  z-index: 1;
+  content: "";
 }

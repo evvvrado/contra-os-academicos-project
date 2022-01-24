@@ -73,11 +73,14 @@ var empty;
 
 })(jQuery);
 
-$('.close-modal').click(() => {
-  $('.modal_box').hideModal()
+$('.modal .close-modal').click(function () {
+  $($(this).closest('.modal')).hideModal()
 })
 
 
+$('.modal button.cancel').click(function () {
+  $($(this).closest('.modal')).hideModal()
+})
 // NIV-FADE
 
 $(document).ready(() => {
@@ -192,6 +195,7 @@ $('a[href*="#"]')
 $('form label input[name = "telefone"]').mask("(00) 00000-0000");
 $('form label input[name = "expiracao"]').mask("00/0000");
 $('form label input[name= "numero"]').mask("0000 0000 0000 0000");
+$('form label input[name= "cep"]').mask("00.000-000");
 
 function number_format(number, decimals, dec_point, thousands_sep) {
     number = (number + '').replace(/[^0-9+\-Ee.]/g, '');
@@ -327,6 +331,19 @@ $(document).ready(function () {
         }
     })
 
+    $('section.coqueteis-filtro div.niv div.filtro,div.modal-filtro [fluid] div.niv div.close').click(() => {
+        $('div.modal-filtro').toggleAttr('hide');
+    })
+
+    $('div.up [fluid] div.close, button.upgrade-produto').click(() => {
+        $('div.up').toggleAttr('hide');
+    })
+
+    $('div.super-up [fluid] div.close, body#orcamento-carrinho div.next-step').click(() => {
+
+        $('div.super-up').toggleAttr('hide');
+    })
+
 })
 
 
@@ -419,3 +436,56 @@ setInterval(() => {
         i_N = 1;
     }
 }, 5000)
+
+
+
+// ORÇAMENTO
+
+$('section.coqueteis-filtro div.niv div.filtros input[type=range][name=caloria], section.coqueteis-filtro div.niv div.filtros input[type=range][name=teor], section.coqueteis-filtro div.niv div.filtros input[type=checkbox][name=visitado], section.coqueteis-filtro div.niv div.filtros input[type=checkbox][name=lancamento]').change(function () {
+    filtrar();
+})
+
+function filtrar() {
+    var boxes = $('section.coqueteis-drinks div.niv div.niv-content div.box');
+    var rangeTeor = $('section.coqueteis-filtro div.niv div.filtros input[type=range][name=teor]').val();
+    var rangeCaloria = $('section.coqueteis-filtro div.niv div.filtros input[type=range][name=caloria]').val();
+    var checkVisitado = $('section.coqueteis-filtro div.niv div.filtros input[type=checkbox][name=visitado]').is(':checked');
+    var checkLancamento = $('section.coqueteis-filtro div.niv div.filtros input[type=checkbox][name=lancamento]').is(':checked');
+
+
+
+    boxes.each(function () {
+
+        var boxCal = $(this).data('cal'),
+            boxTeor = $(this).data('teor'),
+
+            isVisitada = $(this).is('[visitado]'),
+            isLancamento = $(this).is('[lancamento]'),
+
+            verifyCal = (boxCal >= rangeCaloria) ? true : false,
+            verifyTeor = (boxTeor >= rangeTeor) ? true : false,
+
+            verifyVisitado = true,
+            verifyLancamento = true;
+
+        if (checkVisitado) {
+            verifyVisitado = (isVisitada == checkVisitado) ? true : false;
+        }
+        if (checkLancamento) {
+            verifyLancamento = (isLancamento == checkLancamento) ? true : false;
+        }
+
+
+        if (verifyCal && verifyTeor && verifyVisitado && verifyLancamento) {
+            $(this).removeAttr('hide');
+        }
+        else {
+            $(this).attr('hide', '');
+        }
+    })
+
+}
+
+$('body#orcamento-confirm section.coqueteis-drinks div.niv div.niv-content div.box button.remove').click(function () {
+    $($(this).closest('div.box')).attr('hide', '');
+})
