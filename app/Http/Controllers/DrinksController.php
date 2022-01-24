@@ -24,7 +24,10 @@ class DrinksController extends Controller
         $drinks->save();
 
         $drinks_ingrediente = new DrinksIngrediente;
-        $ingredientes = $request->ingrediente;
+        $ingredientes = $request->ingredientes;
+
+        count($ingredientes);
+
         foreach ($ingredientes as $ingrediente) {
             $valor = $valor * 2;
         }
