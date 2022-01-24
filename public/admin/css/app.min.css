@@ -1,10 +1,10 @@
 @import url(https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700&amp;display=swap);
 :root {
-    --principal: #19a5d3;
+    --principal: #56076D;
     --branco1: white;
     --preto1: black;
     --preto2: #141111;
-    --secundaria: #fbff36;
+    --secundaria: #323B4B;
 }
 
 form > h4 {
@@ -47,7 +47,7 @@ form > h4 {
     height: 70px;
     padding: 0 calc(24px / 2) 0 0;
 
-    background: linear-gradient(29.43deg, #1ad7d7 -10.45%, #165fcd 159.12%);
+    background: linear-gradient(29.43deg, var(--principal) -10.45%, var(--secundaria) 159.12%);
 }
 
 .navbar-header .dropdown .show.header-item {
@@ -719,7 +719,7 @@ body[data-layout="horizontal"] .footer {
 }
 
 body[data-sidebar="dark"] .vertical-menu {
-    background: linear-gradient(45.59deg, #1ad7d7 32.54%, #165fcd 122.34%);
+    background: linear-gradient(45.59deg, var(--principal) 32.54%, var(--secundaria) 122.34%);
 }
 
 body[data-sidebar="dark"] #sidebar-menu ul li a {
@@ -3977,7 +3977,7 @@ table.dataTable.dtr-inline.collapsed > tbody > tr > td.dtr-control:before {
 }
 
 .auth-body-bg.login-sistema {
-    background-image: linear-gradient(29.43deg, #1ad7d7 -10.45%, #165fcd 159.12%);
+    background-image: linear-gradient(29.43deg, var(--principal) -10.45%, var(--secundaria) 159.12%);
 }
 
 .auth-pass-inputgroup input[type="input"] + .btn .mdi-eye-outline:before {

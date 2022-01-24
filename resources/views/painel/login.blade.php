@@ -11,15 +11,9 @@
     <link rel="shortcut icon" href="{{ asset('admin/images/favicon.ico') }}" />
 
     <!-- owl.carousel css -->
-    <link rel="stylesheet" href="{{
-                asset('admin/libs/owl.carousel/owl.carousel.min.css')
-            }}" />
+    <link rel="stylesheet" href="{{asset('admin/libs/owl.carousel/owl.carousel.min.css')}}" />
 
-    <link rel="stylesheet" href="{{
-                asset(
-                    'admin/libs/owl.carousel/owl.theme.default.min.css'
-                )
-            }}" />
+    <link rel="stylesheet" href="{{asset('admin/libs/owl.carousel/owl.theme.default.min.css')}}" />
 
     <!-- Bootstrap Css -->
     <link href="{{ asset('admin/css/bootstrap.min.css') }}" id="bootstrap-style" rel="stylesheet" type="text/css" />
@@ -65,7 +59,7 @@
                                 <a href="index.html" class="auth-logo-dark">
                                     <div class="avatar-md profile-user-wid mb-4">
                                         <span class="avatar-title rounded-circle bg-light">
-                                            <img src="{{ asset('site/img/enafCircle_color.png') }}" alt="" class="rounded-circle" height="34">
+                                            <img src="{{ asset('site/img/_logo_58.svg') }}" alt="" class="rounded-circle" height="34">
                                         </span>
                                     </div>
                                 </a>
@@ -96,7 +90,7 @@
                                     </div> --}}
 
                                     <div class="mt-3 d-grid">
-                                        <button class="btn btn-primary waves-effect waves-light" style="background-color: #1ac7d6;color: white;" type="submit">Entrar</button>
+                                        <button class="btn btn-primary waves-effect waves-light" type="submit">Entrar</button>
                                     </div>
 
                                     {{-- <div class="mt-4 text-center">

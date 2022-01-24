@@ -15,7 +15,7 @@ $usuario = \App\Models\Usuario::find(session()->get('usuario')['id']);
     <meta name="_token" content="{{ csrf_token() }}">
 
     <!-- App favicon -->
-    <link rel="shortcut icon" href="{{ asset('admin/images/favicon.ico') }}">
+    <link rel="shortcut icon" href="{{ asset('site/img/_logo57.svg') }}">
 
     <!-- Bootstrap Css -->
     <link href="{{ asset('admin/css/bootstrap.min.css') }}" id="bootstrap-style" rel="stylesheet" type="text/css" />
@@ -51,7 +51,7 @@ $usuario = \App\Models\Usuario::find(session()->get('usuario')['id']);
 
                         <a href="{{ route('painel.index') }}" class="logo logo-light">
                             <span class="logo-sm">
-                                <img src="{{ asset('site/img/enafCircle.svg') }}" alt="" width="22">
+                                <img src="{{ asset('site/img/_logo57.svg') }}" alt="" width="22">
                             </span>
                             <span class="logo-lg">
                                 <img class="" src=" {{ asset('site/img/_logo57.svg') }}" alt="" height="44">
@@ -211,7 +211,7 @@ $usuario = \App\Models\Usuario::find(session()->get('usuario')['id']);
                     <div class="dropdown d-inline-block">
                         <button type="button" class="btn header-item waves-effect" id="page-header-user-dropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             <img class="rounded-circle header-profile-user" @if ($usuario->foto) src="{{ asset($usuario->foto) }}"
-                            @else src="{{ asset('site/img/enafCircle.svg') }}"
+                            @else src="{{ asset('site/img/_logo57.svg') }}"
                             @endif
                             alt="Header Avatar">
                             <span class="d-none d-xl-inline-block ms-1" style="color: white;" key="t-henry">{{ session()->get('usuario')['nome'] }}</span>
@@ -259,24 +259,6 @@ $usuario = \App\Models\Usuario::find(session()->get('usuario')['id']);
 
                         <li>
                             <a href="javascript: void(0);" class="waves-effect">
-                                <i class="bx bx-briefcase-alt-2" aria-hidden="true"></i>
-                                <span key="t-dashboards">Projeto</span>
-                            </a>
-                            <ul class="sub-menu" aria-expanded="false">
-                                <li><a href="{{ route('painel.eventos') }}" key="t-default">Eventos</a></li>
-                                <li><a href="{{ route('painel.clinicas') }}" key="t-default">Congressos</a></li>
-                                <li><a href="{{ route('painel.cursos') }}" key="t-default">Cursos</a></li>
-                                <li><a href="{{ route('painel.alunos') }}" key="t-default">Alunos</a></li>
-                                <li><a href="{{ route('painel.professores') }}" key="t-default">Professores</a></li>
-                            </ul>
-
-                        </li>
-
-
-
-
-                        <li>
-                            <a href="javascript: void(0);" class="waves-effect">
                                 <i class="bx bx-news" aria-hidden="true"></i>
                                 <span key="t-dashboards">Blog</span>
                             </a>
@@ -286,35 +268,17 @@ $usuario = \App\Models\Usuario::find(session()->get('usuario')['id']);
                             </ul>
                         </li>
 
-
-
                         <li>
                             <a href="javascript: void(0);" class="waves-effect">
-                                <i class="bx bx-list-ul" aria-hidden="true"></i>
-                                <span key="t-dashboards">Catálogo</span>
+                                <i class="bx bx-select-multiple" aria-hidden="true"></i>
+                                <span key="t-dashboards">Produtos</span>
                             </a>
                             <ul class="sub-menu" aria-expanded="false">
-                                <li><a href="{{ route('painel.categorias') }}" key="t-default">Anunciantes</a></li>
-                                <li><a href="{{ route('painel.expositores') }}" key="t-default">Expositores</a></li>
+                                <li><a href="{{ route('painel.drinks') }}" key="t-default">Drinks</a></li>
+                                <li><a href="{{ route('painel.ingredientes') }}" key="t-default">Ingredientes</a></li>
+                                <li><a href="{{ route('painel.ingredientecats') }}" key="t-default">Categorias de Ingrediente</a></li>
                             </ul>
                         </li>
-
-
-
-
-                        <li>
-                            <a href="javascript: void(0);" class="waves-effect">
-                                <i class="bx bx-tv" aria-hidden="true"></i>
-                                <span key="t-dashboards">Publicidade</span>
-                            </a>
-                            <ul class="sub-menu" aria-expanded="false">
-                                <li><a href="{{ route('painel.anuncios') }}" key="t-default">Anúncios</a></li>
-                                <li><a href="{{ route('painel.patrocinadores') }}" key="t-default">Patrocinadores</a>
-                                </li>
-                                <li><a href="{{ route('painel.apoio') }}" key="t-default">Apoio</a></li>
-                            </ul>
-                        </li>
-
 
                         <li>
                             <a href="javascript: void(0);" class="waves-effect">
@@ -322,27 +286,10 @@ $usuario = \App\Models\Usuario::find(session()->get('usuario')['id']);
                                 <span key="t-dashboards">Institucional</span>
                             </a>
                             <ul class="sub-menu" aria-expanded="false">
-                                <li><a href="{{ route('painel.galeria') }}" key="t-default">Galeria</a></li>
                                 <li><a href="{{ route('painel.depoimento') }}" key="t-default">Depoimentos</a></li>
                                 <li><a href="{{ route('painel.duvidas') }}" key="t-default">Dúvidas</a></li>
                             </ul>
-
                         </li>
-
-                        <li>
-                            <a href="javascript: void(0);" class="waves-effect">
-                                <i class="bx bx-money" aria-hidden="true"></i>
-                                <span key="t-dashboards">Financeiro</span>
-                            </a>
-                            <ul class="sub-menu" aria-expanded="false">
-                                <li><a href="{{ route('painel.vendas') }}" key="t-default">Vendas</a></li>
-                            </ul>
-
-                        </li>
-
-
-
-                        <li class="menu-title" key="t-menu">Configurações</li>
 
                         <li>
                             <a href="javascript: void(0);" class="waves-effect">
@@ -350,26 +297,8 @@ $usuario = \App\Models\Usuario::find(session()->get('usuario')['id']);
                                 <span key="t-dashboards">Informações</span>
                             </a>
                             <ul class="sub-menu" aria-expanded="false">
-                                <li><a href="{{ route('painel.informacoes.municipios') }}" key="t-default">Municípios</a></li>
-                            </ul>
-                            <ul class="sub-menu" aria-expanded="false">
                                 <li><a href="{{ route('painel.usuarios') }}" key="t-default">Usuários</a></li>
                             </ul>
-                        </li>
-                        <li>
-                            <a href="javascript: void(0);" class="waves-effect">
-                                <i class="bx bx-info-circle" aria-hidden="true"></i>
-                                <span key="t-dashboards">Meios de Pagamento</span>
-                            </a>
-                            <ul class="sub-menu" aria-expanded="false">
-                                <li><a href="{{ route('painel.configuracoes.meios-pagamento') }}" key="t-default">Configurar</a></li>
-                            </ul>
-                        </li>
-                        <li>
-                            <a href="{{ route('painel.mapa') }}"" class=" waves-effect">
-                                <i class="bx bx-map-alt" aria-hidden="true"></i>
-                                <span key="t-dashboards">Mapa do Site</span>
-                            </a>
                         </li>
 
                     </ul>
