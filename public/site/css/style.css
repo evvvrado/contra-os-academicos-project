@@ -4482,6 +4482,9 @@ section.conte div.niv div.niv-content div.niv-picture picture {
 }
 section.conte div.niv div.niv-content div.niv-form {
   max-width: 60rem;
+  height: 15rem;
+  transition: 0.32s;
+  overflow: hidden;
 }
 section.conte div.niv div.niv-content div.niv-form form {
   display: flex;

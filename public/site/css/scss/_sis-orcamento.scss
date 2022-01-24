@@ -473,6 +473,10 @@ section.conte {
 
             div.niv-form {
                 max-width: 60rem;
+                height: 15rem;
+                transition: 0.32s;
+
+                overflow: hidden;
 
                 form {
                     @include flex(column, flex-start, flex-start);

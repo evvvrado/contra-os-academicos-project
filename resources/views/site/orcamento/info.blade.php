@@ -110,3 +110,30 @@
 
 
 @endsection
+
+@section('scripts')
+<script>
+    $('section.conte div.niv div.niv-content div.niv-form form input[name=cep]').change(() =>{
+        $('section.conte div.niv div.niv-content div.niv-form').height('300px');
+    })
+
+    
+    $('section.conte div.niv div.niv-content div.niv-form form input[name=data]').change(() =>{
+        $('section.conte div.niv div.niv-content div.niv-form').height('420px');
+    })
+
+    
+    $('section.conte div.niv div.niv-content div.niv-form form input[name=horas]').change(() =>{
+        $('section.conte div.niv div.niv-content div.niv-form').height('580px');
+    })
+
+    
+    $('section.conte div.niv div.niv-content div.niv-form form input[name=alcool]').change(() =>{
+        $('section.conte div.niv div.niv-content div.niv-form').height('820px');
+    })
+
+
+
+
+</script>
+@endsection
