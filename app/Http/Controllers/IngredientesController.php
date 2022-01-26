@@ -4,13 +4,14 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Ingrediente;
+use App\Models\IngredienteCat;
 
 class IngredientesController extends Controller
 {
     //
     public function consultar(Request $request){
-        $ingredientes = Ingrediente::all();
-        return view("painel.ingredientes.consultar", ["ingredientes" => $ingredientes]);
+        $ingredientecats = IngredienteCat::all();
+        return view("painel.ingredientes.consultar", ["ingredientecats" => $ingredientecats]);
     }
 
     public function cadastro(){

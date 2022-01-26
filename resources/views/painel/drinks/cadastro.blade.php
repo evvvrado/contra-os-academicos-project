@@ -32,20 +32,20 @@ Produtos / <a style="color: unset" href="{{ route('painel.drinks') }}">Drinks</a
         <div class="card">
             <div class="card-body">
                 <h4 class="card-title">Cadastro de Drinks</h4>
-                <form id="form-cadastro" action="{{route('painel.drinks.cadastrar')}}" method="POST">
+                <form id="form-cadastro" action="{{route('painel.drinks.cadastrar')}}" method="POST" enctype="multipart/form-data">
                     @csrf
                     <div class="col-lx-12">
                         <div class="row">
                             <div class="form-group col-6 col-lg-6 mt-3">
-                                <label for="nome">Nome</label>
+                                <label>Nome</label>
                                 <input id="nome" name="nome" type="text" placeholder="Insira o nome do ingrediente" class="form-control">
                             </div>
 
                             <div class="form-group col-6 col-lg-6 mt-3">
                                 <label class="form-label">Ingredientes</label>
 
-                                <select style="height: 52px !important;" class="select2 form-control select2-multiple"
-                                    multiple="multiple" data-placeholder="Selecione os ingredientes" name="ingrediente">
+                                <select multiple style="height: 52px !important;" class="select2 form-control select2-multiple"
+                                    multiple="multiple" data-placeholder="Selecione os ingredientes" name="ingredientes[]">
                                     @php
                                         $ingrediente_cats = IngredienteCat::all();
                                     @endphp
@@ -63,6 +63,19 @@ Produtos / <a style="color: unset" href="{{ route('painel.drinks') }}">Drinks</a
                                 </select>
                             </div>
                         </div>
+
+                        <div class="row">
+                            <div class="form-group col-6 col-lg-6 mt-3">
+                                <label class="form-label">Imagem 1</label>
+                                <input name="imagem_1" type="file" class="form-control" style="height: 36px !important">
+                            </div>
+
+                            <div class="form-group col-6 col-lg-6 mt-3">
+                                <label class="form-label">Imagem 2</label>
+                                <input name="imagem_2" type="file" class="form-control" style="height: 36px !important">
+                            </div>
+                        </div>
+
                     </div>
                     <div class="d-flex flex-wrap gap-2 mt-3"">
                         <button id="btn-submit" type="submit" class="btn btn-primary waves-effect waves-light">Salvar</button>

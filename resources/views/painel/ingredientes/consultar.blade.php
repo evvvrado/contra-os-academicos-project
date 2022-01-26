@@ -10,6 +10,10 @@
 Produtos / <a style="color: unset" href="{{ route('painel.ingredientes') }}">Ingredientes</a>
 @endsection
 
+@php
+    use App\Models\Ingrediente;
+@endphp
+
 
 @section('conteudo')
 
@@ -25,27 +29,64 @@ Produtos / <a style="color: unset" href="{{ route('painel.ingredientes') }}">Ing
             <div class="card">
                 <div class="card-body">
                     <div id="datatable_wrapper" class="dataTables_wrapper dt-bootstrap4 no-footer">
-                    <i id="search-icon" class="bx bx-search" aria-hidden="true"></i>
                 </div>
                 <div class="row">
                     <div class="col-sm-12">
-                        <table id="datatable" class="table table-bordered dt-responsive nowrap w-100 dataTable no-footer dtr-inline" role="grid" aria-describedby="datatable_info"
-                            style="width: 1185px;">
-                            <thead>
-                                <tr role="row">
-                                    <th class="sorting_asc" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" style="width: 68px;" aria-sort="ascending"
-                                        aria-label="Name: activate to sort column descending">Nome
-                                    </th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                @foreach ($ingredientes as $ingrediente)
-                                <tr class="odd">
-                                    <td class="sorting_1 dtr-control">{{ $ingrediente->nome }}</td>
-                                </tr>
-                                @endforeach
-                            </tbody>
-                        </table>
+                        <!-- Nav tabs -->
+                        <ul class="nav nav-tabs" role="tablist">
+                            @php
+                                $c = 1;
+                                $ativo = "active";
+                                // $cor = "#555"
+                            @endphp
+                            @foreach($ingredientecats as $ingredientecat)
+                                <li class="nav-item">
+                                    <a class="nav-link {{$ativo}}" data-bs-toggle="tab" href="#tab-{{$ingredientecat->id}}" role="tab">
+                                        <span class="d-block d-sm-none"><i class="fas fa-home"></i></span>
+                                        <span class="d-none d-sm-block">{{$ingredientecat->nome}}</span>    
+                                    </a>
+                                </li>
+                                @php
+                                    $ativo = "";
+                                    $c++;
+                                    // $cor = "#FFF";
+                                @endphp
+                            @endforeach
+                            
+                        </ul>
+
+                        <!-- Tab panes -->
+                        <div class="tab-content p-3 text-muted">
+                            @php
+                                $ativo = "active";
+                                $c = 1;
+                            @endphp
+                            @foreach($ingredientecats as $ingredientecat)
+                                @php
+                                    $ingredientes = Ingrediente::where("cat_id", "=", $ingredientecat->id)->get();
+                                @endphp
+                                        <div class="tab-pane {{$ativo}}" id="tab-{{$ingredientecat->id}}" role="tabpanel">
+                                            <table id="datatable" class="table table-bordered dt-responsive  nowrap w-100 clear_both">
+                                                <thead>
+                                                    <tr>
+                                                        <th>Nome</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>                                                        
+                                                    @foreach ($ingredientes as $ingrediente)
+                                                        <tr>
+                                                            <td>{{$ingrediente->nome}}</td>
+                                                        </tr>
+                                                    @endforeach
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                @php
+                                    $ativo = "";
+                                    $c++;
+                                @endphp
+                            @endforeach
+                        </div>
                     </div>
                 </div>
             </div>
@@ -62,7 +103,7 @@ Produtos / <a style="color: unset" href="{{ route('painel.ingredientes') }}">Ing
 <script src="{{ asset('admin/libs/datatables.net-bs4/js/dataTables.bootstrap4.min.js') }}"></script>
 <script>
     $(document).ready(function() {
-            $('#datatable').DataTable({
+            $('.table').DataTable({
                 language: {
                     "emptyTable": "Nenhum registro encontrado",
                     "info": "Mostrando de _START_ até _END_ de _TOTAL_ registros",

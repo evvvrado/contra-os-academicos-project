@@ -13,7 +13,7 @@ class CreateDrinksIngredienteTable extends Migration
      */
     public function up()
     {
-        Schema::create('drinks_ingrediente', function (Blueprint $table) {
+        Schema::create('drinksingredientes', function (Blueprint $table) {
             $table->id();
             $table->integer("drink_id");
             $table->integer("ingrediente_id");
@@ -28,6 +28,6 @@ class CreateDrinksIngredienteTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('drinks_ingrediente');
+        Schema::dropIfExists('drinksingredientes');
     }
 }

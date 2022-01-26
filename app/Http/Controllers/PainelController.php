@@ -8,15 +8,15 @@ use Illuminate\Support\Facades\Hash;
 use App\Models\Usuario;
 use App\Models\Visitas;
 use App\Models\Vendas;
-use App\Models\PagamentoBoleto;
-use App\Models\PagamentoCartao;
-use App\Models\PagamentoCarne;
+use App\Models\Drink;
 
 class PainelController extends Controller
 {
 
     public function index(){
-        return view("painel.index");
+        $drinks = Drink::all();
+
+        return view("painel.index", ["drinks" => $drinks]);
     }
 
     public function indisponivel(){

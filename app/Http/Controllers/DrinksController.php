@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Drink;
 use App\Models\DrinksIngrediente;
+use DB;
 
 class DrinksController extends Controller
 {
@@ -21,18 +22,45 @@ class DrinksController extends Controller
     public function cadastrar(Request $request){
         $drinks = new Drink;
         $drinks->nome = $request->nome;
+
         $drinks->save();
 
-        $drinks_ingrediente = new DrinksIngrediente;
+        $drink_id = Drink::select(DB::raw("id"))
+        ->orderBy('id', 'Desc')
+        ->limit('1')
+        ->first();
+
+        $drinks = new Drink;
+
+        if($request->hasFile('imagem_1')){
+            // unlink(public_path('/admin/images/usuarios/'.$usuario->imagem_1));
+            $image = $request->file('imagem_1');
+            $nome_1 = 'imagem_1.'.$image->getClientOriginalExtension();
+            $destinationPath = public_path('/admin/images/drinks/'.$drink_id->id."/");
+            $image->move($destinationPath, $nome_1);
+            $drinks->imagem_1 = $nome_1;
+        }
+
+        if($request->hasFile('imagem_2')){
+            // unlink(public_path('/admin/images/drinks//'.$usuario->imagem_2));
+            $image = $request->file('imagem_2');
+            $nome_2 = 'imagem_2.'.$image->getClientOriginalExtension();
+            $destinationPath = public_path('/admin/images/drinks/'.$drink_id->id."/");
+            $image->move($destinationPath, $nome_2);
+            $drinks->imagem_2 = $nome_2;
+        }
+
+        Drink::where('id', $drink_id->id)
+        ->update(['imagem_1' => $nome_1, 'imagem_2' => $nome_2]);
+
         $ingredientes = $request->ingredientes;
 
-        count($ingredientes);
-
         foreach ($ingredientes as $ingrediente) {
-            $valor = $valor * 2;
+            $drinksingrediente = new DrinksIngrediente;
+            $drinksingrediente->drink_id = $drink_id->id;
+            $drinksingrediente->ingrediente_id = $ingrediente;
+            $drinksingrediente->save();
         }
-        $drinks_ingrediente->drink_id = $request->nome;
-        $drinks_ingrediente->ingrediente_id = $request->nome;
 
         toastr()->success("Drink salvo com sucesso!");
 
