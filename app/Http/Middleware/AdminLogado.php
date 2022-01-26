@@ -19,6 +19,6 @@ class AdminLogado
         if(session()->get("usuario"))
             return $next($request);
 
-        return redirect()->route("painel.login");  
+        return redirect()->route("painel.logar");  
     }
 }
