@@ -25,6 +25,7 @@ class DrinksController extends Controller
 
         $drinks->save();
 
+<<<<<<< HEAD
         $drink_id = Drink::select(DB::raw("id"))
         ->orderBy('id', 'Desc')
         ->limit('1')
@@ -55,6 +56,10 @@ class DrinksController extends Controller
 
         $ingredientes = $request->ingredientes;
 
+=======
+        $drinks_ingrediente = new DrinksIngrediente;
+        $drinks_ingrediente->drink_id = $request->ingrediente;
+>>>>>>> fbbac25840928fed67affeb52c220d280884cb85
         foreach ($ingredientes as $ingrediente) {
             $drinksingrediente = new DrinksIngrediente;
             $drinksingrediente->drink_id = $drink_id->id;
