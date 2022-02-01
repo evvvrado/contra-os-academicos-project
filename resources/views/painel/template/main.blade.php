@@ -10,7 +10,7 @@ $usuario = \App\Models\Usuario::find(session()->get('usuario')['id']);
 <head>
 
     <meta charset="utf-8" />
-    <title>Painel Administrativo - ENAF</title>
+    <title>Painel Administrativo - BIRITTAS</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="_token" content="{{ csrf_token() }}">
 
@@ -42,19 +42,19 @@ $usuario = \App\Models\Usuario::find(session()->get('usuario')['id']);
                     <div class="navbar-brand-box">
                         <a href="{{ route('painel.index') }}" class="logo logo-dark">
                             <span class="logo-sm">
-                                <img src="{{ asset('site/img/_logo47_Color.png') }}" alt="" width="32">
+                                <img src="{{ asset('site/assets/img/_logoBIRITTAS.svg') }}" alt="" width="32">
                             </span>
                             <span class="logo-lg">
-                                <img src="{{ asset('site/img/_logo47_Color.png') }}" alt="" width="32">
+                                <img src="{{ asset('site/assets/img/_logoBIRITTAS.svg') }}" alt="" width="32">
                             </span>
                         </a>
 
                         <a href="{{ route('painel.index') }}" class="logo logo-light">
                             <span class="logo-sm">
-                                <img src="{{ asset('site/img/_logo57.svg') }}" alt="" width="22">
+                                <img src="{{ asset('site/assets/img/_logoBIRITTAS.svg') }}" alt="" width="22">
                             </span>
                             <span class="logo-lg">
-                                <img class="" src=" {{ asset('site/img/_logo57.svg') }}" alt="" height="44">
+                                <img class="" src="{{ asset('site/assets/img/_logoBIRITTAS.svg') }}" alt="" height="44">
                             </span>
                         </a>
                     </div>
@@ -210,10 +210,6 @@ $usuario = \App\Models\Usuario::find(session()->get('usuario')['id']);
 
                     <div class="dropdown d-inline-block">
                         <button type="button" class="btn header-item waves-effect" id="page-header-user-dropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <img class="rounded-circle header-profile-user" @if ($usuario->foto) src="{{ asset($usuario->foto) }}"
-                            @else src="{{ asset('site/img/_logo57.svg') }}"
-                            @endif
-                            alt="Header Avatar">
                             <span class="d-none d-xl-inline-block ms-1" style="color: white;" key="t-henry">{{ session()->get('usuario')['nome'] }}</span>
                             <i class="mdi mdi-chevron-down d-none d-xl-inline-block"></i>
                         </button>
@@ -260,11 +256,11 @@ $usuario = \App\Models\Usuario::find(session()->get('usuario')['id']);
                         <li>
                             <a href="javascript: void(0);" class="waves-effect">
                                 <i class="bx bx-news" aria-hidden="true"></i>
-                                <span key="t-dashboards">Blog</span>
+                                <span key="t-dashboards">Lead</span>
                             </a>
                             <ul class="sub-menu" aria-expanded="false">
-                                <li><a href="{{ route('painel.artigos') }}" key="t-default">Artigos</a></li>
-                                <li><a href="{{ route('painel.noticias') }}" key="t-default">Notícias</a></li>
+                                <li><a href="{{ route('painel.leads') }}" key="t-default">Lead</a></li>
+                                <li><a href="{{ route('painel.orcamentos') }}" key="t-default">Orçamento</a></li>
                             </ul>
                         </li>
 
@@ -274,9 +270,22 @@ $usuario = \App\Models\Usuario::find(session()->get('usuario')['id']);
                                 <span key="t-dashboards">Produtos</span>
                             </a>
                             <ul class="sub-menu" aria-expanded="false">
-                                <li><a href="{{ route('painel.drinks') }}" key="t-default">Drinks</a></li>
+                                <li><a href="{{ route('painel.produtos') }}" key="t-default">Produtos</a></li>
                                 <li><a href="{{ route('painel.ingredientes') }}" key="t-default">Ingredientes</a></li>
-                                <li><a href="{{ route('painel.ingredientecats') }}" key="t-default">Categorias de Ingrediente</a></li>
+                                <li><a href="{{ route('painel.acessorios') }}" key="t-default">Acessórios</a></li>
+                                <li><a href="{{ route('painel.marcas') }}" key="t-default">Marcas</a></li>
+                                <li><a href="{{ route('painel.servicos') }}" key="t-default">Serviços</a></li>
+                            </ul>
+                        </li>
+
+                        <li>
+                            <a href="javascript: void(0);" class="waves-effect">
+                                <i class="bx bx-news" aria-hidden="true"></i>
+                                <span key="t-dashboards">Blog</span>
+                            </a>
+                            <ul class="sub-menu" aria-expanded="false">
+                                <li><a href="{{ route('painel.artigos') }}" key="t-default">Artigos</a></li>
+                                <li><a href="{{ route('painel.noticias') }}" key="t-default">Notícias</a></li>
                             </ul>
                         </li>
 

@@ -7,11 +7,11 @@
 @endsection
 
 @section('titulo')
-Produtos / <a style="color: unset" href="{{ route('painel.ingredientes') }}">Ingredientes</a>
+Produtos / <a style="color: unset" href="{{ route('painel.ingredientes') }}">Serviços</a>
 @endsection
 
 @php
-    use App\Models\Ingrediente;
+    use App\Models\Servico;
 @endphp
 
 
@@ -21,15 +21,16 @@ Produtos / <a style="color: unset" href="{{ route('painel.ingredientes') }}">Ing
 
 <div class="row">
     <div class="col-9">
-        <div class="row" style="padding: 0 15px">
+        <div class="row">
             <div class=" col-sm-12 col-md-6 mb-3" style=" border-radius: 5px; background-color:var(--principal); width: 100%;">
                 <a name="" id="button-add" class="btn" style="height: 100%; padding-left: 0;"
-                    style="padding-left: 0;" href="{{ route('painel.ingredientes.cadastro') }} ">
+                    style="padding-left: 0;" href="{{ route('painel.servicos.cadastro') }} ">
                     <i class="bx bx-plus" aria-hidden="true"></i> Adicionar
                 </a>
             </div>
             <div class="card">
                 <div class="card-body">
+                    <div id="datatable_wrapper" class="dataTables_wrapper dt-bootstrap4 no-footer">
                 </div>
                 <div class="row">
                     <div class="col-sm-12">
@@ -71,18 +72,12 @@ Produtos / <a style="color: unset" href="{{ route('painel.ingredientes') }}">Ing
                                                 <thead>
                                                     <tr>
                                                         <th>Nome</th>
-                                                        <th class="text-center">Ações</th>
                                                     </tr>
                                                 </thead>
                                                 <tbody>                                                        
                                                     @foreach ($ingredientes as $ingrediente)
                                                         <tr>
                                                             <td>{{$ingrediente->nome}}</td>
-                                                            <td class="d-flex justify-content-between">
-                                                                <a href="{{ route('painel.ingredientecats.editar') }} " class="mx-auto">
-                                                                    <i class="bx bxs-pencil text-primary font-size-16"></i>
-                                                                </a>
-                                                            </td>
                                                         </tr>
                                                     @endforeach
                                                 </tbody>
@@ -94,93 +89,12 @@ Produtos / <a style="color: unset" href="{{ route('painel.ingredientes') }}">Ing
                                 @endphp
                             @endforeach
                         </div>
-
                     </div>
                 </div>
             </div>
         </div>
     </div>
-
-    <div class="col-md-3">
-        <div class="row">
-            <div class=" col-sm-12 col-md-6 mb-3" style=" border-radius: 5px; background-color:var(--principal); width: 100%;">
-                <a name="" id="button-add" class="btn" style="height: 100%; padding-left: 0;"
-                    style="padding-left: 0;" href="#" data-bs-toggle="modal" data-bs-target=".adicionar_cat">
-                    <i class="bx bx-plus" aria-hidden="true"></i> Adicionar
-                </a>
-            </div>
-
-            <table id="datatable" class="table table-bordered dt-responsive  nowrap w-100 clear_both" style="background-color: #FFF !important;">
-                <thead>
-                    <tr>
-                        <td style="border: none"><h5>Categorias</h5></td>
-                        <td style="border: none"></td>
-                    </tr>
-                </thead>
-                <tbody>                                                        
-                    @foreach ($ingredientecats as $ingredientecat)
-                        <tr>
-                            <td>{{$ingredientecat->nome}}</td>
-                            <td class="d-flex justify-content-between">
-                                <a href="#" onClick="editar_categoria({{$ingredientecat->id}}, '{{$ingredientecat->nome}}')" class="mx-auto">
-                                    <i class="bx bxs-pencil text-primary font-size-16"></i>
-                                </a>
-                            </td>
-                        </tr>
-                    @endforeach
-                </tbody>
-            </table>
-        </div>
-    </div>
 </div> 
-
-<!--  Large modal example -->
-<div class="modal fade editar_cat" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-lg">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="myLargeModalLabel">Editar Categoria</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                <form id="form_editar" method="post" action="{{ route('painel.ingredientecats.editar') }} ">
-                    @csrf
-                    <label>Nome</label>
-                    <input type="text" class="form-control" name="nome" id="nome_editar">
-
-                    <input type="hidden" class="form-control" name="id" id="id_editar">
-
-                    <br>
-
-                    <input type="submit" class="btn btn-primary">
-                </form>
-            </div>
-        </div><!-- /.modal-content -->
-    </div><!-- /.modal-dialog -->
-</div><!-- /.modal -->
-
-<!--  Large modal example -->
-<div class="modal fade adicionar_cat" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-lg">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="myLargeModalLabel">Adicionar Categoria</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                <form method="post" action="{{ route('painel.ingredientecats.cadastrar') }} ">
-                    @csrf
-                    <label>Nome</label>
-                    <input type="text" class="form-control" name="nome">
-
-                    <br>
-
-                    <input type="submit" class="btn btn-primary">
-                </form>
-            </div>
-        </div><!-- /.modal-content -->
-    </div><!-- /.modal-dialog -->
-</div><!-- /.modal -->
 
 @endsection
 
@@ -190,17 +104,8 @@ Produtos / <a style="color: unset" href="{{ route('painel.ingredientes') }}">Ing
 <script src="{{ asset('admin/libs/datatables.net/js/jquery.dataTables.min.js') }}"></script>
 <script src="{{ asset('admin/libs/datatables.net-bs4/js/dataTables.bootstrap4.min.js') }}"></script>
 <script>
-
-    function editar_categoria(id, categoria) {
-        $('#nome_editar').val(categoria);
-        $('#id_editar').val(id);
-
-        $('.editar_cat').modal("show");
-        
-    }
-
     $(document).ready(function() {
-            $('.tabela_export').DataTable({
+            $('.table').DataTable({
                 language: {
                     "emptyTable": "Nenhum registro encontrado",
                     "info": "Mostrando de _START_ até _END_ de _TOTAL_ registros",

@@ -25,7 +25,7 @@
                     <strong>CASAMENTO</strong>
                     <p>Seu evento sob medida em cada detalhe</p>
 
-                    <a href="{{ route('site.orcamento.informacoes') }}">Quero este</a>
+                    <a href="{{ route('site.orcamento.informacoes', ["lead" => $lead, "tipo" => "casamento"] ) }}">Quero este</a>
                 </div>
 
 
@@ -33,7 +33,7 @@
                     <strong>CORPORATIVO</strong>
                     <p>Eternizando momentos únicos da sua vida</p>
 
-                    <a href="{{ route('site.orcamento.informacoes') }}">Quero este</a>
+                    <a href="{{ route('site.orcamento.informacoes', ["lead" => $lead, "tipo" => "corporativo"]) }}">Quero este</a>
                 </div>
 
 
@@ -44,7 +44,7 @@
                         o diferencial que você merece
                     </p>
 
-                    <a href="{{ route('site.orcamento.informacoes') }}">Quero este</a>
+                    <a href="{{ route('site.orcamento.informacoes', ["lead" => $lead, "tipo" => "aniversario"]) }}">Quero este</a>
                 </div>
 
             </div>

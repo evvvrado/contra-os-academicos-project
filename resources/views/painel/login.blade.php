@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="utf-8" />
-    <title>ENAF - Painel do Sistema</title>
+    <title>Birittas - Painel do Sistema</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta content="Painel de controle " name="description" />
     <meta content="Luis Gustavo de Souza Carvalho" name="author" />
@@ -59,7 +59,7 @@
                                 <a href="index.html" class="auth-logo-dark">
                                     <div class="avatar-md profile-user-wid mb-4">
                                         <span class="avatar-title rounded-circle bg-light">
-                                            <img src="{{ asset('site/img/_logo_58.svg') }}" alt="" class="rounded-circle" height="34">
+                                            <img style="filter: invert(9%) sepia(59%) saturate(6674%) hue-rotate(284deg) brightness(79%) contrast(103%);" src="{{ asset('site/assets/img/_logoBIRITTAS.svg') }}" alt="" class="rounded-circle" height="34">
                                         </span>
                                     </div>
                                 </a>

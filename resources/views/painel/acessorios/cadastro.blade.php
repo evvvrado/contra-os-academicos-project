@@ -8,13 +8,13 @@
 @endsection
 
 @php
-    use App\Models\IngredienteCat;
+    use App\Models\AcessorioCat;
     use App\Models\Marca;
     use Illuminate\Support\Facades\DB;
 @endphp
 
 @section('titulo')
-Produtos / <a style="color: unset" href="{{ route('painel.ingredientes') }}">Ingredientes</a> / Cadastro
+Produtos / <a style="color: unset" href="{{ route('painel.ingredientes') }}">Acessórios</a> / Cadastro
 @endsection
 
 @section('conteudo')
@@ -23,8 +23,8 @@ Produtos / <a style="color: unset" href="{{ route('painel.ingredientes') }}">Ing
     <div class="col-12">
         <div class="card">
             <div class="card-body">
-                <h4 class="card-title">Cadastro de Ingredientes</h4>
-                <form id="form-cadastro" action="{{route('painel.ingredientes.cadastrar')}}" method="POST">
+                <h4 class="card-title">Cadastro de Acessórios</h4>
+                <form id="form-cadastro" action="{{route('painel.acessorios.cadastrar')}}" method="POST">
                     @csrf
                     
                     <div class="col-lx-12">
@@ -39,7 +39,7 @@ Produtos / <a style="color: unset" href="{{ route('painel.ingredientes') }}">Ing
                                 <select class="form-control" name="cat_id" required>
                                     <option value="">Selecione</option>
                                     @php
-                                        $categorias = IngredienteCat::select(DB::raw("id, nome"))
+                                        $categorias = AcessorioCat::select(DB::raw("id, nome"))
                                         ->orderBy('nome', 'Asc')
                                         ->get();
                                     @endphp

@@ -7,6 +7,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Storage;
 
+use App\Models\Produto;
+
 class SiteController extends Controller
 {
     public function mapa()
@@ -16,7 +18,9 @@ class SiteController extends Controller
 
     public function index()
     {
-        return view("site.index");
+        $produtos = Produto::all();
+
+        return view("site.index", ["produtos" => $produtos]);
     }
 
     public function sobre()

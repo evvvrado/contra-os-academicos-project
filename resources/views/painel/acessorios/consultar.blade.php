@@ -7,15 +7,15 @@
 @endsection
 
 @section('titulo')
-Produtos / <a style="color: unset" href="{{ route('painel.ingredientes') }}">Ingredientes</a>
+Produtos / <a style="color: unset" href="{{ route('painel.acessorios') }}">Acessórios</a>
 @endsection
 
 @php
-    use App\Models\Ingrediente;
+    use App\Models\Acessorio;
 @endphp
 
 
-{{-- <a href="{{ route('painel.ingredientecats') }}" key="t-default">Categorias de Ingrediente</a> --}}
+{{-- <a href="{{ route('painel.acessoriocats') }}" key="t-default">Categorias de Ingrediente</a> --}}
 
 @section('conteudo')
 
@@ -24,7 +24,7 @@ Produtos / <a style="color: unset" href="{{ route('painel.ingredientes') }}">Ing
         <div class="row" style="padding: 0 15px">
             <div class=" col-sm-12 col-md-6 mb-3" style=" border-radius: 5px; background-color:var(--principal); width: 100%;">
                 <a name="" id="button-add" class="btn" style="height: 100%; padding-left: 0;"
-                    style="padding-left: 0;" href="{{ route('painel.ingredientes.cadastro') }} ">
+                    style="padding-left: 0;" href="{{ route('painel.acessorios.cadastro') }} ">
                     <i class="bx bx-plus" aria-hidden="true"></i> Adicionar
                 </a>
             </div>
@@ -40,11 +40,11 @@ Produtos / <a style="color: unset" href="{{ route('painel.ingredientes') }}">Ing
                                 $ativo = "active";
                                 // $cor = "#555"
                             @endphp
-                            @foreach($ingredientecats as $ingredientecat)
+                            @foreach($acessoriocats as $acessoriocat)
                                 <li class="nav-item">
-                                    <a class="nav-link {{$ativo}}" data-bs-toggle="tab" href="#tab-{{$ingredientecat->id}}" role="tab">
+                                    <a class="nav-link {{$ativo}}" data-bs-toggle="tab" href="#tab-{{$acessoriocat->id}}" role="tab">
                                         <span class="d-block d-sm-none"><i class="fas fa-home"></i></span>
-                                        <span class="d-none d-sm-block">{{$ingredientecat->nome}}</span>    
+                                        <span class="d-none d-sm-block">{{$acessoriocat->nome}}</span>    
                                     </a>
                                 </li>
                                 @php
@@ -62,27 +62,21 @@ Produtos / <a style="color: unset" href="{{ route('painel.ingredientes') }}">Ing
                                 $ativo = "active";
                                 $c = 1;
                             @endphp
-                            @foreach($ingredientecats as $ingredientecat)
+                            @foreach($acessoriocats as $acessoriocat)
                                 @php
-                                    $ingredientes = Ingrediente::where("cat_id", "=", $ingredientecat->id)->get();
+                                    $acessorios = Acessorio::where("cat_id", "=", $acessoriocat->id)->get();
                                 @endphp
-                                        <div class="tab-pane {{$ativo}}" id="tab-{{$ingredientecat->id}}" role="tabpanel">
+                                        <div class="tab-pane {{$ativo}}" id="tab-{{$acessoriocat->id}}" role="tabpanel">
                                             <table id="datatable" class="table table-bordered dt-responsive  nowrap w-100 clear_both">
                                                 <thead>
                                                     <tr>
                                                         <th>Nome</th>
-                                                        <th class="text-center">Ações</th>
                                                     </tr>
                                                 </thead>
                                                 <tbody>                                                        
-                                                    @foreach ($ingredientes as $ingrediente)
+                                                    @foreach ($acessorios as $acessorio)
                                                         <tr>
-                                                            <td>{{$ingrediente->nome}}</td>
-                                                            <td class="d-flex justify-content-between">
-                                                                <a href="{{ route('painel.ingredientecats.editar') }} " class="mx-auto">
-                                                                    <i class="bx bxs-pencil text-primary font-size-16"></i>
-                                                                </a>
-                                                            </td>
+                                                            <td>{{$acessorio->nome}}</td>
                                                         </tr>
                                                     @endforeach
                                                 </tbody>
@@ -118,11 +112,11 @@ Produtos / <a style="color: unset" href="{{ route('painel.ingredientes') }}">Ing
                     </tr>
                 </thead>
                 <tbody>                                                        
-                    @foreach ($ingredientecats as $ingredientecat)
+                    @foreach ($acessoriocats as $acessoriocat)
                         <tr>
-                            <td>{{$ingredientecat->nome}}</td>
+                            <td>{{$acessoriocat->nome}}</td>
                             <td class="d-flex justify-content-between">
-                                <a href="#" onClick="editar_categoria({{$ingredientecat->id}}, '{{$ingredientecat->nome}}')" class="mx-auto">
+                                <a href="#" onClick="editar_categoria({{$acessoriocat->id}}, '{{$acessoriocat->nome}}')" class="mx-auto">
                                     <i class="bx bxs-pencil text-primary font-size-16"></i>
                                 </a>
                             </td>
@@ -143,7 +137,7 @@ Produtos / <a style="color: unset" href="{{ route('painel.ingredientes') }}">Ing
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <form id="form_editar" method="post" action="{{ route('painel.ingredientecats.editar') }} ">
+                <form id="form_editar" method="post" action="{{ route('painel.acessoriocats.editar') }} ">
                     @csrf
                     <label>Nome</label>
                     <input type="text" class="form-control" name="nome" id="nome_editar">
@@ -168,7 +162,7 @@ Produtos / <a style="color: unset" href="{{ route('painel.ingredientes') }}">Ing
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <form method="post" action="{{ route('painel.ingredientecats.cadastrar') }} ">
+                <form method="post" action="{{ route('painel.acessoriocats.cadastrar') }} ">
                     @csrf
                     <label>Nome</label>
                     <input type="text" class="form-control" name="nome">

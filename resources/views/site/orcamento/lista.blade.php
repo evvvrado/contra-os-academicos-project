@@ -372,19 +372,27 @@
 
         <div class="niv-content">
 
-            <div class="box" niv-fade data-cal="52" data-teor="15" lancamento>
+            @foreach($produtos as $produto)
+
+            @php
+                if ($produto->lancamento == "Sim") {
+                    $lancamento = "lancamento";
+                }   
+            @endphp
+
+            <div class="box" niv-fade data-cal="{{$produto->calorias}}" data-teor="{{$produto->teor_alcoolico}}" {{$lancamento}}>
                 <picture>
-                    <img src="{{ asset('/site/assets/img/drink_4.png') }}" alt="imagem representativa">
+                    <img src="{{$produto->imagem_1}}" alt="imagem representativa" style="width: auto; height: 100%; margin: auto;">
                 </picture>
 
-                <strong>APEROL SPRITZ</strong>
-                <p>Um coquetel que caiu no gosto dos brasileiros, devido a seu sabor agradável...</p>
+                <strong>{{$produto->nome}}</strong>
+                <p>{{mb_strimwidth($produto->descricao, 0, 72, "...")}}</p>
 
                 <div>
                     <strong>Teor alcóolico</strong>
-                    <p>15%</p>
+                    <p>{{$produto->teor_alcoolico}}%</p>
                     <strong>Valor Calórico</strong>
-                    <p>52 cal.</p>
+                    <p>{{$produto->calorias}} cal.</p>
                     <strong>Valor Calórico</strong>
 
                     <span>
@@ -395,36 +403,9 @@
                 </div>
             </div>
 
+            @endforeach
 
-            <div class="box" niv-fade data-cal="520" data-teor="10" visitado>
-                <picture>
-                    <img src="{{ asset('/site/assets/img/drink_3.png') }}" alt="imagem representativa">
-                </picture>
-
-                <strong>CARUSO</strong>
-                <p>Criado nos EUA em meados de 1920, foi uma homenagem ao famoso tenor italiano...</p>
-
-                <div>
-                    <strong>Teor alcóolico</strong>
-                    <p>10%</p>
-                    <strong>Valor Calórico</strong>
-                    <p>520 cal.</p>
-                    <strong>Valor Calórico</strong>
-
-                    <span>
-                        <img src="{{ asset('site/assets/img/icon_star.svg') }}" alt="estrela de nota">
-                        <img src="{{ asset('site/assets/img/icon_star.svg') }}" alt="estrela de nota">
-                        <img src="{{ asset('site/assets/img/icon_star.svg') }}" alt="estrela de nota">
-                        <img src="{{ asset('site/assets/img/icon_star.svg') }}" alt="estrela de nota">
-                        <img src="{{ asset('site/assets/img/icon_star.svg') }}" alt="estrela de nota">
-                    </span>
-
-                    <input type="checkbox" name="habilitar">
-                </div>
-            </div>
-
-
-            <div class="box" niv-fade data-cal="140" data-teor="86" visitado lancamento>
+            {{-- <div class="box" niv-fade data-cal="140" data-teor="86" visitado lancamento>
                 <picture>
                     <img src="{{ asset('/site/assets/img/drink_2.png') }}" alt="imagem representativa">
                 </picture>
@@ -449,253 +430,7 @@
 
                     <input type="checkbox" name="habilitar">
                 </div>
-            </div>
-
-
-            <div class="box" niv-fade data-cal="300" data-teor="45" lancamento>
-                <picture>
-                    <img src="{{ asset('/site/assets/img/drink_1.png') }}" alt="imagem representativa">
-                </picture>
-
-                <strong>NEGRONI</strong>
-                <p>Criado me 1920 em Florença, por um bartender chamado Fosco Scarselli, na Itália...</p>
-
-                <div>
-                    <strong>Teor alcóolico</strong>
-                    <p>45%</p>
-                    <strong>Valor Calórico</strong>
-                    <p>300 cal.</p>
-                    <strong>Valor Calórico</strong>
-
-                    <span>
-                        <img src="{{ asset('site/assets/img/icon_star.svg') }}" alt="estrela de nota">
-                        <img src="{{ asset('site/assets/img/icon_star.svg') }}" alt="estrela de nota">
-                        <img src="{{ asset('site/assets/img/icon_star.svg') }}" alt="estrela de nota">
-                    </span>
-
-                    <input type="checkbox" name="habilitar">
-                </div>
-            </div>
-
-
-
-
-
-            <div class="box" niv-fade data-cal="52" data-teor="15">
-                <picture>
-                    <img src="{{ asset('/site/assets/img/drink_4.png') }}" alt="imagem representativa">
-                </picture>
-
-                <strong>APEROL SPRITZ</strong>
-                <p>Um coquetel que caiu no gosto dos brasileiros, devido a seu sabor agradável...</p>
-
-                <div>
-                    <strong>Teor alcóolico</strong>
-                    <p>15%</p>
-                    <strong>Valor Calórico</strong>
-                    <p>52 cal.</p>
-                    <strong>Valor Calórico</strong>
-
-                    <span>
-                        <img src="{{ asset('site/assets/img/icon_star.svg') }}" alt="estrela de nota">
-                    </span>
-
-                    <input type="checkbox" name="habilitar">
-                </div>
-            </div>
-
-
-            <div class="box" niv-fade data-cal="520" data-teor="10">
-                <picture>
-                    <img src="{{ asset('/site/assets/img/drink_3.png') }}" alt="imagem representativa">
-                </picture>
-
-                <strong>CARUSO</strong>
-                <p>Criado nos EUA em meados de 1920, foi uma homenagem ao famoso tenor italiano...</p>
-
-                <div>
-                    <strong>Teor alcóolico</strong>
-                    <p>10%</p>
-                    <strong>Valor Calórico</strong>
-                    <p>520 cal.</p>
-                    <strong>Valor Calórico</strong>
-
-                    <span>
-                        <img src="{{ asset('site/assets/img/icon_star.svg') }}" alt="estrela de nota">
-                        <img src="{{ asset('site/assets/img/icon_star.svg') }}" alt="estrela de nota">
-                        <img src="{{ asset('site/assets/img/icon_star.svg') }}" alt="estrela de nota">
-                        <img src="{{ asset('site/assets/img/icon_star.svg') }}" alt="estrela de nota">
-                        <img src="{{ asset('site/assets/img/icon_star.svg') }}" alt="estrela de nota">
-                    </span>
-
-                    <input type="checkbox" name="habilitar">
-                </div>
-            </div>
-
-
-            <div class="box" niv-fade data-cal="140" data-teor="86">
-                <picture>
-                    <img src="{{ asset('/site/assets/img/drink_2.png') }}" alt="imagem representativa">
-                </picture>
-
-                <strong>CHEROKEE</strong>
-                <p>Um coquetel moderno, que recebeu este nome devido á sua cor, associada...</p>
-
-                <div>
-                    <strong>Teor alcóolico</strong>
-                    <p>86%</p>
-                    <strong>Valor Calórico</strong>
-                    <p>140 cal.</p>
-                    <strong>Valor Calórico</strong>
-
-                    <span>
-                        <img src="{{ asset('site/assets/img/icon_star.svg') }}" alt="estrela de nota">
-                        <img src="{{ asset('site/assets/img/icon_star.svg') }}" alt="estrela de nota">
-                        <img src="{{ asset('site/assets/img/icon_star.svg') }}" alt="estrela de nota">
-                        <img src="{{ asset('site/assets/img/icon_star.svg') }}" alt="estrela de nota">
-                        <img src="{{ asset('site/assets/img/icon_star.svg') }}" alt="estrela de nota">
-                    </span>
-
-                    <input type="checkbox" name="habilitar">
-                </div>
-            </div>
-
-
-            <div class="box" niv-fade data-cal="300" data-teor="45">
-                <picture>
-                    <img src="{{ asset('/site/assets/img/drink_1.png') }}" alt="imagem representativa">
-                </picture>
-
-                <strong>NEGRONI</strong>
-                <p>Criado me 1920 em Florença, por um bartender chamado Fosco Scarselli, na Itália...</p>
-
-                <div>
-                    <strong>Teor alcóolico</strong>
-                    <p>45%</p>
-                    <strong>Valor Calórico</strong>
-                    <p>300 cal.</p>
-                    <strong>Valor Calórico</strong>
-
-                    <span>
-                        <img src="{{ asset('site/assets/img/icon_star.svg') }}" alt="estrela de nota">
-                        <img src="{{ asset('site/assets/img/icon_star.svg') }}" alt="estrela de nota">
-                        <img src="{{ asset('site/assets/img/icon_star.svg') }}" alt="estrela de nota">
-                    </span>
-
-                    <input type="checkbox" name="habilitar">
-                </div>
-            </div>
-
-
-
-
-
-            <div class="box" niv-fade data-cal="52" data-teor="15">
-                <picture>
-                    <img src="{{ asset('/site/assets/img/drink_4.png') }}" alt="imagem representativa">
-                </picture>
-
-                <strong>APEROL SPRITZ</strong>
-                <p>Um coquetel que caiu no gosto dos brasileiros, devido a seu sabor agradável...</p>
-
-                <div>
-                    <strong>Teor alcóolico</strong>
-                    <p>15%</p>
-                    <strong>Valor Calórico</strong>
-                    <p>52 cal.</p>
-                    <strong>Valor Calórico</strong>
-
-                    <span>
-                        <img src="{{ asset('site/assets/img/icon_star.svg') }}" alt="estrela de nota">
-                    </span>
-
-                    <input type="checkbox" name="habilitar">
-                </div>
-            </div>
-
-
-            <div class="box" niv-fade data-cal="520" data-teor="10">
-                <picture>
-                    <img src="{{ asset('/site/assets/img/drink_3.png') }}" alt="imagem representativa">
-                </picture>
-
-                <strong>CARUSO</strong>
-                <p>Criado nos EUA em meados de 1920, foi uma homenagem ao famoso tenor italiano...</p>
-
-                <div>
-                    <strong>Teor alcóolico</strong>
-                    <p>10%</p>
-                    <strong>Valor Calórico</strong>
-                    <p>520 cal.</p>
-                    <strong>Valor Calórico</strong>
-
-                    <span>
-                        <img src="{{ asset('site/assets/img/icon_star.svg') }}" alt="estrela de nota">
-                        <img src="{{ asset('site/assets/img/icon_star.svg') }}" alt="estrela de nota">
-                        <img src="{{ asset('site/assets/img/icon_star.svg') }}" alt="estrela de nota">
-                        <img src="{{ asset('site/assets/img/icon_star.svg') }}" alt="estrela de nota">
-                        <img src="{{ asset('site/assets/img/icon_star.svg') }}" alt="estrela de nota">
-                    </span>
-
-                    <input type="checkbox" name="habilitar">
-                </div>
-            </div>
-
-
-            <div class="box" niv-fade data-cal="140" data-teor="86">
-                <picture>
-                    <img src="{{ asset('/site/assets/img/drink_2.png') }}" alt="imagem representativa">
-                </picture>
-
-                <strong>CHEROKEE</strong>
-                <p>Um coquetel moderno, que recebeu este nome devido á sua cor, associada...</p>
-
-                <div>
-                    <strong>Teor alcóolico</strong>
-                    <p>86%</p>
-                    <strong>Valor Calórico</strong>
-                    <p>140 cal.</p>
-                    <strong>Valor Calórico</strong>
-
-                    <span>
-                        <img src="{{ asset('site/assets/img/icon_star.svg') }}" alt="estrela de nota">
-                        <img src="{{ asset('site/assets/img/icon_star.svg') }}" alt="estrela de nota">
-                        <img src="{{ asset('site/assets/img/icon_star.svg') }}" alt="estrela de nota">
-                        <img src="{{ asset('site/assets/img/icon_star.svg') }}" alt="estrela de nota">
-                        <img src="{{ asset('site/assets/img/icon_star.svg') }}" alt="estrela de nota">
-                    </span>
-
-                    <input type="checkbox" name="habilitar">
-                </div>
-            </div>
-
-
-            <div class="box" niv-fade data-cal="300" data-teor="45">
-                <picture>
-                    <img src="{{ asset('/site/assets/img/drink_1.png') }}" alt="imagem representativa">
-                </picture>
-
-                <strong>NEGRONI</strong>
-                <p>Criado me 1920 em Florença, por um bartender chamado Fosco Scarselli, na Itália...</p>
-
-                <div>
-                    <strong>Teor alcóolico</strong>
-                    <p>45%</p>
-                    <strong>Valor Calórico</strong>
-                    <p>300 cal.</p>
-                    <strong>Valor Calórico</strong>
-
-                    <span>
-                        <img src="{{ asset('site/assets/img/icon_star.svg') }}" alt="estrela de nota">
-                        <img src="{{ asset('site/assets/img/icon_star.svg') }}" alt="estrela de nota">
-                        <img src="{{ asset('site/assets/img/icon_star.svg') }}" alt="estrela de nota">
-                    </span>
-
-                    <input type="checkbox" name="habilitar">
-                </div>
-            </div>
-
-
+            </div> --}}
 
         </div>
     </div>

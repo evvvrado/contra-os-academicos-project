@@ -7,14 +7,17 @@ use App\Models\IngredienteCat;
 
 class IngredienteCatsController extends Controller
 {
-    //
-    public function consultar(Request $request){
-        $ingredientecats = IngredienteCat::all();
-        return view("painel.ingredientecats.consultar", ["ingredientecats" => $ingredientecats]);
-    }
-
     public function cadastro(){
         return view("painel.ingredientecats.cadastro");
+    }
+
+    public function editar(Request $request){
+        IngredienteCat::where('id', $request->id)
+        ->update(['nome' => $request->nome]);
+
+        toastr()->success("Categoria editada com sucesso!");
+
+        return redirect()->route("painel.ingredientes");
     }
 
     public function cadastrar(Request $request){
@@ -23,9 +26,9 @@ class IngredienteCatsController extends Controller
 
         $ingredientecats->save();
 
-        toastr()->success("Ingrediente salvo com sucesso!");
+        toastr()->success("Categoria salva com sucesso!");
 
-        return redirect()->route("painel.ingredientecats");
+        return redirect()->route("painel.ingredientes");
 
     }
 }

@@ -64,7 +64,7 @@
     <div class="niv">
         <div class="niv-top">
             <div class="title">
-                <h4>Drinks</h4>
+                <h4>Produtos</h4>
                 <h2>Recomendamos</h2>
             </div>
 
@@ -81,108 +81,22 @@
 
         <div class="niv-list">
             <div class="content">
-                <div class="box" niv-fade>
-                    <picture>
-                        <img src="{{ asset('/site/assets/img/drink_4.png') }}" alt="imagem representativa">
-                    </picture>
 
-                    <strong>APEROL SPRITZ</strong>
-                    <p>Um coquetel que caiu no gosto dos brasileiros, devido a seu sabor agradável...</p>
-                </div>
-                <div class="box" niv-fade>
-                    <picture>
-                        <img src="{{ asset('/site/assets/img/drink_3.png') }}" alt="imagem representativa">
-                    </picture>
+                @foreach($produtos as $produto)
 
-                    <strong>CARUSO</strong>
-                    <p>Criado nos EUA em meados de 1920, foi uma homenagem ao famoso tenor italiano...</p>
-                </div>
-                <div class="box" niv-fade>
-                    <picture>
-                        <img src="{{ asset('/site/assets/img/drink_2.png') }}" alt="imagem representativa">
-                    </picture>
+                    <div class="box" niv-fade>
+                        {{-- {{ route('site.coquetel', ["coquetel" => $produto])}} --}}
+                        <a href="">
+                            <picture>
+                                <img src="{{$produto->imagem_1}}" alt="imagem representativa" style="width: auto; height: 100%; margin: auto;">
+                            </picture>
+    
+                            <strong>{{$produto->nome}}</strong>
+                            <p>{{mb_strimwidth($produto->descricao, 0, 72, "...")}}</p>
+                        </a>
+                    </div>
+                @endforeach
 
-                    <strong>CARUSO</strong>
-                    <p>Um coquetel moderno, que recebeu este nome devido á sua cor, associada...</p>
-                </div>
-                <div class="box" niv-fade>
-                    <picture>
-                        <img src="{{ asset('/site/assets/img/drink_1.png') }}" alt="imagem representativa">
-                    </picture>
-
-                    <strong>NEGRONI</strong>
-                    <p>Criado me 1920 em Florença, por um bartender chamado Fosco Scarselli, na Itália...</p>
-                </div>
-
-
-                <div class="box" niv-fade>
-                    <picture>
-                        <img src="{{ asset('/site/assets/img/drink_4.png') }}" alt="imagem representativa">
-                    </picture>
-
-                    <strong>APEROL SPRITZ</strong>
-                    <p>Um coquetel que caiu no gosto dos brasileiros, devido a seu sabor agradável...</p>
-                </div>
-                <div class="box" niv-fade>
-                    <picture>
-                        <img src="{{ asset('/site/assets/img/drink_3.png') }}" alt="imagem representativa">
-                    </picture>
-
-                    <strong>CARUSO</strong>
-                    <p>Criado nos EUA em meados de 1920, foi uma homenagem ao famoso tenor italiano...</p>
-                </div>
-                <div class="box" niv-fade>
-                    <picture>
-                        <img src="{{ asset('/site/assets/img/drink_2.png') }}" alt="imagem representativa">
-                    </picture>
-
-                    <strong>CARUSO</strong>
-                    <p>Um coquetel moderno, que recebeu este nome devido á sua cor, associada...</p>
-                </div>
-                <div class="box" niv-fade>
-                    <picture>
-                        <img src="{{ asset('/site/assets/img/drink_1.png') }}" alt="imagem representativa">
-                    </picture>
-
-                    <strong>NEGRONI</strong>
-                    <p>Criado me 1920 em Florença, por um bartender chamado Fosco Scarselli, na Itália...</p>
-                </div>
-
-
-
-
-                <div class="box" niv-fade>
-                    <picture>
-                        <img src="{{ asset('/site/assets/img/drink_4.png') }}" alt="imagem representativa">
-                    </picture>
-
-                    <strong>APEROL SPRITZ</strong>
-                    <p>Um coquetel que caiu no gosto dos brasileiros, devido a seu sabor agradável...</p>
-                </div>
-                <div class="box" niv-fade>
-                    <picture>
-                        <img src="{{ asset('/site/assets/img/drink_3.png') }}" alt="imagem representativa">
-                    </picture>
-
-                    <strong>CARUSO</strong>
-                    <p>Criado nos EUA em meados de 1920, foi uma homenagem ao famoso tenor italiano...</p>
-                </div>
-                <div class="box" niv-fade>
-                    <picture>
-                        <img src="{{ asset('/site/assets/img/drink_2.png') }}" alt="imagem representativa">
-                    </picture>
-
-                    <strong>CARUSO</strong>
-                    <p>Um coquetel moderno, que recebeu este nome devido á sua cor, associada...</p>
-                </div>
-                <div class="box" niv-fade>
-                    <picture>
-                        <img src="{{ asset('/site/assets/img/drink_1.png') }}" alt="imagem representativa">
-                    </picture>
-
-                    <strong>NEGRONI</strong>
-                    <p>Criado me 1920 em Florença, por um bartender chamado Fosco Scarselli, na Itália...</p>
-                </div>
             </div>
         </div>
 
@@ -300,8 +214,8 @@
         window.location.href = '{{ route('site.servicos')}}';
     })
 
-    $('section.drinks div.niv div.niv-list div.content div.box').click(()=>{
-        window.location.href = '{{ route('site.coquetel')}}';
-    })
+    // $('section.drinks div.niv div.niv-list div.content div.box').click(()=>{
+    //     window.location.href = '{{ route('site.coquetel')}}';
+    // })
 </script>
 @endsection

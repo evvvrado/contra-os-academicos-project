@@ -28,6 +28,7 @@
 
             <div class="niv-form">
                 <form action="{{ route('site.orcamento.lista')}}">
+                    @csrf
                     <label>
                         <strong>Qual o CEP da realização do evento</strong>
 
@@ -100,7 +101,7 @@
 
                     <button>Selecionas as bebidas</button>
 
-
+                    <input type="hidden" name="lead" value="{{$_GET["lead"]}}">
 
                 </form>
             </div>

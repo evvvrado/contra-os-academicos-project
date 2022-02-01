@@ -23,7 +23,7 @@ Produtos / <a style="color: unset" href="{{ route('painel.ingredientes') }}">Ing
     <div class="col-12">
         <div class="card">
             <div class="card-body">
-                <h4 class="card-title">Cadastro de Ingredientes</h4>
+                <h4 class="card-title">Edição do ingrediente: {{}}</h4>
                 <form id="form-cadastro" action="{{route('painel.ingredientes.cadastrar')}}" method="POST">
                     @csrf
                     

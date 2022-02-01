@@ -323,7 +323,7 @@
 <section class="coqueteis-drinks">
     <div class="niv">
         <div class="niv-top">
-            <h4>Drinks</h4>
+            <h4>Produtos</h4>
             <h2>Recomendados</h2>
         </div>
 
