@@ -48,12 +48,15 @@ Produtos / <a style="color: unset" href="{{ route('painel.marcas') }}">Marcas</a
 
                             <div class="form-group col-6 col-lg-6 mt-3">
                                 <label>Preço</label></label>
-                                <textarea required class="form-control" name="preco"></textarea>
+                                <input required class="form-control" name="preco">
                             </div>
 
                             <div class="form-group col-6 col-lg-6 mt-3">
                                 <label>Unidade de Medida</label>
-                                <input required name="unidade_medida" type="text" class="form-control">
+                                <select required name="unidade_medida" type="text" class="form-control">
+                                    <option value="">Selecione</option>
+                                    <option value="litros">Litros</option>
+                                </select>
                             </div>
 
                             <div class="form-group col-6 col-lg-6 mt-3">

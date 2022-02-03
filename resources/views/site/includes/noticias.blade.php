@@ -15,147 +15,68 @@
         <div class="niv-content">
             <div class="scroll">
 
-                <div class="box" style="background-image: url('{{ asset('/site/assets/img/blog_image 1.jpg')}}')">
+                @foreach($noticias as $noticia)
+
+                    @php
+                        $parteData = explode("-", $noticia->publicacao);
+
+                        switch ($parteData[1]) {
+                            case 1:
+                                $mes = "Jan";
+                                break;
+                            case 2:
+                                $mes = "Fev";
+                                break;
+                            case 3:
+                                $mes = "Mar";
+                                break;
+                            case 4:
+                                $mes = "Abr";
+                                break;
+                            case 5:
+                                $mes = "Mai";
+                                break;
+                            case 6:
+                                $mes = "Jun";
+                                break;
+                            case 7:
+                                $mes = "Jul";
+                                break;
+                            case 8:
+                                $mes = "Ago";
+                                break;
+                            case 9:
+                                $mes = "Set";
+                                break;
+                            case 10:
+                                $mes = "Out";
+                                break;
+                            case 11:
+                                $mes = "Nov";
+                                break;
+                            case 12:
+                                $mes = "Dez";
+                                break;
+                        }
+                    @endphp
+
+                <div class="box" style="background-image: url('{{ $noticia->preview }}')">
 
                     <div>
                         <span>
                             <picture>
                                 <img src="{{ asset('/site/assets/img/icon_calendar.svg') }}" alt="ícone de calendário">
                             </picture>
-                            <small>19 jul 2021</small>
+                            <small>{{$parteData[2]}} {{$mes}} {{$parteData[0]}}</small>
                         </span>
 
-                        <strong>Como fazer os melhores drinks com Rum?</strong>
-                    </div>
-
-
-                </div>
-                <div class="box" style="background-image: url('{{ asset('/site/assets/img/blog_image 2.jpg')}}')">
-
-                    <div>
-                        <span>
-                            <picture>
-                                <img src="{{ asset('/site/assets/img/icon_calendar.svg') }}" alt="ícone de calendário">
-                            </picture>
-                            <small>19 jul 2021</small>
-                        </span>
-
-                        <strong>Como fazer os melhores drinks com Rum?</strong>
-                    </div>
-
-
-                </div>
-                <div class="box" style="background-image: url('{{ asset('/site/assets/img/blog_image 3.jpg')}}')">
-
-                    <div>
-                        <span>
-                            <picture>
-                                <img src="{{ asset('/site/assets/img/icon_calendar.svg') }}" alt="ícone de calendário">
-                            </picture>
-                            <small>19 jul 2021</small>
-                        </span>
-
-                        <strong>Como fazer os melhores drinks com Rum?</strong>
+                        <strong>{{ $noticia->titulo }}</strong>
                     </div>
 
 
                 </div>
 
-
-                <div class="box" style="background-image: url('{{ asset('/site/assets/img/blog_image 1.jpg')}}')">
-
-                    <div>
-                        <span>
-                            <picture>
-                                <img src="{{ asset('/site/assets/img/icon_calendar.svg') }}" alt="ícone de calendário">
-                            </picture>
-                            <small>19 jul 2021</small>
-                        </span>
-
-                        <strong>Como fazer os melhores drinks com Rum?</strong>
-                    </div>
-
-
-                </div>
-                <div class="box" style="background-image: url('{{ asset('/site/assets/img/blog_image 2.jpg')}}')">
-
-                    <div>
-                        <span>
-                            <picture>
-                                <img src="{{ asset('/site/assets/img/icon_calendar.svg') }}" alt="ícone de calendário">
-                            </picture>
-                            <small>19 jul 2021</small>
-                        </span>
-
-                        <strong>Como fazer os melhores drinks com Rum?</strong>
-                    </div>
-
-
-                </div>
-                <div class="box" style="background-image: url('{{ asset('/site/assets/img/blog_image 3.jpg')}}')">
-
-                    <div>
-                        <span>
-                            <picture>
-                                <img src="{{ asset('/site/assets/img/icon_calendar.svg') }}" alt="ícone de calendário">
-                            </picture>
-                            <small>19 jul 2021</small>
-                        </span>
-
-                        <strong>Como fazer os melhores drinks com Rum?</strong>
-                    </div>
-
-
-                </div>
-
-
-
-                <div class="box" style="background-image: url('{{ asset('/site/assets/img/blog_image 1.jpg')}}')">
-
-                    <div>
-                        <span>
-                            <picture>
-                                <img src="{{ asset('/site/assets/img/icon_calendar.svg') }}" alt="ícone de calendário">
-                            </picture>
-                            <small>19 jul 2021</small>
-                        </span>
-
-                        <strong>Como fazer os melhores drinks com Rum?</strong>
-                    </div>
-
-
-                </div>
-                <div class="box" style="background-image: url('{{ asset('/site/assets/img/blog_image 2.jpg')}}')">
-
-                    <div>
-                        <span>
-                            <picture>
-                                <img src="{{ asset('/site/assets/img/icon_calendar.svg') }}" alt="ícone de calendário">
-                            </picture>
-                            <small>19 jul 2021</small>
-                        </span>
-
-                        <strong>Como fazer os melhores drinks com Rum?</strong>
-                    </div>
-
-
-                </div>
-                <div class="box" style="background-image: url('{{ asset('/site/assets/img/blog_image 3.jpg')}}')">
-
-                    <div>
-                        <span>
-                            <picture>
-                                <img src="{{ asset('/site/assets/img/icon_calendar.svg') }}" alt="ícone de calendário">
-                            </picture>
-                            <small>19 jul 2021</small>
-                        </span>
-
-                        <strong>Como fazer os melhores drinks com Rum?</strong>
-                    </div>
-
-
-                </div>
-
+                @endforeach
 
 
 

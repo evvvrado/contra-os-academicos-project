@@ -6,6 +6,8 @@ use View;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Storage;
+use DB;
+use App\Models\Noticia;
 
 use App\Models\Produto;
 
@@ -18,9 +20,14 @@ class SiteController extends Controller
 
     public function index()
     {
+        $noticias = Noticia::select(DB::raw("preview, titulo, publicacao"))
+        ->orderBy('id', 'Desc')
+        ->limit('3')
+        ->get();
+
         $produtos = Produto::all();
 
-        return view("site.index", ["produtos" => $produtos]);
+        return view("site.index", ["produtos" => $produtos, "noticias" => $noticias]);
     }
 
     public function sobre()
@@ -35,7 +42,9 @@ class SiteController extends Controller
 
     public function blog()
     {
-        return view("site.blog");
+        $noticias = Noticia::all();
+
+        return view("site.blog", ["noticias" => $noticias]);
     }
 
     public function blogDetalhes()
