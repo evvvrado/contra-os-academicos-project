@@ -15,7 +15,7 @@ $usuario = \App\Models\Usuario::find(session()->get('usuario')['id']);
     <meta name="_token" content="{{ csrf_token() }}">
 
     <!-- App favicon -->
-    <link rel="shortcut icon" href="{{ asset('site/img/_logo57.svg') }}">
+    <link rel="shortcut icon" href="/favicon.ico" />
 
     <!-- Bootstrap Css -->
     <link href="{{ asset('admin/css/bootstrap.min.css') }}" id="bootstrap-style" rel="stylesheet" type="text/css" />
@@ -271,21 +271,11 @@ $usuario = \App\Models\Usuario::find(session()->get('usuario')['id']);
                             </a>
                             <ul class="sub-menu" aria-expanded="false">
                                 <li><a href="{{ route('painel.produtos') }}" key="t-default">Produtos</a></li>
+                                <li><a href="{{ route('painel.servicos') }}" key="t-default">Serviços</a></li>
                                 <li><a href="{{ route('painel.ingredientes') }}" key="t-default">Ingredientes</a></li>
                                 <li><a href="{{ route('painel.acessorios') }}" key="t-default">Acessórios</a></li>
-                                <li><a href="{{ route('painel.marcas') }}" key="t-default">Marcas</a></li>
-                                <li><a href="{{ route('painel.servicos') }}" key="t-default">Serviços</a></li>
-                            </ul>
-                        </li>
-
-                        <li>
-                            <a href="javascript: void(0);" class="waves-effect">
-                                <i class="bx bx-news" aria-hidden="true"></i>
-                                <span key="t-dashboards">Blog</span>
-                            </a>
-                            <ul class="sub-menu" aria-expanded="false">
-                                <li><a href="{{ route('painel.artigos') }}" key="t-default">Artigos</a></li>
-                                <li><a href="{{ route('painel.noticias') }}" key="t-default">Notícias</a></li>
+                                <li><a href="{{ route('painel.parametros') }}" key="t-default">Parâmetros</a></li>
+                                {{-- <li><a href="{{ route('painel.marcas') }}" key="t-default">Marcas</a></li> --}}
                             </ul>
                         </li>
 
@@ -297,13 +287,15 @@ $usuario = \App\Models\Usuario::find(session()->get('usuario')['id']);
                             <ul class="sub-menu" aria-expanded="false">
                                 <li><a href="{{ route('painel.depoimento') }}" key="t-default">Depoimentos</a></li>
                                 <li><a href="{{ route('painel.duvidas') }}" key="t-default">Dúvidas</a></li>
+                                <li><a href="{{ route('painel.artigos') }}" key="t-default">Artigos</a></li>
+                                <li><a href="{{ route('painel.noticias') }}" key="t-default">Notícias</a></li>
                             </ul>
                         </li>
 
                         <li>
                             <a href="javascript: void(0);" class="waves-effect">
                                 <i class="bx bx-info-circle" aria-hidden="true"></i>
-                                <span key="t-dashboards">Informações</span>
+                                <span key="t-dashboards">Configurações</span>
                             </a>
                             <ul class="sub-menu" aria-expanded="false">
                                 <li><a href="{{ route('painel.usuarios') }}" key="t-default">Usuários</a></li>
@@ -465,6 +457,11 @@ $usuario = \App\Models\Usuario::find(session()->get('usuario')['id']);
     <script src="{{ asset('admin/libs/metismenu/metisMenu.min.js') }}"></script>
     <script src="{{ asset('admin/libs/simplebar/simplebar.min.js') }}"></script>
     <script src="{{ asset('admin/libs/node-waves/waves.min.js') }}"></script>
+    <script src="{{ asset('admin/js/jquery.mask.min.js') }}"></script>
+
+    <script>
+        $('.dinheiro').mask('#.##0,00', {reverse: true, placeholder: "R$ 0,00"});
+    </script>
     @toastr_js
     @toastr_render
 

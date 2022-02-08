@@ -16,6 +16,7 @@ class CreateAcessorioCatsTable extends Migration
         Schema::create('acessoriocats', function (Blueprint $table) {
             $table->id();
             $table->string("nome");
+            $table->string("status")->default('Ativo');
             $table->timestamps();
         });
     }

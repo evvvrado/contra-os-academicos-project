@@ -20,6 +20,44 @@ class ProdutosController extends Controller
         return view("painel.produtos.cadastro");
     }
 
+    public function editar(Produto $produto){
+        return view("painel.produtos.editar", ["produto" => $produto]);
+    }
+
+    public function salvar(Request $request) {
+        Produto::where('id', $request->id)
+        ->update(['nome' => $request->nome, 'descricao' => $request->descricao, 'historia' => $request->historia, 'teor_alcoolico' => $request->teor_alcoolico, 'calorias' => $request->calorias, 'nota' => $request->nota, 'harmonizacao' => $request->harmonizacao, 'lancamento' => $request->lancamento]);
+
+        ProdutosIngrediente::where('produto_id', $request->id)->delete();
+        ProdutosAcessorio::where('produto_id', $request->id)->delete();
+
+        $ingredientes = $request->ingredientes;
+
+        $produtos_ingrediente = new ProdutosIngrediente;
+        $produtos_ingrediente->produto_id = $request->ingrediente;
+        foreach ($ingredientes as $ingrediente) {
+            $produtosingrediente = new produtosIngrediente;
+            $produtosingrediente->produto_id = $request->id;
+            $produtosingrediente->ingrediente_id = $ingrediente;
+            $produtosingrediente->save();
+        }
+
+        $acessorios = $request->acessorios;
+
+        $produtos_acessorios = new ProdutosAcessorio;
+        $produtos_acessorios->produto_id = $request->acessorio;
+        foreach ($acessorios as $acessorio) {
+            $produtosacessorio = new ProdutosAcessorio;
+            $produtosacessorio->produto_id = $request->id;
+            $produtosacessorio->acessorio_id = $acessorio;
+            $produtosacessorio->save();
+        }
+
+        toastr()->success("produto salvo com sucesso!");
+
+        return redirect()->route("painel.produtos");
+    }
+
     public function cadastrar(Request $request){
         $produtos = new produto;
         $produtos->nome = $request->nome;

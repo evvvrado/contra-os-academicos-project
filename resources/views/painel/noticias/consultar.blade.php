@@ -77,7 +77,7 @@
                                                 <div class="btn-group edit-table-button ">
                                                     <button type="button" class="btn btn-info dropdown-toggle"
                                                         data-bs-toggle="dropdown" aria-expanded="false"><i
-                                                            class="bx bx-edit"></i></button>
+                                                            class="fas fa-pen-square"></i></button>
                                                     <div class="dropdown-menu" style="margin: 0px;">
                                                         <a class="dropdown-item"
                                                             href="{{ route('painel.noticia.editar', ['noticia' => $noticia]) }}">Editar</a>

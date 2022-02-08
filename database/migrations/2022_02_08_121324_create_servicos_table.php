@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateIngredienteCatsTable extends Migration
+class CreateServicosTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,11 @@ class CreateIngredienteCatsTable extends Migration
      */
     public function up()
     {
-        Schema::create('ingredientecats', function (Blueprint $table) {
+        Schema::create('servicos', function (Blueprint $table) {
             $table->id();
-            $table->string("nome");
-            $table->string("status")->default('Ativo');
+            $table->string('nome');
+            $table->string('descricao');
+            $table->double("valor", 8, 2)->default(0);
             $table->timestamps();
         });
     }
@@ -28,6 +29,6 @@ class CreateIngredienteCatsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('ingredientecats');
+        Schema::dropIfExists('servicos');
     }
 }

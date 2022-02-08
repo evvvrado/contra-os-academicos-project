@@ -18,6 +18,20 @@ class AcessoriosController extends Controller
         return view("painel.acessorios.cadastro");
     }
 
+    public function editar(Acessorio $acessorio){
+        return view("painel.acessorios.editar", ["acessorio" => $acessorio]);
+    }
+
+    public function salvar(Request $request){
+        Acessorio::where('id', $request->id)
+        ->update(['nome' => $request->nome, 'cat_id' => $request->cat_id]);
+
+        toastr()->success("Acessório editado com sucesso!");
+
+        return redirect()->route("painel.acessorios");
+
+    }
+
     public function cadastrar(Request $request){
         $acessorios = new Acessorio;
         $acessorios->nome = $request->nome;

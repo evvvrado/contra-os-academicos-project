@@ -17,7 +17,7 @@ class CreateAcessoriosTable extends Migration
             $table->id();
             $table->string("nome");
             $table->integer("cat_id");
-            $table->integer("marca_id");
+            $table->integer("marca_id")->nullable();
             $table->timestamps();
         });
     }

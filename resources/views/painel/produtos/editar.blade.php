@@ -20,6 +20,7 @@
     use App\Models\AcessorioCat;
     use App\Models\IngredienteCat;
     use App\Models\Ingrediente;
+    use App\Models\ProdutosIngrediente;
 @endphp
 
 
@@ -34,44 +35,44 @@ Produtos / <a style="color: unset" href="{{ route('painel.produtos') }}">Produto
         <div class="card">
             <div class="card-body">
                 <h4 class="card-title">Cadastro de Produtos</h4>
-                <form id="form-cadastro" action="{{route('painel.produtos.cadastrar')}}" method="POST" enctype="multipart/form-data">
+                <form id="form-cadastro" action="{{route('painel.produtos.salvar')}}" method="POST" enctype="multipart/form-data">
 
                     @csrf
                     <div class="col-lx-12">
                         <div class="row">
                             <div class="form-group col-6 col-lg-6 mt-3">
                                 <label>Nome</label>
-                                <input required name="nome" type="text" class="form-control">
+                                <input required name="nome" type="text" class="form-control" value="{{ $produto->nome }}">
                             </div>
 
                             <div class="form-group col-6 col-lg-6 mt-3">
                                 <label>Descrição</label>
-                                <textarea required class="form-control" name="descricao"></textarea>
+                                <textarea required class="form-control" name="descricao">{{ $produto->descricao }}</textarea>
                             </div>
 
                             <div class="form-group col-6 col-lg-6 mt-3">
                                 <label>História do Produto</label>
-                                <textarea required class="form-control" name="historia"></textarea>
+                                <textarea required class="form-control" name="historia">{{ $produto->historia }}</textarea>
                             </div>
 
                             <div class="form-group col-6 col-lg-6 mt-3">
                                 <label>Teor Alcoólico</label>
-                                <input required name="teor_alcoolico" type="text" class="form-control">
+                                <input required name="teor_alcoolico" type="text" class="form-control" value="{{ $produto->teor_alcoolico }}">
                             </div>
 
                             <div class="form-group col-6 col-lg-6 mt-3">
                                 <label>Calorias</label>
-                                <input required name="calorias" type="text" class="form-control">
+                                <input required name="calorias" type="text" class="form-control" value="{{ $produto->calorias }}">
                             </div>
 
                             <div class="form-group col-6 col-lg-6 mt-3">
                                 <label>Nota</label>
-                                <input required name="nota" type="text" class="form-control">
+                                <input required name="nota" type="text" class="form-control" value="{{ $produto->nota }}">
                             </div>
 
                             <div class="form-group col-6 col-lg-6 mt-3">
                                 <label>Harmonização</label>
-                                <input required name="harmonizacao" type="text" class="form-control">
+                                <input required name="harmonizacao" type="text" class="form-control" value="{{ $produto->harmonizacao }}">
                             </div>
 
                             <div class="form-group col-6 col-lg-6 mt-3">
@@ -86,11 +87,12 @@ Produtos / <a style="color: unset" href="{{ route('painel.produtos') }}">Produto
                                     @foreach($ingrediente_cats as $ingrediente_cat)
                                         <optgroup label="{{$ingrediente_cat->nome}}">
                                             @php
-                                                $ingredientes = Ingrediente::where('cat_id', $ingrediente_cat->id)->get();
+                                                $ingredientes = Ingrediente::where('cat_id', $ingrediente_cat->id)
+                                                ->get();
                                             @endphp
-                                                @foreach($ingredientes as $ingrediente)
-                                                    <option value="{{$ingrediente->id}}">{{$ingrediente->nome}}</option>
-                                                @endforeach
+                                            @foreach($ingredientes as $ingrediente)
+                                                <option value="{{$ingrediente->id}}" @if($produto->ingredientes->contains($ingrediente)) selected @endif>{{$ingrediente->nome}}</option>
+                                            @endforeach
                                         </optgroup>
                                     @endforeach
                                 </select>
@@ -111,7 +113,7 @@ Produtos / <a style="color: unset" href="{{ route('painel.produtos') }}">Produto
                                                 $acessorios = Acessorio::where('cat_id', $ingrediente_cat->id)->get();
                                             @endphp
                                                 @foreach($acessorios as $acessorio)
-                                                    <option value="{{$acessorio->id}}">{{$acessorio->nome}}</option>
+                                                    <option value="{{$acessorio->id}}" @if($produto->acessorios->contains($acessorio)) selected @endif>{{$acessorio->nome}}</option>
                                                 @endforeach
                                         </optgroup>
                                     @endforeach
@@ -122,19 +124,23 @@ Produtos / <a style="color: unset" href="{{ route('painel.produtos') }}">Produto
                                 <label>Lançamento</label>
                                 <select class="form-control" required name="lancamento" required>
                                     <option value="">Selecione</option>
-                                    <option value="Sim">Sim</option>
-                                    <option value="Não">Não</option>
+                                    <option value="Sim" @if ($produto->lancamento == "Sim") selected @endif>Sim</option>
+                                    <option value="Não" @if ($produto->lancamento == "Não") selected @endif>Não</option>
                                 </select>
                             </div>
 
                             <div class="form-group col-6 col-lg-6 mt-3">
                                 <label class="form-label">Imagem 1</label>
-                                <input required name="imagem_1" type="file" class="form-control" style="height: 36px !important">
+                                <input name="imagem_1" type="file" class="form-control" style="height: 36px !important">
+
+                                <img src="{{ asset($produto->imagem_1) }}" class="img-fluid" alt="Responsive image">
                             </div>
 
                             <div class="form-group col-6 col-lg-6 mt-3">
                                 <label class="form-label">Imagem 2</label>
-                                <input required name="imagem_2" type="file" class="form-control" style="height: 36px !important">
+                                <input name="imagem_2" type="file" class="form-control" style="height: 36px !important">
+
+                                <img src="{{ asset($produto->imagem_2) }}" class="img-fluid" alt="Responsive image">
                             </div>
                         </div>
 
@@ -143,6 +149,8 @@ Produtos / <a style="color: unset" href="{{ route('painel.produtos') }}">Produto
                         <button id="btn-submit" type="submit" class="btn btn-primary waves-effect waves-light">Salvar</button>
                         <button type="button" class="btn btn-secondary waves-effect waves-light">Cancelar</button>
                     </div>
+
+                    <input name="id" type="hidden" class="form-control" value="{{ $produto->id }}">
                 </form>
             </div>
             

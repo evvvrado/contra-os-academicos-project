@@ -21,6 +21,20 @@ class IngredientesController extends Controller
         return view("painel.ingredientes.cadastro");
     }
 
+    public function editar(Ingrediente $ingrediente){
+        return view("painel.ingredientes.editar", ["ingrediente" => $ingrediente]);
+    }
+
+    public function salvar(Request $request){
+        Ingrediente::where('id', $request->id)
+        ->update(['nome' => $request->nome, 'cat_id' => $request->cat_id]);
+
+        toastr()->success("Ingrediente editado com sucesso!");
+
+        return redirect()->route("painel.ingredientes");
+
+    }
+
     public function cadastrar(Request $request){
         $ingredientes = new Ingrediente;
         $ingredientes->nome = $request->nome;

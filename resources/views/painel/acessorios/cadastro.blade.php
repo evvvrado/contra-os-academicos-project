@@ -9,7 +9,6 @@
 
 @php
     use App\Models\AcessorioCat;
-    use App\Models\Marca;
     use Illuminate\Support\Facades\DB;
 @endphp
 
@@ -49,27 +48,11 @@ Produtos / <a style="color: unset" href="{{ route('painel.ingredientes') }}">Ace
                                     @endforeach
                                 </select>
                             </div>
-
-                            <div class="form-group col-6 col-lg-6 mt-3">
-                                <label for="nome">Marca</label>
-                                <select class="form-control" name="marca_id" required>
-                                    <option value="">Selecione</option>
-                                    @php
-                                        $marcas = Marca::select(DB::raw("id, nome"))
-                                        ->orderBy('nome', 'Asc')
-                                        ->get();
-                                    @endphp
-
-                                    @foreach($marcas as $marca)
-                                        <option value="{{$marca->id}}">{{$marca->nome}}</option>
-                                    @endforeach
-                                </select>
-                            </div>
                         </div>
                     </div>
                     <div class="d-flex flex-wrap gap-2 mt-3">
                         <button id="btn-submit" type="submit" class="btn btn-primary waves-effect waves-light">Salvar</button>
-                        <button type="button" class="btn btn-secondary waves-effect waves-light">Cancelar</button>
+                        <a href="{{ route('painel.acessorios') }}" class="btn btn-secondary waves-effect waves-light">Cancelar</a>
                     </div>
                 </form>
             </div>

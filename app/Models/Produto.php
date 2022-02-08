@@ -8,4 +8,12 @@ use Illuminate\Database\Eloquent\Model;
 class Produto extends Model
 {
     use HasFactory;
+
+    public function ingredientes(){
+        return $this->belongsToMany(Ingrediente::class, 'produtosingredientes');
+    }
+
+    public function acessorios(){
+        return $this->belongsToMany(Acessorio::class, 'produtosacessorios');
+    }
 }

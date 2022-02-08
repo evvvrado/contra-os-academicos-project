@@ -23,15 +23,15 @@ Produtos / <a style="color: unset" href="{{ route('painel.ingredientes') }}">Ing
     <div class="col-12">
         <div class="card">
             <div class="card-body">
-                <h4 class="card-title">Edição do ingrediente: {{}}</h4>
-                <form id="form-cadastro" action="{{route('painel.ingredientes.cadastrar')}}" method="POST">
+                <h4 class="card-title">Edição do ingrediente:</h4>
+                <form id="form-cadastro" action="{{route('painel.ingredientes.salvar')}}" method="POST">
                     @csrf
                     
                     <div class="col-lx-12">
                         <div class="row">
                             <div class="form-group col-6 col-lg-6 mt-3">
                                 <label for="nome">Nome</label>
-                                <input id="nome" name="nome" type="text" placeholder="Insira o nome do ingrediente" class="form-control">
+                                <input id="nome" name="nome" type="text" placeholder="Insira o nome do ingrediente" class="form-control" value="{{ $ingrediente->nome }}">
                             </div>
 
                             <div class="form-group col-6 col-lg-6 mt-3">
@@ -45,23 +45,7 @@ Produtos / <a style="color: unset" href="{{ route('painel.ingredientes') }}">Ing
                                     @endphp
 
                                     @foreach($categorias as $categoria)
-                                        <option value="{{$categoria->id}}">{{$categoria->nome}}</option>
-                                    @endforeach
-                                </select>
-                            </div>
-
-                            <div class="form-group col-6 col-lg-6 mt-3">
-                                <label for="nome">Marca</label>
-                                <select class="form-control" name="marca_id" required>
-                                    <option value="">Selecione</option>
-                                    @php
-                                        $marcas = Marca::select(DB::raw("id, nome"))
-                                        ->orderBy('nome', 'Asc')
-                                        ->get();
-                                    @endphp
-
-                                    @foreach($marcas as $marca)
-                                        <option value="{{$marca->id}}">{{$marca->nome}}</option>
+                                        <option @if ($ingrediente->cat_id == $categoria->id) selected @endif value="{{$categoria->id}}">{{$categoria->nome}}</option>
                                     @endforeach
                                 </select>
                             </div>
@@ -71,6 +55,9 @@ Produtos / <a style="color: unset" href="{{ route('painel.ingredientes') }}">Ing
                         <button id="btn-submit" type="submit" class="btn btn-primary waves-effect waves-light">Salvar</button>
                         <button type="button" class="btn btn-secondary waves-effect waves-light">Cancelar</button>
                     </div>
+
+
+                    <input name="id" type="hidden" class="form-control" value="{{ $ingrediente->id }}">
                 </form>
             </div>
             

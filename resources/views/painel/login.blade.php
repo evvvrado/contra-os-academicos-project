@@ -8,7 +8,7 @@
     <meta content="Painel de controle " name="description" />
     <meta content="Luis Gustavo de Souza Carvalho" name="author" />
     <!-- App favicon -->
-    <link rel="shortcut icon" href="{{ asset('admin/images/favicon.ico') }}" />
+    <link rel="shortcut icon" href="{{ asset('/favicon.ico') }}" />
 
     <!-- owl.carousel css -->
     <link rel="stylesheet" href="{{asset('admin/libs/owl.carousel/owl.carousel.min.css')}}" />

@@ -34,61 +34,24 @@ Produtos / <a style="color: unset" href="{{ route('painel.ingredientes') }}">Ser
                 </div>
                 <div class="row">
                     <div class="col-sm-12">
-                        <!-- Nav tabs -->
-                        <ul class="nav nav-tabs" role="tablist">
-                            @php
-                                $c = 1;
-                                $ativo = "active";
-                                // $cor = "#555"
-                            @endphp
-                            @foreach($ingredientecats as $ingredientecat)
-                                <li class="nav-item">
-                                    <a class="nav-link {{$ativo}}" data-bs-toggle="tab" href="#tab-{{$ingredientecat->id}}" role="tab">
-                                        <span class="d-block d-sm-none"><i class="fas fa-home"></i></span>
-                                        <span class="d-none d-sm-block">{{$ingredientecat->nome}}</span>    
-                                    </a>
-                                </li>
-                                @php
-                                    $ativo = "";
-                                    $c++;
-                                    // $cor = "#FFF";
-                                @endphp
-                            @endforeach
-                            
-                        </ul>
-
-                        <!-- Tab panes -->
-                        <div class="tab-content p-3 text-muted">
-                            @php
-                                $ativo = "active";
-                                $c = 1;
-                            @endphp
-                            @foreach($ingredientecats as $ingredientecat)
-                                @php
-                                    $ingredientes = Ingrediente::where("cat_id", "=", $ingredientecat->id)->get();
-                                @endphp
-                                        <div class="tab-pane {{$ativo}}" id="tab-{{$ingredientecat->id}}" role="tabpanel">
-                                            <table id="datatable" class="table table-bordered dt-responsive  nowrap w-100 clear_both">
-                                                <thead>
-                                                    <tr>
-                                                        <th>Nome</th>
-                                                    </tr>
-                                                </thead>
-                                                <tbody>                                                        
-                                                    @foreach ($ingredientes as $ingrediente)
-                                                        <tr>
-                                                            <td>{{$ingrediente->nome}}</td>
-                                                        </tr>
-                                                    @endforeach
-                                                </tbody>
-                                            </table>
-                                        </div>
-                                @php
-                                    $ativo = "";
-                                    $c++;
-                                @endphp
-                            @endforeach
-                        </div>
+                        <table id="datatable" class="table table-bordered dt-responsive  nowrap w-100 clear_both">
+                            <thead>
+                                <tr>
+                                    <th>Nome</th>
+                                    <th>Descrição</th>
+                                    <th>Valor</th>
+                                </tr>
+                            </thead>
+                            <tbody>                                                        
+                                @foreach ($servicos as $servico)
+                                    <tr>
+                                        <td>{{$servico->nome}}</td>
+                                        <td>{{$servico->descricao}}</td>
+                                        <td>R$ {{str_replace(".", ",", $servico->valor)}}</td>
+                                    </tr>
+                                @endforeach
+                            </tbody>
+                        </table>
                     </div>
                 </div>
             </div>

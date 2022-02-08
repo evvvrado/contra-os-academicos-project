@@ -71,7 +71,7 @@ Catalogo / <a style="color: unset" href="{{ route('painel.categorias') }}">Anunc
                                     <td>R$ {{ number_format($contrato->valor, 2, ',', '.') }}</td>
                                     <td>
                                         <div class="btn-group edit-table-button ">
-                                            <button type="button" class="btn btn-info dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false"><i class="bx bx-edit"></i></button>
+                                            <button type="button" class="btn btn-info dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false"><i class="fas fa-pen-square"></i></button>
                                             <div class="dropdown-menu" style="margin: 0px;">
                                                 <a class="dropdown-item" href="{{ route('painel.categorias.editar', ['contrato' => $contrato]) }}">Editar</a>
                                                 <div class="dropdown-divider"></div>

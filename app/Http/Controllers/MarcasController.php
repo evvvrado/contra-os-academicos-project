@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Marca;
+use App\Models\Ingrediente;
+use App\Models\Acessorio;
 use DB;
 
 class MarcasController extends Controller
@@ -47,9 +49,22 @@ class MarcasController extends Controller
         Marca::where('id', $marca_id->id)
         ->update(['imagem' => '/admin/images/marcas/'.$marca_id->id."/".$nome_1]);
 
+        if($request->tabela == "Ingredientes") {
+            Ingrediente::where('id', $request->id_ingrediente)
+            ->update(['marca_id' => $marca_id->id]);
+
+            $url = "painel.ingredientes";
+        } else {
+            Acessorio::where('id', $request->id_acessorio)
+            ->update(['marca_id' => $marca_id->id]);
+
+            $url = "painel.acessorios";
+        }
+        
+
         toastr()->success("Marca salva com sucesso!");
 
-        return redirect()->route("painel.marcas");
+        return redirect()->route($url);
 
     }
 }

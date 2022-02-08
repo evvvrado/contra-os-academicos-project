@@ -65,7 +65,7 @@ Blog / <a style="color: unset" href="{{ route('painel.artigos') }}">Artigo</a>
                                     <td>{{ date('d/m/Y', strtotime($noticia->created_at)) }}</td>
                                     <td>
                                         <div class="btn-group edit-table-button ">
-                                            <button type="button" class="btn btn-info dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false"><i class="bx bx-edit"></i></button>
+                                            <button type="button" class="btn btn-info dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false"><i class="fas fa-pen-square"></i></button>
                                             <div class="dropdown-menu" style="margin: 0px;">
                                                 <a class="dropdown-item" href="{{ route('painel.artigo.editar', ['noticia' => $noticia]) }}">Editar</a>
                                                 <div class="dropdown-divider"></div>

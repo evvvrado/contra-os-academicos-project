@@ -12,6 +12,7 @@
         "fruitcake/laravel-cors": "^2.0",
         "gerencianet/gerencianet-sdk-php": "^4.0",
         "guzzlehttp/guzzle": "^7.3",
+        "igorescobar/jquery-mask-plugin": "^1.14",
         "intervention/image": "^2.6",
         "jlorente/php-credit-cards": "^1.0",
         "laravel/framework": "^8.40",

@@ -23,7 +23,7 @@
     <div class="row">
         <div class="col-9">
 
-            <div class="row"">
+            <div class="row">
 
                                
                     <div class=" col-sm-12 col-md-6 mb-3"
@@ -70,7 +70,7 @@
                                                 <div class="btn-group edit-table-button ">
                                                     <button type="button" class="btn btn-info dropdown-toggle"
                                                         data-bs-toggle="dropdown" aria-expanded="false"><i
-                                                            class="bx bx-edit"></i></button>
+                                                            class="fas fa-pen-square"></i></button>
                                                     <div class="dropdown-menu" style="margin: 0px;">
                                                         <a class="dropdown-item"
                                                             href="{{ route('painel.depoimento.editar', ['depoimento' => $depoimento]) }}">Editar</a>
