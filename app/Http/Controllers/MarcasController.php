@@ -25,7 +25,8 @@ class MarcasController extends Controller
         $marca = new Marca;
         $marca->nome = $request->nome;
         $marca->padrao = $request->padrao;
-        $marca->preco = $request->preco;
+        $valor = str_replace(",", ".", $request->preco);
+        $marca->valor = $valor;
         $marca->unidade_medida = $request->unidade_medida;
         $marca->qtd = $request->qtd;
         $marca->save();
