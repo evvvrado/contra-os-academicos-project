@@ -23,7 +23,7 @@ section.coqueteis-lista {
                     gap: 0.5rem;
                     text-align: center;
 
-                    @include fade(translateY(200px), 1s);
+                    @include fade(translateY(200px), 1s, 1s);
                     opacity: 1 !important;
 
                     @for $i from 1 through 15 {

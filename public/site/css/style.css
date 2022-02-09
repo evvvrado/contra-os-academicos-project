@@ -3135,7 +3135,7 @@ section.coqueteis-lista div.niv div.list div.scroll div.box {
   gap: 0.5rem;
   text-align: center;
   transition: 1s;
-  transition-delay: 0s;
+  transition-delay: 1s;
   opacity: 1 !important;
   scroll-snap-align: start;
   width: 9rem;
