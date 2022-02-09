@@ -371,9 +371,10 @@
 </div>
 
 <div class="next-step">
-    <picture>
-        <img src="{{ asset('site/assets/img/upgrade_art.png') }}" alt="botão para fazer upgrade">
-    </picture>
+    <h2>Leve sua festa <i>além</i></h2>
+    <p>Continue sua jornada indo pra próxima página</p>
+
+    <a href="{{ route('site.orcamento.encerrar')}}">Solicitar</a>
 </div>
 
 
