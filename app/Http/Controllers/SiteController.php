@@ -71,6 +71,6 @@ class SiteController extends Controller
 
     public function acessarCliente()
     {
-        return view("site.index");
+        return view("site.acesso");
     }
 }
