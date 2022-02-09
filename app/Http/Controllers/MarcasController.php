@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Marca;
 use App\Models\Ingrediente;
 use App\Models\Acessorio;
+use App\Models\MarcaHistorico;
 use DB;
 
 class MarcasController extends Controller
@@ -59,6 +60,38 @@ class MarcasController extends Controller
             Acessorio::where('id', $request->id_acessorio)
             ->update(['marca_id' => $marca_id->id]);
 
+            $url = "painel.acessorios";
+        }
+        
+
+        toastr()->success("Marca salva com sucesso!");
+
+        return redirect()->route($url);
+
+    }
+
+    public function salvar(Request $request){
+
+        $valor_antigo = Marca::select(DB::raw("valor"))
+        ->where('id', '=', $request->id_marca)
+        ->first();
+
+        if($valor_antigo->valor != $request->preco) {
+            $marca_historico = new MarcaHistorico;
+            $marca_historico->marca_id = $request->id_marca;
+            $valor = str_replace(",", ".", $request->preco);
+            $marca_historico->valor = $valor;
+            $marca_historico->save();
+        }
+
+        $valor = str_replace(",", ".", $request->preco);
+
+        Marca::where('id', $request->id_marca)
+        ->update(['nome' => $request->nome, 'padrao' => $request->padrao, 'valor' => $valor, 'qtd' => $request->qtd, 'unidade_medida' => $request->unidade_medida]);
+
+        if($request->tabela == "ingredientes") {
+            $url = "painel.ingredientes";
+        } else {
             $url = "painel.acessorios";
         }
         
