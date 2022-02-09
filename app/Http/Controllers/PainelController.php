@@ -6,17 +6,16 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Hash;
 use App\Models\Usuario;
-use App\Models\Visitas;
-use App\Models\Vendas;
+use App\Models\Lead;
 use App\Models\Produto;
 
 class PainelController extends Controller
 {
 
     public function index(){
-        $produtos = Produto::all();
+        $leads = Lead::all();
 
-        return view("painel.index", ["produtos" => $produtos]);
+        return view("painel.index", ["leads" => $leads]);
     }
 
     public function indisponivel(){
