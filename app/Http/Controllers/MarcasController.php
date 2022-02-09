@@ -50,7 +50,7 @@ class MarcasController extends Controller
         Marca::where('id', $marca_id->id)
         ->update(['imagem' => '/admin/images/marcas/'.$marca_id->id."/".$nome_1]);
 
-        if($request->tabela == "Ingredientes") {
+        if($request->tabela == "ingredientes") {
             Ingrediente::where('id', $request->id_ingrediente)
             ->update(['marca_id' => $marca_id->id]);
 

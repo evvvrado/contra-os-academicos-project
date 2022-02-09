@@ -12,6 +12,7 @@ Produtos / <a style="color: unset" href="{{ route('painel.ingredientes') }}">Ing
 
 @php
     use App\Models\Ingrediente;
+    use App\Models\Marca;
 @endphp
 
 
@@ -94,8 +95,12 @@ Produtos / <a style="color: unset" href="{{ route('painel.ingredientes') }}">Ing
                                                                 @php
                                                                     }
                                                                     else {
+
+                                                                        $marca = Marca::select(DB::raw("id, padrao, nome, imagem, valor, unidade_medida, qtd"))
+                                                                        ->where("id", "=", $ingrediente->marca_id)
+                                                                        ->first();
                                                                 @endphp 
-                                                                        <a href="#" onClick="editar_marca({{ $ingrediente->id }})" class="mx-auto">
+                                                                        <a href="#" onClick="editar_marca_existente({{ $ingrediente->id }}, '{{ $marca->padrao }}', '{{ $marca->nome }}', '{{ $marca->imagem }}', '{{ $marca->valor }}', '{{ $marca->unidade_medida }}', '{{ $marca->qtd }}')" class="mx-auto">
                                                                             <i class="fa fa-check-circle"></i>
                                                                         </a>
                                                                 @php
@@ -154,6 +159,72 @@ Produtos / <a style="color: unset" href="{{ route('painel.ingredientes') }}">Ing
         </div>
     </div>
 </div> 
+
+<!--  Large modal example -->
+<div class="modal fade add_marca" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="myLargeModalLabel">Editar Marca</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form action="{{route('painel.marcas.salvar')}}" method="POST" enctype="multipart/form-data">
+
+                    @csrf
+                    <div class="col-lx-12">
+                        <div class="row">
+                            <div class="form-group col-6 col-lg-6 mt-3">
+                                <label>Nome</label>
+                                <input required name="nome" type="text" class="form-control">
+                            </div>
+
+                            <div class="form-group col-6 col-lg-6 mt-3">
+                                <label>Padrão</label>
+                                <select class="form-control" required name="padrao" required>
+                                    <option value="">Selecione</option>
+                                    <option value="Sim">Sim</option>
+                                    <option value="Não">Não</option>
+                                </select>
+                            </div>
+
+                            <div class="form-group col-6 col-lg-4 mt-3">
+                                <label>Preço</label></label>
+                                <input required class="form-control dinheiro" name="preco">
+                            </div>
+
+                            <div class="form-group col-6 col-lg-4 mt-3">
+                                <label>Quantidade</label>
+                                <input required name="qtd" type="text" class="form-control">
+                            </div>
+
+                            <div class="form-group col-6 col-lg-4 mt-3">
+                                <label>Unidade de Medida</label>
+                                <select required name="unidade_medida" type="text" class="form-control">
+                                    <option value="">Selecione</option>
+                                    <option value="litros">Litros</option>
+                                </select>
+                            </div>
+
+                            <div class="form-group col-6 col-lg-6 mt-3">
+                                <label class="form-label">Imagem</label>
+                                <input required name="imagem" type="file" class="form-control" style="height: 36px !important">
+                            </div>
+                        </div>
+
+                        <input type="hidden" name="id_ingrediente" id="id_ingrediente">
+                        <input type="hidden" name="tabela" value="ingredientes">
+
+                    </div>
+                    <div class="d-flex flex-wrap gap-2 mt-3">
+                        <button id="btn-submit" type="submit" class="btn btn-primary waves-effect waves-light">Salvar</button>
+                        <button type="button" class="btn btn-secondary waves-effect waves-light">Cancelar</button>
+                    </div>
+                </form>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
 
 <!--  Large modal example -->
 <div class="modal fade add_marca" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
@@ -281,6 +352,11 @@ Produtos / <a style="color: unset" href="{{ route('painel.ingredientes') }}">Ing
     function editar_marca(id) {
         $('#id_ingrediente').val(id);
 
+        $('.add_marca').modal("show");
+    }
+
+    function editar_marca_existente(id, padrao, nome, imagem, valor, unidade_medida, qtd) {
+        
         $('.add_marca').modal("show");
     }
 
