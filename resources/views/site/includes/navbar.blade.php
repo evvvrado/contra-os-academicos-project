@@ -41,7 +41,7 @@
             </nav>
 
             <picture class="user">
-                <a href="/">
+                <a href="{{route('site.acessar-cliente')}}">
                     <img src="{{ asset('/site/assets/img/header_user.svg') }}" alt="ícone de user">
                 </a>
             </picture>

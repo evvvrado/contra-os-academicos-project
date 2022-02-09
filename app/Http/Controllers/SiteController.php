@@ -21,9 +21,9 @@ class SiteController extends Controller
     public function index()
     {
         $noticias = Noticia::select(DB::raw("preview, titulo, publicacao"))
-        ->orderBy('id', 'Desc')
-        ->limit('3')
-        ->get();
+            ->orderBy('id', 'Desc')
+            ->limit('3')
+            ->get();
 
         $produtos = Produto::all();
 
@@ -65,5 +65,12 @@ class SiteController extends Controller
     public function coquetel()
     {
         return view("site.coquetel");
+    }
+
+
+
+    public function acessarCliente()
+    {
+        return view("site.acesso");
     }
 }

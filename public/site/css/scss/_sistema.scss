@@ -1,0 +1,986 @@
+// VARIAVEIS
+
+$system-main: #56076d;
+$system-box-secondary: #dbbf00;
+
+$system-header: #faefef;
+$system-header-alternative: rgb(251 251 251);
+$system-header-hover: #ffffff6b;
+
+$system-box-border: #c6b5b5;
+
+body.minha-area {
+    background-color: $white;
+
+    div.emptyspace {
+        height: 13.3rem;
+        display: block;
+    }
+
+    section.mA_menu {
+        background-color: $system-header;
+        width: 100%;
+
+        position: fixed;
+        z-index: 665;
+        top: 0;
+
+        .container-fav {
+            @include flex(row, center, space-between);
+
+            .logos {
+                @include flex(row, center, flex-start);
+                gap: 2rem;
+            }
+
+            nav {
+                @include flex(row, center, flex-start);
+
+                a {
+                    @include flex(row, center, flex-start);
+                    gap: 1.2rem;
+                    transition: 0.32s;
+                    padding: 3rem 3rem;
+                    opacity: 0.7;
+                    cursor: pointer;
+
+                    font-size: 1.6rem;
+                    letter-spacing: -0.01em;
+
+                    color: $system-main;
+
+                    &:hover {
+                        background-color: $system-header-hover;
+                        opacity: 0.9;
+                    }
+                }
+            }
+
+            div.user {
+                @include flex(row, center, flex-start);
+                gap: 3.6rem;
+                width: 100%;
+                max-width: 19.6rem;
+
+                picture {
+                    width: 5rem;
+                    height: 5rem;
+
+                    background-color: $system-header-hover;
+
+                    @include picframe();
+                    border-radius: 100%;
+                }
+
+                span,
+                strong,
+                a {
+                    font-size: 1.4rem;
+                    color: $system-main;
+                }
+                a {
+                    color: $black;
+                    font-weight: 600;
+                    margin-top: 5px;
+                }
+
+                span {
+                    display: block;
+                }
+            }
+        }
+
+        &[alternative] {
+            background: none;
+            top: 1.5rem;
+
+            .container-fav {
+                background-color: $system-header-alternative;
+                border-radius: 12.5rem;
+
+                box-shadow: 0 5px 50px rgba(0, 0, 0, 0.144);
+
+                div.user {
+                    flex-direction: row-reverse;
+                    position: relative;
+                    max-width: unset;
+                    width: auto;
+
+                    picture {
+                        position: relative;
+                        z-index: 2;
+                        cursor: pointer;
+                        transition: 0.32s ease-in-out;
+
+                        &:hover {
+                            border: solid 2px $system-box-secondary;
+                        }
+                    }
+
+                    // div {
+                    //     @include flex(column, center, center);
+                    //     opacity: 0;
+                    //     top: 5rem;
+                    //     pointer-events: none;
+                    //     width: 15rem;
+                    //     gap: 2rem;
+                    //     z-index: 1;
+                    //     transition: 0.32s;
+
+                    //     position: absolute;
+                    //     background-color: $white;
+                    //     box-shadow: 0 5px 50px rgba(0, 0, 0, 0.144);
+                    //     padding: 15px;
+                    //     right: 1rem;
+
+                    //     border-radius: 1.5rem;
+
+                    //     span {
+                    //         text-align: center;
+                    //         transform: translateX(50px);
+                    //         transition: 0.32s;
+                    //     }
+
+                    //     a {
+                    //         color: red;
+
+                    //         padding: 0.5rem 2rem;
+                    //         text-align: center;
+                    //         width: 100%;
+                    //         transition: 0.32s;
+                    //         background-color: $system-header-hover;
+                    //         border-radius: 1.5rem;
+
+                    //         &:hover {
+                    //             opacity: 0.5;
+                    //         }
+
+                    //         position: relative;
+
+                    //         &::after {
+                    //             top: -1rem;
+                    //             left: 0;
+                    //             height: 1px;
+                    //             width: 100%;
+
+                    //             content: "";
+                    //             position: absolute;
+
+                    //             background: $light-grey;
+                    //         }
+                    //     }
+
+                    //     &[active] {
+                    //         top: 3.5rem;
+                    //         opacity: 1;
+                    //         pointer-events: all;
+
+                    //         span {
+                    //             transform: none;
+                    //         }
+                    //     }
+                    // }
+                }
+            }
+        }
+
+        @include responsive(800px) {
+            .container-fav {
+                nav {
+                    a {
+                        span {
+                            display: none;
+                        }
+                    }
+                }
+            }
+        }
+
+        @include responsive(600px) {
+            .container-fav {
+                padding: 1rem;
+                width: max-content;
+                gap: 3rem;
+                nav {
+                    flex-direction: column;
+                    align-items: flex-start;
+                    position: absolute;
+                    width: 32.6rem;
+                    height: 0;
+                    overflow: hidden;
+                    transition: 0.32s;
+                    z-index: 664;
+
+                    top: 7.5rem;
+                    left: 0;
+                    right: 0;
+
+                    margin: 0 auto;
+
+                    background-color: #fbfbfb;
+
+                    border-radius: 0 0 1rem 1rem;
+                    a {
+                        width: 100%;
+                        span {
+                            display: block;
+                        }
+                    }
+
+                    &[active] {
+                        height: 34.7rem;
+                    }
+                }
+            }
+        }
+    }
+
+    section.mA_showcase,
+    section.mA_produtos,
+    section.mA_parcelas {
+        padding-bottom: 10rem;
+
+        .container-fluid {
+            .container-fav {
+                h2 {
+                    font-size: 1.8rem;
+                    color: $system-main;
+                    margin-bottom: 3.3rem;
+                }
+
+                div.boxes {
+                    @include flex(row, center, flex-start);
+                    flex-wrap: wrap;
+                    gap: 3rem;
+                    div.box {
+                        border: solid 1px $system-box-border;
+                        width: 100%;
+                        max-width: 28rem;
+                        height: 33rem;
+
+                        position: relative;
+                        padding: 2.4rem 2.8rem;
+
+                        border-radius: 0.4rem;
+
+                        strong {
+                            color: $system-main;
+                            font-size: 1.8rem;
+                            display: block;
+
+                            margin-bottom: 0.8rem;
+                        }
+
+                        p {
+                            color: $system-box-secondary;
+                        }
+
+                        button {
+                            @include flex(row, center, center);
+                            border-radius: 0.4rem;
+                            gap: 1.6rem;
+                            height: 4.2rem;
+                            padding: 1.2rem 3.8rem;
+                            font-size: 1.4rem;
+
+                            // margin: 0 auto;
+
+                            width: 100%;
+
+                            transition: 0.32s;
+
+                            background: $system-box-secondary;
+
+                            margin-top: 1rem;
+
+                            color: $white;
+
+                            &:hover {
+                                transform: scale(1.05);
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    section.mA_dados {
+        padding-bottom: 10rem;
+
+        .container-fluid {
+            .container-fav {
+                @include flex(row, flex-start, space-between);
+
+                h2 {
+                    font-size: 1.8rem;
+                    color: $system-main;
+                    margin-bottom: 3.3rem;
+                }
+
+                div.dados {
+                    width: 100%;
+                    height: 100%;
+
+                    @include flex(column, center, flex-start);
+                    gap: 2rem;
+
+                    max-width: 35rem;
+                }
+
+                form {
+                    gap: 2rem;
+                    width: 72rem;
+                    @include flex(row, flex-start, flex-end);
+                    flex-wrap: wrap;
+
+                    label {
+                        position: relative;
+                        width: 100%;
+                        @include flex(row, center, center);
+                        max-width: 35rem;
+
+                        input {
+                            width: 100%;
+                            height: 5.2rem;
+                            border: solid 1px $system-box-border;
+                            border-radius: 0.4rem;
+
+                            padding: 1.7rem 0 1.7rem 6.9rem;
+
+                            color: $system-box-secondary;
+                            font-size: 1.4rem;
+                            align-items: center;
+                        }
+
+                        picture {
+                            position: absolute;
+                            left: 2.8rem;
+                        }
+                    }
+
+                    button {
+                        @include flex(row, center, center);
+                        border-radius: 0.4rem;
+                        gap: 1.6rem;
+                        height: 4.2rem;
+                        padding: 1.2rem 3.8rem;
+                        font-size: 1.4rem;
+
+                        // margin: 0 auto;
+
+                        width: 100%;
+
+                        transition: 0.32s;
+                        max-width: 35rem;
+
+                        background: $system-box-secondary;
+
+                        margin-top: 1rem;
+
+                        color: $white;
+
+                        &:hover {
+                            transform: scale(1.05);
+                        }
+                    }
+                }
+
+                div.col {
+                    width: 100%;
+                    max-width: 35rem;
+
+                    &:last-child {
+                        @include flex(column, center, center);
+                        gap: 3rem;
+                        padding-top: 5rem;
+
+                        picture {
+                            height: 23.5rem;
+                            width: 23.5rem;
+
+                            @include picframe();
+
+                            border-radius: 100%;
+                        }
+
+                        a {
+                            color: $system-box-border;
+
+                            &:hover {
+                                color: $system-main;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        @include responsive(800px) {
+            .container-fluid {
+                .container-fav {
+                    flex-direction: column-reverse;
+                    align-items: center;
+
+                    div.col {
+                        max-width: unset;
+                        margin-bottom: 5rem;
+                        text-align: center;
+                        form {
+                            flex-direction: column;
+                            align-items: center;
+
+                            margin-bottom: 5rem;
+
+                            width: 100%;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    section.mA_footer {
+        .container-fluid {
+            background-color: $white;
+            border-top: 1px solid $system-box-border;
+            border-bottom: 1px solid $system-box-border;
+
+            padding-top: 9rem;
+
+            .container-fav {
+                &:first-child {
+                    @include flex(row, center, space-between);
+                    padding-bottom: 9rem;
+
+                    .text {
+                        h3 {
+                            font-family: "Inter";
+                            font-style: normal;
+                            font-weight: normal;
+                            font-size: 1.8rem;
+                            letter-spacing: 0.02em;
+                            color: $system-box-secondary;
+                            opacity: 0.75;
+                        }
+                        h2 {
+                            font-family: "Inter";
+                            font-style: normal;
+                            font-weight: normal;
+                            font-size: 3.2rem;
+                            line-height: 135%;
+
+                            color: $system-main;
+                        }
+                    }
+
+                    .buttons {
+                        @include flex(row, center, flex-start);
+                        gap: 1.7rem;
+
+                        div {
+                            height: 6.5rem;
+                            width: 6.5rem;
+
+                            background: $system-main;
+
+                            display: flex;
+                            align-items: center;
+                            justify-content: center;
+
+                            border-radius: 0.8rem;
+
+                            cursor: pointer;
+                        }
+                    }
+                }
+                &:last-child {
+                    @include flex(row, flex-start, space-between);
+                    border-top: 1px solid $system-box-border;
+                    padding-top: 6.6rem;
+                    padding-bottom: 10rem;
+
+                    .left {
+                        p {
+                            font-family: "Inter";
+                            font-size: 1.4rem;
+                            line-height: 100%;
+                            color: $system-main;
+                            opacity: 0.6;
+                            max-width: 38.3rem;
+                        }
+
+                        .siga {
+                            @include flex(row, center, flex-start);
+                            gap: 2rem;
+                            margin-top: 3.7rem;
+                        }
+
+                        .compraSegura {
+                            @include flex(row, center, flex-start);
+                            gap: 1.6rem;
+                            margin-top: 4.1rem;
+
+                            strong {
+                                font-family: "Inter";
+                                font-size: 2.2rem;
+                                color: $system-box-secondary;
+                            }
+                        }
+                    }
+                    .right {
+                        display: flex;
+                        flex-direction: column;
+                        align-items: flex-start;
+
+                        gap: 1.6rem;
+                        width: 100%;
+                        max-width: 32.2rem;
+
+                        div {
+                            display: flex;
+                            flex-wrap: wrap;
+                            gap: 1.4rem;
+                        }
+                    }
+                }
+            }
+        }
+
+        @include responsive(600px) {
+            .container-fluid {
+                .container-fav {
+                    flex-direction: column !important;
+                    gap: 3rem;
+                    text-align: center;
+                }
+            }
+        }
+    }
+
+    section.mA_copyright {
+        .container-fluid {
+            padding-bottom: 6.2rem;
+            padding-top: 6.2rem;
+            .container-fav {
+                text-align: center;
+                @include flex(column, center, center);
+                gap: 1rem;
+
+                p {
+                    @include flex(row, center, center);
+                    gap: 1rem;
+                    max-width: 1246px;
+                    font-size: 1.2rem;
+                    width: 100%;
+                    line-height: 1.9rem;
+                }
+            }
+        }
+    }
+
+    section.mA_pedido {
+        .container-fluid {
+            .container-fav {
+                h2 {
+                    font-family: "Inter", "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+                    font-size: 2.2rem;
+                    font-weight: 400;
+                }
+                h3 {
+                    font-family: "Inter", "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+                    font-size: 1.8rem;
+                    font-weight: 300;
+                    margin-top: 1rem;
+                }
+
+                .title {
+                    background: $system-box-secondary;
+                    color: $white;
+                    padding: 3rem;
+                    border-radius: 1.5rem;
+                    width: 100%;
+                }
+
+                div.info {
+                    padding-bottom: 3rem;
+                    border-bottom: 0.1rem solid $system-box-border;
+
+                    div.row {
+                        width: 100%;
+                        @include flex(row, center, space-between);
+                        padding-top: 4.3rem;
+
+                        span {
+                            @include flex(row, center, flex-start);
+                            gap: 2rem;
+                            width: 100%;
+                            max-width: 20.6rem;
+                            strong {
+                                font-style: normal;
+                                font-weight: 500;
+                                font-size: 1.6rem;
+                                color: $system-main;
+                            }
+
+                            &:last-child {
+                                color: $system-box-secondary;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    // MAIN
+
+    &#area-aluno {
+        section.mA_menu {
+            .container-fav {
+                nav {
+                    a:first-child {
+                        opacity: 1;
+                        border-bottom: solid 2px $main-red;
+                    }
+                }
+            }
+        }
+        section.mA_showcase {
+            .container-fluid {
+                .container-fav {
+                    div.boxes {
+                        div.box {
+                            height: 33rem;
+
+                            picture {
+                                margin-bottom: 0.3rem;
+                                display: block;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    &#pedidos-aluno {
+        section.mA_menu {
+            .container-fav {
+                nav {
+                    a:nth-child(2) {
+                        opacity: 1;
+                        border-bottom: solid 2px $main-red;
+                    }
+                }
+            }
+        }
+
+        section.mA_showcase {
+            .container-fluid {
+                .container-fav {
+                    div.boxes {
+                        div.box {
+                            @include flex(column, flex-start, center);
+                            gap: 3rem;
+                            height: unset;
+
+                            .info {
+                                div {
+                                    @include flex(row, center, flex-start);
+                                    gap: 1rem;
+                                }
+                            }
+
+                            &[app] {
+                                border: solid 1px rgb(0, 255, 0);
+                            }
+                        }
+
+                        .sub {
+                            @include flex(row, center, space-between);
+                            gap: 2rem;
+                            width: 100%;
+                            max-width: 19.4rem;
+
+                            picture {
+                                height: 4.7rem;
+                                width: 4.7rem;
+
+                                border-radius: 100%;
+                                background-color: $system-header-alternative;
+
+                                @include flex(row, center, center);
+                            }
+
+                            span {
+                                font-size: 1.2rem;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    &#matriculas-aluno {
+        section.mA_menu {
+            .container-fav {
+                nav {
+                    a:nth-child(3) {
+                        opacity: 1;
+                        border-bottom: solid 2px $main-red;
+                    }
+                }
+            }
+        }
+
+        section.mA_showcase {
+            .container-fluid {
+                .container-fav {
+                    div.boxes {
+                        div.box {
+                            @include flex(column, flex-start, flex-start);
+                            gap: 1.5rem;
+                            height: 40.1rem;
+
+                            picture.thumbnail {
+                                height: 15.5rem;
+                                width: 100%;
+                                border-radius: 0.5rem;
+                                @include picframe();
+                            }
+
+                            .info {
+                                div {
+                                    @include flex(row, center, flex-start);
+                                    gap: 1rem;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    &#matriculas-aluno-detalhes {
+        section.mA_menu {
+            .container-fav {
+                nav {
+                    a:nth-child(3) {
+                        opacity: 1;
+                        border-bottom: solid 2px $main-red;
+                    }
+                }
+            }
+        }
+
+        section.mA_showcase {
+            .container-fluid {
+                .container-fav {
+                    .top {
+                        @include flex(row, center, flex-start);
+                        gap: 2rem;
+
+                        padding-top: 3rem;
+
+                        width: 100%;
+                        padding-bottom: 6rem;
+
+                        picture {
+                            width: 14rem;
+                            height: 10rem;
+
+                            @include picframe();
+                            border-radius: 0.6rem;
+                        }
+
+                        h2 {
+                            font-size: 3.2rem;
+                            margin: 0;
+
+                            p {
+                                font-size: 1.6rem;
+                                margin: 0;
+                                margin-top: 1rem;
+                            }
+                        }
+                    }
+
+                    nav {
+                        width: 100%;
+                        @include flex(row, center, flex-start);
+                        border-radius: 0.5rem;
+                        background-color: $system-box-secondary;
+
+                        span {
+                            padding: 2rem;
+                            width: 10%;
+
+                            color: $white;
+                            transform: 0.32s;
+
+                            text-align: center;
+
+                            &:hover {
+                                cursor: pointer;
+                                opacity: 0.7;
+                            }
+
+                            &[active] {
+                                background: rgba(0, 0, 0, 0.096);
+                            }
+                        }
+                    }
+
+                    main {
+                        position: relative;
+
+                        .list {
+                            padding-top: 3rem;
+                            article {
+                                strong {
+                                    font-size: 1.8rem;
+                                    font-weight: normal;
+                                }
+                                p {
+                                    font-size: 1.4rem;
+                                }
+
+                                @include flex(row, flex-start, flex-start);
+                                gap: 2rem;
+
+                                .date {
+                                    font-size: 1.2rem;
+                                    font-weight: 500;
+
+                                    @include flex(row, center, flex-start);
+                                    gap: 2rem;
+                                }
+
+                                .content {
+                                    border-left: 0.1rem solid $system-header;
+                                    padding-left: 2rem;
+                                }
+
+                                picture {
+                                    height: 3rem;
+                                    width: 3rem;
+
+                                    background: $system-box-secondary;
+                                    border-radius: 100%;
+
+                                    @include flex(row, center, center);
+                                }
+
+                                .files {
+                                    margin-top: 1rem;
+                                    padding: 1rem 1rem;
+                                    border-radius: 0.5rem;
+                                    background: $system-header-alternative;
+                                    @include flex(column, flex-start, flex-start);
+                                    gap: 1rem;
+
+                                    a {
+                                        color: $system-box-secondary;
+                                        position: relative;
+                                        font-size: 1.2rem;
+                                        padding-left: 2rem;
+
+                                        &:hover {
+                                            text-decoration: underline;
+                                        }
+
+                                        &::after {
+                                            position: absolute;
+                                            content: "";
+                                            height: 1.5rem;
+                                            width: 1.5rem;
+                                            left: 0;
+
+                                            top: 0;
+                                            bottom: 0;
+
+                                            margin: auto 0;
+                                        }
+
+                                        &.video {
+                                            &::after {
+                                                background: url("/site/assets/sistema/icon_video.svg");
+                                                background-size: cover;
+                                            }
+                                        }
+                                        &.pdf {
+                                            &::after {
+                                                background: url("/site/assets/sistema/icon_pdf.svg");
+                                                background-size: cover;
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    &#dados-aluno {
+        section.mA_menu {
+            .container-fav {
+                nav {
+                    a:nth-child(4) {
+                        opacity: 1;
+                        border-bottom: solid 2px $main-red;
+                    }
+                }
+            }
+        }
+    }
+
+    &#pedidos-aluno-detalhes {
+        section.mA_menu {
+            .container-fav {
+                nav {
+                    a:nth-child(2) {
+                        opacity: 1;
+                        border-bottom: solid 2px $main-red;
+                    }
+                }
+            }
+        }
+
+        section.mA_showcase {
+            padding-bottom: 0;
+        }
+
+        section.mA_produtos,
+        section.mA_parcelas {
+            padding-bottom: 0;
+            .container-fluid {
+                padding-top: 4rem;
+                .container-fav {
+                    .boxes {
+                        .box {
+                            height: auto;
+
+                            .info {
+                                div {
+                                    margin-top: 1rem;
+                                    @include flex(row, center, flex-start);
+                                    gap: 2rem;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        section.mA_parcelas {
+            padding-bottom: 4rem;
+        }
+    }
+}
