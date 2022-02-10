@@ -5,6 +5,13 @@
 
 @section('content')
 
+<div class="next-step">
+    <h2>Leve sua festa <i>além</i></h2>
+    <p>Continue sua jornada indo pra próxima página</p>
+
+    <a href="/">Solicitar</a>
+</div>
+
 <section class="carrinho">
     <div class="niv">
         <div class="niv-top">

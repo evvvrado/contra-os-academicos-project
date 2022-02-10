@@ -6153,14 +6153,879 @@ body#orcamento-confirm section.coqueteis-drinks div.niv div.niv-content div.box 
 
 body#orcamento-carrinho div.next-step {
   position: fixed;
+  height: 31rem;
+  width: 27.8rem;
   top: 0;
   bottom: 0;
   margin: auto 0;
-  right: 0;
+  right: 3.2rem;
   z-index: 6;
+  filter: drop-shadow(4px 8px 11px rgba(69, 36, 79, 0.3));
+  border-radius: 2.3rem;
+  background: #45244f;
+  padding: 4.4rem 3.9rem;
+}
+body#orcamento-carrinho div.next-step h2 {
+  color: #fff;
+  font-size: 3.1rem;
+  line-height: 100%;
+  letter-spacing: 0.05em;
+  font-family: "Inter", sans-serif;
+  font-weight: bold;
+}
+body#orcamento-carrinho div.next-step h2 i {
+  color: #e5db00;
+  font-style: normal;
+  font-size: 3.1rem;
+  line-height: 100%;
+  letter-spacing: 0.05em;
+}
+body#orcamento-carrinho div.next-step p {
+  font-style: normal;
+  font-weight: 300;
+  font-size: 1.2rem;
+  line-height: 120%;
+  letter-spacing: 0.05em;
+  color: #fff;
+  margin-top: 2rem;
+}
+body#orcamento-carrinho div.next-step p:last-child {
+  font-size: 1rem;
+}
+body#orcamento-carrinho div.next-step a {
+  width: 20rem;
+  height: 3.4rem;
+  color: #fff;
+  background: #985394;
+  font-size: 1.5rem;
+  border-radius: 1.1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+  margin-top: 5.3rem;
+  transition: 0.32s;
+}
+body#orcamento-carrinho div.next-step a:hover {
+  background: #e5db00;
+  color: #260530;
+}
+
+body.minha-area {
+  background-color: #fff;
+}
+body.minha-area div.emptyspace {
+  height: 13.3rem;
   display: block;
-  height: 17.4rem;
+}
+body.minha-area section.mA_menu {
+  background-color: #faefef;
+  width: 100%;
+  position: fixed;
+  z-index: 665;
+  top: 0;
+  /**
+
+  @include responsive(1400px) {}
+  @include responsive(1200px) {}
+  @include responsive(992px) {}
+  @include responsive(730px) {}
+  @include responsive(600px) {}
+
+  **/
+  /**
+
+  @include responsive(1400px) {}
+  @include responsive(1200px) {}
+  @include responsive(992px) {}
+  @include responsive(730px) {}
+  @include responsive(600px) {}
+
+  **/
+}
+body.minha-area section.mA_menu .container-fav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-direction: row;
+}
+body.minha-area section.mA_menu .container-fav .logos {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  flex-direction: row;
+  gap: 2rem;
+}
+body.minha-area section.mA_menu .container-fav nav {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  flex-direction: row;
+}
+body.minha-area section.mA_menu .container-fav nav a {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  flex-direction: row;
+  gap: 1.2rem;
+  transition: 0.32s;
+  padding: 3rem 3rem;
+  opacity: 0.7;
   cursor: pointer;
+  font-size: 1.6rem;
+  letter-spacing: -0.01em;
+  color: #56076d;
+}
+body.minha-area section.mA_menu .container-fav nav a:hover {
+  background-color: #ffffff6b;
+  opacity: 0.9;
+}
+body.minha-area section.mA_menu .container-fav div.user {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  flex-direction: row;
+  gap: 3.6rem;
+  width: 100%;
+  max-width: 19.6rem;
+}
+body.minha-area section.mA_menu .container-fav div.user picture {
+  width: 5rem;
+  height: 5rem;
+  background-color: #ffffff6b;
+  overflow: hidden;
+  border-radius: 100%;
+}
+body.minha-area section.mA_menu .container-fav div.user picture img {
+  height: 100%;
+  width: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+body.minha-area section.mA_menu .container-fav div.user span,
+body.minha-area section.mA_menu .container-fav div.user strong,
+body.minha-area section.mA_menu .container-fav div.user a {
+  font-size: 1.4rem;
+  color: #56076d;
+}
+body.minha-area section.mA_menu .container-fav div.user a {
+  color: black;
+  font-weight: 600;
+  margin-top: 5px;
+}
+body.minha-area section.mA_menu .container-fav div.user span {
+  display: block;
+}
+body.minha-area section.mA_menu[alternative] {
+  background: none;
+  top: 1.5rem;
+}
+body.minha-area section.mA_menu[alternative] .container-fav {
+  background-color: #fbfbfb;
+  border-radius: 12.5rem;
+  box-shadow: 0 5px 50px rgba(0, 0, 0, 0.144);
+}
+body.minha-area section.mA_menu[alternative] .container-fav div.user {
+  flex-direction: row-reverse;
+  position: relative;
+  max-width: unset;
+  width: auto;
+}
+body.minha-area section.mA_menu[alternative] .container-fav div.user picture {
+  position: relative;
+  z-index: 2;
+  cursor: pointer;
+  transition: 0.32s ease-in-out;
+}
+body.minha-area section.mA_menu[alternative] .container-fav div.user picture:hover {
+  border: solid 2px #dbbf00;
+}
+@media (max-width: 800px) {
+  body.minha-area section.mA_menu .container-fav nav a span {
+    display: none;
+  }
+}
+@media (max-width: 600px) {
+  body.minha-area section.mA_menu .container-fav {
+    padding: 1rem;
+    width: -webkit-max-content;
+    width: -moz-max-content;
+    width: max-content;
+    gap: 3rem;
+  }
+  body.minha-area section.mA_menu .container-fav nav {
+    flex-direction: column;
+    align-items: flex-start;
+    position: absolute;
+    width: 32.6rem;
+    height: 0;
+    overflow: hidden;
+    transition: 0.32s;
+    z-index: 664;
+    top: 7.5rem;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    background-color: #fbfbfb;
+    border-radius: 0 0 1rem 1rem;
+  }
+  body.minha-area section.mA_menu .container-fav nav a {
+    width: 100%;
+  }
+  body.minha-area section.mA_menu .container-fav nav a span {
+    display: block;
+  }
+  body.minha-area section.mA_menu .container-fav nav[active] {
+    height: 34.7rem;
+  }
+}
+body.minha-area section.mA_showcase,
+body.minha-area section.mA_produtos,
+body.minha-area section.mA_parcelas {
+  padding-bottom: 10rem;
+}
+body.minha-area section.mA_showcase .container-fluid .container-fav h2,
+body.minha-area section.mA_produtos .container-fluid .container-fav h2,
+body.minha-area section.mA_parcelas .container-fluid .container-fav h2 {
+  font-size: 1.8rem;
+  color: #56076d;
+  margin-bottom: 3.3rem;
+}
+body.minha-area section.mA_showcase .container-fluid .container-fav div.boxes,
+body.minha-area section.mA_produtos .container-fluid .container-fav div.boxes,
+body.minha-area section.mA_parcelas .container-fluid .container-fav div.boxes {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 3rem;
+}
+body.minha-area section.mA_showcase .container-fluid .container-fav div.boxes div.box,
+body.minha-area section.mA_produtos .container-fluid .container-fav div.boxes div.box,
+body.minha-area section.mA_parcelas .container-fluid .container-fav div.boxes div.box {
+  border: solid 1px #c6b5b5;
+  width: 100%;
+  max-width: 28rem;
+  height: 33rem;
+  position: relative;
+  padding: 2.4rem 2.8rem;
+  border-radius: 0.4rem;
+}
+body.minha-area section.mA_showcase .container-fluid .container-fav div.boxes div.box strong,
+body.minha-area section.mA_produtos .container-fluid .container-fav div.boxes div.box strong,
+body.minha-area section.mA_parcelas .container-fluid .container-fav div.boxes div.box strong {
+  color: #56076d;
+  font-size: 1.8rem;
+  display: block;
+  margin-bottom: 0.8rem;
+}
+body.minha-area section.mA_showcase .container-fluid .container-fav div.boxes div.box p,
+body.minha-area section.mA_produtos .container-fluid .container-fav div.boxes div.box p,
+body.minha-area section.mA_parcelas .container-fluid .container-fav div.boxes div.box p {
+  color: #dbbf00;
+}
+body.minha-area section.mA_showcase .container-fluid .container-fav div.boxes div.box button,
+body.minha-area section.mA_produtos .container-fluid .container-fav div.boxes div.box button,
+body.minha-area section.mA_parcelas .container-fluid .container-fav div.boxes div.box button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+  border-radius: 0.4rem;
+  gap: 1.6rem;
+  height: 4.2rem;
+  padding: 1.2rem 3.8rem;
+  font-size: 1.4rem;
+  width: 100%;
+  transition: 0.32s;
+  background: #dbbf00;
+  margin-top: 1rem;
+  color: #fff;
+}
+body.minha-area section.mA_showcase .container-fluid .container-fav div.boxes div.box button:hover,
+body.minha-area section.mA_produtos .container-fluid .container-fav div.boxes div.box button:hover,
+body.minha-area section.mA_parcelas .container-fluid .container-fav div.boxes div.box button:hover {
+  transform: scale(1.05);
+}
+body.minha-area section.mA_dados {
+  padding-bottom: 10rem;
+  /**
+
+  @include responsive(1400px) {}
+  @include responsive(1200px) {}
+  @include responsive(992px) {}
+  @include responsive(730px) {}
+  @include responsive(600px) {}
+
+  **/
+}
+body.minha-area section.mA_dados .container-fluid .container-fav {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  flex-direction: row;
+}
+body.minha-area section.mA_dados .container-fluid .container-fav h2 {
+  font-size: 1.8rem;
+  color: #56076d;
+  margin-bottom: 3.3rem;
+}
+body.minha-area section.mA_dados .container-fluid .container-fav div.dados {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  flex-direction: column;
+  gap: 2rem;
+  max-width: 35rem;
+}
+body.minha-area section.mA_dados .container-fluid .container-fav form {
+  gap: 2rem;
+  width: 72rem;
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-end;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+body.minha-area section.mA_dados .container-fluid .container-fav form label {
+  position: relative;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+  max-width: 35rem;
+}
+body.minha-area section.mA_dados .container-fluid .container-fav form label input {
+  width: 100%;
+  height: 5.2rem;
+  border: solid 1px #c6b5b5;
+  border-radius: 0.4rem;
+  padding: 1.7rem 0 1.7rem 6.9rem;
+  color: #dbbf00;
+  font-size: 1.4rem;
+  align-items: center;
+}
+body.minha-area section.mA_dados .container-fluid .container-fav form label picture {
+  position: absolute;
+  left: 2.8rem;
+}
+body.minha-area section.mA_dados .container-fluid .container-fav form button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+  border-radius: 0.4rem;
+  gap: 1.6rem;
+  height: 4.2rem;
+  padding: 1.2rem 3.8rem;
+  font-size: 1.4rem;
+  width: 100%;
+  transition: 0.32s;
+  max-width: 35rem;
+  background: #dbbf00;
+  margin-top: 1rem;
+  color: #fff;
+}
+body.minha-area section.mA_dados .container-fluid .container-fav form button:hover {
+  transform: scale(1.05);
+}
+body.minha-area section.mA_dados .container-fluid .container-fav div.col {
+  width: 100%;
+  max-width: 35rem;
+}
+body.minha-area section.mA_dados .container-fluid .container-fav div.col:last-child {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 3rem;
+  padding-top: 5rem;
+}
+body.minha-area section.mA_dados .container-fluid .container-fav div.col:last-child picture {
+  height: 23.5rem;
+  width: 23.5rem;
+  overflow: hidden;
+  border-radius: 100%;
+}
+body.minha-area section.mA_dados .container-fluid .container-fav div.col:last-child picture img {
+  height: 100%;
+  width: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+body.minha-area section.mA_dados .container-fluid .container-fav div.col:last-child a {
+  color: #c6b5b5;
+}
+body.minha-area section.mA_dados .container-fluid .container-fav div.col:last-child a:hover {
+  color: #56076d;
+}
+@media (max-width: 800px) {
+  body.minha-area section.mA_dados .container-fluid .container-fav {
+    flex-direction: column-reverse;
+    align-items: center;
+  }
+  body.minha-area section.mA_dados .container-fluid .container-fav div.col {
+    max-width: unset;
+    margin-bottom: 5rem;
+    text-align: center;
+  }
+  body.minha-area section.mA_dados .container-fluid .container-fav div.col form {
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 5rem;
+    width: 100%;
+  }
+}
+body.minha-area section.mA_footer {
+  /**
+
+  @include responsive(1400px) {}
+  @include responsive(1200px) {}
+  @include responsive(992px) {}
+  @include responsive(730px) {}
+  @include responsive(600px) {}
+
+  **/
+}
+body.minha-area section.mA_footer .container-fluid {
+  background-color: #fff;
+  border-top: 1px solid #c6b5b5;
+  border-bottom: 1px solid #c6b5b5;
+  padding-top: 9rem;
+}
+body.minha-area section.mA_footer .container-fluid .container-fav:first-child {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-direction: row;
+  padding-bottom: 9rem;
+}
+body.minha-area section.mA_footer .container-fluid .container-fav:first-child .text h3 {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: normal;
+  font-size: 1.8rem;
+  letter-spacing: 0.02em;
+  color: #dbbf00;
+  opacity: 0.75;
+}
+body.minha-area section.mA_footer .container-fluid .container-fav:first-child .text h2 {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: normal;
+  font-size: 3.2rem;
+  line-height: 135%;
+  color: #56076d;
+}
+body.minha-area section.mA_footer .container-fluid .container-fav:first-child .buttons {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  flex-direction: row;
+  gap: 1.7rem;
+}
+body.minha-area section.mA_footer .container-fluid .container-fav:first-child .buttons div {
+  height: 6.5rem;
+  width: 6.5rem;
+  background: #56076d;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 0.8rem;
+  cursor: pointer;
+}
+body.minha-area section.mA_footer .container-fluid .container-fav:last-child {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  flex-direction: row;
+  border-top: 1px solid #c6b5b5;
+  padding-top: 6.6rem;
+  padding-bottom: 10rem;
+}
+body.minha-area section.mA_footer .container-fluid .container-fav:last-child .left p {
+  font-family: "Inter";
+  font-size: 1.4rem;
+  line-height: 100%;
+  color: #56076d;
+  opacity: 0.6;
+  max-width: 38.3rem;
+}
+body.minha-area section.mA_footer .container-fluid .container-fav:last-child .left .siga {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  flex-direction: row;
+  gap: 2rem;
+  margin-top: 3.7rem;
+}
+body.minha-area section.mA_footer .container-fluid .container-fav:last-child .left .compraSegura {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  flex-direction: row;
+  gap: 1.6rem;
+  margin-top: 4.1rem;
+}
+body.minha-area section.mA_footer .container-fluid .container-fav:last-child .left .compraSegura strong {
+  font-family: "Inter";
+  font-size: 2.2rem;
+  color: #dbbf00;
+}
+body.minha-area section.mA_footer .container-fluid .container-fav:last-child .right {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 1.6rem;
+  width: 100%;
+  max-width: 32.2rem;
+}
+body.minha-area section.mA_footer .container-fluid .container-fav:last-child .right div {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.4rem;
+}
+@media (max-width: 600px) {
+  body.minha-area section.mA_footer .container-fluid .container-fav {
+    flex-direction: column !important;
+    gap: 3rem;
+    text-align: center;
+  }
+}
+body.minha-area section.mA_copyright .container-fluid {
+  padding-bottom: 6.2rem;
+  padding-top: 6.2rem;
+}
+body.minha-area section.mA_copyright .container-fluid .container-fav {
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 1rem;
+}
+body.minha-area section.mA_copyright .container-fluid .container-fav p {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+  gap: 1rem;
+  max-width: 1246px;
+  font-size: 1.2rem;
+  width: 100%;
+  line-height: 1.9rem;
+}
+body.minha-area section.mA_pedido .container-fluid .container-fav h2 {
+  font-family: "Inter", "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+  font-size: 2.2rem;
+  font-weight: 400;
+}
+body.minha-area section.mA_pedido .container-fluid .container-fav h3 {
+  font-family: "Inter", "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+  font-size: 1.8rem;
+  font-weight: 300;
+  margin-top: 1rem;
+}
+body.minha-area section.mA_pedido .container-fluid .container-fav .title {
+  background: #dbbf00;
+  color: #fff;
+  padding: 3rem;
+  border-radius: 1.5rem;
+  width: 100%;
+}
+body.minha-area section.mA_pedido .container-fluid .container-fav div.info {
+  padding-bottom: 3rem;
+  border-bottom: 0.1rem solid #c6b5b5;
+}
+body.minha-area section.mA_pedido .container-fluid .container-fav div.info div.row {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-direction: row;
+  padding-top: 4.3rem;
+}
+body.minha-area section.mA_pedido .container-fluid .container-fav div.info div.row span {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  flex-direction: row;
+  gap: 2rem;
+  width: 100%;
+  max-width: 20.6rem;
+}
+body.minha-area section.mA_pedido .container-fluid .container-fav div.info div.row span strong {
+  font-style: normal;
+  font-weight: 500;
+  font-size: 1.6rem;
+  color: #56076d;
+}
+body.minha-area section.mA_pedido .container-fluid .container-fav div.info div.row span:last-child {
+  color: #dbbf00;
+}
+body.minha-area#area-aluno section.mA_menu .container-fav nav a:first-child {
+  opacity: 1;
+  border-bottom: solid 2px #56076d;
+}
+body.minha-area#area-aluno section.mA_showcase .container-fluid .container-fav div.boxes div.box {
+  height: 33rem;
+}
+body.minha-area#area-aluno section.mA_showcase .container-fluid .container-fav div.boxes div.box picture {
+  margin-bottom: 0.3rem;
+  display: block;
+}
+body.minha-area#pedidos-aluno section.mA_menu .container-fav nav a:nth-child(2) {
+  opacity: 1;
+  border-bottom: solid 2px #56076d;
+}
+body.minha-area#pedidos-aluno section.mA_showcase .container-fluid .container-fav div.boxes div.box {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  flex-direction: column;
+  gap: 3rem;
+  height: unset;
+}
+body.minha-area#pedidos-aluno section.mA_showcase .container-fluid .container-fav div.boxes div.box .info div {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  flex-direction: row;
+  gap: 1rem;
+}
+body.minha-area#pedidos-aluno section.mA_showcase .container-fluid .container-fav div.boxes div.box[app] {
+  border: solid 1px lime;
+}
+body.minha-area#pedidos-aluno section.mA_showcase .container-fluid .container-fav div.boxes .sub {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-direction: row;
+  gap: 2rem;
+  width: 100%;
+  max-width: 19.4rem;
+}
+body.minha-area#pedidos-aluno section.mA_showcase .container-fluid .container-fav div.boxes .sub picture {
+  height: 4.7rem;
+  width: 4.7rem;
+  border-radius: 100%;
+  background-color: #fbfbfb;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+}
+body.minha-area#pedidos-aluno section.mA_showcase .container-fluid .container-fav div.boxes .sub span {
+  font-size: 1.2rem;
+}
+body.minha-area#matriculas-aluno section.mA_menu .container-fav nav a:nth-child(3) {
+  opacity: 1;
+  border-bottom: solid 2px #56076d;
+}
+body.minha-area#matriculas-aluno section.mA_showcase .container-fluid .container-fav div.boxes div.box {
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  flex-direction: column;
+  gap: 1.5rem;
+  height: 40.1rem;
+}
+body.minha-area#matriculas-aluno section.mA_showcase .container-fluid .container-fav div.boxes div.box picture.thumbnail {
+  height: 15.5rem;
+  width: 100%;
+  border-radius: 0.5rem;
+  overflow: hidden;
+}
+body.minha-area#matriculas-aluno section.mA_showcase .container-fluid .container-fav div.boxes div.box picture.thumbnail img {
+  height: 100%;
+  width: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+body.minha-area#matriculas-aluno section.mA_showcase .container-fluid .container-fav div.boxes div.box .info div {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  flex-direction: row;
+  gap: 1rem;
+}
+body.minha-area#matriculas-aluno-detalhes section.mA_menu .container-fav nav a:nth-child(3) {
+  opacity: 1;
+  border-bottom: solid 2px #56076d;
+}
+body.minha-area#matriculas-aluno-detalhes section.mA_showcase .container-fluid .container-fav .top {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  flex-direction: row;
+  gap: 2rem;
+  padding-top: 3rem;
+  width: 100%;
+  padding-bottom: 6rem;
+}
+body.minha-area#matriculas-aluno-detalhes section.mA_showcase .container-fluid .container-fav .top picture {
+  width: 14rem;
+  height: 10rem;
+  overflow: hidden;
+  border-radius: 0.6rem;
+}
+body.minha-area#matriculas-aluno-detalhes section.mA_showcase .container-fluid .container-fav .top picture img {
+  height: 100%;
+  width: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+body.minha-area#matriculas-aluno-detalhes section.mA_showcase .container-fluid .container-fav .top h2 {
+  font-size: 3.2rem;
+  margin: 0;
+}
+body.minha-area#matriculas-aluno-detalhes section.mA_showcase .container-fluid .container-fav .top h2 p {
+  font-size: 1.6rem;
+  margin: 0;
+  margin-top: 1rem;
+}
+body.minha-area#matriculas-aluno-detalhes section.mA_showcase .container-fluid .container-fav nav {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  flex-direction: row;
+  border-radius: 0.5rem;
+  background-color: #dbbf00;
+}
+body.minha-area#matriculas-aluno-detalhes section.mA_showcase .container-fluid .container-fav nav span {
+  padding: 2rem;
+  width: 10%;
+  color: #fff;
+  transform: 0.32s;
+  text-align: center;
+}
+body.minha-area#matriculas-aluno-detalhes section.mA_showcase .container-fluid .container-fav nav span:hover {
+  cursor: pointer;
+  opacity: 0.7;
+}
+body.minha-area#matriculas-aluno-detalhes section.mA_showcase .container-fluid .container-fav nav span[active] {
+  background: rgba(0, 0, 0, 0.096);
+}
+body.minha-area#matriculas-aluno-detalhes section.mA_showcase .container-fluid .container-fav main {
+  position: relative;
+}
+body.minha-area#matriculas-aluno-detalhes section.mA_showcase .container-fluid .container-fav main .list {
+  padding-top: 3rem;
+}
+body.minha-area#matriculas-aluno-detalhes section.mA_showcase .container-fluid .container-fav main .list article {
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  flex-direction: row;
+  gap: 2rem;
+}
+body.minha-area#matriculas-aluno-detalhes section.mA_showcase .container-fluid .container-fav main .list article strong {
+  font-size: 1.8rem;
+  font-weight: normal;
+}
+body.minha-area#matriculas-aluno-detalhes section.mA_showcase .container-fluid .container-fav main .list article p {
+  font-size: 1.4rem;
+}
+body.minha-area#matriculas-aluno-detalhes section.mA_showcase .container-fluid .container-fav main .list article .date {
+  font-size: 1.2rem;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  flex-direction: row;
+  gap: 2rem;
+}
+body.minha-area#matriculas-aluno-detalhes section.mA_showcase .container-fluid .container-fav main .list article .content {
+  border-left: 0.1rem solid #faefef;
+  padding-left: 2rem;
+}
+body.minha-area#matriculas-aluno-detalhes section.mA_showcase .container-fluid .container-fav main .list article picture {
+  height: 3rem;
+  width: 3rem;
+  background: #dbbf00;
+  border-radius: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+}
+body.minha-area#matriculas-aluno-detalhes section.mA_showcase .container-fluid .container-fav main .list article .files {
+  margin-top: 1rem;
+  padding: 1rem 1rem;
+  border-radius: 0.5rem;
+  background: #fbfbfb;
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  flex-direction: column;
+  gap: 1rem;
+}
+body.minha-area#matriculas-aluno-detalhes section.mA_showcase .container-fluid .container-fav main .list article .files a {
+  color: #dbbf00;
+  position: relative;
+  font-size: 1.2rem;
+  padding-left: 2rem;
+}
+body.minha-area#matriculas-aluno-detalhes section.mA_showcase .container-fluid .container-fav main .list article .files a:hover {
+  text-decoration: underline;
+}
+body.minha-area#matriculas-aluno-detalhes section.mA_showcase .container-fluid .container-fav main .list article .files a::after {
+  position: absolute;
+  content: "";
+  height: 1.5rem;
+  width: 1.5rem;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  margin: auto 0;
+}
+body.minha-area#matriculas-aluno-detalhes section.mA_showcase .container-fluid .container-fav main .list article .files a.video::after {
+  background: url("/site/assets/sistema/icon_video.svg");
+  background-size: cover;
+}
+body.minha-area#matriculas-aluno-detalhes section.mA_showcase .container-fluid .container-fav main .list article .files a.pdf::after {
+  background: url("/site/assets/sistema/icon_pdf.svg");
+  background-size: cover;
+}
+body.minha-area#dados-aluno section.mA_menu .container-fav nav a:nth-child(4) {
+  opacity: 1;
+  border-bottom: solid 2px #56076d;
+}
+body.minha-area#pedidos-aluno-detalhes section.mA_menu .container-fav nav a:nth-child(2) {
+  opacity: 1;
+  border-bottom: solid 2px #56076d;
+}
+body.minha-area#pedidos-aluno-detalhes section.mA_showcase {
+  padding-bottom: 0;
+}
+body.minha-area#pedidos-aluno-detalhes section.mA_produtos,
+body.minha-area#pedidos-aluno-detalhes section.mA_parcelas {
+  padding-bottom: 0;
+}
+body.minha-area#pedidos-aluno-detalhes section.mA_produtos .container-fluid,
+body.minha-area#pedidos-aluno-detalhes section.mA_parcelas .container-fluid {
+  padding-top: 4rem;
+}
+body.minha-area#pedidos-aluno-detalhes section.mA_produtos .container-fluid .container-fav .boxes .box,
+body.minha-area#pedidos-aluno-detalhes section.mA_parcelas .container-fluid .container-fav .boxes .box {
+  height: auto;
+}
+body.minha-area#pedidos-aluno-detalhes section.mA_produtos .container-fluid .container-fav .boxes .box .info div,
+body.minha-area#pedidos-aluno-detalhes section.mA_parcelas .container-fluid .container-fav .boxes .box .info div {
+  margin-top: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  flex-direction: row;
+  gap: 2rem;
+}
+body.minha-area#pedidos-aluno-detalhes section.mA_parcelas {
+  padding-bottom: 4rem;
 }
 
 div.modal {

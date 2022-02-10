@@ -339,10 +339,10 @@ $(document).ready(function () {
         $('div.up').toggleAttr('hide');
     })
 
-    $('div.super-up [fluid] div.close, body#orcamento-carrinho div.next-step').click(() => {
+    // $('div.super-up [fluid] div.close, body#orcamento-carrinho div.next-step').click(() => {
 
-        $('div.super-up').toggleAttr('hide');
-    })
+    //     $('div.super-up').toggleAttr('hide');
+    // })
 
 })
 
