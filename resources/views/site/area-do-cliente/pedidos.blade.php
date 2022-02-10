@@ -1,17 +1,14 @@
-@extends('site.template.area-do-aluno')
+@extends('site.template.area-do-cliente')
 
 @section('id', 'pedidos-aluno')
 
 @section('content')
-@php
-$aluno = \App\Models\Aluno::find(session()->get('aluno')['id']);
-@endphp
 
 
 <section class="mA_showcase">
     <div class="container-fluid">
         <div class="container-fav">
-            <h2>Meus Pedidos</h2>
+            <h2>Meus Orçamentos</h2>
 
             <main>
                 <div class="boxes">
@@ -73,6 +70,53 @@ $aluno = \App\Models\Aluno::find(session()->get('aluno')['id']);
 
                         @endforeach
                         @endif --}}
+
+
+                        <div class="box" app>
+
+                            <strong>Festa em pernambuco</strong>
+
+                            <div class="info">
+                                <div>
+                                    <picture>
+                                        <img src="{{asset('site/assets/sistema/calendar.svg')}}" alt="">
+                                    </picture>
+                                    <p>12/05/2022</p>
+                                </div>
+                                <div>
+                                    <picture>
+                                        <img src="{{asset('site/assets/sistema/plane.svg')}}" alt="">
+                                    </picture>
+                                    <p>34 Produtos</p>
+                                </div>
+                            </div>
+
+                            <button>
+                                Pagar
+                                <div class="_svg">
+                                    <img src="{{asset('site/assets/sistema/buttonArrowRight.svg')}}" alt="">
+                                </div>
+                            </button>
+
+
+                            <button>
+                                Compartilhar
+                                <div class="_svg">
+                                    <img src="{{asset('site/assets/sistema/buttonArrowRight.svg')}}" alt="">
+                                </div>
+                            </button>
+                            <div class="sub">
+
+                                <picture>
+                                    <img src="{{ asset('site/assets/sistema/dollar.svg') }} " alt="">
+                                </picture>
+
+                                <span>Aguardando Pag.</span>
+                            </div>
+                        </div>
+
+
+
                 </div>
             </main>
         </div>

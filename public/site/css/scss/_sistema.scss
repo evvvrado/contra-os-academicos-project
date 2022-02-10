@@ -12,6 +12,22 @@ $system-box-border: #c6b5b5;
 body.minha-area {
     background-color: $white;
 
+    /* GRID */
+    .container-fluid {
+        width: 100%;
+        padding-right: 15px;
+        padding-left: 15px;
+        margin-right: auto;
+        margin-left: auto;
+
+        .container-fav {
+            width: 100%;
+            max-width: calc(1215px + 30px);
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+    }
+
     div.emptyspace {
         height: 13.3rem;
         display: block;
@@ -48,6 +64,12 @@ body.minha-area {
                     letter-spacing: -0.01em;
 
                     color: $system-main;
+
+                    // &:nth-child(2) {
+                    //     filter: grayscale(0);
+                    //     opacity: 0.2;
+                    //     pointer-events: none;
+                    // }
 
                     &:hover {
                         background-color: $system-header-hover;
@@ -688,6 +710,8 @@ body.minha-area {
                             gap: 3rem;
                             height: unset;
 
+                            cursor: pointer !important;
+
                             .info {
                                 div {
                                     @include flex(row, center, flex-start);
@@ -697,6 +721,11 @@ body.minha-area {
 
                             &[app] {
                                 border: solid 1px rgb(0, 255, 0);
+                            }
+
+                            button {
+                                margin-top: 0;
+                                margin-bottom: 0;
                             }
                         }
 
