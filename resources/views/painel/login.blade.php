@@ -70,7 +70,7 @@
 
                                     <div class="mb-3">
                                         <label for="usuario" class="form-label">Usuário</label>
-                                        <input type="text" class="form-control" name="usuario" id="usuario" placeholder="Informe o usuário" required ">
+                                        <input type="text" class="form-control" name="usuario" id="usuario" placeholder="Informe o usuário" required>
                                         </div>
                 
                                         <div class=" mb-3">

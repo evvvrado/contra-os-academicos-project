@@ -193,11 +193,22 @@
 
 <section class="leve">
     <div class="niv">
-        <picture>
-            <img src="{{ asset('/site/assets/img/leva_banner.jpg') }}" alt="imagem representativa">
-        </picture>
+        @php
+            if($publicidade) {
+        @endphp
+                <picture>
+                    
+                        <a target="_blank" rel="noopener" href="{{$publicidade->url}}" title="Conheça {{$publicidade->nome}}" pid="{{$publicidade->id}}">
+                            <img style="width: 1213px; height: 313px;" src="{{ asset($publicidade->imagem_desktop) }}" rel="noopener" data-size="desktop" alt="" />
+                            {{-- <img src="{{ asset($publicidade->imagem_mobile) }}" rel="noopener" data-size="responsive" alt="" /> --}}
+                            {{-- <img src="{{ asset('/site/assets/img/leva_banner.jpg') }}" alt="imagem representativa"> --}}
+                        </a>
+                </picture>
 
-        <h2>Leva algo diferente para sua festa</h2>
+                <h2>{{ $publicidade->nome }}</h2>
+        @php 
+            }
+        @endphp
 
         <button>Solicite um orçamento</button>
     </div>

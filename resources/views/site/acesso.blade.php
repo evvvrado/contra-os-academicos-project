@@ -17,11 +17,11 @@
         </div>
 
         <div class="niv-form">
-            <form action="{{ route('site.orcamento.evento')}}">
+            <form method="post" action="{{ route('site.logar-cliente')}}">
                 @csrf
                 <label>
-                    <span>Usuário</span>
-                    <input type="text" name="usuario" placeholder="Insira seu usuário" required>
+                    <span>Email</span>
+                    <input type="text" name="email" placeholder="Insira seu usuário" required>
                 </label>
                 <label>
                     <span>Senha</span>

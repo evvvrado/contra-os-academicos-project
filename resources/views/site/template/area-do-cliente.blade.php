@@ -21,7 +21,7 @@
 <body id="@yield('id')" class="minha-area">
 
     @php
-    $aluno = \App\Models\Aluno::find(session()->get('aluno')['id']);
+    $lead = \App\Models\Lead::find(session()->get('cliente')['id']);
     @endphp
 
 
@@ -38,7 +38,7 @@
 
 
                 <nav>
-                    <a href="{{ route('minha-area.aluno')}}">
+                    <a href="{{ route('minha-area.cliente')}}">
                         <picture>
                             <img src="{{ asset('site/assets/sistema/user.svg') }}" alt="">
                         </picture>
@@ -46,7 +46,7 @@
                         <span>Minha Área</span>
                     </a>
 
-                    <a href="{{ route('minha-area.aluno-pedidos')}}">
+                    <a href="{{ route('minha-area.cliente-pedidos')}}">
                         <picture>
                             <img src="{{ asset('site/assets/sistema/bag.svg') }}" alt="">
                         </picture>
@@ -55,7 +55,7 @@
                     </a>
 
 
-                    {{-- <a href="{{ route('minha-area.aluno-matriculas')}}">
+                    {{-- <a href="{{ route('minha-area.cliente-matriculas')}}">
                         <picture>
                             <img src="{{ asset('site/assets/sistema/page.svg') }}" alt="">
                         </picture>
@@ -64,7 +64,7 @@
                     </a> --}}
 
 
-                    <a href="{{ route('minha-area.aluno-dados')}}">
+                    <a href="{{ route('minha-area.cliente-dados')}}">
                         <picture>
                             <img src="{{ asset('site/assets/sistema/clipboard.svg') }}" alt="">
                         </picture>
@@ -76,18 +76,18 @@
 
                 <div class="user">
                     <picture>
-                        @if (!$aluno->avatar)
+                        @if (!$lead->avatar)
                         <img src="{{ asset('site/assets/sistema/menu_user.svg') }}" alt="">
                         @else
-                        <img src="{{ asset($aluno->avatar) }}" alt="">
+                        <img src="{{ asset($lead->avatar) }}" alt="">
                         @endif
                     </picture>
 
                     <div>
-                        <span>Olá, <strong>{{ explode(' ', session()->get('aluno')['nome'])[0] }}</strong></span>
-                        <a href="{{route('site.aluno.deslogar')}}">
+                        <span>Olá, <strong>{{ explode(' ', session()->get('cliente')['nome'])[0] }}</strong></span>
+                        {{-- <a href="{{route('site.cliente.deslogar')}}">
                             Sair
-                        </a>
+                        </a> --}}
                     </div>
 
                 </div>

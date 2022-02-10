@@ -289,6 +289,7 @@ $usuario = \App\Models\Usuario::find(session()->get('usuario')['id']);
                                 <li><a href="{{ route('painel.duvidas') }}" key="t-default">Dúvidas</a></li>
                                 <li><a href="{{ route('painel.artigos') }}" key="t-default">Artigos</a></li>
                                 <li><a href="{{ route('painel.noticias') }}" key="t-default">Notícias</a></li>
+                                <li><a href="{{ route('painel.anuncios') }}" key="t-default">Anúncios</a></li>
                             </ul>
                         </li>
 

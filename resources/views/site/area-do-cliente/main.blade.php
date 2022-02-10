@@ -1,4 +1,4 @@
-@extends('site.template.area-do-aluno')
+@extends('site.template.area-do-cliente')
 
 @section('id', 'area-aluno')
 

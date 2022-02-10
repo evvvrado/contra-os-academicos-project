@@ -8,8 +8,9 @@ use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Storage;
 use DB;
 use App\Models\Noticia;
-
+use App\Models\Anuncio;
 use App\Models\Produto;
+use App\Models\Lead;
 
 class SiteController extends Controller
 {
@@ -27,7 +28,9 @@ class SiteController extends Controller
 
         $produtos = Produto::all();
 
-        return view("site.index", ["produtos" => $produtos, "noticias" => $noticias]);
+        $publicidade = Anuncio::first();
+
+        return view("site.index", ["produtos" => $produtos, "noticias" => $noticias, "publicidade" => $publicidade]);
     }
 
     public function sobre()
@@ -67,10 +70,27 @@ class SiteController extends Controller
         return view("site.coquetel");
     }
 
-
-
     public function acessarCliente()
     {
         return view("site.acesso");
+    }
+
+    public function logarCliente(Request $request)
+    {
+        $lead = Lead::where("email", $request->email)->first();
+        if($lead){
+            if($request->senha == $lead->senha){
+                session()->put(["cliente" => $lead->toArray()]);
+                return redirect()->route("minha-area.cliente");
+            }else{
+                toastr()->error("Informações de usuário incorretas!");
+            }
+        }else{
+            toastr()->error("Informações de usuário incorretas!");
+        }
+
+        return redirect()->back();
+
+        // return view("site.acesso");
     }
 }
