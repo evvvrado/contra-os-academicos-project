@@ -1745,33 +1745,28 @@ body#orcamento-lista {
     }
 
     div.next-step {
+        width: 100%;
+        height: 12rem;
+
         position: fixed;
-
-        height: 27.8rem;
-        width: 27.8rem;
-
-        top: 0;
         bottom: 0;
-
-        margin: auto 0;
-
-        right: 3.2rem;
 
         z-index: 6;
 
+        @include flex(row, center, center);
+        gap: 6rem;
         filter: drop-shadow(4px 8px 11px rgba(69, 36, 79, 0.3));
 
-        border-radius: 2.3rem;
-
         background: $form-purple;
-
-        padding: 5.1rem 3.9rem;
 
         h2 {
             color: $white;
             font-size: 3.1rem;
             line-height: 100%;
             letter-spacing: 0.05em;
+
+            font-family: "Inter", sans-serif;
+            font-weight: bold;
 
             i {
                 color: $main-yellow;
@@ -1790,12 +1785,16 @@ body#orcamento-lista {
             letter-spacing: 0.05em;
             color: $white;
 
-            margin-top: 2rem;
+            margin-top: 1rem;
+
+            &:last-child {
+                font-size: 1rem;
+            }
         }
 
         a {
             width: 20rem;
-            height: 3.4rem;
+            height: 5.4rem;
 
             color: $white;
             background: $lighter-purple;
@@ -1804,7 +1803,7 @@ body#orcamento-lista {
             border-radius: 1.1rem;
 
             @include flex(row, center, center);
-            margin-top: 5.3rem;
+            // margin-top: 5.3rem;
 
             transition: 0.32s;
 
@@ -1814,7 +1813,6 @@ body#orcamento-lista {
             }
         }
     }
-
     @include responsive(1280px) {
         section.coqueteis-drinks {
             div.niv {
@@ -1878,28 +1876,98 @@ body#orcamento-lista {
 }
 
 body#orcamento-confirm {
+    // div.next-step {
+    //     position: fixed;
+
+    //     height: 31rem;
+    //     width: 27.8rem;
+
+    //     top: 0;
+    //     bottom: 0;
+
+    //     margin: auto 0;
+
+    //     right: 3.2rem;
+
+    //     z-index: 6;
+
+    //     filter: drop-shadow(4px 8px 11px rgba(69, 36, 79, 0.3));
+
+    //     border-radius: 2.3rem;
+
+    //     background: $form-purple;
+
+    //     padding: 4.4rem 3.9rem;
+
+    //     h2 {
+    //         color: $white;
+    //         font-size: 3.1rem;
+    //         line-height: 100%;
+    //         letter-spacing: 0.05em;
+
+    //         font-family: "Inter", sans-serif;
+    //         font-weight: bold;
+
+    //         i {
+    //             color: $main-yellow;
+    //             font-style: normal;
+    //             font-size: 3.1rem;
+    //             line-height: 100%;
+    //             letter-spacing: 0.05em;
+    //         }
+    //     }
+
+    //     p {
+    //         font-style: normal;
+    //         font-weight: 300;
+    //         font-size: 1.2rem;
+    //         line-height: 120%;
+    //         letter-spacing: 0.05em;
+    //         color: $white;
+
+    //         margin-top: 2rem;
+
+    //         &:last-child {
+    //             font-size: 1rem;
+    //         }
+    //     }
+
+    //     a {
+    //         width: 20rem;
+    //         height: 3.4rem;
+
+    //         color: $white;
+    //         background: $lighter-purple;
+    //         font-size: 1.5rem;
+
+    //         border-radius: 1.1rem;
+
+    //         @include flex(row, center, center);
+    //         margin-top: 5.3rem;
+
+    //         transition: 0.32s;
+
+    //         &:hover {
+    //             background: $main-yellow;
+    //             color: $dark-purple;
+    //         }
+    //     }
+    // }
+
     div.next-step {
+        width: 100%;
+        height: 12rem;
+
         position: fixed;
-
-        height: 31rem;
-        width: 27.8rem;
-
-        top: 0;
         bottom: 0;
-
-        margin: auto 0;
-
-        right: 3.2rem;
 
         z-index: 6;
 
+        @include flex(row, center, center);
+        gap: 6rem;
         filter: drop-shadow(4px 8px 11px rgba(69, 36, 79, 0.3));
 
-        border-radius: 2.3rem;
-
         background: $form-purple;
-
-        padding: 4.4rem 3.9rem;
 
         h2 {
             color: $white;
@@ -1927,7 +1995,7 @@ body#orcamento-confirm {
             letter-spacing: 0.05em;
             color: $white;
 
-            margin-top: 2rem;
+            margin-top: 1rem;
 
             &:last-child {
                 font-size: 1rem;
@@ -1936,7 +2004,7 @@ body#orcamento-confirm {
 
         a {
             width: 20rem;
-            height: 3.4rem;
+            height: 5.4rem;
 
             color: $white;
             background: $lighter-purple;
@@ -1945,7 +2013,7 @@ body#orcamento-confirm {
             border-radius: 1.1rem;
 
             @include flex(row, center, center);
-            margin-top: 5.3rem;
+            // margin-top: 5.3rem;
 
             transition: 0.32s;
 
@@ -2284,28 +2352,98 @@ body#orcamento-confirm {
 }
 
 body#orcamento-carrinho {
+    // div.next-step {
+    //     position: fixed;
+
+    //     height: 31rem;
+    //     width: 27.8rem;
+
+    //     top: 0;
+    //     bottom: 0;
+
+    //     margin: auto 0;
+
+    //     right: 3.2rem;
+
+    //     z-index: 6;
+
+    //     filter: drop-shadow(4px 8px 11px rgba(69, 36, 79, 0.3));
+
+    //     border-radius: 2.3rem;
+
+    //     background: $form-purple;
+
+    //     padding: 4.4rem 3.9rem;
+
+    //     h2 {
+    //         color: $white;
+    //         font-size: 3.1rem;
+    //         line-height: 100%;
+    //         letter-spacing: 0.05em;
+
+    //         font-family: "Inter", sans-serif;
+    //         font-weight: bold;
+
+    //         i {
+    //             color: $main-yellow;
+    //             font-style: normal;
+    //             font-size: 3.1rem;
+    //             line-height: 100%;
+    //             letter-spacing: 0.05em;
+    //         }
+    //     }
+
+    //     p {
+    //         font-style: normal;
+    //         font-weight: 300;
+    //         font-size: 1.2rem;
+    //         line-height: 120%;
+    //         letter-spacing: 0.05em;
+    //         color: $white;
+
+    //         margin-top: 2rem;
+
+    //         &:last-child {
+    //             font-size: 1rem;
+    //         }
+    //     }
+
+    //     a {
+    //         width: 20rem;
+    //         height: 3.4rem;
+
+    //         color: $white;
+    //         background: $lighter-purple;
+    //         font-size: 1.5rem;
+
+    //         border-radius: 1.1rem;
+
+    //         @include flex(row, center, center);
+    //         margin-top: 5.3rem;
+
+    //         transition: 0.32s;
+
+    //         &:hover {
+    //             background: $main-yellow;
+    //             color: $dark-purple;
+    //         }
+    //     }
+    // }
+
     div.next-step {
+        width: 100%;
+        height: 12rem;
+
         position: fixed;
-
-        height: 31rem;
-        width: 27.8rem;
-
-        top: 0;
         bottom: 0;
-
-        margin: auto 0;
-
-        right: 3.2rem;
 
         z-index: 6;
 
+        @include flex(row, center, center);
+        gap: 6rem;
         filter: drop-shadow(4px 8px 11px rgba(69, 36, 79, 0.3));
 
-        border-radius: 2.3rem;
-
         background: $form-purple;
-
-        padding: 4.4rem 3.9rem;
 
         h2 {
             color: $white;
@@ -2333,7 +2471,7 @@ body#orcamento-carrinho {
             letter-spacing: 0.05em;
             color: $white;
 
-            margin-top: 2rem;
+            margin-top: 1rem;
 
             &:last-child {
                 font-size: 1rem;
@@ -2342,7 +2480,7 @@ body#orcamento-carrinho {
 
         a {
             width: 20rem;
-            height: 3.4rem;
+            height: 5.4rem;
 
             color: $white;
             background: $lighter-purple;
@@ -2351,7 +2489,7 @@ body#orcamento-carrinho {
             border-radius: 1.1rem;
 
             @include flex(row, center, center);
-            margin-top: 5.3rem;
+            // margin-top: 5.3rem;
 
             transition: 0.32s;
 

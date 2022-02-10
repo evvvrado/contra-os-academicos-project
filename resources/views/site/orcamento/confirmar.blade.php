@@ -29,12 +29,14 @@
 </div>
 
 <div class="next-step">
-    <h2>Leve sua festa <i>além</i></h2>
-    <p>16 drinks celecionados</p>
+
+    <div>
+        <h2>Leve sua festa <i>além</i></h2>
+        <p>16 drinks selecionados</p>
+    </div>
 
     <a href="{{ route('site.orcamento.carrinho')}}">Solicitar orçamento</a>
 
-    <p>Driks celecionados para 250 pessoas</p>
 </div>
 
 <section class="coqueteis-filtro">

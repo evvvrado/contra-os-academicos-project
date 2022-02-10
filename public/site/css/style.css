@@ -5711,24 +5711,26 @@ body#orcamento-lista section.coqueteis-drinks div.niv div.niv-content div.box in
   left: 2.5rem;
 }
 body#orcamento-lista div.next-step {
+  width: 100%;
+  height: 12rem;
   position: fixed;
-  height: 27.8rem;
-  width: 27.8rem;
-  top: 0;
   bottom: 0;
-  margin: auto 0;
-  right: 3.2rem;
   z-index: 6;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+  gap: 6rem;
   filter: drop-shadow(4px 8px 11px rgba(69, 36, 79, 0.3));
-  border-radius: 2.3rem;
   background: #45244f;
-  padding: 5.1rem 3.9rem;
 }
 body#orcamento-lista div.next-step h2 {
   color: #fff;
   font-size: 3.1rem;
   line-height: 100%;
   letter-spacing: 0.05em;
+  font-family: "Inter", sans-serif;
+  font-weight: bold;
 }
 body#orcamento-lista div.next-step h2 i {
   color: #e5db00;
@@ -5744,11 +5746,14 @@ body#orcamento-lista div.next-step p {
   line-height: 120%;
   letter-spacing: 0.05em;
   color: #fff;
-  margin-top: 2rem;
+  margin-top: 1rem;
+}
+body#orcamento-lista div.next-step p:last-child {
+  font-size: 1rem;
 }
 body#orcamento-lista div.next-step a {
   width: 20rem;
-  height: 3.4rem;
+  height: 5.4rem;
   color: #fff;
   background: #985394;
   font-size: 1.5rem;
@@ -5757,7 +5762,6 @@ body#orcamento-lista div.next-step a {
   align-items: center;
   justify-content: center;
   flex-direction: row;
-  margin-top: 5.3rem;
   transition: 0.32s;
 }
 body#orcamento-lista div.next-step a:hover {
@@ -5833,18 +5837,18 @@ body#orcamento-confirm {
   **/
 }
 body#orcamento-confirm div.next-step {
+  width: 100%;
+  height: 12rem;
   position: fixed;
-  height: 31rem;
-  width: 27.8rem;
-  top: 0;
   bottom: 0;
-  margin: auto 0;
-  right: 3.2rem;
   z-index: 6;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+  gap: 6rem;
   filter: drop-shadow(4px 8px 11px rgba(69, 36, 79, 0.3));
-  border-radius: 2.3rem;
   background: #45244f;
-  padding: 4.4rem 3.9rem;
 }
 body#orcamento-confirm div.next-step h2 {
   color: #fff;
@@ -5868,14 +5872,14 @@ body#orcamento-confirm div.next-step p {
   line-height: 120%;
   letter-spacing: 0.05em;
   color: #fff;
-  margin-top: 2rem;
+  margin-top: 1rem;
 }
 body#orcamento-confirm div.next-step p:last-child {
   font-size: 1rem;
 }
 body#orcamento-confirm div.next-step a {
   width: 20rem;
-  height: 3.4rem;
+  height: 5.4rem;
   color: #fff;
   background: #985394;
   font-size: 1.5rem;
@@ -5884,7 +5888,6 @@ body#orcamento-confirm div.next-step a {
   align-items: center;
   justify-content: center;
   flex-direction: row;
-  margin-top: 5.3rem;
   transition: 0.32s;
 }
 body#orcamento-confirm div.next-step a:hover {
@@ -6152,18 +6155,18 @@ body#orcamento-confirm section.coqueteis-drinks div.niv div.niv-content div.box 
 }
 
 body#orcamento-carrinho div.next-step {
+  width: 100%;
+  height: 12rem;
   position: fixed;
-  height: 31rem;
-  width: 27.8rem;
-  top: 0;
   bottom: 0;
-  margin: auto 0;
-  right: 3.2rem;
   z-index: 6;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+  gap: 6rem;
   filter: drop-shadow(4px 8px 11px rgba(69, 36, 79, 0.3));
-  border-radius: 2.3rem;
   background: #45244f;
-  padding: 4.4rem 3.9rem;
 }
 body#orcamento-carrinho div.next-step h2 {
   color: #fff;
@@ -6187,14 +6190,14 @@ body#orcamento-carrinho div.next-step p {
   line-height: 120%;
   letter-spacing: 0.05em;
   color: #fff;
-  margin-top: 2rem;
+  margin-top: 1rem;
 }
 body#orcamento-carrinho div.next-step p:last-child {
   font-size: 1rem;
 }
 body#orcamento-carrinho div.next-step a {
   width: 20rem;
-  height: 3.4rem;
+  height: 5.4rem;
   color: #fff;
   background: #985394;
   font-size: 1.5rem;
@@ -6203,7 +6206,6 @@ body#orcamento-carrinho div.next-step a {
   align-items: center;
   justify-content: center;
   flex-direction: row;
-  margin-top: 5.3rem;
   transition: 0.32s;
 }
 body#orcamento-carrinho div.next-step a:hover {
@@ -6323,6 +6325,8 @@ body.minha-area section.mA_menu[alternative] {
 body.minha-area section.mA_menu[alternative] .container-fav {
   background-color: #fbfbfb;
   border-radius: 12.5rem;
+  padding-right: 2.4rem;
+  padding-left: 2.4rem;
   box-shadow: 0 5px 50px rgba(0, 0, 0, 0.144);
 }
 body.minha-area section.mA_menu[alternative] .container-fav div.user {
