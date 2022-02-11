@@ -67,6 +67,7 @@ Produtos / <a style="color: unset" href="{{ route('painel.ingredientes') }}">Ing
                                     <option value="dia">1 dia</option>
                                     <option value="semana">1 Semana</option>
                                     <option value="mes">1 Mês</option>
+                                    <option value="vitalicio">Vitalício</option>
                                 </select>
                             </div>
                         </div>

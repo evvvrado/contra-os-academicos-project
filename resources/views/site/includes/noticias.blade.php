@@ -1,3 +1,8 @@
+@php
+    use App\Models\Noticia;
+    use Illuminate\Support\Facades\DB;
+@endphp
+
 <section class="noticias">
     <div class="niv">
         <div class="niv-top">
@@ -14,6 +19,13 @@
 
         <div class="niv-content">
             <div class="scroll">
+
+                @php
+                    $noticias = Noticia::select(DB::raw("id, preview, titulo, publicacao"))
+                    ->orderBy('id', 'Desc')
+                    ->limit('3')
+                    ->get();
+                @endphp
 
                 @foreach($noticias as $noticia)
 
@@ -60,21 +72,23 @@
                         }
                     @endphp
 
-                <div class="box" style="background-image: url('{{ $noticia->preview }}')">
+                    <a href="{{ route('site.blog-detalhes', ['noticia' => $noticia]) }}">
+                        <div class="box" style="background-image: url('{{ $noticia->preview }}')">
 
-                    <div>
-                        <span>
-                            <picture>
-                                <img src="{{ asset('/site/assets/img/icon_calendar.svg') }}" alt="ícone de calendário">
-                            </picture>
-                            <small>{{$parteData[2]}} {{$mes}} {{$parteData[0]}}</small>
-                        </span>
-
-                        <strong>{{ $noticia->titulo }}</strong>
-                    </div>
-
-
-                </div>
+                            <div>
+                                <span>
+                                    <picture>
+                                        <img src="{{ asset('/site/assets/img/icon_calendar.svg') }}" alt="ícone de calendário">
+                                    </picture>
+                                    <small>{{$parteData[2]}} {{$mes}} {{$parteData[0]}}</small>
+                                </span>
+        
+                                <strong>{{ $noticia->titulo }}</strong>
+                            </div>
+        
+        
+                        </div>
+                    </a>
 
                 @endforeach
 

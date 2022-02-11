@@ -40,6 +40,7 @@ Produtos / <a style="color: unset" href="{{ route('painel.ingredientes') }}">Ser
                                     <th>Nome</th>
                                     <th>Descrição</th>
                                     <th>Valor</th>
+                                    <th style="width: 10%;"></th>
                                 </tr>
                             </thead>
                             <tbody>                                                        
@@ -48,6 +49,15 @@ Produtos / <a style="color: unset" href="{{ route('painel.ingredientes') }}">Ser
                                         <td>{{$servico->nome}}</td>
                                         <td>{{$servico->descricao}}</td>
                                         <td>R$ {{str_replace(".", ",", $servico->valor)}}</td>
+                                        <td class="d-flex justify-content-between">
+                                            <a href="{{ route('painel.servicos.editar', ['servico' => $servico]) }} " class="mx-auto">
+                                                <i class="fas fa-pen-square"></i>
+                                            </a>
+
+                                            <a href="{{ route('painel.servicos.deletar', ['servico' => $servico]) }} " class="mx-auto">
+                                                <i style="color: #f46a6a!important;" class="bx bx-minus-circle"></i>
+                                            </a>
+                                        </td>
                                     </tr>
                                 @endforeach
                             </tbody>

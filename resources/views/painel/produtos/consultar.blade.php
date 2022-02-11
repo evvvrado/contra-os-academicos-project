@@ -35,7 +35,7 @@ Produtos / <a style="color: unset" href="{{ route('painel.produtos') }}">Produto
 </div>
 
 <div class="row">
-    <div class="col-9">
+    <div class="col-12">
         <div class="row">
             <div class=" col-sm-12 col-md-6 mb-3" style=" border-radius: 5px; background-color:var(--principal); width: 100%;">
                 <a name="" id="button-add" class="btn" style="height: 100%; padding-left: 0;"
@@ -66,6 +66,10 @@ Produtos / <a style="color: unset" href="{{ route('painel.produtos') }}">Produto
                                     <td class="d-flex justify-content-between">
                                         <a href="{{ route('painel.produtos.editar', ['produto' => $produto]) }}" class="mx-auto">
                                             <i class="fas fa-pen-square"></i>
+                                        </a>
+
+                                        <a href="{{ route('painel.produtos.deletar', ['produto' => $produto]) }} " class="mx-auto">
+                                            <i style="color: #f46a6a!important;" class="bx bx-minus-circle"></i>
                                         </a>
                                     </td>
                                 </tr>

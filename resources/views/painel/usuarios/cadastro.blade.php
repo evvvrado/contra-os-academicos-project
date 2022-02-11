@@ -69,8 +69,6 @@
                                     <select id="acesso" name="acesso"
                                         class="form-select">
                                         <option value="0">Administrador</option>
-                                        <option value="1">Atendente</option>
-                                        <option value="2">Produção</option>
                                     </select>
                                 </div>
                                 <div class="form-group col-12 col-lg-6 mt-3">

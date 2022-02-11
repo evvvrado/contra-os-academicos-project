@@ -144,49 +144,19 @@
         <div class="niv-content">
 
             <div class="scroll">
-                <div class="depoimento">
-                    <p>
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Eu ac sed tristique viverra. Posuere vitae lacus convallis dictum vitae in velit. Non mattis aliquam tempor mattis a
-                        euismod habitasse risus purus. Feugiat mi elit mollis lectus laoreet amet.</p>
+                @foreach($depoimentos as $depoimento)
+                    <div class="depoimento">
+                        <p>{{ $depoimento->depoimento }}</p>
 
-                    <div>
-                        <picture>
-                            <img src="{{ asset('/site/assets/img/depoimento_pic.jpg') }}" alt="">
-                        </picture>
+                        <div>
+                            <picture>
+                                <img src="{{ $depoimento->foto }}" alt="">
+                            </picture>
 
-                        <span>Jeferson Arantes</span>
+                            <span>{{ $depoimento->nome }}</span>
+                        </div>
                     </div>
-                </div>
-
-
-                <div class="depoimento">
-                    <p>
-                        Lorem 2 ipsum dolor sit amet, consectetur adipiscing elit. Eu ac sed tristique viverra. Posuere vitae lacus convallis dictum vitae in velit. Non mattis aliquam tempor mattis a
-                        euismod habitasse risus purus. Feugiat mi elit mollis lectus laoreet amet.</p>
-
-                    <div>
-                        <picture>
-                            <img src="{{ asset('/site/assets/img/depoimento_pic.jpg') }}" alt="">
-                        </picture>
-
-                        <span>Jeferson Arantes</span>
-                    </div>
-                </div>
-
-
-                <div class="depoimento">
-                    <p>
-                        Lorem 3 ipsum dolor sit amet, consectetur adipiscing elit. Eu ac sed tristique viverra. Posuere vitae lacus convallis dictum vitae in velit. Non mattis aliquam tempor mattis a
-                        euismod habitasse risus purus. Feugiat mi elit mollis lectus laoreet amet.</p>
-
-                    <div>
-                        <picture>
-                            <img src="{{ asset('/site/assets/img/depoimento_pic.jpg') }}" alt="">
-                        </picture>
-
-                        <span>Jeferson Arantes</span>
-                    </div>
-                </div>
+                @endforeach
             </div>
         </div>
 

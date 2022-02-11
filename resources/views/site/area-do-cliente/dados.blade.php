@@ -1,10 +1,10 @@
-@extends('site.template.area-do-aluno')
+@extends('site.template.area-do-cliente')
 
-@section('id', 'dados-aluno')
+@section('id', 'dados-cliente')
 
 @section('content')
 @php
-$aluno = \App\Models\Aluno::find(session()->get('aluno')['id']);
+$cliente = \App\Models\Lead::find(session()->get('cliente')['id']);
 @endphp
 
 <section class="mA_dados">
@@ -14,12 +14,12 @@ $aluno = \App\Models\Aluno::find(session()->get('aluno')['id']);
 
                 <h2>Meus Dados</h2>
 
-                <form action="{{ route('minha-area.aluno-dados.salvar') }}" method="POST">
+                <form action="{{ route('minha-area.cliente-dados.salvar') }}" method="POST">
                     @csrf
 
                     <div class="dados">
                         <label>
-                            <input type="text" name="nome" placeholder="Nome Completo" value="{{ $aluno->nome }}">
+                            <input type="text" name="nome" placeholder="Nome Completo" value="{{ $cliente->nome }}">
 
                             <picture>
                                 <img src="{{ asset('site/assets/sistema/userData.svg') }}" alt="">
@@ -29,7 +29,7 @@ $aluno = \App\Models\Aluno::find(session()->get('aluno')['id']);
                         </label>
 
                         <label>
-                            <input type="email" name="email" placeholder="email@example.com.br" value="{{ $aluno->email }}">
+                            <input type="email" name="email" placeholder="email@example.com.br" value="{{ $cliente->email }}">
 
                             <picture>
                                 <img src="{{ asset('site/assets/sistema/mailData.svg') }}" alt="">
@@ -38,16 +38,7 @@ $aluno = \App\Models\Aluno::find(session()->get('aluno')['id']);
                         </label>
 
                         <label>
-                            <input type="tel" name="cpf" placeholder="000.000.000-00" value="{{ $aluno->cpf }}">
-
-                            <picture>
-                                <img src="{{ asset('site/assets/sistema/userData.svg') }}" alt="">
-                            </picture>
-
-                        </label>
-
-                        <label>
-                            <input type="tel" name="telefone" placeholder="(00) 0 0000 0000" value="{{ $aluno->telefone }}">
+                            <input type="tel" name="telefone" placeholder="(00) 0 0000 0000" value="{{ $cliente->telefone }}">
 
                             <picture>
                                 <img src="{{ asset('site/assets/sistema/phoneData.svg') }}" alt="">
@@ -57,53 +48,12 @@ $aluno = \App\Models\Aluno::find(session()->get('aluno')['id']);
 
                     </div>
 
-                    <div class="dados">
-
-                        <label>
-                            <input type="text" name="rua" placeholder="Rua, 180" value="{{ $aluno->rua }}">
-
-                            <picture>
-                                <img src="{{ asset('site/assets/sistema/doorData.svg') }}" alt="">
-                            </picture>
-
-                        </label>
-
-                        <label>
-                            <input type="text" name="cidade" placeholder="Cidade" value="{{ $aluno->cidade }}">
-
-                            <picture>
-                                <img src="{{ asset('site/assets/sistema/pinData.svg') }}" alt="">
-                            </picture>
-
-                        </label>
-
-                        <label>
-                            <input type="text" name="estado" placeholder="Estado" value="{{ $aluno->estado }}">
-
-                            <picture>
-                                <img src="{{ asset('site/assets/sistema/pinData.svg') }}" alt="">
-                            </picture>
-
-                        </label>
-
-                        <label>
-                            <input type="text" name="pais" placeholder="Brasil" value="{{ $aluno->pais }}">
-
-                            <picture>
-                                <img src="{{ asset('site/assets/sistema/flagData.svg') }}" alt="">
-                            </picture>
-
-                        </label>
-
-                        <button>Salvar</button>
-                    </div>
-
                 </form>
 
                 <h2>Alterar Senha de Acesso</h2>
 
 
-                <form action="{{route('minha-area.aluno-dados.senha.alterar')}}" method="POST">
+                <form action="{{route('minha-area.cliente-dados.senha.alterar')}}" method="POST">
                     @csrf
                     <label>
                         <input type="password" name="senha_antiga" placeholder="Senha Antiga" value="">
@@ -124,24 +74,6 @@ $aluno = \App\Models\Aluno::find(session()->get('aluno')['id']);
                 </form>
             </div>
 
-
-
-            <div class="col">
-                <picture>
-                    @if (!$aluno->avatar)
-                    <img src="{{ asset('site/assets/sistema/userBig.svg') }}" alt="">
-                    @else
-                    <img src="{{ asset($aluno->avatar) }}" alt="">
-                    @endif
-                </picture>
-
-                <a href="" id="select_avatar">Alterar Imagem</a>
-                <a style="display:none;     margin-left: 8.7rem;" id="ajax_loading"><img src="{{ asset('site/img/ajax-loading.gif') }}" alt="" width="50"></a>
-                <form id="form-avatar" action="{{ route('minha-area.aluno-dados.avatar.alterar') }}" method="post" enctype="multipart/form-data" style="display: none;">
-                    @csrf
-                    <input type="file" id="avatar" name="avatar">
-                </form>
-            </div>
         </div>
 </section>
 
@@ -153,24 +85,6 @@ $aluno = \App\Models\Aluno::find(session()->get('aluno')['id']);
 @section('scripts')
 <script>
     $(document).ready(function() {
-            $("#select_avatar").click(function(e) {
-                e.preventDefault();
-                $("#avatar").trigger('click');
-            });
-            $("#avatar").change(function() {
-                $("#select_avatar").hide();
-                $("#ajax_loading").show();
-                $("#form-avatar").submit();
-            });
-            $("._menuMax").click(() => {
-                $("._mobileMenu").css("display", "flex");
-                $("._mobileMenu").animate({
-                        left: "0",
-                        top: "0",
-                    },
-                    500
-                );
-            });
 
             // MASCARAS PARA OS FORMULARIOS
             $('form label input[name = "cpf"]').mask("000.000.000-00", {

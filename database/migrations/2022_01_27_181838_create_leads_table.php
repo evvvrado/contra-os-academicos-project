@@ -17,7 +17,7 @@ class CreateLeadsTable extends Migration
             $table->id();
             $table->string("nome");
             $table->string("email");
-            $table->string("senha");
+            $table->string("senha")->nullable();
             $table->string("telefone");
             $table->string("tipo")->nullable();
             $table->string("cep")->nullable();

@@ -43,19 +43,29 @@ class ProdutosController extends Controller
         }
 
         $acessorios = $request->acessorios;
-
-        $produtos_acessorios = new ProdutosAcessorio;
-        $produtos_acessorios->produto_id = $request->acessorio;
-        foreach ($acessorios as $acessorio) {
-            $produtosacessorio = new ProdutosAcessorio;
-            $produtosacessorio->produto_id = $request->id;
-            $produtosacessorio->acessorio_id = $acessorio;
-            $produtosacessorio->save();
+        
+        if($acessorios) {
+            $produtos_acessorios = new ProdutosAcessorio;
+            $produtos_acessorios->produto_id = $request->acessorio;
+            foreach ($acessorios as $acessorio) {
+                $produtosacessorio = new ProdutosAcessorio;
+                $produtosacessorio->produto_id = $request->id;
+                $produtosacessorio->acessorio_id = $acessorio;
+                $produtosacessorio->save();
+            }
         }
 
         toastr()->success("produto salvo com sucesso!");
 
         return redirect()->route("painel.produtos");
+    }
+
+    public function deletar(Produto $produto){
+        $produto->delete();
+
+        toastr()->success("Produto deletado com sucesso!");
+
+        return redirect()->back();
     }
 
     public function cadastrar(Request $request){
@@ -112,13 +122,15 @@ class ProdutosController extends Controller
 
         $acessorios = $request->acessorios;
 
-        $produtos_acessorios = new ProdutosAcessorio;
-        $produtos_acessorios->produto_id = $request->acessorio;
-        foreach ($acessorios as $acessorio) {
-            $produtosacessorio = new ProdutosAcessorio;
-            $produtosacessorio->produto_id = $produto_id->id;
-            $produtosacessorio->acessorio_id = $acessorio;
-            $produtosacessorio->save();
+        if($acessorios) {
+            $produtos_acessorios = new ProdutosAcessorio;
+            $produtos_acessorios->produto_id = $request->acessorio;
+            foreach ($acessorios as $acessorio) {
+                $produtosacessorio = new ProdutosAcessorio;
+                $produtosacessorio->produto_id = $produto_id->id;
+                $produtosacessorio->acessorio_id = $acessorio;
+                $produtosacessorio->save();
+            }
         }
 
         toastr()->success("produto salvo com sucesso!");

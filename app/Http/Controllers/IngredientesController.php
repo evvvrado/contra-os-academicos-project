@@ -25,6 +25,14 @@ class IngredientesController extends Controller
         return view("painel.ingredientes.editar", ["ingrediente" => $ingrediente]);
     }
 
+    public function deletar(Ingrediente $ingrediente){
+        $ingrediente->delete();
+
+        toastr()->success("Ingrediente deletado com sucesso!");
+
+        return redirect()->back();
+    }
+
     public function salvar(Request $request){
         Ingrediente::where('id', $request->id)
         ->update(['nome' => $request->nome, 'cat_id' => $request->cat_id, 'fornecedor' => $request->fornecedor, 'tel_fornecedor' => $request->tel_fornecedor, 'validade' => $request->validade]);

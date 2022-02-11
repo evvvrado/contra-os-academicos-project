@@ -100,7 +100,7 @@ Produtos / <a style="color: unset" href="{{ route('painel.produtos') }}">Produto
                                 <label class="form-label">Acessórios</label>
 
                                 <select multiple style="height: 52px !important;" class="select2 form-control select2-multiple"
-                                    multiple="multiple" data-placeholder="Selecione os ingredientes" required name="acessorios[]">
+                                    multiple="multiple" data-placeholder="Selecione os acessórios" name="acessorios[]">
                                     @php
                                         $acessorio_cats = AcessorioCat::all();
                                     @endphp

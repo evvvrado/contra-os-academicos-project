@@ -10,6 +10,7 @@ use DB;
 use App\Models\Noticia;
 use App\Models\Anuncio;
 use App\Models\Produto;
+use App\Models\Depoimento;
 use App\Models\Lead;
 use App\Models\Duvida;
 
@@ -22,7 +23,7 @@ class SiteController extends Controller
 
     public function index()
     {
-        $noticias = Noticia::select(DB::raw("preview, titulo, publicacao"))
+        $noticias = Noticia::select(DB::raw("id, preview, titulo, publicacao"))
         ->orderBy('id', 'Desc')
         ->limit('3')
         ->get();
@@ -36,7 +37,9 @@ class SiteController extends Controller
 
     public function sobre()
     {
-        return view("site.sobre");
+        $depoimentos = Depoimento::all();
+
+        return view("site.sobre", ["depoimentos" => $depoimentos]);
     }
 
     public function servicos()
@@ -51,9 +54,9 @@ class SiteController extends Controller
         return view("site.blog", ["noticias" => $noticias]);
     }
 
-    public function blogDetalhes()
+    public function blogDetalhes(Noticia $noticia)
     {
-        return view("site.blog-detalhes");
+        return view("site.blog-detalhes", ["noticia" => $noticia]);
     }
 
     public function contato()

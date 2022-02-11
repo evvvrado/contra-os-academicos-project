@@ -58,20 +58,26 @@ Produtos / <a style="color: unset" href="{{ route('painel.acessorios') }}">Acess
                     <div class="col-sm-12">
                         <!-- Nav tabs -->
                         <ul class="nav nav-tabs" role="tablist">
+                            <li class="nav-item">
+                                <a class="nav-link active" data-bs-toggle="tab" href="#tab-geral" role="tab">
+                                    <span class="d-block d-sm-none"><i class="fas fa-home"></i></span>
+                                    <span class="d-none d-sm-block">Geral</span>    
+                                </a>
+                            </li>
                             @php
                                 $c = 1;
-                                $ativo = "active";
+                                // $ativo = "active";
                                 // $cor = "#555"
                             @endphp
                             @foreach($acessoriocats as $acessoriocat)
                                 <li class="nav-item">
-                                    <a class="nav-link {{$ativo}}" data-bs-toggle="tab" href="#tab-{{$acessoriocat->id}}" role="tab">
+                                    <a class="nav-link" data-bs-toggle="tab" href="#tab-{{$acessoriocat->id}}" role="tab">
                                         <span class="d-block d-sm-none"><i class="fas fa-home"></i></span>
                                         <span class="d-none d-sm-block">{{$acessoriocat->nome}}</span>    
                                     </a>
                                 </li>
                                 @php
-                                    $ativo = "";
+                                    // $ativo = "";
                                     $c++;
                                     // $cor = "#FFF";
                                 @endphp
@@ -81,20 +87,71 @@ Produtos / <a style="color: unset" href="{{ route('painel.acessorios') }}">Acess
 
                         <!-- Tab panes -->
                         <div class="tab-content p-3 text-muted">
+                            <div class="tab-pane active" id="tab-geral" role="tabpanel">
+                                <table class="tabela_export table table-bordered dt-responsive  nowrap w-100 clear_both">
+                                    <thead>
+                                        <tr>
+                                            <th>Nome</th>
+                                            <th style="width: 15% !important;"></th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>               
+                                        @php
+                                            $acessorios = Acessorio::all();
+                                        @endphp                                         
+                                        @foreach ($acessorios as $acessorio)
+                                            <tr>
+                                                <td>{{$acessorio->nome}}</td>
+                                                <td class="d-flex justify-content-between">
+                                                    <a href="{{ route('painel.acessorios.editar', ['acessorio' => $acessorio]) }} " class="mx-auto">
+                                                        <i class="fas fa-pen-square"></i>
+                                                    </a>
+
+                                                    @php
+                                                        $marca_id = $acessorio->marca_id;
+                                                        if(empty($marca_id)) {
+                                                    @endphp 
+                                                            <a href="#" onClick="editar_marca({{ $acessorio->id }})" class="mx-auto">
+                                                                <i class="fa fa-circle" style="color: orange"></i>
+                                                            </a>
+                                                    @php
+                                                        }
+                                                        else {
+
+                                                            $marca = Marca::select(DB::raw("id, padrao, nome, imagem, valor, unidade_medida, qtd, qtd_pacote"))
+                                                            ->where("id", "=", $acessorio->marca_id)
+                                                            ->first();
+                                                    @endphp 
+                                                            <a href="#" onClick="editar_marca_existente({{ $acessorio->id }}, {{ $marca->id }}, '{{ $marca->padrao }}', '{{ $marca->nome }}', '{{ $marca->imagem }}', '{{ $marca->valor }}', '{{ $marca->unidade_medida }}', '{{ $marca->qtd }}', '{{ $marca->qtd_pacote }}')" class="mx-auto">
+                                                                <i class="fa fa-check-circle"></i>
+                                                            </a>
+                                                    @php
+                                                        }
+                                                    @endphp
+
+                                                    <a href="{{ route('painel.acessorios.deletar', ['acessorio' => $acessorio]) }} " class="mx-auto">
+                                                        <i style="color: #f46a6a!important;" class="bx bx-minus-circle"></i>
+                                                    </a>
+                                                </td>
+                                            </tr>
+                                        @endforeach
+                                    </tbody>
+                                </table>
+                            </div>
                             @php
-                                $ativo = "active";
+                                // $ativo = "active";
                                 $c = 1;
                             @endphp
                             @foreach($acessoriocats as $acessoriocat)
                                 @php
                                     $acessorios = Acessorio::where("cat_id", "=", $acessoriocat->id)->get();
                                 @endphp
-                                        <div class="tab-pane {{$ativo}}" id="tab-{{$acessoriocat->id}}" role="tabpanel">
+                                        <div class="tab-pane" id="tab-{{$acessoriocat->id}}" role="tabpanel">
                                             <table class="tabela_export table table-bordered dt-responsive  nowrap w-100 clear_both">
                                                 <thead>
                                                     <tr>
                                                         <th>Nome</th>
-                                                        <th style="width: 10% !important;"></th>
+                                                        <th style="width: 15% !important;"></th>
                                                     </tr>
                                                 </thead>
                                                 <tbody>                                                        
@@ -127,6 +184,10 @@ Produtos / <a style="color: unset" href="{{ route('painel.acessorios') }}">Acess
                                                                 @php
                                                                     }
                                                                 @endphp
+
+                                                                <a href="{{ route('painel.acessorios.deletar', ['acessorio' => $acessorio]) }} " class="mx-auto">
+                                                                    <i style="color: #f46a6a!important;" class="bx bx-minus-circle"></i>
+                                                                </a>
                                                             </td>
                                                         </tr>
                                                     @endforeach
@@ -134,7 +195,7 @@ Produtos / <a style="color: unset" href="{{ route('painel.acessorios') }}">Acess
                                             </table>
                                         </div>
                                 @php
-                                    $ativo = "";
+                                    // $ativo = "";
                                     $c++;
                                 @endphp
                             @endforeach

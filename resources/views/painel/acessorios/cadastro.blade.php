@@ -49,6 +49,27 @@ Produtos / <a style="color: unset" href="{{ route('painel.ingredientes') }}">Ace
                                     @endforeach
                                 </select>
                             </div>
+
+                            <div class="form-group col-6 col-lg-6 mt-3">
+                                <label for="nome">Fornecedor</label>
+                                <input name="fornecedor" type="text" class="form-control">
+                            </div>
+
+                            <div class="form-group col-6 col-lg-6 mt-3">
+                                <label for="nome">Telefone do Fornecedor</label>
+                                <input name="tel_fornecedor" type="text" class="form-control telefone_ddd">
+                            </div>
+
+                            <div class="form-group col-6 col-lg-6 mt-3">
+                                <label for="nome">Validade</label>
+                                <select class="form-control" name="validade" required>
+                                    <option value="">Selecione</option>
+                                    <option value="dia">1 dia</option>
+                                    <option value="semana">1 Semana</option>
+                                    <option value="mes">1 Mês</option>
+                                    <option value="vitalicio">Vitalício</option>
+                                </select>
+                            </div>
                         </div>
                     </div>
                     <div class="d-flex flex-wrap gap-2 mt-3">

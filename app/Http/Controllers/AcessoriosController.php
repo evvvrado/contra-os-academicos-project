@@ -22,9 +22,17 @@ class AcessoriosController extends Controller
         return view("painel.acessorios.editar", ["acessorio" => $acessorio]);
     }
 
+    public function deletar(Acessorio $acessorio){
+        $acessorio->delete();
+
+        toastr()->success("Acessório deletado com sucesso!");
+
+        return redirect()->back();
+    }
+
     public function salvar(Request $request){
         Acessorio::where('id', $request->id)
-        ->update(['nome' => $request->nome, 'cat_id' => $request->cat_id]);
+        ->update(['nome' => $request->nome, 'cat_id' => $request->cat_id, 'fornecedor' => $request->fornecedor, 'tel_fornecedor' => $request->tel_fornecedor, 'validade' => $request->validade]);
 
         toastr()->success("Acessório editado com sucesso!");
 
@@ -37,6 +45,9 @@ class AcessoriosController extends Controller
         $acessorios->nome = $request->nome;
         $acessorios->cat_id = $request->cat_id;
         $acessorios->marca_id = $request->marca_id;
+        $acessorios->fornecedor = $request->fornecedor;
+        $acessorios->tel_fornecedor = $request->tel_fornecedor;
+        $acessorios->validade = $request->validade;
 
         $acessorios->save();
 
