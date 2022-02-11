@@ -226,12 +226,6 @@ $usuario = \App\Models\Usuario::find(session()->get('usuario')['id']);
                         </div>
                     </div>
 
-                    <div class="dropdown d-inline-block">
-                        <button type="button" class="btn header-item noti-icon right-bar-toggle waves-effect">
-                            <i class="bx bx-cog bx-spin"></i>
-                        </button>
-                    </div>
-
                 </div>
             </div>
         </header>
@@ -362,91 +356,6 @@ $usuario = \App\Models\Usuario::find(session()->get('usuario')['id']);
     </div>
     <!-- END layout-wrapper -->
 
-    <!-- Right Sidebar -->
-    <div class="right-bar">
-        <div data-simplebar class="h-100">
-            <div class="rightbar-title d-flex align-items-center px-3 py-4">
-
-                <h5 class="m-0 me-2">Atualizações</h5>
-
-                <a href="javascript:void(0);" class="right-bar-toggle ms-auto">
-                    <i class="mdi mdi-close noti-icon"></i>
-                </a>
-            </div>
-
-            <!-- Settings -->
-            <hr class="mt-0" />
-            <div class="p-4 lista-atualizacoes">
-                <h6 class="text-left mb-3 mt-4">28/10/2021 - V 0.1 - Sistema Iniciado com as funções de:</h6>
-                <ul class="">
-                    <li><span>
-                            <br><i class="fa fa-plus" aria-hidden="true" style="color: green;"></i> CRUD - Professores
-                            <br><i class="fa fa-plus" aria-hidden="true" style="color: green;"></i> CRUD - Cursos
-                            <br><i class="fa fa-plus" aria-hidden="true" style="color: green;"></i> CRUD - Congressos
-                            <br><i class="fa fa-plus" aria-hidden="true" style="color: green;"></i> CRUD - Eventos
-                            <hr>
-                            <br><i class="fa fa-plus" aria-hidden="true" style="color: green;"></i> CRUD - Notícias
-                            <br><i class="fa fa-plus" aria-hidden="true" style="color: green;"></i> CRUD - Artigos
-                            <hr>
-                            <br><i class="fa fa-plus" aria-hidden="true" style="color: green;"></i> CRUD - Categorias
-                            <br><i class="fa fa-plus" aria-hidden="true" style="color: green;"></i> CRUD - Expositores
-                            <hr>
-                            <br><i class="fa fa-plus" aria-hidden="true" style="color: green;"></i> CRUD - Anúncios
-                            <br><i class="fa fa-plus" aria-hidden="true" style="color: green;"></i> CRUD - Patrocinadores
-                            <br><i class="fa fa-plus" aria-hidden="true" style="color: green;"></i> CRUD - Apoio
-                            <br><i class="fa fa-plus" aria-hidden="true" style="color: green;"></i> CRUD - Depoimentos
-                            <br><i class="fa fa-plus" aria-hidden="true" style="color: green;"></i> CRUD - Dúvidas
-                            <br><i class="fa fa-plus" aria-hidden="true" style="color: green;"></i> CRUD - Galeria
-                            <br><i class="fas fa-cog" aria-hidden="true" style="color: red;"></i> CRUD- Hotsites
-                            <br><i class="fas fa-cog" aria-hidden="true" style="color: red;"></i> Gerenciamento de Financeiro
-                            <hr>
-                            <br><i class="fas fa-cog" aria-hidden="true" style="color: red;"></i> Dashboard 💻
-                        </span>
-                    </li>
-                </ul>
-                {{-- <h6 class="text-left mb-3 mt-4">15/06/2021 - V 0.6</h6>
-                <ul class="">
-                    <li><i class="fa fa-plus" aria-hidden="true" style="color: green;"></i> <span>Adição do sistema de logs.</span></li>
-                    <li><i class="fa fa-plus" aria-hidden="true" style="color: green;"></i> <span>Adição de implementação inicial da dashboard.</span></li>
-                </ul>
-                <h6 class="text-left mb-3 mt-4">07/06/2021 - V 0.5</h6>
-                <ul class="">
-                    <li><i class="fa fa-plus" aria-hidden="true" style="color: green;"></i> <span>Adição do sistema de notícias.</span></li>
-                    <li><i class="fa fa-plus" aria-hidden="true" style="color: green;"></i> <span>Adição do sistema de usuários.</span></li>
-                    <li><i class="fa fa-plus" aria-hidden="true" style="color: green;"></i> <span>Adição das configurações de contato e redes sociais.</span></li>
-                    <li><i class="fa fa-plus" aria-hidden="true" style="color: green;"></i> <span>Adição das configurações de SEO das páginas.</span></li>
-                    <li><i class="fa fa-plus" aria-hidden="true" style="color: green;"></i> <span>Adição do sistema de cadastro e controle de estaduais e suas diretorias.</span></li>
-                    <li><i class="fa fa-plus" aria-hidden="true" style="color: green;"></i> <span>Adição do sistema de registro, consulta e exportação de mensagens de contato.</span></li>
-                </ul> --}}
-            </div>
-
-            {{-- <div class="rightbar-title d-flex align-items-center px-3 py-4">
-
-                <h5 class="m-0 me-2">Roadmap</h5>
-
-
-            </div>
-            <hr class="mt-0" />
-            <div class="p-4 lista-atualizacoes">
-                <h6 class="text-left mb-3 mt-4">Atualizações futuras</h6>
-                <ul class="">
-                    <li><i class="fa fas fa-clock" aria-hidden="true" style="color: orange;"></i> <span>Sistema de cadastro e gerenciamento de imagens de compartilhamento (imagem que aparece quando se
-                            envia o link de uma página pelo whatsapp) e favicons.</span></li>
-                    <li><i class="fa fas fa-clock" aria-hidden="true" style="color: orange;"></i> <span>Sistema de cadastro e gerenciamento de imagem no destaque do site.</span></li>
-                    <li><i class="fa fas fa-clock" aria-hidden="true" style="color: orange;"></i> <span>Sistema de cadastro e gerenciamento de destaque suspenso ao acessar o site.</span></li>
-                    <li><i class="fa fas fa-clock" aria-hidden="true" style="color: orange;"></i> <span>Sistema de Newsletter</span></li>
-                    <li><i class="fa fas fa-clock" aria-hidden="true" style="color: orange;"></i> <span>Sistema de Email Marketing</span></li>
-                    <li><i class="fa fas fa-clock" aria-hidden="true" style="color: orange;"></i> <span>Sistema de cadastro e gerenciamento de relacionamentos com pessoas físicas e jurídicas</span>
-                    </li>
-                    <li><i class="fa fas fa-clock" aria-hidden="true" style="color: orange;"></i> <span>Melhoramento da dashboard</span></li>
-                    <li><i class="fa fas fa-clock" aria-hidden="true" style="color: orange;"></i> <span>Sistema de cadastro e gerenciamento de cursos</span></li>
-                    <li><i class="fa fas fa-clock" aria-hidden="true" style="color: orange;"></i> <span>Sistema de configuração de parâmetros de gateway de pagamento</span></li>
-                    <li><i class="fa fas fa-clock" aria-hidden="true" style="color: orange;"></i> <span>Sistema de cadastro e gerenciamento de alunos, professores e diretores.</span></li>
-                </ul>
-            </div> --}}
-        </div> <!-- end slimscroll-menu-->
-    </div>
-    <!-- /Right-bar -->
 
     <!-- Right bar overlay-->
     <div class="rightbar-overlay"></div>
