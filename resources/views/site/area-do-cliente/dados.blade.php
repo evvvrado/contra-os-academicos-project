@@ -14,6 +14,7 @@ $cliente = \App\Models\Lead::find(session()->get('cliente')['id']);
 
                 <h2>Meus Dados</h2>
 
+
                 <form action="{{ route('minha-area.cliente-dados.salvar') }}" method="POST">
                     @csrf
 
@@ -38,6 +39,15 @@ $cliente = \App\Models\Lead::find(session()->get('cliente')['id']);
                         </label>
 
                         <label>
+                            <input type="tel" name="cpf" placeholder="000.000.000-00" value="{{ $cliente->cpf }}">
+
+                            <picture>
+                                <img src="{{ asset('site/assets/sistema/userData.svg') }}" alt="">
+                            </picture>
+
+                        </label>
+
+                        <label>
                             <input type="tel" name="telefone" placeholder="(00) 0 0000 0000" value="{{ $cliente->telefone }}">
 
                             <picture>
@@ -46,6 +56,47 @@ $cliente = \App\Models\Lead::find(session()->get('cliente')['id']);
 
                         </label>
 
+                    </div>
+
+                    <div class="dados">
+
+                        <label>
+                            <input type="text" name="rua" placeholder="Rua, 180" value="{{ $cliente->rua }}">
+
+                            <picture>
+                                <img src="{{ asset('site/assets/sistema/doorData.svg') }}" alt="">
+                            </picture>
+
+                        </label>
+
+                        <label>
+                            <input type="text" name="cidade" placeholder="Cidade" value="{{ $cliente->cidade }}">
+
+                            <picture>
+                                <img src="{{ asset('site/assets/sistema/pinData.svg') }}" alt="">
+                            </picture>
+
+                        </label>
+
+                        <label>
+                            <input type="text" name="estado" placeholder="Estado" value="{{ $cliente->estado }}">
+
+                            <picture>
+                                <img src="{{ asset('site/assets/sistema/pinData.svg') }}" alt="">
+                            </picture>
+
+                        </label>
+
+                        <label>
+                            <input type="text" name="pais" placeholder="Brasil" value="{{ $cliente->pais }}">
+
+                            <picture>
+                                <img src="{{ asset('site/assets/sistema/flagData.svg') }}" alt="">
+                            </picture>
+
+                        </label>
+
+                        <button>Salvar</button>
                     </div>
 
                 </form>
@@ -74,6 +125,26 @@ $cliente = \App\Models\Lead::find(session()->get('cliente')['id']);
                 </form>
             </div>
 
+
+
+
+            <div class="col">
+                <picture>
+                    @if (!$cliente->avatar)
+                    <img src="{{ asset('site/assets/sistema/userBig.svg') }}" alt="">
+                    @else
+                    <img src="{{ asset($cliente->avatar) }}" alt="">
+                    @endif
+                </picture>
+
+                <a href="" id="select_avatar">Alterar Imagem</a>
+                <a style="display:none;     margin-left: 8.7rem;" id="ajax_loading"><img src="{{ asset('site/assets/sistema/ajax-loading.gif') }}" alt="" width="50"></a>
+                <form id="form-avatar" action="{{ route('minha-area.cliente-dados.avatar.alterar') }}" method="post" enctype="multipart/form-data" style="display: none;">
+                    @csrf
+                    <input type="file" id="avatar" name="avatar">
+                </form>
+            </div>
+
         </div>
 </section>
 
@@ -85,6 +156,24 @@ $cliente = \App\Models\Lead::find(session()->get('cliente')['id']);
 @section('scripts')
 <script>
     $(document).ready(function() {
+            $("#select_avatar").click(function(e) {
+                e.preventDefault();
+                $("#avatar").trigger('click');
+            });
+            $("#avatar").change(function() {
+                $("#select_avatar").hide();
+                $("#ajax_loading").show();
+                $("#form-avatar").submit();
+            });
+            $("._menuMax").click(() => {
+                $("._mobileMenu").css("display", "flex");
+                $("._mobileMenu").animate({
+                        left: "0",
+                        top: "0",
+                    },
+                    500
+                );
+            });
 
             // MASCARAS PARA OS FORMULARIOS
             $('form label input[name = "cpf"]').mask("000.000.000-00", {
@@ -95,5 +184,4 @@ $cliente = \App\Models\Lead::find(session()->get('cliente')['id']);
             $('form label input[name= "numero"]').mask("0000 0000 0000 0000");
         });
 </script>
-
 @endsection
