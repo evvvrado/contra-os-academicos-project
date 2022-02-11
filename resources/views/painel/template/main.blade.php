@@ -302,13 +302,6 @@ $usuario = \App\Models\Usuario::find(session()->get('usuario')['id']);
                             </ul>
                         </li>
 
-                        <li>
-                            <a href="{{ route('painel.parametros') }}" class="waves-effect">
-                                <i class="bx bx-check-shield" aria-hidden="true"></i>
-                                <span key="t-dashboards">Parâmetros</span>
-                            </a>
-                        </li>
-
                     </ul>
                 </div>
                 <!-- Sidebar -->
