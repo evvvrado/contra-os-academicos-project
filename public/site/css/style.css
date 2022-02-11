@@ -6215,6 +6215,20 @@ body#orcamento-carrinho div.next-step a:hover {
 
 body.minha-area {
   background-color: #fff;
+  /* GRID */
+}
+body.minha-area .container-fluid {
+  width: 100%;
+  padding-right: 15px;
+  padding-left: 15px;
+  margin-right: auto;
+  margin-left: auto;
+}
+body.minha-area .container-fluid .container-fav {
+  width: 100%;
+  max-width: 1245px;
+  margin: 0 auto;
+  padding: 0 15px;
 }
 body.minha-area div.emptyspace {
   height: 13.3rem;
@@ -6793,6 +6807,7 @@ body.minha-area#pedidos-aluno section.mA_showcase .container-fluid .container-fa
   flex-direction: column;
   gap: 3rem;
   height: unset;
+  cursor: pointer !important;
 }
 body.minha-area#pedidos-aluno section.mA_showcase .container-fluid .container-fav div.boxes div.box .info div {
   display: flex;
@@ -6803,6 +6818,10 @@ body.minha-area#pedidos-aluno section.mA_showcase .container-fluid .container-fa
 }
 body.minha-area#pedidos-aluno section.mA_showcase .container-fluid .container-fav div.boxes div.box[app] {
   border: solid 1px lime;
+}
+body.minha-area#pedidos-aluno section.mA_showcase .container-fluid .container-fav div.boxes div.box button {
+  margin-top: 0;
+  margin-bottom: 0;
 }
 body.minha-area#pedidos-aluno section.mA_showcase .container-fluid .container-fav div.boxes .sub {
   display: flex;
