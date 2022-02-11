@@ -287,7 +287,6 @@ $usuario = \App\Models\Usuario::find(session()->get('usuario')['id']);
                             <ul class="sub-menu" aria-expanded="false">
                                 <li><a href="{{ route('painel.depoimento') }}" key="t-default">Depoimentos</a></li>
                                 <li><a href="{{ route('painel.duvidas') }}" key="t-default">Dúvidas</a></li>
-                                <li><a href="{{ route('painel.artigos') }}" key="t-default">Artigos</a></li>
                                 <li><a href="{{ route('painel.noticias') }}" key="t-default">Notícias</a></li>
                                 <li><a href="{{ route('painel.anuncios') }}" key="t-default">Anúncios</a></li>
                             </ul>
@@ -301,6 +300,13 @@ $usuario = \App\Models\Usuario::find(session()->get('usuario')['id']);
                             <ul class="sub-menu" aria-expanded="false">
                                 <li><a href="{{ route('painel.usuarios') }}" key="t-default">Usuários</a></li>
                             </ul>
+                        </li>
+
+                        <li>
+                            <a href="{{ route('painel.parametros') }}" class="waves-effect">
+                                <i class="bx bx-check-shield" aria-hidden="true"></i>
+                                <span key="t-dashboards">Parâmetros</span>
+                            </a>
                         </li>
 
                     </ul>
@@ -462,6 +468,7 @@ $usuario = \App\Models\Usuario::find(session()->get('usuario')['id']);
 
     <script>
         $('.dinheiro').mask('#.##0,00', {reverse: true, placeholder: "R$ 0,00"});
+        $('.telefone_ddd').mask('(00) 0000-0000', {placeholder: "(00) 000-000"});
     </script>
     @toastr_js
     @toastr_render

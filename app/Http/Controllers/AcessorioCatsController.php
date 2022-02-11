@@ -27,4 +27,16 @@ class AcessorioCatsController extends Controller
 
         return redirect()->route("painel.acessorios");
     }
+
+    public function status(AcessorioCat $acessoriocat) {
+        if($acessoriocat->status == "Ativo") {
+            AcessorioCat::where('id', $acessoriocat->id)
+            ->update(['status' => 'Inativo']);
+        } else {
+            AcessorioCat::where('id', $acessoriocat->id)
+            ->update(['status' => 'Ativo']);
+        }
+
+        return redirect()->route("painel.acessorios");
+    }
 }

@@ -40,6 +40,7 @@ Produtos / <a style="color: unset" href="{{ route('painel.ingredientes') }}">Ace
                                     @php
                                         $categorias = AcessorioCat::select(DB::raw("id, nome"))
                                         ->orderBy('nome', 'Asc')
+                                        ->where('status', '=', 'Ativo')
                                         ->get();
                                     @endphp
 

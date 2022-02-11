@@ -30,6 +30,7 @@ class MarcasController extends Controller
         $marca->valor = $valor;
         $marca->unidade_medida = $request->unidade_medida;
         $marca->qtd = $request->qtd;
+        $marca->qtd_pacote = $request->qtd_pacote;
         $marca->save();
 
         $marca_id = Marca::select(DB::raw("id"))
@@ -87,7 +88,7 @@ class MarcasController extends Controller
         $valor = str_replace(",", ".", $request->preco);
 
         Marca::where('id', $request->id_marca)
-        ->update(['nome' => $request->nome, 'padrao' => $request->padrao, 'valor' => $valor, 'qtd' => $request->qtd, 'unidade_medida' => $request->unidade_medida]);
+        ->update(['nome' => $request->nome, 'padrao' => $request->padrao, 'valor' => $valor, 'qtd' => $request->qtd, 'qtd_pacote' => $request->qtd_pacote, 'unidade_medida' => $request->unidade_medida]);
 
         if($request->tabela == "ingredientes") {
             $url = "painel.ingredientes";

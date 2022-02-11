@@ -93,64 +93,15 @@
             </div>
 
             <div class="content">
-                <details>
-                    <summary>Como funciona o orçamento online</summary>
-
-                    <p>
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Id amet, ultrices aliquam et gravida. In libero natoque dolor donec pellentesque neque, dui in. Tristique aliquam vitae
-                        proin pharetra, neque sed sit nullam ullamcorper. Eu sed ipsum tortor amet, mi ut quisque quisque.
-                    </p>
-                </details>
-
-
-                <details>
-                    <summary>Como funciona o orçamento online</summary>
-
-                    <p>
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Id amet, ultrices aliquam et gravida. In libero natoque dolor donec pellentesque neque, dui in. Tristique aliquam vitae
-                        proin pharetra, neque sed sit nullam ullamcorper. Eu sed ipsum tortor amet, mi ut quisque quisque.
-                    </p>
-                </details>
-
-
-                <details>
-                    <summary>Como funciona o orçamento online</summary>
-
-                    <p>
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Id amet, ultrices aliquam et gravida. In libero natoque dolor donec pellentesque neque, dui in. Tristique aliquam vitae
-                        proin pharetra, neque sed sit nullam ullamcorper. Eu sed ipsum tortor amet, mi ut quisque quisque.
-                    </p>
-                </details>
-
-
-                <details>
-                    <summary>Como funciona o orçamento online</summary>
-
-                    <p>
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Id amet, ultrices aliquam et gravida. In libero natoque dolor donec pellentesque neque, dui in. Tristique aliquam vitae
-                        proin pharetra, neque sed sit nullam ullamcorper. Eu sed ipsum tortor amet, mi ut quisque quisque.
-                    </p>
-                </details>
-
-
-                <details>
-                    <summary>Como funciona o orçamento online</summary>
-
-                    <p>
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Id amet, ultrices aliquam et gravida. In libero natoque dolor donec pellentesque neque, dui in. Tristique aliquam vitae
-                        proin pharetra, neque sed sit nullam ullamcorper. Eu sed ipsum tortor amet, mi ut quisque quisque.
-                    </p>
-                </details>
-
-
-                <details>
-                    <summary>Como funciona o orçamento online</summary>
-
-                    <p>
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Id amet, ultrices aliquam et gravida. In libero natoque dolor donec pellentesque neque, dui in. Tristique aliquam vitae
-                        proin pharetra, neque sed sit nullam ullamcorper. Eu sed ipsum tortor amet, mi ut quisque quisque.
-                    </p>
-                </details>
+                @if($duvidas)
+                    @foreach($duvidas as $duvida) 
+                        <details>
+                            <summary>{{ $duvida->pergunta }}</summary>
+        
+                            <p>{{ $duvida->resposta }}</p>
+                        </details>
+                    @endforeach
+                @endif
             </div>
         </div>
     </div>

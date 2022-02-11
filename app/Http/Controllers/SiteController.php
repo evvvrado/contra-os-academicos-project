@@ -11,6 +11,7 @@ use App\Models\Noticia;
 use App\Models\Anuncio;
 use App\Models\Produto;
 use App\Models\Lead;
+use App\Models\Duvida;
 
 class SiteController extends Controller
 {
@@ -22,9 +23,9 @@ class SiteController extends Controller
     public function index()
     {
         $noticias = Noticia::select(DB::raw("preview, titulo, publicacao"))
-            ->orderBy('id', 'Desc')
-            ->limit('3')
-            ->get();
+        ->orderBy('id', 'Desc')
+        ->limit('3')
+        ->get();
 
         $produtos = Produto::all();
 
@@ -57,7 +58,9 @@ class SiteController extends Controller
 
     public function contato()
     {
-        return view("site.contato");
+        $duvidas = Duvida::all();
+
+        return view("site.contato", ["duvidas" => $duvidas]);
     }
 
     public function coqueteis()

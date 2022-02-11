@@ -96,11 +96,11 @@ Produtos / <a style="color: unset" href="{{ route('painel.ingredientes') }}">Ing
                                                                     }
                                                                     else {
 
-                                                                        $marca = Marca::select(DB::raw("id, padrao, nome, imagem, valor, unidade_medida, qtd"))
+                                                                        $marca = Marca::select(DB::raw("id, padrao, nome, imagem, valor, unidade_medida, qtd, qtd_pacote"))
                                                                         ->where("id", "=", $ingrediente->marca_id)
                                                                         ->first();
                                                                 @endphp 
-                                                                        <a href="#" onClick="editar_marca_existente({{ $ingrediente->id }}, {{ $marca->id }}, '{{ $marca->padrao }}', '{{ $marca->nome }}', '{{ $marca->imagem }}', '{{ $marca->valor }}', '{{ $marca->unidade_medida }}', '{{ $marca->qtd }}')" class="mx-auto">
+                                                                        <a href="#" onClick="editar_marca_existente({{ $ingrediente->id }}, {{ $marca->id }}, '{{ $marca->padrao }}', '{{ $marca->nome }}', '{{ $marca->imagem }}', '{{ $marca->valor }}', '{{ $marca->unidade_medida }}', '{{ $marca->qtd }}', '{{ $marca->qtd_pacote }}')" class="mx-auto">
                                                                             <i class="fa fa-check-circle"></i>
                                                                         </a>
                                                                 @php
@@ -151,6 +151,20 @@ Produtos / <a style="color: unset" href="{{ route('painel.ingredientes') }}">Ing
                                 <a href="#" onClick="editar_categoria({{$ingredientecat->id}}, '{{$ingredientecat->nome}}')" class="mx-auto">
                                     <i class="fas fa-pen-square"></i>
                                 </a>
+
+                                @if ($ingredientecat->status == "Ativo") 
+
+                                    <a href="{{ route('cat.ingrediente.status', ['ingredientecat' => $ingredientecat]) }}" class="mx-auto">
+                                        <i class="fas fa-star"></i>
+                                    </a>
+
+                                @else 
+                                    
+                                    <a href="{{ route('cat.ingrediente.status', ['ingredientecat' => $ingredientecat]) }}" class="mx-auto">
+                                        <i class="fas fa-star" style="color: #f46a6a"></i>
+                                    </a>
+
+                                @endif 
                             </td>
                         </tr>
                     @endforeach
@@ -196,6 +210,11 @@ Produtos / <a style="color: unset" href="{{ route('painel.ingredientes') }}">Ing
                             <div class="form-group col-6 col-lg-4 mt-3">
                                 <label>Quantidade</label>
                                 <input id="qtd_existente" required name="qtd" type="text" class="form-control">
+                            </div>
+
+                            <div class="form-group col-6 col-lg-4 mt-3">
+                                <label>Quantidade por pacote</label>
+                                <input required name="qtd_pacote" id="qtd_pacote_existente" type="text" class="form-control">
                             </div>
 
                             <div class="form-group col-6 col-lg-4 mt-3">
@@ -284,6 +303,11 @@ Produtos / <a style="color: unset" href="{{ route('painel.ingredientes') }}">Ing
                             <div class="form-group col-6 col-lg-4 mt-3">
                                 <label>Quantidade</label>
                                 <input required name="qtd" type="text" class="form-control">
+                            </div>
+
+                            <div class="form-group col-6 col-lg-4 mt-3">
+                                <label>Quantidade por pacote</label>
+                                <input required name="qtd_pacote" type="text" class="form-control">
                             </div>
 
                             <div class="form-group col-6 col-lg-4 mt-3">
@@ -377,7 +401,7 @@ Produtos / <a style="color: unset" href="{{ route('painel.ingredientes') }}">Ing
         $('.add_marca').modal("show");
     }
 
-    function editar_marca_existente(id, id_marca, padrao, nome, imagem, valor, unidade_medida, qtd) {
+    function editar_marca_existente(id, id_marca, padrao, nome, imagem, valor, unidade_medida, qtd, qtd_pacote) {
         $('#id_marca').val(id_marca);
         $('#id_ingrediente_existente').val(id);
 
@@ -386,6 +410,7 @@ Produtos / <a style="color: unset" href="{{ route('painel.ingredientes') }}">Ing
         $('#preco_existente').val(valor);
         $('#unidade_medida_existente').val(unidade_medida);
         $('#qtd_existente').val(qtd);
+        $('#qtd_pacote_existente').val(qtd_pacote);
 
         $.ajax({
             type: 'GET',

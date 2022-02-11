@@ -13,7 +13,7 @@
 @endphp
 
 @section('titulo')
-Produtos / <a style="color: unset" href="{{ route('painel.ingredientes') }}">Acessórios</a> / Cadastro
+<a style="color: unset" href="{{ route('painel.servicos') }}">Serviços</a> / Cadastro
 @endsection
 
 @section('conteudo')

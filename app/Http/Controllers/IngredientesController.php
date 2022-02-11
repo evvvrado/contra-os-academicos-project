@@ -11,7 +11,7 @@ class IngredientesController extends Controller
 {
     //
     public function consultar(Request $request){
-        $ingredientecats = IngredienteCat::select(DB::raw("id, nome"))
+        $ingredientecats = IngredienteCat::select(DB::raw("id, nome, status"))
         ->orderBy('nome', 'Asc')
         ->get();
         return view("painel.ingredientes.consultar", ["ingredientecats" => $ingredientecats]);
@@ -27,7 +27,7 @@ class IngredientesController extends Controller
 
     public function salvar(Request $request){
         Ingrediente::where('id', $request->id)
-        ->update(['nome' => $request->nome, 'cat_id' => $request->cat_id]);
+        ->update(['nome' => $request->nome, 'cat_id' => $request->cat_id, 'fornecedor' => $request->fornecedor, 'tel_fornecedor' => $request->tel_fornecedor, 'validade' => $request->validade]);
 
         toastr()->success("Ingrediente editado com sucesso!");
 
@@ -40,6 +40,9 @@ class IngredientesController extends Controller
         $ingredientes->nome = $request->nome;
         $ingredientes->cat_id = $request->cat_id;
         $ingredientes->marca_id = $request->marca_id;
+        $ingredientes->fornecedor = $request->fornecedor;
+        $ingredientes->tel_fornecedor = $request->tel_fornecedor;
+        $ingredientes->validade = $request->validade;
 
         $ingredientes->save();
 

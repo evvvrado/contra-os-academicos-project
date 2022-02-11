@@ -31,4 +31,16 @@ class IngredienteCatsController extends Controller
         return redirect()->route("painel.ingredientes");
 
     }
+
+    public function status(IngredienteCat $ingredientecat) {
+        if($ingredientecat->status == "Ativo") {
+            IngredienteCat::where('id', $ingredientecat->id)
+            ->update(['status' => 'Inativo']);
+        } else {
+            IngredienteCat::where('id', $ingredientecat->id)
+            ->update(['status' => 'Ativo']);
+        }
+
+        return redirect()->route("painel.ingredientes");
+    }
 }
