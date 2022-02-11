@@ -21,7 +21,7 @@
 
             <hr>
 
-            {{ $noticia->conteudo }}
+            {!! $noticia->conteudo !!}
         </div>
     </div>
 </section>
