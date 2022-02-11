@@ -92,7 +92,7 @@ class AreaClientesController extends Controller
     public function clienteAreaDadosAvatarAlterar(Request $request)
     {
         if ($request->file("avatar")) {
-            $usuario = Lead::find(session()->get("lead")["id"]);
+            $usuario = Lead::find(session()->get("cliente")["id"]);
             Storage::delete($usuario->avatar);
             $usuario->avatar = $request->file('avatar')->store(
                 'site/imagens/avatares/' . $usuario->id,
