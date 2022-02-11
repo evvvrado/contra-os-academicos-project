@@ -36,6 +36,7 @@
 
         <div class="niv-form" niv-fade>
             <form action="{{ route('site.orcamento.evento')}}" method="post">
+                @csrf
                 <label>
                     <span>Nome</span>
                     <input type="text" name="nome" placeholder="Nome completo" required>
