@@ -29,6 +29,7 @@ class CreateLeadsTable extends Migration
             $table->string("cidade", 50)->nullable();
             $table->string("estado", 2)->nullable();
             $table->string("pais", 30)->nullable();
+            $table->string("avatar", 255)->nullable();
             $table->string("cpf", 15)->unique()->nullable();
             $table->timestamps();
         });
