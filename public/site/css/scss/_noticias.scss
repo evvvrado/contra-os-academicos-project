@@ -43,6 +43,8 @@ section.noticias {
                     @include flex(column, center, flex-end);
                     background-position: center;
 
+                    background-size: cover;
+
                     position: relative;
 
                     &::after {
@@ -61,7 +63,7 @@ section.noticias {
                     }
 
                     &:hover {
-                        background-size: 120% 120%;
+                        background-size: 200%;
 
                         z-index: 1;
 
@@ -76,6 +78,7 @@ section.noticias {
                         border-radius: 2.2rem;
 
                         padding: 2.1rem 3.6rem;
+                        width: 100%;
                         z-index: 2;
 
                         span {

@@ -8,7 +8,7 @@
 <section class="destaque-blog">
 
     <div class="niv">
-        <div class="banner" style="background-image: url('/site/assets/img/blog_example_2.jpg')"></div>
+        <div class="banner" style="background-image: url('{{asset($noticia->banner)}}')"></div>
     </div>
 </section>
 
@@ -34,7 +34,7 @@
         </div>
 
         <div class="niv-form">
-            <form action="javascript: void(0)">
+            <form action="{{ route('site.orcamento.evento')}}" method="post">
                 <label>
                     <span>Nome</span>
                     <input type="text" name="nome" placeholder="Nome completo" required>

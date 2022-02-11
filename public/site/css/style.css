@@ -1622,6 +1622,7 @@ section.noticias div.niv div.niv-content div.scroll div.box {
   justify-content: flex-end;
   flex-direction: column;
   background-position: center;
+  background-size: cover;
   position: relative;
 }
 section.noticias div.niv div.niv-content div.scroll div.box::after {
@@ -1637,7 +1638,7 @@ section.noticias div.niv div.niv-content div.scroll div.box::after {
   opacity: 0;
 }
 section.noticias div.niv div.niv-content div.scroll div.box:hover {
-  background-size: 120% 120%;
+  background-size: 200%;
   z-index: 1;
 }
 section.noticias div.niv div.niv-content div.scroll div.box:hover::after {
@@ -1648,6 +1649,7 @@ section.noticias div.niv div.niv-content div.scroll div.box div {
   background: #fff;
   border-radius: 2.2rem;
   padding: 2.1rem 3.6rem;
+  width: 100%;
   z-index: 2;
 }
 section.noticias div.niv div.niv-content div.scroll div.box div span {
@@ -2536,6 +2538,7 @@ section.destaque-blog div.niv div.banner {
   width: 100%;
   max-width: 121.4rem;
   border-radius: 2rem;
+  background-size: cover;
   padding: 7.7rem 5.8rem;
 }
 section.destaque-blog div.niv div.banner div {
