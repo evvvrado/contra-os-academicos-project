@@ -25,6 +25,11 @@ class CreateLeadsTable extends Migration
             $table->tinyInteger("duracao")->nullable();
             $table->string("outras_bebidas")->nullable();
             $table->string("qtd_pessoas")->nullable();
+            $table->string("rua", 100)->nullable();
+            $table->string("cidade", 50)->nullable();
+            $table->string("estado", 2)->nullable();
+            $table->string("pais", 30)->nullable();
+            $table->string("cpf", 15)->unique()->nullable();
             $table->timestamps();
         });
     }

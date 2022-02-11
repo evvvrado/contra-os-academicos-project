@@ -85,7 +85,7 @@
 
                     <div>
                         <span>Olá, <strong>{{ explode(' ', session()->get('cliente')['nome'])[0] }}</strong></span>
-                        <a href="{{route('site.cliente.deslogar')}}">
+                        <a href="{{route('clienteDeslogar')}}">
                             Sair
                         </a>
                     </div>

@@ -46,7 +46,7 @@ class AreaClientesController extends Controller
 
     public function clienteAreaDadosSalvar(Request $request)
     {
-        $usuario = Lead::find(session()->get("lead")["id"]);
+        $usuario = Lead::find(session()->get("cliente")["id"]);
         $usuario->nome = $request->nome;
         $usuario->email = $request->email;
         $usuario->cpf = $request->cpf;
@@ -61,9 +61,9 @@ class AreaClientesController extends Controller
 
     public function clienteAreaDadosSenhaAlterar(Request $request)
     {
-        $usuario = Lead::find(session()->get("lead")["id"]);
-        if (Hash::check($request->senha_antiga, $usuario->senha)) {
-            $usuario->senha = Hash::make($request->senha_nova);
+        $usuario = Lead::find(session()->get("cliente")["id"]);
+        if ($request->senha_antiga == $usuario->senha) {
+            $usuario->senha = $request->senha_nova;
             $usuario->save();
             session()->flash("sucesso", "Senha atualizada com sucesso!");
             toastr()->success("Senha alterada com sucesso!");
@@ -73,6 +73,21 @@ class AreaClientesController extends Controller
         }
         return redirect()->back();
     }
+
+    // public function clienteAreaDadosSenhaAlterar(Request $request)
+    // {
+    //     $usuario = Lead::find(session()->get("cliente")["id"]);
+    //     if (Hash::check($request->senha_antiga, $usuario->senha)) {
+    //         $usuario->senha = Hash::make($request->senha_nova);
+    //         $usuario->save();
+    //         session()->flash("sucesso", "Senha atualizada com sucesso!");
+    //         toastr()->success("Senha alterada com sucesso!");
+    //     } else {
+    //         session()->flash("erro", "A senha antiga informada está incorreta");
+    //         toastr()->error("A senha antiga informada não está correta!");
+    //     }
+    //     return redirect()->back();
+    // }
 
     public function clienteAreaDadosAvatarAlterar(Request $request)
     {
@@ -88,4 +103,10 @@ class AreaClientesController extends Controller
 
         return redirect()->back();
     }
+
+    public function clienteDeslogar(){
+        session()->forget("cliente");
+        return redirect()->route("minha-area.cliente");
+    }
+    
 }
