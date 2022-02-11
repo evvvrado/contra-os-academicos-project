@@ -104,7 +104,7 @@ class AreaClientesController extends Controller
         return redirect()->back();
     }
 
-    public function clienteDeslogar(){
+    public function deslogar(){
         session()->forget("cliente");
         return redirect()->route("minha-area.cliente");
     }
