@@ -35,7 +35,7 @@
         </div>
 
         <div class="niv-form" niv-fade>
-            <form action="javascript: void(0)">
+            <form action="{{ route('site.orcamento.evento')}}" method="post">
                 <label>
                     <span>Nome</span>
                     <input type="text" name="nome" placeholder="Nome completo" required>
@@ -210,7 +210,7 @@
             }
         @endphp
 
-        <button>Solicite um orçamento</button>
+        <button onClick="window.location.href='{{ route('site.orcamento.id') }}'">Solicite um orçamento</button>
     </div>
 </section>
 
