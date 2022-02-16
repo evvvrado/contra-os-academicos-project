@@ -8,6 +8,8 @@ use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Storage;
 use App\Models\Produto;
 use App\Models\Lead;
+use App\Models\Orcamento;
+use App\Models\OrcamentoProduto;
 use DB;
 
 class OrcamentoController extends Controller
@@ -62,5 +64,49 @@ class OrcamentoController extends Controller
     public function orcamentoENCERRAR()
     {
         return view("site.orcamento.encerrar");
+    }
+
+    public function adicionar(Produto $produto)
+    {
+        if (!session()->get("cliente")) {
+            session()->put(["produto_adicionar" => url()->current()]);
+            return redirect()->route("site.orcamento.lista");
+        } else {
+            if (session()->get("produto_adicionar")) {
+                session()->forget("produto_adicionar");
+            }
+            if (!session()->get("orcamento")) {
+                $orcamento = new Orcamento();
+                $orcamento->lead_id = session()->get("cliente")["id"];
+                $orcamento->save();
+                session()->put(["orcamento" => $orcamento->id]);
+            } else {
+                $orcamento = Orcamento::find(session()->get("orcamento"));
+            }
+
+            $orcamento = new Orcamento();
+            if ($orcamento->produtos->where("orcamento_id", $orcamento->id)->count() > 0) {
+                return redirect()->route("site.orcamento.lista");
+            }
+
+            $produto = new OrcamentoProduto;
+            $produto->orcamento_id = $orcamento->id;
+            $produto->save();
+
+            return redirect()->route("site.orcamento.lista");
+        }
+    }
+
+    public function remover(Orcamento $orcamento)
+    {
+        $orcamento = Orcamento::find(session()->get("orcamento"));
+        $produto = OrcamentoProduto::where(["orcamento_id", $orcamento->id]);
+        $produto->delete();
+        if ($orcamento->produtos->count() == 0) {
+            $orcamento->delete();
+            session()->forget("orcamento");
+            return redirect()->route('site.index');
+        }
+        return redirect()->back();
     }
 }

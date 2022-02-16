@@ -399,7 +399,7 @@
                         <img src="{{ asset('site/assets/img/icon_star.svg') }}" alt="estrela de nota">
                     </span>
 
-                    <input type="checkbox" name="habilitar">
+                    <input onclick="window.location.href ='{{ route('site.orcamento-adicionar', ['produto' => $produto]) }}'" type="checkbox" name="habilitar">
                 </div>
             </div>
 
