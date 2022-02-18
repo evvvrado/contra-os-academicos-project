@@ -413,190 +413,54 @@
                     </thead>
 
                     <tbody>
-                        <tr>
-                            <td>
-                                <button class="remover-produto">
-                                    <picture>
-                                        <img src="{{ asset('site/assets/img/icon_remove.svg') }}" alt="Remover ícone">
+
+                        @foreach($produtos as $produto)
+                            <tr>
+                                <td>
+                                    <button class="remover-produto" onclick="window.location.href ='{{ route('site.orcamento-remover', ['produto' => $produto]) }}'">
+                                        <picture>
+                                            <img src="{{ asset('site/assets/img/icon_remove.svg') }}" alt="Remover ícone">
+                                        </picture>
+                                    </button>
+                                </td>
+
+                                <td>
+                                    <picture class="foto-produto">
+                                        <img src="{{$produto->imagem_1}}" alt="imagem representativa">
                                     </picture>
-                                </button>
-                            </td>
+                                </td>
 
-                            <td>
-                                <picture class="foto-produto">
-                                    <img src="{{ asset('/site/assets/img/drink_3.png') }}" alt="imagem representativa">
-                                </picture>
-                            </td>
+                                <td>
+                                    <strong class="nome-produto">
+                                        {{$produto->nome}}
+                                    </strong>
+                                </td>
 
-                            <td>
-                                <strong class="nome-produto">
-                                    Aperol Sprintz
-                                </strong>
-                            </td>
+                                <td>
+                                    <p class="descricao-produto">
+                                        {{mb_strimwidth($produto->descricao, 0, 55, "...")}}
+                                    </p>
+                                </td>
 
-                            <td>
-                                <p class="descricao-produto">
-                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                                </p>
-                            </td>
+                                <td>
+                                    <input type="tel" placeholder="250" name="quantidade-produto">
+                                </td>
 
-                            <td>
-                                <input type="tel" placeholder="250" name="quantidade-produto">
-                            </td>
+                                <td>
+                                    <strong class="total-produto">
+                                        R$ 350,00
+                                    </strong>
+                                </td>
 
-                            <td>
-                                <strong class="total-produto">
-                                    R$ 350,00
-                                </strong>
-                            </td>
-
-                            <td>
-                                <button class="upgrade-produto">
-                                    <picture>
-                                        <img src="{{ asset('site/assets/img/upgrade_button.svg') }}" alt="ícone de upgrade">
-                                    </picture>
-                                </button>
-                            </td>
-                        </tr>
-
-                        <tr>
-                            <td>
-                                <button class="remover-produto">
-                                    <picture>
-                                        <img src="{{ asset('site/assets/img/icon_remove.svg') }}" alt="Remover ícone">
-                                    </picture>
-                                </button>
-                            </td>
-
-                            <td>
-                                <picture class="foto-produto">
-                                    <img src="{{ asset('/site/assets/img/drink_3.png') }}" alt="imagem representativa">
-                                </picture>
-                            </td>
-
-                            <td>
-                                <strong class="nome-produto">
-                                    Aperol Sprintz
-                                </strong>
-                            </td>
-
-                            <td>
-                                <p class="descricao-produto">
-                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                                </p>
-                            </td>
-
-                            <td>
-                                <input type="tel" placeholder="250" name="quantidade-produto">
-                            </td>
-
-                            <td>
-                                <strong class="total-produto">
-                                    R$ 350,00
-                                </strong>
-                            </td>
-
-                            <td>
-                                <button class="upgrade-produto">
-                                    <picture>
-                                        <img src="{{ asset('site/assets/img/upgrade_button.svg') }}" alt="ícone de upgrade">
-                                    </picture>
-                                </button>
-                            </td>
-                        </tr>
-
-                        <tr>
-                            <td>
-                                <button class="remover-produto">
-                                    <picture>
-                                        <img src="{{ asset('site/assets/img/icon_remove.svg') }}" alt="Remover ícone">
-                                    </picture>
-                                </button>
-                            </td>
-
-                            <td>
-                                <picture class="foto-produto">
-                                    <img src="{{ asset('/site/assets/img/drink_3.png') }}" alt="imagem representativa">
-                                </picture>
-                            </td>
-
-                            <td>
-                                <strong class="nome-produto">
-                                    Aperol Sprintz
-                                </strong>
-                            </td>
-
-                            <td>
-                                <p class="descricao-produto">
-                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                                </p>
-                            </td>
-
-                            <td>
-                                <input type="tel" placeholder="250" name="quantidade-produto">
-                            </td>
-
-                            <td>
-                                <strong class="total-produto">
-                                    R$ 350,00
-                                </strong>
-                            </td>
-
-                            <td>
-                                <button class="upgrade-produto">
-                                    <picture>
-                                        <img src="{{ asset('site/assets/img/upgrade_button.svg') }}" alt="ícone de upgrade">
-                                    </picture>
-                                </button>
-                            </td>
-                        </tr>
-
-                        <tr>
-                            <td>
-                                <button class="remover-produto">
-                                    <picture>
-                                        <img src="{{ asset('site/assets/img/icon_remove.svg') }}" alt="Remover ícone">
-                                    </picture>
-                                </button>
-                            </td>
-
-                            <td>
-                                <picture class="foto-produto">
-                                    <img src="{{ asset('/site/assets/img/drink_3.png') }}" alt="imagem representativa">
-                                </picture>
-                            </td>
-
-                            <td>
-                                <strong class="nome-produto">
-                                    Aperol Sprintz
-                                </strong>
-                            </td>
-
-                            <td>
-                                <p class="descricao-produto">
-                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                                </p>
-                            </td>
-
-                            <td>
-                                <input type="tel" placeholder="250" name="quantidade-produto">
-                            </td>
-
-                            <td>
-                                <strong class="total-produto">
-                                    R$ 350,00
-                                </strong>
-                            </td>
-
-                            <td>
-                                <button class="upgrade-produto">
-                                    <picture>
-                                        <img src="{{ asset('site/assets/img/upgrade_button.svg') }}" alt="ícone de upgrade">
-                                    </picture>
-                                </button>
-                            </td>
-                        </tr>
-
+                                <td>
+                                    <button class="upgrade-produto">
+                                        <picture>
+                                            <img src="{{ asset('site/assets/img/upgrade_button.svg') }}" alt="ícone de upgrade">
+                                        </picture>
+                                    </button>
+                                </td>
+                            </tr>
+                        @endforeach
 
                         <tr>
                             <td></td>

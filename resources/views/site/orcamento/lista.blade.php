@@ -2,7 +2,6 @@
 
 @section("body_attr", "id=orcamento-lista")
 
-
 @section('content')
 
 <div class="modal-filtro" hide>
@@ -137,186 +136,24 @@
         </div>
         <div class="list">
             <div class="scroll">
-                <div class="box" niv-fade>
-                    <div>
 
-                        <picture>
-                            <img src="{{ asset('site/assets/img/bebida_1.jpg') }}" alt="bebida representativa">
-                        </picture>
+                @foreach($ingredientes_filtro as $ingrediente_filtro)
 
-                        <strong>Shisky</strong>
+                    <div class="box" niv-fade>
+                        <div>
+
+                            <picture>
+                                <img src="{{ $ingrediente_filtro->imagem }}" alt="bebida representativa">
+                            </picture>
+
+                            <strong>{{ $ingrediente_filtro->nome }}</strong>
+                        </div>
+
+                        <input type="checkbox" name="slide">
                     </div>
 
-                    <input type="checkbox" name="slide">
-                </div>
-
-
-                <div class="box" niv-fade>
-                    <div>
-
-                        <picture>
-                            <img src="{{ asset('site/assets/img/bebida_1.jpg') }}" alt="bebida representativa">
-                        </picture>
-
-                        <strong>Shisky</strong>
-                    </div>
-
-                    <input type="checkbox" name="slide">
-                </div>
-
-
-                <div class="box" niv-fade>
-                    <div>
-
-                        <picture>
-                            <img src="{{ asset('site/assets/img/bebida_2.jpg') }}" alt="bebida representativa">
-                        </picture>
-
-                        <strong>Rum</strong>
-                    </div>
-
-                    <input type="checkbox" name="slide">
-                </div>
-
-
-                <div class="box" niv-fade>
-                    <div>
-
-                        <picture>
-                            <img src="{{ asset('site/assets/img/bebida_3.jpg') }}" alt="bebida representativa">
-                        </picture>
-
-                        <strong>Shisky</strong>
-                    </div>
-
-                    <input type="checkbox" name="slide">
-                </div>
-
-
-                <div class="box" niv-fade>
-                    <div>
-
-                        <picture>
-                            <img src="{{ asset('site/assets/img/bebida_4.jpg') }}" alt="bebida representativa">
-                        </picture>
-
-                        <strong>Shisky</strong>
-                    </div>
-
-                    <input type="checkbox" name="slide">
-                </div>
-
-
-                <div class="box" niv-fade>
-                    <div>
-
-                        <picture>
-                            <img src="{{ asset('site/assets/img/bebida_1.jpg') }}" alt="bebida representativa">
-                        </picture>
-
-                        <strong>Shisky</strong>
-                    </div>
-
-                    <input type="checkbox" name="slide">
-                </div>
-
-
-                <div class="box" niv-fade>
-                    <div>
-
-                        <picture>
-                            <img src="{{ asset('site/assets/img/bebida_1.jpg') }}" alt="bebida representativa">
-                        </picture>
-
-                        <strong>Shisky</strong>
-                    </div>
-
-                    <input type="checkbox" name="slide">
-                </div>
-
-
-                <div class="box" niv-fade>
-                    <div>
-
-                        <picture>
-                            <img src="{{ asset('site/assets/img/bebida_4.jpg') }}" alt="bebida representativa">
-                        </picture>
-
-                        <strong>Shisky</strong>
-                    </div>
-
-                    <input type="checkbox" name="slide">
-                </div>
-
-
-                <div class="box" niv-fade>
-                    <div>
-
-                        <picture>
-                            <img src="{{ asset('site/assets/img/bebida_1.jpg') }}" alt="bebida representativa">
-                        </picture>
-
-                        <strong>Shisky</strong>
-                    </div>
-
-                    <input type="checkbox" name="slide">
-                </div>
-
-
-                <div class="box" niv-fade>
-                    <div>
-
-                        <picture>
-                            <img src="{{ asset('site/assets/img/bebida_1.jpg') }}" alt="bebida representativa">
-                        </picture>
-
-                        <strong>Shisky</strong>
-                    </div>
-
-                    <input type="checkbox" name="slide">
-                </div>
-
-
-                <div class="box" niv-fade>
-                    <div>
-
-                        <picture>
-                            <img src="{{ asset('site/assets/img/bebida_3.jpg') }}" alt="bebida representativa">
-                        </picture>
-
-                        <strong>Shisky</strong>
-                    </div>
-
-                    <input type="checkbox" name="slide">
-                </div>
-
-
-                <div class="box" niv-fade>
-                    <div>
-
-                        <picture>
-                            <img src="{{ asset('site/assets/img/bebida_1.jpg') }}" alt="bebida representativa">
-                        </picture>
-
-                        <strong>Shisky</strong>
-                    </div>
-
-                    <input type="checkbox" name="slide">
-                </div>
-
-
-                <div class="box" niv-fade>
-                    <div>
-
-                        <picture>
-                            <img src="{{ asset('site/assets/img/bebida_2.jpg') }}" alt="bebida representativa">
-                        </picture>
-
-                        <strong>Shisky</strong>
-                    </div>
-
-                    <input type="checkbox" name="slide">
-                </div>
+                @endforeach
+                
             </div>
         </div>
         <div class="list-button">
@@ -372,36 +209,77 @@
 
         <div class="niv-content">
 
+            {{-- @php
+                dd($produtos_escolhidos);
+            @endphp --}}
+
+            @if($produtos_escolhidos)
+                @foreach($produtos_escolhidos as $produto_escolhido)
+
+                    @php
+                        if ($produto_escolhido->lancamento == "Sim") {
+                            $lancamento = "lancamento";
+                        }   
+                    @endphp
+
+                    <div class="box" niv-fade data-cal="{{$produto_escolhido->calorias}}" data-teor="{{$produto_escolhido->teor_alcoolico}}" {{$lancamento}}>
+                        <picture>
+                            <img src="{{$produto_escolhido->imagem_1}}" alt="imagem representativa" style="width: auto; height: 100%; margin: auto;">
+                        </picture>
+
+                        <strong>{{$produto_escolhido->nome}}</strong>
+                        <p>{{mb_strimwidth($produto_escolhido->descricao, 0, 72, "...")}}</p>
+
+                        <div>
+                            <strong>Teor alcóolico</strong>
+                            <p>{{$produto_escolhido->teor_alcoolico}}%</p>
+                            <strong>Valor Calórico</strong>
+                            <p>{{$produto_escolhido->calorias}} cal.</p>
+                            <strong>Valor Calórico</strong>
+
+                            <span>
+                                <img src="{{ asset('site/assets/img/icon_star.svg') }}" alt="estrela de nota">
+                            </span>
+
+                            <input onclick="window.location.href ='{{ route('site.orcamento-remover', ['produto' => $produto_escolhido]) }}'" checked type="checkbox" name="desabilitar">
+                        </div>
+                    </div>
+
+                @endforeach
+            @endif 
+            
             @foreach($produtos as $produto)
 
-            @php
-                if ($produto->lancamento == "Sim") {
-                    $lancamento = "lancamento";
-                }   
-            @endphp
+                @php
+                    if ($produto->lancamento == "Sim") {
+                        $lancamento = "lancamento";
+                    }   
+                @endphp
 
-            <div class="box" niv-fade data-cal="{{$produto->calorias}}" data-teor="{{$produto->teor_alcoolico}}" {{$lancamento}}>
-                <picture>
-                    <img src="{{$produto->imagem_1}}" alt="imagem representativa" style="width: auto; height: 100%; margin: auto;">
-                </picture>
+                <div class="box" niv-fade data-cal="{{$produto->calorias}}" data-teor="{{$produto->teor_alcoolico}}" {{$lancamento}}>
+                    <picture>
+                        <img src="{{$produto->imagem_1}}" alt="imagem representativa" style="width: auto; height: 100%; margin: auto;">
+                    </picture>
 
-                <strong>{{$produto->nome}}</strong>
-                <p>{{mb_strimwidth($produto->descricao, 0, 72, "...")}}</p>
+                    <strong>{{$produto->nome}}</strong>
+                    <p>{{mb_strimwidth($produto->descricao, 0, 72, "...")}}</p>
 
-                <div>
-                    <strong>Teor alcóolico</strong>
-                    <p>{{$produto->teor_alcoolico}}%</p>
-                    <strong>Valor Calórico</strong>
-                    <p>{{$produto->calorias}} cal.</p>
-                    <strong>Valor Calórico</strong>
+                    <div>
+                        <strong>Teor alcóolico</strong>
+                        <p>{{$produto->teor_alcoolico}}%</p>
+                        <strong>Valor Calórico</strong>
+                        <p>{{$produto->calorias}} cal.</p>
+                        <strong>Valor Calórico</strong>
 
-                    <span>
-                        <img src="{{ asset('site/assets/img/icon_star.svg') }}" alt="estrela de nota">
-                    </span>
+                        <span>
+                            @for ($i = 0; $i < $produto->nota; $i++)
+                                <img src="{{ asset('site/assets/img/icon_star.svg') }}" alt="estrela de nota">
+                            @endfor
+                        </span>
 
-                    <input type="checkbox" name="habilitar">
+                        <input onclick="window.location.href ='{{ route('site.orcamento-adicionar', ['produto' => $produto]) }}'" type="checkbox" name="habilitar">
+                    </div>
                 </div>
-            </div>
 
             @endforeach
 
