@@ -15,8 +15,10 @@ class CreateOrcamentoProdutosIngredientesTable extends Migration
     {
         Schema::create('orcamento_produtos_ingredientes', function (Blueprint $table) {
             $table->id();
-            $table->integer("orcamentoproduto_id");
-            $table->integer("ingrediente_id");
+            $table->unsignedBigInteger("orcamentoproduto_id")->nullable();
+            $table->unsignedBigInteger("ingrediente_id")->nullable();
+            $table->foreign('orcamentoproduto_id')->references('id')->on('orcamentoprodutos')->onDelete('cascade');
+            $table->foreign('ingrediente_id')->references('id')->on('ingredientes')->onDelete('cascade');
             $table->timestamps();
         });
     }

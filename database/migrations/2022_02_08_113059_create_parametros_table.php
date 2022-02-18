@@ -15,8 +15,8 @@ class CreateParametrosTable extends Migration
     {
         Schema::create('parametros', function (Blueprint $table) {
             $table->id();
-            $table->integer("valor_1");
-            $table->integer("valor_2");
+            $table->string("valor_1");
+            $table->string("valor_2");
             $table->string("descricao");
             $table->timestamps();
         });

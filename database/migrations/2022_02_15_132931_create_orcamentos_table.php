@@ -15,9 +15,9 @@ class CreateOrcamentosTable extends Migration
     {
         Schema::create('orcamentos', function (Blueprint $table) {
             $table->id();
-            $table->integer("lead_id");
+            $table->unsignedBigInteger("lead_id")->nullable();
             $table->boolean("aberto")->default(true);
-            // $table->foreign('lead_id')->references('id')->on('leads')->onDelete('cascade');
+            $table->foreign('lead_id')->references('id')->on('leads')->onDelete('cascade');
             $table->timestamps();
         });
     }

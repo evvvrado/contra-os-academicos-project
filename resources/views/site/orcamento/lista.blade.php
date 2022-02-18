@@ -2,7 +2,6 @@
 
 @section("body_attr", "id=orcamento-lista")
 
-
 @section('content')
 
 <div class="modal-filtro" hide>
@@ -137,186 +136,24 @@
         </div>
         <div class="list">
             <div class="scroll">
-                <div class="box" niv-fade>
-                    <div>
 
-                        <picture>
-                            <img src="{{ asset('site/assets/img/bebida_1.jpg') }}" alt="bebida representativa">
-                        </picture>
+                @foreach($ingredientes_filtro as $ingrediente_filtro)
 
-                        <strong>Shisky</strong>
+                    <div class="box" niv-fade>
+                        <div>
+
+                            <picture>
+                                <img src="{{ $ingrediente_filtro->imagem }}" alt="bebida representativa">
+                            </picture>
+
+                            <strong>{{ $ingrediente_filtro->nome }}</strong>
+                        </div>
+
+                        <input type="checkbox" name="slide">
                     </div>
 
-                    <input type="checkbox" name="slide">
-                </div>
-
-
-                <div class="box" niv-fade>
-                    <div>
-
-                        <picture>
-                            <img src="{{ asset('site/assets/img/bebida_1.jpg') }}" alt="bebida representativa">
-                        </picture>
-
-                        <strong>Shisky</strong>
-                    </div>
-
-                    <input type="checkbox" name="slide">
-                </div>
-
-
-                <div class="box" niv-fade>
-                    <div>
-
-                        <picture>
-                            <img src="{{ asset('site/assets/img/bebida_2.jpg') }}" alt="bebida representativa">
-                        </picture>
-
-                        <strong>Rum</strong>
-                    </div>
-
-                    <input type="checkbox" name="slide">
-                </div>
-
-
-                <div class="box" niv-fade>
-                    <div>
-
-                        <picture>
-                            <img src="{{ asset('site/assets/img/bebida_3.jpg') }}" alt="bebida representativa">
-                        </picture>
-
-                        <strong>Shisky</strong>
-                    </div>
-
-                    <input type="checkbox" name="slide">
-                </div>
-
-
-                <div class="box" niv-fade>
-                    <div>
-
-                        <picture>
-                            <img src="{{ asset('site/assets/img/bebida_4.jpg') }}" alt="bebida representativa">
-                        </picture>
-
-                        <strong>Shisky</strong>
-                    </div>
-
-                    <input type="checkbox" name="slide">
-                </div>
-
-
-                <div class="box" niv-fade>
-                    <div>
-
-                        <picture>
-                            <img src="{{ asset('site/assets/img/bebida_1.jpg') }}" alt="bebida representativa">
-                        </picture>
-
-                        <strong>Shisky</strong>
-                    </div>
-
-                    <input type="checkbox" name="slide">
-                </div>
-
-
-                <div class="box" niv-fade>
-                    <div>
-
-                        <picture>
-                            <img src="{{ asset('site/assets/img/bebida_1.jpg') }}" alt="bebida representativa">
-                        </picture>
-
-                        <strong>Shisky</strong>
-                    </div>
-
-                    <input type="checkbox" name="slide">
-                </div>
-
-
-                <div class="box" niv-fade>
-                    <div>
-
-                        <picture>
-                            <img src="{{ asset('site/assets/img/bebida_4.jpg') }}" alt="bebida representativa">
-                        </picture>
-
-                        <strong>Shisky</strong>
-                    </div>
-
-                    <input type="checkbox" name="slide">
-                </div>
-
-
-                <div class="box" niv-fade>
-                    <div>
-
-                        <picture>
-                            <img src="{{ asset('site/assets/img/bebida_1.jpg') }}" alt="bebida representativa">
-                        </picture>
-
-                        <strong>Shisky</strong>
-                    </div>
-
-                    <input type="checkbox" name="slide">
-                </div>
-
-
-                <div class="box" niv-fade>
-                    <div>
-
-                        <picture>
-                            <img src="{{ asset('site/assets/img/bebida_1.jpg') }}" alt="bebida representativa">
-                        </picture>
-
-                        <strong>Shisky</strong>
-                    </div>
-
-                    <input type="checkbox" name="slide">
-                </div>
-
-
-                <div class="box" niv-fade>
-                    <div>
-
-                        <picture>
-                            <img src="{{ asset('site/assets/img/bebida_3.jpg') }}" alt="bebida representativa">
-                        </picture>
-
-                        <strong>Shisky</strong>
-                    </div>
-
-                    <input type="checkbox" name="slide">
-                </div>
-
-
-                <div class="box" niv-fade>
-                    <div>
-
-                        <picture>
-                            <img src="{{ asset('site/assets/img/bebida_1.jpg') }}" alt="bebida representativa">
-                        </picture>
-
-                        <strong>Shisky</strong>
-                    </div>
-
-                    <input type="checkbox" name="slide">
-                </div>
-
-
-                <div class="box" niv-fade>
-                    <div>
-
-                        <picture>
-                            <img src="{{ asset('site/assets/img/bebida_2.jpg') }}" alt="bebida representativa">
-                        </picture>
-
-                        <strong>Shisky</strong>
-                    </div>
-
-                    <input type="checkbox" name="slide">
-                </div>
+                @endforeach
+                
             </div>
         </div>
         <div class="list-button">
@@ -404,7 +241,7 @@
                                 <img src="{{ asset('site/assets/img/icon_star.svg') }}" alt="estrela de nota">
                             </span>
 
-                            <input onclick="window.location.href ='{{ route('site.orcamento-remover', ['produto' => $produto_escolhido]) }}'" checked type="checkbox" name="habilitar">
+                            <input onclick="window.location.href ='{{ route('site.orcamento-remover', ['produto' => $produto_escolhido]) }}'" checked type="checkbox" name="desabilitar">
                         </div>
                     </div>
 
@@ -435,7 +272,9 @@
                         <strong>Valor Calórico</strong>
 
                         <span>
-                            <img src="{{ asset('site/assets/img/icon_star.svg') }}" alt="estrela de nota">
+                            @for ($i = 0; $i < $produto->nota; $i++)
+                                <img src="{{ asset('site/assets/img/icon_star.svg') }}" alt="estrela de nota">
+                            @endfor
                         </span>
 
                         <input onclick="window.location.href ='{{ route('site.orcamento-adicionar', ['produto' => $produto]) }}'" type="checkbox" name="habilitar">

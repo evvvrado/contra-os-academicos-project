@@ -17,9 +17,9 @@ class CreateOrcamentoProdutosTable extends Migration
             $table->id();
             $table->unsignedBigInteger("orcamento_id");
             $table->unsignedBigInteger("produto_id");
-            $table->double("total")->nullable();
-            // $table->foreign('orcamento_id')->references('id')->on('carrinhos')->onDelete('cascade');
-            // $table->foreign('produto_id')->references('id')->on('produtos')->onDelete('cascade');
+            // $table->double("total")->nullable();
+            $table->foreign('orcamento_id')->references('id')->on('orcamentos')->onDelete('cascade');
+            $table->foreign('produto_id')->references('id')->on('produtos')->onDelete('cascade');
             $table->timestamps();
         });
     }

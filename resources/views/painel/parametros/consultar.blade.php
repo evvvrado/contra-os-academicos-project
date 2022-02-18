@@ -39,112 +39,137 @@ Parametros
                                     Parâmetros Gerais
                                     </button>
                                 </h2>
-                                <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
-                                    <div class="accordion-body">
-                                        
-                                        <div class="row">
-                                            <div class="col-lg-6">
-                                                <p><strong>Valor por KM rodado</strong></p>
-                                                <input class="form-control dinheiro" type="text" value="" style="width: 30%">
-                                            </div>
-    
-                                            <div class="col-lg-6">
-                                                <p><strong>Número de garçons por quantidade de convidados</strong></p>
-                                                <div class="d-flex flex-wrap">
-                                                    <div class="col-lg-1">
-                                                        Para 
-                                                    </div>
-                                                    <div class="col-lg-2">
-                                                        <input class="form-control" type="text" value="">
-                                                    </div>
-                                                    <div class="col-lg-3" style="padding-left: 10px;"> convidados
-                                                    </div>
-                                                    <div class="col-lg-2">
-                                                        <input class="form-control" type="text" value=""> 
-                                                    </div>
-                                                    <div class="col-lg-3" style="padding-left: 10px;">
-                                                        garçons.
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
+                                <form action="{{ route('painel.parametros.salvar') }}" method="post">
+                                    @csrf
+                                    <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+                                        <div class="accordion-body">
 
-                                        <hr>
-
-                                        <div class="row">
-
-                                            <div class="col-lg-6">
-                                                <p><strong>Número de garçons por quantidade de convidados</strong></p>
-                                                <div class="d-flex flex-wrap">
-                                                    <div class="col-lg-1">
-                                                        Para 
-                                                    </div>
-                                                    <div class="col-lg-2">
-                                                        <input class="form-control" type="text" value="">
-                                                    </div>
-                                                    <div class="col-lg-3" style="padding-left: 10px;"> convidados
-                                                    </div>
-                                                    <div class="col-lg-2">
-                                                        <input class="form-control" type="text" value=""> 
-                                                    </div>
-                                                    <div class="col-lg-3" style="padding-left: 10px;">
-                                                        tipos de drinks.
-                                                    </div>
-                                                </div>
-                                            </div>
-
-                                            <div class="col-lg-6">
-                                                <p><strong>Número de garçons por quantidade de convidados</strong></p>
-                                                <div class="d-flex flex-wrap">
-                                                    <div class="col-lg-1">
-                                                        Para 
-                                                    </div>
-                                                    <div class="col-lg-2">
-                                                        <input class="form-control" type="text" value="">
-                                                    </div>
-                                                    <div class="col-lg-3" style="padding-left: 10px;"> convidados
-                                                    </div>
-                                                    <div class="col-lg-2">
-                                                        <input class="form-control" type="text" value=""> 
-                                                    </div>
-                                                    <div class="col-lg-3" style="padding-left: 10px;">
-                                                        qtd de drinks.
-                                                    </div>
-                                                </div>
-                                            </div>
+                                            @php
+                                                $parametro = Parametro::where('id', 1)->first();
+                                            @endphp
                                             
-                                        </div>
+                                            <div class="row">
+                                                <div class="col-lg-6">
+                                                    <p><strong>Valor por KM rodado</strong></p>
+                                                    <input name="valor_km" class="form-control dinheiro" type="text" value="{{ $parametro->valor_1 }}" style="width: 30%">
+                                                </div>
+        
+                                                @php
+                                                    $parametro = Parametro::where('id', 2)->first();
+                                                @endphp
+                                                <div class="col-lg-6">
+                                                    <p><strong>Número de garçons por quantidade de convidados</strong></p>
+                                                    <div class="d-flex flex-wrap">
+                                                        <div class="col-lg-1">
+                                                            Para 
+                                                        </div>
+                                                        <div class="col-lg-2">
+                                                            <input name="valor_1_param_2" class="form-control" type="text" value="{{ $parametro->valor_1 }}">
+                                                        </div>
+                                                        <div class="col-lg-3" style="padding-left: 10px;"> convidados
+                                                        </div>
+                                                        <div class="col-lg-2">
+                                                            <input name="valor_2_param_2" class="form-control" type="text" value="{{ $parametro->valor_2 }}"> 
+                                                        </div>
+                                                        <div class="col-lg-3" style="padding-left: 10px;">
+                                                            garçons.
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
 
-                                        <hr>
+                                            <hr>
 
-                                        <div class="row">
+                                            <div class="row">
 
-                                            <div class="col-lg-6">
-                                                <label class="form-label">Ingredientes para o filtro de orçamento do site</label>
-                
-                                                <select multiple style="height: 52px !important;" class="select2 form-control select2-multiple"
-                                                    multiple="multiple" data-placeholder="Selecione os ingredientes" required name="ingredientes[]">
-                                                    @php
-                                                        $ingrediente_cats = IngredienteCat::all();
-                                                    @endphp
-                
-                                                    @foreach($ingrediente_cats as $ingrediente_cat)
-                                                        <optgroup label="{{$ingrediente_cat->nome}}">
-                                                            @php
-                                                                $ingredientes = Ingrediente::where('cat_id', $ingrediente_cat->id)->get();
-                                                            @endphp
-                                                                @foreach($ingredientes as $ingrediente)
-                                                                    <option value="{{$ingrediente->id}}">{{$ingrediente->nome}}</option>
-                                                                @endforeach
-                                                        </optgroup>
-                                                    @endforeach
-                                                </select>
+                                                @php
+                                                    $parametro = Parametro::where('id', 3)->first();
+                                                @endphp
+                                                <div class="col-lg-6">
+                                                    <p><strong>Número de tipos de drinks por quantidade de convidados</strong></p>
+                                                    <div class="d-flex flex-wrap">
+                                                        <div class="col-lg-1">
+                                                            Para 
+                                                        </div>
+                                                        <div class="col-lg-2">
+                                                            <input name="valor_1_param_3" class="form-control" type="text" value="{{ $parametro->valor_1 }}">
+                                                        </div>
+                                                        <div class="col-lg-3" style="padding-left: 10px;"> convidados
+                                                        </div>
+                                                        <div class="col-lg-2">
+                                                            <input name="valor_2_param_3" class="form-control" type="text" value="{{ $parametro->valor_2 }}"> 
+                                                        </div>
+                                                        <div class="col-lg-3" style="padding-left: 10px;">
+                                                            tipos de drinks.
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                @php
+                                                    $parametro = Parametro::where('id', 4)->first();
+                                                @endphp
+                                                <div class="col-lg-6">
+                                                    <p><strong>Quantidade de drinks por quantidade de convidados</strong></p>
+                                                    <div class="d-flex flex-wrap">
+                                                        <div class="col-lg-1">
+                                                            Para 
+                                                        </div>
+                                                        <div class="col-lg-2">
+                                                            <input name="valor_1_param_4" class="form-control" type="text" value="{{ $parametro->valor_1 }}">
+                                                        </div>
+                                                        <div class="col-lg-3" style="padding-left: 10px;"> convidados
+                                                        </div>
+                                                        <div class="col-lg-2">
+                                                            <input name="valor_2_param_4" class="form-control" type="text" value="{{ $parametro->valor_2 }}"> 
+                                                        </div>
+                                                        <div class="col-lg-3" style="padding-left: 10px;">
+                                                            qtd de drinks.
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                
+                                            </div>
+
+                                            <hr>
+
+                                            <div class="row">
+
+                                                @php
+                                                    $parametro = Parametro::where('id', 5)->first();
+                                                @endphp
+                                                <div class="col-lg-6">
+                                                    <label class="form-label">Ingredientes para o filtro de orçamento do site</label>
+                    
+                                                    <select multiple style="height: 52px !important;" class="select2 form-control select2-multiple"
+                                                        multiple="multiple" data-placeholder="Selecione os ingredientes" name="ingredientes[]">
+                                                        @php
+                                                            $ingrediente_cats = IngredienteCat::all();
+                                                        @endphp
+                    
+                                                        @foreach($ingrediente_cats as $ingrediente_cat)
+                                                            <optgroup label="{{$ingrediente_cat->nome}}">
+                                                                @php
+                                                                    $ingredientes = Ingrediente::where('cat_id', $ingrediente_cat->id)->get();
+                                                                @endphp
+                                                                    @foreach($ingredientes as $ingrediente)
+                                                                        <option value="{{$ingrediente->id}}">{{$ingrediente->nome}}</option>
+                                                                    @endforeach
+                                                            </optgroup>
+                                                        @endforeach
+                                                    </select>
+                                                </div>
+
+                                            </div>
+
+                                            <br>
+                                            <div style="text-align: center">
+                                                <input style="width: 40%; margin: auto" type="submit" class="form-control btn btn-primary">
                                             </div>
 
                                         </div>
-
+                                        
                                     </div>
-                                </div>
+                                </form>
                             </div>
                         </div>
 
@@ -154,32 +179,6 @@ Parametros
         </div>
     </div>
 </div> 
-
-<!--  Large modal example -->
-<div class="modal fade editar_cat" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-lg">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="myLargeModalLabel">Editar Parâmetro</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                <form id="form_editar" method="post" action="{{ route('painel.ingredientecats.editar') }} ">
-                    @csrf
-                    <label>Descrição</label>
-                    <input type="text" class="form-control" name="nome" id="nome_editar">
-
-                    <input type="hidden" class="form-control" name="id" id="id_editar">
-
-                    <br>
-
-                    <input type="submit" class="btn btn-primary">
-                </form>
-            </div>
-        </div><!-- /.modal-content -->
-    </div><!-- /.modal-dialog -->
-</div><!-- /.modal -->
-
 @endsection
 
 
