@@ -74,7 +74,7 @@ class OrcamentoController extends Controller
 
         $parametro = Parametro::where('id', 5)->first();
         $valores = json_decode($parametro->valor_1, true);
-        // dd($valores);
+        dd($valores);
         
         $ingredientes_filtro = Ingrediente::whereIn('ingredientes.id', $valores)
         ->leftJoin('marcas', 'marcas.id', '=', 'ingredientes.marca_id')
