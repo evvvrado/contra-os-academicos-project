@@ -101,7 +101,7 @@
 
                     <button>Selecionas as bebidas</button>
 
-                    <input type="hidden" name="lead" value="{{$_POST["id"]}}">
+                    <input type="hidden" name="lead" value="{{$_POST[" id"]}}">
 
                 </form>
             </div>
@@ -114,7 +114,7 @@
 
 @section('scripts')
 <script>
-    $('section.conte div.niv div.niv-content div.niv-form form input[name=cep]').change(() =>{
+    $('section.conte div.niv div.niv-content div.niv-form form input[name=cep]').keydown(() =>{
         $('section.conte div.niv div.niv-content div.niv-form').height('300px');
     })
 
