@@ -20,6 +20,14 @@ class CreateParametrosTable extends Migration
             $table->string("descricao");
             $table->timestamps();
         });
+
+        for ($i = 1; $i <= 6; $i++) {
+            DB::table('parametros')->insert([
+                'valor_1' => '0',
+                'valor_2' => '0',
+                'descricao' => 'desd'.$i
+            ]);
+        }
     }
 
     /**

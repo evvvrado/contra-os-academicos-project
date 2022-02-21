@@ -25,7 +25,14 @@
                     <strong>CASAMENTO</strong>
                     <p>Seu evento sob medida em cada detalhe</p>
 
-                    <a href="{{ route('site.orcamento.informacoes', ["lead" => $lead, "tipo" => "casamento"] ) }}">Quero este</a>
+                    <form action="{{ route('site.orcamento.informacoes') }}" method="post">
+                        @csrf
+                        <input type="hidden" name="tipo" value="casamento">
+
+                        <input type="hidden" name="id" value="{{ $lead->id }}">
+
+                        <input type="submit" value="Quero este" style="z-index: 1000;">
+                    </form>
                 </div>
 
 

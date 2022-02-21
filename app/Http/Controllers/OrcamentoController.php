@@ -24,35 +24,48 @@ class OrcamentoController extends Controller
     }
     public function orcamentoEVENTO(Request $request)
     {
-        $lead = new Lead;
-        $lead->nome = $request->nome;
-        $lead->email = $request->email;
-        $lead->telefone = $request->telefone;
+        $verifica_lead = Lead::where("email", $request->email)->first();
+        if(!$verifica_lead){
+            $lead = new Lead;
+            $lead->nome = $request->nome;
+            $lead->email = $request->email;
+            $lead->telefone = $request->telefone;
 
-        $lead->save();
+            $lead->save();
 
-        $lead = Lead::select(DB::raw("id"))
-        ->orderBy('id', 'Desc')
-        ->limit('1')
-        ->first();
+            session()->put(["cliente" => $lead->toArray()]);
 
-        return view("site.orcamento.evento", ["lead" => $lead]);
+            return view("site.orcamento.evento", ["lead" => $lead]);
+        } else {
+            toastr()->success("Faça login para continuar!");
+
+            session()->put(["email_lead" => $verifica_lead->email]);
+
+            return redirect()->route("site.acessar-cliente");
+        }
+        
     }
     public function orcamentoINFO(Request $request)
     {
-        Lead::where('id', $request->lead)
-        ->update(['tipo' => $request->tipo]);
+        session()->put(["lead_id" => $request->id]);
+        session()->put(["tipo_evento" => $request->tipo]);
 
         return view("site.orcamento.info");
     }
     public function orcamentoLISTA(Request $request)
     {
         if($request->data){
+            $orcamento = new Orcamento();
+            $orcamento->lead_id = session()->get("cliente")["id"];
+            $orcamento->cep = $request->cep;
             $parteData = explode("-", $request->data);    
-            $dataInvertida = $parteData[2] . "-" . $parteData[1] . "-" . $parteData[0];
-
-            Lead::where('id', $request->lead)
-            ->update(['cep' => $request->cep, 'data' => $request->dataInvertida, 'duracao' => $request->horas, 'outras_bebidas' => $request->alcool, 'qtd_pessoas' => $request->pessoas]);
+            $dataInvertida = $parteData[0] . "-" . $parteData[1] . "-" . $parteData[2];
+            $orcamento->data = $dataInvertida;
+            $orcamento->duracao = $request->horas;
+            $orcamento->outras_bebidas = $request->alcool;
+            $orcamento->qtd_pessoas = $request->pessoas;
+            $orcamento->save();
+            session()->put(["orcamento" => $orcamento->id]);
         }
 
         if (session()->get("orcamento")) {
@@ -75,10 +88,14 @@ class OrcamentoController extends Controller
         $parametro = Parametro::where('id', 5)->first();
         $valores = json_decode($parametro->valor_1, true);
         // dd($valores);
+        if ($valores) {
+            $ingredientes_filtro = Ingrediente::whereIn('ingredientes.id', $valores)
+            ->leftJoin('marcas', 'marcas.id', '=', 'ingredientes.marca_id')
+            ->get();
+        } else {
+            $ingredientes_filtro = Ingrediente::all();
+        }
         
-        $ingredientes_filtro = Ingrediente::whereIn('ingredientes.id', $valores)
-        ->leftJoin('marcas', 'marcas.id', '=', 'ingredientes.marca_id')
-        ->get();
         // dd($ingredientes_filtro);
 
         return view("site.orcamento.lista", ["produtos" => $produtos, "produtos_escolhidos" => $produtos_escolhidos, "ingredientes_filtro" => $ingredientes_filtro]);
@@ -108,14 +125,7 @@ class OrcamentoController extends Controller
             session()->forget("produto_adicionar");
         }
 
-        if (!session()->get("orcamento")) {
-            $orcamento = new Orcamento();
-            $orcamento->lead_id = session()->get("cliente")["id"];
-            $orcamento->save();
-            session()->put(["orcamento" => $orcamento->id]);
-        } else {
-            $orcamento = Orcamento::find(session()->get("orcamento"));
-        }
+        $orcamento = Orcamento::find(session()->get("orcamento"));
 
         // if ($orcamento->produtos->where("orcamento_id", $orcamento->id)->count() > 0) {
         //     return redirect()->route("site.orcamento.lista");

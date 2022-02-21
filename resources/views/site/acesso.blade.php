@@ -21,7 +21,7 @@
                 @csrf
                 <label>
                     <span>Email</span>
-                    <input type="text" name="email" placeholder="Insira seu usuário" required>
+                    <input type="text" name="email" placeholder="Insira seu usuário" required value="@if(session()->get('email_lead'))  {{ session()->get('email_lead') }} @endif">
                 </label>
                 <label>
                     <span>Senha</span>

@@ -19,18 +19,9 @@ class CreateLeadsTable extends Migration
             $table->string("email");
             $table->string("senha")->nullable();
             $table->string("telefone");
-            $table->string("tipo")->nullable();
-            $table->string("cep")->nullable();
-            $table->date("data")->nullable();
-            $table->tinyInteger("duracao")->nullable();
-            $table->string("outras_bebidas")->nullable();
-            $table->string("qtd_pessoas")->nullable();
-            $table->string("rua", 100)->nullable();
-            $table->string("cidade", 50)->nullable();
-            $table->string("estado", 2)->nullable();
-            $table->string("pais", 30)->nullable();
             $table->string("avatar", 255)->nullable();
             $table->string("cpf", 15)->unique()->nullable();
+            $table->boolean("orcamento")->default(false);
             $table->timestamps();
         });
     }
