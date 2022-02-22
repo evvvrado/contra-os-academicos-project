@@ -71,15 +71,15 @@ class SiteController extends Controller
         return view("site.coqueteis");
     }
 
-    public function coquetel()
+    public function coquetel(Produto $produto)
     {
-        return view("site.coquetel");
+        return view("site.coquetel", ['produto' => $produto]);
     }
 
     public function acessarCliente()
     {
         if (session()->get("cliente")) {
-            $lead = Lead::where("email", session()->get("email_lead"))->first();
+            $lead = Lead::where("id", session()->get("cliente"))->first();
 
             return redirect()->route("minha-area.cliente", ["lead" => $lead]);
         }else {

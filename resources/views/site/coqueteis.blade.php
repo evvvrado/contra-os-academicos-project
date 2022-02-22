@@ -622,9 +622,9 @@
 
 
 @section('scripts')
-<script>
+{{-- <script>
     $('section.coqueteis-drinks div.niv div.niv-content div.box').click(()=>{
         window.location.href = '{{ route('site.coquetel')}}';
     })
-</script>
+</script> --}}
 @endsection
