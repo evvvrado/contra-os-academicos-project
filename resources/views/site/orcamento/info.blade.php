@@ -101,7 +101,7 @@
 
                     <button>Selecionas as bebidas</button>
 
-                    <input type="hidden" name="lead" value="{{$_POST[" id"]}}">
+                    <input type="hidden" name="lead" value="{{$_POST["id"]}}">
 
                 </form>
             </div>

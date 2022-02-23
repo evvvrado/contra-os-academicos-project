@@ -83,10 +83,8 @@ class SiteController extends Controller
 
             return redirect()->route("minha-area.cliente", ["lead" => $lead]);
         }else {
-            return redirect()->route("site.acessar-cliente");
+            return view("site.acesso");
         }
-
-        return view("site.acesso");
     }
 
     public function logarCliente(Request $request)

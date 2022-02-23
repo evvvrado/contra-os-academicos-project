@@ -12,8 +12,10 @@ use App\Models\ProdutosIngrediente;
 use App\Models\Orcamento;
 use App\Models\OrcamentoProduto;
 use App\Models\OrcamentoProdutosIngredientes;
+use App\Models\OrcamentoProdutosIngredienteMarca;
 use App\Models\Parametro;
 use App\Models\Ingrediente;
+use App\Models\MarcaIngrediente;
 use DB;
 
 class OrcamentoController extends Controller
@@ -140,8 +142,19 @@ class OrcamentoController extends Controller
         foreach($ingredientes as $ingrediente) {
             $produto_ingrediente_insercao = new OrcamentoProdutosIngredientes;
             $produto_ingrediente_insercao->orcamentoproduto_id = $produto_insercao->id;
-            $produto_ingrediente_insercao->ingrediente_id = $ingrediente->id;
+            $produto_ingrediente_insercao->ingrediente_id = $ingrediente->ingrediente_id;
             $produto_ingrediente_insercao->save();
+
+            $marcas = MarcaIngrediente::where("ingrediente_id", $ingrediente->id)
+            ->where("padrao", "Sim")
+            ->join('marcas', 'marca_id', 'marcas.id')
+            ->get();
+            foreach($marcas as $marca) {
+                $produto_ingrediente_marca_insercao = new OrcamentoProdutosIngredienteMarca;
+                $produto_ingrediente_marca_insercao->marca_id = $marca->id;
+                $produto_ingrediente_marca_insercao->ingrediente_id = $ingrediente->id;
+                $produto_ingrediente_marca_insercao->save();
+            }
         }
 
         return redirect()->route("site.orcamento.lista");

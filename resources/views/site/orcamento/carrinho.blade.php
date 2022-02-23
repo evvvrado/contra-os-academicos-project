@@ -2,148 +2,13 @@
 
 @section("body_attr", "id=orcamento-carrinho")
 
+@php
+    use App\Models\ProdutosIngrediente;
+    use App\Models\MarcaIngrediente;
+    use App\Models\OrcamentoProdutosIngredienteMarca;
+@endphp
 
 @section('content')
-
-<div class="up" hide>
-    <div fluid>
-        <div class="niv">
-            <main>
-                <h2>Vamos dar<br> um up? 🍹</h2>
-
-                <div class="drinks">
-                    <div class="box">
-
-                        <picture>
-                            <img src="{{ asset('site/assets/img/bebida_1.jpg') }}" alt="bebida representativa">
-                        </picture>
-
-                        <strong>Shisky</strong>
-
-                        <input type="checkbox" name="slide">
-
-                        <p>R$ 150,00</p>
-                    </div>
-
-
-                    <div class="box">
-
-                        <picture>
-                            <img src="{{ asset('site/assets/img/bebida_1.jpg') }}" alt="bebida representativa">
-                        </picture>
-
-                        <strong>Shisky</strong>
-
-                        <input type="checkbox" name="slide">
-
-                        <p>R$ 150,00</p>
-                    </div>
-
-
-                    <div class="box">
-
-                        <picture>
-                            <img src="{{ asset('site/assets/img/bebida_1.jpg') }}" alt="bebida representativa">
-                        </picture>
-
-                        <strong>Shisky</strong>
-
-                        <input type="checkbox" name="slide">
-
-                        <p>R$ 150,00</p>
-                    </div>
-                </div>
-
-                <div class="frutas">
-                    <strong>
-                        Veja as frutas combina com seu upgrade
-                    </strong>
-
-                    <div class="boxes">
-                        <div class="box">
-                            <picture>
-                                <img src="{{ asset('site/assets/img/fruta_1.png') }}" alt="imagem representativa">
-                            </picture>
-
-                            <span>Morango</span>
-
-                            <input type="checkbox">
-                        </div>
-
-
-                        <div class="box">
-                            <picture>
-                                <img src="{{ asset('site/assets/img/fruta_1.png') }}" alt="imagem representativa">
-                            </picture>
-
-                            <span>Morango</span>
-
-                            <input type="checkbox">
-                        </div>
-
-
-                        <div class="box">
-                            <picture>
-                                <img src="{{ asset('site/assets/img/fruta_1.png') }}" alt="imagem representativa">
-                            </picture>
-
-                            <span>Morango</span>
-
-                            <input type="checkbox">
-                        </div>
-                    </div>
-                </div>
-
-
-                <div class="adicionais">
-                    <strong>
-                        Adicionais
-                    </strong>
-
-                    <div class="boxes">
-                        <div class="box">
-                            <picture>
-                                <img src="{{ asset('site/assets/img/gelo_1.png') }}" alt="imagem representativa">
-                            </picture>
-
-                            <span>Gelo</span>
-
-                            <input type="checkbox">
-                        </div>
-                        <div class="box">
-                            <picture>
-                                <img src="{{ asset('site/assets/img/gelo_1.png') }}" alt="imagem representativa">
-                            </picture>
-
-                            <span>Gelo</span>
-
-                            <input type="checkbox">
-                        </div>
-                        <div class="box">
-                            <picture>
-                                <img src="{{ asset('site/assets/img/gelo_1.png') }}" alt="imagem representativa">
-                            </picture>
-
-                            <span>Gelo</span>
-
-                            <input type="checkbox">
-                        </div>
-                    </div>
-                </div>
-            </main>
-
-            <button>
-                Quero dar um upgrade
-            </button>
-
-
-            <div class="close">
-                <img src="{{ asset('site/assets/img/close_icon_modal.svg') }}" alt="ícone de fechar">
-            </div>
-        </div>
-    </div>
-</div>
-
 
 <div class="super-up" hide>
     <div fluid>
@@ -415,6 +280,103 @@
                     <tbody>
 
                         @foreach($produtos as $produto)
+                        <div class="up" hide style="">
+                            <div fluid>
+                                <div class="niv">
+                                    <main>
+                                        <h2>Vamos dar<br> um up? 🍹</h2>
+
+                                        @php
+                                            $ingredientes = ProdutosIngrediente::where("produto_id", $produto->id)->get();
+                                        @endphp
+                        
+                                        @foreach($ingredientes as $ingrediente)
+
+                                            <div class="drinks">
+                                                @php
+                                                    $marcas = MarcaIngrediente::where("ingrediente_id", $ingrediente->id)
+                                                    ->join('marcas', 'marca_id', 'marcas.id')
+                                                    ->get();
+                                                @endphp
+                                                
+                                                @foreach($marcas as $marca)
+                                                    @php
+                                                        $marca_selecionada = OrcamentoProdutosIngredienteMarca::where('ingrediente_id', $ingrediente->id)
+                                                        ->where('marca_id', $marca->id)->first();
+
+                                                        if($marca_selecionada){
+                                                            $checked = "checked";
+                                                        } else {
+                                                            $checked = "";
+                                                        }
+                                                    @endphp                                      
+                                                    
+                                                    <div class="box">
+                                
+                                                        <picture>
+                                                            <img src="{{ $marca->imagem }}" alt="bebida representativa">
+                                                        </picture>
+                                
+                                                        <strong>{{ $marca->nome }}</strong>
+                                
+                                                        <input onclick="window.location.href ='{{ route('site.orcamento-ingrediente-marca-trocar', ['marca' => $marca, 'ingrediente' => $ingrediente]) }}'" type="checkbox" name="slide" {{ $checked }}>
+                                
+                                                        <p>R$ {{ $marca->valor }}</p>
+                                                    </div>
+                                                @endforeach
+                                            </div>
+                                        @endforeach
+                        
+                                        {{-- <div class="frutas">
+                                            <strong>
+                                                Veja as frutas combina com seu upgrade
+                                            </strong>
+                        
+                                            <div class="boxes">
+                                                <div class="box">
+                                                    <picture>
+                                                        <img src="{{ asset('site/assets/img/fruta_1.png') }}" alt="imagem representativa">
+                                                    </picture>
+                        
+                                                    <span>Morango</span>
+                        
+                                                    <input type="checkbox">
+                                                </div>
+                                            </div>
+                                        </div> --}}
+                        
+                        
+                                        {{-- <div class="adicionais">
+                                            <strong>
+                                                Adicionais
+                                            </strong>
+                        
+                                            <div class="boxes">
+                                                <div class="box">
+                                                    <picture>
+                                                        <img src="{{ asset('site/assets/img/gelo_1.png') }}" alt="imagem representativa">
+                                                    </picture>
+                        
+                                                    <span>Gelo</span>
+                        
+                                                    <input type="checkbox">
+                                                </div>
+                                            </div>
+                                        </div> --}}
+                                    </main>
+                        
+                                    <button>
+                                        Quero dar um upgrade
+                                    </button>
+                        
+                        
+                                    <div class="close">
+                                        <img src="{{ asset('site/assets/img/close_icon_modal.svg') }}" alt="ícone de fechar">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
                             <tr>
                                 <td>
                                     <button class="remover-produto" onclick="window.location.href ='{{ route('site.orcamento-remover', ['produto' => $produto]) }}'">

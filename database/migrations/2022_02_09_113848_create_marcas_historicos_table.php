@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateMarcaHistoricosTable extends Migration
+class CreateMarcasHistoricosTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,11 @@ class CreateMarcaHistoricosTable extends Migration
      */
     public function up()
     {
-        Schema::create('marca_historicos', function (Blueprint $table) {
+        Schema::create('marcas_historicos', function (Blueprint $table) {
             $table->id();
-            $table->integer("marca_id");
+            $table->unsignedBigInteger("marca_id");
             $table->double("valor", 8, 2);
+            $table->foreign('marca_id')->references('id')->on('marcas')->onDelete('cascade');
             $table->timestamps();
         });
     }
@@ -28,6 +29,6 @@ class CreateMarcaHistoricosTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('marca_historicos');
+        Schema::dropIfExists('marcas_historicos');
     }
 }
