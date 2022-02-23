@@ -24,15 +24,11 @@
 
 
             <main>
-                <h2>APEROL SPRITZ</h2>
+                <h2>{{ $produto->nome }}</h2>
 
                 <strong>História do drink</strong>
 
-                <p>
-                    Um coquetel que caiu no gosto dos brasileiros, devido a seu sabor agradável para o nosso clima e suas inúmeras variações. A história desse drink, conta que na estadia de soldados
-                    austríacos em Triveneto, por fim de 1800, eles acharam o vinho local muito forte e decidiram adicionar um pouco de água com gás, para baixar a concentração alcóolica. Em alemão,
-                    essa nova mistura foi batizada de Spritz que significa “esguichar”.
-                </p>
+                <p>{{ $produto->historia }}</p>
 
                 <button>Quero levar minha festa além</button>
 
@@ -86,24 +82,23 @@
         <div class="niv-content">
             <span>
                 <p>Teor Alcóolico</p>
-                <p>5,2%</p>
+                <p>{{ $produto->teor_alcoolico }}%</p>
             </span>
 
             <span>
                 <p>Valor Calórica</p>
-                <p>50 kcal = 209kj*</p>
+                <p>{{ $produto->calorias }} </p>
+                {{-- kcal = 209kj* --}}
             </span>
 
             <span>
                 <p>Notas do drink</p>
-
-                <p>Drink leve e fluído com perfumes de laranja, apresenta doçura e frutado agradáveis de baixa acidez.</p>
             </span>
 
             <span>
                 <p>Harmonização</p>
 
-                <p>Um coquetel para abrir apetites. Bem servido com aperitivos fritos, refeições leves que acompanhem saladas, frutas, queijos e sobremesas de pouco dulçor.</p>
+                <p>U{{ $produto->harmonizacao }}</p>
             </span>
 
             <span>
@@ -129,39 +124,6 @@
 
         <div class="niv-list">
             <div class="content">
-                <div class="box" niv-fade>
-                    <picture>
-                        <img src="{{ asset('/site/assets/img/drink_4.png') }}" alt="imagem representativa">
-                    </picture>
-
-                    <strong>APEROL SPRITZ</strong>
-                    <p>Um coquetel que caiu no gosto dos brasileiros, devido a seu sabor agradável...</p>
-                </div>
-                <div class="box" niv-fade>
-                    <picture>
-                        <img src="{{ asset('/site/assets/img/drink_3.png') }}" alt="imagem representativa">
-                    </picture>
-
-                    <strong>CARUSO</strong>
-                    <p>Criado nos EUA em meados de 1920, foi uma homenagem ao famoso tenor italiano...</p>
-                </div>
-                <div class="box" niv-fade>
-                    <picture>
-                        <img src="{{ asset('/site/assets/img/drink_2.png') }}" alt="imagem representativa">
-                    </picture>
-
-                    <strong>CARUSO</strong>
-                    <p>Um coquetel moderno, que recebeu este nome devido á sua cor, associada...</p>
-                </div>
-                <div class="box" niv-fade>
-                    <picture>
-                        <img src="{{ asset('/site/assets/img/drink_1.png') }}" alt="imagem representativa">
-                    </picture>
-
-                    <strong>NEGRONI</strong>
-                    <p>Criado me 1920 em Florença, por um bartender chamado Fosco Scarselli, na Itália...</p>
-                </div>
-
 
                 <div class="box" niv-fade>
                     <picture>
@@ -169,68 +131,9 @@
                     </picture>
 
                     <strong>APEROL SPRITZ</strong>
-                    <p>Um coquetel que caiu no gosto dos brasileiros, devido a seu sabor agradável...</p>
+                    <p>{{mb_strimwidth($produto->descricao, 0, 75, "...")}}</p>
                 </div>
-                <div class="box" niv-fade>
-                    <picture>
-                        <img src="{{ asset('/site/assets/img/drink_3.png') }}" alt="imagem representativa">
-                    </picture>
-
-                    <strong>CARUSO</strong>
-                    <p>Criado nos EUA em meados de 1920, foi uma homenagem ao famoso tenor italiano...</p>
-                </div>
-                <div class="box" niv-fade>
-                    <picture>
-                        <img src="{{ asset('/site/assets/img/drink_2.png') }}" alt="imagem representativa">
-                    </picture>
-
-                    <strong>CARUSO</strong>
-                    <p>Um coquetel moderno, que recebeu este nome devido á sua cor, associada...</p>
-                </div>
-                <div class="box" niv-fade>
-                    <picture>
-                        <img src="{{ asset('/site/assets/img/drink_1.png') }}" alt="imagem representativa">
-                    </picture>
-
-                    <strong>NEGRONI</strong>
-                    <p>Criado me 1920 em Florença, por um bartender chamado Fosco Scarselli, na Itália...</p>
-                </div>
-
-
-
-
-                <div class="box" niv-fade>
-                    <picture>
-                        <img src="{{ asset('/site/assets/img/drink_4.png') }}" alt="imagem representativa">
-                    </picture>
-
-                    <strong>APEROL SPRITZ</strong>
-                    <p>Um coquetel que caiu no gosto dos brasileiros, devido a seu sabor agradável...</p>
-                </div>
-                <div class="box" niv-fade>
-                    <picture>
-                        <img src="{{ asset('/site/assets/img/drink_3.png') }}" alt="imagem representativa">
-                    </picture>
-
-                    <strong>CARUSO</strong>
-                    <p>Criado nos EUA em meados de 1920, foi uma homenagem ao famoso tenor italiano...</p>
-                </div>
-                <div class="box" niv-fade>
-                    <picture>
-                        <img src="{{ asset('/site/assets/img/drink_2.png') }}" alt="imagem representativa">
-                    </picture>
-
-                    <strong>CARUSO</strong>
-                    <p>Um coquetel moderno, que recebeu este nome devido á sua cor, associada...</p>
-                </div>
-                <div class="box" niv-fade>
-                    <picture>
-                        <img src="{{ asset('/site/assets/img/drink_1.png') }}" alt="imagem representativa">
-                    </picture>
-
-                    <strong>NEGRONI</strong>
-                    <p>Criado me 1920 em Florença, por um bartender chamado Fosco Scarselli, na Itália...</p>
-                </div>
+                
             </div>
         </div>
 

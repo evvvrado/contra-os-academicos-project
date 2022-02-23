@@ -32,7 +32,7 @@
 
     <div>
         <h2>Leve sua festa <i>além</i></h2>
-        <p>16 drinks selecionados</p>
+        <p>{{ $produtos->count() }} drinks selecionados</p>
     </div>
 
     <a href="{{ route('site.orcamento.carrinho')}}">Solicitar orçamento</a>

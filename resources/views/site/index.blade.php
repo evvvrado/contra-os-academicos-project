@@ -84,10 +84,8 @@
             <div class="content">
 
                 @foreach($produtos as $produto)
-
                     <div class="box" niv-fade>
-                        {{-- {{ route('site.coquetel', ["coquetel" => $produto])}} --}}
-                        <a href="">
+                        <a href="{{ route('site.coquetel', ['produto' => $produto]) }}">
                             <picture>
                                 <img src="{{$produto->imagem_1}}" alt="imagem representativa" style="width: auto; height: 100%; margin: auto;">
                             </picture>
@@ -225,9 +223,5 @@
     $('section.funcionamento div.niv aside ul li').click(()=>{
         window.location.href = '{{ route('site.servicos')}}';
     })
-
-    // $('section.drinks div.niv div.niv-list div.content div.box').click(()=>{
-    //     window.location.href = '{{ route('site.coquetel')}}';
-    // })
 </script>
 @endsection

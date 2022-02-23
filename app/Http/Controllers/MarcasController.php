@@ -7,6 +7,7 @@ use App\Models\Marca;
 use App\Models\Ingrediente;
 use App\Models\Acessorio;
 use App\Models\MarcaHistorico;
+use App\Models\MarcaIngrediente;
 use DB;
 
 class MarcasController extends Controller
@@ -33,37 +34,35 @@ class MarcasController extends Controller
         $marca->qtd_pacote = $request->qtd_pacote;
         $marca->save();
 
-        $marca_id = Marca::select(DB::raw("id"))
-        ->orderBy('id', 'Desc')
-        ->limit('1')
-        ->first();
-
-        $marca = new Marca;
+        $marca_historico = new MarcaHistorico;
+        $marca_historico->marca_id = $marca->id;
+        $marca_historico->valor = $valor;
+        $marca_historico->save();
 
         if($request->hasFile('imagem')){
             // unlink(public_path('/admin/images/usuarios/'.$usuario->imagem));
             $image = $request->file('imagem');
             $nome_1 = 'imagem.'.$image->getClientOriginalExtension();
-            $destinationPath = public_path('/admin/images/marcas/'.$marca_id->id."/");
+            $destinationPath = public_path('/admin/images/marcas/'.$marca->id."/");
             $image->move($destinationPath, $nome_1);
-            $marca->imagem = $nome_1;
         }
 
-        Marca::where('id', $marca_id->id)
-        ->update(['imagem' => '/admin/images/marcas/'.$marca_id->id."/".$nome_1]);
+        Marca::where('id', $marca->id)
+        ->update(['imagem' => '/admin/images/marcas/'.$marca->id."/".$nome_1]);
 
         if($request->tabela == "ingredientes") {
-            Ingrediente::where('id', $request->id_ingrediente)
-            ->update(['marca_id' => $marca_id->id]);
+            $marca_ingrediente = new MarcaIngrediente;
+            $marca_ingrediente->marca_id = $marca->id;
+            $marca_ingrediente->ingrediente_id = $request->id_ingrediente;
+            $marca_ingrediente->save();
 
             $url = "painel.ingredientes";
         } else {
             Acessorio::where('id', $request->id_acessorio)
-            ->update(['marca_id' => $marca_id->id]);
+            ->update(['marca_id' => $marca->id]);
 
             $url = "painel.acessorios";
         }
-        
 
         toastr()->success("Marca salva com sucesso!");
 

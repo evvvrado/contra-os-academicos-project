@@ -5,6 +5,7 @@
 
     <title>{{$titulo}}</title>
     @include('site.includes.head')
+    @toastr_css
     @yield('styles')
 
 </head>
@@ -18,6 +19,8 @@
 
     @include('site.includes.scripts')
 
+    @toastr_js
+    @toastr_render
     @yield("scripts")
 </body>
 

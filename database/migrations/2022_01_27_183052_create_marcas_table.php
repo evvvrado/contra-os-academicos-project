@@ -18,7 +18,7 @@ class CreateMarcasTable extends Migration
             $table->string("padrao");
             $table->string("nome");
             $table->string("imagem")->nullable();
-            $table->double("valor", 8, 2)->default(0);
+            $table->double("valor")->default(0);
             $table->string("unidade_medida");
             $table->integer("qtd");
             $table->integer("qtd_pacote");

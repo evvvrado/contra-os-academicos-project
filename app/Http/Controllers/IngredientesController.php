@@ -47,7 +47,6 @@ class IngredientesController extends Controller
         $ingredientes = new Ingrediente;
         $ingredientes->nome = $request->nome;
         $ingredientes->cat_id = $request->cat_id;
-        $ingredientes->marca_id = $request->marca_id;
         $ingredientes->fornecedor = $request->fornecedor;
         $ingredientes->tel_fornecedor = $request->tel_fornecedor;
         $ingredientes->validade = $request->validade;

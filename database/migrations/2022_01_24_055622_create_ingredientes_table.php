@@ -17,7 +17,6 @@ class CreateIngredientesTable extends Migration
             $table->id();
             $table->string("nome");
             $table->integer("cat_id");
-            $table->integer("marca_id")->nullable();
             $table->string("fornecedor");
             $table->string("tel_fornecedor");
             $table->string("validade");

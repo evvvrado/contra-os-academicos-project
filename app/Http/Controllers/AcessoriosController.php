@@ -44,7 +44,6 @@ class AcessoriosController extends Controller
         $acessorios = new Acessorio;
         $acessorios->nome = $request->nome;
         $acessorios->cat_id = $request->cat_id;
-        $acessorios->marca_id = $request->marca_id;
         $acessorios->fornecedor = $request->fornecedor;
         $acessorios->tel_fornecedor = $request->tel_fornecedor;
         $acessorios->validade = $request->validade;
