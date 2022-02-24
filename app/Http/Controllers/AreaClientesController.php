@@ -10,6 +10,8 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Log;
 use App\Models\Lead;
 
+use App\Models\Orcamento;
+
 class AreaClientesController extends Controller
 {
     // Cliente
@@ -102,6 +104,12 @@ class AreaClientesController extends Controller
         }
 
         return redirect()->back();
+    }
+
+    public function clienteOrcamentos(Request $request)
+    {
+        $orcamentos = Orcamento::where('lead_id', session()->get("cliente")["id"])->get(); 
+        return view("site.area-do-cliente.orcamentos", ["orcamentos" => $orcamentos]);
     }
 
     public function deslogar(){
