@@ -272,7 +272,7 @@
                             <th width="228">Produtos</th>
                             <th width="285">Descrição</th>
                             <th width="221">Quantidade</th>
-                            <th width="111">Total</th>
+                            {{-- <th width="111">Total</th> --}}
                             <th width="99"></th>
                         </tr>
                     </thead>
@@ -293,9 +293,9 @@
                                                 ->join('ingredientes', 'ingrediente_id', 'ingredientes.id')
                                                 ->get();
 
-                                                $total_drink = OrcamentoProdutosIngredientes::where("orcamentoproduto_id", $produto->id)
-                                                ->join('marcas', 'marca_id', 'marcas.id')
-                                                ->sum('valor');
+                                                // $total_drink = OrcamentoProdutosIngredientes::where("orcamentoproduto_id", $produto->id)
+                                                // ->join('marcas', 'marca_id', 'marcas.id')
+                                                // ->sum('valor');
                                                 // dd($total_drink);
                                             @endphp
                             
@@ -407,11 +407,11 @@
                                     <input type="tel" placeholder="250" name="quantidade-produto">
                                 </td>
 
-                                <td>
+                                {{-- <td>
                                     <strong class="total-produto">
                                         R$ {{ number_format($total_drink,2,",",".") }}
                                     </strong>
-                                </td>
+                                </td> --}}
 
                                 <td>
                                     <button class="upgrade-produto">
@@ -429,7 +429,6 @@
                             <td></td>
                             <td></td>
                             <td></td>
-                            <td></td>
                             <td>
                                 <strong class="total-produto">
                                     R$ 350,00
@@ -442,20 +441,6 @@
         </div>
 
         <div class="niv-send">
-            <div class="top">
-                <span>Totais do carrinho</span>
-            </div>
-            <div class="content">
-                <div>
-                    <p>Subtotal</p>
-                    <strong>R$ 350,00</strong>
-                </div>
-                <div>
-                    <p>Total</p>
-                    <strong>R$ 350,00</strong>
-                </div>
-            </div>
-
             <button>
                 SOLICITAR ORÇAMENTO
             </button>
