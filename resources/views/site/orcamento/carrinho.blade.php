@@ -292,7 +292,11 @@
                                                 $ingredientes = OrcamentoProdutosIngredientes::where("orcamentoproduto_id", $produto->id)
                                                 ->join('ingredientes', 'ingrediente_id', 'ingredientes.id')
                                                 ->get();
-                                                // dd($ingredientes);
+
+                                                $total_drink = OrcamentoProdutosIngredientes::where("orcamentoproduto_id", $produto->id)
+                                                ->join('marcas', 'marca_id', 'marcas.id')
+                                                ->sum('valor');
+                                                // dd($total_drink);
                                             @endphp
                             
                                             @foreach($ingredientes as $ingrediente)
@@ -405,7 +409,7 @@
 
                                 <td>
                                     <strong class="total-produto">
-                                        R$ 350,00
+                                        R$ {{ number_format($total_drink,2,",",".") }}
                                     </strong>
                                 </td>
 
