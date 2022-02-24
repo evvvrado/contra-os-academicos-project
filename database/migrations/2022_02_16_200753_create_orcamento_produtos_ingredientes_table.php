@@ -19,6 +19,8 @@ class CreateOrcamentoProdutosIngredientesTable extends Migration
             $table->unsignedBigInteger("ingrediente_id")->nullable();
             $table->foreign('orcamentoproduto_id')->references('id')->on('orcamentoprodutos')->onDelete('cascade');
             $table->foreign('ingrediente_id')->references('id')->on('ingredientes')->onDelete('cascade');
+            $table->unsignedBigInteger("marca_id");
+            $table->foreign('marca_id')->references('id')->on('marcas')->onDelete('cascade');
             $table->timestamps();
         });
     }

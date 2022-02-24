@@ -27,7 +27,7 @@
             </div>
 
             <div class="niv-form">
-                <form action="{{ route('site.orcamento.lista')}}" method="post">
+                <form action="{{ route('site.orcamento.cadastro')}}" method="post">
                     @csrf
                     <label>
                         <strong>Qual o CEP da realização do evento</strong>

@@ -3,9 +3,9 @@
 @section("body_attr", "id=orcamento-carrinho")
 
 @php
-    use App\Models\ProdutosIngrediente;
+    use App\Models\OrcamentoProdutosIngredientes;
     use App\Models\MarcaIngrediente;
-    use App\Models\OrcamentoProdutosIngredienteMarca;
+    use App\Models\Produto;
 @endphp
 
 @section('content')
@@ -272,7 +272,7 @@
                             <th width="228">Produtos</th>
                             <th width="285">Descrição</th>
                             <th width="221">Quantidade</th>
-                            <th width="111">Total</th>
+                            {{-- <th width="111">Total</th> --}}
                             <th width="99"></th>
                         </tr>
                     </thead>
@@ -280,102 +280,101 @@
                     <tbody>
 
                         @foreach($produtos as $produto)
-                        <div class="up" hide style="">
-                            <div fluid>
-                                <div class="niv">
-                                    <main>
-                                        <h2>Vamos dar<br> um up? 🍹</h2>
+                            <div class="up" hide style="">
+                                <div fluid>
+                                    <div class="niv">
+                                        <main>
+                                            <h2>Vamos dar<br> um up? 🍹</h2>
 
-                                        @php
-                                            $ingredientes = ProdutosIngrediente::where("produto_id", $produto->id)->get();
-                                        @endphp
-                        
-                                        @foreach($ingredientes as $ingrediente)
+                                            @php
+                                                $produto_info = Produto::where("id", $produto->produto_id)->first();
 
-                                            <div class="drinks">
-                                                @php
-                                                    $marcas = MarcaIngrediente::where("ingrediente_id", $ingrediente->id)
-                                                    ->join('marcas', 'marca_id', 'marcas.id')
-                                                    ->get();
-                                                @endphp
-                                                
-                                                @foreach($marcas as $marca)
+                                                $ingredientes = OrcamentoProdutosIngredientes::where("orcamentoproduto_id", $produto->id)
+                                                ->join('ingredientes', 'ingrediente_id', 'ingredientes.id')
+                                                ->get();
+
+                                                // $total_drink = OrcamentoProdutosIngredientes::where("orcamentoproduto_id", $produto->id)
+                                                // ->join('marcas', 'marca_id', 'marcas.id')
+                                                // ->sum('valor');
+                                                // dd($total_drink);
+                                            @endphp
+                            
+                                            @foreach($ingredientes as $ingrediente)
+
+                                                <div class="drinks">
                                                     @php
-                                                        $marca_selecionada = OrcamentoProdutosIngredienteMarca::where('ingrediente_id', $ingrediente->id)
-                                                        ->where('marca_id', $marca->id)->first();
-
-                                                        if($marca_selecionada){
-                                                            $checked = "checked";
-                                                        } else {
-                                                            $checked = "";
-                                                        }
-                                                    @endphp                                      
+                                                        $marcas = MarcaIngrediente::where("ingrediente_id", $ingrediente->id)
+                                                        ->join('marcas', 'marca_id', 'marcas.id')
+                                                        ->get();
+                                                    @endphp
                                                     
+                                                    @foreach($marcas as $marca)
+                                                        
+                                                        <div class="box">
+                                    
+                                                            <picture>
+                                                                <img src="{{ $marca->imagem }}" alt="bebida representativa">
+                                                            </picture>
+                                    
+                                                            <strong>{{ $marca->nome }}</strong>
+                                    
+                                                            <input onclick="window.location.href ='{{ route('site.orcamento-ingrediente-marca-trocar', ['marca' => $marca, 'ingrediente' => $ingrediente, 'orcamentoproduto' => $produto]) }}'" type="checkbox" name="slide" @if($marca->id == $ingrediente->marca_id) checked @endif>
+                                    
+                                                            <p>R$ {{ $marca->valor }}</p>
+                                                        </div>
+                                                    @endforeach
+                                                </div>
+                                            @endforeach
+                            
+                                            {{-- <div class="frutas">
+                                                <strong>
+                                                    Veja as frutas combina com seu upgrade
+                                                </strong>
+                            
+                                                <div class="boxes">
                                                     <div class="box">
-                                
                                                         <picture>
-                                                            <img src="{{ $marca->imagem }}" alt="bebida representativa">
+                                                            <img src="{{ asset('site/assets/img/fruta_1.png') }}" alt="imagem representativa">
                                                         </picture>
-                                
-                                                        <strong>{{ $marca->nome }}</strong>
-                                
-                                                        <input onclick="window.location.href ='{{ route('site.orcamento-ingrediente-marca-trocar', ['marca' => $marca, 'ingrediente' => $ingrediente]) }}'" type="checkbox" name="slide" {{ $checked }}>
-                                
-                                                        <p>R$ {{ $marca->valor }}</p>
+                            
+                                                        <span>Morango</span>
+                            
+                                                        <input type="checkbox">
                                                     </div>
-                                                @endforeach
-                                            </div>
-                                        @endforeach
-                        
-                                        {{-- <div class="frutas">
-                                            <strong>
-                                                Veja as frutas combina com seu upgrade
-                                            </strong>
-                        
-                                            <div class="boxes">
-                                                <div class="box">
-                                                    <picture>
-                                                        <img src="{{ asset('site/assets/img/fruta_1.png') }}" alt="imagem representativa">
-                                                    </picture>
-                        
-                                                    <span>Morango</span>
-                        
-                                                    <input type="checkbox">
                                                 </div>
-                                            </div>
-                                        </div> --}}
-                        
-                        
-                                        {{-- <div class="adicionais">
-                                            <strong>
-                                                Adicionais
-                                            </strong>
-                        
-                                            <div class="boxes">
-                                                <div class="box">
-                                                    <picture>
-                                                        <img src="{{ asset('site/assets/img/gelo_1.png') }}" alt="imagem representativa">
-                                                    </picture>
-                        
-                                                    <span>Gelo</span>
-                        
-                                                    <input type="checkbox">
+                                            </div> --}}
+                            
+                            
+                                            {{-- <div class="adicionais">
+                                                <strong>
+                                                    Adicionais
+                                                </strong>
+                            
+                                                <div class="boxes">
+                                                    <div class="box">
+                                                        <picture>
+                                                            <img src="{{ asset('site/assets/img/gelo_1.png') }}" alt="imagem representativa">
+                                                        </picture>
+                            
+                                                        <span>Gelo</span>
+                            
+                                                        <input type="checkbox">
+                                                    </div>
                                                 </div>
-                                            </div>
-                                        </div> --}}
-                                    </main>
-                        
-                                    <button>
-                                        Quero dar um upgrade
-                                    </button>
-                        
-                        
-                                    <div class="close">
-                                        <img src="{{ asset('site/assets/img/close_icon_modal.svg') }}" alt="ícone de fechar">
+                                            </div> --}}
+                                        </main>
+                            
+                                        <button>
+                                            Quero dar um upgrade
+                                        </button>
+                            
+                            
+                                        <div class="close">
+                                            <img src="{{ asset('site/assets/img/close_icon_modal.svg') }}" alt="ícone de fechar">
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
 
                             <tr>
                                 <td>
@@ -388,19 +387,19 @@
 
                                 <td>
                                     <picture class="foto-produto">
-                                        <img src="{{$produto->imagem_1}}" alt="imagem representativa">
+                                        <img src="{{$produto_info->imagem_1}}" alt="imagem representativa">
                                     </picture>
                                 </td>
 
                                 <td>
                                     <strong class="nome-produto">
-                                        {{$produto->nome}}
+                                        {{$produto_info->nome}}
                                     </strong>
                                 </td>
 
                                 <td>
                                     <p class="descricao-produto">
-                                        {{mb_strimwidth($produto->descricao, 0, 55, "...")}}
+                                        {{mb_strimwidth($produto_info->descricao, 0, 55, "...")}}
                                     </p>
                                 </td>
 
@@ -408,11 +407,11 @@
                                     <input type="tel" placeholder="250" name="quantidade-produto">
                                 </td>
 
-                                <td>
+                                {{-- <td>
                                     <strong class="total-produto">
-                                        R$ 350,00
+                                        R$ {{ number_format($total_drink,2,",",".") }}
                                     </strong>
-                                </td>
+                                </td> --}}
 
                                 <td>
                                     <button class="upgrade-produto">
@@ -430,7 +429,6 @@
                             <td></td>
                             <td></td>
                             <td></td>
-                            <td></td>
                             <td>
                                 <strong class="total-produto">
                                     R$ 350,00
@@ -443,20 +441,6 @@
         </div>
 
         <div class="niv-send">
-            <div class="top">
-                <span>Totais do carrinho</span>
-            </div>
-            <div class="content">
-                <div>
-                    <p>Subtotal</p>
-                    <strong>R$ 350,00</strong>
-                </div>
-                <div>
-                    <p>Total</p>
-                    <strong>R$ 350,00</strong>
-                </div>
-            </div>
-
             <button>
                 SOLICITAR ORÇAMENTO
             </button>

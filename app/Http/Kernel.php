@@ -65,5 +65,6 @@ class Kernel extends HttpKernel
         'admin' => \App\Http\Middleware\AdminLogado::class,
         'cliente' => \App\Http\Middleware\ClienteLogado::class,
         'redirecionainicio' => \App\Http\Middleware\RedirecionaLogado::class,
+        'orcamento' => \App\Http\Middleware\OrcamentoLogado::class,
     ];
 }

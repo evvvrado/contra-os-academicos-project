@@ -19,7 +19,7 @@
                         <div class="content">
                             <strong>Orçamentos</strong>
                             <p>0 Orçamentos</p>
-                            <button>+ VER ORÇAMENTOS</button>
+                            <a href="{{ route('minha-area.cliente-orcamentos') }}">+ VER ORÇAMENTOS</a>
                         </div>
                     </div>
                 </div>
