@@ -153,6 +153,8 @@ class OrcamentoController extends Controller
             ->join('marcas', 'marca_id', 'marcas.id')
             ->first();
 
+            dd($marcas);
+
             $produto_ingrediente_insercao = new OrcamentoProdutosIngredientes;
             $produto_ingrediente_insercao->orcamentoproduto_id = $produto_insercao->id;
             $produto_ingrediente_insercao->ingrediente_id = $ingrediente->ingrediente_id;
