@@ -153,12 +153,16 @@ class OrcamentoController extends Controller
             ->join('marcas', 'marca_id', 'marcas.id')
             ->first();
 
+            echo $marcas->id . "<br>";
+
             $produto_ingrediente_insercao = new OrcamentoProdutosIngredientes;
             $produto_ingrediente_insercao->orcamentoproduto_id = $produto_insercao->id;
             $produto_ingrediente_insercao->ingrediente_id = $ingrediente->ingrediente_id;
             $produto_ingrediente_insercao->marca_id = $marcas->id;
             $produto_ingrediente_insercao->save();
         }
+
+        die();
 
         return redirect()->route("site.orcamento.lista");
 
