@@ -214,7 +214,7 @@ Produtos / <a style="color: unset" href="{{ route('painel.acessorios') }}">Acess
                 <thead>
                     <tr>
                         <td style="border: none"><h5>Categorias</h5></td>
-                        <td style="border: none"></td>
+                        <td style="border: none" ></td>
                     </tr>
                 </thead>
                 <tbody>                                                        

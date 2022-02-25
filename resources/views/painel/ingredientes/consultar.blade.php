@@ -151,7 +151,7 @@ Produtos / <a style="color: unset" href="{{ route('painel.ingredientes') }}">Ing
                                                 <thead>
                                                     <tr>
                                                         <th>Nome</th>
-                                                        <th style="width: 20%" class="text-center"></th>
+                                                        <th style="width: 20%!important" class="text-center"></th>
                                                     </tr>
                                                 </thead>
                                                 <tbody>                                                        
