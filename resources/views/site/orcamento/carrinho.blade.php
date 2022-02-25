@@ -440,12 +440,6 @@
             </div>
         </div>
 
-        <div class="niv-send">
-            <button>
-                SOLICITAR ORÇAMENTO
-            </button>
-        </div>
-
     </div>
 </section>
 

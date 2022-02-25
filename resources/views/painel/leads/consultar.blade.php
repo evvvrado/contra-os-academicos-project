@@ -7,7 +7,11 @@
 @endsection
 
 @section('titulo')
+@if($lead == "Sim")
 Leads
+@else 
+Orçamentos
+@endif
 @endsection
 
 
@@ -22,13 +26,15 @@ Leads
                 </div>
                 <div class="row">
                     <div class="col-sm-12">
-                        <table class="tabela_export table table-bordered dt-responsive nowrap w-100 dataTable no-footer dtr-inline" role="grid" aria-describedby="datatable_info"
-                            style="width: 1185px;">
+                        <table class="tabela_export table table-bordered dt-responsive nowrap w-100 dataTable no-footer dtr-inline" role="grid" aria-describedby="datatable_info">
                             <thead>
                                 <tr role="row">
                                     <th>Nome</th>
                                     <th>Telefone</th>
                                     <th>E-mail</th>
+                                    @if($lead != "Sim")
+                                    <th></th>
+                                    @endif
                                 </tr>
                             </thead>
                             <tbody>
@@ -37,6 +43,11 @@ Leads
                                     <td class="sorting_1 dtr-control">{{ $lead->nome }}</td>
                                     <td class="sorting_1 dtr-control">{{ $lead->telefone }}</td>
                                     <td class="sorting_1 dtr-control">{{ $lead->email }}</td>
+                                    @if($lead != "Sim")
+                                        <td>
+                                            <a class="btn btn-success" href="{{route('painel.leads.orcamentos', ['lead' => $lead])}}" role="button">Orçamentos</a>
+                                        </td>
+                                    @endif
                                 </tr>
                                 @endforeach
                             </tbody>

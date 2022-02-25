@@ -13,6 +13,7 @@ use App\Models\Produto;
 use App\Models\Depoimento;
 use App\Models\Lead;
 use App\Models\Duvida;
+use App\Models\ProdutosIngrediente;
 
 class SiteController extends Controller
 {
@@ -73,7 +74,13 @@ class SiteController extends Controller
 
     public function coquetel(Produto $produto)
     {
-        return view("site.coquetel", ['produto' => $produto]);
+        $ingredientes = ProdutosIngrediente::where('produto_id', $produto->id)
+        ->join('ingredientes', 'ingrediente_id', 'ingredientes.id')
+        ->get();
+
+        $produtos = Produto::whereNotIn("id", $produto)->get();
+
+        return view("site.coquetel", ['produto' => $produto, 'ingredientes' => $ingredientes, 'produtos' => $produtos,]);
     }
 
     public function acessarCliente()

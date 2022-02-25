@@ -102,7 +102,7 @@ Produtos / <a style="color: unset" href="{{ route('painel.produtos') }}">Produto
                                 <label class="form-label">Acessórios</label>
 
                                 <select multiple style="height: 52px !important;" class="select2 form-control select2-multiple"
-                                    multiple="multiple" data-placeholder="Selecione os ingredientes" required name="acessorios[]">
+                                    multiple="multiple" data-placeholder="Selecione os ingredientes" name="acessorios[]">
                                     @php
                                         $acessorio_cats = AcessorioCat::all();
                                     @endphp
@@ -132,15 +132,15 @@ Produtos / <a style="color: unset" href="{{ route('painel.produtos') }}">Produto
                             <div class="form-group col-6 col-lg-6 mt-3">
                                 <label class="form-label">Imagem 1</label>
                                 <input name="imagem_1" type="file" class="form-control" style="height: 36px !important">
-
-                                <img src="{{ asset($produto->imagem_1) }}" class="img-fluid" alt="Responsive image">
+                                <br>
+                                <img src="{{ asset($produto->imagem_1) }}" class="img-fluid" style="width: 100%; height: auto" alt="Responsive image">
                             </div>
 
                             <div class="form-group col-6 col-lg-6 mt-3">
                                 <label class="form-label">Imagem 2</label>
                                 <input name="imagem_2" type="file" class="form-control" style="height: 36px !important">
-
-                                <img src="{{ asset($produto->imagem_2) }}" class="img-fluid" alt="Responsive image">
+                                <br>
+                                <img src="{{ asset($produto->imagem_2) }}" class="img-fluid" style="width: 100%; height: auto" alt="Responsive image">
                             </div>
                         </div>
 

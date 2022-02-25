@@ -10,7 +10,7 @@ class AcessoriosController extends Controller
 {
     //
     public function consultar(Request $request){
-        $acessoriocats = AcessorioCat::all();
+        $acessoriocats = AcessorioCat::where('status', 'Ativo')->get();
         return view("painel.acessorios.consultar", ["acessoriocats" => $acessoriocats]);
     }
 

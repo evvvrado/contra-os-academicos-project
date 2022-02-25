@@ -13,6 +13,7 @@ Produtos / <a style="color: unset" href="{{ route('painel.acessorios') }}">Acess
 @php
     use App\Models\Acessorio;
     use App\Models\Marca;
+    use App\Models\MarcaAcessorio;
 @endphp
 
 
@@ -100,34 +101,30 @@ Produtos / <a style="color: unset" href="{{ route('painel.acessorios') }}">Acess
                                             $acessorios = Acessorio::all();
                                         @endphp                                         
                                         @foreach ($acessorios as $acessorio)
+                                            @php
+                                                $marca = MarcaAcessorio::where('acessorio_id', $acessorio->id)
+                                                ->where('padrao', 'Sim')
+                                                ->join('marcas', 'marcas.id', '=', 'marcas_acessorios.marca_id')
+                                                ->first();
+
+                                                $nome_marca = "Não possui marca padrão";
+                                                if($marca) {
+                                                    $marca_padrao = "Sim";
+                                                    $nome_marca = $marca->nome;
+                                                }
+                                            @endphp
                                             <tr>
-                                                <td>{{$acessorio->nome}}</td>
+                                                <td>{{$acessorio->nome}} - {{ $nome_marca }}</td>
                                                 <td class="d-flex justify-content-between">
                                                     <a href="{{ route('painel.acessorios.editar', ['acessorio' => $acessorio]) }} " class="mx-auto">
                                                         <i class="fas fa-pen-square"></i>
                                                     </a>
 
-                                                    @php
-                                                        $marca_id = $acessorio->marca_id;
-                                                        if(empty($marca_id)) {
-                                                    @endphp 
-                                                            <a href="#" onClick="editar_marca({{ $acessorio->id }})" class="mx-auto">
-                                                                <i class="fa fa-circle" style="color: orange"></i>
-                                                            </a>
-                                                    @php
-                                                        }
-                                                        else {
+                                                    <svg width="17" height="17" onClick="editar_marca({{ $acessorio->id }}, '{{ $marca_padrao }}')" style="fill: #556ee6; cursor: pointer" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><path d="M288 464H240v-125.3l168.8-168.7C424.3 154.5 413.3 128 391.4 128H24.63C2.751 128-8.249 154.5 7.251 170l168.7 168.7V464H128c-17.67 0-32 14.33-32 32c0 8.836 7.164 16 15.1 16h191.1c8.836 0 15.1-7.164 15.1-16C320 478.3 305.7 464 288 464zM432 0c-62.63 0-115.4 40.25-135.1 96h52.5c16.62-28.5 47.25-48 82.62-48c52.88 0 95.1 43 95.1 96s-43.12 96-95.1 96c-14 0-27.25-3.25-39.37-8.625l-35.25 35.25c21.88 13.25 47.25 21.38 74.62 21.38c79.5 0 143.1-64.5 143.1-144S511.5 0 432 0z"/></svg>
 
-                                                            $marca = Marca::select(DB::raw("id, padrao, nome, imagem, valor, unidade_medida, qtd, qtd_pacote"))
-                                                            ->where("id", "=", $acessorio->marca_id)
-                                                            ->first();
-                                                    @endphp 
-                                                            <a href="#" onClick="editar_marca_existente({{ $acessorio->id }}, {{ $marca->id }}, '{{ $marca->padrao }}', '{{ $marca->nome }}', '{{ $marca->imagem }}', '{{ $marca->valor }}', '{{ $marca->unidade_medida }}', '{{ $marca->qtd }}', '{{ $marca->qtd_pacote }}')" class="mx-auto">
-                                                                <i class="fa fa-check-circle"></i>
-                                                            </a>
-                                                    @php
-                                                        }
-                                                    @endphp
+                                                    <a href="{{ route('painel.marcas.acessorios', ['acessorio' => $acessorio]) }} " class="mx-auto">
+                                                        <i class="fa fa-cubes" style="color: #556ee6"></i>
+                                                    </a>
 
                                                     <a href="{{ route('painel.acessorios.deletar', ['acessorio' => $acessorio]) }} " class="mx-auto">
                                                         <i style="color: #f46a6a!important;" class="bx bx-minus-circle"></i>
@@ -156,35 +153,31 @@ Produtos / <a style="color: unset" href="{{ route('painel.acessorios') }}">Acess
                                                 </thead>
                                                 <tbody>                                                        
                                                     @foreach ($acessorios as $acessorio)
+                                                        @php
+                                                            $marca = MarcaAcessorio::where('acessorio_id', $acessorio->id)
+                                                            ->where('padrao', 'Sim')
+                                                            ->join('marcas', 'marcas.id', '=', 'marcas_acessorios.marca_id')
+                                                            ->first();
+            
+                                                            $nome_marca = "Não possui marca padrão";
+                                                            if($marca) {
+                                                                $marca_padrao = "Sim";
+                                                                $nome_marca = $marca->nome;
+                                                            }
+                                                        @endphp
                                                         <tr>
-                                                            <td>{{$acessorio->nome}}</td>
+                                                            <td>{{$acessorio->nome}} - {{ $nome_marca }}</td>
                                                             <td class="d-flex justify-content-between">
                                                                 <a href="{{ route('painel.acessorios.editar', ['acessorio' => $acessorio]) }} " class="mx-auto">
                                                                     <i class="fas fa-pen-square"></i>
                                                                 </a>
-
-                                                                @php
-                                                                    $marca_id = $acessorio->marca_id;
-                                                                    if(empty($marca_id)) {
-                                                                @endphp 
-                                                                        <a href="#" onClick="editar_marca({{ $acessorio->id }})" class="mx-auto">
-                                                                            <i class="fa fa-circle" style="color: orange"></i>
-                                                                        </a>
-                                                                @php
-                                                                    }
-                                                                    else {
-
-                                                                        $marca = Marca::select(DB::raw("id, padrao, nome, imagem, valor, unidade_medida, qtd, qtd_pacote"))
-                                                                        ->where("id", "=", $acessorio->marca_id)
-                                                                        ->first();
-                                                                @endphp 
-                                                                        <a href="#" onClick="editar_marca_existente({{ $acessorio->id }}, {{ $marca->id }}, '{{ $marca->padrao }}', '{{ $marca->nome }}', '{{ $marca->imagem }}', '{{ $marca->valor }}', '{{ $marca->unidade_medida }}', '{{ $marca->qtd }}', '{{ $marca->qtd_pacote }}')" class="mx-auto">
-                                                                            <i class="fa fa-check-circle"></i>
-                                                                        </a>
-                                                                @php
-                                                                    }
-                                                                @endphp
-
+            
+                                                                <svg width="17" height="17" onClick="editar_marca({{ $acessorio->id }}, '{{ $marca_padrao }}')" style="fill: #556ee6; cursor: pointer" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><path d="M288 464H240v-125.3l168.8-168.7C424.3 154.5 413.3 128 391.4 128H24.63C2.751 128-8.249 154.5 7.251 170l168.7 168.7V464H128c-17.67 0-32 14.33-32 32c0 8.836 7.164 16 15.1 16h191.1c8.836 0 15.1-7.164 15.1-16C320 478.3 305.7 464 288 464zM432 0c-62.63 0-115.4 40.25-135.1 96h52.5c16.62-28.5 47.25-48 82.62-48c52.88 0 95.1 43 95.1 96s-43.12 96-95.1 96c-14 0-27.25-3.25-39.37-8.625l-35.25 35.25c21.88 13.25 47.25 21.38 74.62 21.38c79.5 0 143.1-64.5 143.1-144S511.5 0 432 0z"/></svg>
+            
+                                                                <a href="{{ route('painel.marcas.acessorios', ['acessorio' => $acessorio]) }} " class="mx-auto">
+                                                                    <i class="fa fa-cubes" style="color: #556ee6"></i>
+                                                                </a>
+            
                                                                 <a href="{{ route('painel.acessorios.deletar', ['acessorio' => $acessorio]) }} " class="mx-auto">
                                                                     <i style="color: #f46a6a!important;" class="bx bx-minus-circle"></i>
                                                                 </a>
@@ -323,7 +316,7 @@ Produtos / <a style="color: unset" href="{{ route('painel.acessorios') }}">Acess
 
                             <div class="form-group col-6 col-lg-6 mt-3">
                                 <label>Padrão</label>
-                                <select class="form-control" required name="padrao" required>
+                                <select class="form-control" required name="padrao" id="padrao_cadastro" required>
                                     <option value="">Selecione</option>
                                     <option value="Sim">Sim</option>
                                     <option value="Não">Não</option>
@@ -504,8 +497,12 @@ Produtos / <a style="color: unset" href="{{ route('painel.acessorios') }}">Acess
         $('.add_marca_existente').modal("show");
     }
 
-    function editar_marca(id) {
+    function editar_marca(id, padrao) {
         $('#id_acessorio').val(id);
+
+        if(padrao == "Sim") {
+            $("#padrao_cadastro").prop("disabled", true);
+        }
 
         $('.add_marca').modal("show");
     }

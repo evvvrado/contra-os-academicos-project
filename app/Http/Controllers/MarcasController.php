@@ -8,14 +8,59 @@ use App\Models\Ingrediente;
 use App\Models\Acessorio;
 use App\Models\MarcaHistorico;
 use App\Models\MarcaIngrediente;
+use App\Models\MarcaAcessorio;
 use DB;
 
 class MarcasController extends Controller
 {
     //
-    public function consultar(Request $request){
-        $marcas = Marca::all();
-        return view("painel.marcas.consultar", ["marcas" => $marcas]);
+    public function consultar_ingrediente(Ingrediente $ingrediente){
+        $marcas = MarcaIngrediente::where("ingrediente_id", $ingrediente->id)
+        ->join('marcas', 'marca_id', 'marcas.id')
+        ->get();
+
+        return view("painel.marcas.consultar_ingredientes", ["marcas" => $marcas, "ingrediente" => $ingrediente]);
+    }
+
+    //
+    public function consultar_acessorio(Acessorio $acessorio){
+        $marcas = MarcaAcessorio::where("acessorio_id", $acessorio->id)
+        ->join('marcas', 'marca_id', 'marcas.id')
+        ->get();
+
+        return view("painel.marcas.consultar_acessorios", ["marcas" => $marcas, "acessorio" => $acessorio]);
+    }
+
+    //
+    public function altera_padrao_aces(Marca $marca, Acessorio $acessorio){
+        MarcaAcessorio::where("acessorio_id", $acessorio->id)
+        ->join('marcas', 'marca_id', 'marcas.id')
+        ->update(['padrao' => 'Não']);
+
+        Marca::where("id", $marca->id)
+        ->update(['padrao' => 'Sim']);
+
+        $marcas = MarcaAcessorio::where("acessorio_id", $acessorio->id)
+        ->join('marcas', 'marca_id', 'marcas.id')
+        ->get();
+
+        return redirect()->route("painel.marcas.acessorios", ['acessorio' => $acessorio]);
+    }
+
+    //
+    public function altera_padrao_ingr(Marca $marca, Ingrediente $ingrediente){
+        MarcaIngrediente::where("ingrediente_id", $ingrediente->id)
+        ->join('marcas', 'marca_id', 'marcas.id')
+        ->update(['padrao' => 'Não']);
+
+        Marca::where("id", $marca->id)
+        ->update(['padrao' => 'Sim']);
+
+        $marcas = MarcaIngrediente::where("ingrediente_id", $ingrediente->id)
+        ->join('marcas', 'marca_id', 'marcas.id')
+        ->get();
+
+        return redirect()->route("painel.marcas.ingredientes", ['ingrediente' => $ingrediente]);
     }
 
     //
@@ -26,12 +71,18 @@ class MarcasController extends Controller
     public function cadastrar(Request $request){
         $marca = new Marca;
         $marca->nome = $request->nome;
-        $marca->padrao = $request->padrao;
+        if($request->padrao == "") {
+            $marca->padrao = "Não";
+        }else {
+            $marca->padrao = $request->padrao;
+        }
+        
         $valor = str_replace(",", ".", $request->preco);
         $marca->valor = $valor;
         $marca->unidade_medida = $request->unidade_medida;
         $marca->qtd = $request->qtd;
         $marca->qtd_pacote = $request->qtd_pacote;
+        $marca->nome_pacote = $request->nome_pacote;
         $marca->save();
 
         $marca_historico = new MarcaHistorico;
@@ -58,8 +109,10 @@ class MarcasController extends Controller
 
             $url = "painel.ingredientes";
         } else {
-            Acessorio::where('id', $request->id_acessorio)
-            ->update(['marca_id' => $marca->id]);
+            $marca_acessorio = new MarcaAcessorio;
+            $marca_acessorio->marca_id = $marca->id;
+            $marca_acessorio->acessorio_id = $request->id_acessorio;
+            $marca_acessorio->save();
 
             $url = "painel.acessorios";
         }
@@ -87,18 +140,18 @@ class MarcasController extends Controller
         $valor = str_replace(",", ".", $request->preco);
 
         Marca::where('id', $request->id_marca)
-        ->update(['nome' => $request->nome, 'padrao' => $request->padrao, 'valor' => $valor, 'qtd' => $request->qtd, 'qtd_pacote' => $request->qtd_pacote, 'unidade_medida' => $request->unidade_medida]);
-
+        ->update(['nome' => $request->nome, 'padrao' => $request->padrao, 'valor' => $valor, 'qtd' => $request->qtd, 'qtd_pacote' => $request->qtd_pacote, 'unidade_medida' => $request->unidade_medida, 'nome_pacote' => $request->nome_pacote]);
+        
+        toastr()->success("Marca salva com sucesso!");
+        
         if($request->tabela == "ingredientes") {
-            $url = "painel.ingredientes";
+            return redirect()->route("painel.marcas.ingredientes", ['ingrediente' => $request->id_ingrediente]);
         } else {
             $url = "painel.acessorios";
         }
         
 
-        toastr()->success("Marca salva com sucesso!");
-
-        return redirect()->route($url);
+       
 
     }
 }
