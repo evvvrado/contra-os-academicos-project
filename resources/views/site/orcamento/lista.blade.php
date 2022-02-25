@@ -238,7 +238,9 @@
                             <strong>Valor Calórico</strong>
 
                             <span>
+                                @for ($i = 0; $i < $produto_escolhido->nota; $i++)
                                 <img src="{{ asset('site/assets/img/icon_star.svg') }}" alt="estrela de nota">
+                            @endfor
                             </span>
 
                             <input onclick="window.location.href ='{{ route('site.orcamento-remover', ['produto' => $produto_escolhido]) }}'" checked type="checkbox" name="desabilitar">

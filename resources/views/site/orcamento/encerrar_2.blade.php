@@ -35,33 +35,65 @@
                     </thead>
 
                     <tbody>
+                        @if($servicos != "")
+                            @foreach($servicos as $servico)
+                                <tr>
+                                    <td>
+                                        <strong class="nome-produto">
+                                            Servico de Drink
+                                        </strong>
+                                    </td>
+
+                                    <td>
+                                        <p class="descricao-produto">Orçamento de Drinks</p>
+                                    </td>
+
+                                    <td>
+                                        <strong class="total-produto">
+                                            R$ 350,00
+                                        </strong>
+                                    </td>
+
+                                    <td>
+                                        <input value="1" disabled type="tel" placeholder="250" name="quantidade-produto">
+                                    </td>
+
+                                    <td>
+                                        <strong class="total-produto">
+                                            R$ 350,00
+                                        </strong>
+                                    </td>
+                                </tr>
+                            @endforeach
+                        @else   
                         <tr>
                             <td>
                                 <strong class="nome-produto">
-                                    Servico de Drink
+                                    Não há serviços adicionais
                                 </strong>
                             </td>
 
                             <td>
-                                <p class="descricao-produto">Orçamento de Drinks</p>
+                                <p class="descricao-produto">-</p>
                             </td>
 
                             <td>
                                 <strong class="total-produto">
-                                    R$ 350,00
+                                    -
                                 </strong>
                             </td>
 
                             <td>
-                                <input value="1" disabled type="tel" placeholder="250" name="quantidade-produto">
+                                <input value="0" disabled type="tel" placeholder="250" name="quantidade-produto">
                             </td>
 
                             <td>
                                 <strong class="total-produto">
-                                    R$ 350,00
+                                    -
                                 </strong>
                             </td>
                         </tr>
+                        @endif
                     </tbody>
                 </table>
 

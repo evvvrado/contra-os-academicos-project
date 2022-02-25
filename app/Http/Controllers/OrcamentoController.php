@@ -14,6 +14,7 @@ use App\Models\OrcamentoProduto;
 use App\Models\OrcamentoProdutosIngredientes;
 use App\Models\Parametro;
 use App\Models\Ingrediente;
+use App\Models\Servico;
 use App\Models\MarcaIngrediente;
 use DB;
 
@@ -90,7 +91,6 @@ class OrcamentoController extends Controller
         // dd($valores);
         if ($valores) {
             $ingredientes_filtro = Ingrediente::whereIn('ingredientes.id', $valores)
-            ->leftJoin('marcas', 'marcas.id', '=', 'ingredientes.marca_id')
             ->get();
         } else {
             $ingredientes_filtro = Ingrediente::all();
@@ -119,6 +119,13 @@ class OrcamentoController extends Controller
     public function orcamentoENCERRAR()
     {
         return view("site.orcamento.encerrar");
+    }
+
+    public function orcamentoENCERRAR2()
+    {
+        $servicos = Servico::where('incluso', 'Sim')->get();
+
+        return view("site.orcamento.encerrar_2", ["servicos" => $servicos]);
     }
 
     public function adicionar(Produto $produto)

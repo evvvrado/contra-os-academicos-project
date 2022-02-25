@@ -119,15 +119,6 @@ Produtos / <a style="color: unset" href="{{ route('painel.produtos') }}">Produto
                             </div>
 
                             <div class="form-group col-6 col-lg-6 mt-3">
-                                <label>Lançamento</label>
-                                <select class="form-control" required name="lancamento" required>
-                                    <option value="">Selecione</option>
-                                    <option value="Sim">Sim</option>
-                                    <option value="Não">Não</option>
-                                </select>
-                            </div>
-
-                            <div class="form-group col-6 col-lg-6 mt-3">
                                 <label class="form-label">Imagem 1</label>
                                 <input required name="imagem_1" type="file" class="form-control" style="height: 36px !important">
                             </div>

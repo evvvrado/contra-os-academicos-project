@@ -93,7 +93,7 @@ Produtos / <a style="color: unset" href="{{ route('painel.ingredientes') }}">Ing
                                     <thead>
                                         <tr>
                                             <th>Nome</th>
-                                            <th style="width: 15%" class="text-center"></th>
+                                            <th style="width: 20%" class="text-center"></th>
                                         </tr>
                                     </thead>
                                     <tbody>                 
@@ -101,31 +101,32 @@ Produtos / <a style="color: unset" href="{{ route('painel.ingredientes') }}">Ing
                                             $ingredientes = Ingrediente::all();
                                         @endphp                                       
                                         @foreach ($ingredientes as $ingrediente)
+                                            @php
+                                                $marca = MarcaIngrediente::where('ingrediente_id', $ingrediente->id)
+                                                ->where('padrao', 'Sim')
+                                                ->join('marcas', 'marcas.id', '=', 'marcas_ingredientes.marca_id')
+                                                ->first();
+
+                                                $marca_padrao = "Nao";
+                                                $nome_marca = "Não possui marca padrão";
+                                                if($marca) {
+                                                    $marca_padrao = "Sim";
+                                                    $nome_marca = $marca->nome;
+                                                }
+                                            @endphp
+
                                             <tr>
-                                                <td>{{$ingrediente->nome}}</td>
+                                                <td>{{$ingrediente->nome}} - {{ $nome_marca }}</td>
                                                 <td class="d-flex justify-content-between">
                                                     <a href="{{ route('painel.ingredientes.editar', ['ingrediente' => $ingrediente]) }} " class="mx-auto">
                                                         <i class="fas fa-pen-square"></i>
                                                     </a>
 
-                                                    <svg width="17" height="17" onClick="editar_marca({{ $ingrediente->id }})" style="fill: orange; cursor: pointer" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><path d="M288 464H240v-125.3l168.8-168.7C424.3 154.5 413.3 128 391.4 128H24.63C2.751 128-8.249 154.5 7.251 170l168.7 168.7V464H128c-17.67 0-32 14.33-32 32c0 8.836 7.164 16 15.1 16h191.1c8.836 0 15.1-7.164 15.1-16C320 478.3 305.7 464 288 464zM432 0c-62.63 0-115.4 40.25-135.1 96h52.5c16.62-28.5 47.25-48 82.62-48c52.88 0 95.1 43 95.1 96s-43.12 96-95.1 96c-14 0-27.25-3.25-39.37-8.625l-35.25 35.25c21.88 13.25 47.25 21.38 74.62 21.38c79.5 0 143.1-64.5 143.1-144S511.5 0 432 0z"/></svg>
+                                                    <svg width="17" height="17" onClick="editar_marca({{ $ingrediente->id }}, '{{ $marca_padrao }}')" style="fill: #556ee6; cursor: pointer" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><path d="M288 464H240v-125.3l168.8-168.7C424.3 154.5 413.3 128 391.4 128H24.63C2.751 128-8.249 154.5 7.251 170l168.7 168.7V464H128c-17.67 0-32 14.33-32 32c0 8.836 7.164 16 15.1 16h191.1c8.836 0 15.1-7.164 15.1-16C320 478.3 305.7 464 288 464zM432 0c-62.63 0-115.4 40.25-135.1 96h52.5c16.62-28.5 47.25-48 82.62-48c52.88 0 95.1 43 95.1 96s-43.12 96-95.1 96c-14 0-27.25-3.25-39.37-8.625l-35.25 35.25c21.88 13.25 47.25 21.38 74.62 21.38c79.5 0 143.1-64.5 143.1-144S511.5 0 432 0z"/></svg>
 
-                                                    {{-- @php
-                                                        $marca = MarcaIngrediente::where('ingrediente_id', $ingrediente->id)
-                                                        ->where('padrao', 'Sim')
-                                                        ->join('marcas', 'marcas.id', '=', 'marcas_ingredientes.marca_id')
-                                                        ->first();
-                                                        if(empty($marca)) {
-                                                    @endphp 
-                                                            <svg width="17" height="17" onClick="editar_marca({{ $ingrediente->id }})" style="fill: orange; cursor: pointer" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><path d="M288 464H240v-125.3l168.8-168.7C424.3 154.5 413.3 128 391.4 128H24.63C2.751 128-8.249 154.5 7.251 170l168.7 168.7V464H128c-17.67 0-32 14.33-32 32c0 8.836 7.164 16 15.1 16h191.1c8.836 0 15.1-7.164 15.1-16C320 478.3 305.7 464 288 464zM432 0c-62.63 0-115.4 40.25-135.1 96h52.5c16.62-28.5 47.25-48 82.62-48c52.88 0 95.1 43 95.1 96s-43.12 96-95.1 96c-14 0-27.25-3.25-39.37-8.625l-35.25 35.25c21.88 13.25 47.25 21.38 74.62 21.38c79.5 0 143.1-64.5 143.1-144S511.5 0 432 0z"/></svg>
-                                                    @php
-                                                        }
-                                                        else {
-                                                    @endphp 
-                                                            <svg width="17" height="17" style="cursor: pointer; fill: #556ee6" onClick="editar_marca_existente({{ $ingrediente->id }}, {{ $marca->id }}, '{{ $marca->padrao }}', '{{ $marca->nome }}', '{{ $marca->imagem }}', '{{ $marca->valor }}', '{{ $marca->unidade_medida }}', '{{ $marca->qtd }}', '{{ $marca->qtd_pacote }}')" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><path d="M288 464H240v-125.3l168.8-168.7C424.3 154.5 413.3 128 391.4 128H24.63C2.751 128-8.249 154.5 7.251 170l168.7 168.7V464H128c-17.67 0-32 14.33-32 32c0 8.836 7.164 16 15.1 16h191.1c8.836 0 15.1-7.164 15.1-16C320 478.3 305.7 464 288 464zM432 0c-62.63 0-115.4 40.25-135.1 96h52.5c16.62-28.5 47.25-48 82.62-48c52.88 0 95.1 43 95.1 96s-43.12 96-95.1 96c-14 0-27.25-3.25-39.37-8.625l-35.25 35.25c21.88 13.25 47.25 21.38 74.62 21.38c79.5 0 143.1-64.5 143.1-144S511.5 0 432 0z"/></svg>
-                                                    @php
-                                                        }
-                                                    @endphp --}}
+                                                    <a href="{{ route('painel.marcas.ingredientes', ['ingrediente' => $ingrediente]) }} " class="mx-auto">
+                                                        <i class="fa fa-cubes" style="color: #556ee6"></i>
+                                                    </a>
 
                                                     <a href="{{ route('painel.ingredientes.deletar', ['ingrediente' => $ingrediente]) }} " class="mx-auto">
                                                         <i style="color: #f46a6a!important;" class="bx bx-minus-circle"></i>
@@ -150,35 +151,38 @@ Produtos / <a style="color: unset" href="{{ route('painel.ingredientes') }}">Ing
                                                 <thead>
                                                     <tr>
                                                         <th>Nome</th>
-                                                        <th style="width: 15%" class="text-center"></th>
+                                                        <th style="width: 20%" class="text-center"></th>
                                                     </tr>
                                                 </thead>
                                                 <tbody>                                                        
                                                     @foreach ($ingredientes as $ingrediente)
+                                                        @php
+                                                            $marca = MarcaIngrediente::where('ingrediente_id', $ingrediente->id)
+                                                            ->where('padrao', 'Sim')
+                                                            ->join('marcas', 'marcas.id', '=', 'marcas_ingredientes.marca_id')
+                                                            ->first();
+
+                                                            $marca_padrao = "Nao";
+                                                            $nome_marca = "Não possui marca padrão";
+                                                            if($marca) {
+                                                                $marca_padrao = "Sim";
+                                                                $nome_marca = $marca->nome;
+                                                            }
+                                                        @endphp
+
                                                         <tr>
-                                                            <td>{{$ingrediente->nome}}</td>
+                                                            <td>{{$ingrediente->nome}} - {{ $nome_marca }}</td>
                                                             <td class="d-flex justify-content-between">
                                                                 <a href="{{ route('painel.ingredientes.editar', ['ingrediente' => $ingrediente]) }} " class="mx-auto">
                                                                     <i class="fas fa-pen-square"></i>
                                                                 </a>
-
-                                                                @php
-                                                                    $marca = MarcaIngrediente::where('ingrediente_id', $ingrediente->id)
-                                                                    ->where('padrao', 'Sim')
-                                                                    ->join('marcas', 'marcas.id', '=', 'marcas_ingredientes.marca_id')
-                                                                    ->first();
-                                                                    if(empty($marca)) {
-                                                                @endphp 
-                                                                        <svg width="17" height="17" onClick="editar_marca({{ $ingrediente->id }})" style="fill: orange; cursor: pointer" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><path d="M288 464H240v-125.3l168.8-168.7C424.3 154.5 413.3 128 391.4 128H24.63C2.751 128-8.249 154.5 7.251 170l168.7 168.7V464H128c-17.67 0-32 14.33-32 32c0 8.836 7.164 16 15.1 16h191.1c8.836 0 15.1-7.164 15.1-16C320 478.3 305.7 464 288 464zM432 0c-62.63 0-115.4 40.25-135.1 96h52.5c16.62-28.5 47.25-48 82.62-48c52.88 0 95.1 43 95.1 96s-43.12 96-95.1 96c-14 0-27.25-3.25-39.37-8.625l-35.25 35.25c21.88 13.25 47.25 21.38 74.62 21.38c79.5 0 143.1-64.5 143.1-144S511.5 0 432 0z"/></svg>
-                                                                @php
-                                                                    }
-                                                                    else {
-                                                                @endphp 
-                                                                        <svg width="17" height="17" style="cursor: pointer; fill: #556ee6" onClick="editar_marca_existente({{ $ingrediente->id }}, {{ $marca->id }}, '{{ $marca->padrao }}', '{{ $marca->nome }}', '{{ $marca->imagem }}', '{{ $marca->valor }}', '{{ $marca->unidade_medida }}', '{{ $marca->qtd }}', '{{ $marca->qtd_pacote }}')" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><path d="M288 464H240v-125.3l168.8-168.7C424.3 154.5 413.3 128 391.4 128H24.63C2.751 128-8.249 154.5 7.251 170l168.7 168.7V464H128c-17.67 0-32 14.33-32 32c0 8.836 7.164 16 15.1 16h191.1c8.836 0 15.1-7.164 15.1-16C320 478.3 305.7 464 288 464zM432 0c-62.63 0-115.4 40.25-135.1 96h52.5c16.62-28.5 47.25-48 82.62-48c52.88 0 95.1 43 95.1 96s-43.12 96-95.1 96c-14 0-27.25-3.25-39.37-8.625l-35.25 35.25c21.88 13.25 47.25 21.38 74.62 21.38c79.5 0 143.1-64.5 143.1-144S511.5 0 432 0z"/></svg>
-                                                                @php
-                                                                    }
-                                                                @endphp
-
+            
+                                                                <svg width="17" height="17" onClick="editar_marca({{ $ingrediente->id }}, '{{ $marca_padrao }}')" style="fill: #556ee6; cursor: pointer" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><path d="M288 464H240v-125.3l168.8-168.7C424.3 154.5 413.3 128 391.4 128H24.63C2.751 128-8.249 154.5 7.251 170l168.7 168.7V464H128c-17.67 0-32 14.33-32 32c0 8.836 7.164 16 15.1 16h191.1c8.836 0 15.1-7.164 15.1-16C320 478.3 305.7 464 288 464zM432 0c-62.63 0-115.4 40.25-135.1 96h52.5c16.62-28.5 47.25-48 82.62-48c52.88 0 95.1 43 95.1 96s-43.12 96-95.1 96c-14 0-27.25-3.25-39.37-8.625l-35.25 35.25c21.88 13.25 47.25 21.38 74.62 21.38c79.5 0 143.1-64.5 143.1-144S511.5 0 432 0z"/></svg>
+            
+                                                                <a href="{{ route('painel.marcas.ingredientes', ['ingrediente' => $ingrediente]) }} " class="mx-auto">
+                                                                    <i class="fa fa-cubes" style="color: #556ee6"></i>
+                                                                </a>
+            
                                                                 <a href="{{ route('painel.ingredientes.deletar', ['ingrediente' => $ingrediente]) }} " class="mx-auto">
                                                                     <i style="color: #f46a6a!important;" class="bx bx-minus-circle"></i>
                                                                 </a>
@@ -227,19 +231,9 @@ Produtos / <a style="color: unset" href="{{ route('painel.ingredientes') }}">Ing
                                     <i class="fas fa-pen-square"></i>
                                 </a>
 
-                                @if ($ingredientecat->status == "Ativo") 
-
-                                    <a href="{{ route('cat.ingrediente.status', ['ingredientecat' => $ingredientecat]) }}" class="mx-auto">
-                                        <i class="fas fa-star"></i>
-                                    </a>
-
-                                @else 
-                                    
-                                    <a href="{{ route('cat.ingrediente.status', ['ingredientecat' => $ingredientecat]) }}" class="mx-auto">
-                                        <i class="fas fa-star" style="color: #f46a6a"></i>
-                                    </a>
-
-                                @endif 
+                                <a href="{{ route('cat.ingrediente.status', ['ingredientecat' => $ingredientecat]) }}" class="mx-auto">
+                                    <i class="fas fa-star" @if($ingredientecat->status != "Ativo") style="color: #f46a6a" @endif></i>
+                                </a>
                             </td>
                         </tr>
                     @endforeach
@@ -249,98 +243,6 @@ Produtos / <a style="color: unset" href="{{ route('painel.ingredientes') }}">Ing
     </div>
 </div> 
 
-<!--  Large modal example -->
-<div class="modal fade add_marca_existente" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-lg">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="myLargeModalLabel">Editar Marca</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                <form id="marca_existente" action="{{route('painel.marcas.salvar')}}" method="POST" enctype="multipart/form-data">
-
-                    @csrf
-                    <div class="col-lx-12">
-                        <div class="row">
-                            <div class="form-group col-6 col-lg-6 mt-3">
-                                <label>Nome</label>
-                                <input id="nome_existente" required name="nome" type="text" class="form-control">
-                            </div>
-
-                            <div class="form-group col-6 col-lg-6 mt-3">
-                                <label>Padrão</label>
-                                <select id="padrao_existente" class="form-control" required name="padrao" required>
-                                    <option value="">Selecione</option>
-                                    <option value="Sim">Sim</option>
-                                    <option value="Não">Não</option>
-                                </select>
-                            </div>
-
-                            <div class="form-group col-6 col-lg-4 mt-3">
-                                <label>Preço</label></label>
-                                <input id="preco_existente" required class="form-control dinheiro" name="preco">
-                            </div>
-
-                            <div class="form-group col-6 col-lg-4 mt-3">
-                                <label>Quantidade</label>
-                                <input id="qtd_existente" required name="qtd" type="text" class="form-control">
-                            </div>
-
-                            <div class="form-group col-6 col-lg-4 mt-3">
-                                <label>Quantidade por pacote</label>
-                                <input required name="qtd_pacote" id="qtd_pacote_existente" type="text" class="form-control">
-                            </div>
-
-                            <div class="form-group col-6 col-lg-4 mt-3">
-                                <label>Unidade de Medida</label>
-                                <select id="unidade_medida_existente" required name="unidade_medida" type="text" class="form-control">
-                                    <option value="">Selecione</option>
-                                    <option value="litros">Litros</option>
-                                </select>
-                            </div>
-
-                            <div class="form-group col-6 col-lg-6 mt-3">
-                                <label class="form-label">Imagem</label>
-                                <input id="imagem_existente" name="imagem" type="file" class="form-control" style="height: 36px !important">
-                            </div>
-                        </div>
-
-                        <input type="hidden" name="id_marca" id="id_marca">
-                        <input type="hidden" name="id_ingrediente" id="id_ingrediente_existente">
-                        <input type="hidden" name="tabela" value="ingredientes">
-
-                    </div>
-                    <div class="d-flex flex-wrap gap-2 mt-3">
-                        <button id="btn-submit" type="submit" class="btn btn-primary waves-effect waves-light">Salvar</button>
-                        <button type="button" class="btn btn-secondary waves-effect waves-light">Cancelar</button>
-                    </div>
-                </form>
-
-                <br>
-
-                <div class="table-responsive">
-                    <table class="table table-bordered mb-0">
-
-                        <thead>
-                            <tr>
-                                <th>Valor</th>
-                                <th>Data</th>
-                            </tr>
-                        </thead>
-                        <tbody id="corpo_precos">
-                            <tr>
-                                <td>2,40</td>
-                                <td>24/11/2022</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-
-            </div>
-        </div><!-- /.modal-content -->
-    </div><!-- /.modal-dialog -->
-</div><!-- /.modal -->
 
 <!--  Large modal example -->
 <div class="modal fade add_marca" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
@@ -363,7 +265,7 @@ Produtos / <a style="color: unset" href="{{ route('painel.ingredientes') }}">Ing
 
                             <div class="form-group col-6 col-lg-6 mt-3">
                                 <label>Padrão</label>
-                                <select class="form-control" required name="padrao" required>
+                                <select class="form-control" required name="padrao" id="padrao_cadastro" required>
                                     <option value="">Selecione</option>
                                     <option value="Sim">Sim</option>
                                     <option value="Não">Não</option>
@@ -371,13 +273,18 @@ Produtos / <a style="color: unset" href="{{ route('painel.ingredientes') }}">Ing
                             </div>
 
                             <div class="form-group col-6 col-lg-4 mt-3">
-                                <label>Preço</label></label>
-                                <input required class="form-control dinheiro" name="preco">
+                                <label>Quantidade por produto</label>
+                                <input required name="qtd" type="text" class="form-control">
                             </div>
 
                             <div class="form-group col-6 col-lg-4 mt-3">
-                                <label>Quantidade</label>
-                                <input required name="qtd" type="text" class="form-control">
+                                <label>Nome do pacote</label>
+                                <input required name="nome_pacote" type="text" class="form-control">
+                            </div>
+
+                            <div class="form-group col-6 col-lg-4 mt-3">
+                                <label>Preço do pacote</label></label>
+                                <input required class="form-control dinheiro" name="preco">
                             </div>
 
                             <div class="form-group col-6 col-lg-4 mt-3">
@@ -470,39 +377,14 @@ Produtos / <a style="color: unset" href="{{ route('painel.ingredientes') }}">Ing
 <script src="{{ asset('admin/libs/datatables.net-bs4/js/dataTables.bootstrap4.min.js') }}"></script>
 <script>
 
-    function editar_marca(id) {
+    function editar_marca(id, padrao) {
         $('#id_ingrediente').val(id);
 
+        if(padrao == "Sim") {
+            $("#padrao_cadastro").prop("disabled", true);
+        }
+
         $('.add_marca').modal("show");
-    }
-
-    function editar_marca_existente(id, id_marca, padrao, nome, imagem, valor, unidade_medida, qtd, qtd_pacote) {
-        $('#id_marca').val(id_marca);
-        $('#id_ingrediente_existente').val(id);
-
-        $('#padrao_existente').val(padrao);
-        $('#nome_existente').val(nome);
-        $('#preco_existente').val(valor);
-        $('#unidade_medida_existente').val(unidade_medida);
-        $('#qtd_existente').val(qtd);
-        $('#qtd_pacote_existente').val(qtd_pacote);
-
-        $.ajax({
-            type: 'GET',
-            url: '{{route('painel.marcas.historicos')}}',
-            data: {id_marca},
-            success: function(data){
-                for(n in data) {
-                    $('#corpo_precos').append('<tr></tr>');
-                    console.log("oi")
-                }
-            },
-            error: function(xhr){
-                console.log(xhr.responseText);
-            }
-        });
-
-        $('.add_marca_existente').modal("show");
     }
 
     function editar_categoria(id, categoria) {

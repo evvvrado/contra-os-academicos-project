@@ -10,7 +10,7 @@
         <div class="niv-top">
             <div class="thumbnail">
                 <picture>
-                    <img src="{{ asset('site/assets/img/drink_EXAMPLE.png') }}" alt="drink representativo">
+                    <img src="{{ $produto->imagem_1 }}" alt="drink representativo">
                 </picture>
 
                 <span>
@@ -93,6 +93,7 @@
 
             <span>
                 <p>Notas do drink</p>
+                <p>{{ $produto->nota }}</p>
             </span>
 
             <span>
@@ -104,7 +105,11 @@
             <span>
                 <p>Ingredientes</p>
 
-                <p>Bitter Aperol, Champanhe ou Espumante Brut, Água com Gás</p>
+                <p>
+                    @foreach($ingredientes as $ingrediente)
+                        {{ $ingrediente->nome }}, 
+                    @endforeach
+                </p>
             </span>
 
         </div>
@@ -125,15 +130,17 @@
         <div class="niv-list">
             <div class="content">
 
-                <div class="box" niv-fade>
-                    <picture>
-                        <img src="{{ asset('/site/assets/img/drink_4.png') }}" alt="imagem representativa">
-                    </picture>
+                @foreach($produtos as $produto)
+                    <div class="box" niv-fade>
+                        <picture>
+                            <img src="{{ $produto->imagem_1 }}" alt="imagem representativa">
+                        </picture>
 
-                    <strong>APEROL SPRITZ</strong>
-                    <p>{{mb_strimwidth($produto->descricao, 0, 75, "...")}}</p>
-                </div>
-                
+                        <strong>{{ $produto->nome }}</strong>
+                        <p>{{mb_strimwidth($produto->descricao, 0, 75, "...")}}</p>
+                    </div>
+                @endforeach 
+
             </div>
         </div>
 

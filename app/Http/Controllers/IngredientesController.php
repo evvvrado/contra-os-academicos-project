@@ -13,6 +13,7 @@ class IngredientesController extends Controller
     public function consultar(Request $request){
         $ingredientecats = IngredienteCat::select(DB::raw("id, nome, status"))
         ->orderBy('nome', 'Asc')
+        ->where('status', 'Ativo')
         ->get();
         return view("painel.ingredientes.consultar", ["ingredientecats" => $ingredientecats]);
     }
