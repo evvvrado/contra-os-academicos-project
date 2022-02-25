@@ -108,6 +108,7 @@ Produtos / <a style="color: unset" href="{{ route('painel.acessorios') }}">Acess
                                                 ->first();
 
                                                 $nome_marca = "Não possui marca padrão";
+                                                $marca_padrao = "Não";
                                                 if($marca) {
                                                     $marca_padrao = "Sim";
                                                     $nome_marca = $marca->nome;
