@@ -693,7 +693,7 @@ body.minha-area {
         section.mA_menu {
             .container-fav {
                 nav {
-                    a:nth-child(2) {
+                    a:nth-child(1) {
                         opacity: 1;
                         border-bottom: solid 2px $main-purple;
                     }
@@ -709,6 +709,7 @@ body.minha-area {
                             @include flex(column, flex-start, center);
                             gap: 3rem;
                             height: unset;
+                            min-height: 37.8rem;
 
                             cursor: pointer !important;
 
@@ -721,6 +722,29 @@ body.minha-area {
 
                             &[app] {
                                 border: solid 1px rgb(0, 255, 0);
+                            }
+
+                            &.--new {
+                                height: 100%;
+                                align-items: center;
+                                justify-content: center;
+
+                                svg {
+                                    display: block;
+                                    width: 50%;
+
+                                    margin: 0 auto;
+
+                                    opacity: 0.4;
+                                    transition: 0.32s;
+                                }
+
+                                &:hover {
+                                    svg {
+                                        opacity: 1;
+                                    }
+                                    border-color: black;
+                                }
                             }
 
                             button {
@@ -759,7 +783,7 @@ body.minha-area {
         section.mA_menu {
             .container-fav {
                 nav {
-                    a:nth-child(3) {
+                    a:nth-child(2) {
                         opacity: 1;
                         border-bottom: solid 2px $main-purple;
                     }
@@ -800,7 +824,7 @@ body.minha-area {
         section.mA_menu {
             .container-fav {
                 nav {
-                    a:nth-child(3) {
+                    a:nth-child(2) {
                         opacity: 1;
                         border-bottom: solid 2px $main-purple;
                     }
@@ -963,7 +987,7 @@ body.minha-area {
         section.mA_menu {
             .container-fav {
                 nav {
-                    a:nth-child(3) {
+                    a:nth-child(2) {
                         opacity: 1;
                         border-bottom: solid 2px $main-purple;
                     }
@@ -976,7 +1000,7 @@ body.minha-area {
         section.mA_menu {
             .container-fav {
                 nav {
-                    a:nth-child(2) {
+                    a:nth-child(1) {
                         opacity: 1;
                         border-bottom: solid 2px $main-purple;
                     }

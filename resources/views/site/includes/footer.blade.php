@@ -19,7 +19,6 @@
 
                 <div class="certificate">
                     <img src="{{ asset('/site/assets/img/certifi 1.png') }}" alt="certificado">
-                    <img src="{{ asset('/site/assets/img/certifi 2.png') }}" alt="certificado">
                     <img src="{{ asset('/site/assets/img/certifi 3.png') }}" alt="certificado">
                 </div>
             </div>

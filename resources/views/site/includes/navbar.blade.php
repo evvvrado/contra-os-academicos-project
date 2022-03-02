@@ -33,7 +33,7 @@
 
             <nav>
                 <ul>
-                    <li><a href="/">LOJA BIRRITAS</a></li>
+                    <li><a href="/">LOJA BIRITTAS</a></li>
                     <li><a href="/">CURSOS BIRITTAS</a></li>
                     <li><a href="{{ route('site.contato') }}">CONTATO</a></li>
                     <li><a href="{{ route('site.orcamento.id') }}" class="button">ORÇAMENTO ONLINE</a></li>
@@ -60,10 +60,9 @@
                         <nav>
                             <ul>
                                 <li><a href="/">Home</a></li>
-                                <li><a href="/">Cursos Birittas</a></li>
-                                <li><a href="{{ route('site.orcamento.id') }}">Orçamento online</a></li>
+                                <li><a href="{{ route('site.sobre')}}">Sobre nós</a></li>
+                                <li><a href="{{ route('site.servicos') }}">Serviços</a></li>
                                 <li><a href="{{ route('site.blog') }}">Blog</a></li>
-                                <li><a href="/">Loja Biritta</a></li>
                                 <li><a href="{{ route('site.contato') }}">Contato</a></li>
                             </ul>
                         </nav>
