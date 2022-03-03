@@ -20,6 +20,7 @@ Orçamentos
     <div class="col-xl-12">
         <div class="card">
             <div class="card-body">
+                @if($orcamentos->count() > 0)
                 <!-- Nav tabs -->
                 <ul class="nav nav-pills nav-justified" role="tablist">
                     @php
@@ -48,39 +49,124 @@ Orçamentos
                         $ativo = "active"
                     @endphp
                     @foreach($orcamentos as $orcamento)
-                        <div class="tab-pane active" id="home-{{ $orcamento->id }}" role="tabpanel">
+                        <div class="tab-pane {{ $ativo }}" id="home-{{ $orcamento->id }}" role="tabpanel">
                             <br>
-                            <h5>Informações</h5>
-                            <div style="display: flex; justify-content:space-between">
-                                <div>
-                                    <strong>CEP</strong>
-                                    <p>{{ $orcamento->cep }}</p>
+                            <h5>Dados Pessoais</h5>
+                            <hr>
+                            <div style="display: flex; justify-content:space-between; width:90% !important; font-size: 15px; flex-wrap: wrap;">
+                                <div style="width: 100%; display: flex; justify-content:space-between; border-bottom: 1px #e5e5e5 solid; margin-bottom: 10px; padding-bottom: 10px;">
+                                    <div style="width: 32%;">
+                                        <strong>Nome</strong>
+                                    </div>
+    
+                                    <div style="width: 32%;">
+                                        <p style="margin: 0;">{{ $lead->nome }}</p>
+                                    </div>
+    
+                                    <div style="width: 32%;">
+                                        <strong>E-mail</strong>
+                                    </div>
+    
+                                    <div style="width: 32%;">
+                                        <p style="margin: 0;">{{ $lead->email }}</p>
+                                    </div>
                                 </div>
-                                <div>
-                                    <strong>Duração</strong>
-                                    <p>{{ $orcamento->duracao }} horas</p>
-                                </div>
-                                @php
-                                    if($orcamento->outras_bebidas == 1) {
-                                        $outras_bebidas = "Com Alcool";
-                                    }else if ($orcamento->duracao == 2){
-                                        $outras_bebidas = "Sem Alcool";
-                                    } else {
-                                        $outras_bebidas = "Não serão servidos";
-                                    }
-                                @endphp
-                                <div>
-                                    <strong>Outras Bebidas</strong>
-                                    <p>{{ $outras_bebidas }}</p>
-                                </div>
-                                <div>
-                                    <strong>Quantidade de pessoas</strong>
-                                    <p>{{ $orcamento->qtd_pessoas }}</p>
+                                <div style="width: 100%; display: flex; justify-content:space-between;">
+                                    <div style="width: 32%;">
+                                        <strong>Telefone</strong>
+                                    </div>
+    
+                                    <div style="width: 32%;">
+                                        <p style="margin: 0;">{{ $lead->telefone }}</p>
+                                    </div>
+    
+                                    <div style="width: 32%;">
+                                    </div>
+    
+                                    <div style="width: 32%;">
+                                    </div>
                                 </div>
                             </div>
 
-                            <br>
-                            <h5>Bebidas</h5>
+                            <br><br><br><br>
+
+                            <h5>Dados do Evento</h5>
+                            <hr>
+                            <div style="display: flex; justify-content:space-between; width:90% !important; font-size: 15px; flex-wrap: wrap;">
+                                <div style="width: 100%; display: flex; justify-content:space-between; border-bottom: 1px #e5e5e5 solid; margin-bottom: 10px; padding-bottom: 10px;">
+                                    <div style="width: 32%;">
+                                        <strong>CEP</strong>
+                                    </div>
+    
+                                    <div style="width: 32%;">
+                                        <p style="margin: 0;">{{ $orcamento->cep }}</p>
+                                    </div>
+    
+                                    <div style="width: 32%;">
+                                        <strong>Duração</strong>
+                                    </div>
+    
+                                    <div style="width: 32%;">
+                                        <p style="margin: 0;">{{ $orcamento->duracao }} horas</p>
+                                    </div>
+                                </div>
+                                <div style="width: 100%; display: flex; justify-content:space-between; border-bottom: 1px #e5e5e5 solid; margin-bottom: 10px; padding-bottom: 10px;">
+                                    <div style="width: 32%;">
+                                        <strong>Tipo</strong>
+                                    </div>
+    
+                                    <div style="width: 32%;">
+                                        <p style="margin: 0;">{{ $orcamento->tipo }}</p>
+                                    </div>
+    
+                                    <div style="width: 32%;">
+                                        <strong>Data</strong>
+                                    </div>
+    
+                                    <div style="width: 32%;">
+                                        <p style="margin: 0;">
+                                            @php
+                                                $parteData = explode("-", $orcamento->data);    
+                                                $dataInvertida = $parteData[2] . "-" . $parteData[1] . "-" . $parteData[0];
+                                            @endphp
+                                            {{ $dataInvertida }}    
+                                        </p>
+                                    </div>
+                                </div>
+                                <div style="width: 100%; display: flex; justify-content:space-between;">
+                                    <div style="width: 32%;">
+                                        <strong>Outras bebidas</strong>
+                                    </div>
+    
+                                    <div style="width: 32%;">
+                                        <p style="margin: 0;">@php
+                                            if($orcamento->outras_bebidas == 1) {
+                                                $outras_bebidas = "Com Alcool";
+                                            }else if ($orcamento->duracao == 2){
+                                                $outras_bebidas = "Sem Alcool";
+                                            } else {
+                                                $outras_bebidas = "Não serão servidos";
+                                            }
+                                        @endphp
+                                        {{ $outras_bebidas }} </p>
+                                    </div>
+    
+                                    <div style="width: 32%;">
+                                        <strong>Quantidade de pessoas</strong>
+                                    </div>
+    
+                                    <div style="width: 32%;">
+                                        <p style="margin: 0;">
+                                            {{ $orcamento->qtd_pessoas }}    
+                                        </p>
+                                    </div>
+                                </div>  
+                            </div>
+
+                            <br><br><br><br> 
+
+                            <h5>Lista de Drinks</h5>
+                            <hr>
                             <div style="display: flex; justify-content: space-between; flex-wrap: wrap;">
 
                                 @php
@@ -90,11 +176,10 @@ Orçamentos
                                 @foreach($produtos as $produto)
                                     <div class="box" niv-fade style="width: 20%; text-align: center">
                                         <picture style="width: 100%">
-                                            <img style="width: 100%; height: auto;" src="{{ $produto->imagem_1 }}" alt="imagem representativa">
+                                            <img style="width: 60%; height: auto;" src="{{ $produto->imagem_1 }}" alt="imagem representativa">
                                         </picture>
                 
-                                        <strong>{{ $produto->nome }}</strong>
-                                        <p>{{mb_strimwidth($produto->descricao, 0, 75, "...")}}</p>
+                                        <p><strong>{{ $produto->nome }}</strong></p>
                                     </div>
                                 @endforeach 
                 
@@ -105,7 +190,9 @@ Orçamentos
                         @endphp
                     @endforeach
                 </div>
-
+                @else 
+                    Não há orçamentos para esse lead.
+                @endif 
             </div>
         </div>
     </div>

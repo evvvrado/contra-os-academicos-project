@@ -47,6 +47,10 @@
 Dashboard / <a style="color: unset" href="{{ route('painel.index') }}">Início</a>
 @endsection
 
+@php
+    use App\Models\Lead;
+@endphp
+
 @section('conteudo')
 @include('painel.includes.errors')
 
@@ -133,6 +137,65 @@ Dashboard / <a style="color: unset" href="{{ route('painel.index') }}">Início</
     </div>
 </div>
 
+<div class="row">
+    <div class="col-md-4">
+        <div class="card mini-stats-wid">
+            <div class="card-body">
+                <div class="media">
+                    <div class="media-body">
+                        <p class="text-muted fw-medium">Produtos</p>
+                        <h4 class="mb-0">{{ $produtos->count() }}</h4>
+                    </div>
+
+                    <div class="mini-stat-icon avatar-sm rounded-circle bg-primary align-self-center">
+                        <span class="avatar-title">
+                            <i class="bx bx-briefcase-alt-2 font-size-24"></i>
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-4">
+        <div class="card mini-stats-wid">
+            <div class="card-body">
+                <div class="media">
+                    <div class="media-body">
+                        <p class="text-muted fw-medium">Ingredientes</p>
+                        <h4 class="mb-0">{{ $ingredientes->count() }}</h4>
+                    </div>
+
+                    <div class="mini-stat-icon avatar-sm rounded-circle bg-primary align-self-center">
+                        <span class="avatar-title">
+                            <i class="bx bx-briefcase-alt-2 font-size-24"></i>
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-4">
+        <div class="card mini-stats-wid">
+            <div class="card-body">
+                <div class="media">
+                    <div class="media-body">
+                        <p class="text-muted fw-medium">Acessórios</p>
+                        <h4 class="mb-0">{{ $acessorios->count() }}</h4>
+                    </div>
+
+                    <div class="mini-stat-icon avatar-sm rounded-circle bg-primary align-self-center">
+                        <span class="avatar-title">
+                            <i class="bx bx-briefcase-alt-2 font-size-24"></i>
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
 {{-- style="background-color: #e3e3e3; padding: 25px;" --}}
 
 <style>
@@ -158,7 +221,7 @@ Dashboard / <a style="color: unset" href="{{ route('painel.index') }}">Início</
 
 <div class="row">
     <div class="col-lg-12">
-        <div class="ibox ">
+        <div class="ibox card-body" style="background-color: #fff;">
             <div class="ibox-title">
                 <h5>Listagem dos Eventos</h5>
             <div class="ibox-content">
@@ -200,7 +263,18 @@ Dashboard / <a style="color: unset" href="{{ route('painel.index') }}">Início</
         navLinks: true, // can click day/week names to navigate views
         editable: true,
         dayMaxEvents: true, // allow "more" link when too many events
-        events: 'https://fullcalendar.io/api/demo-feeds/events.json?overload-day'
+        events: [
+            @foreach($orcamentos as $orcamento)
+                @php
+                    $lead = Lead::where("id", $orcamento->lead_id)->first();
+                @endphp
+            {
+                id: 'a',
+                title: '{{ $orcamento->tipo }} - {{ $lead->nome }}',
+                start: '{{ $orcamento->data }}'
+            },
+            @endforeach
+        ]
       });
   
       calendar.render();

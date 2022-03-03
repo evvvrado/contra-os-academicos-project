@@ -18,12 +18,18 @@ class AreaClientesController extends Controller
 
     public function clienteArea()
     {
-        return view("site.area-do-cliente.pedidos");
+        $orcamentos = Orcamento::where('lead_id', session()->get("cliente")["id"])->get();
+        $lead = Lead::where('id', session()->get("cliente")["id"])->first();
+
+        return view("site.area-do-cliente.pedidos", ["orcamentos" => $orcamentos, 'lead' => $lead]);
     }
 
     public function clienteAreaPedidos()
     {
-        return view("site.area-do-cliente.pedidos");
+        $orcamentos = Orcamento::where('lead_id', session()->get("cliente")["id"])->get();
+        $lead = Lead::where('id', session()->get("cliente")["id"])->first();
+
+        return view("site.area-do-cliente.pedidos", ["orcamentos" => $orcamentos, 'lead' => $lead]);
     }
     public function clienteAreaPedidosDetalhes()
     {
@@ -106,10 +112,9 @@ class AreaClientesController extends Controller
         return redirect()->back();
     }
 
-    public function clienteOrcamentos(Request $request)
+    public function clienteOrcamentos(Orcamento $orcamento)
     {
-        $orcamentos = Orcamento::where('lead_id', session()->get("cliente")["id"])->get();
-        return view("site.area-do-cliente.orcamentos", ["orcamentos" => $orcamentos]);
+        return view("site.area-do-cliente.orcamentos", ["orcamento" => $orcamento]);
     }
 
     public function deslogar()

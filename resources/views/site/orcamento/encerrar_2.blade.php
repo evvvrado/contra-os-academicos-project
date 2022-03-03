@@ -40,17 +40,17 @@
                                 <tr>
                                     <td>
                                         <strong class="nome-produto">
-                                            Servico de Drink
+                                            {{ $servico->nome }}
                                         </strong>
                                     </td>
 
                                     <td>
-                                        <p class="descricao-produto">Orçamento de Drinks</p>
+                                        <p class="descricao-produto">{{ $servico->descricao }}</p>
                                     </td>
 
                                     <td>
                                         <strong class="total-produto">
-                                            R$ 350,00
+                                            R$ {{ $servico->valor }}
                                         </strong>
                                     </td>
 
@@ -60,7 +60,7 @@
 
                                     <td>
                                         <strong class="total-produto">
-                                            R$ 350,00
+                                            R$ {{ $servico->valor }}
                                         </strong>
                                     </td>
                                 </tr>

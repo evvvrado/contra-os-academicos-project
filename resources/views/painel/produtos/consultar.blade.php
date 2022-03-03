@@ -14,27 +14,6 @@ Produtos / <a style="color: unset" href="{{ route('painel.produtos') }}">Produto
 @section('conteudo')
 
 <div class="row">
-    <div class="col-md-4">
-        <div class="card mini-stats-wid">
-            <div class="card-body">
-                <div class="media">
-                    <div class="media-body">
-                        <p class="text-muted fw-medium">Produtos</p>
-                        <h4 class="mb-0">{{ $produtos->count() }}</h4>
-                    </div>
-
-                    <div class="mini-stat-icon avatar-sm rounded-circle bg-primary align-self-center">
-                        <span class="avatar-title">
-                            <i class="bx bx-briefcase-alt-2 font-size-24"></i>
-                        </span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-
-<div class="row">
     <div class="col-12">
         <div class="row">
             <div class=" col-sm-12 col-md-6 mb-3" style=" border-radius: 5px; background-color:var(--principal); width: 100%;">

@@ -26,24 +26,31 @@ class OrcamentoController extends Controller
     }
     public function orcamentoEVENTO(Request $request)
     {
-        $verifica_lead = Lead::where("email", $request->email)->first();
-        if(!$verifica_lead){
-            $lead = new Lead;
-            $lead->nome = $request->nome;
-            $lead->email = $request->email;
-            $lead->telefone = $request->telefone;
-
-            $lead->save();
-
-            session()->put(["cliente" => $lead->toArray()]);
+        if (session()->get("cliente")) {
+            $lead = Lead::where("id", session()->get("cliente"))->first();
 
             return view("site.orcamento.evento", ["lead" => $lead]);
-        } else {
-            toastr()->success("Faça login para continuar!");
+        }else {
+            $verifica_lead = Lead::where("email", $request->email)->first();
+            if(!$verifica_lead){
+                $lead = new Lead;
+                $lead->nome = $request->nome;
+                $lead->email = $request->email;
+                $lead->email = '123';
+                $lead->telefone = $request->telefone;
 
-            session()->put(["email_lead" => $verifica_lead->email]);
+                $lead->save();
 
-            return redirect()->route("site.acessar-cliente");
+                session()->put(["cliente" => $lead->toArray()]);
+
+                return view("site.orcamento.evento", ["lead" => $lead]);
+            } else {
+                toastr()->success("Faça login para continuar!");
+
+                session()->put(["email_lead" => $verifica_lead->email]);
+
+                return redirect()->route("site.acessar-cliente");
+            }
         }
         
     }
