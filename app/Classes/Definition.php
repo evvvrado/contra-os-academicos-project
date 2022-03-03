@@ -24,7 +24,7 @@ class Definition
     const TELEFONE = "11 93365-8808";
     const WHATSAPP = "11 93365-8808";
     const INSTAGRAM = "https://www.instagram.com/birittas.com.br/";
-    const FACEBOOK = "https://www.instagram.com/hyp8tec";
+    const FACEBOOK = "https://www.facebook.com/birittas/";
     const YOUTUBE = "https://www.instagram.com/hyp8tec";
     const TWITTER = "https://www.instagram.com/hyp8tec";
     const LINKEDIN = "https://www.instagram.com/hyp8tec";

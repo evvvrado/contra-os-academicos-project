@@ -7,11 +7,7 @@
 @endsection
 
 @section('titulo')
-@if($lead == "Sim")
-Leads
-@else 
 Orçamentos
-@endif
 @endsection
 
 
@@ -32,9 +28,7 @@ Orçamentos
                                     <th>Nome</th>
                                     <th>Telefone</th>
                                     <th>E-mail</th>
-                                    @if($lead != "Sim")
                                     <th></th>
-                                    @endif
                                 </tr>
                             </thead>
                             <tbody>
@@ -43,9 +37,13 @@ Orçamentos
                                     <td class="sorting_1 dtr-control">{{ $lead->nome }}</td>
                                     <td class="sorting_1 dtr-control">{{ $lead->telefone }}</td>
                                     <td class="sorting_1 dtr-control">{{ $lead->email }}</td>
-                                    @if($lead != "Sim")
+                                    @if($lead->orcamento == true)
                                         <td>
                                             <a class="btn btn-success" href="{{route('painel.leads.orcamentos', ['lead' => $lead])}}" role="button">Orçamentos</a>
+                                        </td>
+                                    @else 
+                                        <td>
+                                            <a class="btn btn-success" href="{{route('painel.leads.orcamentos', ['lead' => $lead])}}" role="button">Jornada</a>
                                         </td>
                                     @endif
                                 </tr>

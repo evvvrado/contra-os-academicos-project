@@ -38,13 +38,13 @@
 
 
                 <nav>
-                    <a href="{{ route('minha-area.cliente')}}">
+                    {{-- <a href="{{ route('minha-area.cliente')}}">
                         <picture>
                             <img src="{{ asset('site/assets/sistema/user.svg') }}" alt="">
                         </picture>
 
                         <span>Minha Área</span>
-                    </a>
+                    </a> --}}
 
                     <a href="{{ route('minha-area.cliente-pedidos')}}">
                         <picture>
