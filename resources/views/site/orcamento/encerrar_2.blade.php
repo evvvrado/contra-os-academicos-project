@@ -98,7 +98,7 @@
                 </table>
 
                 <span class="resumo-evento">
-                    <strong>Resumo do eventos</strong>
+                    <strong>Resumo do evento</strong>
                     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Accumsan molestie facilisi nunc, platea. Ut sit mauris sociis imperdiet nulla cras magna. Habitant nulla
                         et
                         hac mattis egestas vulputate mauris lobortis odio. Sed risus, a dui, cras. Nisl eget duis fermentum scelerisque pretium. Arcu vel eget amet arcu in euismod
