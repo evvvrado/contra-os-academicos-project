@@ -895,6 +895,7 @@ body.minha-area {
 
                         .list {
                             padding-top: 3rem;
+                            display: none;
                             article {
                                 strong {
                                     font-size: 1.8rem;
@@ -975,6 +976,10 @@ body.minha-area {
                                         }
                                     }
                                 }
+                            }
+
+                            &[active] {
+                                display: unset;
                             }
                         }
                     }
