@@ -157,7 +157,7 @@ class OrcamentoController extends Controller
 
             $marcas = MarcaIngrediente::where("ingrediente_id", $ingrediente->id)
                 ->where("padrao", "Sim")
-                ->join('marcas', 'marca_id', 'marcas.id')
+                ->join('marcas', 'marcas_ingredientes.marca_id', 'marcas.id')
                 ->first();
 
             $produto_ingrediente_insercao = new OrcamentoProdutosIngredientes;

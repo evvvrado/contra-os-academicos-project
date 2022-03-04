@@ -93,7 +93,7 @@
                         <div class="content">
                             <strong>Título</strong>
                             <p>Descrição</p>
-
+asdasd
                             <div class="files">
                                 <a class="pdf" href="/">documentoinicial.pdf</a>
 
@@ -111,12 +111,15 @@
 
 @section('scripts')
 <script>
-    $('.mA_showcase nav .span').click(function() {
-        $('.mA_showcase nav .span').removeAttr('active');
+    $(document).ready(() =>{
+        
+    $('.mA_showcase nav span').click(function() {
+        $('.mA_showcase nav span').removeAttr('active');
         $(this).attr('active', '');
 
         $(`.mA_showcase main div.list`).removeAttr('active');
         $($(`.mA_showcase main div.list`)[$(this).index()]).attr('active', '');
+    })
     })
 </script>
 @endsection
