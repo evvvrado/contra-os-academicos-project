@@ -154,7 +154,7 @@ class OrcamentoController extends Controller
 
         $ingredientes = ProdutosIngrediente::where("produto_id", $produto->id)->get();
         foreach ($ingredientes as $ingrediente) {
-            dd($ingrediente);
+            // dd($ingrediente);
             $marcas = MarcaIngrediente::where("ingrediente_id", $ingrediente->id)
             ->join('marcas', 'marcas_ingredientes.marca_id', 'marcas.id')
             ->where("marcas.padrao", "Sim")
