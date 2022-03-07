@@ -47,7 +47,7 @@ class OrcamentoController extends Controller
             if ($verifica_lead) {
                 if (!$verifica_lead->orcamento)
                 {
-                    $lead->delete();
+                    $verifica_lead->delete();
 
                     $lead = new Lead;
                     $lead->nome = $request->nome;
