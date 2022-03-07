@@ -75,6 +75,15 @@ Produtos / <a style="color: unset" href="{{ route('painel.produtos') }}">Produto
                             </div>
 
                             <div class="form-group col-6 col-lg-6 mt-3">
+                                <label>Lançamento</label>
+                                <select class="form-control" required name="lancamento" required>
+                                    <option value="">Selecione</option>
+                                    <option value="Sim">Sim</option>
+                                    <option value="Não">Não</option>
+                                </select>
+                            </div>
+
+                            <div class="form-group col-6 col-lg-6 mt-3">
                                 <label class="form-label">Ingredientes</label>
 
                                 <select multiple style="height: 52px !important;" class="select2 form-control select2-multiple"

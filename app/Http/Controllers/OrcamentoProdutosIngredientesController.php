@@ -11,11 +11,11 @@ use App\Models\Marca;
 
 class OrcamentoProdutosIngredientesController extends Controller
 {
-    public function ingredienteTROCAR(Marca $marca, Ingrediente $ingrediente, OrcamentoProduto $orcamentoproduto)
+    public function ingredienteTROCAR($marca, $ingrediente, $orcamentoproduto)
     {
-        OrcamentoProdutosIngredientes::where('ingrediente_id', $ingrediente->id)
-        ->where('orcamentoproduto_id', $orcamentoproduto->id)
-        ->update(['marca_id' => $marca->id]);
+        OrcamentoProdutosIngredientes::where('ingrediente_id', $ingrediente)
+        ->where('orcamentoproduto_id', $orcamentoproduto)
+        ->update(['marca_id' => $marca]);
         return redirect()->route("site.orcamento.carrinho");
     }
 }

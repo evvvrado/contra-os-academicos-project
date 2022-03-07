@@ -280,6 +280,10 @@
                     <tbody>
 
                         @foreach($produtos as $produto)
+                            @php
+                                $total = 0;
+                            @endphp
+                            
                             <div class="up" hide style="">
                                 <div fluid>
                                     <div class="niv">
@@ -301,7 +305,7 @@
                             
                                             @foreach($ingredientes as $ingrediente)
 
-                                                <div class="drinks">
+                                                <div class="drinks {{ $ingrediente->nome }}">
                                                     @php
                                                         $marcas = MarcaIngrediente::where("ingrediente_id", $ingrediente->id)
                                                         ->join('marcas', 'marca_id', 'marcas.id')
@@ -318,7 +322,13 @@
                                     
                                                             <strong>{{ $marca->nome }}</strong>
                                     
-                                                            <input onclick="window.location.href ='{{ route('site.orcamento-ingrediente-marca-trocar', ['marca' => $marca, 'ingrediente' => $ingrediente, 'orcamentoproduto' => $produto]) }}'" type="checkbox" name="slide" @if($marca->id == $ingrediente->marca_id) checked @endif>
+                                                            <input class="marca" mid="{{ $marca->id }}" onclick="altera_ingrediente({{ $marca->id }}, {{ $ingrediente->id }}, {{ $produto->id }}, '{{ $ingrediente->nome }}')" type="checkbox" name="slide" @if($marca->id == $ingrediente->marca_id) checked disabled @endif>
+
+                                                            @if($marca->id == $ingrediente->marca_id) 
+                                                                @php
+                                                                    $total = $total + ($marca->valor * $produto->qtd);
+                                                                @endphp
+                                                            @endif
                                     
                                                             <p>R$ {{ $marca->valor }}</p>
                                                         </div>
@@ -404,7 +414,7 @@
                                 </td>
 
                                 <td>
-                                    <input type="tel" placeholder="250" name="quantidade-produto">
+                                    <input value="{{ $produto->qtd }}" onblur="alterar_qtd_produto({{ $produto_info->id }}, {{ session()->get("orcamento") }}, this.value)" type="tel" placeholder="Digite a quantidade" name="quantidade-produto">
                                 </td>
 
                                 {{-- <td>
@@ -431,7 +441,10 @@
                             <td></td>
                             <td>
                                 <strong class="total-produto">
-                                    R$ 350,00
+                                    @php
+                                        session()->put(["total_orcamento_produtos" => $total]);
+                                    @endphp
+                                    R$ {{ $total }}
                                 </strong>
                             </td>
                         </tr>
@@ -448,7 +461,55 @@
 @section('scripts')
 <script>
     $('section.carrinho div.niv div.niv-send button').click(() =>{
-            window.location.href = '{{route('site.orcamento.encerrar')}}';
-        })
+        window.location.href = '{{route('site.orcamento.encerrar')}}';
+    })
+
+    function altera_ingrediente(idmarca, idingrediente, orcamentoproduto, ingrediente, nome) {
+
+        var elem = $(".marca[mid='"+idmarca+"']");
+
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': jQuery('meta[name="_token"]').attr('content')
+            }
+        });
+
+        $.ajax({
+            type: "GET",
+            url: "/orcamento/ingrediente/"+idmarca+"/"+idingrediente+"/"+orcamentoproduto,
+            success: function(ret) {
+                $(nome+".marca").each(function(){
+                    if($(this).attr("mid") != idmarca){
+                        $(this).prop("checked", true);
+                    }
+                });
+            },  
+            error: function(ret) {
+                console.log("Deu muito ruim");
+                console.log(ret);
+            }
+        });
+    }
+
+    function alterar_qtd_produto(idproduto, idorcamento, qtd){
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': jQuery('meta[name="_token"]').attr('content')
+            }
+        });
+
+        $.ajax({
+            type: "GET",
+            url: "/orcamento/carrinho/qtd_altera/"+idorcamento+"/"+idproduto+"/"+qtd,
+            success: function(ret) {
+                console.log(ret)
+                document.location.reload(true);
+            },
+            error: function(ret) {
+                console.log("Deu muito ruim");
+                console.log(ret);
+            }
+        });
+    }
 </script>
 @endsection

@@ -48,7 +48,7 @@
 
                             <td>
                                 <strong class="total-produto">
-                                    R$ 350,00
+                                    R$ {{ session()->get("total_orcamento_produtos") }}
                                 </strong>
                             </td>
 
@@ -58,7 +58,7 @@
 
                             <td>
                                 <strong class="total-produto">
-                                    R$ 350,00
+                                    R$ {{ session()->get("total_orcamento_produtos") }}
                                 </strong>
                             </td>
                         </tr>
