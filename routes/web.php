@@ -33,8 +33,8 @@ Route::middleware(['orcamento'])->group(function () {
 
 
     //ROTAS DE ORÇAMENTO
-    Route::get('/orcamento/adicionar/{produto}', [\App\Http\Controllers\OrcamentoController::class, 'adicionar'])->name("site.orcamento-adicionar");
-    Route::get('/orcamento/remover/{produto}', [\App\Http\Controllers\OrcamentoController::class, 'remover'])->name("site.orcamento-remover");
+    Route::get('/orcamento/escolher_produto/{produto}', [\App\Http\Controllers\OrcamentoController::class, 'escolher_produto'])->name("site.orcamento-escolher");
+    Route::get('/orcamento/remover_todos_produtos', [\App\Http\Controllers\OrcamentoController::class, 'remover_produtos'])->name("site.orcamento-remover-todos");
 });
 
 

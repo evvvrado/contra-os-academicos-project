@@ -243,7 +243,7 @@
                             @endfor
                             </span>
 
-                            <input onclick="window.location.href ='{{ route('site.orcamento-remover', ['produto' => $produto_escolhido]) }}'" checked type="checkbox" name="desabilitar">
+                            <input onclick="escolher_produto({{ $produto_escolhido->id }})" checked type="checkbox" name="desabilitar">
                         </div>
                     </div>
 
@@ -279,7 +279,7 @@
                             @endfor
                         </span>
 
-                        <input onclick="window.location.href ='{{ route('site.orcamento-adicionar', ['produto' => $produto]) }}'" type="checkbox" name="habilitar">
+                        <input onclick="escolher_produto({{ $produto->id }})" type="checkbox" name="habilitar">
                     </div>
                 </div>
 
@@ -315,5 +315,31 @@
         </div>
     </div>
 </section>
+
+@endsection
+
+@section('scripts')
+
+    <script>
+        function escolher_produto(idproduto){
+            $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': jQuery('meta[name="_token"]').attr('content')
+                }
+            });
+
+            $.ajax({
+                type: "GET",
+                url: "/orcamento/escolher_produto/"+idproduto,
+                success: function(ret) {
+                    console.log(ret)
+                },
+                error: function(ret) {
+                    console.log("Deu muito ruim");
+                    console.log(ret);
+                }
+            });
+        }
+    </script>
 
 @endsection

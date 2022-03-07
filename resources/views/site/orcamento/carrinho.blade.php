@@ -388,7 +388,7 @@
 
                             <tr>
                                 <td>
-                                    <button class="remover-produto" onclick="window.location.href ='{{ route('site.orcamento-remover', ['produto' => $produto]) }}'">
+                                    <button class="remover-produto" onclick="escolher_produto({{ $produto->id }})">
                                         <picture>
                                             <img src="{{ asset('site/assets/img/icon_remove.svg') }}" alt="Remover ícone">
                                         </picture>

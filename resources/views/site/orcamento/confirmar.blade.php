@@ -18,7 +18,28 @@
                 <p>Clique na ação que deseja seguir</p>
 
                 <div class="button_list">
-                    <button class="alert">Remover</button>
+                    <button class="alert" onclick="remover_todos_produtos()">Remover</button>
+                    <button class="cancel">Cancelar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="close-modal">
+    </div>
+</div>
+
+<div class="modal_delete modal">
+    <div fluid>
+
+        <div class="niv">
+            <div class="box">
+                <h2>Opa!</h2>
+                <h2>Vimos que excluiu um drink</h2>
+
+                <p>Deseja adicionar outro?</p>
+
+                <div class="button_list">
+                    <button class="alert" onclick="location.href='{{ route('site.orcamento.lista') }}'">Sim</button>
                     <button class="cancel">Cancelar</button>
                 </div>
             </div>
@@ -69,7 +90,7 @@
 
             @foreach($produtos as $produto)
                 <div class="box">
-                    <button class="remove" onclick="window.location.href ='{{ route('site.orcamento-remover', ['produto' => $produto]) }}'">
+                    <button class="remove" onclick="escolher_produto({{ $produto->id }})">
                         <svg width="25" height="25" viewBox="0 0 25 25" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path d="M21.0928 5.85938L3.90527 5.85938" stroke="#985394" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
                             <path d="M10.1562 10.1562V16.4062" stroke="#985394" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
@@ -129,5 +150,48 @@
         $('.modal_confirm').showModal()
     })
 
+    $('body#orcamento-confirm section.coqueteis-drinks div.niv div.niv-content div.box button.remove').click(() => {
+        $('.modal_delete').showModal()
+    })
+
+    function escolher_produto(idproduto){
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': jQuery('meta[name="_token"]').attr('content')
+            }
+        });
+
+        $.ajax({
+            type: "GET",
+            url: "/orcamento/escolher_produto/"+idproduto,
+            success: function(ret) {
+                console.log(ret)
+            },
+            error: function(ret) {
+                console.log("Deu muito ruim");
+                console.log(ret);
+            }
+        });
+    }
+
+    function remover_todos_produtos() {
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': jQuery('meta[name="_token"]').attr('content')
+            }
+        });
+
+        $.ajax({
+            type: "GET",
+            url: "/orcamento/remover_todos_produtos",
+            success: function(ret) {
+                console.log(ret)
+            },
+            error: function(ret) {
+                console.log("Deu muito ruim");
+                console.log(ret);
+            }
+        });
+    }   
 </script>
 @endsection
