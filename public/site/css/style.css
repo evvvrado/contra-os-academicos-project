@@ -4946,6 +4946,15 @@ div.up [fluid] div.niv {
   background: #fff;
   padding: 2.8rem 5.2rem;
 }
+div.up [fluid] div.niv main {
+  width: 100%;
+  height: 100%;
+  overflow-y: scroll;
+  position: relative;
+}
+div.up [fluid] div.niv main::-webkit-scrollbar {
+  display: none;
+}
 div.up [fluid] div.niv h2 {
   text-align: center;
   font-family: "Inter";
@@ -4953,7 +4962,7 @@ div.up [fluid] div.niv h2 {
   font-size: 3.2rem;
   line-height: 100%;
   color: #323b4b;
-  margin-bottom: 2.1rem;
+  margin-bottom: 4.1rem;
 }
 div.up [fluid] div.niv div.drinks {
   display: flex;
@@ -4962,6 +4971,7 @@ div.up [fluid] div.niv div.drinks {
   flex-direction: row;
   gap: 8rem;
   padding-bottom: 5rem;
+  padding-top: 5rem;
   border-bottom: 0.0662319rem solid #f6f6f8;
 }
 div.up [fluid] div.niv div.drinks div.box {
@@ -5076,14 +5086,11 @@ div.up [fluid] div.niv div.frutas div.boxes .box picture,
 div.up [fluid] div.niv div.adicionais div.boxes .box picture {
   height: 8.61rem;
   width: 8.61rem;
-  overflow: hidden;
+  display: block;
 }
 div.up [fluid] div.niv div.frutas div.boxes .box picture img,
 div.up [fluid] div.niv div.adicionais div.boxes .box picture img {
-  height: 100%;
   width: 100%;
-  -o-object-fit: cover;
-     object-fit: cover;
 }
 div.up [fluid] div.niv div.frutas div.boxes .box input[type=checkbox],
 div.up [fluid] div.niv div.adicionais div.boxes .box input[type=checkbox] {
