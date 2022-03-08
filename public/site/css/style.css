@@ -5728,6 +5728,7 @@ body#orcamento-lista div.next-step {
   height: 12rem;
   position: fixed;
   bottom: 0;
+  left: 0;
   z-index: 6;
   display: flex;
   align-items: center;
