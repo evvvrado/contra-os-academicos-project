@@ -107,6 +107,10 @@ class OrcamentoController extends Controller
         $orcamento->save();
         session()->put(["orcamento" => $orcamento->id]);
 
+        $parametro = Parametro::where('id', 3)->first(); 
+        $qtd_drinks = ($request->pessoas / $parametro->valor_1) * $parametro->valor_2;
+        session()->put(["qtd_tipos_drinks" => $qtd_drinks]);
+
         Lead::where('id', $orcamento->lead_id)
             ->update(['orcamento' => true]);
 
@@ -179,7 +183,7 @@ class OrcamentoController extends Controller
         // dd($produtos);
         // $produtos = Produto::whereIn("id", $orcamento->produtos->pluck("id"))->get();
 
-        return view("site.orcamento.carrinho", ["produtos" => $produtos]);
+        return view("site.orcamento.carrinho", ["produtos" => $produtos, "orcamento" => $orcamento]);
     }
     public function orcamentoENCERRAR()
     {

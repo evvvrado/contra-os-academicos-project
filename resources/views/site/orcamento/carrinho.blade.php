@@ -6,6 +6,7 @@
 use App\Models\OrcamentoProdutosIngredientes;
 use App\Models\MarcaIngrediente;
 use App\Models\Produto;
+use App\Models\Parametro;
 @endphp
 
 @section('content')
@@ -324,12 +325,16 @@ use App\Models\Produto;
 
                                                 <input class="marca" mid="{{ $marca->id }}"
                                                     onclick="altera_ingrediente({{ $marca->id }}, {{ $ingrediente->id }}, {{ $produto->id }}, '{{ $ingrediente->nome }}')" type="checkbox" name="slide"
-                                                    @if($marca->id == $ingrediente->marca_id) checked disabled @endif>
+                                                    @if($marca->id == $ingrediente->marca_id) checked @endif>
 
                                                 @if($marca->id == $ingrediente->marca_id)
-                                                @php
-                                                $total = $total + ($marca->valor * $produto->qtd);
-                                                @endphp
+                                                    @php
+                                                        $parametro = Parametro::where('id', 4)->first();
+                                                        $qtd_total_drinks = ($orcamento->qtd_pessoas * $parametro->valor_2) / $parametro->valor_1;
+                                                        $qtd_unica = $qtd_total_drinks / $produtos->count();
+                                                        
+                                                        $total = $total + ($marca->valor * $qtd_unica);
+                                                    @endphp
                                                 @endif
 
                                                 <p>R$ {{ $marca->valor }}</p>
@@ -416,7 +421,9 @@ use App\Models\Produto;
                             </td>
 
                             <td>
-                                <input value="{{ $produto->qtd }}" onblur="alterar_qtd_produto({{ $produto_info->id }}, {{ session()->get(" orcamento") }}, this.value)" type="tel"
+                                <input disabled value="{{ $qtd_total_drinks }}" type="tel"
+                                    placeholder="Quantidade">
+                                    <input hidden value="{{ $qtd_total_drinks }}" type="tel"
                                     placeholder="Quantidade" name="quantidade-produto">
                             </td>
 
@@ -481,8 +488,11 @@ use App\Models\Produto;
             type: "GET",
             url: "/orcamento/ingrediente/"+idmarca+"/"+idingrediente+"/"+orcamentoproduto,
             success: function(ret) {
-                $(nome+".marca").each(function(){
+                $(".marca").each(function(){
+                    console.log('f')
                     if($(this).attr("mid") != idmarca){
+                        $(this).prop("checked", false);
+                    } else {
                         $(this).prop("checked", true);
                     }
                 });

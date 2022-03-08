@@ -203,7 +203,7 @@
             <h4>Bora surpreender</h4>
             <h2>
                 Com base no numero de <br>
-                convidados você pode escolher <i>7 drinks</i>
+                convidados você pode escolher <i>{{ session()->get("qtd_tipos_drinks") }} drinks</i>
             </h2>
         </div>
 
