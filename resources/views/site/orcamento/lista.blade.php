@@ -157,14 +157,14 @@
                                 <img src="{{ $imagem_marca->imagem }}" alt="bebida representativa">
                             </picture>
 
-                            <strong>{{ $ingrediente_filtro->nome }}</strong>
-                        </div>
-
-                        <input type="checkbox" name="slide">
+                        <strong>{{ $ingrediente_filtro->nome }}</strong>
                     </div>
 
+                    <input type="checkbox" data-marca="{{$ingredient_filtro->nome}}" name="slide">
+                </div>
+
                 @endforeach
-                
+
             </div>
         </div>
         <div class="list-button">
@@ -221,78 +221,82 @@
         <div class="niv-content">
 
             {{-- @php
-                dd($produtos_escolhidos);
+            dd($produtos_escolhidos);
             @endphp --}}
 
             @if($produtos_escolhidos)
-                @foreach($produtos_escolhidos as $produto_escolhido)
+            @foreach($produtos_escolhidos as $produto_escolhido)
 
-                    @php
-                        if ($produto_escolhido->lancamento == "Sim") {
-                            $lancamento = "lancamento";
-                        }   
-                    @endphp
+            @php
+            if ($produto_escolhido->lancamento == "Sim") {
+            $lancamento = "lancamento";
+            }
+            @endphp
 
-                    <div class="box" niv-fade data-cal="{{$produto_escolhido->calorias}}" data-teor="{{$produto_escolhido->teor_alcoolico}}" {{$lancamento}}>
-                        <picture>
-                            <img src="{{$produto_escolhido->imagem_1}}" alt="imagem representativa" style="width: auto; height: 100%; margin: auto;">
-                        </picture>
+            <div class="box
+                        @foreach ($produto_escolhido->marca as $marca )
+                            {{$marca->titulo}}
+                        @endforeach
+                    " niv-fade data-cal="{{$produto_escolhido->calorias}}" data-teor="{{$produto_escolhido->teor_alcoolico}}" {{$lancamento}}>
+                <picture>
+                    <img src="{{$produto_escolhido->imagem_1}}" alt="imagem representativa" style="width: auto; height: 100%; margin: auto;">
+                </picture>
 
-                        <strong>{{$produto_escolhido->nome}}</strong>
-                        <p>{{mb_strimwidth($produto_escolhido->descricao, 0, 72, "...")}}</p>
+                <strong>{{$produto_escolhido->nome}}</strong>
+                <p>{{mb_strimwidth($produto_escolhido->descricao, 0, 72, "...")}}</p>
 
-                        <div>
-                            <strong>Teor alcóolico</strong>
-                            <p>{{$produto_escolhido->teor_alcoolico}}%</p>
-                            <strong>Valor Calórico</strong>
-                            <p>{{$produto_escolhido->calorias}} cal.</p>
-                            <strong>Valor Calórico</strong>
+                <div>
+                    <strong>Teor alcóolico</strong>
+                    <p>{{$produto_escolhido->teor_alcoolico}}%</p>
+                    <strong>Valor Calórico</strong>
+                    <p>{{$produto_escolhido->calorias}} cal.</p>
+                    <strong>Valor Calórico</strong>
 
-                            <span>
-                                @for ($i = 0; $i < $produto_escolhido->nota; $i++)
-                                <img src="{{ asset('site/assets/img/icon_star.svg') }}" alt="estrela de nota">
+                    <span>
+                        @for ($i = 0; $i < $produto_escolhido->nota; $i++)
+                            <img src="{{ asset('site/assets/img/icon_star.svg') }}" alt="estrela de nota">
                             @endfor
-                            </span>
+                    </span>
 
-                            <input onclick="escolher_produto({{ $produto_escolhido->id }})" checked type="checkbox" name="desabilitar">
-                        </div>
-                    </div>
+                    <input onclick="escolher_produto({{ $produto_escolhido->id }})" checked type="checkbox" name="desabilitar">
+                </div>
+            </div>
 
-                @endforeach
-            @endif 
-            
+            @endforeach
+            @endif
+
             @foreach($produtos as $produto)
 
-                @php
-                    if ($produto->lancamento == "Sim") {
-                        $lancamento = "lancamento";
-                    }   
-                @endphp
+            @php
+            if ($produto->lancamento == "Sim") {
+            $lancamento = "lancamento";
+            }
+            @endphp
 
-                <div class="box" niv-fade data-cal="{{$produto->calorias}}" data-teor="{{$produto->teor_alcoolico}}" {{$lancamento}}>
-                    <picture>
-                        <img src="{{$produto->imagem_1}}" alt="imagem representativa" style="width: auto; height: 100%; margin: auto;">
-                    </picture>
+            <div class="box" niv-fade data-cal="{{$produto->calorias}}" data-teor="{{$produto->teor_alcoolico}}" {{$lancamento}}>
+                <picture>
+                    <img src="{{$produto->imagem_1}}" alt="imagem representativa" style="width: auto; height: 100%; margin: auto;">
+                </picture>
 
-                    <strong>{{$produto->nome}}</strong>
-                    <p>{{mb_strimwidth($produto->descricao, 0, 72, "...")}}</p>
+                <strong>{{$produto->nome}}</strong>
+                <p>{{mb_strimwidth($produto->descricao, 0, 72, "...")}}</p>
 
-                    <div>
-                        <strong>Teor alcóolico</strong>
-                        <p>{{$produto->teor_alcoolico}}%</p>
-                        <strong>Valor Calórico</strong>
-                        <p>{{$produto->calorias}} cal.</p>
-                        <strong>Valor Calórico</strong>
+                <div>
+                    <strong>Teor alcóolico</strong>
+                    <p>{{$produto->teor_alcoolico}}%</p>
+                    <strong>Valor Calórico</strong>
+                    <p>{{$produto->calorias}} cal.</p>
+                    <strong>Valor Calórico</strong>
 
-                        <span>
-                            @for ($i = 0; $i < $produto->nota; $i++)
-                                <img src="{{ asset('site/assets/img/icon_star.svg') }}" alt="estrela de nota">
+                    <span>
+                        @for ($i = 0; $i < $produto->nota; $i++)
+                            <img src="{{ asset('site/assets/img/icon_star.svg') }}" alt="estrela de nota">
                             @endfor
-                        </span>
+                    </span>
 
-                        <input onclick="escolher_produto({{ $produto->id }})" type="checkbox" name="habilitar">
-                    </div>
+                    <input onclick="escolher_produto({{ $produto->id }})" type="checkbox" name="habilitar">
                 </div>
+            </div>
 
             @endforeach
 
@@ -331,8 +335,8 @@
 
 @section('scripts')
 
-    <script>
-        function escolher_produto(idproduto){
+<script>
+    function escolher_produto(idproduto){
             $.ajaxSetup({
                 headers: {
                     'X-CSRF-TOKEN': jQuery('meta[name="_token"]').attr('content')
@@ -351,6 +355,6 @@
                 }
             });
         }
-    </script>
+</script>
 
 @endsection
