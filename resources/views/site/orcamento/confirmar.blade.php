@@ -185,7 +185,7 @@
             type: "GET",
             url: "/orcamento/remover_todos_produtos",
             success: function(ret) {
-                console.log(ret)
+                window.location.href = '{{ route('site.orcamento.lista') }}';
             },
             error: function(ret) {
                 console.log("Deu muito ruim");

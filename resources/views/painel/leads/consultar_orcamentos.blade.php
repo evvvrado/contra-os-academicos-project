@@ -34,7 +34,7 @@ Orçamentos
                         <li class="nav-item waves-effect waves-light">
                             <a class="nav-link {{ $ativo }}" data-bs-toggle="tab" href="#home-{{ $orcamento->id }}" role="tab">
                                 <span class="d-block d-sm-none"><i class="fas fa-home"></i></span>
-                                <span class="d-none d-sm-block">{{ $orcamento->tipo }} ({{ $dataInvertida }})</span> 
+                                <span class="d-none d-sm-block">Orçamento #{{ $orcamento->id }} - ({{ $dataInvertida }})</span> 
                             </a>
                         </li>
                         @php
@@ -51,7 +51,7 @@ Orçamentos
                     @foreach($orcamentos as $orcamento)
                         <div class="tab-pane {{ $ativo }}" id="home-{{ $orcamento->id }}" role="tabpanel">
                             <br>
-                            <h5>Dados Pessoais</h5>
+                            <h5>Dados do Lead</h5>
                             <hr>
                             <div style="display: flex; justify-content:space-between; width:90% !important; font-size: 15px; flex-wrap: wrap;">
                                 <div style="width: 100%; display: flex; justify-content:space-between; border-bottom: 1px #e5e5e5 solid; margin-bottom: 10px; padding-bottom: 10px;">
@@ -95,30 +95,22 @@ Orçamentos
                             <div style="display: flex; justify-content:space-between; width:90% !important; font-size: 15px; flex-wrap: wrap;">
                                 <div style="width: 100%; display: flex; justify-content:space-between; border-bottom: 1px #e5e5e5 solid; margin-bottom: 10px; padding-bottom: 10px;">
                                     <div style="width: 32%;">
-                                        <strong>CEP</strong>
-                                    </div>
-    
-                                    <div style="width: 32%;">
-                                        <p style="margin: 0;">{{ $orcamento->cep }}</p>
-                                    </div>
-    
-                                    <div style="width: 32%;">
-                                        <strong>Duração</strong>
-                                    </div>
-    
-                                    <div style="width: 32%;">
-                                        <p style="margin: 0;">{{ $orcamento->duracao }} horas</p>
-                                    </div>
-                                </div>
-                                <div style="width: 100%; display: flex; justify-content:space-between; border-bottom: 1px #e5e5e5 solid; margin-bottom: 10px; padding-bottom: 10px;">
-                                    <div style="width: 32%;">
                                         <strong>Tipo</strong>
                                     </div>
     
                                     <div style="width: 32%;">
                                         <p style="margin: 0;">{{ $orcamento->tipo }}</p>
                                     </div>
+
+                                    <div style="width: 32%;">
+                                        <strong>CEP</strong>
+                                    </div>
     
+                                    <div style="width: 32%;">
+                                        <p style="margin: 0;">{{ $orcamento->cep }}</p>
+                                    </div>
+                                </div>
+                                <div style="width: 100%; display: flex; justify-content:space-between; border-bottom: 1px #e5e5e5 solid; margin-bottom: 10px; padding-bottom: 10px;">
                                     <div style="width: 32%;">
                                         <strong>Data</strong>
                                     </div>
@@ -132,6 +124,14 @@ Orçamentos
                                             {{ $dataInvertida }}    
                                         </p>
                                     </div>
+
+                                    <div style="width: 32%;">
+                                        <strong>Duração</strong>
+                                    </div>
+    
+                                    <div style="width: 32%;">
+                                        <p style="margin: 0;">{{ $orcamento->duracao }} horas</p>
+                                    </div>                                    
                                 </div>
                                 <div style="width: 100%; display: flex; justify-content:space-between;">
                                     <div style="width: 32%;">

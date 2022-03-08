@@ -16,7 +16,7 @@
     <div class="niv">
         <div class="niv-top">
             <span>
-                <h2>Detalhes do seu carrinho</h2>
+                <h2>Meu carrinho - Serviços Inclusos</h2>
             </span>
         </div>
 
@@ -59,6 +59,145 @@
                             <td>
                                 <strong class="total-produto">
                                     R$ {{ session()->get("total_orcamento_produtos") }}
+                                </strong>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <strong class="nome-produto">
+                                    Servico 2
+                                </strong>
+                            </td>
+
+                            <td>
+                                <p class="descricao-produto">Serviço 2</p>
+                            </td>
+
+                            <td>
+                                <strong class="total-produto">
+                                    R$ 0,00
+                                </strong>
+                            </td>
+
+                            <td>
+                                <input value="1" disabled type="tel" placeholder="250" name="quantidade-produto">
+                            </td>
+
+                            <td>
+                                <strong class="total-produto">
+                                    R$ 0,00
+                                </strong>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td>
+                                <strong class="nome-produto">
+                                    Servico 3
+                                </strong>
+                            </td>
+
+                            <td>
+                                <p class="descricao-produto">Serviço 3</p>
+                            </td>
+
+                            <td>
+                                <strong class="total-produto">
+                                    R$ 0,00
+                                </strong>
+                            </td>
+
+                            <td>
+                                <input value="1" disabled type="tel" placeholder="250" name="quantidade-produto">
+                            </td>
+
+                            <td>
+                                <strong class="total-produto">
+                                    R$ 0,00
+                                </strong>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td>
+                                <strong class="nome-produto">
+                                    Servico 4
+                                </strong>
+                            </td>
+
+                            <td>
+                                <p class="descricao-produto">Serviço 4</p>
+                            </td>
+
+                            <td>
+                                <strong class="total-produto">
+                                    R$ 0,00
+                                </strong>
+                            </td>
+
+                            <td>
+                                <input value="1" disabled type="tel" placeholder="250" name="quantidade-produto">
+                            </td>
+
+                            <td>
+                                <strong class="total-produto">
+                                    R$ 0,00
+                                </strong>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td>
+                                <strong class="nome-produto">
+                                    Serviço 5
+                                </strong>
+                            </td>
+
+                            <td>
+                                <p class="descricao-produto">Serviço 5</p>
+                            </td>
+
+                            <td>
+                                <strong class="total-produto">
+                                    R$ 0,00
+                                </strong>
+                            </td>
+
+                            <td>
+                                <input value="1" disabled type="tel" placeholder="250" name="quantidade-produto">
+                            </td>
+
+                            <td>
+                                <strong class="total-produto">
+                                    R$ 0,00
+                                </strong>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td>
+                                <strong class="nome-produto">
+                                    Serviço 6
+                                </strong>
+                            </td>
+
+                            <td>
+                                <p class="descricao-produto">Serviço 6</p>
+                            </td>
+
+                            <td>
+                                <strong class="total-produto">
+                                    R$ 0,00
+                                </strong>
+                            </td>
+
+                            <td>
+                                <input value="1" disabled type="tel" placeholder="250" name="quantidade-produto">
+                            </td>
+
+                            <td>
+                                <strong class="total-produto">
+                                    R$ 0,00
                                 </strong>
                             </td>
                         </tr>

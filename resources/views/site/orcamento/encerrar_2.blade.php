@@ -5,97 +5,99 @@
 
 @section('content')
 
-<div class="next-step">
-    <h2>Leve sua festa <i>além</i></h2>
-    <p>Continue sua jornada indo pra próxima página</p>
-
-    <a href="{{ route('site.orcamento.encerrar_2')}}">Solicitar</a>
-</div>
-
 <section class="carrinho">
     <div class="niv">
         <div class="niv-top">
             <span>
-                <h2>Detalhes do seu carrinho</h2>
+                <h2>Meu Carrinho - Serviços Extras</h2>
             </span>
         </div>
 
 
         <div class="niv-table">
             <div class="scroll">
-                <table>
-                    <thead>
-                        <tr>
-                            <th width="206">Nome dos serviços</th>
-                            <th width="456">Descrição</th>
-                            <th width="175">Valor</th>
-                            <th width="221">Quantidade</th>
-                            <th width="210">Total</th>
-                        </tr>
-                    </thead>
+                <form action="{{ route('site.orcamento.salvar_orcamento') }}" method="post">
+                    <div class="next-step">
+                        <h2>Leve sua festa <i>além</i></h2>
+                        <p>Continue sua jornada indo pra próxima página</p>
+                    
+                        <input type="submit" value="Solicitar">
+                    </div>
+                
+                    <table>
+                        <thead>
+                            <tr>
+                                <th width="206">Nome dos serviços</th>
+                                <th width="456">Descrição</th>
+                                <th width="175">Valor</th>
+                                <th width="221">Quantidade</th>
+                                <th width="210">Total</th>
+                            </tr>
+                        </thead>
 
-                    <tbody>
-                        @if($servicos != "")
-                            @foreach($servicos as $servico)
-                                <tr>
-                                    <td>
-                                        <strong class="nome-produto">
-                                            {{ $servico->nome }}
-                                        </strong>
-                                    </td>
+                        <tbody>
+                            @if($servicos->count() > 0)
+                                @foreach($servicos as $servico)
+                                    <tr>
+                                        <td>
+                                            <strong class="nome-produto">
+                                                {{ $servico->nome }}
+                                            </strong>
+                                        </td>
 
-                                    <td>
-                                        <p class="descricao-produto">{{ $servico->descricao }}</p>
-                                    </td>
+                                        <td>
+                                            <p class="descricao-produto">{{ $servico->descricao }}</p>
+                                        </td>
 
-                                    <td>
-                                        <strong class="total-produto">
-                                            R$ {{ $servico->valor }}
-                                        </strong>
-                                    </td>
+                                        <td>
+                                            <strong class="total-produto">
+                                                R$ {{ $servico->valor }}
+                                            </strong>
+                                        </td>
 
-                                    <td>
-                                        <input value="1" disabled type="tel" placeholder="250" name="quantidade-produto">
-                                    </td>
+                                        <td>
+                                            <input value="1" type="tel" placeholder="250" name="servico_{{ $servico->id }}">
+                                        </td>
 
-                                    <td>
-                                        <strong class="total-produto">
-                                            R$ {{ $servico->valor }}
-                                        </strong>
-                                    </td>
-                                </tr>
-                            @endforeach
-                        @else   
-                        <tr>
-                            <td>
-                                <strong class="nome-produto">
-                                    Não há serviços adicionais
-                                </strong>
-                            </td>
+                                        <td>
+                                            <strong class="total-produto">
+                                                R$ {{ $servico->valor }}
+                                            </strong>
+                                        </td>
+                                    </tr>
+                                @endforeach
+                            @else   
+                            <tr>
+                                <td>
+                                    <strong class="nome-produto">
+                                        Não há serviços adicionais
+                                    </strong>
+                                </td>
 
-                            <td>
-                                <p class="descricao-produto">-</p>
-                            </td>
+                                <td>
+                                    <p class="descricao-produto">-</p>
+                                </td>
 
-                            <td>
-                                <strong class="total-produto">
-                                    -
-                                </strong>
-                            </td>
+                                <td>
+                                    <strong class="total-produto">
+                                        -
+                                    </strong>
+                                </td>
 
-                            <td>
-                                <input value="0" disabled type="tel" placeholder="250" name="quantidade-produto">
-                            </td>
+                                <td>
+                                    <input value="0" disabled type="tel" placeholder="250" name="quantidade-produto">
+                                </td>
 
-                            <td>
-                                <strong class="total-produto">
-                                    -
-                                </strong>
-                            </td>
-                        </tr>
-                        @endif
-                    </tbody>
-                </table>
+                                <td>
+                                    <strong class="total-produto">
+                                        -
+                                    </strong>
+                                </td>
+                            </tr>
+                            @endif
+                        </tbody>
+                    </table>
+                </form>
 
                 <span class="resumo-evento">
                     <strong>Resumo do evento</strong>

@@ -143,7 +143,34 @@ class OrcamentoController extends Controller
         $orcamento = Orcamento::find(session()->get("orcamento"));
         $produtos = Produto::whereIn("id", $orcamento->produtos->pluck("id"))->get();
 
-        return view("site.orcamento.confirmar", ["produtos" => $produtos]);
+        if($produtos->count() > 0) {
+            return view("site.orcamento.confirmar", ["produtos" => $produtos]);
+        }
+        else 
+        {
+            $orcamento = Orcamento::find(session()->get("orcamento"));
+            if ($orcamento->produtos) {
+                $produtos_escolhidos = $orcamento->produtos;
+            } else {
+                $produtos_escolhidos = "";
+            }
+            $produtos = Produto::whereNotIn("id", $orcamento->produtos->pluck("id"))->get();
+            // dd($produtos);
+    
+            $parametro = Parametro::where('id', 5)->first();
+            $valores = json_decode($parametro->valor_1, true);
+            // dd($valores);
+            if ($valores) {
+                $ingredientes_filtro = Ingrediente::whereIn('ingredientes.id', $valores)
+                    ->get();
+            } else {
+                $ingredientes_filtro = Ingrediente::all();
+            }
+
+            toastr()->error("Você deve escolher ao menos 1 drink!");
+
+            return view("site.orcamento.lista", ["produtos" => $produtos, "produtos_escolhidos" => $produtos_escolhidos, "ingredientes_filtro" => $ingredientes_filtro]);
+        }
     }
     public function orcamentoCAR()
     {
@@ -161,7 +188,18 @@ class OrcamentoController extends Controller
 
     public function orcamentoENCERRAR2()
     {
-        $servicos = Servico::where('incluso', 'Sim')->get();
+        $servicos = Servico::where('incluso', false)->get();
+
+        return view("site.orcamento.encerrar_2", ["servicos" => $servicos]);
+    }
+
+    public function salvarorcamento(Request $request)
+    {
+        // $servicos = Servico::where('incluso', false)->get();
+
+        // foreach($servicos as $servico) {
+        //     if($request->produto_.$servico->id)
+        // }
 
         return view("site.orcamento.encerrar_2", ["servicos" => $servicos]);
     }
@@ -205,16 +243,12 @@ class OrcamentoController extends Controller
     }
 
     public function remover_produtos() {
-        $produtos = OrcamentoProduto::where('orcamento_id', session()->get("orcamento"));
 
-        foreach($produtos as $produto) {
-            $orcamento = Orcamento::find(session()->get("orcamento"));
-            $produto = OrcamentoProduto::where("orcamento_id", $orcamento->id)
-                ->where("produto_id", $produto->id);
-            $produto->delete();
+        $orcamentoprodutos = OrcamentoProduto::where('orcamento_id', session()->get("orcamento"))->get();
+
+        foreach($orcamentoprodutos as $orcamentoproduto) {
+            $orcamentoproduto->delete();
         }
-
-        return redirect()->route("site.orcamento.lista");
     } 
 
     // public function adicionar(Produto $produto)

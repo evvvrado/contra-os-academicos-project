@@ -27,6 +27,7 @@ Route::middleware(['orcamento'])->group(function () {
 
     Route::get('/orcamento/encerrar', [\App\Http\Controllers\OrcamentoController::class, 'orcamentoENCERRAR'])->name("site.orcamento.encerrar");
     Route::get('/orcamento/encerrar_2', [\App\Http\Controllers\OrcamentoController::class, 'orcamentoENCERRAR2'])->name("site.orcamento.encerrar_2");
+    Route::post('/orcamento/encerrar_2', [\App\Http\Controllers\OrcamentoController::class, 'salvarorcamento'])->name("site.orcamento.salvar_orcamento");
 
 
     Route::get('/orcamento/ingrediente/{marca}/{ingrediente}/{orcamentoproduto}', [\App\Http\Controllers\OrcamentoProdutosIngredientesController::class, 'ingredienteTROCAR'])->name("site.orcamento-ingrediente-marca-trocar");
