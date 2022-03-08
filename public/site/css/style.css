@@ -6214,7 +6214,9 @@ body#orcamento-carrinho div.next-step p:last-child {
   color: #dbbf00;
   font-size: 1.6rem;
 }
-body#orcamento-carrinho div.next-step a {
+body#orcamento-carrinho div.next-step a,
+body#orcamento-carrinho div.next-step input,
+body#orcamento-carrinho div.next-step button {
   width: 20rem;
   height: 5.4rem;
   color: #fff;
@@ -6228,7 +6230,9 @@ body#orcamento-carrinho div.next-step a {
   flex-direction: row;
   transition: 0.32s;
 }
-body#orcamento-carrinho div.next-step a:hover {
+body#orcamento-carrinho div.next-step a:hover,
+body#orcamento-carrinho div.next-step input:hover,
+body#orcamento-carrinho div.next-step button:hover {
   background: #e5db00;
   color: #260530;
 }

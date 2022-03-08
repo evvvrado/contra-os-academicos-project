@@ -2505,7 +2505,9 @@ body#orcamento-carrinho {
             }
         }
 
-        a {
+        a,
+        input,
+        button {
             width: 20rem;
             height: 5.4rem;
 
