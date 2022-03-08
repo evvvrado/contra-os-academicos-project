@@ -791,7 +791,7 @@ section.carrinho {
                     line-height: 140%;
                     color: $grey;
 
-                    max-width: 61.7rem;
+                    max-width: 90%;
 
                     margin-top: 1.7rem;
                 }
@@ -1800,7 +1800,8 @@ body#orcamento-lista {
             height: 5.4rem;
 
             color: $white;
-            background: $lighter-purple;
+            background: $main-orange;
+            text-transform: uppercase;
             font-size: 1.5rem;
 
             border-radius: 1.1rem;
@@ -2001,7 +2002,8 @@ body#orcamento-confirm {
             margin-top: 1rem;
 
             &:last-child {
-                font-size: 1rem;
+                color: $main-orange;
+                font-size: 1.6rem;
             }
         }
 
@@ -2010,7 +2012,8 @@ body#orcamento-confirm {
             height: 5.4rem;
 
             color: $white;
-            background: $lighter-purple;
+            background: $main-orange;
+            text-transform: uppercase;
             font-size: 1.5rem;
 
             border-radius: 1.1rem;
@@ -2478,7 +2481,8 @@ body#orcamento-carrinho {
             margin-top: 1rem;
 
             &:last-child {
-                font-size: 1rem;
+                color: $main-orange;
+                font-size: 1.6rem;
             }
         }
 
@@ -2487,7 +2491,9 @@ body#orcamento-carrinho {
             height: 5.4rem;
 
             color: $white;
-            background: $lighter-purple;
+            background: $main-orange;
+            text-transform: uppercase;
+
             font-size: 1.5rem;
 
             border-radius: 1.1rem;

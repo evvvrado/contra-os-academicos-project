@@ -33,13 +33,15 @@
 
         <div class="niv">
             <div class="box">
-                <h2>Opa!</h2>
-                <h2>Vimos que excluiu um drink</h2>
 
-                <p>Deseja adicionar outro?</p>
+                <picture>
+                    <img src="{{ asset('site/assets/img/drink_modal.png') }}" alt="imagem de um drink">
+                </picture>
+
+                <h2>Vimos que excluiu um drink, bora escolher outro?</h2>
 
                 <div class="button_list">
-                    <button class="alert" onclick="location.href='{{ route('site.orcamento.lista') }}'">Sim</button>
+                    <button class="alert" onclick="location.href='{{ route('site.orcamento.lista') }}'">Bora!</button>
                     <button class="cancel">Cancelar</button>
                 </div>
             </div>
@@ -89,53 +91,53 @@
         <div class="niv-content">
 
             @foreach($produtos as $produto)
-                <div class="box">
-                    <button class="remove" onclick="escolher_produto({{ $produto->id }})">
-                        <svg width="25" height="25" viewBox="0 0 25 25" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M21.0928 5.85938L3.90527 5.85938" stroke="#985394" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
-                            <path d="M10.1562 10.1562V16.4062" stroke="#985394" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
-                            <path d="M14.8438 10.1562V16.4062" stroke="#985394" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
-                            <path d="M8.59375 1.95312H16.4062" stroke="#985394" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
-                            <path
-                                d="M19.5303 5.85938V20.3125C19.5303 20.5197 19.448 20.7184 19.3014 20.8649C19.1549 21.0114 18.9562 21.0938 18.749 21.0938H6.24902C6.04182 21.0938 5.84311 21.0114 5.6966 20.8649C5.55008 20.7184 5.46777 20.5197 5.46777 20.3125V5.85938"
-                                stroke="#985394" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
-                        </svg>
+            <div class="box">
+                <button class="remove" onclick="escolher_produto({{ $produto->id }})">
+                    <svg width="25" height="25" viewBox="0 0 25 25" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M21.0928 5.85938L3.90527 5.85938" stroke="#985394" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                        <path d="M10.1562 10.1562V16.4062" stroke="#985394" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                        <path d="M14.8438 10.1562V16.4062" stroke="#985394" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                        <path d="M8.59375 1.95312H16.4062" stroke="#985394" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                        <path
+                            d="M19.5303 5.85938V20.3125C19.5303 20.5197 19.448 20.7184 19.3014 20.8649C19.1549 21.0114 18.9562 21.0938 18.749 21.0938H6.24902C6.04182 21.0938 5.84311 21.0114 5.6966 20.8649C5.55008 20.7184 5.46777 20.5197 5.46777 20.3125V5.85938"
+                            stroke="#985394" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                    </svg>
 
-                    </button>
+                </button>
 
-                    <picture>
-                        <img src="{{$produto->imagem_1}}" alt="imagem representativa">
-                    </picture>
+                <picture>
+                    <img src="{{$produto->imagem_1}}" alt="imagem representativa">
+                </picture>
 
 
 
-                    <span>
-                        <strong>{{$produto->nome}}</strong>
-                        <p>{{mb_strimwidth($produto->descricao, 0, 75, "...")}}</p>
+                <span>
+                    <strong>{{$produto->nome}}</strong>
+                    <p>{{mb_strimwidth($produto->descricao, 0, 75, "...")}}</p>
 
-                        <main>
-                            <div>
-                                <strong>Teor alcóolico</strong>
-                                <p>{{$produto->teor_alcoolico}}%</p>
-                            </div>
+                    <main>
+                        <div>
+                            <strong>Teor alcóolico</strong>
+                            <p>{{$produto->teor_alcoolico}}%</p>
+                        </div>
 
-                            <div>
-                                <strong>Valor Calórico</strong>
-                                <p>{{$produto->calorias}} cal.</p>
-                            </div>
+                        <div>
+                            <strong>Valor Calórico</strong>
+                            <p>{{$produto->calorias}} cal.</p>
+                        </div>
 
-                            <div>
-                                <strong>Nota</strong>
+                        <div>
+                            <strong>Nota</strong>
 
-                                <div class="stars">
-                                    @for ($i = 0; $i < $produto->nota; $i++)
-                                        <img src="{{ asset('site/assets/img/icon_star.svg') }}" alt="estrela de nota">
+                            <div class="stars">
+                                @for ($i = 0; $i < $produto->nota; $i++)
+                                    <img src="{{ asset('site/assets/img/icon_star.svg') }}" alt="estrela de nota">
                                     @endfor
-                                </div>
                             </div>
-                        </main>
-                    </span>
-                </div>
+                        </div>
+                    </main>
+                </span>
+            </div>
             @endforeach
 
         </div>
