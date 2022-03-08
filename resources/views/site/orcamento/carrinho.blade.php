@@ -3,9 +3,9 @@
 @section("body_attr", "id=orcamento-carrinho")
 
 @php
-    use App\Models\OrcamentoProdutosIngredientes;
-    use App\Models\MarcaIngrediente;
-    use App\Models\Produto;
+use App\Models\OrcamentoProdutosIngredientes;
+use App\Models\MarcaIngrediente;
+use App\Models\Produto;
 @endphp
 
 @section('content')
@@ -280,157 +280,160 @@
                     <tbody>
 
                         @foreach($produtos as $produto)
-                            @php
-                                $total = 0;
-                            @endphp
-                            
-                            <div class="up" hide style="">
-                                <div fluid>
-                                    <div class="niv">
-                                        <main>
-                                            <h2>Vamos dar<br> um up? 🍹</h2>
+                        @php
+                        $total = 0;
+                        @endphp
 
+                        <div class="up" hide style="">
+                            <div fluid>
+                                <div class="niv">
+                                    <main>
+                                        <h2>Vamos dar<br> um up? 🍹</h2>
+
+                                        @php
+                                        $produto_info = Produto::where("id", $produto->produto_id)->first();
+
+                                        $ingredientes = OrcamentoProdutosIngredientes::where("orcamentoproduto_id", $produto->id)
+                                        ->join('ingredientes', 'ingrediente_id', 'ingredientes.id')
+                                        ->get();
+
+                                        // $total_drink = OrcamentoProdutosIngredientes::where("orcamentoproduto_id", $produto->id)
+                                        // ->join('marcas', 'marca_id', 'marcas.id')
+                                        // ->sum('valor');
+                                        // dd($total_drink);
+                                        @endphp
+
+                                        @foreach($ingredientes as $ingrediente)
+
+                                        <div class="drinks {{ $ingrediente->nome }}">
                                             @php
-                                                $produto_info = Produto::where("id", $produto->produto_id)->first();
-
-                                                $ingredientes = OrcamentoProdutosIngredientes::where("orcamentoproduto_id", $produto->id)
-                                                ->join('ingredientes', 'ingrediente_id', 'ingredientes.id')
-                                                ->get();
-
-                                                // $total_drink = OrcamentoProdutosIngredientes::where("orcamentoproduto_id", $produto->id)
-                                                // ->join('marcas', 'marca_id', 'marcas.id')
-                                                // ->sum('valor');
-                                                // dd($total_drink);
+                                            $marcas = MarcaIngrediente::where("ingrediente_id", $ingrediente->id)
+                                            ->join('marcas', 'marca_id', 'marcas.id')
+                                            ->get();
                                             @endphp
-                            
-                                            @foreach($ingredientes as $ingrediente)
 
-                                                <div class="drinks {{ $ingrediente->nome }}">
-                                                    @php
-                                                        $marcas = MarcaIngrediente::where("ingrediente_id", $ingrediente->id)
-                                                        ->join('marcas', 'marca_id', 'marcas.id')
-                                                        ->get();
-                                                    @endphp
-                                                    
-                                                    @foreach($marcas as $marca)
-                                                        
-                                                        <div class="box">
-                                    
-                                                            <picture>
-                                                                <img src="{{ $marca->imagem }}" alt="bebida representativa">
-                                                            </picture>
-                                    
-                                                            <strong>{{ $marca->nome }}</strong>
-                                    
-                                                            <input class="marca" mid="{{ $marca->id }}" onclick="altera_ingrediente({{ $marca->id }}, {{ $ingrediente->id }}, {{ $produto->id }}, '{{ $ingrediente->nome }}')" type="checkbox" name="slide" @if($marca->id == $ingrediente->marca_id) checked disabled @endif>
+                                            @foreach($marcas as $marca)
 
-                                                            @if($marca->id == $ingrediente->marca_id) 
-                                                                @php
-                                                                    $total = $total + ($marca->valor * $produto->qtd);
-                                                                @endphp
-                                                            @endif
-                                    
-                                                            <p>R$ {{ $marca->valor }}</p>
-                                                        </div>
-                                                    @endforeach
-                                                </div>
+                                            <div class="box">
+
+                                                <picture>
+                                                    <img src="{{ $marca->imagem }}" alt="bebida representativa">
+                                                </picture>
+
+                                                <strong>{{ $marca->nome }}</strong>
+
+                                                <input class="marca" mid="{{ $marca->id }}"
+                                                    onclick="altera_ingrediente({{ $marca->id }}, {{ $ingrediente->id }}, {{ $produto->id }}, '{{ $ingrediente->nome }}')" type="checkbox" name="slide"
+                                                    @if($marca->id == $ingrediente->marca_id) checked disabled @endif>
+
+                                                @if($marca->id == $ingrediente->marca_id)
+                                                @php
+                                                $total = $total + ($marca->valor * $produto->qtd);
+                                                @endphp
+                                                @endif
+
+                                                <p>R$ {{ $marca->valor }}</p>
+                                            </div>
                                             @endforeach
-                            
-                                            {{-- <div class="frutas">
-                                                <strong>
-                                                    Veja as frutas combina com seu upgrade
-                                                </strong>
-                            
-                                                <div class="boxes">
-                                                    <div class="box">
-                                                        <picture>
-                                                            <img src="{{ asset('site/assets/img/fruta_1.png') }}" alt="imagem representativa">
-                                                        </picture>
-                            
-                                                        <span>Morango</span>
-                            
-                                                        <input type="checkbox">
-                                                    </div>
-                                                </div>
-                                            </div> --}}
-                            
-                            
-                                            {{-- <div class="adicionais">
-                                                <strong>
-                                                    Adicionais
-                                                </strong>
-                            
-                                                <div class="boxes">
-                                                    <div class="box">
-                                                        <picture>
-                                                            <img src="{{ asset('site/assets/img/gelo_1.png') }}" alt="imagem representativa">
-                                                        </picture>
-                            
-                                                        <span>Gelo</span>
-                            
-                                                        <input type="checkbox">
-                                                    </div>
-                                                </div>
-                                            </div> --}}
-                                        </main>
-                            
-                                        <button>
-                                            Quero dar um upgrade
-                                        </button>
-                            
-                            
-                                        <div class="close">
-                                            <img src="{{ asset('site/assets/img/close_icon_modal.svg') }}" alt="ícone de fechar">
                                         </div>
+                                        @endforeach
+
+                                        {{-- <div class="frutas">
+                                            <strong>
+                                                Veja as frutas combina com seu upgrade
+                                            </strong>
+
+                                            <div class="boxes">
+                                                <div class="box">
+                                                    <picture>
+                                                        <img src="{{ asset('site/assets/img/fruta_1.png') }}" alt="imagem representativa">
+                                                    </picture>
+
+                                                    <span>Morango</span>
+
+                                                    <input type="checkbox">
+                                                </div>
+                                            </div>
+                                        </div> --}}
+
+
+                                        {{-- <div class="adicionais">
+                                            <strong>
+                                                Adicionais
+                                            </strong>
+
+                                            <div class="boxes">
+                                                <div class="box">
+                                                    <picture>
+                                                        <img src="{{ asset('site/assets/img/gelo_1.png') }}" alt="imagem representativa">
+                                                    </picture>
+
+                                                    <span>Gelo</span>
+
+                                                    <input type="checkbox">
+                                                </div>
+                                            </div>
+                                        </div> --}}
+                                    </main>
+
+                                    <button>
+                                        Quero dar um upgrade
+                                    </button>
+
+
+                                    <div class="close">
+                                        <img src="{{ asset('site/assets/img/close_icon_modal.svg') }}" alt="ícone de fechar">
                                     </div>
                                 </div>
                             </div>
+                        </div>
 
-                            <tr>
-                                <td>
-                                    <button class="remover-produto" onclick="escolher_produto({{ $produto->id }})">
-                                        <picture>
-                                            <img src="{{ asset('site/assets/img/icon_remove.svg') }}" alt="Remover ícone">
-                                        </picture>
-                                    </button>
-                                </td>
-
-                                <td>
-                                    <picture class="foto-produto">
-                                        <img src="{{$produto_info->imagem_1}}" alt="imagem representativa">
+                        <tr>
+                            <td>
+                                <button class="remover-produto" onclick="escolher_produto({{ $produto->id }})">
+                                    <picture>
+                                        <img src="{{ asset('site/assets/img/icon_remove.svg') }}" alt="Remover ícone">
                                     </picture>
-                                </td>
+                                </button>
+                            </td>
 
-                                <td>
-                                    <strong class="nome-produto">
-                                        {{$produto_info->nome}}
-                                    </strong>
-                                </td>
+                            <td>
+                                <picture class="foto-produto">
+                                    <img src="{{$produto_info->imagem_1}}" alt="imagem representativa">
+                                </picture>
+                            </td>
 
-                                <td>
-                                    <p class="descricao-produto">
-                                        {{mb_strimwidth($produto_info->descricao, 0, 55, "...")}}
-                                    </p>
-                                </td>
+                            <td>
+                                <strong class="nome-produto">
+                                    {{$produto_info->nome}}
+                                </strong>
+                            </td>
 
-                                <td>
-                                    <input value="{{ $produto->qtd }}" onblur="alterar_qtd_produto({{ $produto_info->id }}, {{ session()->get("orcamento") }}, this.value)" type="tel" placeholder="Digite a quantidade" name="quantidade-produto">
-                                </td>
+                            <td>
+                                <p class="descricao-produto">
+                                    {{mb_strimwidth($produto_info->descricao, 0, 55, "...")}}
+                                </p>
+                            </td>
 
-                                {{-- <td>
-                                    <strong class="total-produto">
-                                        R$ {{ number_format($total_drink,2,",",".") }}
-                                    </strong>
-                                </td> --}}
+                            <td>
+                                <input value="{{ $produto->qtd }}" onblur="alterar_qtd_produto({{ $produto_info->id }}, {{ session()->get(" orcamento") }}, this.value)" type="tel"
+                                    placeholder="Quantidade" name="quantidade-produto">
+                            </td>
 
-                                <td>
-                                    <button class="upgrade-produto">
-                                        <picture>
-                                            <img src="{{ asset('site/assets/img/upgrade_button.svg') }}" alt="ícone de upgrade">
-                                        </picture>
-                                    </button>
-                                </td>
-                            </tr>
+                            {{-- <td>
+                                <strong class="total-produto">
+                                    R$ {{ number_format($total_drink,2,",",".") }}
+                                </strong>
+                            </td> --}}
+
+                            <td>
+                                <button class="upgrade-produto">
+                                    <picture>
+                                        <img src="{{ asset('site/assets/img/upgrade_button.svg') }}" alt="ícone de upgrade">
+                                    </picture>
+                                </button>
+                            </td>
+                        </tr>
                         @endforeach
 
                         <tr>
@@ -442,7 +445,7 @@
                             <td>
                                 <strong class="total-produto">
                                     @php
-                                        session()->put(["total_orcamento_produtos" => $total]);
+                                    session()->put(["total_orcamento_produtos" => $total]);
                                     @endphp
                                     R$ {{ $total }}
                                 </strong>
