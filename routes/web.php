@@ -14,7 +14,7 @@ Route::get('/coqueteis', [\App\Http\Controllers\SiteController::class, 'coquetei
 Route::get('/coqueteis/detalhes/{produto}', [\App\Http\Controllers\SiteController::class, 'coquetel'])->name("site.coquetel");
 
 Route::get('/orcamento/identificacao', [\App\Http\Controllers\OrcamentoController::class, 'orcamentoID'])->name("site.orcamento.id");
-Route::post('/orcamento/evento', [\App\Http\Controllers\OrcamentoController::class, 'orcamentoEVENTO'])->name("site.orcamento.evento");
+Route::match(['get', 'post'], '/orcamento/evento', [\App\Http\Controllers\OrcamentoController::class, 'orcamentoEVENTO'])->name("site.orcamento.evento");
 Route::post('/orcamento/informacoes', [\App\Http\Controllers\OrcamentoController::class, 'orcamentoINFO'])->name("site.orcamento.informacoes");
 Route::post('/orcamento/cadastro_lead', [\App\Http\Controllers\OrcamentoController::class, 'orcamentoCadastroLead'])->name("site.orcamento.cadastro");
 

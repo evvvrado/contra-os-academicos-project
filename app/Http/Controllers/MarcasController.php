@@ -140,7 +140,7 @@ class MarcasController extends Controller
         $valor = str_replace(",", ".", $request->preco);
 
         Marca::where('id', $request->id_marca)
-        ->update(['nome' => $request->nome, 'padrao' => $request->padrao, 'valor' => $valor, 'qtd' => $request->qtd, 'qtd_pacote' => $request->qtd_pacote, 'unidade_medida' => $request->unidade_medida, 'nome_pacote' => $request->nome_pacote]);
+        ->update(['nome' => $request->nome, 'valor' => $valor, 'qtd' => $request->qtd, 'qtd_pacote' => $request->qtd_pacote, 'unidade_medida' => $request->unidade_medida, 'nome_pacote' => $request->nome_pacote]);
         
         toastr()->success("Marca salva com sucesso!");
         

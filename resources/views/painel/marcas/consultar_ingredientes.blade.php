@@ -115,15 +115,6 @@ Produtos / <a style="color: unset" href="#">Marcas</a>
                                 <input id="nome_existente" required name="nome" type="text" class="form-control">
                             </div>
 
-                            <div class="form-group col-6 col-lg-6 mt-3">
-                                <label>Padrão</label>
-                                <select id="padrao_existente" class="form-control" required name="padrao" required>
-                                    <option value="">Selecione</option>
-                                    <option value="Sim">Sim</option>
-                                    <option value="Não">Não</option>
-                                </select>
-                            </div>
-
                             <div class="form-group col-6 col-lg-4 mt-3">
                                 <label>Quantidade por produto</label>
                                 <input required name="qtd" id="qtd_existente" type="text" class="form-control">

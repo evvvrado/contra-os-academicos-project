@@ -150,7 +150,6 @@ Parametros
                                                             <optgroup label="{{$ingrediente_cat->nome}}">
                                                                 @php
                                                                     $ingredientes = Ingrediente::where('cat_id', $ingrediente_cat->id)
-                                                                    wherein()
                                                                     ->get();
                                                                 @endphp
                                                                     @foreach($ingredientes as $ingrediente)

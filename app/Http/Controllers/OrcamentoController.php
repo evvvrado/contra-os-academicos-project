@@ -32,19 +32,44 @@ class OrcamentoController extends Controller
         if (session()->get("cliente")) {
             $lead = Lead::where("id", session()->get("cliente")["id"])->first();
 
-            if($lead){ $lead->delete(); }
+            if(!$lead->orcamento)
+            {
+                if($lead){ $lead->delete(); }
 
-            $lead = new Lead;
-            $lead->nome = $request->nome;
-            $lead->email = $request->email;
-            $lead->senha = '123';
-            $lead->telefone = $request->telefone;
+                $lead = new Lead;
+                $lead->nome = $request->nome;
+                $lead->email = $request->email;
+                $lead->senha = '123';
+                $lead->telefone = $request->telefone;
 
-            $lead->save();
+                $lead->save();
 
-            session()->put(["cliente" => $lead->toArray()]);
+                session()->put(["cliente" => $lead->toArray()]);
 
-            return view("site.orcamento.evento", ["lead" => $lead]);
+                return view("site.orcamento.evento", ["lead" => $lead]);
+            }
+            else {
+                if($request->email == $lead->email) {
+                    session()->put(["cliente" => $lead->toArray()]);
+
+                    return view("site.orcamento.evento", ["lead" => $lead]);
+                } 
+                else {
+                    $lead = new Lead;
+                    $lead->nome = $request->nome;
+                    $lead->email = $request->email;
+                    $lead->senha = '123';
+                    $lead->telefone = $request->telefone;
+
+                    $lead->save();
+
+                    session()->put(["cliente" => $lead->toArray()]);
+
+                    return view("site.orcamento.evento", ["lead" => $lead]);
+                }
+                
+            }
+                
         } else {
             $verifica_lead = Lead::where("email", $request->email)->first();
             if ($verifica_lead) {
@@ -111,7 +136,7 @@ class OrcamentoController extends Controller
         session()->put(["orcamento" => $orcamento->id]);
 
         $parametro = Parametro::where('id', 3)->first(); 
-        $qtd_drinks = ($request->pessoas / $parametro->valor_1) * $parametro->valor_2;
+        $qtd_drinks = round(($request->pessoas / $parametro->valor_1) * $parametro->valor_2);
         session()->put(["qtd_tipos_drinks" => $qtd_drinks]);
 
         Lead::where('id', $orcamento->lead_id)

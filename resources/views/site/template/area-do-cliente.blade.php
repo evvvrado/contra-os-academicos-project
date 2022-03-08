@@ -21,7 +21,7 @@
 <body id="@yield('id')" class="minha-area">
 
     @php
-    $lead = \App\Models\Lead::find(session()->get('cliente')['id']);
+        $lead = \App\Models\Lead::find(session()->get('cliente')['id']);
     @endphp
 
 

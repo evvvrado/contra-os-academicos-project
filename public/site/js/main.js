@@ -335,9 +335,9 @@ $(document).ready(function () {
         $('div.modal-filtro').toggleAttr('hide');
     })
 
-    $('div.up [fluid] div.close, button.upgrade-produto').click(() => {
-        $('div.up').toggleAttr('hide');
-    })
+    // $('div.up [fluid] div.close, button.upgrade-produto').click(() => {
+    //     $('div.up').toggleAttr('hide');
+    // })
 
     // $('div.super-up [fluid] div.close, body#orcamento-carrinho div.next-step').click(() => {
 
@@ -441,7 +441,7 @@ setInterval(() => {
 
 // ORÇAMENTO
 
-$('section.coqueteis-filtro div.niv div.filtros input[type=range][name=caloria], section.coqueteis-filtro div.niv div.filtros input[type=range][name=teor], section.coqueteis-filtro div.niv div.filtros input[type=checkbox][name=visitado], section.coqueteis-filtro div.niv div.filtros input[type=checkbox][name=lancamento]').change(function () {
+$('section.coqueteis-lista div.niv div.list div.scroll div.box input[type=checkbox], section.coqueteis-filtro div.niv div.filtros input[type=range][name=caloria], section.coqueteis-filtro div.niv div.filtros input[type=range][name=teor], section.coqueteis-filtro div.niv div.filtros input[type=checkbox][name=visitado], section.coqueteis-filtro div.niv div.filtros input[type=checkbox][name=lancamento]').change(function () {
     filtrar();
 })
 

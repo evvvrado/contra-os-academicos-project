@@ -131,16 +131,16 @@
                             @endforeach
                         @endif
 
-                        <div class="box --new">
+                        {{-- <div class="box --new">
                             <form action="{{ route('site.orcamento.evento')}}" method="post">
                                 @csrf
                                 <input type="submit" value="Novo Orçamento">
                                 <input type="hidden" name="email" value="{{ $lead->email }}">
                             </form>
-                        </div>
+                        </div> --}}
 
-                        {{-- <div class="box --new">
-                            <a href="{{ route('site.orcamento.lista')}}" title="Novo orçamento">
+                        <div class="box --new">
+                            <a href="{{ route('site.orcamento.evento')}}" title="Novo orçamento">
                                 <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Capa_1" x="0px" y="0px" viewBox="0 0 490 490"
                                     style="enable-background:new 0 0 490 490;" xml:space="preserve">
                                     <g>
@@ -215,7 +215,7 @@
                                     </g>
                                 </svg>
                             </a>
-                        </div> --}}
+                        </div>
 
 
 
