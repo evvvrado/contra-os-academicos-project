@@ -16,6 +16,9 @@ use App\Models\Parametro;
 use App\Models\Ingrediente;
 use App\Models\Servico;
 use App\Models\MarcaIngrediente;
+use App\Models\OrcamentoServico;
+use App\Models\Noticia;
+use App\Models\Anuncio;
 use DB;
 
 class OrcamentoController extends Controller
@@ -190,7 +193,7 @@ class OrcamentoController extends Controller
         return view("site.orcamento.encerrar");
     }
 
-    public function orcamentoENCERRAR2()
+    public function orcamentoENCERRAR2(Request $request)
     {
         $servicos = Servico::where('incluso', false)->get();
 
@@ -199,13 +202,30 @@ class OrcamentoController extends Controller
 
     public function salvarorcamento(Request $request)
     {
-        // $servicos = Servico::where('incluso', false)->get();
+        $orcamento = Orcamento::find(session()->get("orcamento"));
 
-        // foreach($servicos as $servico) {
-        //     if($request->produto_.$servico->id)
-        // }
+        $dados = $request->all();
+        foreach($dados as $id => $valor){
+            if($valor > 0) {
+                $orcamento_servicos = new OrcamentoServico;
+                $orcamento_servicos->orcamento_id = $orcamento->id;
+                $orcamento_servicos->servico_id = $id;
+                $orcamento_servicos->qtd = $valor;
 
-        return view("site.orcamento.encerrar_2", ["servicos" => $servicos]);
+                $orcamento_servicos->save();
+            }
+        }
+
+        $noticias = Noticia::select(DB::raw("id, preview, titulo, publicacao"))
+        ->orderBy('id', 'Desc')
+        ->limit('3')
+        ->get();
+
+        $produtos = Produto::all();
+
+        $publicidade = Anuncio::first();
+
+        return view("site.index", ["produtos" => $produtos, "noticias" => $noticias, "publicidade" => $publicidade]);
     }
 
     public function escolher_produto($produto) 

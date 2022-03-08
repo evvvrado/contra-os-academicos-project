@@ -17,6 +17,7 @@
         <div class="niv-table">
             <div class="scroll">
                 <form action="{{ route('site.orcamento.salvar_orcamento') }}" method="post">
+                    @csrf
                     <div class="next-step">
                         <h2>Leve sua festa <i>além</i></h2>
                         <p>Continue sua jornada indo pra próxima página</p>
@@ -56,7 +57,7 @@
                                         </td>
 
                                         <td>
-                                            <input value="1" type="tel" placeholder="250" name="servico_{{ $servico->id }}">
+                                            <input value="1" type="number" min="0" step="1" placeholder="250" name="{{ $servico->id }}">
                                         </td>
 
                                         <td>

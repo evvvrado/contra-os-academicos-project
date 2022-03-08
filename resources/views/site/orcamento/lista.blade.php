@@ -4,6 +4,10 @@
 
 @section('content')
 
+@php
+    use App\Models\MarcaIngrediente;
+@endphp
+
 <div class="modal-filtro" hide>
     <div fluid>
         <div class="niv">
@@ -139,11 +143,18 @@
 
                 @foreach($ingredientes_filtro as $ingrediente_filtro)
 
+                @php
+                    $imagem_marca = MarcaIngrediente::where("ingrediente_id", $ingrediente_filtro->id)
+                    ->join('marcas', 'marca_id', 'marcas.id')
+                    ->where('padrao', 'Sim')
+                    ->first();
+                @endphp
+
                     <div class="box" niv-fade>
                         <div>
 
                             <picture>
-                                <img src="{{ $ingrediente_filtro->imagem }}" alt="bebida representativa">
+                                <img src="{{ $imagem_marca->imagem }}" alt="bebida representativa">
                             </picture>
 
                             <strong>{{ $ingrediente_filtro->nome }}</strong>

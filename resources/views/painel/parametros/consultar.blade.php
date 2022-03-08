@@ -149,7 +149,9 @@ Parametros
                                                         @foreach($ingrediente_cats as $ingrediente_cat)
                                                             <optgroup label="{{$ingrediente_cat->nome}}">
                                                                 @php
-                                                                    $ingredientes = Ingrediente::where('cat_id', $ingrediente_cat->id)->get();
+                                                                    $ingredientes = Ingrediente::where('cat_id', $ingrediente_cat->id)
+                                                                    wherein()
+                                                                    ->get();
                                                                 @endphp
                                                                     @foreach($ingredientes as $ingrediente)
                                                                         <option value="{{$ingrediente->id}}">{{$ingrediente->nome}}</option>
