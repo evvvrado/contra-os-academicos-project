@@ -141,14 +141,8 @@ class MarcasController extends Controller
 
         Marca::where('id', $request->id_marca)
         ->update(['nome' => $request->nome, 'valor' => $valor, 'qtd' => $request->qtd, 'qtd_pacote' => $request->qtd_pacote, 'unidade_medida' => $request->unidade_medida, 'nome_pacote' => $request->nome_pacote]);
-        
-        toastr()->success("Marca salva com sucesso!");
-        
-        if($request->tabela == "ingredientes") {
-            return redirect()->route("painel.marcas.ingredientes", ['ingrediente' => $request->id_ingrediente]);
-        } else {
-            $url = "painel.acessorios";
-        }
+
+        dd($request);
         
         if($request->hasFile('imagem')){
             // unlink(public_path('/admin/images/usuarios/'.$usuario->imagem));
@@ -160,6 +154,14 @@ class MarcasController extends Controller
 
         Marca::where('id', $request->id_marca)
         ->update(['imagem' => '/admin/images/marcas/'.$request->id_marca."/".$nome_1]);
+
+        toastr()->success("Marca salva com sucesso!");
+        
+        if($request->tabela == "ingredientes") {
+            return redirect()->route("painel.marcas.ingredientes", ['ingrediente' => $request->id_ingrediente]);
+        } else {
+            $url = "painel.acessorios";
+        }
 
     }
 }
