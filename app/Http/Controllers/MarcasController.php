@@ -141,8 +141,6 @@ class MarcasController extends Controller
 
         Marca::where('id', $request->id_marca)
         ->update(['nome' => $request->nome, 'valor' => $valor, 'qtd' => $request->qtd, 'qtd_pacote' => $request->qtd_pacote, 'unidade_medida' => $request->unidade_medida, 'nome_pacote' => $request->nome_pacote]);
-
-        dd($request);
         
         if($request->hasFile('imagem')){
             // unlink(public_path('/admin/images/usuarios/'.$usuario->imagem));
