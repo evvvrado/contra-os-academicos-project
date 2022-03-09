@@ -150,8 +150,16 @@ class MarcasController extends Controller
             $url = "painel.acessorios";
         }
         
+        if($request->hasFile('imagem')){
+            // unlink(public_path('/admin/images/usuarios/'.$usuario->imagem));
+            $image = $request->file('imagem');
+            $nome_1 = 'imagem.'.$image->getClientOriginalExtension();
+            $destinationPath = public_path('/admin/images/marcas/'.$request->id_marca."/");
+            $image->move($destinationPath, $nome_1);
+        }
 
-       
+        Marca::where('id', $request->id_marca)
+        ->update(['imagem' => '/admin/images/marcas/'.$request->id_marca."/".$nome_1]);
 
     }
 }
