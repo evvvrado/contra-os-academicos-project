@@ -16,14 +16,16 @@ class LeadsController extends Controller
 
     //
     public function consultar_orcamentos(Request $request){
-        $leads = Lead::where('orcamento', true)->get();
+
+        $leads= Orcamento::all();
+
+        // $leads = Lead::where('orcamento', true)->get();
         return view("painel.leads.consultar", ["leads" => $leads]);
     }
 
     //
-    public function listar_orcamentos(Lead $lead){
-        $orcamentos = Orcamento::where('lead_id', $lead->id)->get();
-        $lead = Lead::where('id', $lead->id)->first();
-        return view("painel.leads.consultar_orcamentos", ["orcamentos" => $orcamentos, "lead" => $lead]);
+    public function orcamentoDetalhe(Orcamento $orcamento){
+        $lead = Lead::where('id', $orcamento->lead_id)->first();
+        return view("painel.leads.consultar_orcamentos", ["orcamento" => $orcamento, "lead" => $lead]);
     }
 }

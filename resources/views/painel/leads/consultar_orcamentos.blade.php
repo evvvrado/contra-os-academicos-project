@@ -16,187 +16,241 @@ Orçamentos
 
 
 @section('conteudo')
+<!-- start page title -->
 <div class="row">
-    <div class="col-xl-12">
+    <div class="col-12">
+        <div class="page-title-box d-sm-flex align-items-center justify-content-between">
+            <h4 class="mb-sm-0 font-size-18">Projects Overview</h4>
+
+            <div class="page-title-right">
+                <ol class="breadcrumb m-0">
+                    <li class="breadcrumb-item"><a href="javascript: void(0);">Projects</a></li>
+                    <li class="breadcrumb-item active">Projects Overview</li>
+                </ol>
+            </div>
+
+        </div>
+    </div>
+</div>
+<!-- end page title -->
+
+@php
+    $parteData = explode("-", $orcamento->data);    
+    $dataInvertida = $parteData[2] . "-" . $parteData[1] . "-" . $parteData[0];
+@endphp
+
+<div class="row">
+    <div class="col-lg-12">
         <div class="card">
             <div class="card-body">
-                @if($orcamentos->count() > 0)
-                <!-- Nav tabs -->
-                <ul class="nav nav-pills nav-justified" role="tablist">
-                    @php
-                        $ativo = "active"
-                    @endphp
-                    @foreach($orcamentos as $orcamento)
-                        @php
-                            $parteData = explode("-", $orcamento->data);    
-                            $dataInvertida = $parteData[2] . "-" . $parteData[1] . "-" . $parteData[0];
-                        @endphp
-                        <li class="nav-item waves-effect waves-light">
-                            <a class="nav-link {{ $ativo }}" data-bs-toggle="tab" href="#home-{{ $orcamento->id }}" role="tab">
-                                <span class="d-block d-sm-none"><i class="fas fa-home"></i></span>
-                                <span class="d-none d-sm-block">Orçamento #{{ $orcamento->id }} - ({{ $dataInvertida }})</span> 
-                            </a>
-                        </li>
-                        @php
-                            $ativo = ""
-                        @endphp
-                    @endforeach
-                </ul>
-
-                <!-- Tab panes -->
-                <div class="tab-content p-3 text-muted">
-                    @php
-                        $ativo = "active"
-                    @endphp
-                    @foreach($orcamentos as $orcamento)
-                        <div class="tab-pane {{ $ativo }}" id="home-{{ $orcamento->id }}" role="tabpanel">
-                            <br>
-                            <h5>Dados do Lead</h5>
-                            <hr>
-                            <div style="display: flex; justify-content:space-between; width:90% !important; font-size: 15px; flex-wrap: wrap;">
-                                <div style="width: 100%; display: flex; justify-content:space-between; border-bottom: 1px #e5e5e5 solid; margin-bottom: 10px; padding-bottom: 10px;">
-                                    <div style="width: 32%;">
-                                        <strong>Nome</strong>
-                                    </div>
-    
-                                    <div style="width: 32%;">
-                                        <p style="margin: 0;">{{ $lead->nome }}</p>
-                                    </div>
-    
-                                    <div style="width: 32%;">
-                                        <strong>E-mail</strong>
-                                    </div>
-    
-                                    <div style="width: 32%;">
-                                        <p style="margin: 0;">{{ $lead->email }}</p>
-                                    </div>
-                                </div>
-                                <div style="width: 100%; display: flex; justify-content:space-between;">
-                                    <div style="width: 32%;">
-                                        <strong>Telefone</strong>
-                                    </div>
-    
-                                    <div style="width: 32%;">
-                                        <p style="margin: 0;">{{ $lead->telefone }}</p>
-                                    </div>
-    
-                                    <div style="width: 32%;">
-                                    </div>
-    
-                                    <div style="width: 32%;">
-                                    </div>
-                                </div>
-                            </div>
-
-                            <br><br><br><br>
-
-                            <h5>Dados do Evento</h5>
-                            <hr>
-                            <div style="display: flex; justify-content:space-between; width:90% !important; font-size: 15px; flex-wrap: wrap;">
-                                <div style="width: 100%; display: flex; justify-content:space-between; border-bottom: 1px #e5e5e5 solid; margin-bottom: 10px; padding-bottom: 10px;">
-                                    <div style="width: 32%;">
-                                        <strong>Tipo</strong>
-                                    </div>
-    
-                                    <div style="width: 32%;">
-                                        <p style="margin: 0;">{{ $orcamento->tipo }}</p>
-                                    </div>
-
-                                    <div style="width: 32%;">
-                                        <strong>CEP</strong>
-                                    </div>
-    
-                                    <div style="width: 32%;">
-                                        <p style="margin: 0;">{{ $orcamento->cep }}</p>
-                                    </div>
-                                </div>
-                                <div style="width: 100%; display: flex; justify-content:space-between; border-bottom: 1px #e5e5e5 solid; margin-bottom: 10px; padding-bottom: 10px;">
-                                    <div style="width: 32%;">
-                                        <strong>Data</strong>
-                                    </div>
-    
-                                    <div style="width: 32%;">
-                                        <p style="margin: 0;">
-                                            @php
-                                                $parteData = explode("-", $orcamento->data);    
-                                                $dataInvertida = $parteData[2] . "-" . $parteData[1] . "-" . $parteData[0];
-                                            @endphp
-                                            {{ $dataInvertida }}    
-                                        </p>
-                                    </div>
-
-                                    <div style="width: 32%;">
-                                        <strong>Duração</strong>
-                                    </div>
-    
-                                    <div style="width: 32%;">
-                                        <p style="margin: 0;">{{ $orcamento->duracao }} horas</p>
-                                    </div>                                    
-                                </div>
-                                <div style="width: 100%; display: flex; justify-content:space-between;">
-                                    <div style="width: 32%;">
-                                        <strong>Outras bebidas</strong>
-                                    </div>
-    
-                                    <div style="width: 32%;">
-                                        <p style="margin: 0;">@php
-                                            if($orcamento->outras_bebidas == 1) {
-                                                $outras_bebidas = "Com Alcool";
-                                            }else if ($orcamento->duracao == 2){
-                                                $outras_bebidas = "Sem Alcool";
-                                            } else {
-                                                $outras_bebidas = "Não serão servidos";
-                                            }
-                                        @endphp
-                                        {{ $outras_bebidas }} </p>
-                                    </div>
-    
-                                    <div style="width: 32%;">
-                                        <strong>Quantidade de pessoas</strong>
-                                    </div>
-    
-                                    <div style="width: 32%;">
-                                        <p style="margin: 0;">
-                                            {{ $orcamento->qtd_pessoas }}    
-                                        </p>
-                                    </div>
-                                </div>  
-                            </div>
-
-                            <br><br><br><br> 
-
-                            <h5>Lista de Drinks</h5>
-                            <hr>
-                            <div style="display: flex; justify-content: space-between; flex-wrap: wrap;">
-
-                                @php
-                                    $produtos = Produto::whereIn("id", $orcamento->produtos->pluck("id"))->get();
-                                @endphp
-                
-                                @foreach($produtos as $produto)
-                                    <div class="box" niv-fade style="width: 20%; text-align: center">
-                                        <picture style="width: 100%">
-                                            <img style="width: 60%; height: auto;" src="{{ $produto->imagem_1 }}" alt="imagem representativa">
-                                        </picture>
-                
-                                        <p><strong>{{ $produto->nome }}</strong></p>
-                                    </div>
-                                @endforeach 
-                
-                            </div>
-                        </div>
-                        @php
-                            $ativo = ""
-                        @endphp
-                    @endforeach
+                <div class="media">
+                    <div class="media-body overflow-hidden">
+                        <h5 class="text-truncate font-size-15">Orçamento #{{ $orcamento->id }}</h5>
+                        <p class="text-muted">Desc.</p>
+                    </div>
                 </div>
-                @else 
-                    Não há orçamentos para esse lead.
-                @endif 
+
+                <h5 class="font-size-15 mt-4">Project Details :</h5>
+
+                <p class="text-muted">Desc,</p>
+
+                <div class="text-muted mt-4">
+                    <p><i class="mdi mdi-chevron-right text-primary me-1"></i> Serviço 1</p>
+                    <p><i class="mdi mdi-chevron-right text-primary me-1"></i> Serviço 2.</p>
+                    <p><i class="mdi mdi-chevron-right text-primary me-1"></i> Serviço 3</p>
+                </div>
+                
+                <div class="row task-dates">
+                    <div class="col-sm-4 col-6">
+                        <div class="mt-4">
+                            <h5 class="font-size-14"><i class="bx bx-calendar me-1 text-primary"></i> Data do Evento</h5>
+                            <p class="text-muted mb-0">{{ $dataInvertida }}</p>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
 </div>
+<!-- end row -->
+
+<div class="row">
+    <div class="col-lg-4">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title mb-4">Overview</h4>
+
+                <div id="overview-chart" class="apex-charts" dir="ltr"></div>
+            </div>
+        </div>
+    </div>
+    <!-- end col -->
+
+    <div class="col-lg-4">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title mb-4">Attached Files</h4>
+                <div class="table-responsive">
+                    <table class="table table-nowrap align-middle table-hover mb-0">
+                        <tbody>
+                            <tr>
+                                <td style="width: 45px;">
+                                    <div class="avatar-sm">
+                                        <span class="avatar-title rounded-circle bg-primary bg-soft text-primary font-size-24">
+                                            <i class="bx bxs-file-doc"></i>
+                                        </span>
+                                    </div>
+                                </td>
+                                <td>
+                                    <h5 class="font-size-14 mb-1"><a href="#" class="text-dark">Skote Landing.Zip</a></h5>
+                                    <small>Size : 3.25 MB</small>
+                                </td>
+                                <td>
+                                    <div class="text-center">
+                                        <a href="#" class="text-dark"><i class="bx bx-download h3 m-0"></i></a>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="avatar-sm">
+                                        <span class="avatar-title rounded-circle bg-primary bg-soft text-primary font-size-24">
+                                            <i class="bx bxs-file-doc"></i>
+                                        </span>
+                                    </div>
+                                </td>
+                                <td>
+                                    <h5 class="font-size-14 mb-1"><a href="#" class="text-dark">Skote Admin.Zip</a></h5>
+                                    <small>Size : 3.15 MB</small>
+                                </td>
+                                <td>
+                                    <div class="text-center">
+                                        <a href="#" class="text-dark"><i class="bx bx-download h3 m-0"></i></a>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="avatar-sm">
+                                        <span class="avatar-title rounded-circle bg-primary bg-soft text-primary font-size-24">
+                                            <i class="bx bxs-file-doc"></i>
+                                        </span>
+                                    </div>
+                                </td>
+                                <td>
+                                    <h5 class="font-size-14 mb-1"><a href="#" class="text-dark">Skote Logo.Zip</a></h5>
+                                    <small>Size : 2.02 MB</small>
+                                </td>
+                                <td>
+                                    <div class="text-center">
+                                        <a href="#" class="text-dark"><i class="bx bx-download h3 m-0"></i></a>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="avatar-sm">
+                                        <span class="avatar-title rounded-circle bg-primary bg-soft text-primary font-size-24">
+                                            <i class="bx bxs-file-doc"></i>
+                                        </span>
+                                    </div>
+                                </td>
+                                <td>
+                                    <h5 class="font-size-14"><a href="#" class="text-dark">Veltrix admin.Zip</a></h5>
+                                    <small>Size : 2.25 MB</small>
+                                </td>
+                                <td>
+                                    <div class="text-center">
+                                        <a href="#" class="text-dark"><i class="bx bx-download h3 m-0"></i></a>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- end col -->
+
+    <div class="col-lg-4">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title mb-4">Comments</h4>
+
+                <div class="media mb-4">
+                    <div class="me-3">
+                        <img class="media-object rounded-circle avatar-xs" alt="" src="assets/images/users/avatar-2.jpg">
+                    </div>
+                    <div class="media-body">
+                        <h5 class="font-size-13 mb-1">David Lambert</h5>
+                        <p class="text-muted mb-1">
+                            Separate existence is a myth.
+                        </p>
+                    </div>
+                    <div class="ms-3">
+                        <a href="#" class="text-primary">Reply</a>
+                    </div>
+                </div>
+
+                <div class="media mb-4">
+                    <div class="me-3">
+                        <img class="media-object rounded-circle avatar-xs" alt="" src="assets/images/users/avatar-3.jpg">
+                    </div>
+                    <div class="media-body">
+                        <h5 class="font-size-13 mb-1">Steve Foster</h5>
+                        <p class="text-muted mb-1">
+                            <a href="#" class="text-success">@Henry</a>
+                            To an English person it will like simplified
+                        </p>
+                        <div class="media mt-3">
+                            <div class="avatar-xs me-3">
+                                <span class="avatar-title rounded-circle bg-primary bg-soft text-primary font-size-16">
+                                    J
+                                </span>
+                            </div>
+                            <div class="media-body">
+                                <h5 class="font-size-13 mb-1">Jeffrey Walker</h5>
+                                <p class="text-muted mb-1">
+                                    as a skeptical Cambridge friend
+                                </p>
+                            </div>
+                            <div class="ms-3">
+                                <a href="#" class="text-primary">Reply</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="ms-3">
+                        <a href="#" class="text-primary">Reply</a>
+                    </div>
+                </div>
+
+                <div class="media mb-4">
+                    <div class="avatar-xs me-3">
+                        <span class="avatar-title rounded-circle bg-primary bg-soft text-primary font-size-16">
+                            S
+                        </span>
+                    </div>
+                    <div class="media-body">
+                        <h5 class="font-size-13 mb-1">Steven Carlson</h5>
+                        <p class="text-muted mb-1">
+                            Separate existence is a myth.
+                        </p>
+                    </div>
+                    <div class="ms-3">
+                        <a href="#" class="text-primary">Reply</a>
+                    </div>
+                </div>
+
+                <div class="text-center mt-4 pt-2">
+                    <a href="#" class="btn btn-primary btn-sm">View more</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- end col -->
+</div>
+<!-- end row -->
 @endsection
 
 

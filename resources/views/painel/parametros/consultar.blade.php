@@ -7,6 +7,8 @@
 <link href="{{ asset('admin/libs/select2/css/select2.min.css')}}" rel="stylesheet" type="text/css" />
 <style>
     .form-control{ height:30px;}
+
+    .accordion { margin-bottom: 20px;}
 </style>
 @endsection
 
@@ -166,6 +168,101 @@ Parametros
                                             <div style="text-align: center">
                                                 <input style="width: 40%; margin: auto" type="submit" class="form-control btn btn-primary">
                                             </div>
+
+                                        </div>
+                                        
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+
+                        <div class="accordion" id="accordionExample">
+                            <div class="accordion-item">
+                                <h2 class="accordion-header" id="headingOne">
+                                    <button class="accordion-button fw-medium" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                    Parâmetros 2
+                                    </button>
+                                </h2>
+                                <form action="{{ route('painel.parametros.salvar') }}" method="post">
+                                    @csrf
+                                    <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+                                        <div class="accordion-body">
+
+                                        </div>
+                                        
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+
+                        <div class="accordion" id="accordionExample">
+                            <div class="accordion-item">
+                                <h2 class="accordion-header" id="headingOne">
+                                    <button class="accordion-button fw-medium" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                    Parâmetros 3
+                                    </button>
+                                </h2>
+                                <form action="{{ route('painel.parametros.salvar') }}" method="post">
+                                    @csrf
+                                    <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+                                        <div class="accordion-body">
+
+                                        </div>
+                                        
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+
+                        <div class="accordion" id="accordionExample">
+                            <div class="accordion-item">
+                                <h2 class="accordion-header" id="headingOne">
+                                    <button class="accordion-button fw-medium" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                    Parâmetros 4
+                                    </button>
+                                </h2>
+                                <form action="{{ route('painel.parametros.salvar') }}" method="post">
+                                    @csrf
+                                    <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+                                        <div class="accordion-body">
+
+                                        </div>
+                                        
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+
+                        <div class="accordion" id="accordionExample">
+                            <div class="accordion-item">
+                                <h2 class="accordion-header" id="headingOne">
+                                    <button class="accordion-button fw-medium" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                    Parâmetros 5
+                                    </button>
+                                </h2>
+                                <form action="{{ route('painel.parametros.salvar') }}" method="post">
+                                    @csrf
+                                    <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+                                        <div class="accordion-body">
+
+                                        </div>
+                                        
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+
+                        <div class="accordion" id="accordionExample">
+                            <div class="accordion-item">
+                                <h2 class="accordion-header" id="headingOne">
+                                    <button class="accordion-button fw-medium" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                    Parâmetros 6
+                                    </button>
+                                </h2>
+                                <form action="{{ route('painel.parametros.salvar') }}" method="post">
+                                    @csrf
+                                    <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+                                        <div class="accordion-body">
 
                                         </div>
                                         

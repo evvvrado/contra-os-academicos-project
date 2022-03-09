@@ -154,7 +154,7 @@ Route::middleware(['admin'])->group(function () {
     // ROTAS DE LEADS
     Route::get('/sistema/leads', [\App\Http\Controllers\LeadsController::class, 'consultar_leads'])->name("painel.leads");
     Route::get('/sistema/orcamentos', [\App\Http\Controllers\LeadsController::class, 'consultar_orcamentos'])->name("painel.orcamentos");
-    Route::get('/sistema/leads/orcamentos/{lead}', [\App\Http\Controllers\LeadsController::class, 'listar_orcamentos'])->name("painel.leads.orcamentos");
+    Route::get('/sistema/leads/orcamento/{orcamento}', [\App\Http\Controllers\LeadsController::class, 'orcamentoDetalhe'])->name("painel.leads.orcamento");
 
     // ROTAS DE ATIVIDADE DAS PARAMETROS
     Route::get('/parametros', [\App\Http\Controllers\ParametrosController::class, 'consultar'])->name("painel.parametros");
@@ -185,4 +185,5 @@ Route::middleware(['cliente'])->group(function () {
     Route::post('/minha-area/dados/avatar/alterar', [\App\Http\Controllers\AreaClientesController::class, 'clienteAreaDadosAvatarAlterar'])->name("minha-area.cliente-dados.avatar.alterar");
     Route::post('/minha-area/dados/senha/alterar', [\App\Http\Controllers\AreaClientesController::class, 'clienteAreaDadosSenhaAlterar'])->name("minha-area.cliente-dados.senha.alterar");
     Route::get('/minha-area/deslogar', [\App\Http\Controllers\AreaClientesController::class, 'deslogar'])->name("clienteDeslogar");
+    Route::post('/minha-area/dados/senha/nova_salvar', [\App\Http\Controllers\AreaClientesController::class, 'clienteAreaDadosSenhaNovaSalvar'])->name("minha-area.cliente-dados.nova_senha_salvar");
 });

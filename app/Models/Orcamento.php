@@ -12,4 +12,8 @@ class Orcamento extends Model
     public function produtos(){
         return $this->belongsToMany(Produto::class, 'orcamentoprodutos');
     }
+
+    public function lead(){
+        return $this->belongsTo(Lead::class);
+    }
 }

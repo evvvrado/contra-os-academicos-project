@@ -28,22 +28,24 @@ Orçamentos
                                     <th>Nome</th>
                                     <th>Telefone</th>
                                     <th>E-mail</th>
+                                    <th>Data</th>
                                     <th></th>
                                 </tr>
                             </thead>
                             <tbody>
                                 @foreach ($leads as $lead)
                                 <tr class="odd">
-                                    <td class="sorting_1 dtr-control">{{ $lead->nome }}</td>
-                                    <td class="sorting_1 dtr-control">{{ $lead->telefone }}</td>
-                                    <td class="sorting_1 dtr-control">{{ $lead->email }}</td>
-                                    @if($lead->orcamento == true)
+                                    <td class="sorting_1 dtr-control">{{ $lead->lead->nome }}</td>
+                                    <td class="sorting_1 dtr-control">{{ $lead->lead->telefone }}</td>
+                                    <td class="sorting_1 dtr-control">{{ $lead->lead->email }}</td>
+                                    <td class="sorting_1 dtr-control">{{ $lead->lead->created_at }}</td>
+                                    @if($lead->lead == true)
                                         <td>
-                                            <a class="btn btn-success" href="{{route('painel.leads.orcamentos', ['lead' => $lead])}}" role="button">Orçamentos</a>
+                                            <a class="btn btn-success" href="{{route('painel.leads.orcamento', ['orcamento' => $lead])}}" role="button">Orçamentos</a>
                                         </td>
                                     @else 
                                         <td>
-                                            <a class="btn btn-success" href="{{route('painel.leads.orcamentos', ['lead' => $lead])}}" role="button">Jornada</a>
+                                            <a class="btn btn-success" href="#" role="button">Jornada</a>
                                         </td>
                                     @endif
                                 </tr>

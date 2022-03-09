@@ -16,7 +16,7 @@
     <div class="niv">
         <div class="niv-top">
             <span>
-                <h2>Meu carrinho - Serviços Inclusos</h2>
+                <h2>Meu Carrinho - Serviços Inclusos</h2>
             </span>
         </div>
 
@@ -28,8 +28,8 @@
                         <tr>
                             <th width="206">Nome dos serviços</th>
                             <th width="456">Descrição</th>
-                            <th width="175">Valor</th>
-                            <th width="221">Quantidade</th>
+                            {{-- <th width="175">Valor</th> --}}
+                            <th width="100">Quantidade</th>
                             <th width="210">Total</th>
                         </tr>
                     </thead>
@@ -46,11 +46,11 @@
                                 <p class="descricao-produto">Orçamento de Drinks</p>
                             </td>
 
-                            <td>
+                            {{-- <td>
                                 <strong class="total-produto">
-                                    R$ {{ session()->get("total_orcamento_produtos") }}
+                                    R$ {{ number_format(session()->get("total_orcamento_produtos"), 2, ",", ".") }}
                                 </strong>
-                            </td>
+                            </td> --}}
 
                             <td>
                                 <input value="1" disabled type="tel" placeholder="250" name="quantidade-produto">
@@ -58,149 +58,41 @@
 
                             <td>
                                 <strong class="total-produto">
-                                    R$ {{ session()->get("total_orcamento_produtos") }}
-                                </strong>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <strong class="nome-produto">
-                                    Servico 2
-                                </strong>
-                            </td>
-
-                            <td>
-                                <p class="descricao-produto">Serviço 2</p>
-                            </td>
-
-                            <td>
-                                <strong class="total-produto">
-                                    R$ 0,00
-                                </strong>
-                            </td>
-
-                            <td>
-                                <input value="1" disabled type="tel" placeholder="250" name="quantidade-produto">
-                            </td>
-
-                            <td>
-                                <strong class="total-produto">
-                                    R$ 0,00
+                                    R$ {{ number_format(session()->get("total_orcamento_produtos"), 2, ",", ".") }}
                                 </strong>
                             </td>
                         </tr>
 
-                        <tr>
-                            <td>
-                                <strong class="nome-produto">
-                                    Servico 3
-                                </strong>
-                            </td>
+                        @foreach($servicos as $servico) 
+                            <tr>
+                                <td>
+                                    <strong class="nome-produto">
+                                        {{ $servico->nome }}
+                                    </strong>
+                                </td>
 
-                            <td>
-                                <p class="descricao-produto">Serviço 3</p>
-                            </td>
+                                <td>
+                                    <p class="descricao-produto">{{ $servico->descricao }}</p>
+                                </td>
 
-                            <td>
-                                <strong class="total-produto">
-                                    R$ 0,00
-                                </strong>
-                            </td>
+                                {{-- <td>
+                                    <strong class="total-produto">
+                                        R$ {{ number_format($servico->valor, 2, ",", ".") }}
+                                    </strong>
+                                </td> --}}
 
-                            <td>
-                                <input value="1" disabled type="tel" placeholder="250" name="quantidade-produto">
-                            </td>
+                                <td>
+                                    <input value="1" disabled type="tel" placeholder="250" name="quantidade-produto">
+                                </td>
 
-                            <td>
-                                <strong class="total-produto">
-                                    R$ 0,00
-                                </strong>
-                            </td>
-                        </tr>
+                                <td>
+                                    <strong class="total-produto">
+                                        R$ {{ number_format($servico->valor, 2, ",", ".") }}
+                                    </strong>
+                                </td>
+                            </tr>
+                        @endforeach 
 
-                        <tr>
-                            <td>
-                                <strong class="nome-produto">
-                                    Servico 4
-                                </strong>
-                            </td>
-
-                            <td>
-                                <p class="descricao-produto">Serviço 4</p>
-                            </td>
-
-                            <td>
-                                <strong class="total-produto">
-                                    R$ 0,00
-                                </strong>
-                            </td>
-
-                            <td>
-                                <input value="1" disabled type="tel" placeholder="250" name="quantidade-produto">
-                            </td>
-
-                            <td>
-                                <strong class="total-produto">
-                                    R$ 0,00
-                                </strong>
-                            </td>
-                        </tr>
-
-                        <tr>
-                            <td>
-                                <strong class="nome-produto">
-                                    Serviço 5
-                                </strong>
-                            </td>
-
-                            <td>
-                                <p class="descricao-produto">Serviço 5</p>
-                            </td>
-
-                            <td>
-                                <strong class="total-produto">
-                                    R$ 0,00
-                                </strong>
-                            </td>
-
-                            <td>
-                                <input value="1" disabled type="tel" placeholder="250" name="quantidade-produto">
-                            </td>
-
-                            <td>
-                                <strong class="total-produto">
-                                    R$ 0,00
-                                </strong>
-                            </td>
-                        </tr>
-
-                        <tr>
-                            <td>
-                                <strong class="nome-produto">
-                                    Serviço 6
-                                </strong>
-                            </td>
-
-                            <td>
-                                <p class="descricao-produto">Serviço 6</p>
-                            </td>
-
-                            <td>
-                                <strong class="total-produto">
-                                    R$ 0,00
-                                </strong>
-                            </td>
-
-                            <td>
-                                <input value="1" disabled type="tel" placeholder="250" name="quantidade-produto">
-                            </td>
-
-                            <td>
-                                <strong class="total-produto">
-                                    R$ 0,00
-                                </strong>
-                            </td>
-                        </tr>
                     </tbody>
                 </table>
 

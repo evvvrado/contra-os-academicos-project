@@ -26,7 +26,7 @@ class ServicosController extends Controller
         $valor = str_replace(",", ".", $request->valor);
 
         Servico::where('id', $request->id)
-        ->update(['nome' => $request->nome, 'descricao' => $request->descricao, 'valor' => $valor]);
+        ->update(['nome' => $request->nome, 'descricao' => $request->descricao, 'valor' => $valor, 'incluso' => $request->incluso]);
 
         toastr()->success("Serviço editado com sucesso!");
 
@@ -49,6 +49,7 @@ class ServicosController extends Controller
         $servico->descricao = $request->descricao;
         $valor = str_replace(",", ".", $request->valor);
         $servico->valor = $valor;
+        $servico->incluso = $request->incluso;
         $servico->save();
 
         toastr()->success("Serviço inserido com sucesso!");

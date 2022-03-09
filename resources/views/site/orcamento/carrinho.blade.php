@@ -248,18 +248,18 @@ use App\Models\Parametro;
     <div class="niv">
         <div class="niv-top">
             <span>
-                <h2>Meu Carrinho</h2>
+                <h2>Meu Carrinho - Resumo dos produtos</h2>
 
-                <p>Com base no numero de convidados você pode escolher <i>7 drinks</i></p>
+                <p>Com base no numero de convidados você pode escolher <i>{{ session()->get("qtd_tipos_drinks") }} drinks</i></p>
             </span>
 
-            <button>
+            <a href='{{ route('site.orcamento.lista') }}' style="text-align: center">
                 <picture>
-                    <img src="{{ asset('site/assets/img/add_icon.svg') }}" alt="Adicionar mais drinks">
+                    <img style="margin: auto" src="{{ asset('site/assets/img/add_icon.svg') }}" alt="Adicionar mais drinks">
                 </picture>
 
                 <p>Adicione mais drinks</p>
-            </button>
+            </a>
         </div>
 
 
@@ -315,7 +315,7 @@ use App\Models\Parametro;
 
                                                 @foreach($marcas as $marca)
 
-                                                <div class="box">
+                                                <div class="box caixa{{ $ingrediente->id }}">
 
                                                     <picture>
                                                         <img src="{{ $marca->imagem }}" alt="bebida representativa">
@@ -330,14 +330,14 @@ use App\Models\Parametro;
                                                     @if($marca->id == $ingrediente->marca_id)
                                                         @php
                                                             $parametro = Parametro::where('id', 4)->first();
-                                                            $qtd_total_drinks = ($orcamento->qtd_pessoas * $parametro->valor_2) / $parametro->valor_1;
+                                                            $qtd_total_drinks = Round(($orcamento->qtd_pessoas * $parametro->valor_2) / $parametro->valor_1);
                                                             $qtd_unica = $qtd_total_drinks / $produtos->count();
                                                             
                                                             $total = $total + ($marca->valor * $qtd_unica);
                                                         @endphp
                                                     @endif
 
-                                                    <p>R$ {{ $marca->valor }}</p>
+                                                    <p>R$ {{ number_format($marca->valor, 2, ",", ".") }}</p>
                                                 </div>
                                                 @endforeach
                                             </div>
@@ -395,7 +395,7 @@ use App\Models\Parametro;
 
                             <tr>
                                 <td>
-                                    <button class="remover-produto" onclick="escolher_produto({{ $produto->id }})">
+                                    <button class="remover-produto" onclick="escolher_produto({{ $produto->produto_id }})">
                                         <picture>
                                             <img src="{{ asset('site/assets/img/icon_remove.svg') }}" alt="Remover ícone">
                                         </picture>
@@ -423,8 +423,8 @@ use App\Models\Parametro;
                                 <td>
                                     <input disabled value="{{ $qtd_total_drinks }}" type="tel"
                                         placeholder="Quantidade">
-                                        <input hidden value="{{ $qtd_total_drinks }}" type="tel"
-                                        placeholder="Quantidade" name="quantidade-produto">
+                                    <input hidden value="{{ $qtd_total_drinks }}" type="tel"
+                                    placeholder="Quantidade" name="quantidade-produto">
                                 </td>
 
                                 {{-- <td>
@@ -454,7 +454,7 @@ use App\Models\Parametro;
                                     @php
                                     session()->put(["total_orcamento_produtos" => $total]);
                                     @endphp
-                                    R$ {{ $total }}
+                                    R$ {{ number_format($total, 2, ",", ".") }}
                                 </strong>
                             </td>
                         </tr>
@@ -470,6 +470,25 @@ use App\Models\Parametro;
 
 @section('scripts')
 <script>
+    function escolher_produto(idproduto){
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': jQuery('meta[name="_token"]').attr('content')
+            }
+        });
+
+        $.ajax({
+            type: "GET",
+            url: "/orcamento/escolher_produto/"+idproduto,
+            success: function(ret) {
+                console.log(ret)
+            },
+            error: function(ret) {
+                console.log("Deu muito ruim");
+                console.log(ret);
+            }
+        });
+    }
     
     $('div.up [fluid] div.close, button.upgrade-produto, div.up [fluid] div.niv button').click( function() {
         if(!$('div.up').is('[hide]')){
@@ -499,8 +518,7 @@ use App\Models\Parametro;
             type: "GET",
             url: "/orcamento/ingrediente/"+idmarca+"/"+idingrediente+"/"+orcamentoproduto,
             success: function(ret) {
-                $(".marca").each(function(){
-                    console.log('f')
+                $(".caixa"+idingrediente+" .marca").each(function(){
                     if($(this).attr("mid") != idmarca){
                         $(this).prop("checked", false);
                     } else {

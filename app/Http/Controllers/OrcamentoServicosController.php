@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-class OrcamentoServicos extends Controller
+class OrcamentoServicosController extends Controller
 {
     //
 }

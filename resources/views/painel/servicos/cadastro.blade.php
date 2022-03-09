@@ -42,6 +42,14 @@
                                 <label>Valor</label>
                                 <input id="valor" name="valor" type="text" class="form-control dinheiro">
                             </div>
+
+                            <div class="form-group col-6 col-lg-6 mt-3">
+                                <label>Incluso</label>
+                                <select name="incluso" class="form-control">
+                                    <option value="1">Sim</option>
+                                    <option value="0">Não</option>
+                                </select>
+                            </div>
                         </div>
                     </div>
                     <div class="d-flex flex-wrap gap-2 mt-3">

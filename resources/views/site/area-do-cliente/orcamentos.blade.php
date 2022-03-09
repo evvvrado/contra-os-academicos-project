@@ -58,42 +58,26 @@
                     @endphp
     
                     @if($servicos->count() > 0)
-                        <table class="tabela_export table table-bordered dt-responsive nowrap w-100 dataTable no-footer dtr-inline" role="grid" aria-describedby="datatable_info">
+                        <table style="width: 100%" class="tabela_export table table-bordered dt-responsive nowrap w-100 dataTable no-footer dtr-inline" role="grid" aria-describedby="datatable_info">
                             <thead>
-                                <tr role="row">
+                                <tr role="row" style="text-align: left">
                                     <th>Título</th>
-                                    <th>Telefone</th>
-                                    <th></th>
+                                    <th>Descrição</th>
+                                    <th>Quantidade</th>
+                                    <th>Valor</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach ($leads as $lead)
+                                @foreach ($servicos as $servico)
                                 <tr class="odd">
-                                    <td class="sorting_1 dtr-control">{{ $lead->nome }}</td>
-                                    <td class="sorting_1 dtr-control">{{ $lead->telefone }}</td>
-                                    <td class="sorting_1 dtr-control">{{ $lead->email }}</td>
-                                    @if($lead->orcamento == true)
-                                        <td>
-                                            <a class="btn btn-success" href="{{route('painel.leads.orcamentos', ['lead' => $lead])}}" role="button">Orçamentos</a>
-                                        </td>
-                                    @else 
-                                        <td>
-                                            <a class="btn btn-success" href="{{route('painel.leads.orcamentos', ['lead' => $lead])}}" role="button">Jornada</a>
-                                        </td>
-                                    @endif
+                                    <td class="sorting_1 dtr-control">{{ $servico->nome }}</td>
+                                    <td class="sorting_1 dtr-control">{{ $servico->descricao }}</td>
+                                    <td class="sorting_1 dtr-control">{{ $servico->qtd }}</td>
+                                    <td class="sorting_1 dtr-control">{{ $servico->valor }}</td>
                                 </tr>
                                 @endforeach
                             </tbody>
                         </table>
-                        @foreach($servicos as $servico)
-                            <div class="box" niv-fade style="width: 20%; text-align: center; padding-top: 20px;">
-                                <picture style="width: 100%">
-                                    <h3>{{ $servico->nome }}</h3>
-                                </picture>
-        
-                                <p><strong>{{ $servico->descricao }}</strong></p>
-                            </div>
-                        @endforeach 
                     @else
                         Nenhum serviço encontrado
                     @endif

@@ -21,7 +21,11 @@ class AreaClientesController extends Controller
         $orcamentos = Orcamento::where('lead_id', session()->get("cliente")["id"])->get();
         $lead = Lead::where('id', session()->get("cliente")["id"])->first();
 
-        return view("site.area-do-cliente.pedidos", ["orcamentos" => $orcamentos, 'lead' => $lead]);
+        if(session()->get("primeiro_login") != "Sim") {
+            return redirect()->route("minha-area.cliente-dados", ["orcamentos" => $orcamentos, 'lead' => $lead]);
+        } else {
+            return view("site.area-do-cliente.nova_senha");
+        }
     }
 
     public function clienteAreaPedidos()
@@ -80,6 +84,16 @@ class AreaClientesController extends Controller
             toastr()->error("A senha antiga informada não está correta!");
         }
         return redirect()->back();
+    }
+
+    public function clienteAreaDadosSenhaNovaSalvar(Request $request) 
+    {
+        $usuario = Lead::find(session()->get("cliente")["id"]);
+        $usuario->senha = $request->senha;
+        $usuario->save();
+        
+        session()->put(["primeiro_login" => 'Não']);
+        return redirect()->route("minha-area.cliente");
     }
 
     // public function clienteAreaDadosSenhaAlterar(Request $request)
