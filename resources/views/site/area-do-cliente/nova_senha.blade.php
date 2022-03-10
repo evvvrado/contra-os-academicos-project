@@ -7,6 +7,24 @@
 $cliente = \App\Models\Lead::find(session()->get('cliente')['id']);
 @endphp
 
+@section('styles')
+    @php
+        if(session()->get("primeiro_login") == "Sim") {
+    @endphp
+            <style>
+                body.minha-area .container-fluid {
+                    width: 60% !important;
+                }
+
+                .container-fav {
+                    margin-top: 40px !important;
+                }
+            </style>
+    @php
+        }
+    @endphp 
+@endsection 
+
 <section class="mA_dados">
     <div class="container-fluid">
         <div class="container-fav">

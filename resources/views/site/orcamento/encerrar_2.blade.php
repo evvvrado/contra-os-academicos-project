@@ -57,7 +57,9 @@
                                         </td>
 
                                         <td>
-                                            <input value="1" type="number" min="0" step="1" placeholder="250" name="{{ $servico->id }}">
+                                            <i onClick="remove()" class="fa fa-window-minimize" style="cursor:pointer; margin: 4px;"></i>
+                                            <input value="1" type="number" min="0" step="1" placeholder="250" name="{{ $servico->id }}" id="qtd">
+                                            <i onClick="add()" class="fa fa-plus" style="cursor:pointer; "></i>
                                         </td>
 
                                         <td>
@@ -120,6 +122,24 @@
 
 @section('scripts')
 <script>
+        function add() {
+            var qtd = $("#qtd").val();
+            $("#qtd").val(parseInt(qtd) + parseInt(1));
+        }
+
+        function remove() {
+            var qtd = $("#qtd").val();
+            if(qtd == 0) {
+                $('#qtd').css({border: "1px red solid" });
+
+                setTimeout(() => {
+                    $('#qtd').css({border: "1px #cfdbdd solid" });
+                }, 2000);
+            } else {
+                $("#qtd").val(parseInt(qtd) - parseInt(1));
+            }
+        }
+
     $('section.carrinho div.niv div.niv-send button').click(() =>{
             window.location.href = '/';
         })

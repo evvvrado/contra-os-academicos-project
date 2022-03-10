@@ -254,7 +254,7 @@ class OrcamentoController extends Controller
 
         $dados = $request->all();
         foreach($dados as $id => $valor){
-            if($valor > 0) {
+            if($valor > 0 && $id != "_token") {
                 $orcamento_servicos = new OrcamentoServico;
                 $orcamento_servicos->orcamento_id = $orcamento->id;
                 $orcamento_servicos->servico_id = $id;

@@ -4,35 +4,26 @@
 <!-- DataTables -->
 <link href="{{ asset('admin/libs/datatables.net-bs4/css/dataTables.bootstrap4.min.css') }}" rel="stylesheet" type="text/css" />
 <link href="{{ asset('admin/libs/datatables.net-buttons-bs4/css/buttons.bootstrap4.min.css') }}" rel="stylesheet" type="text/css" />
+
+<style>
+    #dados_evento > div {
+        width: 33% !important;
+    }
+</style>
 @endsection
 
 @php
     use App\Models\Produto;
+    use App\Models\OrcamentoProdutosIngredientes;
+    use App\Models\ProdutosIngrediente;
+    use App\Models\MarcaIngrediente;
 @endphp
 
 @section('titulo')
-Orçamentos
+Leads / Orçamentos
 @endsection
 
-
 @section('conteudo')
-<!-- start page title -->
-<div class="row">
-    <div class="col-12">
-        <div class="page-title-box d-sm-flex align-items-center justify-content-between">
-            <h4 class="mb-sm-0 font-size-18">Projects Overview</h4>
-
-            <div class="page-title-right">
-                <ol class="breadcrumb m-0">
-                    <li class="breadcrumb-item"><a href="javascript: void(0);">Projects</a></li>
-                    <li class="breadcrumb-item active">Projects Overview</li>
-                </ol>
-            </div>
-
-        </div>
-    </div>
-</div>
-<!-- end page title -->
 
 @php
     $parteData = explode("-", $orcamento->data);    
@@ -46,28 +37,127 @@ Orçamentos
                 <div class="media">
                     <div class="media-body overflow-hidden">
                         <h5 class="text-truncate font-size-15">Orçamento #{{ $orcamento->id }}</h5>
-                        <p class="text-muted">Desc.</p>
                     </div>
                 </div>
 
-                <h5 class="font-size-15 mt-4">Project Details :</h5>
+                <h5 class="font-size-15 mt-4">Dados do Lead:</h5>
 
-                <p class="text-muted">Desc,</p>
+                <div style="display: flex; justify-content:space-between; width:75% !important; flex-wrap: wrap;">
+                    <div>
+                        <strong>Nome</strong>
+                        <p class="text-muted">{{ $lead->nome }}</p>
+                    </div>
 
-                <div class="text-muted mt-4">
-                    <p><i class="mdi mdi-chevron-right text-primary me-1"></i> Serviço 1</p>
-                    <p><i class="mdi mdi-chevron-right text-primary me-1"></i> Serviço 2.</p>
-                    <p><i class="mdi mdi-chevron-right text-primary me-1"></i> Serviço 3</p>
+                    <div>
+                        <strong>E-mail</strong>
+                        <p class="text-muted">{{ $lead->email }}</p>
+                    </div>
+
+                    <div>
+                        <strong>Telefone</strong>
+                        <p class="text-muted">{{ $lead->telefone }}</p>
+                    </div>
+                </div>
+
+                <hr>
+                
+                <h5 class="font-size-15 mt-4">Dados do Evento:</h5>
+
+                <div id="dados_evento" style="display: flex; justify-content:space-between; width:100% !important; flex-wrap: wrap;">
+                    <div>
+                        <strong>Tipo</strong>
+                        <p class="text-muted">{{ $orcamento->tipo }}</p>
+                    </div>
+
+                    <div>
+                        <strong>CEP</strong>
+                        <p class="text-muted">{{ $orcamento->cep }}</p>
+                    </div>
+                    
+                    <div>
+                        <strong>Data</strong>
+                        <p class="text-muted">{{ $dataInvertida }}</p>
+                    </div>
+
+                    <div>
+                        <strong>Duração</strong>
+                        <p class="text-muted">{{ $orcamento->duracao }}</p>
+                    </div>
+
+                    <div>
+                        <strong>Outras bebidas</strong>
+                        <p class="text-muted">
+                            @php
+                                if($orcamento->outras_bebidas == 1) {
+                                    $outras_bebidas = "Com Alcool";
+                                } else if ($orcamento->duracao == 2){
+                                    $outras_bebidas = "Sem Alcool";
+                                } else {
+                                    $outras_bebidas = "Não serão servidos";
+                                }
+                            @endphp
+                            {{ $outras_bebidas }}
+                        </p>
+                    </div>
+
+                    <div>
+                        <strong>Quantidade de pessoas</strong>
+                        <p class="text-muted">{{ $orcamento->qtd_pessoas }}</p>
+                    </div>
+                </div>
+
+                <hr>
+
+                <h5 class="font-size-15 mt-4">Serviços:</h5>
+
+                <!-- Nav tabs -->
+                <ul class="nav nav-tabs" role="tablist">
+                    <li class="nav-item">
+                        <a class="nav-link active" data-bs-toggle="tab" href="#sim" role="tab">
+                            <span class="d-block d-sm-none"><i class="fas fa-home"></i></span>
+                            <span class="d-none d-sm-block">Inclusos</span>    
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" data-bs-toggle="tab" href="#nao" role="tab">
+                            <span class="d-block d-sm-none"><i class="far fa-user"></i></span>
+                            <span class="d-none d-sm-block">Não Inclusos</span>    
+                        </a>
+                    </li>
+                </ul>
+
+                <!-- Tab panes -->
+                <div class="tab-content p-3 text-muted">
+                    <div class="tab-pane active" id="sim" role="tabpanel">
+                        <div class="text-muted mt-4" style="max-height: 250px; overflow: auto">
+                            @foreach($servicos_sim as $servico_sim)
+                                <p>
+                                    <i class="mdi mdi-chevron-right text-primary me-1"></i>
+                                    ({{ $servico_sim->qtd }} x) {{ $servico_sim->nome }} (R$ {{ number_format($servico_sim->valor, 2, ",", ".") }})
+                                </p>
+                            @endforeach
+                        </div>
+                    </div>
+                    <div class="tab-pane" id="nao" role="tabpanel">
+                        <div class="text-muted mt-4" style="max-height: 250px; overflow: auto">
+                            @foreach($servicos_nao as $servico_nao)
+                                <p>
+                                    <i class="mdi mdi-chevron-right text-primary me-1"></i>
+                                    ({{ $servico_nao->qtd }} x) {{ $servico_nao->nome }} (R$ {{ number_format($servico_nao->valor, 2, ",", ".") }})
+                                </p>
+                            @endforeach
+                        </div>
+                    </div>
                 </div>
                 
-                <div class="row task-dates">
+                {{-- <div class="row task-dates">
                     <div class="col-sm-4 col-6">
                         <div class="mt-4">
                             <h5 class="font-size-14"><i class="bx bx-calendar me-1 text-primary"></i> Data do Evento</h5>
                             <p class="text-muted mb-0">{{ $dataInvertida }}</p>
                         </div>
                     </div>
-                </div>
+                </div> --}}
             </div>
         </div>
     </div>
@@ -75,7 +165,7 @@ Orçamentos
 <!-- end row -->
 
 <div class="row">
-    <div class="col-lg-4">
+    {{-- <div class="col-lg-4">
         <div class="card">
             <div class="card-body">
                 <h4 class="card-title mb-4">Overview</h4>
@@ -83,88 +173,58 @@ Orçamentos
                 <div id="overview-chart" class="apex-charts" dir="ltr"></div>
             </div>
         </div>
-    </div>
+    </div> --}}
     <!-- end col -->
 
-    <div class="col-lg-4">
+    <div class="col-lg-6">
         <div class="card">
             <div class="card-body">
-                <h4 class="card-title mb-4">Attached Files</h4>
+                <h4 class="card-title mb-4">Produtos</h4>
                 <div class="table-responsive">
                     <table class="table table-nowrap align-middle table-hover mb-0">
                         <tbody>
-                            <tr>
-                                <td style="width: 45px;">
-                                    <div class="avatar-sm">
-                                        <span class="avatar-title rounded-circle bg-primary bg-soft text-primary font-size-24">
-                                            <i class="bx bxs-file-doc"></i>
-                                        </span>
-                                    </div>
-                                </td>
-                                <td>
-                                    <h5 class="font-size-14 mb-1"><a href="#" class="text-dark">Skote Landing.Zip</a></h5>
-                                    <small>Size : 3.25 MB</small>
-                                </td>
-                                <td>
-                                    <div class="text-center">
-                                        <a href="#" class="text-dark"><i class="bx bx-download h3 m-0"></i></a>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <div class="avatar-sm">
-                                        <span class="avatar-title rounded-circle bg-primary bg-soft text-primary font-size-24">
-                                            <i class="bx bxs-file-doc"></i>
-                                        </span>
-                                    </div>
-                                </td>
-                                <td>
-                                    <h5 class="font-size-14 mb-1"><a href="#" class="text-dark">Skote Admin.Zip</a></h5>
-                                    <small>Size : 3.15 MB</small>
-                                </td>
-                                <td>
-                                    <div class="text-center">
-                                        <a href="#" class="text-dark"><i class="bx bx-download h3 m-0"></i></a>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <div class="avatar-sm">
-                                        <span class="avatar-title rounded-circle bg-primary bg-soft text-primary font-size-24">
-                                            <i class="bx bxs-file-doc"></i>
-                                        </span>
-                                    </div>
-                                </td>
-                                <td>
-                                    <h5 class="font-size-14 mb-1"><a href="#" class="text-dark">Skote Logo.Zip</a></h5>
-                                    <small>Size : 2.02 MB</small>
-                                </td>
-                                <td>
-                                    <div class="text-center">
-                                        <a href="#" class="text-dark"><i class="bx bx-download h3 m-0"></i></a>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <div class="avatar-sm">
-                                        <span class="avatar-title rounded-circle bg-primary bg-soft text-primary font-size-24">
-                                            <i class="bx bxs-file-doc"></i>
-                                        </span>
-                                    </div>
-                                </td>
-                                <td>
-                                    <h5 class="font-size-14"><a href="#" class="text-dark">Veltrix admin.Zip</a></h5>
-                                    <small>Size : 2.25 MB</small>
-                                </td>
-                                <td>
-                                    <div class="text-center">
-                                        <a href="#" class="text-dark"><i class="bx bx-download h3 m-0"></i></a>
-                                    </div>
-                                </td>
-                            </tr>
+                            @php
+                                dd($orcamentoprodutos->ingredientes)
+                            @endphp
+                            @foreach($orcamentoprodutos as $orcamentoproduto)
+                                <tr>
+                                    <td style="width: 45px; height: auto">
+                                        <div class="avatar-sm">
+                                            <span>
+                                                <img style="width: 48px;" src="{{$orcamentoproduto->imagem_1}}">
+                                            </span>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <h5 class="font-size-14 mb-1"><a href="#" class="text-dark">{{  $orcamentoproduto->nome }}</h5>
+
+                                        @foreach($orcamentoproduto->ingredientes as $ingrediente)
+                                            @php
+                                                $marca_padrao = MarcaIngrediente::where('ingrediente_id', $ingrediente->id)
+                                                ->where('padrao', 'Sim')
+                                                ->join('marcas', 'marcas.id', 'marcas_ingredientes.marca_id')
+                                                ->first();
+
+                                                $marca = OrcamentoProdutosIngredientes::where('ingrediente_id', $ingrediente->id)
+                                                ->where('orcamentoproduto_id', $orcamentoproduto->produto_id)
+                                                ->where('padrao', 'Sim')
+                                                ->join('marcas', 'marcas.id', 'orcamento_produtos_ingredientes.marca_id')
+                                                ->first();
+
+                                                if($marca == null){
+                                                    dd( $orcamentoproduto->id);
+                                                }
+                                            @endphp
+
+                                            @if($marca_padrao->marca_id == $marca->marca_id)
+                                                <small>- {{ $ingrediente->nome }} ({{ $marca_padrao->nome }})</small> <br>
+                                            @else 
+                                                <small>- {{ $ingrediente->nome }} <del>({{ $marca_padrao->nome }})</del> ({{ $marca->nome }})</small> <br>
+                                            @endif
+                                        @endforeach
+                                    </td>
+                                </tr>
+                            @endforeach
                         </tbody>
                     </table>
                 </div>
@@ -173,78 +233,10 @@ Orçamentos
     </div>
     <!-- end col -->
 
-    <div class="col-lg-4">
+    <div class="col-lg-6">
         <div class="card">
             <div class="card-body">
-                <h4 class="card-title mb-4">Comments</h4>
-
-                <div class="media mb-4">
-                    <div class="me-3">
-                        <img class="media-object rounded-circle avatar-xs" alt="" src="assets/images/users/avatar-2.jpg">
-                    </div>
-                    <div class="media-body">
-                        <h5 class="font-size-13 mb-1">David Lambert</h5>
-                        <p class="text-muted mb-1">
-                            Separate existence is a myth.
-                        </p>
-                    </div>
-                    <div class="ms-3">
-                        <a href="#" class="text-primary">Reply</a>
-                    </div>
-                </div>
-
-                <div class="media mb-4">
-                    <div class="me-3">
-                        <img class="media-object rounded-circle avatar-xs" alt="" src="assets/images/users/avatar-3.jpg">
-                    </div>
-                    <div class="media-body">
-                        <h5 class="font-size-13 mb-1">Steve Foster</h5>
-                        <p class="text-muted mb-1">
-                            <a href="#" class="text-success">@Henry</a>
-                            To an English person it will like simplified
-                        </p>
-                        <div class="media mt-3">
-                            <div class="avatar-xs me-3">
-                                <span class="avatar-title rounded-circle bg-primary bg-soft text-primary font-size-16">
-                                    J
-                                </span>
-                            </div>
-                            <div class="media-body">
-                                <h5 class="font-size-13 mb-1">Jeffrey Walker</h5>
-                                <p class="text-muted mb-1">
-                                    as a skeptical Cambridge friend
-                                </p>
-                            </div>
-                            <div class="ms-3">
-                                <a href="#" class="text-primary">Reply</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="ms-3">
-                        <a href="#" class="text-primary">Reply</a>
-                    </div>
-                </div>
-
-                <div class="media mb-4">
-                    <div class="avatar-xs me-3">
-                        <span class="avatar-title rounded-circle bg-primary bg-soft text-primary font-size-16">
-                            S
-                        </span>
-                    </div>
-                    <div class="media-body">
-                        <h5 class="font-size-13 mb-1">Steven Carlson</h5>
-                        <p class="text-muted mb-1">
-                            Separate existence is a myth.
-                        </p>
-                    </div>
-                    <div class="ms-3">
-                        <a href="#" class="text-primary">Reply</a>
-                    </div>
-                </div>
-
-                <div class="text-center mt-4 pt-2">
-                    <a href="#" class="btn btn-primary btn-sm">View more</a>
-                </div>
+                <h4 class="card-title mb-4">-</h4>
             </div>
         </div>
     </div>
