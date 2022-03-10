@@ -183,22 +183,22 @@ Leads / Orçamentos
                 <div class="table-responsive">
                     <table class="table table-nowrap align-middle table-hover mb-0">
                         <tbody>
-                            @php
-                                dd($orcamentoprodutos->ingredientes)
-                            @endphp
                             @foreach($orcamentoprodutos as $orcamentoproduto)
+                                @php
+                                    $produto = Produto::where('id', $orcamentoproduto->produto_id)->first();
+                                @endphp
                                 <tr>
                                     <td style="width: 45px; height: auto">
                                         <div class="avatar-sm">
                                             <span>
-                                                <img style="width: 48px;" src="{{$orcamentoproduto->imagem_1}}">
+                                                <img style="width: 48px;" src="{{$produto->imagem_1}}">
                                             </span>
                                         </div>
                                     </td>
                                     <td>
-                                        <h5 class="font-size-14 mb-1"><a href="#" class="text-dark">{{  $orcamentoproduto->nome }}</h5>
+                                        <h5 class="font-size-14 mb-1"><a href="#" class="text-dark">{{  $produto->nome }}</h5>
 
-                                        @foreach($orcamentoproduto->ingredientes as $ingrediente)
+                                        @foreach($produto->ingredientes as $ingrediente)
                                             @php
                                                 $marca_padrao = MarcaIngrediente::where('ingrediente_id', $ingrediente->id)
                                                 ->where('padrao', 'Sim')
@@ -206,14 +206,9 @@ Leads / Orçamentos
                                                 ->first();
 
                                                 $marca = OrcamentoProdutosIngredientes::where('ingrediente_id', $ingrediente->id)
-                                                ->where('orcamentoproduto_id', $orcamentoproduto->produto_id)
-                                                ->where('padrao', 'Sim')
+                                                ->where('orcamentoproduto_id', $orcamentoproduto->id)
                                                 ->join('marcas', 'marcas.id', 'orcamento_produtos_ingredientes.marca_id')
                                                 ->first();
-
-                                                if($marca == null){
-                                                    dd( $orcamentoproduto->id);
-                                                }
                                             @endphp
 
                                             @if($marca_padrao->marca_id == $marca->marca_id)
