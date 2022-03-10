@@ -619,7 +619,7 @@ section.conte {
 }
 
 section.carrinho {
-    padding-top: 25.6rem;
+    padding-top: 15.6rem;
     padding-bottom: 29rem;
 
     div.niv {
@@ -764,6 +764,15 @@ section.carrinho {
                                     color: $grey;
                                 }
                                 text-align: center;
+                            }
+
+                            transition: 0.32s;
+
+                            &[hide] {
+                                opacity: 0;
+                                height: 0;
+                                padding: 0;
+                                margin: 0;
                             }
                         }
                     }
@@ -1599,7 +1608,6 @@ body#orcamento-lista {
                         font-weight: bold;
                         font-style: normal;
                         position: relative;
-
                         &::after {
                             height: 1.2rem;
                             width: 12.6rem;
@@ -1640,11 +1648,11 @@ body#orcamento-lista {
                         font-family: "Inter";
                         font-style: normal;
                         font-weight: 600;
-                        font-size: 3.2rem;
+                        font-size: 3.7rem;
                         line-height: 120%;
                         /* or 38px */
 
-                        color: $grey;
+                        color: $main-orange;
 
                         position: relative;
 
@@ -2463,6 +2471,7 @@ body#orcamento-carrinho {
 
         position: fixed;
         bottom: 0;
+        left: 0;
 
         z-index: 6;
 

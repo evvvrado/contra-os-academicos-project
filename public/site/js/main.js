@@ -59,52 +59,52 @@ $(document).scroll(() => {
 var empty;
 
 (function ($) {
-    $.fn.showModal = function () {
-        $(this).attr('show', '');
+  $.fn.showModal = function () {
+    $(this).attr('show', '');
 
-        return this;
-    }
+    return this;
+  }
 
 
-    $.fn.hideModal = function () {
-        $(this).removeAttr('show');
-        return this;
-    }
+  $.fn.hideModal = function () {
+    $(this).removeAttr('show');
+    return this;
+  }
 
 })(jQuery);
 
 $('.modal .close-modal').click(function () {
-    $($(this).closest('.modal')).hideModal()
+  $($(this).closest('.modal')).hideModal()
 })
 
 
 $('.modal button.cancel').click(function () {
-    $($(this).closest('.modal')).hideModal()
+  $($(this).closest('.modal')).hideModal()
 })
 // NIV-FADE
 
 $(document).ready(() => {
-    $("section.hero div.niv div.niv-text[niv-fade], section.hero div.niv div.niv-form[niv-fade], section.coqueteis-lista div.niv div.list div.scroll div.box[niv-fade]").removeAttr("niv-fade");
+  $("section.hero div.niv div.niv-text[niv-fade], section.hero div.niv div.niv-form[niv-fade], section.coqueteis-lista div.niv div.list div.scroll div.box[niv-fade]").removeAttr("niv-fade");
 
-    $(".backdrop").animate(
-        {
-            opacity: 0,
-        },
-        3000
-    );
+  $(".backdrop").animate(
+    {
+      opacity: 0,
+    },
+    3000
+  );
 
-    var i = 0;
-    $(document).scroll(() => {
-        $("[niv-fade]").each(function () {
-            if (
-                $(document).scrollTop() >=
-                $(this).closest("div.niv").offset().top -
-                ($(window).height() * 3) / 4
-            ) {
-                $(this).removeAttr("niv-fade");
-            }
-        });
-    })
+  var i = 0;
+  $(document).scroll(() => {
+    $("[niv-fade]").each(function () {
+      if (
+        $(document).scrollTop() >=
+        $(this).closest("div.niv").offset().top -
+        ($(window).height() * 3) / 4
+      ) {
+        $(this).removeAttr("niv-fade");
+      }
+    });
+  })
 })
 
 
@@ -118,13 +118,13 @@ $(document).ready(() => {
 
 $(document).ready(() => {
 
-    // SET
-    $('[niv-follow]').each(function () {
-        var min = $(this).attr('niv-follow').split('-')[0];
-        var max = $(this).attr('niv-follow').split('-')[1];
+  // SET
+  $('[niv-follow]').each(function () {
+    var min = $(this).attr('niv-follow').split('-')[0];
+    var max = $(this).attr('niv-follow').split('-')[1];
 
-        $(this).css('transform', `translateY(${min}px)`);
-    })
+    $(this).css('transform', `translateY(${min}px)`);
+  })
 
 
 })
@@ -133,26 +133,26 @@ $(document).ready(() => {
 
 
 function nivFollow(scrollDirection) {
-    $('[niv-follow]').each(function () {
-        var min = $(this).attr('niv-follow').split('-')[0];
-        var atual = parseInt($(this).css('transform').split(',')[5]);
-        var max = $(this).attr('niv-follow').split('-')[1];
+  $('[niv-follow]').each(function () {
+    var min = $(this).attr('niv-follow').split('-')[0];
+    var atual = parseInt($(this).css('transform').split(',')[5]);
+    var max = $(this).attr('niv-follow').split('-')[1];
 
-        var statementUP = atual > min ? true : false;
-        var statementDOWN = atual < max ? true : false;
+    var statementUP = atual > min ? true : false;
+    var statementDOWN = atual < max ? true : false;
 
 
-        if (!scrollDirection) {
-            if (statementDOWN) {
-                $(this).css('transform', `translateY(${atual + 20}px)`);
-            }
-        }
-        else {
-            if (statementUP) {
-                $(this).css('transform', `translateY(${atual - 40}px)`);
-            }
-        }
-    })
+    if (!scrollDirection) {
+      if (statementDOWN) {
+        $(this).css('transform', `translateY(${atual + 20}px)`);
+      }
+    }
+    else {
+      if (statementUP) {
+        $(this).css('transform', `translateY(${atual - 40}px)`);
+      }
+    }
+  })
 }
 $('a[href*="#"]')
     // Remove links that don't actually link to anything
@@ -335,9 +335,9 @@ $(document).ready(function () {
         $('div.modal-filtro').toggleAttr('hide');
     })
 
-    // $('div.up [fluid] div.close, button.upgrade-produto').click(() => {
-    //     $('div.up').toggleAttr('hide');
-    // })
+    $('div.up [fluid] div.close, button.upgrade-produto').click(() => {
+        $('div.up').toggleAttr('hide');
+    })
 
     // $('div.super-up [fluid] div.close, body#orcamento-carrinho div.next-step').click(() => {
 
@@ -441,7 +441,7 @@ setInterval(() => {
 
 // ORÇAMENTO
 
-$('section.coqueteis-lista div.niv div.list div.scroll div.box input[type=checkbox], section.coqueteis-filtro div.niv div.filtros input[type=range][name=caloria], section.coqueteis-filtro div.niv div.filtros input[type=range][name=teor], section.coqueteis-filtro div.niv div.filtros input[type=checkbox][name=visitado], section.coqueteis-filtro div.niv div.filtros input[type=checkbox][name=lancamento]').change(function () {
+$('section.coqueteis-filtro div.niv div.filtros input[type=range][name=caloria], section.coqueteis-filtro div.niv div.filtros input[type=range][name=teor], section.coqueteis-filtro div.niv div.filtros input[type=checkbox][name=visitado], section.coqueteis-filtro div.niv div.filtros input[type=checkbox][name=lancamento]').change(function () {
     filtrar();
 })
 
@@ -451,14 +451,12 @@ function filtrar() {
     var rangeCaloria = $('section.coqueteis-filtro div.niv div.filtros input[type=range][name=caloria]').val();
     var checkVisitado = $('section.coqueteis-filtro div.niv div.filtros input[type=checkbox][name=visitado]').is(':checked');
     var checkLancamento = $('section.coqueteis-filtro div.niv div.filtros input[type=checkbox][name=lancamento]').is(':checked');
-    var checkBoxes = $('section.coqueteis-lista div.niv div.list div.scroll div.box input[type=checkbox]:checked');
 
 
 
     boxes.each(function () {
 
-        var boxUsed = $(this),
-            boxCal = $(this).data('cal'),
+        var boxCal = $(this).data('cal'),
             boxTeor = $(this).data('teor'),
 
             isVisitada = $(this).is('[visitado]'),
@@ -467,24 +465,8 @@ function filtrar() {
             verifyCal = (boxCal >= rangeCaloria) ? true : false,
             verifyTeor = (boxTeor >= rangeTeor) ? true : false,
 
-            verifyBox = true,
-            verifyMarca,
-
             verifyVisitado = true,
             verifyLancamento = true;
-
-
-        var i = 0;
-
-        if (checkBoxes.length != 0) {
-            checkBoxes.each(function () {
-                if (!boxUsed.is(`.${$(this).data('marca')}`)) {
-                    verifyBox = false;
-                }
-            });
-        }
-
-
 
         if (checkVisitado) {
             verifyVisitado = (isVisitada == checkVisitado) ? true : false;
@@ -494,11 +476,11 @@ function filtrar() {
         }
 
 
-        if (verifyCal && verifyTeor && verifyVisitado && verifyLancamento && verifyBox) {
-            boxUsed.removeAttr('hide');
+        if (verifyCal && verifyTeor && verifyVisitado && verifyLancamento) {
+            $(this).removeAttr('hide');
         }
         else {
-            boxUsed.attr('hide', '');
+            $(this).attr('hide', '');
         }
     })
 
