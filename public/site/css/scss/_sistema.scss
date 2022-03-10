@@ -722,6 +722,8 @@ body.minha-area {
 
                             &[app] {
                                 border: solid 1px rgb(0, 255, 0);
+
+                                width: 28rem;
                             }
 
                             &.--new {
@@ -864,6 +866,107 @@ body.minha-area {
                         }
                     }
 
+                    .info {
+                        margin-top: 2rem;
+                        margin-bottom: 4rem;
+
+                        @include flex(row, flex-start, space-between);
+                        max-width: 80%;
+
+                        &.--special {
+                            max-width: 100%;
+
+                            div {
+                                flex-wrap: wrap;
+                                justify-content: flex-start;
+                                gap: 7rem;
+                            }
+
+                            picture {
+                                img {
+                                    border-radius: 1.5rem;
+                                }
+                                h2 {
+                                    margin-top: 2rem;
+                                    text-align: center;
+
+                                    i {
+                                        text-transform: none;
+                                        font-style: normal;
+                                        font-size: 2rem;
+
+                                        color: #dbbf00;
+                                    }
+
+                                    position: relative;
+
+                                    &::after {
+                                        position: absolute;
+                                        content: "";
+                                        display: block;
+
+                                        top: -10px;
+                                        left: 0;
+                                        right: 0;
+
+                                        margin: 0 auto;
+
+                                        width: 0;
+                                        height: 0;
+                                        border-left: 5px solid transparent;
+                                        border-right: 5px solid transparent;
+
+                                        border-bottom: 5px solid $system-main;
+                                    }
+
+                                    &::before {
+                                        transition: 0.32s;
+                                        position: absolute;
+                                        content: "";
+                                        display: block;
+
+                                        top: 110%;
+                                        left: 0;
+                                        right: 0;
+
+                                        margin: 0 auto;
+
+                                        width: 0;
+                                        height: 2px;
+                                        background-color: $system-main;
+                                    }
+                                }
+
+                                &:hover {
+                                    cursor: pointer;
+                                    h2::before {
+                                        width: 40%;
+                                    }
+                                }
+                            }
+                        }
+
+                        div {
+                            @include flex(row, center, flex-start);
+                            gap: 1.4rem;
+
+                            margin-bottom: 2rem;
+
+                            h4 {
+                                color: $system-main;
+                            }
+                        }
+                    }
+
+                    span {
+                        display: block;
+                        small {
+                            color: #dbbf00;
+                            display: block;
+                            margin-bottom: 2rem;
+                        }
+                    }
+
                     nav {
                         width: 100%;
                         @include flex(row, center, flex-start);
@@ -872,7 +975,7 @@ body.minha-area {
 
                         span {
                             padding: 2rem;
-                            width: 10%;
+                            width: 15%;
 
                             color: $white;
                             transform: 0.32s;
@@ -978,6 +1081,132 @@ body.minha-area {
                                 }
                             }
 
+                            div.niv-table {
+                                width: 100%;
+                                div.scroll {
+                                    width: 100%;
+                                    table {
+                                        width: 100%;
+                                        border: solid 0.1rem $table-border;
+
+                                        thead {
+                                            tr {
+                                                th {
+                                                    padding-top: 2.2rem;
+                                                    padding-bottom: 1.6rem;
+                                                    border-bottom: solid 0.1rem $table-border;
+
+                                                    font-family: "Inter";
+                                                    font-style: normal;
+                                                    font-weight: normal;
+                                                    font-size: 1.4rem;
+                                                    line-height: 100%;
+                                                    text-align: center;
+
+                                                    color: $grey;
+                                                }
+                                            }
+                                        }
+
+                                        tbody {
+                                            tr {
+                                                height: 12.1rem;
+
+                                                &:not(:last-child) {
+                                                    td {
+                                                        border-bottom: solid 0.1rem $table-border;
+                                                    }
+                                                }
+                                                td {
+                                                    picture.foto-produto {
+                                                        height: 8.4rem;
+                                                        width: 100%;
+                                                        max-width: 8.1rem;
+                                                        border-radius: 2rem;
+                                                        @include picframe();
+                                                    }
+
+                                                    strong.nome-produto {
+                                                        font-weight: 500;
+                                                        font-size: 1.6rem;
+                                                        line-height: 100%;
+                                                        color: $grey;
+                                                    }
+
+                                                    p.descricao-produto {
+                                                        font-size: 1.4rem;
+                                                        line-height: 100%;
+                                                        text-align: center;
+                                                        color: $grey;
+                                                    }
+
+                                                    input {
+                                                        height: 4.8rem;
+                                                        width: 11.4rem;
+
+                                                        margin: auto auto;
+
+                                                        border: 0.1rem solid #cfdbdd;
+                                                        border-radius: 0.8rem;
+
+                                                        text-align: center;
+
+                                                        font-style: normal;
+                                                        font-weight: 500;
+                                                        font-size: 1.6rem;
+                                                        line-height: 100%;
+                                                        color: $grey;
+                                                    }
+                                                    text-align: center;
+                                                }
+
+                                                transition: 0.32s;
+
+                                                &[hide] {
+                                                    opacity: 0;
+                                                    height: 0;
+                                                    padding: 0;
+                                                    margin: 0;
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+
+                                span.resumo-evento {
+                                    padding: 5.1rem;
+                                    border: solid 0.1rem $table-border;
+                                    width: 100%;
+                                    border-top: none;
+
+                                    display: block;
+
+                                    strong {
+                                        font-style: normal;
+                                        font-weight: 600;
+                                        font-size: 1.6rem;
+                                        color: $grey;
+                                    }
+
+                                    p {
+                                        font-style: normal;
+                                        font-size: 1.4rem;
+                                        line-height: 140%;
+                                        color: $grey;
+
+                                        max-width: 90%;
+
+                                        margin-top: 1.7rem;
+                                    }
+                                }
+
+                                @include responsive(800px) {
+                                    overflow: scroll;
+                                    div.scroll {
+                                        width: max-content;
+                                    }
+                                }
+                            }
                             &[active] {
                                 display: unset;
                             }

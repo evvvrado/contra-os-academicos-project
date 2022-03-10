@@ -9,10 +9,10 @@
     <div class="container-fluid">
         <div class="container-fav">
             <div class="top">
-
+                {{--
                 <picture>
                     <img src="{{ asset('/site/assets/sistema/capaMatricula.jpg')}}" alt="">
-                </picture>
+                </picture> --}}
 
                 <h2>
                     Festa da Fazenda
@@ -93,7 +93,7 @@
                         <div class="content">
                             <strong>Título</strong>
                             <p>Descrição</p>
-asdasd
+                            asdasd
                             <div class="files">
                                 <a class="pdf" href="/">documentoinicial.pdf</a>
 

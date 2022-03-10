@@ -6852,6 +6852,7 @@ body.minha-area#pedidos-aluno section.mA_showcase .container-fluid .container-fa
 }
 body.minha-area#pedidos-aluno section.mA_showcase .container-fluid .container-fav div.boxes div.box[app] {
   border: solid 1px lime;
+  width: 28rem;
 }
 body.minha-area#pedidos-aluno section.mA_showcase .container-fluid .container-fav div.boxes div.box.--new {
   height: 100%;
@@ -6963,6 +6964,89 @@ body.minha-area#matriculas-aluno-detalhes section.mA_showcase .container-fluid .
   margin: 0;
   margin-top: 1rem;
 }
+body.minha-area#matriculas-aluno-detalhes section.mA_showcase .container-fluid .container-fav .info {
+  margin-top: 2rem;
+  margin-bottom: 4rem;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  flex-direction: row;
+  max-width: 80%;
+}
+body.minha-area#matriculas-aluno-detalhes section.mA_showcase .container-fluid .container-fav .info.--special {
+  max-width: 100%;
+}
+body.minha-area#matriculas-aluno-detalhes section.mA_showcase .container-fluid .container-fav .info.--special div {
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  gap: 7rem;
+}
+body.minha-area#matriculas-aluno-detalhes section.mA_showcase .container-fluid .container-fav .info.--special picture img {
+  border-radius: 1.5rem;
+}
+body.minha-area#matriculas-aluno-detalhes section.mA_showcase .container-fluid .container-fav .info.--special picture h2 {
+  margin-top: 2rem;
+  text-align: center;
+  position: relative;
+}
+body.minha-area#matriculas-aluno-detalhes section.mA_showcase .container-fluid .container-fav .info.--special picture h2 i {
+  text-transform: none;
+  font-style: normal;
+  font-size: 2rem;
+  color: #dbbf00;
+}
+body.minha-area#matriculas-aluno-detalhes section.mA_showcase .container-fluid .container-fav .info.--special picture h2::after {
+  position: absolute;
+  content: "";
+  display: block;
+  top: -10px;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+  width: 0;
+  height: 0;
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
+  border-bottom: 5px solid #56076d;
+}
+body.minha-area#matriculas-aluno-detalhes section.mA_showcase .container-fluid .container-fav .info.--special picture h2::before {
+  transition: 0.32s;
+  position: absolute;
+  content: "";
+  display: block;
+  top: 110%;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+  width: 0;
+  height: 2px;
+  background-color: #56076d;
+}
+body.minha-area#matriculas-aluno-detalhes section.mA_showcase .container-fluid .container-fav .info.--special picture:hover {
+  cursor: pointer;
+}
+body.minha-area#matriculas-aluno-detalhes section.mA_showcase .container-fluid .container-fav .info.--special picture:hover h2::before {
+  width: 40%;
+}
+body.minha-area#matriculas-aluno-detalhes section.mA_showcase .container-fluid .container-fav .info div {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  flex-direction: row;
+  gap: 1.4rem;
+  margin-bottom: 2rem;
+}
+body.minha-area#matriculas-aluno-detalhes section.mA_showcase .container-fluid .container-fav .info div h4 {
+  color: #56076d;
+}
+body.minha-area#matriculas-aluno-detalhes section.mA_showcase .container-fluid .container-fav span {
+  display: block;
+}
+body.minha-area#matriculas-aluno-detalhes section.mA_showcase .container-fluid .container-fav span small {
+  color: #dbbf00;
+  display: block;
+  margin-bottom: 2rem;
+}
 body.minha-area#matriculas-aluno-detalhes section.mA_showcase .container-fluid .container-fav nav {
   width: 100%;
   display: flex;
@@ -6974,7 +7058,7 @@ body.minha-area#matriculas-aluno-detalhes section.mA_showcase .container-fluid .
 }
 body.minha-area#matriculas-aluno-detalhes section.mA_showcase .container-fluid .container-fav nav span {
   padding: 2rem;
-  width: 10%;
+  width: 15%;
   color: #fff;
   transform: 0.32s;
   text-align: center;
@@ -7067,6 +7151,122 @@ body.minha-area#matriculas-aluno-detalhes section.mA_showcase .container-fluid .
 body.minha-area#matriculas-aluno-detalhes section.mA_showcase .container-fluid .container-fav main .list article .files a.pdf::after {
   background: url("/site/assets/sistema/icon_pdf.svg");
   background-size: cover;
+}
+body.minha-area#matriculas-aluno-detalhes section.mA_showcase .container-fluid .container-fav main .list div.niv-table {
+  width: 100%;
+  /**
+
+  @include responsive(1400px) {}
+  @include responsive(1200px) {}
+  @include responsive(992px) {}
+  @include responsive(730px) {}
+  @include responsive(600px) {}
+
+  **/
+}
+body.minha-area#matriculas-aluno-detalhes section.mA_showcase .container-fluid .container-fav main .list div.niv-table div.scroll {
+  width: 100%;
+}
+body.minha-area#matriculas-aluno-detalhes section.mA_showcase .container-fluid .container-fav main .list div.niv-table div.scroll table {
+  width: 100%;
+  border: solid 0.1rem #e7ebee;
+}
+body.minha-area#matriculas-aluno-detalhes section.mA_showcase .container-fluid .container-fav main .list div.niv-table div.scroll table thead tr th {
+  padding-top: 2.2rem;
+  padding-bottom: 1.6rem;
+  border-bottom: solid 0.1rem #e7ebee;
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: normal;
+  font-size: 1.4rem;
+  line-height: 100%;
+  text-align: center;
+  color: #323b4b;
+}
+body.minha-area#matriculas-aluno-detalhes section.mA_showcase .container-fluid .container-fav main .list div.niv-table div.scroll table tbody tr {
+  height: 12.1rem;
+  transition: 0.32s;
+}
+body.minha-area#matriculas-aluno-detalhes section.mA_showcase .container-fluid .container-fav main .list div.niv-table div.scroll table tbody tr:not(:last-child) td {
+  border-bottom: solid 0.1rem #e7ebee;
+}
+body.minha-area#matriculas-aluno-detalhes section.mA_showcase .container-fluid .container-fav main .list div.niv-table div.scroll table tbody tr td {
+  text-align: center;
+}
+body.minha-area#matriculas-aluno-detalhes section.mA_showcase .container-fluid .container-fav main .list div.niv-table div.scroll table tbody tr td picture.foto-produto {
+  height: 8.4rem;
+  width: 100%;
+  max-width: 8.1rem;
+  border-radius: 2rem;
+  overflow: hidden;
+}
+body.minha-area#matriculas-aluno-detalhes section.mA_showcase .container-fluid .container-fav main .list div.niv-table div.scroll table tbody tr td picture.foto-produto img {
+  height: 100%;
+  width: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+body.minha-area#matriculas-aluno-detalhes section.mA_showcase .container-fluid .container-fav main .list div.niv-table div.scroll table tbody tr td strong.nome-produto {
+  font-weight: 500;
+  font-size: 1.6rem;
+  line-height: 100%;
+  color: #323b4b;
+}
+body.minha-area#matriculas-aluno-detalhes section.mA_showcase .container-fluid .container-fav main .list div.niv-table div.scroll table tbody tr td p.descricao-produto {
+  font-size: 1.4rem;
+  line-height: 100%;
+  text-align: center;
+  color: #323b4b;
+}
+body.minha-area#matriculas-aluno-detalhes section.mA_showcase .container-fluid .container-fav main .list div.niv-table div.scroll table tbody tr td input {
+  height: 4.8rem;
+  width: 11.4rem;
+  margin: auto auto;
+  border: 0.1rem solid #cfdbdd;
+  border-radius: 0.8rem;
+  text-align: center;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 1.6rem;
+  line-height: 100%;
+  color: #323b4b;
+}
+body.minha-area#matriculas-aluno-detalhes section.mA_showcase .container-fluid .container-fav main .list div.niv-table div.scroll table tbody tr[hide] {
+  opacity: 0;
+  height: 0;
+  padding: 0;
+  margin: 0;
+}
+body.minha-area#matriculas-aluno-detalhes section.mA_showcase .container-fluid .container-fav main .list div.niv-table span.resumo-evento {
+  padding: 5.1rem;
+  border: solid 0.1rem #e7ebee;
+  width: 100%;
+  border-top: none;
+  display: block;
+}
+body.minha-area#matriculas-aluno-detalhes section.mA_showcase .container-fluid .container-fav main .list div.niv-table span.resumo-evento strong {
+  font-style: normal;
+  font-weight: 600;
+  font-size: 1.6rem;
+  color: #323b4b;
+}
+body.minha-area#matriculas-aluno-detalhes section.mA_showcase .container-fluid .container-fav main .list div.niv-table span.resumo-evento p {
+  font-style: normal;
+  font-size: 1.4rem;
+  line-height: 140%;
+  color: #323b4b;
+  max-width: 90%;
+  margin-top: 1.7rem;
+}
+@media (max-width: 800px) {
+  body.minha-area#matriculas-aluno-detalhes section.mA_showcase .container-fluid .container-fav main .list div.niv-table {
+    overflow: scroll;
+  }
+  body.minha-area#matriculas-aluno-detalhes section.mA_showcase .container-fluid .container-fav main .list div.niv-table div.scroll {
+    width: -webkit-max-content;
+    width: -moz-max-content;
+    width: max-content;
+  }
 }
 body.minha-area#matriculas-aluno-detalhes section.mA_showcase .container-fluid .container-fav main .list[active] {
   display: unset;
