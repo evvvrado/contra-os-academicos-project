@@ -107,7 +107,7 @@ use App\Models\OrcamentoServico;
 
                     <div>
                         <picture>
-                            <img src="{{asset('site/assets/sistema/drink.svg')}}" alt="">
+                            <img src="{{asset('site/assets/sistema/drinkData.svg')}}" alt="">
                         </picture>
                         <h4>
                             Não terá outras bebidas
