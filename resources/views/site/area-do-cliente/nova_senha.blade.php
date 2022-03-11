@@ -7,25 +7,7 @@
 $cliente = \App\Models\Lead::find(session()->get('cliente')['id']);
 @endphp
 
-@section('styles')
-    @php
-        if(session()->get("primeiro_login") == "Sim") {
-    @endphp
-            <style>
-                body.minha-area .container-fluid {
-                    width: 60% !important;
-                }
-
-                .container-fav {
-                    margin-top: 40px !important;
-                }
-            </style>
-    @php
-        }
-    @endphp 
-@endsection 
-
-<section class="mA_dados">
+<section class="mA_dados criar_senha">
     <div class="container-fluid">
         <div class="container-fav">
             <div class="col">
@@ -37,19 +19,18 @@ $cliente = \App\Models\Lead::find(session()->get('cliente')['id']);
                 <form action="{{route('minha-area.cliente-dados.nova_senha_salvar')}}" method="POST">
                     @csrf
                     <label>
-                        <input type="text" name="senha" placeholder="Digite sua senha" value="">
+                        <input type="password" name="senha" placeholder="Digite sua senha" value="">
                         <picture>
                             <img src="{{ asset('site/assets/sistema/lockData.svg') }}" alt="">
                         </picture>
 
                     </label>
-
                     <button class="btn-primary">Salvar</button>
                 </form>
             </div>
 
             <div class="col">
-                
+
             </div>
 
         </div>

@@ -463,6 +463,23 @@ body.minha-area {
                 }
             }
         }
+
+        &.criar_senha {
+            .container-fluid {
+                padding-top: 10vh;
+                .container-fav {
+                    text-align: center;
+                    justify-content: center;
+                    form {
+                        flex-direction: column;
+                    }
+
+                    .col:last-child {
+                        display: none;
+                    }
+                }
+            }
+        }
     }
 
     section.mA_footer {

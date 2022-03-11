@@ -4941,7 +4941,6 @@ div.up [fluid] {
 }
 div.up [fluid] div.niv {
   height: 87.3rem;
-  max-width: 45.7rem;
   width: 100%;
   padding: 0;
   background: #fff;
@@ -4949,7 +4948,7 @@ div.up [fluid] div.niv {
   box-shadow: 0.4rem 0.9rem 1.3rem rgba(0, 0, 0, 0.1);
   border-radius: 1.9rem;
   width: 100%;
-  max-width: 45.7rem;
+  max-width: 70.7rem;
   background: #fff;
   padding: 2.8rem 5.2rem;
 }
@@ -6630,6 +6629,19 @@ body.minha-area section.mA_dados .container-fluid .container-fav div.col:last-ch
     margin-bottom: 5rem;
     width: 100%;
   }
+}
+body.minha-area section.mA_dados.criar_senha .container-fluid {
+  padding-top: 10vh;
+}
+body.minha-area section.mA_dados.criar_senha .container-fluid .container-fav {
+  text-align: center;
+  justify-content: center;
+}
+body.minha-area section.mA_dados.criar_senha .container-fluid .container-fav form {
+  flex-direction: column;
+}
+body.minha-area section.mA_dados.criar_senha .container-fluid .container-fav .col:last-child {
+  display: none;
 }
 body.minha-area section.mA_footer {
   /**

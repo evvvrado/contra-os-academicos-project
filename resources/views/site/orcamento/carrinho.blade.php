@@ -489,14 +489,13 @@ use App\Models\Parametro;
             });
         }
 
-        $('div.up [fluid] div.close, button.upgrade-produto, div.up [fluid] div.niv button').click(function() {
+        $('div.up [fluid] div.close, div.up [fluid] div.niv button').click(function() {
             if (!$('div.up').is('[hide]')) {
                 window.location.href = '{{ route('site.orcamento.carrinho') }}';
             }
             $('div.up').toggleAttr('hide')
         })
 
-        $('div.up [fluid] div.close, button.upgrade-produto').click(() => {})
 
         $('section.carrinho div.niv div.niv-send button').click(() => {
             window.location.href = '{{ route('site.orcamento.encerrar') }}';

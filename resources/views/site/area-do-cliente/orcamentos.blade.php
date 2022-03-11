@@ -95,9 +95,9 @@ use App\Models\MarcaIngrediente;
                         </picture>
                         <h4>
                             @php
-                                $parteData = explode("-", $orcamento->data);    
-                                $dataInvertida = $parteData[1] . "/" . $parteData[2] . "/" . $parteData[0];
-                            @endphp    
+                            $parteData = explode("-", $orcamento->data);
+                            $dataInvertida = $parteData[1] . "/" . $parteData[2] . "/" . $parteData[0];
+                            @endphp
                             {{ $dataInvertida }}
                         </h4>
                     </div>
@@ -117,16 +117,16 @@ use App\Models\MarcaIngrediente;
                         </picture>
                         <h4>
                             @php
-                                if($orcamento->outras_bebidas == 1) {
-                                    $outras_bebidas = "Teão outras bebidas com Alcool";
-                                } else if ($orcamento->duracao == 2){
-                                    $outras_bebidas = "Teão outras bebidas sem Alcool";
-                                } else {
-                                    $outras_bebidas = "Não terá outras bebidas";
-                                }
+                            if($orcamento->outras_bebidas == 1) {
+                            $outras_bebidas = "Teão outras bebidas com Alcool";
+                            } else if ($orcamento->duracao == 2){
+                            $outras_bebidas = "Teão outras bebidas sem Alcool";
+                            } else {
+                            $outras_bebidas = "Não terá outras bebidas";
+                            }
                             @endphp
                             {{ $outras_bebidas }}
-                            
+
                         </h4>
                     </div>
                 </span>
@@ -156,56 +156,56 @@ use App\Models\MarcaIngrediente;
                     <div class="niv-table">
                         <div class="scroll">
                             @if($servicos_sim->count() > 0)
-                                <table>
-                                    <thead>
-                                        <tr>
-                                            <th width="206">Nome dos serviços</th>
-                                            <th width="456">Descrição</th>
-                                            <th width="175">Valor</th>
-                                            <th width="221">Quantidade</th>
-                                            <th width="210">Total</th>
-                                        </tr>
-                                    </thead>
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th width="206">Nome dos serviços</th>
+                                        <th width="456">Descrição</th>
+                                        <th width="175">Valor</th>
+                                        <th width="221">Quantidade</th>
+                                        <th width="210">Total</th>
+                                    </tr>
+                                </thead>
 
-                                    <tbody>
-                                        @foreach($servicos_sim as $servico)
-                                            <tr>
-                                                <td>
-                                                    <strong class="nome-produto">
-                                                        {{ $servico->nome }}
-                                                    </strong>
-                                                </td>
+                                <tbody>
+                                    @foreach($servicos_sim as $servico)
+                                    <tr>
+                                        <td>
+                                            <strong class="nome-produto">
+                                                {{ $servico->nome }}
+                                            </strong>
+                                        </td>
 
-                                                <td>
-                                                    <p class="descricao-produto">
-                                                        {{ $servico->descricao }}
-                                                    </p>
-                                                </td>
+                                        <td>
+                                            <p class="descricao-produto">
+                                                {{ $servico->descricao }}
+                                            </p>
+                                        </td>
 
-                                                <td>
-                                                    <strong class="total-produto">
-                                                        R$ {{ number_format($servico->valor, 2, ",", ".") }}
-                                                    </strong>
-                                                </td>
+                                        <td>
+                                            <strong class="total-produto">
+                                                R$ {{ number_format($servico->valor, 2, ",", ".") }}
+                                            </strong>
+                                        </td>
 
-                                                <td>
-                                                    <input disabled value="{{ $servico->qtd }}" type="tel" placeholder="250" name="quantidade-produto">
-                                                </td>
+                                        <td>
+                                            <input disabled value="{{ $servico->qtd }}" type="tel" placeholder="250" name="quantidade-produto">
+                                        </td>
 
-                                                <td>
-                                                    <strong class="total-produto">
-                                                        R$ {{ number_format($servico->valor, 2, ",", ".") }}
-                                                    </strong>
-                                                </td>
-                                            </tr>
-                                        @endforeach
-                                    </tbody>
-                                </table>
+                                        <td>
+                                            <strong class="total-produto">
+                                                R$ {{ number_format($servico->valor, 2, ",", ".") }}
+                                            </strong>
+                                        </td>
+                                    </tr>
+                                    @endforeach
+                                </tbody>
+                            </table>
                             @else
-                                <br>
-                                Não há serviços inclusos adicionados neste orçamento
-                                <br>
-                            @endif 
+                            <br>
+                            Não há serviços inclusos adicionados neste orçamento
+                            <br>
+                            @endif
 
                             <span class="resumo-evento">
                                 <strong>Resumo do evento</strong>
@@ -226,63 +226,63 @@ use App\Models\MarcaIngrediente;
                     <div class="niv-table">
                         <div class="scroll">
                             @if($servicos_nao->count() > 0)
-                                <table>
-                                    <thead>
-                                        <tr>
-                                            <th width="206">Nome dos serviços</th>
-                                            <th width="456">Descrição</th>
-                                            <th width="175">Valor</th>
-                                            <th width="221">Quantidade</th>
-                                            <th width="210">Total</th>
-                                        </tr>
-                                    </thead>
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th width="206">Nome dos serviços</th>
+                                        <th width="456">Descrição</th>
+                                        <th width="175">Valor</th>
+                                        <th width="221">Quantidade</th>
+                                        <th width="210">Total</th>
+                                    </tr>
+                                </thead>
 
-                                    <tbody>
-                                        @foreach($servicos_nao as $servico)
-                                            <tr>
-                                                <td>
-                                                    <strong class="nome-produto">
-                                                        {{ $servico->nome }}
-                                                    </strong>
-                                                </td>
+                                <tbody>
+                                    @foreach($servicos_nao as $servico)
+                                    <tr>
+                                        <td>
+                                            <strong class="nome-produto">
+                                                {{ $servico->nome }}
+                                            </strong>
+                                        </td>
 
-                                                <td>
-                                                    <p class="descricao-produto">
-                                                        {{ $servico->descricao }}
-                                                    </p>
-                                                </td>
+                                        <td>
+                                            <p class="descricao-produto">
+                                                {{ $servico->descricao }}
+                                            </p>
+                                        </td>
 
-                                                
-                                                @php
-                                                    $servico_valor = Servico::select('valor')
-                                                    ->where('id', $servico->servico_id)
-                                                    ->first();
-                                                @endphp
 
-                                                <td>
-                                                    <strong class="total-produto">
-                                                        R$ {{ number_format($servico_valor->valor, 2, ",", ".") }}
-                                                    </strong>
-                                                </td>
+                                        @php
+                                        $servico_valor = Servico::select('valor')
+                                        ->where('id', $servico->servico_id)
+                                        ->first();
+                                        @endphp
 
-                                                <td>
-                                                    <input disabled value="{{ $servico->qtd }}" type="tel" placeholder="250" name="quantidade-produto">
-                                                </td>
+                                        <td>
+                                            <strong class="total-produto">
+                                                R$ {{ number_format($servico_valor->valor, 2, ",", ".") }}
+                                            </strong>
+                                        </td>
 
-                                                <td>
-                                                    <strong class="total-produto">
-                                                        R$ {{ number_format($servico->valor, 2, ",", ".") }}
-                                                    </strong>
-                                                </td>
-                                            </tr>
-                                        @endforeach
-                                    </tbody>
-                                </table>
+                                        <td>
+                                            <input disabled value="{{ $servico->qtd }}" type="tel" placeholder="250" name="quantidade-produto">
+                                        </td>
+
+                                        <td>
+                                            <strong class="total-produto">
+                                                R$ {{ number_format($servico->valor, 2, ",", ".") }}
+                                            </strong>
+                                        </td>
+                                    </tr>
+                                    @endforeach
+                                </tbody>
+                            </table>
                             @else
-                                <br>
-                                Não há serviços extras adicionados neste orçamento
-                                <br>
-                            @endif 
+                            <br>
+                            Não há serviços extras adicionados neste orçamento
+                            <br>
+                            @endif
 
                             <span class="resumo-evento">
                                 <strong>Resumo do evento</strong>
@@ -309,28 +309,28 @@ use App\Models\MarcaIngrediente;
 
                         <div style="display: flex; justify-content: space-between; flex-wrap: wrap">
                             @foreach($orcamento->orcamento_produtos as $orcamento_produto)
-                                @php
-                                    $total = 0;
-                                    
-                                    $produto = Produto::where('id', $orcamento_produto->produto_id)->first();
-                                    
-                                    foreach($produto->ingredientes as $ingrediente) {
-                                        $marcas = MarcaIngrediente::where('ingrediente_id', $ingrediente->id)
-                                        ->join('marcas', 'marca_id', 'marcas.id')
-                                        ->get();
-    
-                                        foreach($marcas as $marca) {
-                                            $total = ($total + $marca->valor) * $orcamento_produto->qtd;
-                                        }
-                                    }
-                                @endphp
-                                <div>
-                                    <picture>
-                                        <img width=251 height=271 src="{{$produto->imagem_1}}" alt="">
-                                        <h2>{{ $orcamento_produto->qtd }}x <i>{{ $produto->nome }}</i><br>R$ {{ number_format($total, 2, ',', '.') }}</h2>
-                                    </picture>
-    
-                                </div>
+                            @php
+                            $total = 0;
+
+                            $produto = Produto::where('id', $orcamento_produto->produto_id)->first();
+
+                            foreach($produto->ingredientes as $ingrediente) {
+                            $marcas = MarcaIngrediente::where('ingrediente_id', $ingrediente->id)
+                            ->join('marcas', 'marca_id', 'marcas.id')
+                            ->get();
+
+                            foreach($marcas as $marca) {
+                            $total = ($total + $marca->valor) * $orcamento_produto->qtd;
+                            }
+                            }
+                            @endphp
+                            <div>
+                                <picture>
+                                    <img width=251 height=271 src="{{$produto->imagem_1}}" alt="">
+                                    <h2>{{ $orcamento_produto->qtd }}x <i>{{ $produto->nome }}</i><br>R$ {{ number_format($total, 2, ',', '.') }}</h2>
+                                </picture>
+
+                            </div>
                             @endforeach
                         </div>
                     </span>
