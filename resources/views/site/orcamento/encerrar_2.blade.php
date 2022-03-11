@@ -57,13 +57,13 @@
                                         </td>
 
                                         <td>
-                                            <i onClick="remove()" class="fa fa-window-minimize" style="cursor:pointer; margin: 4px;"></i>
+                                            <i onClick="remove('{{ $servico->valor }}')" class="fa fa-window-minimize" style="cursor:pointer; margin: 4px;"></i>
                                             <input value="1" type="number" min="0" step="1" placeholder="250" name="{{ $servico->id }}" id="qtd">
-                                            <i onClick="add()" class="fa fa-plus" style="cursor:pointer; "></i>
+                                            <i onClick="add('{{ $servico->valor }}')" class="fa fa-plus" style="cursor:pointer; "></i>
                                         </td>
 
                                         <td>
-                                            <strong class="total-produto">
+                                            <strong id="valor_total" class="total-produto">
                                                 R$ {{ $servico->valor }}
                                             </strong>
                                         </td>
@@ -122,21 +122,28 @@
 
 @section('scripts')
 <script>
-        function add() {
+        function add(valor) {
             var qtd = $("#qtd").val();
             $("#qtd").val(parseInt(qtd) + parseInt(1));
+
+            console.log(valor * (parseInt(qtd) + parseInt(1)))
+
+            document.getElementById("valor_total").innerHTML = "R$ " + (valor * (parseInt(qtd) + parseInt(1)));
         }
 
-        function remove() {
+        function remove(valor) {
             var qtd = $("#qtd").val();
+
             if(qtd == 0) {
                 $('#qtd').css({border: "1px red solid" });
 
                 setTimeout(() => {
                     $('#qtd').css({border: "1px #cfdbdd solid" });
-                }, 2000);
+                }, 1000);
             } else {
                 $("#qtd").val(parseInt(qtd) - parseInt(1));
+
+                document.getElementById("valor_total").innerHTML = "R$ " + (valor * (parseInt(qtd) - parseInt(1)));
             }
         }
 

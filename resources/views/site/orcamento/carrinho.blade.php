@@ -423,7 +423,7 @@ use App\Models\Parametro;
 
                             <td>
                                 <input disabled value="{{ $qtd_total_drinks }}" type="tel" placeholder="Quantidade">
-                                <input hidden value="{{ $qtd_total_drinks }}" type="tel" placeholder="Quantidade" name="quantidade-produto">
+                                <input hidden value="{{ $qtd_total_drinks }}" type="tel" placeholder="Quantidade" name="quantidade_produto">
                             </td>
 
                             {{-- <td>
