@@ -122,7 +122,7 @@ Leads / Orçamentos
                         <li class="nav-item">
                             <a class="nav-link" data-bs-toggle="tab" href="#nao" role="tab">
                                 <span class="d-block d-sm-none"><i class="far fa-user"></i></span>
-                                <span class="d-none d-sm-block">Não Inclusos</span>    
+                                <span class="d-none d-sm-block">Extras</span>    
                             </a>
                         </li>
                     </ul>

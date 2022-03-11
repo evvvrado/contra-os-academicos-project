@@ -309,28 +309,29 @@ use App\Models\MarcaIngrediente;
 
                         <div style="display: flex; justify-content: space-between; flex-wrap: wrap">
                             @foreach($orcamento->orcamento_produtos as $orcamento_produto)
-                            @php
-                            $total = 0;
+                                @php
+                                    $total = 0;
 
-                            $produto = Produto::where('id', $orcamento_produto->produto_id)->first();
+                                    $produto = Produto::where('id', $orcamento_produto->produto_id)->first();
 
-                            foreach($produto->ingredientes as $ingrediente) {
-                            $marcas = MarcaIngrediente::where('ingrediente_id', $ingrediente->id)
-                            ->join('marcas', 'marca_id', 'marcas.id')
-                            ->get();
+                                    foreach($produto->ingredientes as $ingrediente) {
+                                    $marcas = MarcaIngrediente::where('ingrediente_id', $ingrediente->id)
+                                    ->where('padrao', 'Sim')
+                                    ->join('marcas', 'marca_id', 'marcas.id')
+                                    ->get();
 
-                            foreach($marcas as $marca) {
-                            $total = ($total + $marca->valor) * $orcamento_produto->qtd;
-                            }
-                            }
-                            @endphp
-                            <div>
-                                <picture>
-                                    <img width=251 height=271 src="{{$produto->imagem_1}}" alt="">
-                                    <h2>{{ $orcamento_produto->qtd }}x <i>{{ $produto->nome }}</i><br>R$ {{ number_format($total, 2, ',', '.') }}</h2>
-                                </picture>
+                                    foreach($marcas as $marca) {
+                                    $total = ($total + $marca->valor) * $orcamento_produto->qtd;
+                                    }
+                                    }
+                                @endphp
+                                <div>
+                                    <picture>
+                                        <img width=251 height=271 src="{{$produto->imagem_1}}" alt="">
+                                        <h2>{{ $orcamento_produto->qtd }}x <i>{{ $produto->nome }}</i><br>R$ {{ number_format($total, 2, ',', '.') }}</h2>
+                                    </picture>
 
-                            </div>
+                                </div>
                             @endforeach
                         </div>
                     </span>
