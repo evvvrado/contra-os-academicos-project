@@ -96,10 +96,10 @@ class MarcasController extends Controller
             $nome_1 = 'imagem.'.$image->getClientOriginalExtension();
             $destinationPath = public_path('/admin/images/marcas/'.$marca->id."/");
             $image->move($destinationPath, $nome_1);
-        }
 
-        Marca::where('id', $marca->id)
-        ->update(['imagem' => '/admin/images/marcas/'.$marca->id."/".$nome_1]);
+            Marca::where('id', $marca->id)
+            ->update(['imagem' => '/admin/images/marcas/'.$marca->id."/".$nome_1]);
+        }
 
         if($request->tabela == "ingredientes") {
             $marca_ingrediente = new MarcaIngrediente;

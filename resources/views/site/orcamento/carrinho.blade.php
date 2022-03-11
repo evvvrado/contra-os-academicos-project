@@ -299,19 +299,14 @@ use App\Models\Parametro;
                                         ->join('ingredientes', 'ingrediente_id', 'ingredientes.id')
                                         ->get();
 
-                                        // $total_drink = OrcamentoProdutosIngredientes::where("orcamentoproduto_id", $produto->id)
-                                        // ->join('marcas', 'marca_id', 'marcas.id')
-                                        // ->sum('valor');
-                                        // dd($total_drink);
-
                                         @endphp
 
                                         @foreach ($ingredientes as $ingrediente)
                                         <div class="drinks {{ $ingrediente->nome }}">
                                             @php
-                                            $marcas = MarcaIngrediente::where('ingrediente_id', $ingrediente->id)
-                                            ->join('marcas', 'marca_id', 'marcas.id')
-                                            ->get();
+                                                $marcas = MarcaIngrediente::where('ingrediente_id', $ingrediente->id)
+                                                ->join('marcas', 'marca_id', 'marcas.id')
+                                                ->get();
                                             @endphp
 
                                             @foreach ($marcas as $marca)
@@ -329,11 +324,9 @@ use App\Models\Parametro;
 
                                                 @if ($marca->id == $ingrediente->marca_id)
                                                 @php
-                                                $parametro = Parametro::where('id', 4)->first();
-                                                $qtd_total_drinks = Round(($orcamento->qtd_pessoas * $parametro->valor_2) / $parametro->valor_1);
-                                                $qtd_unica = $qtd_total_drinks / $produtos->count();
-
-                                                $total = $total + $marca->valor * $qtd_unica;
+                                                    $parametro = Parametro::where('id', 4)->first();
+                                                    $qtd_total_drinks = Round(($orcamento->qtd_pessoas * $parametro->valor_2) / $parametro->valor_1);
+                                                    $qtd_unica = $qtd_total_drinks / $produtos->count();
                                                 @endphp
                                                 @endif
 
@@ -342,43 +335,6 @@ use App\Models\Parametro;
                                             @endforeach
                                         </div>
                                         @endforeach
-
-                                        {{-- <div class="frutas">
-                                            <strong>
-                                                Veja as frutas combina com seu upgrade
-                                            </strong>
-
-                                            <div class="boxes">
-                                                <div class="box">
-                                                    <picture>
-                                                        <img src="{{ asset('site/assets/img/fruta_1.png') }}" alt="imagem representativa">
-                                                    </picture>
-
-                                                    <span>Morango</span>
-
-                                                    <input type="checkbox">
-                                                </div>
-                                            </div>
-                                        </div> --}}
-
-
-                                        {{-- <div class="adicionais">
-                                            <strong>
-                                                Adicionais
-                                            </strong>
-
-                                            <div class="boxes">
-                                                <div class="box">
-                                                    <picture>
-                                                        <img src="{{ asset('site/assets/img/gelo_1.png') }}" alt="imagem representativa">
-                                                    </picture>
-
-                                                    <span>Gelo</span>
-
-                                                    <input type="checkbox">
-                                                </div>
-                                            </div>
-                                        </div> --}}
                                     </main>
 
                                     <button class="close">
@@ -451,8 +407,12 @@ use App\Models\Parametro;
                             <td>
                                 <strong class="total-produto">
                                     @php
-                                    session()->put(['total_orcamento_produtos' => $total]);
+                                        session()->put(['total_orcamento_produtos' => $total]);
+                                    
+                                        $qtd_
+                                    
                                     @endphp
+
                                     R$ {{ number_format($total, 2, ',', '.') }}
                                 </strong>
                             </td>
