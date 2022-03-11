@@ -20,7 +20,7 @@ Produtos / <a style="color: unset" href="{{ route('painel.ingredientes') }}">Ser
 @section('conteudo')
 
 <div class="row">
-    <div class="col-9">
+    <div class="col-12">
         <div class="row">
             <div class=" col-sm-12 col-md-6 mb-3" style=" border-radius: 5px; background-color:var(--principal); width: 100%;">
                 <a name="" id="button-add" class="btn" style="height: 100%; padding-left: 0;"
