@@ -56,6 +56,8 @@ Produtos / <a style="color: unset" href="{{ route('painel.marcas') }}">Marcas</a
                                 <select required name="unidade_medida" type="text" class="form-control">
                                     <option value="">Selecione</option>
                                     <option value="litros">Litros</option>
+                                    <option value="mililitros">Mililítros</option>
+                                    <option value="gramas">Gramas</option>
                                 </select>
                             </div>
 
