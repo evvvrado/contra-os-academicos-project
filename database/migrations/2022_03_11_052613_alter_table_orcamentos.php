@@ -3,9 +3,8 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
-use phpDocumentor\Reflection\Types\Nullable;
 
-class AlterTableOrcamentoProdutos extends Migration
+class AlterTableOrcamentos extends Migration
 {
     /**
      * Run the migrations.
@@ -14,8 +13,8 @@ class AlterTableOrcamentoProdutos extends Migration
      */
     public function up()
     {
-        Schema::table('orcamentoprodutos', function (Blueprint $table) {
-            $table->integer("qtd")->nullable()->default(null);
+        Schema::table('orcamentos', function (Blueprint $table) {
+            $table->double("valor", 10, 2)->nullable()->default(null);
         });
     }
 

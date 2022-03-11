@@ -85,7 +85,7 @@
                             <a href="{{ route('minha-area.cliente-orcamentos', ['orcamento' => $orcamento]) }}">
                                 <div class="box" app>
 
-                                    <strong>Festa em {{ $orcamento->cidade }}</strong>
+                                    <strong>Festa {{ $orcamento->tipo }}</strong>
 
                                     <div class="info">
                                         <div>

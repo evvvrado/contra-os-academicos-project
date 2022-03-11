@@ -252,6 +252,17 @@ class OrcamentoController extends Controller
     {
         $orcamento = Orcamento::find(session()->get("orcamento"));
 
+        $servicos = Servico::where('incluso', true)->get();
+        foreach($servicos as $servico) {
+            $orcamento_servicos = new OrcamentoServico;
+            $orcamento_servicos->orcamento_id = $orcamento->id;
+            $orcamento_servicos->servico_id = $servico->id;
+            $orcamento_servicos->qtd = 1;
+            $orcamento_servicos->valor = $servico->valor;
+
+            $orcamento_servicos->save();
+        }
+
         $dados = $request->all();
         foreach($dados as $id => $valor){
             if($valor > 0 && $id != "_token") {
@@ -259,7 +270,8 @@ class OrcamentoController extends Controller
                 $orcamento_servicos->orcamento_id = $orcamento->id;
                 $orcamento_servicos->servico_id = $id;
                 $orcamento_servicos->qtd = $valor;
-                $orcamento_servicos->valor = 0;
+                $valor_servico = Servico::where('id', $id)->first();
+                $orcamento_servicos->valor = $valor_servico->valor * $valor;
 
                 $orcamento_servicos->save();
             }
@@ -269,6 +281,26 @@ class OrcamentoController extends Controller
         if($total_orcamentos->count() == 1) {
             session()->put(["primeiro_login" => 'Sim']);
         }
+
+        // $produto_info = Produto::where('id', $produto->produto_id)->first();
+
+        // $ingredientes = OrcamentoProdutosIngredientes::where('orcamentoproduto_id', $produto->id)
+        // ->join('ingredientes', 'ingrediente_id', 'ingredientes.id')
+        // ->get();
+
+        // @foreach ($ingredientes as $ingrediente)
+        //     $marcas = MarcaIngrediente::where('ingrediente_id', $ingrediente->id)
+        //     ->join('marcas', 'marca_id', 'marcas.id')
+        //     ->get();
+
+        //     @foreach ($marcas as $marca)
+        //         $parametro = Parametro::where('id', 4)->first();
+        //         $qtd_total_drinks = Round(($orcamento->qtd_pessoas * $parametro->valor_2) / $parametro->valor_1);
+        //         $qtd_unica = $qtd_total_drinks / $produtos->count();
+
+        //         $total = $total + $marca->valor * $qtd_unica;
+        //     @endforeach
+        // @endforeach        
 
         return redirect()->route("minha-area.cliente");
 
@@ -288,13 +320,18 @@ class OrcamentoController extends Controller
     {
         $verifica_produto = OrcamentoProduto::where('orcamento_id', session()->get("orcamento"))
         ->where('produto_id', $produto)->get();
-        
+
+        $parametro = Parametro::where('id', 4)->first();
+
         if($verifica_produto->count() < 1) {
             $orcamento = Orcamento::find(session()->get("orcamento"));
+
+            $qtd_drinks = Round(($orcamento->qtd_pessoas * $parametro->valor_2) / $parametro->valor_1);
 
             $produto_insercao = new OrcamentoProduto;
             $produto_insercao->orcamento_id = $orcamento->id;
             $produto_insercao->produto_id = $produto;
+            $produto_insercao->qtd = $qtd_drinks;
             $produto_insercao->save();
 
             $ingredientes = ProdutosIngrediente::where("produto_id", $produto)->get();

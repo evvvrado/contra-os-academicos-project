@@ -1,6 +1,6 @@
 @extends('site.template.main', ['titulo' => Definition::NAME.' | Meu carrinho!'])
 
-@section("body_attr", "id=orcamento-carrinho")
+@section('body_attr', 'id=orcamento-carrinho')
 
 @php
 use App\Models\OrcamentoProdutosIngredientes;
@@ -240,7 +240,7 @@ use App\Models\Parametro;
     <h2>Leve sua festa <i>além</i></h2>
     <p>Continue sua jornada indo pra próxima página</p>
 
-    <a href="{{ route('site.orcamento.encerrar')}}">Solicitar</a>
+    <a href="{{ route('site.orcamento.encerrar') }}">Solicitar</a>
 </div>
 
 
@@ -250,10 +250,11 @@ use App\Models\Parametro;
             <span>
                 <h2>Meu Carrinho - Resumo dos produtos</h2>
 
-                <p>Com base no numero de convidados você pode escolher <i>{{ session()->get("qtd_tipos_drinks") }} drinks</i></p>
+                <p>Com base no numero de convidados você pode escolher <i>{{ session()->get('qtd_tipos_drinks') }}
+                        drinks</i></p>
             </span>
 
-            <a href='{{ route('site.orcamento.lista') }}' style="text-align: center">
+            <a href="{{ route('site.orcamento.lista') }}" style="text-align: center">
                 <picture>
                     <img style="margin: auto" src="{{ asset('site/assets/img/add_icon.svg') }}" alt="Adicionar mais drinks">
                 </picture>
@@ -280,167 +281,165 @@ use App\Models\Parametro;
 
                     <tbody>
 
-                        @foreach($produtos as $produto)
-                            @php
-                                $total = 0;
-                            @endphp
+                        @foreach ($produtos as $produto)
+                        @php
+                        $total = 0;
+                        @endphp
 
-                            <div class="up" hide style="">
-                                <div fluid>
-                                    <div class="niv">
-                                        <main>
-                                            <h2>Vamos dar<br> um up? 🍹</h2>
+                        <div class="up" hide style="">
+                            <div fluid>
+                                <div class="niv">
+                                    <main>
+                                        <h2>Vamos dar<br> um up? 🍹</h2>
 
+                                        @php
+                                        $produto_info = Produto::where('id', $produto->produto_id)->first();
+
+                                        $ingredientes = OrcamentoProdutosIngredientes::where('orcamentoproduto_id', $produto->id)
+                                        ->join('ingredientes', 'ingrediente_id', 'ingredientes.id')
+                                        ->get();
+
+                                        // $total_drink = OrcamentoProdutosIngredientes::where("orcamentoproduto_id", $produto->id)
+                                        // ->join('marcas', 'marca_id', 'marcas.id')
+                                        // ->sum('valor');
+                                        // dd($total_drink);
+
+                                        @endphp
+
+                                        @foreach ($ingredientes as $ingrediente)
+                                        <div class="drinks {{ $ingrediente->nome }}">
                                             @php
-                                            $produto_info = Produto::where("id", $produto->produto_id)->first();
-
-                                            $ingredientes = OrcamentoProdutosIngredientes::where("orcamentoproduto_id", $produto->id)
-                                            ->join('ingredientes', 'ingrediente_id', 'ingredientes.id')
+                                            $marcas = MarcaIngrediente::where('ingrediente_id', $ingrediente->id)
+                                            ->join('marcas', 'marca_id', 'marcas.id')
                                             ->get();
-
-                                            // $total_drink = OrcamentoProdutosIngredientes::where("orcamentoproduto_id", $produto->id)
-                                            // ->join('marcas', 'marca_id', 'marcas.id')
-                                            // ->sum('valor');
-                                            // dd($total_drink);
                                             @endphp
 
-                                            @foreach($ingredientes as $ingrediente)
+                                            @foreach ($marcas as $marca)
+                                            <div class="box caixa{{ $ingrediente->id }}">
 
-                                            <div class="drinks {{ $ingrediente->nome }}">
+                                                <picture>
+                                                    <img src="{{ $marca->imagem }}" alt="bebida representativa">
+                                                </picture>
+
+                                                <strong>{{ $marca->nome }}</strong>
+
+                                                <input class="marca" mid="{{ $marca->id }}"
+                                                    onclick="altera_ingrediente({{ $marca->id }}, {{ $ingrediente->id }}, {{ $produto->id }}, '{{ $ingrediente->nome }}')" type="checkbox" name="slide"
+                                                    @if ($marca->id == $ingrediente->marca_id) checked @endif>
+
+                                                @if ($marca->id == $ingrediente->marca_id)
                                                 @php
-                                                $marcas = MarcaIngrediente::where("ingrediente_id", $ingrediente->id)
-                                                ->join('marcas', 'marca_id', 'marcas.id')
-                                                ->get();
+                                                $parametro = Parametro::where('id', 4)->first();
+                                                $qtd_total_drinks = Round(($orcamento->qtd_pessoas * $parametro->valor_2) / $parametro->valor_1);
+                                                $qtd_unica = $qtd_total_drinks / $produtos->count();
+
+                                                $total = $total + $marca->valor * $qtd_unica;
                                                 @endphp
+                                                @endif
 
-                                                @foreach($marcas as $marca)
-
-                                                <div class="box caixa{{ $ingrediente->id }}">
-
-                                                    <picture>
-                                                        <img src="{{ $marca->imagem }}" alt="bebida representativa">
-                                                    </picture>
-
-                                                    <strong>{{ $marca->nome }}</strong>
-
-                                                    <input class="marca" mid="{{ $marca->id }}"
-                                                        onclick="altera_ingrediente({{ $marca->id }}, {{ $ingrediente->id }}, {{ $produto->id }}, '{{ $ingrediente->nome }}')" type="checkbox" name="slide"
-                                                        @if($marca->id == $ingrediente->marca_id) checked @endif>
-
-                                                    @if($marca->id == $ingrediente->marca_id)
-                                                        @php
-                                                            $parametro = Parametro::where('id', 4)->first();
-                                                            $qtd_total_drinks = Round(($orcamento->qtd_pessoas * $parametro->valor_2) / $parametro->valor_1);
-                                                            $qtd_unica = $qtd_total_drinks / $produtos->count();
-                                                            
-                                                            $total = $total + ($marca->valor * $qtd_unica);
-                                                        @endphp
-                                                    @endif
-
-                                                    <p>R$ {{ number_format($marca->valor, 2, ",", ".") }}</p>
-                                                </div>
-                                                @endforeach
+                                                <p>R$ {{ number_format($marca->valor, 2, ',', '.') }}</p>
                                             </div>
                                             @endforeach
-
-                                            {{-- <div class="frutas">
-                                                <strong>
-                                                    Veja as frutas combina com seu upgrade
-                                                </strong>
-
-                                                <div class="boxes">
-                                                    <div class="box">
-                                                        <picture>
-                                                            <img src="{{ asset('site/assets/img/fruta_1.png') }}" alt="imagem representativa">
-                                                        </picture>
-
-                                                        <span>Morango</span>
-
-                                                        <input type="checkbox">
-                                                    </div>
-                                                </div>
-                                            </div> --}}
-
-
-                                            {{-- <div class="adicionais">
-                                                <strong>
-                                                    Adicionais
-                                                </strong>
-
-                                                <div class="boxes">
-                                                    <div class="box">
-                                                        <picture>
-                                                            <img src="{{ asset('site/assets/img/gelo_1.png') }}" alt="imagem representativa">
-                                                        </picture>
-
-                                                        <span>Gelo</span>
-
-                                                        <input type="checkbox">
-                                                    </div>
-                                                </div>
-                                            </div> --}}
-                                        </main>
-
-                                        <button class="close">
-                                            Aplicar alterações
-                                        </button>
-
-
-                                        <div class="close">
-                                            <img src="{{ asset('site/assets/img/close_icon_modal.svg') }}" alt="ícone de fechar">
                                         </div>
+                                        @endforeach
+
+                                        {{-- <div class="frutas">
+                                            <strong>
+                                                Veja as frutas combina com seu upgrade
+                                            </strong>
+
+                                            <div class="boxes">
+                                                <div class="box">
+                                                    <picture>
+                                                        <img src="{{ asset('site/assets/img/fruta_1.png') }}" alt="imagem representativa">
+                                                    </picture>
+
+                                                    <span>Morango</span>
+
+                                                    <input type="checkbox">
+                                                </div>
+                                            </div>
+                                        </div> --}}
+
+
+                                        {{-- <div class="adicionais">
+                                            <strong>
+                                                Adicionais
+                                            </strong>
+
+                                            <div class="boxes">
+                                                <div class="box">
+                                                    <picture>
+                                                        <img src="{{ asset('site/assets/img/gelo_1.png') }}" alt="imagem representativa">
+                                                    </picture>
+
+                                                    <span>Gelo</span>
+
+                                                    <input type="checkbox">
+                                                </div>
+                                            </div>
+                                        </div> --}}
+                                    </main>
+
+                                    <button class="close">
+                                        Aplicar alterações
+                                    </button>
+
+
+                                    <div class="close">
+                                        <img src="{{ asset('site/assets/img/close_icon_modal.svg') }}" alt="ícone de fechar">
                                     </div>
                                 </div>
                             </div>
+                        </div>
 
-                            <tr>
-                                <td>
-                                    <button class="remover-produto" onclick="escolher_produto({{ $produto->produto_id }})">
-                                        <picture>
-                                            <img src="{{ asset('site/assets/img/icon_remove.svg') }}" alt="Remover ícone">
-                                        </picture>
-                                    </button>
-                                </td>
-
-                                <td>
-                                    <picture class="foto-produto">
-                                        <img src="{{$produto_info->imagem_1}}" alt="imagem representativa">
+                        <tr>
+                            <td>
+                                <button class="remover-produto" onclick="escolher_produto({{ $produto->produto_id }}); 
+                                            $(this).closest('tr').attr('hide', '');">
+                                    <picture>
+                                        <img src="{{ asset('site/assets/img/icon_remove.svg') }}" alt="Remover ícone">
                                     </picture>
-                                </td>
+                                </button>
+                            </td>
 
-                                <td>
-                                    <strong class="nome-produto">
-                                        {{$produto_info->nome}}
-                                    </strong>
-                                </td>
+                            <td>
+                                <picture class="foto-produto">
+                                    <img src="{{ $produto_info->imagem_1 }}" alt="imagem representativa">
+                                </picture>
+                            </td>
 
-                                <td>
-                                    <p class="descricao-produto">
-                                        {{mb_strimwidth($produto_info->descricao, 0, 55, "...")}}
-                                    </p>
-                                </td>
+                            <td>
+                                <strong class="nome-produto">
+                                    {{ $produto_info->nome }}
+                                </strong>
+                            </td>
 
-                                <td>
-                                    <input disabled value="{{ $qtd_total_drinks }}" type="tel"
-                                        placeholder="Quantidade">
-                                    <input hidden value="{{ $qtd_total_drinks }}" type="tel"
-                                    placeholder="Quantidade" name="quantidade-produto">
-                                </td>
+                            <td>
+                                <p class="descricao-produto">
+                                    {{ mb_strimwidth($produto_info->descricao, 0, 55, '...') }}
+                                </p>
+                            </td>
 
-                                {{-- <td>
-                                    <strong class="total-produto">
-                                        R$ {{ number_format($total_drink,2,",",".") }}
-                                    </strong>
-                                </td> --}}
+                            <td>
+                                <input disabled value="{{ $qtd_total_drinks }}" type="tel" placeholder="Quantidade">
+                                <input hidden value="{{ $qtd_total_drinks }}" type="tel" placeholder="Quantidade" name="quantidade_produto">
+                            </td>
 
-                                <td>
-                                    <button class="upgrade-produto">
-                                        <picture>
-                                            <img src="{{ asset('site/assets/img/upgrade_button.svg') }}" alt="ícone de upgrade">
-                                        </picture>
-                                    </button>
-                                </td>
-                            </tr>
+                            {{-- <td>
+                                <strong class="total-produto">
+                                    R$ {{ number_format($total_drink,2,",",".") }}
+                                </strong>
+                            </td> --}}
+
+                            <td>
+                                <button class="upgrade-produto">
+                                    <picture>
+                                        <img src="{{ asset('site/assets/img/upgrade_button.svg') }}" alt="ícone de upgrade">
+                                    </picture>
+                                </button>
+                            </td>
+                        </tr>
                         @endforeach
 
                         <tr>
@@ -452,9 +451,9 @@ use App\Models\Parametro;
                             <td>
                                 <strong class="total-produto">
                                     @php
-                                    session()->put(["total_orcamento_produtos" => $total]);
+                                    session()->put(['total_orcamento_produtos' => $total]);
                                     @endphp
-                                    R$ {{ number_format($total, 2, ",", ".") }}
+                                    R$ {{ number_format($total, 2, ',', '.') }}
                                 </strong>
                             </td>
                         </tr>
@@ -470,88 +469,87 @@ use App\Models\Parametro;
 
 @section('scripts')
 <script>
-    function escolher_produto(idproduto){
-        $.ajaxSetup({
-            headers: {
-                'X-CSRF-TOKEN': jQuery('meta[name="_token"]').attr('content')
-            }
-        });
+    function escolher_produto(idproduto) {
+            $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': jQuery('meta[name="_token"]').attr('content')
+                }
+            });
 
-        $.ajax({
-            type: "GET",
-            url: "/orcamento/escolher_produto/"+idproduto,
-            success: function(ret) {
-                console.log(ret)
-            },
-            error: function(ret) {
-                console.log("Deu muito ruim");
-                console.log(ret);
-            }
-        });
-    }
-    
-    $('div.up [fluid] div.close, button.upgrade-produto, div.up [fluid] div.niv button').click( function() {
-        if(!$('div.up').is('[hide]')){
-            window.location.href = '{{route('site.orcamento.carrinho')}}';
+            $.ajax({
+                type: "GET",
+                url: "/orcamento/escolher_produto/" + idproduto,
+                success: function(ret) {
+                    console.log(ret)
+                },
+                error: function(ret) {
+                    console.log("Deu muito ruim");
+                    console.log(ret);
+                }
+            });
         }
-        $('div.up').toggleAttr('hide')
-    })
 
-    $('div.up [fluid] div.close, button.upgrade-produto').click(() => {
-    })
-
-    $('section.carrinho div.niv div.niv-send button').click(() =>{
-        window.location.href = '{{route('site.orcamento.encerrar')}}';
-    })
-
-    function altera_ingrediente(idmarca, idingrediente, orcamentoproduto, ingrediente, nome) {
-
-        var elem = $(".marca[mid='"+idmarca+"']");
-
-        $.ajaxSetup({
-            headers: {
-                'X-CSRF-TOKEN': jQuery('meta[name="_token"]').attr('content')
+        $('div.up [fluid] div.close, button.upgrade-produto, div.up [fluid] div.niv button').click(function() {
+            if (!$('div.up').is('[hide]')) {
+                window.location.href = '{{ route('site.orcamento.carrinho') }}';
             }
-        });
+            $('div.up').toggleAttr('hide')
+        })
 
-        $.ajax({
-            type: "GET",
-            url: "/orcamento/ingrediente/"+idmarca+"/"+idingrediente+"/"+orcamentoproduto,
-            success: function(ret) {
-                $(".caixa"+idingrediente+" .marca").each(function(){
-                    if($(this).attr("mid") != idmarca){
-                        $(this).prop("checked", false);
-                    } else {
-                        $(this).prop("checked", true);
-                    }
-                });
-            },  
-            error: function(ret) {
-                console.log("Deu muito ruim");
-                console.log(ret);
-            }
-        });
-    }
+        $('div.up [fluid] div.close, button.upgrade-produto').click(() => {})
 
-    function alterar_qtd_produto(idproduto, idorcamento, qtd){
-        $.ajaxSetup({
-            headers: {
-                'X-CSRF-TOKEN': jQuery('meta[name="_token"]').attr('content')
-            }
-        });
+        $('section.carrinho div.niv div.niv-send button').click(() => {
+            window.location.href = '{{ route('site.orcamento.encerrar') }}';
+        })
 
-        $.ajax({
-            type: "GET",
-            url: "/orcamento/carrinho/qtd_altera/"+idorcamento+"/"+idproduto+"/"+qtd,
-            success: function(ret) {
-                console.log(ret)
-                document.location.reload(true);
-            },
-            error: function(ret) {
-                console.log("Deu muito ruim");
-                console.log(ret);
-            }
-        });
-    }
+        function altera_ingrediente(idmarca, idingrediente, orcamentoproduto, ingrediente, nome) {
+
+            var elem = $(".marca[mid='" + idmarca + "']");
+
+            $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': jQuery('meta[name="_token"]').attr('content')
+                }
+            });
+
+            $.ajax({
+                type: "GET",
+                url: "/orcamento/ingrediente/" + idmarca + "/" + idingrediente + "/" + orcamentoproduto,
+                success: function(ret) {
+                    $(".caixa" + idingrediente + " .marca").each(function() {
+                        if ($(this).attr("mid") != idmarca) {
+                            $(this).prop("checked", false);
+                        } else {
+                            $(this).prop("checked", true);
+                        }
+                    });
+                },
+                error: function(ret) {
+                    console.log("Deu muito ruim");
+                    console.log(ret);
+                }
+            });
+        }
+
+        function alterar_qtd_produto(idproduto, idorcamento, qtd) {
+            $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': jQuery('meta[name="_token"]').attr('content')
+                }
+            });
+
+            $.ajax({
+                type: "GET",
+                url: "/orcamento/carrinho/qtd_altera/" + idorcamento + "/" + idproduto + "/" + qtd,
+                success: function(ret) {
+                    console.log(ret)
+                    document.location.reload(true);
+                },
+                error: function(ret) {
+                    console.log("Deu muito ruim");
+                    console.log(ret);
+                }
+            });
+        }
 </script>
 @endsection

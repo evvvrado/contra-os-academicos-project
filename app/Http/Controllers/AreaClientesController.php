@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\Log;
 use App\Models\Lead;
 
 use App\Models\Orcamento;
+use App\Models\Servico;
 
 class AreaClientesController extends Controller
 {
@@ -22,7 +23,7 @@ class AreaClientesController extends Controller
         $lead = Lead::where('id', session()->get("cliente")["id"])->first();
 
         if(session()->get("primeiro_login") != "Sim") {
-            return redirect()->route("minha-area.cliente-dados", ["orcamentos" => $orcamentos, 'lead' => $lead]);
+            return redirect()->route("minha-area.cliente-pedidos");
         } else {
             return view("site.area-do-cliente.nova_senha");
         }
@@ -128,7 +129,20 @@ class AreaClientesController extends Controller
 
     public function clienteOrcamentos(Orcamento $orcamento)
     {
-        return view("site.area-do-cliente.orcamentos", ["orcamento" => $orcamento]);
+        $lead_info = $orcamento->lead;
+        $servicos_sim = Servico::where('incluso', true)
+        ->join('orcamento_servicos', 'servico_id', 'servicos.id')
+        ->where('orcamento_id', $orcamento->id)
+        ->get();
+
+        $servicos_nao = Servico::where('incluso', false)
+        ->join('orcamento_servicos', 'servico_id', 'servicos.id')
+        ->where('orcamento_id', $orcamento->id)
+        ->get();
+
+        // dd($orcamento->produtos);
+
+        return view("site.area-do-cliente.orcamentos", ["orcamento" => $orcamento, "lead_info" => $lead_info, "servicos_sim" => $servicos_sim, "servicos_nao" => $servicos_nao]);
     }
 
     public function deslogar()
