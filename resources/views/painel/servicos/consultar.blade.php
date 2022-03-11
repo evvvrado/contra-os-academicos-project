@@ -34,7 +34,7 @@ Produtos / <a style="color: unset" href="{{ route('painel.ingredientes') }}">Ser
                 </div>
                 <div class="row">
                     <div class="col-sm-12">
-                        <table id="datatable" class="table table-bordered dt-responsive  nowrap w-100 clear_both">
+                        <table style="width: 100%" id="datatable" class="table table-bordered dt-responsive  nowrap w-100 clear_both">
                             <thead>
                                 <tr>
                                     <th>Nome</th>
