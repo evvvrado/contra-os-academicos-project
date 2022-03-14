@@ -17,6 +17,8 @@
     use App\Models\OrcamentoProdutosIngredientes;
     use App\Models\ProdutosIngrediente;
     use App\Models\MarcaIngrediente;
+    use App\Models\OrcamentoServico;
+    use App\Models\OrcamentoProduto;
 @endphp
 
 @section('titulo')
@@ -198,6 +200,8 @@ Leads / Orçamentos
                                         </td>
                                         <td>
                                             <h5 class="font-size-14 mb-1"><a href="#" class="text-dark">{{  $produto->nome }} ({{  $orcamentoproduto->qtd }}x)</h5>
+                                            R$ {{ number_format($orcamentoproduto->valor, 2, ",", ".") }}
+                                            <br>
     
                                             @foreach($produto->ingredientes as $ingrediente)
                                                 @php
@@ -232,7 +236,18 @@ Leads / Orçamentos
         <div class="col-lg-6">
             <div class="card">
                 <div class="card-body">
-                    <h4 class="card-title mb-4">-</h4>
+                    <h4 class="card-title mb-4">Valor total do orçamento:</h4>
+                    @php
+                        $total_servicos = OrcamentoServico::where('orcamento_id', $orcamento->id)
+                        ->sum('valor');
+
+                        $total_produtos = OrcamentoProduto::where('orcamento_id', $orcamento->id)
+                        ->sum('valor');
+                    @endphp
+
+                    <h4>
+                        <strong>Total:</strong> R$ {{ number_format($total_servicos + $total_produtos, 2, ",", ".") }}
+                    </h4>
                 </div>
             </div>
         </div>

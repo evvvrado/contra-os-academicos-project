@@ -8,6 +8,7 @@
 use App\Models\Servico;
 use App\Models\Produto;
 use App\Models\OrcamentoServico;
+use App\Models\OrcamentoProduto;
 use App\Models\MarcaIngrediente;
 @endphp
 
@@ -138,8 +139,17 @@ use App\Models\MarcaIngrediente;
                         <picture>
                             <img src="{{asset('site/assets/sistema/dollar.svg')}}" alt="">
                         </picture>
+
+                        @php
+                            $total_servicos = OrcamentoServico::where('orcamento_id', $orcamento->id)
+                            ->sum('valor');
+
+                            $total_produtos = OrcamentoProduto::where('orcamento_id', $orcamento->id)
+                            ->sum('valor');
+                        @endphp
+
                         <h4>
-                            <strong>Total:</strong> R$ 350,00
+                            <strong>Total:</strong> R$ {{ number_format($total_servicos + $total_produtos, 2, ",", ".") }}
                         </h4>
                     </div>
                 </span>
@@ -148,7 +158,7 @@ use App\Models\MarcaIngrediente;
 
             <nav>
                 <span active>Inclusos</span>
-                <span>Não Inclusos</span>
+                <span>Extras</span>
             </nav>
 
             <main>
@@ -310,25 +320,19 @@ use App\Models\MarcaIngrediente;
                         <div style="display: flex; justify-content: space-between; flex-wrap: wrap">
                             @foreach($orcamento->orcamento_produtos as $orcamento_produto)
                                 @php
-                                    $total = 0;
-
                                     $produto = Produto::where('id', $orcamento_produto->produto_id)->first();
 
                                     foreach($produto->ingredientes as $ingrediente) {
-                                    $marcas = MarcaIngrediente::where('ingrediente_id', $ingrediente->id)
-                                    ->where('padrao', 'Sim')
-                                    ->join('marcas', 'marca_id', 'marcas.id')
-                                    ->get();
-
-                                    foreach($marcas as $marca) {
-                                    $total = ($total + $marca->valor) * $orcamento_produto->qtd;
-                                    }
+                                        $marcas = MarcaIngrediente::where('ingrediente_id', $ingrediente->id)
+                                        ->where('padrao', 'Sim')
+                                        ->join('marcas', 'marca_id', 'marcas.id')
+                                        ->get();
                                     }
                                 @endphp
                                 <div>
                                     <picture>
                                         <img width=251 height=271 src="{{$produto->imagem_1}}" alt="">
-                                        <h2>{{ $orcamento_produto->qtd }}x <i>{{ $produto->nome }}</i><br>R$ {{ number_format($total, 2, ',', '.') }}</h2>
+                                        <h2>{{ $orcamento_produto->qtd }}x <i>{{ $produto->nome }}</i><br>R$ {{ number_format($orcamento_produto->valor, 2, ',', '.') }}</h2>
                                     </picture>
 
                                 </div>
