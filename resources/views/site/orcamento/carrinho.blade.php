@@ -330,8 +330,6 @@ use App\Models\Parametro;
                                     @php
                                         session()->put(['total_orcamento_produtos' => $total]);
                                     @endphp
-
-                                    R$ {{ number_format($valor_total, 2, ',', '.') }}
                                 </strong>
                             </td>
                         </tr>
