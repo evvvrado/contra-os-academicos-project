@@ -295,6 +295,11 @@ Produtos / <a style="color: unset" href="{{ route('painel.acessorios') }}">Acess
                             </div>
 
                             <div class="form-group col-6 col-lg-4 mt-3">
+                                <label>Nome da unidade</label>
+                                <input required name="nome_unidade" type="text" class="form-control">
+                            </div>
+
+                            <div class="form-group col-6 col-lg-4 mt-3">
                                 <label>Quantidade por produto</label>
                                 <input required name="qtd" type="text" class="form-control">
                             </div>

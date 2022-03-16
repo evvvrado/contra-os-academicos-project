@@ -40,7 +40,7 @@ Produtos / <a style="color: unset" href="#">Marcas</a>
                                     <tr class="odd">
                                         <td class="sorting_1 dtr-control">{{ $marca->nome }}</td>
                                         <td class="d-flex justify-content-between">
-                                            <a href="#" onClick="editar_marca_existente({{ $acessorio->id }}, {{ $marca->id }}, '{{ $marca->padrao }}', '{{ $marca->nome }}', '{{ $marca->imagem }}', '{{ $marca->valor }}', '{{ $marca->unidade_medida }}', '{{ $marca->qtd }}', '{{ $marca->qtd_pacote }}', '{{ $marca->nome_pacote }}')" class="mx-auto">
+                                            <a href="#" onClick="editar_marca_existente({{ $acessorio->id }}, {{ $marca->id }}, '{{ $marca->nome_unidade }}', '{{ $marca->nome }}', '{{ $marca->imagem }}', '{{ $marca->valor }}', '{{ $marca->unidade_medida }}', '{{ $marca->qtd }}', '{{ $marca->qtd_pacote }}', '{{ $marca->nome_pacote }}')" class="mx-auto">
                                                 <i class="fas fa-pen-square"></i>
                                             </a>
 
@@ -115,13 +115,9 @@ Produtos / <a style="color: unset" href="#">Marcas</a>
                                 <input id="nome_existente" required name="nome" type="text" class="form-control">
                             </div>
 
-                            <div class="form-group col-6 col-lg-6 mt-3">
-                                <label>Padrão</label>
-                                <select id="padrao_existente" class="form-control" required name="padrao" required>
-                                    <option value="">Selecione</option>
-                                    <option value="Sim">Sim</option>
-                                    <option value="Não">Não</option>
-                                </select>
+                            <div class="form-group col-6 col-lg-4 mt-3">
+                                <label>Nome da unidade</label>
+                                <input required name="nome_unidade" id="nome_unidade_existente" type="text" class="form-control">
                             </div>
 
                             <div class="form-group col-6 col-lg-4 mt-3">
@@ -161,8 +157,8 @@ Produtos / <a style="color: unset" href="#">Marcas</a>
                         </div>
 
                         <input type="hidden" name="id_marca" id="id_marca">
-                        <input type="hidden" name="id_ingrediente" id="id_ingrediente_existente">
-                        <input type="hidden" name="tabela" value="ingredientes">
+                        <input type="hidden" name="id_acessorio" id="id_acessorio_existente">
+                        <input type="hidden" name="tabela" value="acessorios">
 
                     </div>
                     <div class="d-flex flex-wrap gap-2 mt-3">
@@ -187,12 +183,12 @@ Produtos / <a style="color: unset" href="#">Marcas</a>
         $('.modal_historico'.id).modal("show");
     }
 
-    function editar_marca_existente(id, id_marca, padrao, nome, imagem, valor, unidade_medida, qtd, qtd_pacote, nom_pacote) {
+    function editar_marca_existente(id, id_marca, nome_unidade, nome, imagem, valor, unidade_medida, qtd, qtd_pacote, nom_pacote) {
         $('#id_marca').val(id_marca);
 
-        $('#id_ingrediente_existente').val(id);
+        $('#id_acessorio_existente').val(id);
 
-        $('#padrao_existente').val(padrao);
+        $('#nome_unidade_existente').val(nome_unidade);
         $('#nome_existente').val(nome);
         $('#preco_existente').val(valor);
         $('#unidade_medida_existente').val(unidade_medida);

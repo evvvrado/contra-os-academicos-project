@@ -9,13 +9,16 @@ use Illuminate\Support\Facades\Storage;
 use App\Models\Produto;
 use App\Models\Lead;
 use App\Models\ProdutosIngrediente;
+use App\Models\ProdutosAcessorio;
 use App\Models\Orcamento;
 use App\Models\OrcamentoProduto;
 use App\Models\OrcamentoProdutosIngredientes;
+use App\Models\OrcamentoProdutosAcessorios;
 use App\Models\Parametro;
 use App\Models\Ingrediente;
 use App\Models\Servico;
 use App\Models\MarcaIngrediente;
+use App\Models\MarcaAcessorio;
 use App\Models\OrcamentoServico;
 use App\Models\Noticia;
 use App\Models\Anuncio;
@@ -346,6 +349,19 @@ class OrcamentoController extends Controller
                 $produto_ingrediente_insercao->marca_id = $marcas->id;
                 $produto_ingrediente_insercao->save();
             }
+
+            $acessorios = ProdutosAcessorio::where("produto_id", $produto)->get();
+            foreach ($acessorios as $acessorio) {
+                $marcas = MarcaAcessorio::where("acessorio_id", $acessorio->acessorio_id)
+                ->join('marcas', 'marcas_acessorios.marca_id', "=", 'marcas.id')
+                ->where("marcas.padrao", "Sim")
+                ->first();
+                $produto_acessorio_insercao = new OrcamentoProdutosAcessorios;
+                $produto_acessorio_insercao->orcamentoproduto_id = $produto_insercao->id;
+                $produto_acessorio_insercao->acessorio_id = $acessorio->acessorio_id;
+                $produto_acessorio_insercao->marca_id = $marcas->id;
+                $produto_acessorio_insercao->save();
+            }
         } else {
             $orcamento = Orcamento::find(session()->get("orcamento"));
             $produto = OrcamentoProduto::where("orcamento_id", $orcamento->id)
@@ -367,80 +383,4 @@ class OrcamentoController extends Controller
             $orcamentoproduto->delete();
         }
     } 
-
-    // public function adicionar(Produto $produto)
-    // {
-    //     // if (session()->get("produto_adicionar")) {
-    //     //     session()->forget("produto_adicionar");
-    //     // }
-
-    //     $orcamento = Orcamento::find(session()->get("orcamento"));
-
-    //     // if ($orcamento->produtos->where("orcamento_id", $orcamento->id)->count() > 0) {
-    //     //     return redirect()->route("site.orcamento.lista");
-    //     // }
-
-    //     $produto_insercao = new OrcamentoProduto;
-    //     $produto_insercao->orcamento_id = $orcamento->id;
-    //     $produto_insercao->produto_id = $produto->id;
-    //     $produto_insercao->save();
-
-    //     $ingredientes = ProdutosIngrediente::where("produto_id", $produto->id)->get();
-    //     foreach ($ingredientes as $ingrediente) {
-    //         $marcas = MarcaIngrediente::where("ingrediente_id", $ingrediente->ingrediente_id)
-    //         ->join('marcas', 'marcas_ingredientes.marca_id', "=", 'marcas.id')
-    //         ->where("marcas.padrao", "Sim")
-    //         ->first();
-    //         $produto_ingrediente_insercao = new OrcamentoProdutosIngredientes;
-    //         $produto_ingrediente_insercao->orcamentoproduto_id = $produto_insercao->id;
-    //         $produto_ingrediente_insercao->ingrediente_id = $ingrediente->ingrediente_id;
-    //         $produto_ingrediente_insercao->marca_id = $marcas->id;
-    //         $produto_ingrediente_insercao->save();
-    //     }
-
-    //     return redirect()->route("site.orcamento.lista");
-
-    //     // if (!session()->get("cliente")) {
-    //     //     session()->put(["produto_adicionar" => url()->current()]);
-    //     //     return redirect()->route("site.orcamento.lista");
-    //     // } else {
-    //     //     if (session()->get("produto_adicionar")) {
-    //     //         session()->forget("produto_adicionar");
-    //     //     }
-
-    //     //     if (!session()->get("orcamento")) {
-    //     //         $orcamento = new Orcamento();
-    //     //         $orcamento->lead_id = session()->get("cliente")["id"];
-    //     //         $orcamento->save();
-    //     //         session()->put(["orcamento" => $orcamento->id]);
-    //     //     } else {
-    //     //         $orcamento = Orcamento::find(session()->get("orcamento"));
-    //     //     }
-
-    //     //     if ($orcamento->produtos->where("orcamento_id", $orcamento->id)->count() > 0) {
-    //     //         return redirect()->route("site.orcamento.lista");
-    //     //     }
-
-    //     //     $produto_insercao = new OrcamentoProduto;
-    //     //     $produto_insercao->orcamento_id = $orcamento->id;
-    //     //     $produto_insercao->produto_id = $produto->id;
-    //     //     $produto_insercao->save();
-
-    //     //     return redirect()->route("site.orcamento.lista");
-    //     // }
-    // }
-
-    // public function remover(Produto $produto)
-    // {
-    //     $orcamento = Orcamento::find(session()->get("orcamento"));
-    //     $produto = OrcamentoProduto::where("orcamento_id", $orcamento->id)
-    //         ->where("produto_id", $produto->id);
-    //     $produto->delete();
-    //     // if ($orcamento->produtos->count() == 0) {
-    //     //     $orcamento->delete();
-    //     //     session()->forget("orcamento");
-    //     //     return redirect()->route("site.orcamento.lista");
-    //     // }
-    //     return redirect()->route("site.orcamento.lista");
-    // }
 }

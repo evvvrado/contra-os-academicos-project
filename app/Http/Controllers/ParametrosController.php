@@ -27,6 +27,9 @@ class ParametrosController extends Controller
         Parametro::where('id', 5)
         ->update(['valor_1' => $request->ingredientes]);
 
+        Parametro::where('id', 6)
+        ->update(['valor_1' => $request->mais_visitados]);
+
         return view("painel.parametros.consultar");
     }
 }

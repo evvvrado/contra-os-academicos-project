@@ -2,7 +2,6 @@
 
 @section("body_attr", "id=coquetel")
 
-
 @section('content')
 
 <section class="coquetel-detalhes">

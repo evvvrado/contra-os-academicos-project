@@ -164,6 +164,21 @@ Parametros
 
                                             </div>
 
+                                            <hr>
+
+                                            @php
+                                                $parametro = Parametro::where('id', 6)->first();
+                                            @endphp
+                                            
+                                            <div class="row">
+                                                <div class="col-lg-6">
+                                                    <p><strong>Quantidade de mais visitados</strong></p>
+                                                    <input name="mais_visitados" class="form-control" type="text" value="{{ $parametro->valor_1 }}" style="width: 30%">
+                                                </div>
+                                            </div>
+
+                                            <hr>
+
                                             <br>
                                             <div style="text-align: center">
                                                 <input style="width: 40%; margin: auto" type="submit" class="form-control btn btn-primary">

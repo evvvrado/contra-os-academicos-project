@@ -4,8 +4,10 @@
 
 @php
 use App\Models\OrcamentoProdutosIngredientes;
+use App\Models\OrcamentoProdutosAcessorios;
 use App\Models\OrcamentoProduto;
 use App\Models\MarcaIngrediente;
+use App\Models\MarcaAcessorio;
 use App\Models\Produto;
 use App\Models\Parametro;
 @endphp
@@ -181,6 +183,10 @@ use App\Models\Parametro;
                                                 $ingredientes = OrcamentoProdutosIngredientes::where('orcamentoproduto_id', $produto->id)
                                                 ->join('ingredientes', 'ingrediente_id', 'ingredientes.id')
                                                 ->get();
+
+                                                $acessorios = OrcamentoProdutosAcessorios::where('orcamentoproduto_id', $produto->id)
+                                                ->join('acessorios', 'acessorio_id', 'acessorios.id')
+                                                ->get();
                                             @endphp
 
                                             @foreach ($ingredientes as $ingrediente)
@@ -221,23 +227,12 @@ use App\Models\Parametro;
                                                                         $qtd_produto_total = $qtd_produto * $qtd_total_drinks;
                                                                         $qtd_ingrediente = 1;
 
-                                                                        // echo $qtd_produto_total;
-                                                                        // echo "<br>";
-                                                                        // echo $marca->qtd_pacote;
-                                                                        // echo "<br>";
-                                                                        // echo "<br>";
-                                                                        // echo "<br>";
-
                                                                         $marca_qtd = $marca->qtd_pacote;
 
                                                                         while (true) {
                                                                             if ($qtd_produto_total <= $marca_qtd) {
                                                                                 break;
                                                                             }
-                                                                            // echo $qtd_produto_total;
-                                                                            // echo "<br>";
-                                                                            // echo $marca_qtd;
-                                                                            // echo "<br>";
                                                                             $marca_qtd = $marca_qtd + $marca->qtd_pacote;
                                                                             $qtd_ingrediente++;
                                                                         }
@@ -250,6 +245,43 @@ use App\Models\Parametro;
                                                         </div>
                                                     @endforeach
                                                 </div>
+                                            @endforeach
+
+                                            @foreach ($acessorios as $acessorio)
+                                                @php
+                                                    $marcas = MarcaAcessorio::where('acessorio_id', $acessorio->id)
+                                                    ->join('marcas', 'marca_id', 'marcas.id')
+                                                    ->get();
+                                                @endphp
+
+                                                @foreach ($marcas as $marca)
+                                                    @php
+                                                        $qtd_pacote = $marca->qtd_pacote;
+                                                        if($marca->id == $marca->marca_id) {
+                                                            $parametro = Parametro::where('id', 4)->first();
+                                                            $qtd_total_drinks = Round(($orcamento->qtd_pessoas * $parametro->valor_2) / $parametro->valor_1);
+                                                            $qtd_unica = $qtd_total_drinks / $produtos->count();
+
+                                                            $qtd_produto = $marca->qtd;
+
+                                                            if($qtd_produto){
+                                                                $qtd_produto_total = $qtd_produto * $qtd_total_drinks;
+                                                                $qtd_acessorio = 1;
+
+                                                                $marca_qtd = $marca->qtd_pacote;
+
+                                                                while (true) {
+                                                                    if ($qtd_produto_total <= $marca_qtd) {
+                                                                        break;
+                                                                    }
+                                                                    $marca_qtd = $marca_qtd + $marca->qtd_pacote;
+                                                                    $qtd_acessorio++;
+                                                                }
+                                                            }
+                                                            $total_produto = $total_produto + ($qtd_acessorio * $marca->valor);
+                                                        }
+                                                    @endphp
+                                                @endforeach
                                             @endforeach
                                         </main>
 

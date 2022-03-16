@@ -80,6 +80,7 @@ class MarcasController extends Controller
         $valor = str_replace(",", ".", $request->preco);
         $marca->valor = $valor;
         $marca->unidade_medida = $request->unidade_medida;
+        $marca->nome_unidade = $request->nome_unidade;
         $marca->qtd = $request->qtd;
         $marca->qtd_pacote = $request->qtd_pacote;
         $marca->nome_pacote = $request->nome_pacote;
@@ -140,7 +141,7 @@ class MarcasController extends Controller
         $valor = str_replace(",", ".", $request->preco);
 
         Marca::where('id', $request->id_marca)
-        ->update(['nome' => $request->nome, 'valor' => $valor, 'qtd' => $request->qtd, 'qtd_pacote' => $request->qtd_pacote, 'unidade_medida' => $request->unidade_medida, 'nome_pacote' => $request->nome_pacote]);
+        ->update(['nome' => $request->nome, 'nome_unidade' => $request->nome_unidade, 'valor' => $valor, 'qtd' => $request->qtd, 'qtd_pacote' => $request->qtd_pacote, 'unidade_medida' => $request->unidade_medida, 'nome_pacote' => $request->nome_pacote]);
         
         if($request->hasFile('imagem')){
             // unlink(public_path('/admin/images/usuarios/'.$usuario->imagem));
@@ -158,7 +159,7 @@ class MarcasController extends Controller
         if($request->tabela == "ingredientes") {
             return redirect()->route("painel.marcas.ingredientes", ['ingrediente' => $request->id_ingrediente]);
         } else {
-            $url = "painel.acessorios";
+            return redirect()->route("painel.marcas.acessorios", ['acessorio' => $request->id_acessorio]);
         }
 
     }

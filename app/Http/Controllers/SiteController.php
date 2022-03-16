@@ -80,6 +80,14 @@ class SiteController extends Controller
 
         $produtos = Produto::whereNotIn("id", $produto)->get();
 
+        if($produto->mais_visitados) {
+            Produto::where('id', $produto->id)
+            ->update(['mais_visitados' => $produto->mais_visitados + 1]);
+        } else {
+            Produto::where('id', $produto->id)
+            ->update(['mais_visitados' => 1]);
+        }
+
         return view("site.coquetel", ['produto' => $produto, 'ingredientes' => $ingredientes, 'produtos' => $produtos,]);
     }
 

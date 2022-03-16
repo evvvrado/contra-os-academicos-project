@@ -40,7 +40,7 @@ Produtos / <a style="color: unset" href="#">Marcas</a>
                                     <tr class="odd">
                                         <td class="sorting_1 dtr-control">{{ $marca->nome }}</td>
                                         <td class="d-flex justify-content-between">
-                                            <a href="#" onClick="editar_marca_existente({{ $ingrediente->id }}, {{ $marca->id }}, '{{ $marca->padrao }}', '{{ $marca->nome }}', '{{ $marca->imagem }}', '{{ $marca->valor }}', '{{ $marca->unidade_medida }}', '{{ $marca->qtd }}', '{{ $marca->qtd_pacote }}', '{{ $marca->nome_pacote }}')" class="mx-auto">
+                                            <a href="#" onClick="editar_marca_existente({{ $ingrediente->id }}, {{ $marca->id }}, '{{ $marca->nome_unidade }}', '{{ $marca->nome }}', '{{ $marca->imagem }}', '{{ $marca->valor }}', '{{ $marca->unidade_medida }}', '{{ $marca->qtd }}', '{{ $marca->qtd_pacote }}', '{{ $marca->nome_pacote }}')" class="mx-auto">
                                                 <i class="fas fa-pen-square"></i>
                                             </a>
 
@@ -116,6 +116,11 @@ Produtos / <a style="color: unset" href="#">Marcas</a>
                             </div>
 
                             <div class="form-group col-6 col-lg-4 mt-3">
+                                <label>Nome da unidade</label>
+                                <input required name="nome_unidade" id="nome_unidade_existente" type="text" class="form-control">
+                            </div>
+
+                            <div class="form-group col-6 col-lg-4 mt-3">
                                 <label>Quantidade por produto</label>
                                 <input required name="qtd" id="qtd_existente" type="text" class="form-control">
                             </div>
@@ -178,12 +183,12 @@ Produtos / <a style="color: unset" href="#">Marcas</a>
         $('.modal_historico'.id).modal("show");
     }
 
-    function editar_marca_existente(id, id_marca, padrao, nome, imagem, valor, unidade_medida, qtd, qtd_pacote, nom_pacote) {
+    function editar_marca_existente(id, id_marca, nome_unidade, nome, imagem, valor, unidade_medida, qtd, qtd_pacote, nom_pacote) {
         $('#id_marca').val(id_marca);
 
         $('#id_ingrediente_existente').val(id);
 
-        $('#padrao_existente').val(padrao);
+        $('#nome_unidade_existente').val(nome_unidade);
         $('#nome_existente').val(nome);
         $('#preco_existente').val(valor);
         $('#unidade_medida_existente').val(unidade_medida);
