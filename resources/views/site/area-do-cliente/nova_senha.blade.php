@@ -6,7 +6,7 @@
 @php
 $cliente = \App\Models\Lead::find(session()->get('cliente')['id']);
 @endphp
-
+''
 <section class="mA_dados criar_senha">
     <div class="container-fluid">
         <div class="container-fav">
