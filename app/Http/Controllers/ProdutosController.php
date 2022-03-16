@@ -59,24 +59,24 @@ class ProdutosController extends Controller
             // unlink(public_path('/admin/images/usuarios/'.$usuario->imagem_1));
             $image = $request->file('imagem_1');
             $nome_1 = 'imagem_1.'.$image->getClientOriginalExtension();
-            $destinationPath = public_path('/admin/images/produtos/'.$produto_id->id."/");
+            $destinationPath = public_path('/admin/images/produtos/'.$request->id."/");
             $image->move($destinationPath, $nome_1);
             $produtos->imagem_1 = $nome_1;
 
-            Produto::where('id', $produto_id->id)
-            ->update(['imagem_1' => '/admin/images/produtos/'.$produto_id->id."/".$nome_1]);
+            Produto::where('id', $request->id)
+            ->update(['imagem_1' => '/admin/images/produtos/'.$request->id."/".$nome_1]);
         }
 
         if($request->hasFile('imagem_2')){
             // unlink(public_path('/admin/images/produtos//'.$usuario->imagem_2));
             $image = $request->file('imagem_2');
             $nome_2 = 'imagem_2.'.$image->getClientOriginalExtension();
-            $destinationPath = public_path('/admin/images/produtos/'.$produto_id->id."/");
+            $destinationPath = public_path('/admin/images/produtos/'.$request->id."/");
             $image->move($destinationPath, $nome_2);
             $produtos->imagem_2 = $nome_2;
 
-            Produto::where('id', $produto_id->id)
-            ->update(['imagem_2' => '/admin/images/produtos/'.$produto_id->id."/".$nome_2]);
+            Produto::where('id', $request->id)
+            ->update(['imagem_2' => '/admin/images/produtos/'.$request->id."/".$nome_2]);
         }
 
         toastr()->success("produto salvo com sucesso!");
