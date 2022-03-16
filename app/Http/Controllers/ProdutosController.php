@@ -61,7 +61,6 @@ class ProdutosController extends Controller
             $nome_1 = 'imagem_1.'.$image->getClientOriginalExtension();
             $destinationPath = public_path('/admin/images/produtos/'.$request->id."/");
             $image->move($destinationPath, $nome_1);
-            $produtos->imagem_1 = $nome_1;
 
             Produto::where('id', $request->id)
             ->update(['imagem_1' => '/admin/images/produtos/'.$request->id."/".$nome_1]);
@@ -73,7 +72,6 @@ class ProdutosController extends Controller
             $nome_2 = 'imagem_2.'.$image->getClientOriginalExtension();
             $destinationPath = public_path('/admin/images/produtos/'.$request->id."/");
             $image->move($destinationPath, $nome_2);
-            $produtos->imagem_2 = $nome_2;
 
             Produto::where('id', $request->id)
             ->update(['imagem_2' => '/admin/images/produtos/'.$request->id."/".$nome_2]);
