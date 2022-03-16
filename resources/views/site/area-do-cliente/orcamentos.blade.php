@@ -212,9 +212,33 @@ use App\Models\MarcaIngrediente;
                                 </tbody>
                             </table>
                             @else
-                            <br>
-                            Não há serviços inclusos adicionados neste orçamento
-                            <br>
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th width="206">Nome dos serviços</th>
+                                        <th width="456">Descrição</th>
+                                        <th width="175">Valor</th>
+                                        <th width="221">Quantidade</th>
+                                        <th width="210">Total</th>
+                                    </tr>
+                                </thead>
+
+                                <tbody>
+                                    <tr>
+                                        <td>
+                                            Não há serviços inclusos para este orçamento.
+                                        </td>
+
+                                        <td>-</td>
+
+                                        <td>-</td>
+
+                                        <td>-</td>
+
+                                        <td>-</td>
+                                    </tr>
+                                </tbody>
+                            </table>
                             @endif
 
                             <span class="resumo-evento">
@@ -289,9 +313,33 @@ use App\Models\MarcaIngrediente;
                                 </tbody>
                             </table>
                             @else
-                            <br>
-                            Não há serviços extras adicionados neste orçamento
-                            <br>
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th width="206">Nome dos serviços</th>
+                                        <th width="456">Descrição</th>
+                                        <th width="175">Valor</th>
+                                        <th width="221">Quantidade</th>
+                                        <th width="210">Total</th>
+                                    </tr>
+                                </thead>
+
+                                <tbody>
+                                    <tr>
+                                        <td>
+                                            Não há serviços inclusos para este orçamento.
+                                        </td>
+
+                                        <td>-</td>
+
+                                        <td>-</td>
+
+                                        <td>-</td>
+
+                                        <td>-</td>
+                                    </tr>
+                                </tbody>
+                            </table>
                             @endif
 
                             <span class="resumo-evento">

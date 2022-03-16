@@ -133,14 +133,14 @@ Produtos / <a style="color: unset" href="{{ route('painel.produtos') }}">Produto
                                 <label class="form-label">Imagem 1</label>
                                 <input name="imagem_1" type="file" class="form-control" style="height: 36px !important">
                                 <br>
-                                <img src="{{ asset($produto->imagem_1) }}" class="img-fluid" style="width: 100%; height: auto" alt="Responsive image">
+                                <img src="{{ asset($produto->imagem_1) }}" class="img-fluid" style="width: 250px; height: auto; margin: auto; display: block" alt="Responsive image">
                             </div>
 
                             <div class="form-group col-6 col-lg-6 mt-3">
                                 <label class="form-label">Imagem 2</label>
                                 <input name="imagem_2" type="file" class="form-control" style="height: 36px !important">
                                 <br>
-                                <img src="{{ asset($produto->imagem_2) }}" class="img-fluid" style="width: 100%; height: auto" alt="Responsive image">
+                                <img src="{{ asset($produto->imagem_2) }}" class="img-fluid" style="width: 250px; height: auto; margin: auto; display: block" alt="Responsive image">
                             </div>
                         </div>
 

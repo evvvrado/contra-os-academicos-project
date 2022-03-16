@@ -21,7 +21,7 @@ Produtos / <a style="color: unset" href="{{ route('painel.ingredientes') }}">Ser
 
 <div class="row">
     <div class="col-12">
-        <div class="row">
+        <div class="row" style="padding: 0 15px">
             <div class=" col-sm-12 col-md-6 mb-3" style=" border-radius: 5px; background-color:var(--principal); width: 100%;">
                 <a name="" id="button-add" class="btn" style="height: 100%; padding-left: 0;"
                     style="padding-left: 0;" href="{{ route('painel.servicos.cadastro') }} ">
@@ -30,9 +30,9 @@ Produtos / <a style="color: unset" href="{{ route('painel.ingredientes') }}">Ser
             </div>
             <div class="card">
                 <div class="card-body">
-                    <div id="datatable_wrapper" class="dataTables_wrapper dt-bootstrap4 no-footer">
+                    <i id="search-icon" class="bx bx-search" aria-hidden="true"></i>
                 </div>
-                <div class="row">
+                <div class="row p-3">
                     <div class="col-sm-12">
                         <table style="width: 100%" id="datatable" class="table table-bordered dt-responsive  nowrap w-100 clear_both">
                             <thead>
@@ -221,5 +221,10 @@ Produtos / <a style="color: unset" href="{{ route('painel.ingredientes') }}">Ser
                 $("select").val("-1");
             });
         });
+
+        $(document).ready(() => {
+
+        $('div.dataTables_wrapper div.dataTables_filter label').prepend($('#search-icon'));
+        })
 </script>
 @endsection

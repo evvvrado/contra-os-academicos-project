@@ -181,7 +181,7 @@ Parametros
 
                                             <br>
                                             <div style="text-align: center">
-                                                <input style="width: 40%; margin: auto" type="submit" class="form-control btn btn-primary">
+                                                <input style="width: 20%; margin: auto; line-height: 0px;" type="submit" class="form-control btn btn-primary">
                                             </div>
 
                                         </div>

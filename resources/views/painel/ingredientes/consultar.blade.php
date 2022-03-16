@@ -68,11 +68,11 @@ Produtos / <a style="color: unset" href="{{ route('painel.ingredientes') }}">Ing
                         <!-- Tab panes -->
                         <div class="tab-content p-3 text-muted">
                             <div class="tab-pane active" id="tab-geral" role="tabpanel">
-                                <table class="datatable table table-bordered dt-responsive  nowrap w-100 clear_both">
+                                <table class="tabela_export table table-bordered dt-responsive  nowrap w-100 clear_both">
                                     <thead>
                                         <tr>
-                                            <th>Nome</th>
-                                            <th style="width: 20%" class="text-center"></th>
+                                            <th width="430">Nome</th>
+                                            <th width="90" class="text-center"></th>
                                         </tr>
                                     </thead>
                                     <tbody>                 
@@ -126,11 +126,11 @@ Produtos / <a style="color: unset" href="{{ route('painel.ingredientes') }}">Ing
                                     $ingredientes = Ingrediente::where("cat_id", "=", $ingredientecat->id)->get();
                                 @endphp
                                         <div class="tab-pane" id="tab-{{$ingredientecat->id}}" role="tabpanel">
-                                            <table class="datatable table table-bordered dt-responsive  nowrap w-100 clear_both">
+                                            <table class="tabela_export table table-bordered dt-responsive  nowrap w-100 clear_both">
                                                 <thead>
                                                     <tr>
-                                                        <th>Nome</th>
-                                                        <th style="width: 20%!important" class="text-center"></th>
+                                                        <th width="430">Nome</th>
+                                                        <th width="90" class="text-center"></th>
                                                     </tr>
                                                 </thead>
                                                 <tbody>                                                        
@@ -380,7 +380,7 @@ Produtos / <a style="color: unset" href="{{ route('painel.ingredientes') }}">Ing
     }
 
     $(document).ready(function() {
-        $('.datatable').DataTable({
+        $('.tabela_export').DataTable({
             language: {
                 "emptyTable": "Nenhum registro encontrado",
                 "info": "Mostrando de _START_ até _END_ de _TOTAL_ registros",

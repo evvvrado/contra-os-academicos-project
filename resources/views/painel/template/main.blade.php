@@ -25,6 +25,12 @@ $usuario = \App\Models\Usuario::find(session()->get('usuario')['id']);
     <link href="{{ asset('admin/css/app.min.css') }}" id="app-style" rel="stylesheet" type="text/css" />
     @toastr_css
     @yield("styles")
+
+    <style>
+        .bx-minus-circle{
+            font-size: 16px !important;
+        }
+    </style>
 </head>
 
 <body data-sidebar="dark">

@@ -271,7 +271,8 @@ Dashboard / <a style="color: unset" href="{{ route('painel.index') }}">Início</
             {
                 id: 'a',
                 title: '{{ $orcamento->tipo }} - {{ $lead->nome }}',
-                start: '{{ $orcamento->data }}'
+                start: '{{ $orcamento->data }}',
+                url: '{{route('painel.leads.orcamento', ['orcamento' => $orcamento->id])}}'
             },
             @endforeach
         ]

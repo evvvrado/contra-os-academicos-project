@@ -24,7 +24,7 @@ use App\Models\Parametro;
 
 <div class="row">
     <div class="col-12">
-        <div class="row">
+        <div class="row" style="padding: 0 15px">
             <div class=" col-sm-12 col-md-6 mb-3" style=" border-radius: 5px; background-color:var(--principal); width: 100%;">
                 <a name="" id="button-add" class="btn" style="height: 100%; padding-left: 0;"
                     style="padding-left: 0;" href="{{ route('painel.produtos.cadastro') }} ">
@@ -35,7 +35,7 @@ use App\Models\Parametro;
                 <div class="card-body">
                     <i id="search-icon" class="bx bx-search" aria-hidden="true"></i>
                 </div>
-                <div class="row">
+                <div class="row p-3">
                     <div class="col-sm-12">
                         <table id="datatable" class="table table-bordered dt-responsive nowrap w-100 dataTable no-footer dtr-inline" role="grid" aria-describedby="datatable_info"
                             style="width: 1185px;">

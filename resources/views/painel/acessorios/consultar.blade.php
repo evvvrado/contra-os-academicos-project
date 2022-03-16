@@ -71,8 +71,8 @@ Produtos / <a style="color: unset" href="{{ route('painel.acessorios') }}">Acess
                                 <table class="tabela_export table table-bordered dt-responsive  nowrap w-100 clear_both">
                                     <thead>
                                         <tr>
-                                            <th>Nome</th>
-                                            <th style="width: 15% !important;"></th>
+                                            <th width="430">Nome</th>
+                                            <th width="90"></th>
                                         </tr>
                                     </thead>
                                     <tbody>               
@@ -127,8 +127,8 @@ Produtos / <a style="color: unset" href="{{ route('painel.acessorios') }}">Acess
                                             <table class="tabela_export table table-bordered dt-responsive  nowrap w-100 clear_both">
                                                 <thead>
                                                     <tr>
-                                                        <th>Nome</th>
-                                                        <th style="width: 15% !important;"></th>
+                                                        <th width="430">Nome</th>
+                                                        <th width="90"></th>
                                                     </tr>
                                                 </thead>
                                                 <tbody>                                                        
