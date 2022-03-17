@@ -317,7 +317,7 @@ $dataInvertida = $parteData[2] . "-" . $parteData[1] . "-" . $parteData[0];
 
 
 
-        {{-- <div class="col-lg-6">
+        <div class="col-lg-6">
             <div class="card">
                 <div class="card-body">
                     <h4 class="card-title mb-4" onClick="imprimir()">Lista de compras</h4>
@@ -351,21 +351,20 @@ $dataInvertida = $parteData[2] . "-" . $parteData[1] . "-" . $parteData[0];
 
                                                     $qtd_produto = $marca->qtd;
 
+                                                    
                                                     if($qtd_produto){
                                                         $qtd_produto_total = $qtd_produto * $qtd_total_drinks;
                                                         $qtd_ingrediente = 1;
 
                                                         $marca_qtd = $marca->qtd_pacote;
 
-                                                        while (true) {
-                                                            if ($qtd_produto_total <= $marca_qtd) {
-                                                                break;
-                                                            }
+
+                                                        while ($qtd_produto_total <= $marca_qtd) {
                                                             $marca_qtd = $marca_qtd + $marca->qtd_pacote;
                                                             $qtd_ingrediente++;
                                                         }
                                                     }
-                                                    $total_produto = $total_produto + ($qtd_ingrediente * $marca->valor);
+                                                    $total_produto = $total_produto->count() + ($qtd_ingrediente * $marca->valor);
                                                 }
                                             }
                                     @endphp 
@@ -389,7 +388,7 @@ $dataInvertida = $parteData[2] . "-" . $parteData[1] . "-" . $parteData[0];
                     </div>
                 </div>
             </div>
-        </div> --}}
+        </div>
         <!-- end col -->
 
 
