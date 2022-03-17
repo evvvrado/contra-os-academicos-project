@@ -15,10 +15,12 @@
 @php
 use App\Models\Produto;
 use App\Models\OrcamentoProdutosIngredientes;
+use App\Models\OrcamentoProdutosAcessorios;
 use App\Models\ProdutosIngrediente;
 use App\Models\MarcaIngrediente;
 use App\Models\OrcamentoServico;
 use App\Models\OrcamentoProduto;
+use App\Models\Parametro;
 @endphp
 
 @section('titulo')
@@ -138,24 +140,6 @@ $dataInvertida = $parteData[2] . "-" . $parteData[1] . "-" . $parteData[0];
     <!-- end row -->
 
     <div class="row">
-        {{-- <div class="col-lg-12">
-            <div class="card">
-                <div class="card-body">
-                    <h4 class="card-title mb-4">Valores do orçamento:</h4>
-                    @php
-                    $total_servicos = OrcamentoServico::where('orcamento_id', $orcamento->id)
-                    ->sum('valor');
-
-                    $total_produtos = OrcamentoProduto::where('orcamento_id', $orcamento->id)
-                    ->sum('valor');
-                    @endphp
-
-                    <h4>
-                        <strong>Total:</strong> R$ {{ number_format($total_servicos + $total_produtos, 2, ",", ".") }}
-                    </h4>
-                </div>
-            </div>
-        </div> --}}
 
         <div class="col-12">
             <div class="row">
@@ -168,11 +152,25 @@ $dataInvertida = $parteData[2] . "-" . $parteData[1] . "-" . $parteData[0];
                                         <h5 class="text-primary">Total do Orçamento!</h5>
                                         <p>Valor total gerado pelo orçamento</p>
 
+                                        @php
+                                            $total_servicos = OrcamentoServico::where('orcamento_id', $orcamento->id)
+                                            ->sum('valor');
+
+                                            $total_produtos = OrcamentoProduto::where('orcamento_id', $orcamento->id)->get();
+
+                                            $valor_total_orcamento = $total_servicos;
+                                            $valor_total_produtos = 0;
+
+                                            foreach($total_produtos as $total_produto) {
+                                                $valor_total_produtos = $valor_total_produtos + ($total_produto->valor * $total_produto->qtd);
+                                                $valor_total_orcamento = $valor_total_orcamento + ($total_produto->valor * $total_produto->qtd);
+                                            }
+                                        @endphp
 
                                         <div class="text-muted mt-4">
-                                            <h4 class="text-primary">R$ COLOCAR VALOR TOTAL</h4>
+                                            <h4 class="text-primary">R$ {{ number_format($valor_total_orcamento, 2, ",", ".") }}</h4>
                                             <div class="d-flex">
-                                                <span class="text-truncate">4 Serviços inclusos</span>
+                                                <span class="text-truncate">{{ $servicos_sim->count() }} Serviços inclusos</span>
                                             </div>
                                         </div>
                                     </div>
@@ -195,14 +193,21 @@ $dataInvertida = $parteData[2] . "-" . $parteData[1] . "-" . $parteData[0];
                                         <h5 class="font-size-14 mb-0">Drinks</h5>
                                     </div>
                                     <div class="text-muted mt-4">
-                                        <h4>R$ VALOR</h4>
+                                        <h4>R$ {{ number_format($valor_total_produtos, 2, ",", ".") }}</h4>
                                         <div class="d-flex">
-                                            <span class="badge badge-soft-success font-size-12"> 25 </span> <span class="ms-2 text-truncate">Drinks</span>
+                                            <span class="badge badge-soft-success font-size-12"> {{ $total_produtos->count() }} </span> <span class="ms-2 text-truncate">Drinks</span>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
+
+                        @php
+                            $total_servicos_sim = OrcamentoServico::where('orcamento_id', $orcamento->id)
+                            ->join('servicos', 'servico_id', 'servicos.id')
+                            ->where('incluso', true)
+                            ->sum('orcamento_servicos.valor');
+                        @endphp
 
                         <div class="col-sm-4">
                             <div class="card">
@@ -216,14 +221,21 @@ $dataInvertida = $parteData[2] . "-" . $parteData[1] . "-" . $parteData[0];
                                         <h5 class="font-size-14 mb-0">Serviços Inclusos</h5>
                                     </div>
                                     <div class="text-muted mt-4">
-                                        <h4>R$ VALOR <i class="mdi mdi-chevron-up ms-1 text-success"></i></h4>
+                                        <h4>R$ {{ number_format($total_servicos_sim, 2, ",", ".") }} <i class="mdi mdi-chevron-up ms-1 text-success"></i></h4>
                                         <div class="d-flex">
-                                            <span class="badge badge-soft-success font-size-12"> 30 </span> <span class="ms-2 text-truncate">Serviços solicitados</span>
+                                            <span class="badge badge-soft-success font-size-12"> {{ $servicos_sim->count() }} </span> <span class="ms-2 text-truncate">Serviços solicitados</span>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
+
+                        @php
+                            $total_servicos_nao = OrcamentoServico::where('orcamento_id', $orcamento->id)
+                            ->join('servicos', 'servico_id', 'servicos.id')
+                            ->where('incluso', false)
+                            ->sum('orcamento_servicos.valor');
+                        @endphp
 
                         <div class="col-sm-4">
                             <div class="card">
@@ -237,10 +249,10 @@ $dataInvertida = $parteData[2] . "-" . $parteData[1] . "-" . $parteData[0];
                                         <h5 class="font-size-14 mb-0">Serviços Adicionais</h5>
                                     </div>
                                     <div class="text-muted mt-4">
-                                        <h4>R$ VALOR <i class="mdi mdi-chevron-up ms-1 text-success"></i></h4>
+                                        <h4>R$ {{ number_format($total_servicos_nao, 2, ",", ".") }} <i class="mdi mdi-chevron-up ms-1 text-success"></i></h4>
 
                                         <div class="d-flex">
-                                            <span class="badge badge-soft-warning font-size-12"> 0 </span> <span class="ms-2 text-truncate">Serviços solicitados</span>
+                                            <span class="badge badge-soft-warning font-size-12"> {{ $servicos_nao->count() }} </span> <span class="ms-2 text-truncate">Serviços solicitados</span>
                                         </div>
                                     </div>
                                 </div>
@@ -305,7 +317,7 @@ $dataInvertida = $parteData[2] . "-" . $parteData[1] . "-" . $parteData[0];
 
 
 
-        <div class="col-lg-6">
+        {{-- <div class="col-lg-6">
             <div class="card">
                 <div class="card-body">
                     <h4 class="card-title mb-4" onClick="imprimir()">Lista de compras</h4>
@@ -313,27 +325,71 @@ $dataInvertida = $parteData[2] . "-" . $parteData[1] . "-" . $parteData[0];
                         <table class="table table-nowrap align-middle table-hover mb-0">
                             <tbody>
                                 @foreach($orcamentoprodutos as $orcamentoproduto)
-                                @php
-                                $produto = Produto::where('id', $orcamentoproduto->produto_id)->first();
-                                @endphp
-                                <tr>
-                                    <td style="width: 48px; height: 100px">
-                                        <div class="avatar-sm">
-                                            <img style="object-fit: cover; width: 100%; height: 100%;" src="{{$produto->imagem_1}}">
-                                        </div>
-                                    </td>
-                                    <td>
-                                        <h5 class="font-size-14 mb-1">Energético <br> <strong>Fusion</strong> - 15 Garrafas</h5>
-                                        <strong>Total: </strong> R$ {{ number_format($orcamentoproduto->valor, 2, ",", ".") }}
-                                    </td>
-                                </tr>
+                                    @php
+                                        $produto_info = Produto::where('id', $orcamentoproduto->produto_id)->first();
+
+                                        $ingredientes = OrcamentoProdutosIngredientes::where('orcamentoproduto_id', $orcamentoproduto->id)
+                                        ->join('ingredientes', 'ingrediente_id', 'ingredientes.id')
+                                        ->get();
+
+                                        $acessorios = OrcamentoProdutosAcessorios::where('orcamentoproduto_id', $orcamentoproduto->id)
+                                        ->join('acessorios', 'acessorio_id', 'acessorios.id')
+                                        ->get();
+
+                                        foreach($ingredientes as $ingrediente){
+                                            $marcas = MarcaIngrediente::where('ingrediente_id', $ingrediente->id)
+                                            ->join('marcas', 'marca_id', 'marcas.id')
+                                            ->get();
+
+                                            foreach($marcas as $marca){
+                                                $qtd_pacote = $marca->qtd_pacote;
+
+                                                if($marca->id == $ingrediente->marca_id) {
+                                                    $parametro = Parametro::where('id', 4)->first();
+                                                    $qtd_total_drinks = Round(($orcamento->qtd_pessoas * $parametro->valor_2) / $parametro->valor_1);
+                                                    $qtd_unica = $qtd_total_drinks / $orcamentoprodutos->count();
+
+                                                    $qtd_produto = $marca->qtd;
+
+                                                    if($qtd_produto){
+                                                        $qtd_produto_total = $qtd_produto * $qtd_total_drinks;
+                                                        $qtd_ingrediente = 1;
+
+                                                        $marca_qtd = $marca->qtd_pacote;
+
+                                                        while (true) {
+                                                            if ($qtd_produto_total <= $marca_qtd) {
+                                                                break;
+                                                            }
+                                                            $marca_qtd = $marca_qtd + $marca->qtd_pacote;
+                                                            $qtd_ingrediente++;
+                                                        }
+                                                    }
+                                                    $total_produto = $total_produto + ($qtd_ingrediente * $marca->valor);
+                                                }
+                                            }
+                                    @endphp 
+                                            <tr>
+                                                <td style="width: 48px; height: 100px">
+                                                    <div class="avatar-sm">
+                                                        <img style="object-fit: cover; width: 100%; height: 100%;" src="{{$produto->imagem_1}}">
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <h5 class="font-size-14 mb-1">Energético <br> <strong>Fusion</strong> - {{ $qtd_ingrediente }} Garrafas</h5>
+                                                    <strong>Total: </strong> R$ {{ number_format($orcamentoproduto->valor, 2, ",", ".") }}
+                                                </td>
+                                            </tr>
+                                    @php
+                                        }
+                                    @endphp
                                 @endforeach
                             </tbody>
                         </table>
                     </div>
                 </div>
             </div>
-        </div>
+        </div> --}}
         <!-- end col -->
 
 
