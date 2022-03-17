@@ -283,7 +283,8 @@ $dataInvertida = $parteData[2] . "-" . $parteData[1] . "-" . $parteData[0];
                                     </td>
                                     <td>
                                         <h5 class="font-size-14 mb-1"><a href="#" class="text-dark">{{ $orcamentoproduto->qtd }}x {{ $produto->nome }}</h5>
-                                        R$ {{ number_format($orcamentoproduto->valor, 2, ",", ".") }}
+                                            <strong>Valor do drink:</strong> R$ {{ number_format($orcamentoproduto->valor/ $orcamentoproduto->qtd , 2, ",", ".")  }}<br>
+                                            <strong>Valor total: </strong> R$ {{ number_format($orcamentoproduto->valor, 2, ",", ".") }}
                                         <br>
 
                                         @foreach($produto->ingredientes as $ingrediente)
@@ -327,7 +328,7 @@ $dataInvertida = $parteData[2] . "-" . $parteData[1] . "-" . $parteData[0];
                                 @foreach($orcamentoprodutos as $orcamentoproduto)
                                     @php
                                         $produto_info = Produto::where('id', $orcamentoproduto->produto_id)->first();
-
+                                        $total_produto = 0;
                                         $ingredientes = OrcamentoProdutosIngredientes::where('orcamentoproduto_id', $orcamentoproduto->id)
                                         ->join('ingredientes', 'ingrediente_id', 'ingredientes.id')
                                         ->get();
@@ -340,6 +341,8 @@ $dataInvertida = $parteData[2] . "-" . $parteData[1] . "-" . $parteData[0];
                                             $marcas = MarcaIngrediente::where('ingrediente_id', $ingrediente->id)
                                             ->join('marcas', 'marca_id', 'marcas.id')
                                             ->get();
+
+
 
                                             foreach($marcas as $marca){
                                                 $qtd_pacote = $marca->qtd_pacote;
@@ -364,7 +367,7 @@ $dataInvertida = $parteData[2] . "-" . $parteData[1] . "-" . $parteData[0];
                                                             $qtd_ingrediente++;
                                                         }
                                                     }
-                                                    $total_produto = $total_produto->count() + ($qtd_ingrediente * $marca->valor);
+                                                    $total_produto = $total_produto + ($qtd_ingrediente * $marca->valor);
                                                 }
                                             }
                                     @endphp 
@@ -376,7 +379,7 @@ $dataInvertida = $parteData[2] . "-" . $parteData[1] . "-" . $parteData[0];
                                                 </td>
                                                 <td>
                                                     <h5 class="font-size-14 mb-1">Energético <br> <strong>Fusion</strong> - {{ $qtd_ingrediente }} Garrafas</h5>
-                                                    <strong>Total: </strong> R$ {{ number_format($orcamentoproduto->valor, 2, ",", ".") }}
+                                                    <strong>Total: </strong> R$ {{ number_format($total_produto, 2, ",", ".") }}
                                                 </td>
                                             </tr>
                                     @php
