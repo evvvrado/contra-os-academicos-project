@@ -317,8 +317,37 @@ $dataInvertida = $parteData[2] . "-" . $parteData[1] . "-" . $parteData[0];
         </div>
 
 
-
         <div class="col-lg-6">
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="card-title mb-4">Lista de compras</h4>
+                    <div class="table-responsive">
+                        <table class="table table-nowrap align-middle table-hover mb-0">
+                            <tbody>
+                                @foreach($orcamentoprodutos as $orcamentoproduto)
+                                @php
+                                $produto = Produto::where('id', $orcamentoproduto->produto_id)->first();
+                                @endphp
+                                <tr>
+                                    <td style="width: 48px; height: 100px">
+                                        <div class="avatar-sm">
+                                            <img style="object-fit: cover; width: 100%; height: 100%;" src="{{$produto->imagem_1}}">
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <h5 class="font-size-14 mb-1">Energético <br> <strong>Fusion</strong> - 15 Garrafas</h5>
+                                        <strong>Total: </strong> R$ {{ number_format($orcamentoproduto->valor, 2, ",", ".") }}
+                                    </td>
+                                </tr>
+                                @endforeach
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- end col -->
+        {{-- <div class="col-lg-6">
             <div class="card">
                 <div class="card-body">
                     <h4 class="card-title mb-4" onClick="imprimir()">Lista de compras</h4>
@@ -391,7 +420,7 @@ $dataInvertida = $parteData[2] . "-" . $parteData[1] . "-" . $parteData[0];
                     </div>
                 </div>
             </div>
-        </div>
+        </div> --}}
         <!-- end col -->
 
 
