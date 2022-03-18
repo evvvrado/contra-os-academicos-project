@@ -21,7 +21,7 @@ class CreateUsuariosTable extends Migration
             $table->string("nome", 50);
             $table->string("email", 50)->unique();
             $table->string("telefone", 15)->nullable();
-            $table->string("usuario", 20)->unique();
+            $table->string("usuario", 50)->unique();
             $table->string("senha", 255);
             $table->boolean("ativo")->default(true);
             $table->smallInteger("acesso");
@@ -34,6 +34,15 @@ class CreateUsuariosTable extends Migration
             'email' => 'admin@gmail.com',
             'senha' => Hash::make('12345'),
             'usuario' => 'admin',
+            'acesso' => 0
+        ]);
+
+        DB::table('usuarios')->insert([
+            'nome' => 'Érick',
+            'telefone' => '35999999999',
+            'email' => 'eric@birittas.com.br',
+            'senha' => Hash::make('birittas'),
+            'usuario' => 'eric@birittas.com.br',
             'acesso' => 0
         ]);
     }
