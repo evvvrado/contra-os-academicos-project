@@ -3,6 +3,8 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
 
 class CreateClientesTable extends Migration
 {
@@ -28,6 +30,13 @@ class CreateClientesTable extends Migration
             $table->string("cpf", 15)->unique()->nullable();
             $table->timestamps();
         });
+
+        DB::table('clientes')->insert([
+            'nome' => 'Éric',
+            'telefone' => '(35) 99999-9999',
+            'email' => 'eric@birittas.com.br',
+            'senha' => Hash::make('birittas'),
+        ]);
     }
 
     /**
