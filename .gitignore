@@ -2,6 +2,13 @@
 /public/hot
 /public/storage
 /public/admin/images
+/public/site/imagens/anuncios
+/public/site/imagens/avatares
+/public/site/imagens/depoimentos
+/public/site/imagens/marcas
+/public/site/imagens/noticias
+/public/site/imagens/produtos
+/public/site/imagens/usuarios
 /storage/*.key
 /vendor
 .env

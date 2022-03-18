@@ -11,7 +11,7 @@
 @endphp
 
 @section('titulo')
-Produtos / <a style="color: unset" href="#">Marcas</a>
+Ingredientes / <a style="color: unset" href="#">Marcas</a>
 @endsection
 
 
@@ -35,59 +35,11 @@ Produtos / <a style="color: unset" href="#">Marcas</a>
                                     <th></th>
                                 </tr>
                             </thead>
-                            <tbody>
-                                @foreach ($marcas as $marca)
-                                    <tr class="odd">
-                                        <td class="sorting_1 dtr-control">{{ $marca->nome }}</td>
-                                        <td class="d-flex justify-content-between">
-                                            <a href="#" onClick="editar_marca_existente({{ $ingrediente->id }}, {{ $marca->id }}, '{{ $marca->nome_unidade }}', '{{ $marca->nome }}', '{{ $marca->imagem }}', '{{ $marca->valor }}', '{{ $marca->unidade_medida }}', '{{ $marca->qtd }}', '{{ $marca->qtd_pacote }}', '{{ $marca->nome_pacote }}')" class="mx-auto">
-                                                <i class="fas fa-pen-square"></i>
-                                            </a>
-
-                                            <a href="#" onClick="modal_historico({{ $marca->id }})">
-                                                <i class="fa fa-signal"></i>
-                                            </a>
-
-                                            <a href="{{ route('painel.marcas.padrao_ingr', ['marca' => $marca, 'ingrediente' => $ingrediente->id]) }}" class="mx-auto">
-                                                <i class="fas fa-star" @if($marca->padrao != "Sim") style="color: #f46a6a" @endif></i>
-                                            </a>
-                                        </td>
-                                    </tr>
-
-                                    {{-- <!--  Large modal example -->
-                                    <div class="modal fade modal_historico{{ $marca->id }}" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
-                                        <div class="modal-dialog modal-lg">
-                                            <div class="modal-content">
-                                                <div class="modal-header">
-                                                    <h5 class="modal-title" id="myLargeModalLabel">Editar Marca</h5>
-                                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                                </div>
-                                                <div class="modal-body">
-                                                    <div class="table-responsive">
-                                                        <table class="table table-bordered mb-0">
-
-                                                            <thead>
-                                                                <tr>
-                                                                    <th>Valor</th>
-                                                                    <th>Data</th>
-                                                                </tr>
-                                                            </thead>
-                                                            <tbody id="corpo_precos">
-                                                                <tr>
-                                                                    <td>2,40</td>
-                                                                    <td>24/11/2022</td>
-                                                                </tr>
-                                                            </tbody>
-                                                        </table>
-                                                    </div>
-
-                                                </div>
-                                            </div><!-- /.modal-content -->
-                                        </div><!-- /.modal-dialog -->
-                                    </div><!-- /.modal --> --}}
-
-                                @endforeach
-                            </tbody>
+                            @if(isset($ingrediente))
+                                @livewire('marcas.consultar.datatable', ['ingrediente_id' => $ingrediente->id])
+                            @else
+                                @livewire('marcas.consultar.datatable', ['acessorio_id' => $acessorio->id])
+                            @endif
                         </table>
                     </div>
                 </div>
@@ -97,7 +49,7 @@ Produtos / <a style="color: unset" href="#">Marcas</a>
 </div> 
 
     <!--  Large modal example -->
-<div class="modal fade add_marca_existente" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+<div id="modalEditaMarca" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <div class="modal-header">
@@ -105,67 +57,21 @@ Produtos / <a style="color: unset" href="#">Marcas</a>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <form id="marca_existente" action="{{route('painel.marcas.salvar')}}" method="POST" enctype="multipart/form-data">
+                @livewire('marcas.consultar.modal-editar')
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
 
-                    @csrf
-                    <div class="col-lx-12">
-                        <div class="row">
-                            <div class="form-group col-6 col-lg-6 mt-3">
-                                <label>Nome</label>
-                                <input id="nome_existente" required name="nome" type="text" class="form-control">
-                            </div>
-
-                            <div class="form-group col-6 col-lg-4 mt-3">
-                                <label>Nome da unidade</label>
-                                <input required name="nome_unidade" id="nome_unidade_existente" type="text" class="form-control">
-                            </div>
-
-                            <div class="form-group col-6 col-lg-4 mt-3">
-                                <label>Quantidade por produto</label>
-                                <input required name="qtd" id="qtd_existente" type="text" class="form-control">
-                            </div>
-
-                            <div class="form-group col-6 col-lg-4 mt-3">
-                                <label>Nome do pacote</label>
-                                <input required name="nome_pacote" id="nome_pacote_existente" type="text" class="form-control">
-                            </div>
-
-                            <div class="form-group col-6 col-lg-4 mt-3">
-                                <label>Preço do pacote</label></label>
-                                <input required class="form-control dinheiro" id="preco_existente" name="preco">
-                            </div>
-
-                            <div class="form-group col-6 col-lg-4 mt-3">
-                                <label>Quantidade por pacote</label>
-                                <input required name="qtd_pacote" id="qtd_pacote_existente" type="text" class="form-control">
-                            </div>
-
-                            <div class="form-group col-6 col-lg-4 mt-3">
-                                <label>Unidade de Medida</label>
-                                <select required name="unidade_medida" id="unidade_medida_existente" type="text" class="form-control">
-                                    <option value="">Selecione</option>
-                                    <option value="litros">Litros</option>
-                                    <option value="mililitros">Mililítros</option>
-                                    <option value="gramas">Gramas</option>
-                                </select>
-                            </div>
-
-                            <div class="form-group col-6 col-lg-6 mt-3">
-                                <label class="form-label">Imagem</label>
-                                <input id="imagem_existente" name="imagem" type="file" class="form-control" style="height: 36px !important">
-                            </div>
-                        </div>
-
-                        <input type="hidden" name="id_marca" id="id_marca">
-                        <input type="hidden" name="id_ingrediente" id="id_ingrediente_existente">
-                        <input type="hidden" name="tabela" value="ingredientes">
-
-                    </div>
-                    <div class="d-flex flex-wrap gap-2 mt-3">
-                        <button id="btn-submit" type="submit" class="btn btn-primary waves-effect waves-light">Salvar</button>
-                        <button type="button" class="btn btn-secondary waves-effect waves-light">Cancelar</button>
-                    </div>
-                </form>
+<div id="modalMarcaHistorico" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="myLargeModalLabel">Histórico da Marca - Últimas 10 alterações</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                @livewire('marcas.consultar.historico.datatable')
             </div>
         </div><!-- /.modal-content -->
     </div><!-- /.modal-dialog -->
@@ -179,24 +85,26 @@ Produtos / <a style="color: unset" href="#">Marcas</a>
 <script src="{{ asset('admin/libs/datatables.net/js/jquery.dataTables.min.js') }}"></script>
 <script src="{{ asset('admin/libs/datatables.net-bs4/js/dataTables.bootstrap4.min.js') }}"></script>
 <script>
-    function modal_historico(id) {
-        $('.modal_historico'.id).modal("show");
+
+    window.addEventListener("abreModalEdicao", (event) => {
+        $("#modalEditaMarca").modal("show");
+    })
+
+    window.addEventListener("fechaModalEdicao", (event) => {
+        $("#modalEditaMarca").modal("hide");
+    })
+
+    function historicoMarca(id){
+        Livewire.emit("carregaTabela", id);
+        $("#modalMarcaHistorico").modal("show");
     }
 
-    function editar_marca_existente(id, id_marca, nome_unidade, nome, imagem, valor, unidade_medida, qtd, qtd_pacote, nom_pacote) {
-        $('#id_marca').val(id_marca);
+    function editarMarca(id){
+        Livewire.emit("iniciaModalEdicao", id);
+    }
 
-        $('#id_ingrediente_existente').val(id);
-
-        $('#nome_unidade_existente').val(nome_unidade);
-        $('#nome_existente').val(nome);
-        $('#preco_existente').val(valor);
-        $('#unidade_medida_existente').val(unidade_medida);
-        $('#qtd_existente').val(qtd);
-        $('#qtd_pacote_existente').val(qtd_pacote);
-        $('#nome_pacote_existente').val(nom_pacote);
-
-        $('.add_marca_existente').modal("show");
+    function modal_historico(id) {
+        $('.modal_historico'.id).modal("show");
     }
 
     $(document).ready(function() {

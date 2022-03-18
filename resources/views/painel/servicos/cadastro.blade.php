@@ -23,7 +23,7 @@
         <div class="card">
             <div class="card-body">
                 <h4 class="card-title">Cadastro de Serviços</h4>
-                <form id="form-cadastro" action="{{route('painel.servicos.cadastrar')}}" method="POST">
+                <form id="form-cadastro" action="{{route('painel.servicos.salvar')}}" method="POST">
                     @csrf
                     
                     <div class="col-lx-12">
@@ -40,7 +40,7 @@
 
                             <div class="form-group col-6 col-lg-6 mt-3">
                                 <label>Valor</label>
-                                <input id="valor" name="valor" type="text" class="form-control dinheiro">
+                                <input id="valor" name="valor" type="number" step="0.01" min="0" class="form-control">
                             </div>
 
                             <div class="form-group col-6 col-lg-6 mt-3">

@@ -111,9 +111,9 @@ Route::middleware(['admin'])->group(function () {
     Route::get('/sistema/produtos/deletar/{produto}', [\App\Http\Controllers\ProdutosController::class, 'deletar'])->name("painel.produtos.deletar");
 
     // ROTAS DE CATEGORIAS DE INGREDIENTE
-    Route::post('/sistema/ingredientecats/cadastrar', [\App\Http\Controllers\IngredienteCatsController::class, 'cadastrar'])->name("painel.ingredientecats.cadastrar");
-    Route::post('/sistema/ingredientecats/editar', [\App\Http\Controllers\IngredienteCatsController::class, 'editar'])->name("painel.ingredientecats.editar");
-    Route::get('/sistema/ingredientecats/status/{ingredientecat}', [\App\Http\Controllers\IngredienteCatsController::class, 'status'])->name('cat.ingrediente.status');
+    Route::post('/sistema/ingredientecats/salvar', [\App\Http\Controllers\IngredienteCategoriasController::class, 'salvar'])->name("painel.ingredientecats.salvar");
+    Route::post('/sistema/ingredientecats/editar', [\App\Http\Controllers\IngredienteCategoriasController::class, 'editar'])->name("painel.ingredientecats.editar");
+    Route::get('/sistema/ingredientecats/status/{categoria}', [\App\Http\Controllers\IngredienteCategoriasController::class, 'status'])->name('cat.ingrediente.status');
 
     // ROTAS DE ACESSÓRIOS
     Route::get('/sistema/acessorios', [\App\Http\Controllers\AcessoriosController::class, 'consultar'])->name("painel.acessorios");
@@ -124,9 +124,9 @@ Route::middleware(['admin'])->group(function () {
     Route::get('/sistema/acessorios/deletar/{acessorio}', [\App\Http\Controllers\AcessoriosController::class, 'deletar'])->name("painel.acessorios.deletar");
 
     // ROTAS DE CATEGORIA DE ACESSÓRIOS
-    Route::post('/sistema/acessoriocats/cadastrar', [\App\Http\Controllers\AcessorioCatsController::class, 'cadastrar'])->name("painel.acessoriocats.cadastrar");
-    Route::post('/sistema/acessoriocats/editar', [\App\Http\Controllers\AcessorioCatsController::class, 'editar'])->name("painel.acessoriocats.editar");
-    Route::get('/sistema/acessoriocats/status/{acessoriocat}', [\App\Http\Controllers\AcessorioCatsController::class, 'status'])->name('cat.acessorio.status');
+    Route::post('/sistema/acessoriocats/salvar', [\App\Http\Controllers\AcessorioCategoriasController::class, 'salvar'])->name("painel.acessoriocats.salvar");
+    Route::post('/sistema/acessoriocats/editar', [\App\Http\Controllers\AcessorioCategoriasController::class, 'editar'])->name("painel.acessoriocats.editar");
+    Route::get('/sistema/acessoriocats/status/{acessoriocat}', [\App\Http\Controllers\AcessorioCategoriasController::class, 'status'])->name('cat.acessorio.status');
 
     // ROTAS DE SERVIÇOS
     Route::get('/sistema/servicos', [\App\Http\Controllers\ServicosController::class, 'consultar'])->name("painel.servicos");
@@ -152,7 +152,7 @@ Route::middleware(['admin'])->group(function () {
     Route::get('/sistema/marcas_historico/precos', [\App\Http\Controllers\MarcasHistoricosController::class, 'consultar_precos'])->name("painel.marcas.historicos");
 
     // ROTAS DE LEADS
-    Route::get('/sistema/leads', [\App\Http\Controllers\LeadsController::class, 'consultar_leads'])->name("painel.leads");
+    Route::get('/sistema/leads', [\App\Http\Controllers\LeadsController::class, 'consultar'])->name("painel.leads");
     Route::get('/sistema/orcamentos', [\App\Http\Controllers\LeadsController::class, 'consultar_orcamentos'])->name("painel.orcamentos");
     Route::get('/sistema/leads/orcamento/{orcamento}', [\App\Http\Controllers\LeadsController::class, 'orcamentoDetalhe'])->name("painel.leads.orcamento");
 

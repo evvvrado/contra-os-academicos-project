@@ -49,11 +49,11 @@ Produtos / <a style="color: unset" href="{{ route('painel.acessorios') }}">Acess
                                 // $ativo = "active";
                                 // $cor = "#555"
                             @endphp
-                            @foreach($acessoriocats as $acessoriocat)
+                            @foreach($categorias as $categoria)
                                 <li class="nav-item">
-                                    <a class="nav-link" data-bs-toggle="tab" href="#tab-{{$acessoriocat->id}}" role="tab">
+                                    <a class="nav-link" data-bs-toggle="tab" href="#tab-{{$categoria->id}}" role="tab">
                                         <span class="d-block d-sm-none"><i class="fas fa-home"></i></span>
-                                        <span class="d-none d-sm-block">{{$acessoriocat->nome}}</span>    
+                                        <span class="d-none d-sm-block">{{$categoria->nome}}</span>    
                                     </a>
                                 </li>
                                 @php
@@ -81,11 +81,7 @@ Produtos / <a style="color: unset" href="{{ route('painel.acessorios') }}">Acess
                                         @endphp                                         
                                         @foreach ($acessorios as $acessorio)
                                             @php
-                                                $marca = MarcaAcessorio::where('acessorio_id', $acessorio->id)
-                                                ->where('padrao', 'Sim')
-                                                ->join('marcas', 'marcas.id', '=', 'marcas_acessorios.marca_id')
-                                                ->first();
-
+                                                $marca = Marca::where('acessorio_id', $acessorio->id)->where("padrao", true)->first();
                                                 $nome_marca = "Não possui marca padrão";
                                                 $marca_padrao = "Não";
                                                 if($marca) {
@@ -119,11 +115,11 @@ Produtos / <a style="color: unset" href="{{ route('painel.acessorios') }}">Acess
                                 // $ativo = "active";
                                 $c = 1;
                             @endphp
-                            @foreach($acessoriocats as $acessoriocat)
+                            @foreach($categorias as $categoria)
                                 @php
-                                    $acessorios = Acessorio::where("cat_id", "=", $acessoriocat->id)->get();
+                                    $acessorios = Acessorio::where("acessorio_categoria_id", "=", $categoria->id)->get();
                                 @endphp
-                                        <div class="tab-pane" id="tab-{{$acessoriocat->id}}" role="tabpanel">
+                                        <div class="tab-pane" id="tab-{{$categoria->id}}" role="tabpanel">
                                             <table class="tabela_export table table-bordered dt-responsive  nowrap w-100 clear_both">
                                                 <thead>
                                                     <tr>
@@ -134,11 +130,7 @@ Produtos / <a style="color: unset" href="{{ route('painel.acessorios') }}">Acess
                                                 <tbody>                                                        
                                                     @foreach ($acessorios as $acessorio)
                                                         @php
-                                                            $marca = MarcaAcessorio::where('acessorio_id', $acessorio->id)
-                                                            ->where('padrao', 'Sim')
-                                                            ->join('marcas', 'marcas.id', '=', 'marcas_acessorios.marca_id')
-                                                            ->first();
-            
+                                                            $marca = Marca::where('acessorio_id', $acessorio->id)->where('padrao', true)->first();
                                                             $nome_marca = "Não possui marca padrão";
                                                             if($marca) {
                                                                 $marca_padrao = "Sim";
@@ -197,23 +189,23 @@ Produtos / <a style="color: unset" href="{{ route('painel.acessorios') }}">Acess
                     </tr>
                 </thead>
                 <tbody>                                                        
-                    @foreach ($acessoriocats as $acessoriocat)
+                    @foreach ($categorias as $categoria)
                         <tr>
-                            <td>{{$acessoriocat->nome}}</td>
+                            <td>{{$categoria->nome}}</td>
                             <td class="d-flex justify-content-between">
-                                <a href="#" onClick="editar_categoria({{$acessoriocat->id}}, '{{$acessoriocat->nome}}')" class="mx-auto">
+                                <a href="#" onClick="editar_categoria({{$categoria->id}}, '{{$categoria->nome}}')" class="mx-auto">
                                     <i class="fas fa-pen-square"></i>
                                 </a>
 
-                                @if ($acessoriocat->status == "Ativo") 
+                                @if ($categoria->status == "Ativo") 
 
-                                    <a href="{{ route('cat.acessorio.status', ['acessoriocat' => $acessoriocat]) }}" class="mx-auto">
+                                    <a href="{{ route('cat.acessorio.status', ['acessoriocat' => $categoria]) }}" class="mx-auto">
                                         <i class="fas fa-star"></i>
                                     </a>
 
                                 @else 
                                     
-                                    <a href="{{ route('cat.acessorio.status', ['acessoriocat' => $acessoriocat]) }}" class="mx-auto">
+                                    <a href="{{ route('cat.acessorio.status', ['acessoriocat' => $categoria]) }}" class="mx-auto">
                                         <i class="fas fa-star" style="color: #f46a6a"></i>
                                     </a>
 
@@ -236,12 +228,12 @@ Produtos / <a style="color: unset" href="{{ route('painel.acessorios') }}">Acess
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <form id="form_editar" method="post" action="{{ route('painel.acessoriocats.editar') }} ">
+                <form id="form_editar" method="post" action="{{ route('painel.acessoriocats.salvar') }} ">
                     @csrf
                     <label>Nome</label>
                     <input type="text" class="form-control" name="nome" id="nome_editar">
 
-                    <input type="hidden" class="form-control" name="id" id="id_editar">
+                    <input type="hidden" class="form-control" name="acessorio_categoria_id" id="id_editar">
 
                     <br>
 
@@ -261,7 +253,7 @@ Produtos / <a style="color: unset" href="{{ route('painel.acessorios') }}">Acess
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <form method="post" action="{{ route('painel.acessoriocats.cadastrar') }} ">
+                <form method="post" action="{{ route('painel.acessoriocats.salvar') }} ">
                     @csrf
                     <label>Nome</label>
                     <input type="text" class="form-control" name="nome">
@@ -275,12 +267,11 @@ Produtos / <a style="color: unset" href="{{ route('painel.acessorios') }}">Acess
     </div><!-- /.modal-dialog -->
 </div><!-- /.modal -->
 
-<!--  Large modal example -->
 <div class="modal fade add_marca" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="myLargeModalLabel">Editar Marca</h5>
+                <h5 class="modal-title" id="myLargeModalLabel">Cadastrar Marca</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
@@ -294,37 +285,52 @@ Produtos / <a style="color: unset" href="{{ route('painel.acessorios') }}">Acess
                                 <input required name="nome" type="text" class="form-control">
                             </div>
 
-                            <div class="form-group col-6 col-lg-4 mt-3">
+                            <div class="form-group col-6 col-lg-6 mt-3">
+                                <label>Padrão</label>
+                                <select class="form-control" required name="padrao" id="padrao_cadastro" required>
+                                    <option value="">Selecione</option>
+                                    <option value="1">Sim</option>
+                                    <option value="0">Não</option>
+                                </select>
+                            </div>
+
+                            <div class="form-group col-6 col-lg-3 mt-3">
                                 <label>Nome da unidade</label>
                                 <input required name="nome_unidade" type="text" class="form-control">
+                                <small>Ex: Dose</small>
                             </div>
 
-                            <div class="form-group col-6 col-lg-4 mt-3">
-                                <label>Quantidade por produto</label>
-                                <input required name="qtd" type="text" class="form-control">
-                            </div>
-
-                            <div class="form-group col-6 col-lg-4 mt-3">
-                                <label>Nome do pacote</label>
-                                <input required name="nome_pacote" type="text" class="form-control">
-                            </div>
-
-                            <div class="form-group col-6 col-lg-4 mt-3">
-                                <label>Preço do pacote</label></label>
-                                <input required class="form-control dinheiro" name="preco">
-                            </div>
-
-                            <div class="form-group col-6 col-lg-4 mt-3">
-                                <label>Quantidade por pacote</label>
-                                <input required name="qtd_pacote" type="text" class="form-control">
-                            </div>
-
-                            <div class="form-group col-6 col-lg-4 mt-3">
+                            <div class="form-group col-6 col-lg-3 mt-3">
                                 <label>Unidade de Medida</label>
                                 <select required name="unidade_medida" type="text" class="form-control">
                                     <option value="">Selecione</option>
-                                    <option value="litros">Litros</option>
+                                    @foreach(config("marcas.unidades_medida") as $key => $unidade)
+                                        <option value="{{ $key }}">{{ $unidade }}</option>
+                                    @endforeach
                                 </select>
+                            </div>
+
+                            <div class="form-group col-6 col-lg-6 mt-3">
+                                <label>Quantidade do ingrediente por unidade</label>
+                                <input required name="quantidade_ingrediente_unidade" type="number" step="0.01" min="0" class="form-control">
+                                <small>Ex: O valor 50 significaria que 1 dose possui 50ml </small>
+                            </div>
+
+                            <div class="form-group col-6 col-lg-4 mt-3">
+                                <label>Nome da Embalagem</label>
+                                <input required name="embalagem" type="text" class="form-control">
+                                <small>Ex: Garrafa</small>
+                            </div>
+
+                            <div class="form-group col-6 col-lg-4 mt-3">
+                                <label>Quantidade por Embalagem</label>
+                                <input required name="quantidade_embalagem" type="number" step="1" min="0" class="form-control">
+                                <small>Ex: 1000 (unidade de medida selecionada)</small>
+                            </div>
+
+                            <div class="form-group col-6 col-lg-4 mt-3">
+                                <label>Preço da Embalagem</label></label>
+                                <input required class="form-control" name="valor_embalagem" type="number" step="0.01" min="0">
                             </div>
 
                             <div class="form-group col-6 col-lg-6 mt-3">

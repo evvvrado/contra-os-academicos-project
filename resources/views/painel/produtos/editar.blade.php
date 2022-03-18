@@ -17,10 +17,10 @@
 
 @php
     use App\Models\Acessorio;
-    use App\Models\AcessorioCat;
-    use App\Models\IngredienteCat;
+    use App\Models\AcessorioCategoria;
+    use App\Models\IngredienteCategoria;
     use App\Models\Ingrediente;
-    use App\Models\ProdutosIngrediente;
+    use App\Models\ProdutoIngrediente;
 @endphp
 
 
@@ -38,36 +38,37 @@ Produtos / <a style="color: unset" href="{{ route('painel.produtos') }}">Produto
                 <form id="form-cadastro" action="{{route('painel.produtos.salvar')}}" method="POST" enctype="multipart/form-data">
 
                     @csrf
+                    <input type="hidden" name="produto_id" value="{{ $produto->id }}">
                     <div class="col-lx-12">
                         <div class="row">
                             <div class="form-group col-6 col-lg-6 mt-3">
                                 <label>Nome</label>
-                                <input required name="nome" type="text" class="form-control" value="{{ $produto->nome }}">
+                                <input required name="nome" type="text" class="form-control" value="{{ $produto->nome }}" maxlength="100">
                             </div>
 
                             <div class="form-group col-6 col-lg-6 mt-3">
                                 <label>Descrição</label>
-                                <textarea required class="form-control" name="descricao">{{ $produto->descricao }}</textarea>
+                                <textarea required class="form-control" name="descricao">{!! $produto->descricao !!}</textarea>
                             </div>
 
                             <div class="form-group col-6 col-lg-6 mt-3">
                                 <label>História do Produto</label>
-                                <textarea required class="form-control" name="historia">{{ $produto->historia }}</textarea>
+                                <textarea required class="form-control" name="historia">{!! $produto->historia !!}</textarea>
                             </div>
 
                             <div class="form-group col-6 col-lg-6 mt-3">
-                                <label>Teor Alcoólico</label>
-                                <input required name="teor_alcoolico" type="text" class="form-control" value="{{ $produto->teor_alcoolico }}">
+                                <label>Teor Alcoólico (%)</label>
+                                <input required name="teor_alcoolico" type="number" step="0.01" min="0" value="{{ $produto->teor_alcoolico }}" class="form-control">
                             </div>
 
                             <div class="form-group col-6 col-lg-6 mt-3">
                                 <label>Calorias</label>
-                                <input required name="calorias" type="text" class="form-control" value="{{ $produto->calorias }}">
+                                <input required name="calorias" type="number" step="0.01" min="0" value="{{ $produto->calorias }}" class="form-control">
                             </div>
 
                             <div class="form-group col-6 col-lg-6 mt-3">
                                 <label>Nota</label>
-                                <input required name="nota" type="text" class="form-control" value="{{ $produto->nota }}">
+                                <input required name="nota" type="number" step="1" max="5" value="{{ $produto->nota }}" class="form-control">
                             </div>
 
                             <div class="form-group col-6 col-lg-6 mt-3">
@@ -76,23 +77,31 @@ Produtos / <a style="color: unset" href="{{ route('painel.produtos') }}">Produto
                             </div>
 
                             <div class="form-group col-6 col-lg-6 mt-3">
+                                <label>Lançamento</label>
+                                <select class="form-control" required name="lancamento" required>
+                                    <option value="">Selecione</option>
+                                    <option value="1" @if($produto->lancamento) selected @endif>Sim</option>
+                                    <option value="0" @if(!$produto->lancamento) selected @endif>Não</option>
+                                </select>
+                            </div>
+
+                            <div class="form-group col-6 col-lg-6 mt-3">
                                 <label class="form-label">Ingredientes</label>
 
                                 <select multiple style="height: 52px !important;" class="select2 form-control select2-multiple"
                                     multiple="multiple" data-placeholder="Selecione os ingredientes" required name="ingredientes[]">
                                     @php
-                                        $ingrediente_cats = IngredienteCat::all();
+                                        $ingrediente_categorias = IngredienteCategoria::all();
                                     @endphp
 
-                                    @foreach($ingrediente_cats as $ingrediente_cat)
-                                        <optgroup label="{{$ingrediente_cat->nome}}">
+                                    @foreach($ingrediente_categorias as $ingrediente_categoria)
+                                        <optgroup label="{{$ingrediente_categoria->nome}}">
                                             @php
-                                                $ingredientes = Ingrediente::where('cat_id', $ingrediente_cat->id)
-                                                ->get();
+                                                $ingredientes = $ingrediente_categoria->ingredientes;
                                             @endphp
-                                            @foreach($ingredientes as $ingrediente)
-                                                <option value="{{$ingrediente->id}}" @if($produto->ingredientes->contains($ingrediente)) selected @endif>{{$ingrediente->nome}}</option>
-                                            @endforeach
+                                                @foreach($ingredientes as $ingrediente)
+                                                    <option value="{{$ingrediente->id}}" @if($produto->ingredientes->contains($ingrediente)) selected @endif>{{$ingrediente->nome}}</option>
+                                                @endforeach
                                         </optgroup>
                                     @endforeach
                                 </select>
@@ -102,15 +111,15 @@ Produtos / <a style="color: unset" href="{{ route('painel.produtos') }}">Produto
                                 <label class="form-label">Acessórios</label>
 
                                 <select multiple style="height: 52px !important;" class="select2 form-control select2-multiple"
-                                    multiple="multiple" data-placeholder="Selecione os ingredientes" name="acessorios[]">
+                                    multiple="multiple" data-placeholder="Selecione os acessórios" name="acessorios[]">
                                     @php
-                                        $acessorio_cats = AcessorioCat::all();
+                                        $acessorio_categorias = AcessorioCategoria::all();
                                     @endphp
 
-                                    @foreach($acessorio_cats as $ingrediente_cat)
-                                        <optgroup label="{{$ingrediente_cat->nome}}">
+                                    @foreach($acessorio_categorias as $acessorio_categoria)
+                                        <optgroup label="{{$acessorio_categoria->nome}}">
                                             @php
-                                                $acessorios = Acessorio::where('cat_id', $ingrediente_cat->id)->get();
+                                                $acessorios = $acessorio_categoria->acessorios;
                                             @endphp
                                                 @foreach($acessorios as $acessorio)
                                                     <option value="{{$acessorio->id}}" @if($produto->acessorios->contains($acessorio)) selected @endif>{{$acessorio->nome}}</option>
@@ -121,36 +130,23 @@ Produtos / <a style="color: unset" href="{{ route('painel.produtos') }}">Produto
                             </div>
 
                             <div class="form-group col-6 col-lg-6 mt-3">
-                                <label>Lançamento</label>
-                                <select class="form-control" required name="lancamento" required>
-                                    <option value="">Selecione</option>
-                                    <option value="Sim" @if ($produto->lancamento == "Sim") selected @endif>Sim</option>
-                                    <option value="Não" @if ($produto->lancamento == "Não") selected @endif>Não</option>
-                                </select>
+                                <label class="form-label">Imagem de Preview</label>
+                                <input name="imagem_preview" type="file" class="form-control" style="height: 36px !important">
+                                <small>Selecione apenas caso deseje alterar</small>
                             </div>
 
                             <div class="form-group col-6 col-lg-6 mt-3">
-                                <label class="form-label">Imagem 1</label>
-                                <input name="imagem_1" type="file" class="form-control" style="height: 36px !important">
-                                <br>
-                                <img src="{{ asset($produto->imagem_1) }}" class="img-fluid" style="width: 250px; height: auto; margin: auto; display: block" alt="Responsive image">
-                            </div>
-
-                            <div class="form-group col-6 col-lg-6 mt-3">
-                                <label class="form-label">Imagem 2</label>
-                                <input name="imagem_2" type="file" class="form-control" style="height: 36px !important">
-                                <br>
-                                <img src="{{ asset($produto->imagem_2) }}" class="img-fluid" style="width: 250px; height: auto; margin: auto; display: block" alt="Responsive image">
+                                <label class="form-label">Imagem Detalhada</label>
+                                <input name="imagem_detalhada" type="file" class="form-control" style="height: 36px !important">
+                                <small>Selecione apenas caso deseje alterar</small>
                             </div>
                         </div>
 
                     </div>
                     <div class="d-flex flex-wrap gap-2 mt-3">
                         <button id="btn-submit" type="submit" class="btn btn-primary waves-effect waves-light">Salvar</button>
-                        <button type="button" class="btn btn-secondary waves-effect waves-light">Cancelar</button>
+                        <a href="{{ route('painel.produtos') }}" type="button" class="btn btn-secondary waves-effect waves-light">Cancelar</a>
                     </div>
-
-                    <input name="id" type="hidden" class="form-control" value="{{ $produto->id }}">
                 </form>
             </div>
             

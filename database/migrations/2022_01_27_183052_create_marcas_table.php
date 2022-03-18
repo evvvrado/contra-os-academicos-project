@@ -15,14 +15,24 @@ class CreateMarcasTable extends Migration
     {
         Schema::create('marcas', function (Blueprint $table) {
             $table->id();
-            $table->string("padrao");
+            $table->unsignedBigInteger("ingrediente_id")->nullable();
+            $table->unsignedBigInteger("acessorio_id")->nullable();
+            $table->boolean("padrao")->default(true);
             $table->string("nome");
             $table->string("imagem")->nullable();
-            $table->double("valor")->default(0);
-            $table->string("unidade_medida");
-            $table->integer("qtd");
-            $table->integer("qtd_pacote");
+            $table->string("nome_unidade");
+            $table->tinyInteger("unidade_medida");
+            $table->double("quantidade_ingrediente_unidade");
+            $table->string("embalagem");
+            $table->double("quantidade_embalagem");
+            $table->double("valor_embalagem")->default(0);
+
+            // 0 => Ingrediente
+            // 1 => Acessório
+            $table->tinyInteger("tipo")->default(0);
             $table->timestamps();
+            $table->foreign('ingrediente_id')->references('id')->on('ingredientes')->onDelete('cascade');
+            $table->foreign('acessorio_id')->references('id')->on('acessorios')->onDelete('cascade');
         });
     }
 

@@ -23,37 +23,42 @@ Institucional / <a style="color: unset" href="{{ route('painel.depoimento') }}">
                 <form action="{{route('painel.depoimento.salvar')}}" method="POST" enctype="multipart/form-data">
                     @csrf
                     <div class="row">
-                        <div class="col-sm-6">
-                            <div class="mb-3">
-                                <label for="productname">Nome</label>
-                                <input id="productname" name="nome" type="text" class="form-control" placeholder="Insira o nome">
+                        <div class="col-6">
+                            <div class="col-12">
+                                <div class="mb-3">
+                                    <label for="productname">Nome</label>
+                                    <input id="productname" name="nome" type="text" class="form-control" placeholder="Insira o nome" maxlength="100">
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <div class="mb-3">
+                                    <label for="manufacturerbrand">Depoimento</label>
+                                    <textarea id="textarea" name="depoimento" class="form-control" maxlength="110" rows="3" placeholder="Limite de 110 Caracteres"></textarea>
+                                </div>
                             </div>
                         </div>
-                        <div class="col-sm-6">
-                            <div class="mb-3">
-                                <label for="manufacturerbrand">Depoimento</label>
-                                <textarea id="textarea" name="depoimento" class="form-control" maxlength="107" rows="3" placeholder="Limite de 107 Caracteres"></textarea>
+                        <div class="col-6">
+                            <div class="col-12 mt-3">
+                                <div class="row">
+                                    <div class="col-12 text-center d-flex align-items-center justify-content-center">
+                                        <picture style="height: 281px; max-width: 281px; overflow: hidden; display: flex; align-items:center; justify-content: center;">
+                                            <img id="banner-preview" src="{{ asset('admin/images/thumb-padrao.png') }}" style="width: 100%; object-fit: cover;" alt="">
+                                        </picture>
+                                    </div>
+                                </div>
+                                <div class="row mt-3">
+                                    <div class="col-12 text-center">
+                                        <label class="btn btn-primary" for="banner-upload">Escolher</label>
+                                        <input name="foto" id="banner-upload" style="display: none;" type="file">
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
-                    <div class="col-12 mt-3">
-                        <div class="row">
-                            <div class="col-12 text-center d-flex align-items-center justify-content-center">
-                                <picture style="height: 281px; max-width: 281px; overflow: hidden; display: flex; align-items:center; justify-content: center;">
-                                    <img id="banner-preview" src="{{ asset('admin/images/thumb-padrao.png') }}" style="width: 100%; object-fit: cover;" alt="">
-                                </picture>
-                            </div>
-                        </div>
-                        <div class="row mt-3">
-                            <div class="col-12 text-center">
-                                <label class="btn btn-primary" for="banner-upload">Escolher</label>
-                                <input name="foto" id="banner-upload" style="display: none;" type="file">
-                            </div>
-                        </div>
-                    </div>
+                    
                     <div class="d-flex flex-wrap gap-2">
                         <button type="submit" class="btn btn-primary waves-effect waves-light">Salvar</button>
-                        <button type="button" class="btn btn-secondary waves-effect waves-light">Cancelar</button>
+                        <a href="{{ route('painel.depoimento') }}" type="button" class="btn btn-secondary waves-effect waves-light">Cancelar</a>
                     </div>
                 </form>
             </div>

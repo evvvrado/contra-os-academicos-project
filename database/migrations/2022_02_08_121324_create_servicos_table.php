@@ -18,6 +18,7 @@ class CreateServicosTable extends Migration
             $table->string('nome');
             $table->string('descricao');
             $table->double("valor", 8, 2)->default(0);
+            $table->boolean("incluso")->default(false);
             $table->timestamps();
         });
     }

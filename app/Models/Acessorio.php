@@ -9,7 +9,7 @@ class Acessorio extends Model
 {
     use HasFactory;
 
-    public function produtos(){
-        return $this->belongsToMany(Produto::class, 'produtosacessorios');
+    public function marcas(){
+        return $this->hasMany(Marca::class);
     }
 }

@@ -340,7 +340,41 @@ use App\Models\Parametro;
             </div>
 
 
+<<<<<<< HEAD
             {{-- <div class="col-lg-6">
+=======
+        <div class="col-lg-6">
+>>>>>>> 63165dff5e6127acf525d4409fa938b18154cd93
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="card-title mb-4">Lista de compras</h4>
+                    <div class="table-responsive">
+                        <table class="table table-nowrap align-middle table-hover mb-0">
+                            <tbody>
+                                @foreach($orcamentoprodutos as $orcamentoproduto)
+                                @php
+                                $produto = Produto::where('id', $orcamentoproduto->produto_id)->first();
+                                @endphp
+                                <tr>
+                                    <td style="width: 48px; height: 100px">
+                                        <div class="avatar-sm">
+                                            <img style="object-fit: cover; width: 100%; height: 100%;" src="{{$produto->imagem_1}}">
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <h5 class="font-size-14 mb-1">Energético <br> <strong>Fusion</strong> - 15 Garrafas</h5>
+                                        <strong>Total: </strong> R$ {{ number_format($orcamentoproduto->valor, 2, ",", ".") }}
+                                    </td>
+                                </tr>
+                                @endforeach
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- end col -->
+        {{-- <div class="col-lg-6">
             <div class="card">
                 <div class="card-body">
                     <h4 class="card-title mb-4" onClick="imprimir()">Lista de compras</h4>
@@ -414,6 +448,7 @@ use App\Models\Parametro;
                 </div>
             </div>
         </div> --}}
+<<<<<<< HEAD
             <!-- end col -->
 
 
@@ -452,6 +487,43 @@ use App\Models\Parametro;
                                         </p>
                                     @endforeach
                                 </div>
+=======
+        <!-- end col -->
+
+
+        <div class="col-lg-6">
+            <div class="card">
+                <div class="card-body">
+
+                    <h5 class="font-size-15 mt-4">Serviços:</h5>
+
+                    <!-- Nav tabs -->
+                    <ul class="nav nav-tabs" role="tablist">
+                        <li class="nav-item">
+                            <a class="nav-link active" data-bs-toggle="tab" href="#sim" role="tab">
+                                <span class="d-block d-sm-none"><i class="fas fa-home"></i></span>
+                                <span class="d-none d-sm-block">Inclusos</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" data-bs-toggle="tab" href="#nao" role="tab">
+                                <span class="d-block d-sm-none"><i class="far fa-user"></i></span>
+                                <span class="d-none d-sm-block">Extras</span>
+                            </a>
+                        </li>
+                    </ul>
+
+                    <!-- Tab panes -->
+                    <div class="tab-content p-3 text-muted">
+                        <div class="tab-pane active" id="sim" role="tabpanel">
+                            <div class="text-muted mt-4" style="max-height: 250px; overflow: auto">
+                                @foreach($servicos_sim as $servico_sim)
+                                <p>
+                                    <i class="mdi mdi-chevron-right text-primary me-1"></i>
+                                    ({{ $servico_sim->qtd }} x) {{ $servico_sim->nome }} (R$ {{ number_format($servico_sim->valor, 2, ",", ".") }})
+                                </p>
+                                @endforeach
+>>>>>>> 63165dff5e6127acf525d4409fa938b18154cd93
                             </div>
                             <div class="tab-pane" id="nao" role="tabpanel">
                                 <div class="text-muted mt-4" style="max-height: 250px; overflow: auto">

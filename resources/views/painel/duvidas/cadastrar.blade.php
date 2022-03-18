@@ -38,7 +38,7 @@ Institucional / <a style="color: unset" href="{{ route('painel.duvidas') }}">Dú
                         </div>
                         <div class=" d-flex flex-wrap gap-2">
                             <button type="submit" class="btn btn-primary waves-effect waves-light">Salvar</button>
-                            <button type="button" class="btn btn-secondary waves-effect waves-light">Cancelar</button>
+                            <a href="{{ route('painel.duvidas') }}" type="button" class="btn btn-secondary waves-effect waves-light">Cancelar</a>
                         </div>
                     </form>
                 </div>

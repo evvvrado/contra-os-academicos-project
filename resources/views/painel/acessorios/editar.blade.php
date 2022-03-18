@@ -36,7 +36,7 @@ Produtos / <a style="color: unset" href="{{ route('painel.ingredientes') }}">Ace
 
                             <div class="form-group col-6 col-lg-6 mt-3">
                                 <label for="nome">Categoria</label>
-                                <select class="form-control" name="cat_id" required>
+                                <select class="form-control" name="acessorio_categoria_id" required>
                                     <option value="">Selecione</option>
                                     @php
                                         $categorias = AcessorioCat::select(DB::raw("id, nome"))

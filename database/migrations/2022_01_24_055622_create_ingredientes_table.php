@@ -15,12 +15,13 @@ class CreateIngredientesTable extends Migration
     {
         Schema::create('ingredientes', function (Blueprint $table) {
             $table->id();
-            $table->string("nome");
-            $table->integer("cat_id");
-            $table->string("fornecedor");
-            $table->string("tel_fornecedor");
-            $table->string("validade");
+            $table->string("nome", 100);
+            $table->unsignedBigInteger("ingrediente_categoria_id")->nullable();
+            $table->string("fornecedor", 100);
+            $table->string("tel_fornecedor", 20);
+            $table->tinyInteger("validade");
             $table->timestamps();
+            $table->foreign('ingrediente_categoria_id')->references('id')->on('ingrediente_categorias')->onDelete('set null');
         });
     }
 

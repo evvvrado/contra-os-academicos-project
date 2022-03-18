@@ -10,6 +10,10 @@ class Ingrediente extends Model
     use HasFactory;
 
     public function produtos(){
-        return $this->belongsToMany(Produto::class, 'produtosingredientes');
+        return $this->belongsToMany(Produto::class, 'produto_ingredientes');
+    }
+
+    public function marcas(){
+        return $this->hasMany(Marca::class);
     }
 }

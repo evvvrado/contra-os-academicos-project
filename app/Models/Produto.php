@@ -10,10 +10,10 @@ class Produto extends Model
     use HasFactory;
 
     public function ingredientes(){
-        return $this->belongsToMany(Ingrediente::class, 'produtosingredientes');
+        return $this->belongsToMany(Ingrediente::class, 'produto_ingredientes');
     }
 
     public function acessorios(){
-        return $this->belongsToMany(Acessorio::class, 'produtosacessorios');
+        return $this->belongsToMany(Acessorio::class, 'produto_acessorios');
     }
 }

@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Lead;
+use App\Models\Cliente;
 use App\Models\Orcamento;
 use App\Models\OrcamentoServico;
 use App\Models\OrcamentoProduto;
@@ -11,9 +11,9 @@ use App\Models\OrcamentoProduto;
 class LeadsController extends Controller
 {
     //
-    public function consultar_leads(Request $request){
-        $leads = Lead::where('orcamento', false)->get();
-        return view("painel.leads.consultar", ["leads" => $leads]);
+    public function consultar(Request $request){
+        $clientes = Cliente::all();
+        return view("painel.leads.consultar", ["clientes" => $clientes]);
     }
 
     //

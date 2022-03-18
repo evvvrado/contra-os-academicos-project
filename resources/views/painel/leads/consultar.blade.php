@@ -9,7 +9,7 @@
 @endsection
 
 @section('titulo')
-    Orçamentos
+    Leads
 @endsection
 
 
@@ -45,13 +45,13 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach ($leads as $lead)
+                                    @foreach ($clientes as $lead)
                                         <tr class="odd">
-                                            <td class="sorting_1 dtr-control">{{ $lead->lead->nome }}</td>
-                                            <td class="sorting_1 dtr-control">{{ $lead->lead->telefone }}</td>
-                                            <td class="sorting_1 dtr-control">{{ $lead->lead->email }}</td>
-                                            <td class="sorting_1 dtr-control">{{ $lead->lead->created_at }}</td>
-                                            @if ($lead->lead == true)
+                                            <td class="sorting_1 dtr-control">{{ $lead->nome }}</td>
+                                            <td class="sorting_1 dtr-control">{{ $lead->telefone }}</td>
+                                            <td class="sorting_1 dtr-control">{{ $lead->email }}</td>
+                                            <td class="sorting_1 dtr-control">{{ $lead->created_at }}</td>
+                                            @if ($lead->orcamentos->count() > 0)
                                                 <td>
                                                     <a class="btn btn-success"
                                                         href="{{ route('painel.leads.orcamento', ['orcamento' => $lead]) }}"

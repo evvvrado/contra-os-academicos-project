@@ -12,10 +12,10 @@ Produtos / <a style="color: unset" href="{{ route('painel.produtos') }}">Produto
 
 
 @php
-use App\Models\ProdutosIngrediente;
+use App\Models\ProdutoIngrediente;
 use App\Models\MarcaIngrediente;
 use App\Models\MarcaAcessorio;
-use App\Models\ProdutosAcessorio;
+use App\Models\ProdutoAcessorio;
 use App\Models\Produto;
 use App\Models\Parametro;
 @endphp
@@ -41,101 +41,15 @@ use App\Models\Parametro;
                             style="width: 1185px;">
                             <thead>
                                 <tr role="row">
+                                    <th width="90"></th>
                                     <th style="width: 70%" class="sorting_asc" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" style="width: 68px;" aria-sort="ascending"
                                         aria-label="Name: activate to sort column descending">Nome
                                     </th>
-                                    <th>Valor</th>
+                                    <th style="width: 5%;"></th>
                                     <th style="width: 10%" class="text-center"></th>
                                 </tr>
                             </thead>
-                            <tbody>
-                                @foreach ($produtos as $produto)
-                                    <tr class="odd">
-                                        <td class="sorting_1 dtr-control">{{ $produto->nome }}</td>
-
-                                        <td>
-                                            @php
-                                                $valor_total = 0;
-                                                $total_produto = 0;
-
-                                                $ingredientes = ProdutosIngrediente::where('produto_id', $produto->id)
-                                                ->join('ingredientes', 'ingrediente_id', 'ingredientes.id')
-                                                ->get();                                                
-
-                                                foreach($ingredientes as $ingrediente){
-                                                    $marca = MarcaIngrediente::where('ingrediente_id', $ingrediente->id)
-                                                    ->join('marcas', 'marca_id', 'marcas.id')
-                                                    ->where('padrao', 'Sim')
-                                                    ->first();
-
-                                                    $qtd_pacote = $marca->qtd_pacote;
-
-                                                    $qtd_total_drinks = 1;
-
-                                                    $qtd_produto = $marca->qtd;
-
-                                                    if($qtd_produto){
-                                                        $qtd_produto_total = $qtd_produto * $qtd_total_drinks;
-
-                                                        $marca_qtd = $marca->qtd_pacote;
-
-                                                        while (true) {
-                                                            if ($qtd_produto_total <= $marca_qtd) {
-                                                                break;
-                                                            }
-                                                            $marca_qtd = $marca_qtd + $marca->qtd_pacote;
-                                                        }
-                                                    }
-                                                    $total_produto = $total_produto + $marca->valor;
-                                                }
-
-                                                $acessorios = ProdutosAcessorio::where('produto_id', $produto->id)
-                                                ->join('acessorios', 'acessorio_id', 'acessorios.id')
-                                                ->get();                                                
-
-                                                foreach($acessorios as $acessorio){
-                                                    $marca = MarcaAcessorio::where('acessorio_id', $acessorio->id)
-                                                    ->join('marcas', 'marca_id', 'marcas.id')
-                                                    ->where('padrao', 'Sim')
-                                                    ->first();
-
-                                                    $qtd_pacote = $marca->qtd_pacote;
-
-                                                    $qtd_total_drinks = 1;
-
-                                                    $qtd_produto = $marca->qtd;
-
-                                                    if($qtd_produto){
-                                                        $qtd_produto_total = $qtd_produto * $qtd_total_drinks;
-
-                                                        $marca_qtd = $marca->qtd_pacote;
-
-                                                        while (true) {
-                                                            if ($qtd_produto_total <= $marca_qtd) {
-                                                                break;
-                                                            }
-                                                            $marca_qtd = $marca_qtd + $marca->qtd_pacote;
-                                                        }
-                                                    }
-                                                    $total_produto = $total_produto + $marca->valor;
-                                                }
-
-                                                echo "R$". number_format($total_produto, 2, ',', '.');
-                                            @endphp
-                                        </td>
-
-                                        <td class="d-flex justify-content-between">
-                                            <a href="{{ route('painel.produtos.editar', ['produto' => $produto]) }}" class="mx-auto">
-                                                <i class="fas fa-pen-square"></i>
-                                            </a>
-
-                                            <a href="{{ route('painel.produtos.deletar', ['produto' => $produto]) }} " class="mx-auto">
-                                                <i style="color: #f46a6a!important;" class="bx bx-minus-circle"></i>
-                                            </a>
-                                        </td>
-                                    </tr>
-                                @endforeach
-                            </tbody>
+                            @livewire('produtos.consultar.datatable')
                         </table>
                     </div>
                 </div>
