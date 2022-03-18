@@ -5146,7 +5146,7 @@ div.dataTables_wrapper div.dataTables_filter i:hover {
 
 .form-control,
 .form-select {
-    height: 53px;
+    /* height: 53px; */
 }
 div.dataTables_wrapper div.dataTables_length select {
     height: inherit;
@@ -5231,4 +5231,8 @@ div.dataTables_wrapper div.dataTables_length select {
 
 .c-pointer {
     cursor: pointer;
+}
+
+td{
+    vertical-align: middle !important;
 }

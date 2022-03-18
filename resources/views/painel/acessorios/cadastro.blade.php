@@ -8,8 +8,7 @@
 @endsection
 
 @php
-    use App\Models\AcessorioCat;
-    use Illuminate\Support\Facades\DB;
+    use App\Models\AcessorioCategoria;
 @endphp
 
 @section('titulo')
@@ -23,9 +22,8 @@ Produtos / <a style="color: unset" href="{{ route('painel.ingredientes') }}">Ace
         <div class="card">
             <div class="card-body">
                 <h4 class="card-title">Cadastro de Acessórios</h4>
-                <form id="form-cadastro" action="{{route('painel.acessorios.cadastrar')}}" method="POST">
+                <form id="form-cadastro" action="{{route('painel.acessorios.salvar')}}" method="POST">
                     @csrf
-                    
                     <div class="col-lx-12">
                         <div class="row">
                             <div class="form-group col-6 col-lg-6 mt-3">
@@ -35,15 +33,8 @@ Produtos / <a style="color: unset" href="{{ route('painel.ingredientes') }}">Ace
 
                             <div class="form-group col-6 col-lg-6 mt-3">
                                 <label for="nome">Categoria</label>
-                                <select class="form-control" name="cat_id" required>
+                                <select class="form-control" name="acessorio_categoria_id" required>
                                     <option value="">Selecione</option>
-                                    @php
-                                        $categorias = AcessorioCat::select(DB::raw("id, nome"))
-                                        ->orderBy('nome', 'Asc')
-                                        ->where('status', '=', 'Ativo')
-                                        ->get();
-                                    @endphp
-
                                     @foreach($categorias as $categoria)
                                         <option value="{{$categoria->id}}">{{$categoria->nome}}</option>
                                     @endforeach
@@ -63,11 +54,9 @@ Produtos / <a style="color: unset" href="{{ route('painel.ingredientes') }}">Ace
                             <div class="form-group col-6 col-lg-6 mt-3">
                                 <label for="nome">Validade</label>
                                 <select class="form-control" name="validade" required>
-                                    <option value="">Selecione</option>
-                                    <option value="dia">1 dia</option>
-                                    <option value="semana">1 Semana</option>
-                                    <option value="mes">1 Mês</option>
-                                    <option value="vitalicio">Vitalício</option>
+                                    @foreach(config("ingredientes.validades") as $key => $validade)
+                                        <option value="{{ $key }}">{{ $validade }}</option>
+                                    @endforeach
                                 </select>
                             </div>
                         </div>

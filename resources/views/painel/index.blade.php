@@ -87,7 +87,7 @@ Dashboard / <a style="color: unset" href="{{ route('painel.index') }}">Início</
                 <div class="media">
                     <div class="media-body">
                         <p class="text-muted fw-medium">Leads</p>
-                        <h4 class="mb-0">{{ $leads->count() }}</h4>
+                        <h4 class="mb-0">{{ $clientes->count() }}</h4>
                     </div>
 
                     <div class="mini-stat-icon avatar-sm rounded-circle bg-primary align-self-center">
@@ -265,14 +265,11 @@ Dashboard / <a style="color: unset" href="{{ route('painel.index') }}">Início</
         dayMaxEvents: true, // allow "more" link when too many events
         events: [
             @foreach($orcamentos as $orcamento)
-                @php
-                    $lead = Lead::where("id", $orcamento->lead_id)->first();
-                @endphp
             {
                 id: 'a',
-                title: '{{ $orcamento->tipo }} - {{ $lead->nome }}',
-                start: '{{ $orcamento->data }}',
-                url: '{{route('painel.leads.orcamento', ['orcamento' => $orcamento->id])}}'
+                title: "{!! $orcamento->tipo !!} - {!! $orcamento->cliente->nome !!}",
+                start: "{!! $orcamento->data !!}",
+                url: "{!! route('painel.leads.orcamento', ['orcamento' => $orcamento->id]) !!}"
             },
             @endforeach
         ]

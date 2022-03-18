@@ -15,20 +15,19 @@ class CreateProdutosTable extends Migration
     {
         Schema::create('produtos', function (Blueprint $table) {
             $table->id();
-            $table->string("nome");
+            $table->string("nome", 100);
             $table->text("descricao");
-            $table->string("teor_alcoolico");
-            $table->string("calorias");
-            $table->string("nota");
+            $table->double("teor_alcoolico", 5, 2);
+            $table->double("calorias");
+            $table->tinyInteger("nota");
             $table->string("harmonizacao");
-            $table->string("lancamento");
-            $table->string("mais_visitados")->nullable();
+            $table->boolean("lancamento");
+            $table->unsignedInteger("visitas")->nullable();
             $table->text("historia");
-            $table->string("recomendados")->nullable();
-            $table->double("valor")->nullable();
+            $table->boolean("recomendado")->nullable();
             $table->string("guarnicao")->nullable();
-            $table->string("imagem_1")->nullable();
-            $table->string("imagem_2")->nullable();
+            $table->string("imagem_preview")->nullable();
+            $table->string("imagem_detalhes")->nullable();
             $table->timestamps();
         });
     }

@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Classes;
+use Illuminate\Support\Facades\Storage;
 
 class Util
 {
@@ -37,5 +38,15 @@ class Util
         $string = str_replace(' ', '', $string); // Remove espaços
 
         return preg_replace('/[^A-Za-z0-9]/', '', $string); // Remove caracteres especiais
+    }
+
+    public static function limparLivewireTemp(){
+        $storage = Storage::disk('local');
+        foreach($storage->allFiles('livewire-tmp') as $filePathname){
+           $stamp = now()->subSeconds(4)->timestamp;
+           if($stamp > $storage->lastModified($filePathname)){
+               $storage->delete($filePathname);
+           }
+        }
     }
 }

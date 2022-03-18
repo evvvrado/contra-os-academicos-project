@@ -15,19 +15,19 @@ class CreateParametrosTable extends Migration
     {
         Schema::create('parametros', function (Blueprint $table) {
             $table->id();
-            $table->string("valor_1");
-            $table->string("valor_2");
-            $table->string("descricao");
+            $table->double("valor_km_rodado")->default(10);
+            $table->double("quantidade_mais_visitados")->default(10);
+            $table->integer("garcons_convidados")->default(1);
+            $table->integer("garcons_numero")->default(1);
+            $table->integer("drinks_convidados")->default(1);
+            $table->integer("drinks_numero")->default(1);
+            $table->integer("tipos_drinks_convidados")->default(1);
+            $table->integer("tipos_drinks_numero")->default(1);
             $table->timestamps();
         });
 
-        for ($i = 1; $i <= 7; $i++) {
-            DB::table('parametros')->insert([
-                'valor_1' => '0',
-                'valor_2' => '0',
-                'descricao' => 'desc'.$i
-            ]);
-        }
+        DB::table('parametros')->insert([
+        ]);
     }
 
     /**

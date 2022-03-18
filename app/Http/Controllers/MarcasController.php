@@ -7,28 +7,21 @@ use App\Models\Marca;
 use App\Models\Ingrediente;
 use App\Models\Acessorio;
 use App\Models\MarcaHistorico;
-use App\Models\MarcaIngrediente;
-use App\Models\MarcaAcessorio;
+use Illuminate\Support\Facades\Storage;
 use DB;
 
 class MarcasController extends Controller
 {
     //
     public function consultar_ingrediente(Ingrediente $ingrediente){
-        $marcas = MarcaIngrediente::where("ingrediente_id", $ingrediente->id)
-        ->join('marcas', 'marca_id', 'marcas.id')
-        ->get();
-
+        $marcas = Marca::where("ingrediente_id", $ingrediente->id)->get();
         return view("painel.marcas.consultar_ingredientes", ["marcas" => $marcas, "ingrediente" => $ingrediente]);
     }
 
     //
     public function consultar_acessorio(Acessorio $acessorio){
-        $marcas = MarcaAcessorio::where("acessorio_id", $acessorio->id)
-        ->join('marcas', 'marca_id', 'marcas.id')
-        ->get();
-
-        return view("painel.marcas.consultar_acessorios", ["marcas" => $marcas, "acessorio" => $acessorio]);
+        $marcas = Marca::where("acessorio_id", $acessorio->id)->get();
+        return view("painel.marcas.consultar_ingredientes", ["marcas" => $marcas, "acessorio" => $acessorio]);
     }
 
     //
@@ -71,52 +64,39 @@ class MarcasController extends Controller
     public function cadastrar(Request $request){
         $marca = new Marca;
         $marca->nome = $request->nome;
-        if($request->padrao == "") {
-            $marca->padrao = "Não";
-        }else {
+        if($request->padrao){
             $marca->padrao = $request->padrao;
+        }else{
+            $marca->padrao = 0;
         }
-        
-        $valor = str_replace(",", ".", $request->preco);
-        $marca->valor = $valor;
-        $marca->unidade_medida = $request->unidade_medida;
         $marca->nome_unidade = $request->nome_unidade;
-        $marca->qtd = $request->qtd;
-        $marca->qtd_pacote = $request->qtd_pacote;
-        $marca->nome_pacote = $request->nome_pacote;
+        $marca->unidade_medida = $request->unidade_medida;
+        $marca->quantidade_ingrediente_unidade = $request->quantidade_ingrediente_unidade;
+        $marca->embalagem = $request->embalagem;
+        $marca->quantidade_embalagem = $request->quantidade_embalagem;
+        $marca->valor_embalagem = $request->valor_embalagem;
+
+        if($request->tabela == "ingredientes") {
+            $marca->ingrediente_id = $request->id_ingrediente;
+            $marca->tipo = 0;
+            $url = "painel.ingredientes";
+        } else {
+            $marca->tipo = 1;
+            $marca->acessorio_id = $request->id_acessorio;
+            $url = "painel.acessorios";
+        }
+
+        if($request->hasFile('imagem')){
+            Storage::delete($marca->imagem);
+            $marca->imagem = $request->file("imagem")->store("site/imagens/marcas", 'local');
+        }
+
         $marca->save();
 
         $marca_historico = new MarcaHistorico;
         $marca_historico->marca_id = $marca->id;
-        $marca_historico->valor = $valor;
+        $marca_historico->valor = $marca->valor_embalagem;
         $marca_historico->save();
-
-        if($request->hasFile('imagem')){
-            // unlink(public_path('/admin/images/usuarios/'.$usuario->imagem));
-            $image = $request->file('imagem');
-            $nome_1 = 'imagem.'.$image->getClientOriginalExtension();
-            $destinationPath = public_path('/admin/images/marcas/'.$marca->id."/");
-            $image->move($destinationPath, $nome_1);
-
-            Marca::where('id', $marca->id)
-            ->update(['imagem' => '/admin/images/marcas/'.$marca->id."/".$nome_1]);
-        }
-
-        if($request->tabela == "ingredientes") {
-            $marca_ingrediente = new MarcaIngrediente;
-            $marca_ingrediente->marca_id = $marca->id;
-            $marca_ingrediente->ingrediente_id = $request->id_ingrediente;
-            $marca_ingrediente->save();
-
-            $url = "painel.ingredientes";
-        } else {
-            $marca_acessorio = new MarcaAcessorio;
-            $marca_acessorio->marca_id = $marca->id;
-            $marca_acessorio->acessorio_id = $request->id_acessorio;
-            $marca_acessorio->save();
-
-            $url = "painel.acessorios";
-        }
 
         toastr()->success("Marca salva com sucesso!");
 

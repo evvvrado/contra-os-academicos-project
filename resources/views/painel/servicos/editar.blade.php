@@ -40,7 +40,7 @@
 
                             <div class="form-group col-6 col-lg-6 mt-3">
                                 <label>Valor</label>
-                                <input id="valor" name="valor" type="text" class="form-control dinheiro" value="{{ $servico->valor }}">
+                                <input id="valor" name="valor" type="number" class="form-control" step="0.01" min="0" value="{{ $servico->valor }}">
                             </div>
 
                             <div class="form-group col-6 col-lg-6 mt-3">
@@ -57,7 +57,7 @@
                         <a href="{{ route('painel.servicos') }}" class="btn btn-secondary waves-effect waves-light">Cancelar</a>
                     </div>
 
-                    <input name="id" type="hidden" class="form-control" value="{{ $servico->id }}">
+                    <input name="servico_id" type="hidden" class="form-control" value="{{ $servico->id }}">
                 </form>
             </div>
             

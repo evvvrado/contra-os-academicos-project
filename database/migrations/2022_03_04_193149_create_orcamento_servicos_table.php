@@ -18,6 +18,7 @@ class CreateOrcamentoServicosTable extends Migration
             $table->unsignedBigInteger("orcamento_id");
             $table->unsignedBigInteger("servico_id");
             $table->integer("qtd");
+            $table->double("valor", 10, 2);
             $table->foreign('orcamento_id')->references('id')->on('orcamentos')->onDelete('cascade');
             $table->foreign('servico_id')->references('id')->on('servicos')->onDelete('cascade');
             $table->timestamps();

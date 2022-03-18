@@ -8,4 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 class Marca extends Model
 {
     use HasFactory;
+
+    public function historico(){
+        return $this->hasMany(MarcaHistorico::class);
+    }
 }

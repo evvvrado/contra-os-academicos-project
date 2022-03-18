@@ -24,6 +24,7 @@ $usuario = \App\Models\Usuario::find(session()->get('usuario')['id']);
     <!-- App Css-->
     <link href="{{ asset('admin/css/app.min.css') }}" id="app-style" rel="stylesheet" type="text/css" />
     @toastr_css
+    @livewireStyles()
     @yield("styles")
 
     <style>
@@ -376,7 +377,7 @@ $usuario = \App\Models\Usuario::find(session()->get('usuario')['id']);
 
     <script>
         $('.dinheiro').mask('#.##0,00', {reverse: true, placeholder: "R$ 0,00"});
-        $('.telefone_ddd').mask('(00) 0000-0000', {placeholder: "(00) 000-000"});
+        $('.telefone_ddd').mask('(00) 00000-0000', {placeholder: "(00) 00000-0000"});
     </script>
     @toastr_js
     @toastr_render
@@ -386,6 +387,20 @@ $usuario = \App\Models\Usuario::find(session()->get('usuario')['id']);
 
     <!-- App js -->
     <script src="{{ asset('admin/js/app.js') }}"></script>
+    <script>
+        window.addEventListener('notificaToastr', event => {
+            if(event.detail.tipo == 'success'){
+                toastr.success(event.detail.mensagem);
+            }else if(event.detail.tipo == 'error'){
+                toastr.error(event.detail.mensagem);
+            }
+        });
+        var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
+        var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
+            return new bootstrap.Tooltip(tooltipTriggerEl)
+        })
+    </script>
+    @livewireScripts()
     @yield("scripts")
 </body>
 

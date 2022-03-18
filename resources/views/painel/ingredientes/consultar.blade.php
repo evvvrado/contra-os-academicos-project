@@ -13,7 +13,6 @@ Produtos / <a style="color: unset" href="{{ route('painel.ingredientes') }}">Ing
 @php
     use App\Models\Ingrediente;
     use App\Models\Marca;
-    use App\Models\MarcaIngrediente;
 @endphp
 
 
@@ -49,11 +48,11 @@ Produtos / <a style="color: unset" href="{{ route('painel.ingredientes') }}">Ing
                                 // $ativo = "active";
                                 // $cor = "#555"
                             @endphp
-                            @foreach($ingredientecats as $ingredientecat)
+                            @foreach($categorias as $categoria)
                                 <li class="nav-item">
-                                    <a class="nav-link" data-bs-toggle="tab" href="#tab-{{$ingredientecat->id}}" role="tab">
+                                    <a class="nav-link" data-bs-toggle="tab" href="#tab-{{$categoria->id}}" role="tab">
                                         <span class="d-block d-sm-none"><i class="fas fa-home"></i></span>
-                                        <span class="d-none d-sm-block">{{$ingredientecat->nome}}</span>    
+                                        <span class="d-none d-sm-block">{{$categoria->nome}}</span>    
                                     </a>
                                 </li>
                                 @php
@@ -81,11 +80,7 @@ Produtos / <a style="color: unset" href="{{ route('painel.ingredientes') }}">Ing
                                         @endphp                                       
                                         @foreach ($ingredientes as $ingrediente)
                                             @php
-                                                $marca = MarcaIngrediente::where('ingrediente_id', $ingrediente->id)
-                                                ->where('padrao', 'Sim')
-                                                ->join('marcas', 'marcas.id', '=', 'marcas_ingredientes.marca_id')
-                                                ->first();
-
+                                                $marca = $ingrediente->marcas->where('padrao', true)->first();
                                                 $marca_padrao = "Nao";
                                                 $nome_marca = "Não possui marca padrão";
                                                 if($marca) {
@@ -121,11 +116,11 @@ Produtos / <a style="color: unset" href="{{ route('painel.ingredientes') }}">Ing
                                 // $ativo = "active";
                                 $c = 1;
                             @endphp
-                            @foreach($ingredientecats as $ingredientecat)
+                            @foreach($categorias as $categoria)
                                 @php
-                                    $ingredientes = Ingrediente::where("cat_id", "=", $ingredientecat->id)->get();
+                                    $ingredientes = $categoria->ingredientes;
                                 @endphp
-                                        <div class="tab-pane" id="tab-{{$ingredientecat->id}}" role="tabpanel">
+                                        <div class="tab-pane" id="tab-{{$categoria->id}}" role="tabpanel">
                                             <table class="tabela_export table table-bordered dt-responsive  nowrap w-100 clear_both">
                                                 <thead>
                                                     <tr>
@@ -136,11 +131,7 @@ Produtos / <a style="color: unset" href="{{ route('painel.ingredientes') }}">Ing
                                                 <tbody>                                                        
                                                     @foreach ($ingredientes as $ingrediente)
                                                         @php
-                                                            $marca = MarcaIngrediente::where('ingrediente_id', $ingrediente->id)
-                                                            ->where('padrao', 'Sim')
-                                                            ->join('marcas', 'marcas.id', '=', 'marcas_ingredientes.marca_id')
-                                                            ->first();
-
+                                                            $marca = $ingrediente->marcas->where('padrao', true)->first();
                                                             $marca_padrao = "Nao";
                                                             $nome_marca = "Não possui marca padrão";
                                                             if($marca) {
@@ -202,16 +193,16 @@ Produtos / <a style="color: unset" href="{{ route('painel.ingredientes') }}">Ing
                     </tr>
                 </thead>
                 <tbody>                                                        
-                    @foreach ($ingredientecats as $ingredientecat)
+                    @foreach ($categorias as $categoria)
                         <tr>
-                            <td>{{$ingredientecat->nome}}</td>
+                            <td>{{$categoria->nome}}</td>
                             <td class="d-flex justify-content-between">
-                                <a href="#" onClick="editar_categoria({{$ingredientecat->id}}, '{{$ingredientecat->nome}}')" class="mx-auto">
+                                <a href="#" onClick="editar_categoria({{$categoria->id}}, '{{$categoria->nome}}')" class="mx-auto">
                                     <i class="fas fa-pen-square"></i>
                                 </a>
 
-                                <a href="{{ route('cat.ingrediente.status', ['ingredientecat' => $ingredientecat]) }}" class="mx-auto">
-                                    <i class="fas fa-star" @if($ingredientecat->status != "Ativo") style="color: #f46a6a" @endif></i>
+                                <a href="{{ route('cat.ingrediente.status', ['categoria' => $categoria]) }}" class="mx-auto">
+                                    <i class="fas fa-star" @if($categoria->status != "Ativo") style="color: #f46a6a" @endif></i>
                                 </a>
                             </td>
                         </tr>
@@ -246,42 +237,48 @@ Produtos / <a style="color: unset" href="{{ route('painel.ingredientes') }}">Ing
                                 <label>Padrão</label>
                                 <select class="form-control" required name="padrao" id="padrao_cadastro" required>
                                     <option value="">Selecione</option>
-                                    <option value="Sim">Sim</option>
-                                    <option value="Não">Não</option>
+                                    <option value="1">Sim</option>
+                                    <option value="0">Não</option>
                                 </select>
                             </div>
 
-                            <div class="form-group col-6 col-lg-4 mt-3">
+                            <div class="form-group col-6 col-lg-3 mt-3">
                                 <label>Nome da unidade</label>
                                 <input required name="nome_unidade" type="text" class="form-control">
+                                <small>Ex: Dose</small>
                             </div>
 
-                            <div class="form-group col-6 col-lg-4 mt-3">
-                                <label>Quantidade por produto</label>
-                                <input required name="qtd" type="text" class="form-control">
-                            </div>
-
-                            <div class="form-group col-6 col-lg-4 mt-3">
-                                <label>Nome do pacote</label>
-                                <input required name="nome_pacote" type="text" class="form-control">
-                            </div>
-
-                            <div class="form-group col-6 col-lg-4 mt-3">
-                                <label>Preço do pacote</label></label>
-                                <input required class="form-control dinheiro" name="preco">
-                            </div>
-
-                            <div class="form-group col-6 col-lg-4 mt-3">
-                                <label>Quantidade por pacote</label>
-                                <input required name="qtd_pacote" type="text" class="form-control">
-                            </div>
-
-                            <div class="form-group col-6 col-lg-4 mt-3">
+                            <div class="form-group col-6 col-lg-3 mt-3">
                                 <label>Unidade de Medida</label>
                                 <select required name="unidade_medida" type="text" class="form-control">
                                     <option value="">Selecione</option>
-                                    <option value="litros">Litros</option>
+                                    @foreach(config("marcas.unidades_medida") as $key => $unidade)
+                                        <option value="{{ $key }}">{{ $unidade }}</option>
+                                    @endforeach
                                 </select>
+                            </div>
+
+                            <div class="form-group col-6 col-lg-6 mt-3">
+                                <label>Quantidade do ingrediente por unidade</label>
+                                <input required name="quantidade_ingrediente_unidade" type="number" step="0.01" min="0" class="form-control">
+                                <small>Ex: O valor 50 significaria que 1 dose possui 50ml </small>
+                            </div>
+
+                            <div class="form-group col-6 col-lg-4 mt-3">
+                                <label>Nome da Embalagem</label>
+                                <input required name="embalagem" type="text" class="form-control">
+                                <small>Ex: Garrafa</small>
+                            </div>
+
+                            <div class="form-group col-6 col-lg-4 mt-3">
+                                <label>Quantidade por Embalagem</label>
+                                <input required name="quantidade_embalagem" type="number" step="1" min="0" class="form-control">
+                                <small>Ex: 1000 (unidade de medida selecionada)</small>
+                            </div>
+
+                            <div class="form-group col-6 col-lg-4 mt-3">
+                                <label>Preço da Embalagem</label></label>
+                                <input required class="form-control" name="valor_embalagem" type="number" step="0.01" min="0">
                             </div>
 
                             <div class="form-group col-6 col-lg-6 mt-3">
@@ -296,7 +293,7 @@ Produtos / <a style="color: unset" href="{{ route('painel.ingredientes') }}">Ing
                     </div>
                     <div class="d-flex flex-wrap gap-2 mt-3">
                         <button id="btn-submit" type="submit" class="btn btn-primary waves-effect waves-light">Salvar</button>
-                        <button type="button" class="btn btn-secondary waves-effect waves-light">Cancelar</button>
+                        <button type="button" class="btn btn-secondary waves-effect waves-light" data-bs-dismiss="modal" aria-label="Close">Cancelar</button>
                     </div>
                 </form>
             </div>
@@ -313,12 +310,12 @@ Produtos / <a style="color: unset" href="{{ route('painel.ingredientes') }}">Ing
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <form id="form_editar" method="post" action="{{ route('painel.ingredientecats.editar') }} ">
+                <form id="form_editar" method="post" action="{{ route('painel.ingredientecats.salvar') }} ">
                     @csrf
                     <label>Nome</label>
                     <input type="text" class="form-control" name="nome" id="nome_editar">
 
-                    <input type="hidden" class="form-control" name="id" id="id_editar">
+                    <input type="hidden" class="form-control" name="ingrediente_categoria_id" id="id_editar">
 
                     <br>
 
@@ -338,7 +335,7 @@ Produtos / <a style="color: unset" href="{{ route('painel.ingredientes') }}">Ing
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <form method="post" action="{{ route('painel.ingredientecats.cadastrar') }} ">
+                <form method="post" action="{{ route('painel.ingredientecats.salvar') }} ">
                     @csrf
                     <label>Nome</label>
                     <input type="text" class="form-control" name="nome">

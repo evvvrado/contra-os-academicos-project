@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class MarcaHistorico extends Model
 {
-    protected $table = 'marcas_historicos';
     use HasFactory;
+
+    
 }

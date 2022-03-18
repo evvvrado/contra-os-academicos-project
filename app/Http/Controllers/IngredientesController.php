@@ -4,18 +4,17 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Ingrediente;
-use App\Models\IngredienteCat;
+use App\Models\IngredienteCategoria;
 use DB;
 
 class IngredientesController extends Controller
 {
     //
     public function consultar(Request $request){
-        $ingredientecats = IngredienteCat::select(DB::raw("id, nome, status"))
-        ->orderBy('nome', 'Asc')
-        ->where('status', 'Ativo')
+        $categorias = IngredienteCategoria::orderBy('nome', 'Asc')
+        ->where('ativo', true)
         ->get();
-        return view("painel.ingredientes.consultar", ["ingredientecats" => $ingredientecats]);
+        return view("painel.ingredientes.consultar", ["categorias" => $categorias]);
     }
 
     public function cadastro(){
@@ -35,24 +34,18 @@ class IngredientesController extends Controller
     }
 
     public function salvar(Request $request){
-        Ingrediente::where('id', $request->id)
-        ->update(['nome' => $request->nome, 'cat_id' => $request->cat_id, 'fornecedor' => $request->fornecedor, 'tel_fornecedor' => $request->tel_fornecedor, 'validade' => $request->validade]);
+        if($request->ingrediente_id){
+            $ingrediente = Ingrediente::find($request->ingrediente_id);
+        }else{
+            $ingrediente = new Ingrediente;
+        }
+        $ingrediente->nome = $request->nome;
+        $ingrediente->ingrediente_categoria_id = $request->ingrediente_categoria_id;
+        $ingrediente->fornecedor = $request->fornecedor;
+        $ingrediente->tel_fornecedor = $request->tel_fornecedor;
+        $ingrediente->validade = $request->validade;
 
-        toastr()->success("Ingrediente editado com sucesso!");
-
-        return redirect()->route("painel.ingredientes");
-
-    }
-
-    public function cadastrar(Request $request){
-        $ingredientes = new Ingrediente;
-        $ingredientes->nome = $request->nome;
-        $ingredientes->cat_id = $request->cat_id;
-        $ingredientes->fornecedor = $request->fornecedor;
-        $ingredientes->tel_fornecedor = $request->tel_fornecedor;
-        $ingredientes->validade = $request->validade;
-
-        $ingredientes->save();
+        $ingrediente->save();
 
         toastr()->success("Ingrediente salvo com sucesso!");
 

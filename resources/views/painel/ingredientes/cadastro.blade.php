@@ -1,14 +1,10 @@
 @extends('painel.template.main')
 
 @section('styles')
-<link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.css" rel="stylesheet">
-<link href="{{ asset('admin/libs/select2/css/select2.min.css') }}" id="app-style" rel="stylesheet" type="text/css" />
-{{--
-<link href="{{asset('admin/libs/select2/css/select2-bootstrap4.css')}}" id="app-style" rel="stylesheet" type="text/css" /> --}}
 @endsection
 
 @php
-    use App\Models\IngredienteCat;
+    use App\Models\IngredienteCategoria;
     use Illuminate\Support\Facades\DB;
 @endphp
 
@@ -23,28 +19,21 @@ Produtos / <a style="color: unset" href="{{ route('painel.ingredientes') }}">Ing
         <div class="card">
             <div class="card-body">
                 <h4 class="card-title">Cadastro de Ingredientes</h4>
-                <form id="form-cadastro" action="{{route('painel.ingredientes.cadastrar')}}" method="POST">
+                <form id="form-cadastro" action="{{route('painel.ingredientes.salvar')}}" method="POST">
                     @csrf
                     
                     <div class="col-lx-12">
                         <div class="row">
                             <div class="form-group col-6 col-lg-6 mt-3">
                                 <label for="nome">Nome</label>
-                                <input id="nome" name="nome" type="text" placeholder="Insira o nome do ingrediente" class="form-control">
+                                <input id="nome" name="nome" type="text" placeholder="Insira o nome do ingrediente" class="form-control" required maxlength="100">
                             </div>
 
                             <div class="form-group col-6 col-lg-6 mt-3">
                                 <label for="nome">Categoria</label>
-                                <select class="form-control" name="cat_id" required>
+                                <select class="form-control" name="ingrediente_categoria_id" required>
                                     <option value="">Selecione</option>
-                                    @php
-                                        $categorias = IngredienteCat::select(DB::raw("id, nome"))
-                                        ->orderBy('nome', 'Asc')
-                                        ->where('status', '=', 'Ativo')
-                                        ->get();
-                                    @endphp
-
-                                    @foreach($categorias as $categoria)
+                                    @foreach(IngredienteCategoria::orderBy('nome', 'Asc')->where("ativo", '=', true)->get() as $categoria)
                                         <option value="{{$categoria->id}}">{{$categoria->nome}}</option>
                                     @endforeach
                                 </select>
@@ -52,22 +41,21 @@ Produtos / <a style="color: unset" href="{{ route('painel.ingredientes') }}">Ing
 
                             <div class="form-group col-6 col-lg-6 mt-3">
                                 <label for="nome">Fornecedor</label>
-                                <input name="fornecedor" type="text" class="form-control">
+                                <input name="fornecedor" type="text" class="form-control" maxlength="100">
                             </div>
 
                             <div class="form-group col-6 col-lg-6 mt-3">
                                 <label for="nome">Telefone do Fornecedor</label>
-                                <input name="tel_fornecedor" type="text" class="form-control telefone_ddd">
+                                <input name="tel_fornecedor" type="text" class="form-control telefone_ddd" maxlength="16">
                             </div>
 
                             <div class="form-group col-6 col-lg-6 mt-3">
                                 <label for="nome">Validade</label>
                                 <select class="form-control" name="validade" required>
                                     <option value="">Selecione</option>
-                                    <option value="dia">1 dia</option>
-                                    <option value="semana">1 Semana</option>
-                                    <option value="mes">1 Mês</option>
-                                    <option value="vitalicio">Vitalício</option>
+                                    @foreach(config("ingredientes.validades") as $key => $validade)
+                                        <option value="{{ $key }}">{{ $validade }}</option>
+                                    @endforeach
                                 </select>
                             </div>
                         </div>
@@ -87,7 +75,4 @@ Produtos / <a style="color: unset" href="{{ route('painel.ingredientes') }}">Ing
 @endsection
 
 @section('scripts')
-<script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.js"></script>
-<script src="{{ asset('admin/libs/select2/js/select2.min.js') }}"></script>
-<script src="{{ asset('admin/libs/dropzone/min/dropzone.min.js') }}"></script>
 @endsection

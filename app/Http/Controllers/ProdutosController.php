@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Produto;
 use App\Models\ProdutosIngrediente;
 use App\Models\ProdutosAcessorio;
-use DB;
+use Illuminate\Support\Facades\Storage;
 
 class ProdutosController extends Controller
 {
@@ -24,64 +24,6 @@ class ProdutosController extends Controller
         return view("painel.produtos.editar", ["produto" => $produto]);
     }
 
-    public function salvar(Request $request) {
-        Produto::where('id', $request->id)
-        ->update(['nome' => $request->nome, 'descricao' => $request->descricao, 'historia' => $request->historia, 'teor_alcoolico' => $request->teor_alcoolico, 'calorias' => $request->calorias, 'nota' => $request->nota, 'harmonizacao' => $request->harmonizacao, 'lancamento' => $request->lancamento]);
-
-        ProdutosIngrediente::where('produto_id', $request->id)->delete();
-        ProdutosAcessorio::where('produto_id', $request->id)->delete();
-
-        $ingredientes = $request->ingredientes;
-
-        $produtos_ingrediente = new ProdutosIngrediente;
-        $produtos_ingrediente->produto_id = $request->ingrediente;
-        foreach ($ingredientes as $ingrediente) {
-            $produtosingrediente = new produtosIngrediente;
-            $produtosingrediente->produto_id = $request->id;
-            $produtosingrediente->ingrediente_id = $ingrediente;
-            $produtosingrediente->save();
-        }
-
-        $acessorios = $request->acessorios;
-        
-        if($acessorios) {
-            $produtos_acessorios = new ProdutosAcessorio;
-            $produtos_acessorios->produto_id = $request->acessorio;
-            foreach ($acessorios as $acessorio) {
-                $produtosacessorio = new ProdutosAcessorio;
-                $produtosacessorio->produto_id = $request->id;
-                $produtosacessorio->acessorio_id = $acessorio;
-                $produtosacessorio->save();
-            }
-        }
-
-        if($request->hasFile('imagem_1')){
-            // unlink(public_path('/admin/images/usuarios/'.$usuario->imagem_1));
-            $image = $request->file('imagem_1');
-            $nome_1 = 'imagem_1.'.$image->getClientOriginalExtension();
-            $destinationPath = public_path('/admin/images/produtos/'.$request->id."/");
-            $image->move($destinationPath, $nome_1);
-
-            Produto::where('id', $request->id)
-            ->update(['imagem_1' => '/admin/images/produtos/'.$request->id."/".$nome_1]);
-        }
-
-        if($request->hasFile('imagem_2')){
-            // unlink(public_path('/admin/images/produtos//'.$usuario->imagem_2));
-            $image = $request->file('imagem_2');
-            $nome_2 = 'imagem_2.'.$image->getClientOriginalExtension();
-            $destinationPath = public_path('/admin/images/produtos/'.$request->id."/");
-            $image->move($destinationPath, $nome_2);
-
-            Produto::where('id', $request->id)
-            ->update(['imagem_2' => '/admin/images/produtos/'.$request->id."/".$nome_2]);
-        }
-
-        toastr()->success("produto salvo com sucesso!");
-
-        return redirect()->route("painel.produtos");
-    }
-
     public function deletar(Produto $produto){
         $produto->delete();
 
@@ -90,70 +32,35 @@ class ProdutosController extends Controller
         return redirect()->back();
     }
 
-    public function cadastrar(Request $request){
-        $produtos = new produto;
-        $produtos->nome = $request->nome;
-        $produtos->descricao = $request->descricao;
-        $produtos->historia = $request->historia;
-        $produtos->teor_alcoolico = $request->teor_alcoolico;
-        $produtos->calorias = $request->calorias;
-        $produtos->nota = $request->nota;
-        $produtos->harmonizacao = $request->harmonizacao;
-        $produtos->lancamento = $request->lancamento;
+    public function salvar(Request $request){
+        if($request->produto_id){
+            $produto = Produto::find($request->produto_id);
+        }else{
+            $produto = new Produto;
+        }
+        $produto->nome = $request->nome;
+        $produto->descricao = $request->descricao;
+        $produto->historia = $request->historia;
+        $produto->teor_alcoolico = $request->teor_alcoolico;
+        $produto->calorias = $request->calorias;
+        $produto->nota = $request->nota;
+        $produto->harmonizacao = $request->harmonizacao;
+        $produto->lancamento = $request->lancamento;
 
-        $produtos->save();
-
-        $produto_id = Produto::select(DB::raw("id"))
-        ->orderBy('id', 'Desc')
-        ->limit('1')
-        ->first();
-
-        $produtos = new produto;
-
-        if($request->hasFile('imagem_1')){
-            // unlink(public_path('/admin/images/usuarios/'.$usuario->imagem_1));
-            $image = $request->file('imagem_1');
-            $nome_1 = 'imagem_1.'.$image->getClientOriginalExtension();
-            $destinationPath = public_path('/admin/images/produtos/'.$produto_id->id."/");
-            $image->move($destinationPath, $nome_1);
-            $produtos->imagem_1 = $nome_1;
+        if($request->hasFile('imagem_preview')){
+            Storage::delete($produto->imagem_preview);
+            $produto->imagem_preview = $request->file("imagem_preview")->store("site/imagens/produtos", 'local');
         }
 
-        if($request->hasFile('imagem_2')){
-            // unlink(public_path('/admin/images/produtos//'.$usuario->imagem_2));
-            $image = $request->file('imagem_2');
-            $nome_2 = 'imagem_2.'.$image->getClientOriginalExtension();
-            $destinationPath = public_path('/admin/images/produtos/'.$produto_id->id."/");
-            $image->move($destinationPath, $nome_2);
-            $produtos->imagem_2 = $nome_2;
+        if($request->hasFile('imagem_detalhes')){
+            Storage::delete($produto->imagem_detalhes);
+            $produto->imagem_detalhes = $request->file("imagem_detalhes")->store("site/imagens/produtos", 'local');
         }
 
-        Produto::where('id', $produto_id->id)
-        ->update(['imagem_1' => '/admin/images/produtos/'.$produto_id->id."/".$nome_1, 'imagem_2' => '/admin/images/produtos/'.$produto_id->id."/".$nome_2]);
+        $produto->save();
 
-        $ingredientes = $request->ingredientes;
-
-        $produtos_ingrediente = new ProdutosIngrediente;
-        $produtos_ingrediente->produto_id = $request->ingrediente;
-        foreach ($ingredientes as $ingrediente) {
-            $produtosingrediente = new produtosIngrediente;
-            $produtosingrediente->produto_id = $produto_id->id;
-            $produtosingrediente->ingrediente_id = $ingrediente;
-            $produtosingrediente->save();
-        }
-
-        $acessorios = $request->acessorios;
-
-        if($acessorios) {
-            $produtos_acessorios = new ProdutosAcessorio;
-            $produtos_acessorios->produto_id = $request->acessorio;
-            foreach ($acessorios as $acessorio) {
-                $produtosacessorio = new ProdutosAcessorio;
-                $produtosacessorio->produto_id = $produto_id->id;
-                $produtosacessorio->acessorio_id = $acessorio;
-                $produtosacessorio->save();
-            }
-        }
+        $produto->ingredientes()->sync($request->ingredientes);
+        $produto->acessorios()->sync($request->acessorios);
 
         toastr()->success("produto salvo com sucesso!");
 

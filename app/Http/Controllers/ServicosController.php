@@ -22,18 +22,6 @@ class ServicosController extends Controller
         return view("painel.servicos.editar", ["servico" => $servico]);
     }
 
-    public function salvar(Request $request){
-        $valor = str_replace(",", ".", $request->valor);
-
-        Servico::where('id', $request->id)
-        ->update(['nome' => $request->nome, 'descricao' => $request->descricao, 'valor' => $valor, 'incluso' => $request->incluso]);
-
-        toastr()->success("Serviço editado com sucesso!");
-
-        return redirect()->route("painel.servicos");
-
-    }
-
     public function deletar(Servico $servico){
         $servico->delete();
 
@@ -43,16 +31,19 @@ class ServicosController extends Controller
     }
 
     //
-    public function cadastrar(Request $request){
-        $servico = new Servico;
+    public function salvar(Request $request){
+        if($request->servico_id){
+            $servico = Servico::find($request->servico_id);
+        }else{
+            $servico = new Servico;
+        }
         $servico->nome = $request->nome;
         $servico->descricao = $request->descricao;
-        $valor = str_replace(",", ".", $request->valor);
-        $servico->valor = $valor;
+        $servico->valor = $request->valor;
         $servico->incluso = $request->incluso;
         $servico->save();
 
-        toastr()->success("Serviço inserido com sucesso!");
+        toastr()->success("Serviço salvo com sucesso!");
 
         return redirect()->route('painel.servicos');
     }

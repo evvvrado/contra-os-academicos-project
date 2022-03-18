@@ -4,18 +4,23 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Acessorio;
-use App\Models\AcessorioCat;
+use App\Models\AcessorioCategoria;
 
 class AcessoriosController extends Controller
 {
     //
     public function consultar(Request $request){
-        $acessoriocats = AcessorioCat::where('status', 'Ativo')->get();
-        return view("painel.acessorios.consultar", ["acessoriocats" => $acessoriocats]);
+        $categorias = AcessorioCategoria::where('ativo', true)->get();
+        return view("painel.acessorios.consultar", ["categorias" => $categorias]);
     }
 
     public function cadastro(){
-        return view("painel.acessorios.cadastro");
+        $categorias = AcessorioCategoria::where("ativo", true)->get();
+        if($categorias->count() == 0){
+            toastr()->error("Cadastre uma categoria antes de cadastrar um acessório.");
+            return redirect()->back();
+        }
+        return view("painel.acessorios.cadastro", ["categorias" => $categorias]);
     }
 
     public function editar(Acessorio $acessorio){
@@ -31,24 +36,18 @@ class AcessoriosController extends Controller
     }
 
     public function salvar(Request $request){
-        Acessorio::where('id', $request->id)
-        ->update(['nome' => $request->nome, 'cat_id' => $request->cat_id, 'fornecedor' => $request->fornecedor, 'tel_fornecedor' => $request->tel_fornecedor, 'validade' => $request->validade]);
+        if($request->acessorio_id){
+            $acessorio = Acessorio::find($request->acessorio_id);
+        }else{
+            $acessorio = new Acessorio;
+        }
+        $acessorio->nome = $request->nome;
+        $acessorio->acessorio_categoria_id = $request->acessorio_categoria_id;
+        $acessorio->fornecedor = $request->fornecedor;
+        $acessorio->tel_fornecedor = $request->tel_fornecedor;
+        $acessorio->validade = $request->validade;
 
-        toastr()->success("Acessório editado com sucesso!");
-
-        return redirect()->route("painel.acessorios");
-
-    }
-
-    public function cadastrar(Request $request){
-        $acessorios = new Acessorio;
-        $acessorios->nome = $request->nome;
-        $acessorios->cat_id = $request->cat_id;
-        $acessorios->fornecedor = $request->fornecedor;
-        $acessorios->tel_fornecedor = $request->tel_fornecedor;
-        $acessorios->validade = $request->validade;
-
-        $acessorios->save();
+        $acessorio->save();
 
         toastr()->success("Acessório salvo com sucesso!");
 
