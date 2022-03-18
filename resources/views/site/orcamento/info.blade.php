@@ -115,13 +115,11 @@
     <script>
         $('section.conte div.niv div.niv-content div.niv-form form input[name=cep]').keydown(() => {
             $('section.conte div.niv div.niv-content div.niv-form').height('300px');
-            $(document).scrollTop($('div.niv-form form input[name=data]').offset().top);
         })
 
 
         $('section.conte div.niv div.niv-content div.niv-form form input[name=data]').change(() => {
             $('section.conte div.niv div.niv-content div.niv-form').height('420px');
-            $(document).scrollTop($('div.niv-form form input[name=horas]').offset().top);
         })
 
 

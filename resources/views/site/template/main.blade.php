@@ -13,10 +13,6 @@
 <body @yield("body_attr")>
     @include('site.includes.navbar')
 
-
-
-
-
     @if (session()->get('erro'))
         <div class="erro_modal modal">
             <div fluid>
@@ -24,11 +20,7 @@
                     <div class="box">
                         <h2>Opa!</h2>
                         <h2>Ocorreu um erro!</h2>
-
-                        <p>Realmente quer remover TODOS os drinks da sua lista?</p>
-
                         <p>{{ session()->get('erro') }}</p>
-
                         <div class="button_list">
                             <button class="alert" onclick="$('div.erro_modal').hideModal()">Entendi</button>
                         </div>
