@@ -35,7 +35,7 @@
         </div>
 
         <div class="niv-form" niv-fade>
-            @if(!session()->get("lead") && !session()->get("cliente"))
+            @if(!session()->get("lead"))
                 <form action="{{ route('site.lead.cadastrar')}}" method="post">
                     @csrf
                     <label>
@@ -57,11 +57,7 @@
 
                 </form>
             @else
-                @if(session()->get("lead"))
-                    <p>Bem vindo, {{ session()->get("lead")["nome"] }}</p>
-                @else
-                    <p>Bem vindo, {{ session()->get("cliente")["nome"] }}</p>
-                @endif
+                <p>Bem vindo, {{ session()->get("lead")["nome"] }}</p>
                 <button onclick="window.location.href = '{{ route('site.orcamento.evento') }}'">
                     Quero levar minha festa além
                 </button>

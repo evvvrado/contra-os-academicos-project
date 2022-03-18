@@ -24,30 +24,14 @@
                 <div class="box" niv-fade>
                     <strong>CASAMENTO</strong>
                     <p>Seu evento sob medida em cada detalhe</p>
-
-                    <form action="{{ route('site.orcamento.informacoes') }}" method="post">
-                        @csrf
-                        <input type="hidden" name="tipo" value="casamento">
-
-                        <input type="hidden" name="id" value="{{ $lead->id }}">
-
-                        <input type="submit" value="Quero este" style="z-index: 1000;">
-                    </form>
+                    <a href="{{ route('site.orcamento.informacoes', ['evento' => 'casamento']) }}" style="z-index: 1000;">Quero este</a>
                 </div>
 
 
                 <div class="box" niv-fade>
                     <strong>CORPORATIVO</strong>
                     <p>Eternizando momentos únicos da sua vida</p>
-
-                    <form action="{{ route('site.orcamento.informacoes') }}" method="post">
-                        @csrf
-                        <input type="hidden" name="tipo" value="corporativo">
-
-                        <input type="hidden" name="id" value="{{ $lead->id }}">
-
-                        <input type="submit" value="Quero este" style="z-index: 1000;">
-                    </form>
+                    <a href="{{ route('site.orcamento.informacoes', ['evento' => 'corporativo']) }}" style="z-index: 1000;">Quero este</a>
                 </div>
 
 
@@ -57,15 +41,7 @@
                         Comemorações especiais com
                         o diferencial que você merece
                     </p>
-
-                    <form action="{{ route('site.orcamento.informacoes') }}" method="post">
-                        @csrf
-                        <input type="hidden" name="tipo" value="aniversario">
-
-                        <input type="hidden" name="id" value="{{ $lead->id }}">
-
-                        <input type="submit" value="Quero este" style="z-index: 1000;">
-                    </form>
+                    <a href="{{ route('site.orcamento.informacoes', ['evento' => 'aniversario']) }}" style="z-index: 1000;">Quero este</a>
                 </div>
 
             </div>
