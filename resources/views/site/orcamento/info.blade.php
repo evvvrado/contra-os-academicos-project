@@ -27,8 +27,9 @@
                 </div>
 
                 <div class="niv-form">
-                    <form action="{{ route('site.orcamento.cadastro') }}" method="post">
+                    <form action="{{ route('site.orcamento.cadastrar.etapa1') }}" method="post">
                         @csrf
+                        <input type="hidden" name="tipo" value="{{ $tipo }}">
                         <label>
                             <strong>Qual o CEP da realização do evento</strong>
 
@@ -100,8 +101,6 @@
                         </label>
 
                         <button>Selecionas as bebidas</button>
-
-                        <input type="hidden" name="lead" value="{{ $_POST['id'] }}">
 
                     </form>
                 </div>

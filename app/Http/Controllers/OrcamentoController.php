@@ -129,42 +129,53 @@ class OrcamentoController extends Controller
         //     }
         // }
     }
-    public function orcamentoINFO(Request $request)
+    public function informacoes($evento)
     {
-        session()->put(["lead_id" => $request->id]);
-        session()->put(["tipo_evento" => $request->tipo]);
+        if(!session()->get("lead")){
+            return redirect()->route("site.index");
+        }
 
-        return view("site.orcamento.info");
+        switch($evento){
+            case('casamento'):
+                $tipo = 0;
+                break;
+            case('corporativo'):
+                $tipo = 1;
+                break;
+            case('aniversario'):
+                $tipo = 2;
+                break;
+        }
+
+        return view("site.orcamento.info", ["tipo" => $tipo]);
     }
 
-    public function orcamentoCadastroLead(Request $request)
+    public function cadastrar_etapa1(Request $request)
     {
+        if(!session()->get("lead")){
+            return redirect()->route("site.index");
+        }
         $orcamento = new Orcamento();
-        $orcamento->tipo = session()->get("tipo_evento");
-        $orcamento->lead_id = session()->get("cliente")["id"];
+        $orcamento->tipo = $request->tipo;
+        $orcamento->cliente_id = session()->get("lead")["id"];
         $orcamento->cep = $request->cep;
-        $parteData = explode("-", $request->data);
-        $dataInvertida = $parteData[0] . "-" . $parteData[1] . "-" . $parteData[2];
-        $orcamento->data = $dataInvertida;
+        $orcamento->data = $request->data;
         $orcamento->duracao = $request->horas;
         $orcamento->outras_bebidas = $request->alcool;
         $orcamento->qtd_pessoas = $request->pessoas;
         $orcamento->save();
-        session()->put(["orcamento" => $orcamento->id]);
+        session()->put(["orcamento" => $orcamento->toArray()]);
 
-        $parametro = Parametro::where('id', 3)->first(); 
-        $qtd_drinks = round(($request->pessoas / $parametro->valor_1) * $parametro->valor_2);
+        $parametro = Parametro::first(); 
+        $qtd_drinks = round(($orcamento->pessoas / $parametro->tipos_drinks_numero) * $parametro->tipos_drinks_convidados);
         session()->put(["qtd_tipos_drinks" => $qtd_drinks]);
-
-        Lead::where('id', $orcamento->lead_id)
-            ->update(['orcamento' => true]);
 
         return redirect()->route("site.orcamento.lista");
     }
 
-    public function orcamentoLISTA(Request $request)
+    public function lista(Request $request)
     {
-        $orcamento = Orcamento::find(session()->get("orcamento"));
+        $orcamento = Orcamento::find(session()->get("orcamento")["id"]);
         if ($orcamento->produtos) {
             $produtos_escolhidos = $orcamento->produtos;
         } else {

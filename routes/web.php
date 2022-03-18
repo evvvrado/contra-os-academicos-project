@@ -16,11 +16,11 @@ Route::get('/coqueteis/detalhes/{produto}', [\App\Http\Controllers\SiteControlle
 Route::get('/orcamento/identificacao', [\App\Http\Controllers\OrcamentoController::class, 'orcamentoID'])->name("site.orcamento.id");
 Route::get('/orcamento/evento', [\App\Http\Controllers\OrcamentoController::class, 'evento'])->name("site.orcamento.evento");
 Route::post('/lead/cadastrar', [\App\Http\Controllers\LeadsController::class, 'cadastrar'])->name("site.lead.cadastrar");
-Route::post('/orcamento/informacoes', [\App\Http\Controllers\OrcamentoController::class, 'orcamentoINFO'])->name("site.orcamento.informacoes");
-Route::post('/orcamento/cadastro_lead', [\App\Http\Controllers\OrcamentoController::class, 'orcamentoCadastroLead'])->name("site.orcamento.cadastro");
+Route::get('/orcamento/{evento}/informacoes', [\App\Http\Controllers\OrcamentoController::class, 'informacoes'])->name("site.orcamento.informacoes");
+Route::post('/orcamento/cadastrar/etapa/1', [\App\Http\Controllers\OrcamentoController::class, 'cadastrar_etapa1'])->name("site.orcamento.cadastrar.etapa1");
 
 Route::middleware(['orcamento'])->group(function () {
-    Route::match(['get', 'post'], '/orcamento/lista', [\App\Http\Controllers\OrcamentoController::class, 'orcamentoLISTA'])->name("site.orcamento.lista");
+    Route::match(['get', 'post'], '/orcamento/lista', [\App\Http\Controllers\OrcamentoController::class, 'lista'])->name("site.orcamento.lista");
     Route::get('/orcamento/confirmacao', [\App\Http\Controllers\OrcamentoController::class, 'orcamentoCONFIRM'])->name("site.orcamento.confirmacao");
     Route::get('/orcamento/carrinho', [\App\Http\Controllers\OrcamentoController::class, 'orcamentoCAR'])->name("site.orcamento.carrinho");
 

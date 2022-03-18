@@ -28,7 +28,7 @@ Produtos / <a style="color: unset" href="{{ route('painel.produtos') }}">Produto
         <div class="card">
             <div class="card-body">
                 <h4 class="card-title">Cadastro de Produtos</h4>
-                <form id="form-cadastro" action="{{route('painel.produtos.cadastrar')}}" method="POST" enctype="multipart/form-data">
+                <form id="form-cadastro" action="{{route('painel.produtos.salvar')}}" method="POST" enctype="multipart/form-data">
 
                     @csrf
                     <div class="col-lx-12">
