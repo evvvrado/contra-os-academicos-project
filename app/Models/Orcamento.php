@@ -10,7 +10,7 @@ class Orcamento extends Model
     use HasFactory;
 
     public function produtos(){
-        return $this->belongsToMany(Produto::class, 'orcamentoprodutos');
+        return $this->belongsToMany(Produto::class, 'orcamento_produtos');
     }
 
     public function orcamento_produtos(){

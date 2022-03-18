@@ -12,4 +12,12 @@ class Marca extends Model
     public function historico(){
         return $this->hasMany(MarcaHistorico::class);
     }
+
+    public function ingrediente(){
+        return $this->belongsTo(Ingrediente::class);
+    }
+
+    public function acessorio(){
+        return $this->belongsTo(Acessorio::class);
+    }
 }

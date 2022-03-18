@@ -184,15 +184,15 @@ class OrcamentoController extends Controller
         $produtos = Produto::whereNotIn("id", $orcamento->produtos->pluck("id"))->get();
         // dd($produtos);
 
-        $parametro = Parametro::where('id', 5)->first();
-        $valores = json_decode($parametro->valor_1, true);
+        $parametro = Parametro::first();
+        // $valores = json_decode($parametro->valor_km_rodado, true);
         // dd($valores);
-        if ($valores) {
-            $ingredientes_filtro = Ingrediente::whereIn('ingredientes.id', $valores)
+        // if ($valores) {
+            $ingredientes_filtro = Ingrediente::whereIn('id', [1, 2])
                 ->get();
-        } else {
-            $ingredientes_filtro = Ingrediente::all();
-        }
+        // } else {
+            // $ingredientes_filtro = Ingrediente::all();
+        // }
 
         // dd($ingredientes_filtro);
 

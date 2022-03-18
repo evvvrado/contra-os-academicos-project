@@ -5,8 +5,7 @@
 @section('content')
 
 @php
-use App\Models\Ingrediente;
-use App\Models\MarcaIngrediente;
+    use App\Models\Ingrediente;
 @endphp
 
 <div class="modal-filtro" hide>
@@ -144,30 +143,25 @@ use App\Models\MarcaIngrediente;
 
                 @foreach($ingredientes_filtro as $ingrediente_filtro)
 
-                @php
-                $imagem_marca = MarcaIngrediente::where("ingrediente_id", $ingrediente_filtro->id)
-                ->join('marcas', 'marca_id', 'marcas.id')
-                ->where('padrao', 'Sim')
-                ->first();
+                    @php
+                        $marca = $ingrediente_filtro->marcas->where('padrao', true)->first();
+                    @endphp
 
-                if($imagem_marca) {
-                @endphp
+                    @if($marca)
+                        <div class="box" niv-fade>
+                            <div>
 
-                <div class="box" niv-fade>
-                    <div>
+                                <picture>
+                                    <img src="{{ asset($marca->imagem) }}" alt="bebida representativa">
+                                </picture>
 
-                        <picture>
-                            <img src="{{ $imagem_marca->imagem }}" alt="bebida representativa">
-                        </picture>
+                                <strong>{{ $ingrediente_filtro->nome }}</strong>
+                            </div>
 
-                        <strong>{{ $ingrediente_filtro->nome }}</strong>
-                    </div>
+                            <input type="checkbox" data-marca="{{$ingrediente_filtro->nome}}" name="slide">
+                        </div>
+                    @endif
 
-                    <input type="checkbox" data-marca="{{$ingrediente_filtro->nome}}" name="slide">
-                </div>
-                @php
-                }
-                @endphp
                 @endforeach
 
             </div>
@@ -227,76 +221,84 @@ use App\Models\MarcaIngrediente;
 
             @if($produtos_escolhidos)
 
-            @foreach($produtos_escolhidos as $produto_escolhido)
+                @foreach($produtos_escolhidos as $produto_escolhido)
 
-            @php
-            if ($produto_escolhido->lancamento == "Sim") {
-            $lancamento = "lancamento";
-            }
-            @endphp
+                    @if($produto_escolhido->lancamento == true)
+                        @php
+                            $lancamento = "lancamento";
+                        @endphp
+                    @else
+                        @php
+                            $lancamento = "";
+                        @endphp
+                    @endif
 
-            <div class="box @foreach ($produto_escolhido->ingredientes as $ingrediente ) {{$ingrediente->nome}} @endforeach" niv-fade data-cal="{{$produto_escolhido->calorias}}"
-                data-teor="{{$produto_escolhido->teor_alcoolico}}" {{$lancamento}}>
-                <picture>
-                    <img src="{{$produto_escolhido->imagem_1}}" alt="imagem representativa" style="width: auto; height: 100%; margin: auto;">
-                </picture>
+                    <div class="box @foreach ($produto_escolhido->ingredientes as $ingrediente ) {{$ingrediente->nome}} @endforeach" niv-fade data-cal="{{$produto_escolhido->calorias}}"
+                        data-teor="{{$produto_escolhido->teor_alcoolico}}" {{$lancamento}}>
+                        <picture>
+                            <img src="{{asset($produto_escolhido->imagem_preview)}}" alt="imagem representativa" style="width: auto; height: 100%; margin: auto;">
+                        </picture>
 
-                <strong>{{$produto_escolhido->nome}}</strong>
-                <p>{{mb_strimwidth($produto_escolhido->descricao, 0, 72, "...")}}</p>
+                        <strong>{{$produto_escolhido->nome}}</strong>
+                        <p>{{mb_strimwidth($produto_escolhido->descricao, 0, 72, "...")}}</p>
 
-                <div>
-                    <strong>Teor alcóolico</strong>
-                    <p>{{$produto_escolhido->teor_alcoolico}}%</p>
-                    <strong>Valor Calórico</strong>
-                    <p>{{$produto_escolhido->calorias}} cal.</p>
-                    <strong>Valor Calórico</strong>
+                        <div>
+                            <strong>Teor alcóolico</strong>
+                            <p>{{$produto_escolhido->teor_alcoolico}}%</p>
+                            <strong>Valor Calórico</strong>
+                            <p>{{$produto_escolhido->calorias}} cal.</p>
+                            <strong>Valor Calórico</strong>
 
-                    <span>
-                        @for ($i = 0; $i < $produto_escolhido->nota; $i++)
-                            <img src="{{ asset('site/assets/img/icon_star.svg') }}" alt="estrela de nota">
-                            @endfor
-                    </span>
+                            <span>
+                                @for ($i = 0; $i < $produto_escolhido->nota; $i++)
+                                    <img src="{{ asset('site/assets/img/icon_star.svg') }}" alt="estrela de nota">
+                                    @endfor
+                            </span>
 
-                    <input onclick="escolher_produto({{ $produto_escolhido->id }})" checked type="checkbox" name="desabilitar">
-                </div>
-            </div>
+                            <input onclick="escolher_produto({{ $produto_escolhido->id }})" checked type="checkbox" name="desabilitar">
+                        </div>
+                    </div>
 
-            @endforeach
+                @endforeach
             @endif
 
             @foreach($produtos as $produto)
 
-            @php
-            if ($produto->lancamento == "Sim") {
-            $lancamento = "lancamento";
-            }
-            @endphp
+                @if($produto->lancamento == true)
+                    @php
+                        $lancamento = "lancamento";
+                    @endphp
+                @else
+                    @php
+                        $lancamento = "";
+                    @endphp
+                @endif
 
-            <div class="box @foreach ($produto->ingredientes as $ingrediente ) {{$ingrediente->nome}} @endforeach" niv-fade data-cal="{{$produto->calorias}}" data-teor="{{$produto->teor_alcoolico}}"
-                {{$lancamento}}>
-                <picture>
-                    <img src="{{$produto->imagem_1}}" alt="imagem representativa" style="width: auto; height: 100%; margin: auto;">
-                </picture>
+                <div class="box @foreach ($produto->ingredientes as $ingrediente ) {{$ingrediente->nome}} @endforeach" niv-fade data-cal="{{$produto->calorias}}" data-teor="{{$produto->teor_alcoolico}}"
+                    {{$lancamento}}>
+                    <picture>
+                        <img src="{{asset($produto->imagem_preview)}}" alt="imagem representativa" style="width: auto; height: 100%; margin: auto;">
+                    </picture>
 
-                <strong>{{$produto->nome}}</strong>
-                <p>{{mb_strimwidth($produto->descricao, 0, 72, "...")}}</p>
+                    <strong>{{$produto->nome}}</strong>
+                    <p>{{mb_strimwidth($produto->descricao, 0, 72, "...")}}</p>
 
-                <div>
-                    <strong>Teor alcóolico</strong>
-                    <p>{{$produto->teor_alcoolico}}%</p>
-                    <strong>Valor Calórico</strong>
-                    <p>{{$produto->calorias}} cal.</p>
-                    <strong>Valor Calórico</strong>
+                    <div>
+                        <strong>Teor alcóolico</strong>
+                        <p>{{$produto->teor_alcoolico}}%</p>
+                        <strong>Valor Calórico</strong>
+                        <p>{{$produto->calorias}} cal.</p>
+                        <strong>Valor Calórico</strong>
 
-                    <span>
-                        @for ($i = 0; $i < $produto->nota; $i++)
-                            <img src="{{ asset('site/assets/img/icon_star.svg') }}" alt="estrela de nota">
-                            @endfor
-                    </span>
+                        <span>
+                            @for ($i = 0; $i < $produto->nota; $i++)
+                                <img src="{{ asset('site/assets/img/icon_star.svg') }}" alt="estrela de nota">
+                                @endfor
+                        </span>
 
-                    <input onclick="escolher_produto({{ $produto->id }})" type="checkbox" name="habilitar">
+                        <input onclick="escolher_produto({{ $produto->id }})" type="checkbox" name="habilitar">
+                    </div>
                 </div>
-            </div>
 
             @endforeach
 
