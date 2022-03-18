@@ -22,7 +22,7 @@ class Definition
 
     const EMAIL = "contato@birittas.com";
     const TELEFONE = "11 93365-8808";
-    const WHATSAPP = "11 93365-8808";
+    const WHATSAPP = "11933658808";
     const INSTAGRAM = "https://www.instagram.com/birittas.com.br/";
     const FACEBOOK = "https://www.facebook.com/birittas/";
     const YOUTUBE = "https://www.instagram.com/hyp8tec";

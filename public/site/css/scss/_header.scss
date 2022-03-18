@@ -133,6 +133,23 @@ header {
                     opacity: 0.7;
                 }
             }
+
+            picture.user {
+                img {
+                    &[alt="logado"] {
+                        width: 20px;
+                        height: 20px;
+                        object-fit: cover;
+                        border: solid 1px $white;
+                        border-radius: 20px;
+                        transition: 0.32s;
+
+                        &:hover {
+                            border-width: 2px;
+                        }
+                    }
+                }
+            }
         }
     }
 
@@ -172,4 +189,13 @@ header {
             }
         }
     }
+}
+
+.whatsapp-button {
+    position: fixed;
+
+    right: 3rem;
+    bottom: 3rem;
+
+    z-index: 5;
 }

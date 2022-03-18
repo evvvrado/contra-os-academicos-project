@@ -102,12 +102,12 @@ section.identificacao {
                         border: solid 0.1rem $white;
                         border-radius: 1.5rem;
 
-                        background: transparent;
+                        background: $white;
 
-                        color: $white;
+                        color: $dark-purple;
 
                         &::placeholder {
-                            color: $white;
+                            color: $dark-purple;
                         }
                     }
                 }

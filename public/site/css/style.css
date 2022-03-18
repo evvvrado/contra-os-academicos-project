@@ -370,6 +370,18 @@ header div[fluid] div.niv:not(.supermenu div.niv) button[clicked] svg path[d="M5
 header div[fluid] div.niv:not(.supermenu div.niv) button:hover {
   opacity: 0.7;
 }
+header div[fluid] div.niv:not(.supermenu div.niv) picture.user img[alt=logado] {
+  width: 20px;
+  height: 20px;
+  -o-object-fit: cover;
+     object-fit: cover;
+  border: solid 1px #fff;
+  border-radius: 20px;
+  transition: 0.32s;
+}
+header div[fluid] div.niv:not(.supermenu div.niv) picture.user img[alt=logado]:hover {
+  border-width: 2px;
+}
 @media (max-width: 900px) {
   header div[fluid] div.niv:not(.supermenu div.niv) button {
     max-width: unset;
@@ -394,6 +406,13 @@ header div[fluid] div.niv:not(.supermenu div.niv) button:hover {
   header div[fluid] div.niv:not(.supermenu div.niv) nav {
     display: none;
   }
+}
+
+.whatsapp-button {
+  position: fixed;
+  right: 3rem;
+  bottom: 3rem;
+  z-index: 5;
 }
 
 div.supermenu {
@@ -4078,17 +4097,17 @@ section.identificacao div.niv div.niv-form form label input {
   padding-left: 3.4rem;
   border: solid 0.1rem #fff;
   border-radius: 1.5rem;
-  background: transparent;
-  color: #fff;
+  background: #fff;
+  color: #260530;
 }
 section.identificacao div.niv div.niv-form form label input::-moz-placeholder {
-  color: #fff;
+  color: #260530;
 }
 section.identificacao div.niv div.niv-form form label input:-ms-input-placeholder {
-  color: #fff;
+  color: #260530;
 }
 section.identificacao div.niv div.niv-form form label input::placeholder {
-  color: #fff;
+  color: #260530;
 }
 section.identificacao div.niv div.niv-form form button {
   font-style: normal;

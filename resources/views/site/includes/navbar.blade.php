@@ -13,16 +13,19 @@
         <div class="niv">
             <picture class="logo">
                 <a href="/">
-                    <img src="{{ asset('/site/assets/img/_logoBIRITTAS.svg')}}" alt="logo birittas">
+                    <img src="{{ asset('/site/assets/img/_logoBIRITTAS.svg') }}" alt="logo birittas">
                 </a>
             </picture>
 
             <button>
                 <picture>
                     <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M5 16H27" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
-                        <path d="M5 8H27" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
-                        <path d="M5 24H27" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                        <path d="M5 16H27" stroke="white" stroke-width="2" stroke-linecap="round"
+                            stroke-linejoin="round" />
+                        <path d="M5 8H27" stroke="white" stroke-width="2" stroke-linecap="round"
+                            stroke-linejoin="round" />
+                        <path d="M5 24H27" stroke="white" stroke-width="2" stroke-linecap="round"
+                            stroke-linejoin="round" />
                     </svg>
 
                 </picture>
@@ -41,9 +44,17 @@
             </nav>
 
             <picture class="user">
-                <a href="{{route('site.acessar-cliente')}}">
-                    <img src="{{ asset('/site/assets/img/header_user.svg') }}" alt="ícone de user">
-                </a>
+
+                @if (!session()->get('cliente'))
+                    <a href="{{ route('site.acessar-cliente') }}">
+                        <img src="{{ asset('/site/assets/img/header_user.svg') }}" alt="ícone de user">
+                    </a>
+                @else
+                    <a href="{{ route('minha-area.cliente') }}">
+                        <img src="{{ asset(App\Models\Cliente::find(session()->get('cliente')['id'])->avatar) }}"
+                            alt="logado">
+                    </a>
+                @endif
             </picture>
         </div>
     </div>
@@ -60,7 +71,7 @@
                         <nav>
                             <ul>
                                 <li><a href="/">Home</a></li>
-                                <li><a href="{{ route('site.sobre')}}">Sobre nós</a></li>
+                                <li><a href="{{ route('site.sobre') }}">Sobre nós</a></li>
                                 <li><a href="{{ route('site.servicos') }}">Serviços</a></li>
                                 <li><a href="{{ route('site.blog') }}">Blog</a></li>
                                 <li><a href="{{ route('site.contato') }}">Contato</a></li>
@@ -81,10 +92,19 @@
 
         <div class="mobile-close">
             <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M5 8L27 24" stroke="#56076d" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
-                <path d="M5 24L27 8" stroke="#56076d" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                <path d="M5 8L27 24" stroke="#56076d" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                </path>
+                <path d="M5 24L27 8" stroke="#56076d" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                </path>
             </svg>
         </div>
     </div>
 
 </header>
+
+
+<div class="whatsapp-button">
+    <a href="https://web.whatsapp.com/send?phone={{ Definition::WHATSAPP }}" target="_blank">
+        <img src="{{ asset('site/assets/img/button_whatsapp.png') }}" alt="logo whatsapp">
+    </a>
+</div>
