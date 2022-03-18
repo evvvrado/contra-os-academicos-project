@@ -43,4 +43,21 @@ class LeadsController extends Controller
 
         return view("painel.leads.consultar_orcamentos", ["orcamento" => $orcamento, "lead" => $lead, "servicos_sim" => $servicos_sim, "servicos_nao" => $servicos_nao, "orcamentoprodutos" => $orcamentoprodutos]);
     }
+
+    public function cadastrar(Request $request){
+        $cliente = Cliente::where("email", $request->email)->first();
+        if($cliente){
+            $cliente->nome = $request->nome;
+            $cliente->telefone = $request->telefone;
+            $cliente->save();
+        }else{
+            $cliente = new Cliente;
+            $cliente->nome = $request->nome;
+            $cliente->telefone = $request->telefone;
+            $cliente->email = $request->email;
+            $cliente->save();
+        }
+        session()->put(["lead" => $cliente->toArray()]);
+        return redirect()->route("site.orcamento.evento");
+    }
 }

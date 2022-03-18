@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Storage;
 use App\Models\Produto;
-use App\Models\Lead;
+use App\Models\Cliente;
 use App\Models\ProdutosIngrediente;
 use App\Models\ProdutosAcessorio;
 use App\Models\Orcamento;
@@ -30,98 +30,104 @@ class OrcamentoController extends Controller
     {
         return view("site.orcamento.id");
     }
-    public function orcamentoEVENTO(Request $request)
+    public function evento()
     {
-        if (session()->get("cliente")) {
-            $lead = Lead::where("id", session()->get("cliente")["id"])->first();
-
-            if(!$lead->orcamento)
-            {
-                if($lead){ $lead->delete(); }
-
-                $lead = new Lead;
-                $lead->nome = $request->nome;
-                $lead->email = $request->email;
-                $lead->senha = '123';
-                $lead->telefone = $request->telefone;
-
-                $lead->save();
-
-                session()->put(["cliente" => $lead->toArray()]);
-
-                return view("site.orcamento.evento", ["lead" => $lead]);
-            }
-            else {
-                if($request->email != "")
-                {
-                    if($request->email == $lead->email) {
-                        session()->put(["cliente" => $lead->toArray()]);
-    
-                        return view("site.orcamento.evento", ["lead" => $lead]);
-                    } 
-                    else {
-                        $lead = new Lead;
-                        $lead->nome = $request->nome;
-                        $lead->email = $request->email;
-                        $lead->senha = '123';
-                        $lead->telefone = $request->telefone;
-    
-                        $lead->save();
-    
-                        session()->put(["cliente" => $lead->toArray()]);
-    
-                        return view("site.orcamento.evento", ["lead" => $lead]);
-                    }
-                }
-                else {
-                    session()->put(["cliente" => $lead->toArray()]);
-    
-                    return view("site.orcamento.evento", ["lead" => $lead]);
-                }
-                
-            }
-                
-        } else {
-            $verifica_lead = Lead::where("email", $request->email)->first();
-            if ($verifica_lead) {
-                if (!$verifica_lead->orcamento)
-                {
-                    $verifica_lead->delete();
-
-                    $lead = new Lead;
-                    $lead->nome = $request->nome;
-                    $lead->email = $request->email;
-                    $lead->senha = '123';
-                    $lead->telefone = $request->telefone;
-
-                    $lead->save();
-
-                    session()->put(["cliente" => $lead->toArray()]);
-
-                    return view("site.orcamento.evento", ["lead" => $lead]);
-                } 
-                else {
-                    toastr()->success("Faça login para continuar!");
-
-                    session()->put(["email_lead" => $verifica_lead->email]);
-
-                    return redirect()->route("site.acessar-cliente");
-                }
-            } 
-            else {
-                $lead = new Lead;
-                $lead->nome = $request->nome;
-                $lead->email = $request->email;
-                $lead->senha = '123';
-                $lead->telefone = $request->telefone;
-
-                $lead->save();
-
-                session()->put(["cliente" => $lead->toArray()]);
-
-                return view("site.orcamento.evento", ["lead" => $lead]);
-            }
+        if(session()->get("lead")){
+            $cliente = Cliente::where("email", session()->get("lead")["email"])->first();
+        }else if(session()->get("cliente")){
+            $cliente = Cliente::where("email", session()->get("cliente")["email"])->first();
         }
+        return view("site.orcamento.evento", ["lead" => $cliente]);
+        // if (session()->get("cliente")) {
+        //     $lead = Cliente::where("id", session()->get("cliente")["id"])->first();
+
+        //     if(!$lead->orcamento)
+        //     {
+        //         if($lead){ $lead->delete(); }
+
+        //         $lead = new Lead;
+        //         $lead->nome = $request->nome;
+        //         $lead->email = $request->email;
+        //         $lead->senha = '123';
+        //         $lead->telefone = $request->telefone;
+
+        //         $lead->save();
+
+        //         session()->put(["cliente" => $lead->toArray()]);
+
+        //         return view("site.orcamento.evento", ["lead" => $lead]);
+        //     }
+        //     else {
+        //         if($request->email != "")
+        //         {
+        //             if($request->email == $lead->email) {
+        //                 session()->put(["cliente" => $lead->toArray()]);
+    
+        //                 return view("site.orcamento.evento", ["lead" => $lead]);
+        //             } 
+        //             else {
+        //                 $lead = new Lead;
+        //                 $lead->nome = $request->nome;
+        //                 $lead->email = $request->email;
+        //                 $lead->senha = '123';
+        //                 $lead->telefone = $request->telefone;
+    
+        //                 $lead->save();
+    
+        //                 session()->put(["cliente" => $lead->toArray()]);
+    
+        //                 return view("site.orcamento.evento", ["lead" => $lead]);
+        //             }
+        //         }
+        //         else {
+        //             session()->put(["cliente" => $lead->toArray()]);
+    
+        //             return view("site.orcamento.evento", ["lead" => $lead]);
+        //         }
+                
+        //     }
+                
+        // } else {
+        //     $verifica_lead = Lead::where("email", $request->email)->first();
+        //     if ($verifica_lead) {
+        //         if (!$verifica_lead->orcamento)
+        //         {
+        //             $verifica_lead->delete();
+
+        //             $lead = new Lead;
+        //             $lead->nome = $request->nome;
+        //             $lead->email = $request->email;
+        //             $lead->senha = '123';
+        //             $lead->telefone = $request->telefone;
+
+        //             $lead->save();
+
+        //             session()->put(["cliente" => $lead->toArray()]);
+
+        //             return view("site.orcamento.evento", ["lead" => $lead]);
+        //         } 
+        //         else {
+        //             toastr()->success("Faça login para continuar!");
+
+        //             session()->put(["email_lead" => $verifica_lead->email]);
+
+        //             return redirect()->route("site.acessar-cliente");
+        //         }
+        //     } 
+        //     else {
+        //         $lead = new Lead;
+        //         $lead->nome = $request->nome;
+        //         $lead->email = $request->email;
+        //         $lead->senha = '123';
+        //         $lead->telefone = $request->telefone;
+
+        //         $lead->save();
+
+        //         session()->put(["cliente" => $lead->toArray()]);
+
+        //         return view("site.orcamento.evento", ["lead" => $lead]);
+        //     }
+        // }
     }
     public function orcamentoINFO(Request $request)
     {

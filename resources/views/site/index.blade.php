@@ -35,27 +35,37 @@
         </div>
 
         <div class="niv-form" niv-fade>
-            <form action="{{ route('site.orcamento.evento')}}" method="post">
-                @csrf
-                <label>
-                    <span>Nome</span>
-                    <input type="text" name="nome" placeholder="Nome completo" required>
-                </label>
-                <label>
-                    <span>E-mail</span>
-                    <input type="e-mail" name="email" placeholder="e-mail@example.com.br" required>
-                </label>
-                <label>
-                    <span>Telefone</span>
-                    <input type="tel" name="telefone" placeholder="(99) 9 9999-9999" required>
-                </label>
+            @if(!session()->get("lead") && !session()->get("cliente"))
+                <form action="{{ route('site.lead.cadastrar')}}" method="post">
+                    @csrf
+                    <label>
+                        <span>Nome</span>
+                        <input type="text" name="nome" placeholder="Nome completo" required>
+                    </label>
+                    <label>
+                        <span>E-mail</span>
+                        <input type="e-mail" name="email" placeholder="e-mail@example.com.br" required>
+                    </label>
+                    <label>
+                        <span>Telefone</span>
+                        <input type="tel" name="telefone" placeholder="(99) 9 9999-9999" required>
+                    </label>
 
-                <button>
+                    <button>
+                        Quero levar minha festa além
+                    </button>
+
+                </form>
+            @else
+                @if(session()->get("lead"))
+                    <p>Bem vindo, {{ session()->get("lead")["nome"] }}</p>
+                @else
+                    <p>Bem vindo, {{ session()->get("cliente")["nome"] }}</p>
+                @endif
+                <button onclick="window.location.href = '{{ route('site.orcamento.evento') }}'">
                     Quero levar minha festa além
                 </button>
-
-            </form>
-
+            @endif
             <p>Leve o melhor para sua festa com a Birittas</p>
         </div>
     </div>

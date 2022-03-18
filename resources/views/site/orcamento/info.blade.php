@@ -39,7 +39,7 @@
                         <label>
                             <strong>Data de seu evento</strong>
 
-                            <input type="date" name="data" max="{{ date('Y-m-d', strtotime('+1 year')) }}" required> max
+                            <input type="date" name="data" max="{{ date('Y-m-d', strtotime('+1 year')) }}" required>
                         </label>
 
                         <label>
