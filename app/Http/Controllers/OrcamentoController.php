@@ -8,12 +8,12 @@ use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Storage;
 use App\Models\Produto;
 use App\Models\Cliente;
-use App\Models\ProdutosIngrediente;
-use App\Models\ProdutosAcessorio;
+use App\Models\ProdutoIngrediente;
+use App\Models\ProdutoAcessorio;
 use App\Models\Orcamento;
 use App\Models\OrcamentoProduto;
-use App\Models\OrcamentoProdutosIngredientes;
-use App\Models\OrcamentoProdutosAcessorios;
+use App\Models\OrcamentoProdutoIngrediente;
+use App\Models\OrcamentoProdutoAcessorio;
 use App\Models\Parametro;
 use App\Models\Ingrediente;
 use App\Models\Servico;
@@ -38,96 +38,6 @@ class OrcamentoController extends Controller
             $cliente = Cliente::where("email", session()->get("cliente")["email"])->first();
         }
         return view("site.orcamento.evento", ["lead" => $cliente]);
-        // if (session()->get("cliente")) {
-        //     $lead = Cliente::where("id", session()->get("cliente")["id"])->first();
-
-        //     if(!$lead->orcamento)
-        //     {
-        //         if($lead){ $lead->delete(); }
-
-        //         $lead = new Lead;
-        //         $lead->nome = $request->nome;
-        //         $lead->email = $request->email;
-        //         $lead->senha = '123';
-        //         $lead->telefone = $request->telefone;
-
-        //         $lead->save();
-
-        //         session()->put(["cliente" => $lead->toArray()]);
-
-        //         return view("site.orcamento.evento", ["lead" => $lead]);
-        //     }
-        //     else {
-        //         if($request->email != "")
-        //         {
-        //             if($request->email == $lead->email) {
-        //                 session()->put(["cliente" => $lead->toArray()]);
-    
-        //                 return view("site.orcamento.evento", ["lead" => $lead]);
-        //             } 
-        //             else {
-        //                 $lead = new Lead;
-        //                 $lead->nome = $request->nome;
-        //                 $lead->email = $request->email;
-        //                 $lead->senha = '123';
-        //                 $lead->telefone = $request->telefone;
-    
-        //                 $lead->save();
-    
-        //                 session()->put(["cliente" => $lead->toArray()]);
-    
-        //                 return view("site.orcamento.evento", ["lead" => $lead]);
-        //             }
-        //         }
-        //         else {
-        //             session()->put(["cliente" => $lead->toArray()]);
-    
-        //             return view("site.orcamento.evento", ["lead" => $lead]);
-        //         }
-                
-        //     }
-                
-        // } else {
-        //     $verifica_lead = Lead::where("email", $request->email)->first();
-        //     if ($verifica_lead) {
-        //         if (!$verifica_lead->orcamento)
-        //         {
-        //             $verifica_lead->delete();
-
-        //             $lead = new Lead;
-        //             $lead->nome = $request->nome;
-        //             $lead->email = $request->email;
-        //             $lead->senha = '123';
-        //             $lead->telefone = $request->telefone;
-
-        //             $lead->save();
-
-        //             session()->put(["cliente" => $lead->toArray()]);
-
-        //             return view("site.orcamento.evento", ["lead" => $lead]);
-        //         } 
-        //         else {
-        //             toastr()->success("Faça login para continuar!");
-
-        //             session()->put(["email_lead" => $verifica_lead->email]);
-
-        //             return redirect()->route("site.acessar-cliente");
-        //         }
-        //     } 
-        //     else {
-        //         $lead = new Lead;
-        //         $lead->nome = $request->nome;
-        //         $lead->email = $request->email;
-        //         $lead->senha = '123';
-        //         $lead->telefone = $request->telefone;
-
-        //         $lead->save();
-
-        //         session()->put(["cliente" => $lead->toArray()]);
-
-        //         return view("site.orcamento.evento", ["lead" => $lead]);
-        //     }
-        // }
     }
     public function informacoes($evento)
     {
@@ -336,59 +246,53 @@ class OrcamentoController extends Controller
         // return view("site.index", ["produtos" => $produtos, "noticias" => $noticias, "publicidade" => $publicidade]);
     }
 
-    public function escolher_produto($produto) 
+    public function escolher_produto(Produto $produto) 
     {
-        $verifica_produto = OrcamentoProduto::where('orcamento_id', session()->get("orcamento"))
+        $verifica_produto = OrcamentoProduto::where('orcamento_id', session()->get("orcamento")["id"])
         ->where('produto_id', $produto)->get();
 
-        $parametro = Parametro::where('id', 4)->first();
+        $parametro = Parametro::first();
 
         if($verifica_produto->count() < 1) {
-            $orcamento = Orcamento::find(session()->get("orcamento"));
+            $orcamento = Orcamento::find(session()->get("orcamento")["id"]);
 
-            $qtd_drinks = Round(($orcamento->qtd_pessoas * $parametro->valor_2) / $parametro->valor_1);
+            $qtd_drinks = Round(($orcamento->qtd_pessoas * $parametro->drinks_numero) / $parametro->drinks_convidados);
 
             $produto_insercao = new OrcamentoProduto;
             $produto_insercao->orcamento_id = $orcamento->id;
-            $produto_insercao->produto_id = $produto;
+            $produto_insercao->produto_id = $produto->id;
             $produto_insercao->qtd = $qtd_drinks;
             $produto_insercao->save();
 
-            $ingredientes = ProdutosIngrediente::where("produto_id", $produto)->get();
+            $ingredientes = $produto->ingredientes;
+            \Log::debug($ingredientes);
             foreach ($ingredientes as $ingrediente) {
-                $marcas = MarcaIngrediente::where("ingrediente_id", $ingrediente->ingrediente_id)
-                ->join('marcas', 'marcas_ingredientes.marca_id', "=", 'marcas.id')
-                ->where("marcas.padrao", "Sim")
-                ->first();
-                $produto_ingrediente_insercao = new OrcamentoProdutosIngredientes;
-                $produto_ingrediente_insercao->orcamentoproduto_id = $produto_insercao->id;
-                $produto_ingrediente_insercao->ingrediente_id = $ingrediente->ingrediente_id;
-                $produto_ingrediente_insercao->marca_id = $marcas->id;
-                $produto_ingrediente_insercao->save();
+                $marca = $ingrediente->marcas->where("padrao", true)->first();
+                if($marca){
+                    $produto_ingrediente_insercao = new OrcamentoProdutoIngrediente;
+                    $produto_ingrediente_insercao->orcamento_produto_id = $produto_insercao->id;
+                    $produto_ingrediente_insercao->ingrediente_id = $ingrediente->id;
+                    $produto_ingrediente_insercao->marca_id = $marca->id;
+                    $produto_ingrediente_insercao->save();
+                }
             }
 
-            $acessorios = ProdutosAcessorio::where("produto_id", $produto)->get();
+            $acessorios = $produto->acessorios;
             foreach ($acessorios as $acessorio) {
-                $marcas = MarcaAcessorio::where("acessorio_id", $acessorio->acessorio_id)
-                ->join('marcas', 'marcas_acessorios.marca_id', "=", 'marcas.id')
-                ->where("marcas.padrao", "Sim")
-                ->first();
-                $produto_acessorio_insercao = new OrcamentoProdutosAcessorios;
-                $produto_acessorio_insercao->orcamentoproduto_id = $produto_insercao->id;
-                $produto_acessorio_insercao->acessorio_id = $acessorio->acessorio_id;
-                $produto_acessorio_insercao->marca_id = $marcas->id;
-                $produto_acessorio_insercao->save();
+                $marca = $acessorio->marcas->where("padrao", true)->first();
+                if($marca){
+                    $produto_acessorio_insercao = new OrcamentoProdutoAcessorio;
+                    $produto_acessorio_insercao->orcamento_produto_id = $produto_insercao->id;
+                    $produto_acessorio_insercao->acessorio_id = $acessorio->id;
+                    $produto_acessorio_insercao->marca_id = $marca->id;
+                    $produto_acessorio_insercao->save();
+                }
             }
         } else {
-            $orcamento = Orcamento::find(session()->get("orcamento"));
+            $orcamento = Orcamento::find(session()->get("orcamento")["id"]);
             $produto = OrcamentoProduto::where("orcamento_id", $orcamento->id)
-                ->where("produto_id", $produto);
+                ->where("produto_id", $produto->id);
             $produto->delete();
-            // if ($orcamento->produtos->count() == 0) {
-            //     $orcamento->delete();
-            //     session()->forget("orcamento");
-            //     return redirect()->route("site.orcamento.lista");
-            // }
         }
     }
 

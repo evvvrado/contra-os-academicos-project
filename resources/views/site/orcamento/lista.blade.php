@@ -210,6 +210,7 @@
 <section class="coqueteis-drinks">
     <div class="niv">
         <div class="niv-top">
+            <h5>Orçamento: #{{ session()->get("orcamento")["id"] }}</h5>
             <h4>Bora surpreender</h4>
             <h2>
                 Com base no numero de <br>
