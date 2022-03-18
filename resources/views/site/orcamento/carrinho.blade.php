@@ -166,7 +166,7 @@ use App\Models\Parametro;
                         @php
                             $total = 0;
                         @endphp
-                        @foreach ($produtos as $produto)
+                        @foreach ($orcamento_produtos as $orcamento_produto)
                             @php
                                 $valor_total = 0;
                                 $total_produto = 0;
@@ -178,50 +178,44 @@ use App\Models\Parametro;
                                             <h2>Vamos dar<br> um up? 🍹</h2>
 
                                             @php
-                                                $produto_info = Produto::where('id', $produto->produto_id)->first();
+                                                $produto_info = $orcamento_produto->produto;
 
-                                                $ingredientes = OrcamentoProdutosIngredientes::where('orcamentoproduto_id', $produto->id)
-                                                ->join('ingredientes', 'ingrediente_id', 'ingredientes.id')
-                                                ->get();
+                                                $ingredientes = $orcamento_produto->ingredientes;
 
-                                                $acessorios = OrcamentoProdutosAcessorios::where('orcamentoproduto_id', $produto->id)
-                                                ->join('acessorios', 'acessorio_id', 'acessorios.id')
-                                                ->get();
+                                                $acessorios = $orcamento_produto->acessorios;
                                             @endphp
 
                                             @foreach ($ingredientes as $ingrediente)
                                                 <div class="drinks {{ $ingrediente->nome }}">
                                                     @php
-                                                        $marcas = MarcaIngrediente::where('ingrediente_id', $ingrediente->id)
-                                                        ->join('marcas', 'marca_id', 'marcas.id')
-                                                        ->get();
+                                                        $marcas = $ingrediente->marcas
                                                     @endphp
 
                                                     @foreach ($marcas as $marca)
 
-                                                        @php
-                                                            $qtd_pacote = $marca->qtd_pacote;
-                                                        @endphp
-
-                                                        <div class="box caixa{{ $ingrediente->id }}">
-
-                                                            <picture>
-                                                                <img src="{{ $marca->imagem }}" alt="bebida representativa">
-                                                            </picture>
-
-                                                            <strong>{{ $marca->nome }}</strong>
-
-                                                            <input class="marca" mid="{{ $marca->id }}"
-                                                                onclick="altera_ingrediente({{ $marca->id }}, {{ $ingrediente->id }}, {{ $produto->id }}, '{{ $ingrediente->nome }}')" type="checkbox" name="slide"
-                                                                @if ($marca->id == $ingrediente->marca_id) checked @endif>
-
+                                                        @if($orcamento_produto->orcamento_produto_ingredientes->where("ingrediente_id", $ingrediente->id)->where("marca_id", $marca->id)->count() == 0)
                                                             @php
-                                                                if($marca->id == $ingrediente->marca_id) {
-                                                                    $parametro = Parametro::where('id', 4)->first();
-                                                                    $qtd_total_drinks = Round(($orcamento->qtd_pessoas * $parametro->valor_2) / $parametro->valor_1);
-                                                                    $qtd_unica = $qtd_total_drinks / $produtos->count();
+                                                                $qtd_pacote = $marca->quantidade_embalagem;
+                                                            @endphp
 
-                                                                    $qtd_produto = $marca->qtd;
+                                                            <div class="box caixa{{ $ingrediente->id }}">
+
+                                                                <picture>
+                                                                    <img src="{{ asset($marca->imagem) }}" alt="bebida representativa">
+                                                                </picture>
+
+                                                                <strong>{{ $marca->nome }}</strong>
+
+                                                                <input class="marca" mid="{{ $marca->id }}"
+                                                                    onclick="altera_ingrediente({{ $marca->id }}, {{ $ingrediente->id }}, {{ $orcamento_produto->id }}, '{{ $ingrediente->nome }}')" type="checkbox" name="slide"
+                                                                    @if ($marca->id == $ingrediente->marca_id) checked @endif>
+
+                                                                @php
+                                                                    $parametro = Parametro::first();
+                                                                    $qtd_total_drinks = Round(($orcamento->qtd_pessoas * $parametro->drinks_numero) / $parametro->drinks_convidados);
+                                                                    $qtd_unica = $qtd_total_drinks / $orcamento_produtos->count();
+
+                                                                    $qtd_produto = $marca->quantidade_ingrediente_unidade;
 
                                                                     if($qtd_produto){
                                                                         $qtd_produto_total = $qtd_produto * $qtd_total_drinks;
@@ -229,57 +223,53 @@ use App\Models\Parametro;
 
                                                                         $marca_qtd = $marca->qtd_pacote;
 
-                                                                        while (true) {
-                                                                            if ($qtd_produto_total <= $marca_qtd) {
-                                                                                break;
-                                                                            }
-                                                                            $marca_qtd = $marca_qtd + $marca->qtd_pacote;
-                                                                            $qtd_ingrediente++;
-                                                                        }
+                                                                        // while (true) {
+                                                                        //     if ($qtd_produto_total <= $marca_qtd) {
+                                                                        //         break;
+                                                                        //     }
+                                                                        //     $marca_qtd = $marca_qtd + $marca->qtd_pacote;
+                                                                        //     $qtd_ingrediente++;
+                                                                        // }
                                                                     }
                                                                     $total_produto = $total_produto + ($qtd_ingrediente * $marca->valor);
-                                                                }
-                                                            @endphp
+                                                                @endphp
 
-                                                            <p>R$ {{ number_format($marca->valor, 2, ',', '.') }}</p>
-                                                        </div>
+                                                                <p>R$ {{ number_format($marca->valor_embalagem, 2, ',', '.') }}</p>
+                                                            </div>
+                                                        @endif
                                                     @endforeach
                                                 </div>
                                             @endforeach
 
                                             @foreach ($acessorios as $acessorio)
                                                 @php
-                                                    $marcas = MarcaAcessorio::where('acessorio_id', $acessorio->id)
-                                                    ->join('marcas', 'marca_id', 'marcas.id')
-                                                    ->get();
+                                                    $marcas = $acessorio->marcas
                                                 @endphp
 
                                                 @foreach ($marcas as $marca)
                                                     @php
-                                                        $qtd_pacote = $marca->qtd_pacote;
-                                                        if($marca->id == $marca->marca_id) {
-                                                            $parametro = Parametro::where('id', 4)->first();
-                                                            $qtd_total_drinks = Round(($orcamento->qtd_pessoas * $parametro->valor_2) / $parametro->valor_1);
-                                                            $qtd_unica = $qtd_total_drinks / $produtos->count();
+                                                        $qtd_pacote = $marca->quantidade_embalagem;
+                                                        $parametro = Parametro::first();
+                                                        $qtd_total_drinks = Round(($orcamento->qtd_pessoas * $parametro->drinks_numero) / $parametro->drinks_convidados);
+                                                        $qtd_unica = $qtd_total_drinks / $orcamento_produtos->count();
 
-                                                            $qtd_produto = $marca->qtd;
+                                                        $qtd_produto = $marca->quantidade_ingrediente_unidade;
 
-                                                            if($qtd_produto){
-                                                                $qtd_produto_total = $qtd_produto * $qtd_total_drinks;
-                                                                $qtd_acessorio = 1;
+                                                        if($qtd_produto){
+                                                            $qtd_produto_total = $qtd_produto * $qtd_total_drinks;
+                                                            $qtd_acessorio = 1;
 
-                                                                $marca_qtd = $marca->qtd_pacote;
+                                                            $marca_qtd = $marca->quantidade_embalagem;
 
-                                                                while (true) {
-                                                                    if ($qtd_produto_total <= $marca_qtd) {
-                                                                        break;
-                                                                    }
-                                                                    $marca_qtd = $marca_qtd + $marca->qtd_pacote;
-                                                                    $qtd_acessorio++;
-                                                                }
-                                                            }
-                                                            $total_produto = $total_produto + ($qtd_acessorio * $marca->valor);
+                                                            // while (true) {
+                                                            //     if ($qtd_produto_total <= $marca_qtd) {
+                                                            //         break;
+                                                            //     }
+                                                            //     $marca_qtd = $marca_qtd + $marca->quantidade_embalagem;
+                                                            //     $qtd_acessorio++;
+                                                            // }
                                                         }
+                                                        $total_produto = $total_produto + ($qtd_acessorio * $marca->valor);
                                                     @endphp
                                                 @endforeach
                                             @endforeach
@@ -298,13 +288,13 @@ use App\Models\Parametro;
                             </div>
 
                             @php
-                                OrcamentoProduto::where('id', $produto->id)
+                                OrcamentoProduto::where('id', $orcamento_produto->id)
                                 ->update(['valor' => $total_produto]);
                             @endphp
 
                             <tr>
                                 <td>
-                                    <button class="remover-produto" onclick="escolher_produto({{ $produto->produto_id }}); 
+                                    <button class="remover-produto" onclick="escolher_produto({{ $orcamento_produto->produto_id }}); 
                                                 $(this).closest('tr').attr('hide', '');">
                                         <picture>
                                             <img src="{{ asset('site/assets/img/icon_remove.svg') }}" alt="Remover ícone">
@@ -314,7 +304,7 @@ use App\Models\Parametro;
 
                                 <td>
                                     <picture class="foto-produto">
-                                        <img src="{{ $produto_info->imagem_1 }}" alt="imagem representativa">
+                                        <img src="{{ asset($produto_info->imagem_preview) }}" alt="imagem representativa">
                                     </picture>
                                 </td>
 

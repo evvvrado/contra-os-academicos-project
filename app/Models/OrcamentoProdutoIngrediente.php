@@ -8,4 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 class OrcamentoProdutoIngrediente extends Model
 {
     use HasFactory;
+
+    public function ingrediente(){
+        return $this->belongsTo(Ingrediente::class);
+    }
 }

@@ -21,8 +21,8 @@ Route::post('/orcamento/cadastrar/etapa/1', [\App\Http\Controllers\OrcamentoCont
 
 Route::middleware(['orcamento'])->group(function () {
     Route::match(['get', 'post'], '/orcamento/lista', [\App\Http\Controllers\OrcamentoController::class, 'lista'])->name("site.orcamento.lista");
-    Route::get('/orcamento/confirmacao', [\App\Http\Controllers\OrcamentoController::class, 'orcamentoCONFIRM'])->name("site.orcamento.confirmacao");
-    Route::get('/orcamento/carrinho', [\App\Http\Controllers\OrcamentoController::class, 'orcamentoCAR'])->name("site.orcamento.carrinho");
+    Route::get('/orcamento/confirmacao', [\App\Http\Controllers\OrcamentoController::class, 'confirmacao'])->name("site.orcamento.confirmacao");
+    Route::get('/orcamento/carrinho', [\App\Http\Controllers\OrcamentoController::class, 'carrinho'])->name("site.orcamento.carrinho");
 
     Route::get('/orcamento/carrinho/qtd_altera/{orcamento}/{produto}/{qtd}', [\App\Http\Controllers\OrcamentoProdutosController::class, 'alteraQTD'])->name("site.orcamento.altera_qtd");
 

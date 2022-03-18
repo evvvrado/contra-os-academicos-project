@@ -106,7 +106,7 @@
                 </button>
 
                 <picture>
-                    <img src="{{$produto->imagem_1}}" alt="imagem representativa">
+                    <img src="{{asset($produto->imagem_preview)}}" alt="imagem representativa">
                 </picture>
 
 

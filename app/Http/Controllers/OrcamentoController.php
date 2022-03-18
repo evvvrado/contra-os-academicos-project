@@ -108,9 +108,9 @@ class OrcamentoController extends Controller
 
         return view("site.orcamento.lista", ["produtos" => $produtos, "produtos_escolhidos" => $produtos_escolhidos, "ingredientes_filtro" => $ingredientes_filtro]);
     }
-    public function orcamentoCONFIRM()
+    public function confirmacao()
     {
-        $orcamento = Orcamento::find(session()->get("orcamento"));
+        $orcamento = Orcamento::find(session()->get("orcamento")["id"]);
         $produtos = Produto::whereIn("id", $orcamento->produtos->pluck("id"))->get();
 
         if($produtos->count() > 0) {
@@ -118,38 +118,17 @@ class OrcamentoController extends Controller
         }
         else 
         {
-            $orcamento = Orcamento::find(session()->get("orcamento"));
-            if ($orcamento->produtos) {
-                $produtos_escolhidos = $orcamento->produtos;
-            } else {
-                $produtos_escolhidos = "";
-            }
-            $produtos = Produto::whereNotIn("id", $orcamento->produtos->pluck("id"))->get();
-            // dd($produtos);
-    
-            $parametro = Parametro::where('id', 5)->first();
-            $valores = json_decode($parametro->valor_1, true);
-            // dd($valores);
-            if ($valores) {
-                $ingredientes_filtro = Ingrediente::whereIn('ingredientes.id', $valores)
-                    ->get();
-            } else {
-                $ingredientes_filtro = Ingrediente::all();
-            }
-
-            toastr()->error("Você deve escolher ao menos 1 drink!");
-
-            return view("site.orcamento.lista", ["produtos" => $produtos, "produtos_escolhidos" => $produtos_escolhidos, "ingredientes_filtro" => $ingredientes_filtro]);
+            return redirect()->route("site.orcamento.lista")->with("erro", "Você deve escolher pelo menos um drink");
         }
     }
-    public function orcamentoCAR()
+    public function carrinho()
     {
-        $orcamento = Orcamento::find(session()->get("orcamento"));
-        $produtos = OrcamentoProduto::where('orcamento_id', $orcamento->id)->get();
+        $orcamento = Orcamento::find(session()->get("orcamento")["id"]);
+        $orcamento_produtos = $orcamento->orcamento_produtos;
         // dd($produtos);
         // $produtos = Produto::whereIn("id", $orcamento->produtos->pluck("id"))->get();
 
-        return view("site.orcamento.carrinho", ["produtos" => $produtos, "orcamento" => $orcamento]);
+        return view("site.orcamento.carrinho", ["orcamento_produtos" => $orcamento_produtos, "orcamento" => $orcamento]);
     }
     public function orcamentoENCERRAR()
     {
@@ -249,7 +228,7 @@ class OrcamentoController extends Controller
     public function escolher_produto(Produto $produto) 
     {
         $verifica_produto = OrcamentoProduto::where('orcamento_id', session()->get("orcamento")["id"])
-        ->where('produto_id', $produto)->get();
+        ->where('produto_id', $produto->id)->get();
 
         $parametro = Parametro::first();
 
