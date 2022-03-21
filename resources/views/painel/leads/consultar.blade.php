@@ -15,57 +15,115 @@
 
 @section('conteudo')
     <div class="row">
-        <div class="col-12">
-            <div class="row">
+        <div class="col-9">
+            <div class="row" style="padding: 0 15px">
                 <div class=" col-12 mb-3" style="border-radius: 5px; background-color:var(--principal);">
                     <a name="" style="opacity: 0; pointer-events: none; id=" button-add" class="btn"
                         style="height: 100%; padding-left: 0;" style="padding-left: 0;" href="#">
                         <i class="bx bx-plus" aria-hidden="true"></i> Adicionar
                     </a>
                 </div>
-            </div>
 
-            <div class="row">
                 <div class="card">
                     <div class="card-body">
                         <i id="search-icon" class="bx bx-search" aria-hidden="true"></i>
-                    </div>
-                    <div class="row">
-                        <div class="col-sm-12">
-                            <table
-                                class="tabela_export table table-bordered dt-responsive nowrap w-100 dataTable no-footer dtr-inline"
-                                role="grid" aria-describedby="datatable_info">
-                                <thead>
-                                    <tr role="row">
-                                        <th>Nome</th>
-                                        <th>Telefone</th>
-                                        <th>E-mail</th>
-                                        <th>Data</th>
-                                        <th></th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    @foreach ($clientes as $lead)
-                                        <tr class="odd">
-                                            <td class="sorting_1 dtr-control">{{ $lead->nome }}</td>
-                                            <td class="sorting_1 dtr-control">{{ $lead->telefone }}</td>
-                                            <td class="sorting_1 dtr-control">{{ $lead->email }}</td>
-                                            <td class="sorting_1 dtr-control">{{ $lead->created_at }}</td>
-                                            @if ($lead->orcamentos->count() > 0)
-                                                <td>
-                                                    <a class="btn btn-success"
-                                                        href="{{ route('painel.leads.orcamento', ['orcamento' => $lead]) }}"
-                                                        role="button">Orçamentos</a>
-                                                </td>
-                                            @else
-                                                <td>
-                                                    <a class="btn btn-success" href="#" role="button">Jornada</a>
-                                                </td>
-                                            @endif
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <table
+                                    class="tabela_export table table-bordered dt-responsive nowrap w-100 dataTable no-footer dtr-inline"
+                                    role="grid" aria-describedby="datatable_info">
+                                    <thead>
+                                        <tr role="row">
+                                            <th>Nome</th>
+                                            <th>Telefone</th>
+                                            <th>E-mail</th>
+                                            <th>Data</th>
+                                            <th></th>
                                         </tr>
-                                    @endforeach
-                                </tbody>
-                            </table>
+                                    </thead>
+                                    <tbody>
+                                        @foreach ($clientes as $lead)
+                                            <tr class="odd">
+                                                <td class="sorting_1 dtr-control">{{ $lead->nome }}</td>
+                                                <td class="sorting_1 dtr-control">{{ $lead->telefone }}</td>
+                                                <td class="sorting_1 dtr-control">{{ $lead->email }}</td>
+                                                <td class="sorting_1 dtr-control">{{ $lead->created_at }}</td>
+                                                @if ($lead->orcamentos->count() > 0)
+                                                    <td>
+                                                        <a class="btn btn-success"
+                                                            href="{{ route('painel.leads.orcamento', ['orcamento' => $lead]) }}"
+                                                            role="button">Orçamentos</a>
+                                                    </td>
+                                                @else
+                                                    <td>
+                                                        <a class="btn btn-success" href="#" role="button">Jornada</a>
+                                                    </td>
+                                                @endif
+                                            </tr>
+                                        @endforeach
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <div class="col-3">
+
+
+            <div class="col-sm-12 col-md-6 mb-3"
+                style=" border-radius: 5px; background-color:var(--principal); width: 100%;">
+                <a class="btn" style="padding-left: 21px; color: white; height: 100%; cursor: default;"
+                    href="">Filtros</a>
+            </div>
+            <div class="card filter-body">
+                <div class="card-body">
+
+                    <form id="form-filtro" action="{{ route('painel.noticias') }}" method="POST">
+                        @csrf
+                        <div class="mb-3">
+                            <label for="titulo">Nome</label>
+                            <input id="titulo" name="titulo" type="text" class="form-control"
+                                @if (isset($filtros) && isset($filtros['titulo'])) value="{{ $filtros['titulo'] }}" @endif>
+                        </div>
+                        <div class="mb-3">
+                            <label for="titulo">Telefone</label>
+                            <input id="titulo" name="titulo" type="text" class="form-control"
+                                @if (isset($filtros) && isset($filtros['titulo'])) value="{{ $filtros['titulo'] }}" @endif>
+                        </div>
+                        <div class="mb-3">
+                            <label for="publicacao">Data de Publicação</label>
+                            <div class="row">
+                                <div class="col-6">
+                                    <input id="publicacao" name="publicacao" type="date" class="form-control"
+                                        @if (isset($filtros) && isset($filtros['publicacao'])) value="{{ $filtros['publicacao'] }}" @endif>
+                                </div>
+                                <div class="col-6">
+                                    <input id="publicacao" name="publicacao" type="date" class="form-control"
+                                        @if (isset($filtros) && isset($filtros['publicacao'])) value="{{ $filtros['publicacao'] }}" @endif>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+
+
+
+                    <div class="button-row">
+                        <div class="row">
+                            <div class="col-6">
+                                <button id="btn-filtrar" type="button" style="width:100%;"
+                                    class="btn btn-success waves-effect waves-light">
+                                    <i class="bx bx-check-double font-size-16 align-middle me-2"></i> Filtrar
+                                </button>
+                            </div>
+                            <div class="col-6">
+                                <button id="btn-limpar" type="button" style="width:100%;"
+                                    class="btn btn-danger waves-effect waves-light">
+                                    <i class="bx bx-block font-size-16 align-middle me-2"></i> Limpar
+                                </button>
+                            </div>
                         </div>
                     </div>
                 </div>

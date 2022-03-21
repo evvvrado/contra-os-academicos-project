@@ -139,8 +139,8 @@ Route::middleware(['admin'])->group(function () {
 
     // ROTAS DE MARCAS
 
-    Route::get('/sistema/marcas_ingredientes/{ingrediente}', [\App\Http\Controllers\MarcasController::class, 'consultar_ingrediente'])->name("painel.marcas.ingredientes");
-    Route::get('/sistema/marcas_acessorios/{acessorio}', [\App\Http\Controllers\MarcasController::class, 'consultar_acessorio'])->name("painel.marcas.acessorios");
+    Route::get('/sistema/marcas/{ingrediente}', [\App\Http\Controllers\MarcasController::class, 'consultar_ingrediente'])->name("painel.marcas.ingredientes");
+    Route::get('/sistema/marcas/{acessorio}', [\App\Http\Controllers\MarcasController::class, 'consultar_acessorio'])->name("painel.marcas.acessorios");
 
     Route::get('/sistema/marcas/cadastro', [\App\Http\Controllers\MarcasController::class, 'cadastro'])->name("painel.marcas.cadastro");
     Route::post('/sistema/marcas/cadastrar', [\App\Http\Controllers\MarcasController::class, 'cadastrar'])->name("painel.marcas.cadastrar");

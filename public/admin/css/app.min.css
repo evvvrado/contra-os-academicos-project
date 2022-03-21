@@ -1,10 +1,10 @@
 @import url(https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700&amp;display=swap);
 :root {
-    --principal: #56076D;
+    --principal: #56076d;
     --branco1: white;
     --preto1: black;
     --preto2: #141111;
-    --secundaria: #323B4B;
+    --secundaria: #323b4b;
 }
 
 form > h4 {
@@ -5233,6 +5233,10 @@ div.dataTables_wrapper div.dataTables_length select {
     cursor: pointer;
 }
 
-td{
+td {
     vertical-align: middle !important;
+}
+
+.iS {
+    font-size: 18px;
 }

@@ -1,113 +1,116 @@
 @extends('painel.template.main')
 
 @section('styles')
-<!-- DataTables -->
-<link href="{{ asset('admin/libs/datatables.net-bs4/css/dataTables.bootstrap4.min.css') }}" rel="stylesheet" type="text/css" />
-<link href="{{ asset('admin/libs/datatables.net-buttons-bs4/css/buttons.bootstrap4.min.css') }}" rel="stylesheet" type="text/css" />
+    <!-- DataTables -->
+    <link href="{{ asset('admin/libs/datatables.net-bs4/css/dataTables.bootstrap4.min.css') }}" rel="stylesheet"
+        type="text/css" />
+    <link href="{{ asset('admin/libs/datatables.net-buttons-bs4/css/buttons.bootstrap4.min.css') }}" rel="stylesheet"
+        type="text/css" />
 @endsection
 
 @php
-    use App\Models\MarcaHistorico;
+use App\Models\MarcaHistorico;
 @endphp
 
 @section('titulo')
-Ingredientes / <a style="color: unset" href="#">Marcas</a>
+    Ingredientes / <a style="color: unset" href="#">Marcas</a>
 @endsection
 
 
 @section('conteudo')
-
-<div class="row">
-    <div class="col-9">
-        <div class="row">
-            <div class="card">
-                <div class="card-body">
-                </div>
-                <div class="row">
-                    <div class="col-sm-12">
-                        <table id="datatable" class="table table-bordered dt-responsive nowrap w-100 dataTable no-footer dtr-inline" role="grid" aria-describedby="datatable_info"
-                            style="width: 1185px;">
-                            <thead>
-                                <tr role="row">
-                                    <th class="sorting_asc" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" style="width: 80%;" aria-sort="ascending"
-                                        aria-label="Name: activate to sort column descending">Nome
-                                    </th>
-                                    <th></th>
-                                </tr>
-                            </thead>
-                            @if(isset($ingrediente))
-                                @livewire('marcas.consultar.datatable', ['ingrediente_id' => $ingrediente->id])
-                            @else
-                                @livewire('marcas.consultar.datatable', ['acessorio_id' => $acessorio->id])
-                            @endif
-                        </table>
+    <div class="row">
+        <div class="col-9">
+            <div class="row">
+                <div class="card">
+                    <div class="card-body">
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <table id="datatable"
+                                class="table table-bordered dt-responsive nowrap w-100 dataTable no-footer dtr-inline"
+                                role="grid" aria-describedby="datatable_info" style="width: 1185px;">
+                                <thead>
+                                    <tr role="row">
+                                        <th class="sorting_asc" tabindex="0" aria-controls="datatable" rowspan="1"
+                                            colspan="1" style="width: 80%;" aria-sort="ascending"
+                                            aria-label="Name: activate to sort column descending">Nome
+                                        </th>
+                                        <th></th>
+                                    </tr>
+                                </thead>
+                                @if (isset($ingrediente))
+                                    @livewire('marcas.consultar.datatable', ['ingrediente_id' => $ingrediente->id])
+                                @else
+                                    @livewire('marcas.consultar.datatable', ['acessorio_id' => $acessorio->id])
+                                @endif
+                            </table>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-</div> 
 
     <!--  Large modal example -->
-<div id="modalEditaMarca" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-lg">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="myLargeModalLabel">Editar Marca</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                @livewire('marcas.consultar.modal-editar')
-            </div>
-        </div><!-- /.modal-content -->
-    </div><!-- /.modal-dialog -->
-</div><!-- /.modal -->
+    <div id="modalEditaMarca" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="myLargeModalLabel">Editar Marca</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    @livewire('marcas.consultar.modal-editar')
+                </div>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
 
-<div id="modalMarcaHistorico" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-lg">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="myLargeModalLabel">Histórico da Marca - Últimas 10 alterações</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                @livewire('marcas.consultar.historico.datatable')
-            </div>
-        </div><!-- /.modal-content -->
-    </div><!-- /.modal-dialog -->
-</div><!-- /.modal -->
-
+    <div id="modalMarcaHistorico" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="myLargeModalLabel">Histórico da Marca - Últimas 10 alterações</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    @livewire('marcas.consultar.historico.datatable')
+                </div>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
 @endsection
 
 
 @section('scripts')
-<!-- Required datatable js -->
-<script src="{{ asset('admin/libs/datatables.net/js/jquery.dataTables.min.js') }}"></script>
-<script src="{{ asset('admin/libs/datatables.net-bs4/js/dataTables.bootstrap4.min.js') }}"></script>
-<script>
+    <!-- Required datatable js -->
+    <script src="{{ asset('admin/libs/datatables.net/js/jquery.dataTables.min.js') }}"></script>
+    <script src="{{ asset('admin/libs/datatables.net-bs4/js/dataTables.bootstrap4.min.js') }}"></script>
+    <script>
+        window.addEventListener("abreModalEdicao", (event) => {
+            $("#modalEditaMarca").modal("show");
+        })
 
-    window.addEventListener("abreModalEdicao", (event) => {
-        $("#modalEditaMarca").modal("show");
-    })
+        window.addEventListener("fechaModalEdicao", (event) => {
+            $("#modalEditaMarca").modal("hide");
+        })
 
-    window.addEventListener("fechaModalEdicao", (event) => {
-        $("#modalEditaMarca").modal("hide");
-    })
+        function historicoMarca(id) {
+            Livewire.emit("carregaTabela", id);
+            $("#modalMarcaHistorico").modal("show");
+        }
 
-    function historicoMarca(id){
-        Livewire.emit("carregaTabela", id);
-        $("#modalMarcaHistorico").modal("show");
-    }
+        function editarMarca(id) {
+            Livewire.emit("iniciaModalEdicao", id);
+        }
 
-    function editarMarca(id){
-        Livewire.emit("iniciaModalEdicao", id);
-    }
+        function modal_historico(id) {
+            $('.modal_historico'.id).modal("show");
+        }
 
-    function modal_historico(id) {
-        $('.modal_historico'.id).modal("show");
-    }
-
-    $(document).ready(function() {
+        $(document).ready(function() {
             $('#datatable').DataTable({
                 language: {
                     "emptyTable": "Nenhum registro encontrado",
@@ -242,14 +245,14 @@ Ingredientes / <a style="color: unset" href="#">Marcas</a>
                 }
             });
 
-            $("#btn-filtrar").click(function(){
+            $("#btn-filtrar").click(function() {
                 $("#form-filtro").submit();
             });
 
-            $("#btn-limpar").click(function(){
+            $("#btn-limpar").click(function() {
                 $("input[type!='hidden']").val("");
                 $("select").val("-1");
             });
         });
-</script>
+    </script>
 @endsection

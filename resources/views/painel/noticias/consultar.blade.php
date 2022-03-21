@@ -19,8 +19,8 @@
 
             <div class="row"">
 
-                                       
-                            <div class="   col-sm-12 col-md-6 mb-3"
+                                               
+                                    <div class="     col-sm-12 col-md-6 mb-3"
                 style=" border-radius: 5px; background-color:var(--principal); width: 100%;">
 
                 <a name="" id="button-add" class="btn" style="height: 100%; padding-left: 0;"
@@ -142,18 +142,20 @@
 
 
 
-                <div class="buttons-row">
-                    <div class="col-6">
-                        <button id="btn-filtrar" type="button" style="width:100%;"
-                            class="btn btn-success waves-effect waves-light">
-                            <i class="bx bx-check-double font-size-16 align-middle me-2"></i> Filtrar
-                        </button>
-                    </div>
-                    <div class="col-6">
-                        <button id="btn-limpar" type="button" style="width:100%;"
-                            class="btn btn-danger waves-effect waves-light">
-                            <i class="bx bx-block font-size-16 align-middle me-2"></i> Limpar
-                        </button>
+                <div class="button-row">
+                    <div class="row">
+                        <div class="col-6">
+                            <button id="btn-filtrar" type="button" style="width:100%;"
+                                class="btn btn-success waves-effect waves-light">
+                                <i class="bx bx-check-double font-size-16 align-middle me-2"></i> Filtrar
+                            </button>
+                        </div>
+                        <div class="col-6">
+                            <button id="btn-limpar" type="button" style="width:100%;"
+                                class="btn btn-danger waves-effect waves-light">
+                                <i class="bx bx-block font-size-16 align-middle me-2"></i> Limpar
+                            </button>
+                        </div>
                     </div>
                 </div>
             </div>

@@ -95,29 +95,36 @@ use App\Models\Marca;
 
                                                 <tr>
                                                     <td>{{ $ingrediente->nome }} - {{ $nome_marca }}</td>
+
                                                     <td class="d-flex justify-content-between">
                                                         <a href="{{ route('painel.ingredientes.editar', ['ingrediente' => $ingrediente]) }} "
                                                             class="mx-auto">
-                                                            <i class="fas fa-pen-square"></i>
+                                                            <i class="fas fa-pen-square iS" data-bs-toggle="tooltip"
+                                                                data-bs-placement="top" title="Editar"></i>
                                                         </a>
 
-                                                        <svg width="17" height="17"
+                                                        <svg width="18" height="18"
                                                             onClick="editar_marca({{ $ingrediente->id }}, '{{ $marca_padrao }}')"
                                                             style="fill: #556ee6; cursor: pointer"
-                                                            xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512">
+                                                            xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"
+                                                            data-bs-toggle="tooltip" data-bs-placement="top"
+                                                            title="Cadastrar marca">
                                                             <path
                                                                 d="M288 464H240v-125.3l168.8-168.7C424.3 154.5 413.3 128 391.4 128H24.63C2.751 128-8.249 154.5 7.251 170l168.7 168.7V464H128c-17.67 0-32 14.33-32 32c0 8.836 7.164 16 15.1 16h191.1c8.836 0 15.1-7.164 15.1-16C320 478.3 305.7 464 288 464zM432 0c-62.63 0-115.4 40.25-135.1 96h52.5c16.62-28.5 47.25-48 82.62-48c52.88 0 95.1 43 95.1 96s-43.12 96-95.1 96c-14 0-27.25-3.25-39.37-8.625l-35.25 35.25c21.88 13.25 47.25 21.38 74.62 21.38c79.5 0 143.1-64.5 143.1-144S511.5 0 432 0z" />
                                                         </svg>
 
                                                         <a href="{{ route('painel.marcas.ingredientes', ['ingrediente' => $ingrediente]) }} "
                                                             class="mx-auto">
-                                                            <i class="fa fa-cubes" style="color: #556ee6"></i>
+                                                            <i class="fa fa-cubes iS" data-bs-toggle="tooltip"
+                                                                data-bs-placement="top" title="Marcas"
+                                                                style="color: #556ee6"></i>
                                                         </a>
 
                                                         <a href="{{ route('painel.ingredientes.deletar', ['ingrediente' => $ingrediente]) }} "
                                                             class="mx-auto">
                                                             <i style="color: #f46a6a!important;"
-                                                                class="bx bx-minus-circle"></i>
+                                                                class="fas fa-minus-circle iS" data-bs-toggle="tooltip"
+                                                                data-bs-placement="top" title="Excluir"></i>
                                                         </a>
 
                                                     </td>
@@ -160,26 +167,32 @@ use App\Models\Marca;
                                                         <td class="d-flex justify-content-between">
                                                             <a href="{{ route('painel.ingredientes.editar', ['ingrediente' => $ingrediente]) }} "
                                                                 class="mx-auto">
-                                                                <i class="fas fa-pen-square"></i>
+                                                                <i class="fas fa-pen-square iS" data-bs-toggle="tooltip"
+                                                                    data-bs-placement="top" title="Editar"></i>
                                                             </a>
 
-                                                            <svg width="17" height="17"
+                                                            <svg width="18" height="18"
                                                                 onClick="editar_marca({{ $ingrediente->id }}, '{{ $marca_padrao }}')"
                                                                 style="fill: #556ee6; cursor: pointer"
-                                                                xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512">
+                                                                xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"
+                                                                data-bs-toggle="tooltip" data-bs-placement="top"
+                                                                title="Cadastrar marca">
                                                                 <path
                                                                     d="M288 464H240v-125.3l168.8-168.7C424.3 154.5 413.3 128 391.4 128H24.63C2.751 128-8.249 154.5 7.251 170l168.7 168.7V464H128c-17.67 0-32 14.33-32 32c0 8.836 7.164 16 15.1 16h191.1c8.836 0 15.1-7.164 15.1-16C320 478.3 305.7 464 288 464zM432 0c-62.63 0-115.4 40.25-135.1 96h52.5c16.62-28.5 47.25-48 82.62-48c52.88 0 95.1 43 95.1 96s-43.12 96-95.1 96c-14 0-27.25-3.25-39.37-8.625l-35.25 35.25c21.88 13.25 47.25 21.38 74.62 21.38c79.5 0 143.1-64.5 143.1-144S511.5 0 432 0z" />
                                                             </svg>
 
                                                             <a href="{{ route('painel.marcas.ingredientes', ['ingrediente' => $ingrediente]) }} "
                                                                 class="mx-auto">
-                                                                <i class="fa fa-cubes" style="color: #556ee6"></i>
+                                                                <i class="fa fa-cubes iS" data-bs-toggle="tooltip"
+                                                                    data-bs-placement="top" title="Marcas"
+                                                                    style="color: #556ee6"></i>
                                                             </a>
 
                                                             <a href="{{ route('painel.ingredientes.deletar', ['ingrediente' => $ingrediente]) }} "
                                                                 class="mx-auto">
                                                                 <i style="color: #f46a6a!important;"
-                                                                    class="bx bx-minus-circle"></i>
+                                                                    class="fas fa-minus-circle iS" data-bs-toggle="tooltip"
+                                                                    data-bs-placement="top" title="Excluir"></i>
                                                             </a>
 
                                                         </td>
@@ -219,12 +232,15 @@ use App\Models\Marca;
                     style="background-color: #FFF !important;">
                     <thead>
                         <th colspan="2">
-                            <div class="buttons-row">
-                                <div class="col-6">
-                                    <button class="btn btn-primary" style="width: 100%;">Todas</button>
-                                </div>
-                                <div class="col-6">
-                                    <button class="btn btn-secondary" style="width: 100%;">Inativos</button>
+                            <div class="button-row">
+                                <div class="row">
+
+                                    <div class="col-6">
+                                        <button class="btn btn-primary" style="width: 100%;">Todas</button>
+                                    </div>
+                                    <div class="col-6">
+                                        <button class="btn btn-secondary" style="width: 100%;">Inativos</button>
+                                    </div>
                                 </div>
                             </div>
                         </th>
@@ -237,12 +253,12 @@ use App\Models\Marca;
                                     <a href="#"
                                         onClick="editar_categoria({{ $categoria->id }}, '{{ $categoria->nome }}')"
                                         class="mx-auto">
-                                        <i class="fas fa-pen-square"></i>
+                                        <i class="fas fa-pen-square iS"></i>
                                     </a>
 
                                     <a href="{{ route('cat.ingrediente.status', ['categoria' => $categoria]) }}"
                                         class="mx-auto">
-                                        <i class="fas fa-eye"
+                                        <i class="fas fa-eye iS"
                                             @if ($categoria->status != 'Ativo') style="color: #f46a6a" @endif></i>
                                     </a>
                                 </td>
@@ -325,7 +341,7 @@ use App\Models\Marca;
                                         min="0">
                                 </div>
 
-                                <div class="form-group col-6 col-lg-6 mt-3">
+                                <div class="form-group col-12 col-lg-12 mt-3">
                                     <label class="form-label">Imagem</label>
                                     <input required name="imagem" type="file" class="form-control"
                                         style="height: 36px !important">

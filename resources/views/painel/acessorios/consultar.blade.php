@@ -219,12 +219,15 @@ use App\Models\MarcaAcessorio;
                     style="background-color: #FFF !important;">
                     <thead>
                         <th colspan="2">
-                            <div class="buttons-row">
-                                <div class="col-6">
-                                    <button class="btn btn-primary" style="width: 100%;">Todas</button>
-                                </div>
-                                <div class="col-6">
-                                    <button class="btn btn-secondary" style="width: 100%;">Inativos</button>
+                            <div class="button-row">
+                                <div class="row">
+
+                                    <div class="col-6">
+                                        <button class="btn btn-primary" style="width: 100%;">Todas</button>
+                                    </div>
+                                    <div class="col-6">
+                                        <button class="btn btn-secondary" style="width: 100%;">Inativos</button>
+                                    </div>
                                 </div>
                             </div>
                         </th>
@@ -237,18 +240,18 @@ use App\Models\MarcaAcessorio;
                                     <a href="#"
                                         onClick="editar_categoria({{ $categoria->id }}, '{{ $categoria->nome }}')"
                                         class="mx-auto">
-                                        <i class="fas fa-pen-square"></i>
+                                        <i class="fas fa-pen-square r iS"></i>
                                     </a>
 
                                     @if ($categoria->status == 'Ativo')
                                         <a href="{{ route('cat.acessorio.status', ['acessoriocat' => $categoria]) }}"
                                             class="mx-auto">
-                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star iS"></i>
                                         </a>
                                     @else
                                         <a href="{{ route('cat.acessorio.status', ['acessoriocat' => $categoria]) }}"
                                             class="mx-auto">
-                                            <i class="fas fa-eye" style="color: #f46a6a"></i>
+                                            <i class="fas fa-eye iS" style="color: #f46a6a"></i>
                                         </a>
                                     @endif
                                 </td>
