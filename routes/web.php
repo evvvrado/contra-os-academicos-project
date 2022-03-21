@@ -14,20 +14,20 @@ Route::get('/coqueteis', [\App\Http\Controllers\SiteController::class, 'coquetei
 Route::get('/coqueteis/detalhes/{produto}', [\App\Http\Controllers\SiteController::class, 'coquetel'])->name("site.coquetel");
 
 Route::get('/orcamento/identificacao', [\App\Http\Controllers\OrcamentoController::class, 'orcamentoID'])->name("site.orcamento.id");
-Route::get('/orcamento/evento', [\App\Http\Controllers\OrcamentoController::class, 'evento'])->name("site.orcamento.evento");
+Route::get('/orcamento/tipo', [\App\Http\Controllers\OrcamentoController::class, 'evento'])->name("site.orcamento.evento");
 Route::post('/lead/cadastrar', [\App\Http\Controllers\LeadsController::class, 'cadastrar'])->name("site.lead.cadastrar");
 Route::get('/orcamento/{evento}/informacoes', [\App\Http\Controllers\OrcamentoController::class, 'informacoes'])->name("site.orcamento.informacoes");
 Route::post('/orcamento/cadastrar/etapa/1', [\App\Http\Controllers\OrcamentoController::class, 'cadastrar_etapa1'])->name("site.orcamento.cadastrar.etapa1");
 
 Route::middleware(['orcamento'])->group(function () {
-    Route::match(['get', 'post'], '/orcamento/lista', [\App\Http\Controllers\OrcamentoController::class, 'lista'])->name("site.orcamento.lista");
+    Route::match(['get', 'post'], '/orcamento/drinks', [\App\Http\Controllers\OrcamentoController::class, 'lista'])->name("site.orcamento.lista");
     Route::get('/orcamento/confirmacao', [\App\Http\Controllers\OrcamentoController::class, 'confirmacao'])->name("site.orcamento.confirmacao");
     Route::get('/orcamento/carrinho', [\App\Http\Controllers\OrcamentoController::class, 'carrinho'])->name("site.orcamento.carrinho");
 
     Route::get('/orcamento/carrinho/qtd_altera/{orcamento}/{produto}/{qtd}', [\App\Http\Controllers\OrcamentoProdutosController::class, 'alteraQTD'])->name("site.orcamento.altera_qtd");
 
-    Route::get('/orcamento/encerrar', [\App\Http\Controllers\OrcamentoController::class, 'orcamentoENCERRAR'])->name("site.orcamento.encerrar");
-    Route::get('/orcamento/encerrar_2', [\App\Http\Controllers\OrcamentoController::class, 'orcamentoENCERRAR2'])->name("site.orcamento.encerrar_2");
+    Route::get('/orcamento/servicos', [\App\Http\Controllers\OrcamentoController::class, 'orcamentoENCERRAR'])->name("site.orcamento.encerrar");
+    Route::get('/orcamento/extras', [\App\Http\Controllers\OrcamentoController::class, 'orcamentoENCERRAR2'])->name("site.orcamento.encerrar_2");
     Route::post('/orcamento/salvar_orcamento', [\App\Http\Controllers\OrcamentoController::class, 'salvarorcamento'])->name("site.orcamento.salvar_orcamento");
 
 
@@ -147,7 +147,7 @@ Route::middleware(['admin'])->group(function () {
     Route::post('/sistema/marcas/salvar', [\App\Http\Controllers\MarcasController::class, 'salvar'])->name("painel.marcas.salvar");
     Route::get('/sistema/marcas/padrao_ingr/{marca}/{ingrediente}', [\App\Http\Controllers\MarcasController::class, 'altera_padrao_ingr'])->name("painel.marcas.padrao_ingr");
     Route::get('/sistema/marcas/padrao_aces/{marca}/{acessorio}', [\App\Http\Controllers\MarcasController::class, 'altera_padrao_aces'])->name("painel.marcas.padrao_aces");
-    
+
 
     // ROTAS DE MARCAS HISTORICO
     Route::get('/sistema/marcas_historico/precos', [\App\Http\Controllers\MarcasHistoricosController::class, 'consultar_precos'])->name("painel.marcas.historicos");

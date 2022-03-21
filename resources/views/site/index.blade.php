@@ -56,13 +56,27 @@
                     </button>
 
                 </form>
+                <p>Leve o melhor para sua festa com a Birittas</p>
             @else
-                <p>Bem vindo, {{ session()->get("lead")["nome"] }}</p>
+               <form class="welcome" action="javascript: void(0);">
+
+                <picture>
+                    <img src="{{ asset('site/assets/img/drink_modal.png') }}" alt="">
+                </picture>
+
+                <span>
+                    <h4>Bem vindo,</h4>
+                    <h2> {{ session()->get("lead")["nome"] }}</h2>
+                    <a href=""><small>Não sou eu</small></a>
+                </span>
+
+
                 <button onclick="window.location.href = '{{ route('site.orcamento.evento') }}'">
-                    Quero levar minha festa além
+                    Continuar
                 </button>
+
+               </form>
             @endif
-            <p>Leve o melhor para sua festa com a Birittas</p>
         </div>
     </div>
 </section>

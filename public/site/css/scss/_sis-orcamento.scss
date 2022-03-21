@@ -781,6 +781,7 @@ section.carrinho {
 
             span.resumo-evento {
                 padding: 5.1rem;
+                padding-right: 2rem;
                 border: solid 0.1rem $table-border;
                 width: 100%;
                 border-top: none;
@@ -800,7 +801,7 @@ section.carrinho {
                     line-height: 140%;
                     color: $grey;
 
-                    max-width: 90%;
+                    // max-width: 90%;
 
                     margin-top: 1.7rem;
                 }
@@ -938,6 +939,70 @@ div.up {
             background: $white;
 
             padding: 2.8rem 5.2rem;
+
+            div.niv-top {
+                @include flex(row, flex-end, space-between);
+                width: 100%;
+                margin-bottom: 2.9rem;
+
+                span {
+                    @include flex(row, flex-end, space-between);
+                    width: 100%;
+                    gap: 2rem;
+
+                    h2 {
+                        font-family: "Inter";
+                        font-style: normal;
+                        font-weight: 600;
+                        font-size: 3.2rem;
+                        line-height: 120%;
+                        color: $dark-grey;
+                        text-align: left;
+                    }
+
+                    p {
+                        font-weight: 500;
+                        font-size: 1.8rem;
+                        line-height: 120%;
+                        /* identical to box height, or 22px */
+
+                        /* Cinza 1 */
+
+                        color: $dark-grey;
+                    }
+                }
+
+                p {
+                    font-size: 1.8rem;
+                    line-height: 150%;
+                    /* or 27px */
+
+                    text-align: right;
+                    letter-spacing: 0.02em;
+
+                    color: $dark-purple;
+
+                    i {
+                        font-weight: bold;
+                        font-style: normal;
+                        position: relative;
+
+                        &::after {
+                            height: 1.2rem;
+                            width: 12.6rem;
+
+                            content: "";
+                            position: absolute;
+
+                            background: url("/site/assets/img/text_draw.svg");
+                            background-size: 100% 100%;
+
+                            bottom: -1.2rem;
+                            right: -1rem;
+                        }
+                    }
+                }
+            }
 
             main {
                 width: 100%;
@@ -1157,7 +1222,9 @@ div.up {
     }
 
     &[hide] {
-        transform: scale(0);
+        div.niv {
+            // transform: scale(0);
+        }
         opacity: 0;
         pointer-events: none;
         background: none;
@@ -1775,7 +1842,7 @@ body#orcamento-lista {
 
     div.next-step {
         width: 100%;
-        height: 12rem;
+        height: 8rem;
 
         position: fixed;
         bottom: 0;
@@ -2536,6 +2603,45 @@ body#orcamento-carrinho {
             &:hover {
                 background: $main-yellow;
                 color: $dark-purple;
+            }
+        }
+    }
+
+    i.reduced {
+        font-size: 2.3rem;
+        color: $main-purple;
+        cursor: pointer;
+        margin-right: 1rem;
+        position: relative;
+
+        &::after {
+            content: "Usar quantidade mínima";
+            position: absolute;
+
+            padding: 1rem;
+            border-radius: 1.5rem;
+
+            color: $white;
+            background-color: #26053071;
+
+            top: 0;
+            right: -370%;
+
+            font-family: "Inter", sans-serif;
+            font-style: normal;
+            font-weight: normal;
+            font-size: 1.6rem;
+
+            width: max-content;
+
+            transition: 0.32s;
+            opacity: 0;
+        }
+
+        &:hover {
+            &::after {
+                top: -240%;
+                opacity: 1;
             }
         }
     }

@@ -130,6 +130,27 @@ section.hero {
 
                 background: $white;
 
+                &.welcome {
+                    justify-content: center;
+                    align-items: flex-start;
+                    width: 30rem;
+
+                    margin: 0 auto;
+
+                    picture {
+                        width: 100%;
+                        @include flex(row, center, center);
+                    }
+
+                    h4 {
+                        margin: 0;
+                    }
+
+                    small {
+                        font-size: 1.1rem;
+                    }
+                }
+
                 label {
                     width: 100%;
                     @include flex(column, flex-start, flex-start);

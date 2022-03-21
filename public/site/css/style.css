@@ -1,3 +1,4 @@
+@charset "UTF-8";
 @media (prefers-reduced-motion: no-preference) {
   :root {
     scroll-behavior: smooth;
@@ -412,7 +413,7 @@ header div[fluid] div.niv:not(.supermenu div.niv) picture.user img[alt=logado]:h
   position: fixed;
   right: 3rem;
   bottom: 3rem;
-  z-index: 5;
+  z-index: 666;
 }
 
 div.supermenu {
@@ -762,6 +763,25 @@ section.hero div.niv div.niv-form form {
   padding: 4.7rem 4.8rem;
   border-radius: 2.7rem;
   background: #fff;
+}
+section.hero div.niv div.niv-form form.welcome {
+  justify-content: center;
+  align-items: flex-start;
+  width: 30rem;
+  margin: 0 auto;
+}
+section.hero div.niv div.niv-form form.welcome picture {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+}
+section.hero div.niv div.niv-form form.welcome h4 {
+  margin: 0;
+}
+section.hero div.niv div.niv-form form.welcome small {
+  font-size: 1.1rem;
 }
 section.hero div.niv div.niv-form form label {
   width: 100%;
@@ -4802,6 +4822,7 @@ section.carrinho div.niv div.niv-table div.scroll table tbody tr[hide] {
 }
 section.carrinho div.niv div.niv-table span.resumo-evento {
   padding: 5.1rem;
+  padding-right: 2rem;
   border: solid 0.1rem #e7ebee;
   width: 100%;
   border-top: none;
@@ -4818,7 +4839,6 @@ section.carrinho div.niv div.niv-table span.resumo-evento p {
   font-size: 1.4rem;
   line-height: 140%;
   color: #323b4b;
-  max-width: 90%;
   margin-top: 1.7rem;
 }
 @media (max-width: 800px) {
@@ -4970,6 +4990,62 @@ div.up [fluid] div.niv {
   max-width: 70.7rem;
   background: #fff;
   padding: 2.8rem 5.2rem;
+}
+div.up [fluid] div.niv div.niv-top {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  flex-direction: row;
+  width: 100%;
+  margin-bottom: 2.9rem;
+}
+div.up [fluid] div.niv div.niv-top span {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  flex-direction: row;
+  width: 100%;
+  gap: 2rem;
+}
+div.up [fluid] div.niv div.niv-top span h2 {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 3.2rem;
+  line-height: 120%;
+  color: #151515;
+  text-align: left;
+}
+div.up [fluid] div.niv div.niv-top span p {
+  font-weight: 500;
+  font-size: 1.8rem;
+  line-height: 120%;
+  /* identical to box height, or 22px */
+  /* Cinza 1 */
+  color: #151515;
+}
+div.up [fluid] div.niv div.niv-top p {
+  font-size: 1.8rem;
+  line-height: 150%;
+  /* or 27px */
+  text-align: right;
+  letter-spacing: 0.02em;
+  color: #260530;
+}
+div.up [fluid] div.niv div.niv-top p i {
+  font-weight: bold;
+  font-style: normal;
+  position: relative;
+}
+div.up [fluid] div.niv div.niv-top p i::after {
+  height: 1.2rem;
+  width: 12.6rem;
+  content: "";
+  position: absolute;
+  background: url("/site/assets/img/text_draw.svg");
+  background-size: 100% 100%;
+  bottom: -1.2rem;
+  right: -1rem;
 }
 div.up [fluid] div.niv main {
   width: 100%;
@@ -5171,7 +5247,6 @@ div.up [fluid] div.close:hover {
   opacity: 0.7;
 }
 div.up[hide] {
-  transform: scale(0);
   opacity: 0;
   pointer-events: none;
   background: none;
@@ -5751,7 +5826,7 @@ body#orcamento-lista section.coqueteis-drinks div.niv div.niv-content div.box in
 }
 body#orcamento-lista div.next-step {
   width: 100%;
-  height: 12rem;
+  height: 8rem;
   position: fixed;
   bottom: 0;
   left: 0;
@@ -6262,6 +6337,36 @@ body#orcamento-carrinho div.next-step input:hover,
 body#orcamento-carrinho div.next-step button:hover {
   background: #e5db00;
   color: #260530;
+}
+body#orcamento-carrinho i.reduced {
+  font-size: 2.3rem;
+  color: #56076d;
+  cursor: pointer;
+  margin-right: 1rem;
+  position: relative;
+}
+body#orcamento-carrinho i.reduced::after {
+  content: "Usar quantidade mínima";
+  position: absolute;
+  padding: 1rem;
+  border-radius: 1.5rem;
+  color: #fff;
+  background-color: #26053071;
+  top: 0;
+  right: -370%;
+  font-family: "Inter", sans-serif;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 1.6rem;
+  width: -webkit-max-content;
+  width: -moz-max-content;
+  width: max-content;
+  transition: 0.32s;
+  opacity: 0;
+}
+body#orcamento-carrinho i.reduced:hover::after {
+  top: -240%;
+  opacity: 1;
 }
 
 body.minha-area {

@@ -14,14 +14,13 @@
 
 
 @section('conteudo')
-
     <div class="row">
         <div class="col-9">
 
             <div class="row"">
 
-                               
-                    <div class=" col-sm-12 col-md-6 mb-3"
+                                       
+                            <div class="   col-sm-12 col-md-6 mb-3"
                 style=" border-radius: 5px; background-color:var(--principal); width: 100%;">
 
                 <a name="" id="button-add" class="btn" style="height: 100%; padding-left: 0;"
@@ -82,7 +81,8 @@
                                                         <a class="dropdown-item"
                                                             href="{{ route('painel.noticia.editar', ['noticia' => $noticia]) }}">Editar</a>
                                                         <div class="dropdown-divider"></div>
-                                                        <a class="dropdown-item" style="color: red" href="{{route('painel.noticia.deletar', ['noticia' => $noticia])}}">Excluir</a>
+                                                        <a class="dropdown-item" style="color: red"
+                                                            href="{{ route('painel.noticia.deletar', ['noticia' => $noticia]) }}">Excluir</a>
                                                     </div>
                                                 </div>
 
@@ -111,41 +111,47 @@
         <div class="card filter-body">
             <div class="card-body">
 
-                <form id="form-filtro" action="{{route('painel.noticias')}}" method="POST">
+                <form id="form-filtro" action="{{ route('painel.noticias') }}" method="POST">
                     @csrf
                     <div class="mb-3">
                         <label for="titulo">Título</label>
-                        <input id="titulo" name="titulo" type="text" class="form-control" @if (isset($filtros) && isset($filtros['titulo'])) value="{{ $filtros['titulo'] }}" @endif>
+                        <input id="titulo" name="titulo" type="text" class="form-control"
+                            @if (isset($filtros) && isset($filtros['titulo'])) value="{{ $filtros['titulo'] }}" @endif>
                     </div>
                     <div class="mb-3">
                         <label class="control-label">Categoria</label>
                         <select class="form-control" name="categoria_id">
                             <option value="-1">Todas</option>
                             @foreach (\App\Models\Categoria::all() as $categoria)
-                                <option value="{{ $categoria->id }}"  @if(isset($filtros) && isset($filtros["categoria_id"]) && $filtros["categoria_id"] == $categoria->id) selected @endif >{{ $categoria->nome }}</option>
+                                <option value="{{ $categoria->id }}" @if (isset($filtros) && isset($filtros['categoria_id']) && $filtros['categoria_id'] == $categoria->id) selected @endif>
+                                    {{ $categoria->nome }}</option>
                             @endforeach
                         </select>
                     </div>
                     <div class="mb-3">
                         <label for="autor">Autor</label>
-                        <input id="autor" name="autor" type="text" class="form-control" @if (isset($filtros) && isset($filtros['autor'])) value="{{ $filtros['autor'] }}" @endif>
+                        <input id="autor" name="autor" type="text" class="form-control"
+                            @if (isset($filtros) && isset($filtros['autor'])) value="{{ $filtros['autor'] }}" @endif>
                     </div>
                     <div class="mb-3">
                         <label for="publicacao">Data de Publicação</label>
-                        <input id="publicacao" name="publicacao" type="date" class="form-control" @if (isset($filtros) && isset($filtros['publicacao'])) value="{{ $filtros['publicacao'] }}" @endif>
+                        <input id="publicacao" name="publicacao" type="date" class="form-control"
+                            @if (isset($filtros) && isset($filtros['publicacao'])) value="{{ $filtros['publicacao'] }}" @endif>
                     </div>
                 </form>
 
 
 
                 <div class="buttons-row">
-                    <div>
-                        <button id="btn-filtrar" type="button" class="btn btn-success waves-effect waves-light">
+                    <div class="col-6">
+                        <button id="btn-filtrar" type="button" style="width:100%;"
+                            class="btn btn-success waves-effect waves-light">
                             <i class="bx bx-check-double font-size-16 align-middle me-2"></i> Filtrar
                         </button>
                     </div>
-                    <div>
-                        <button id="btn-limpar" type="button" class="btn btn-danger waves-effect waves-light">
+                    <div class="col-6">
+                        <button id="btn-limpar" type="button" style="width:100%;"
+                            class="btn btn-danger waves-effect waves-light">
                             <i class="bx bx-block font-size-16 align-middle me-2"></i> Limpar
                         </button>
                     </div>
@@ -154,7 +160,6 @@
         </div>
     </div>
     </div>
-
 @endsection
 
 
@@ -298,11 +303,11 @@
                 }
             });
 
-            $("#btn-filtrar").click(function(){
+            $("#btn-filtrar").click(function() {
                 $("#form-filtro").submit();
             });
 
-            $("#btn-limpar").click(function(){
+            $("#btn-limpar").click(function() {
                 $("input[type!='hidden']").val("");
                 $("select").val("-1");
             });
