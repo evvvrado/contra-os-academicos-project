@@ -956,7 +956,7 @@ div.up {
                         font-weight: 600;
                         font-size: 3.2rem;
                         line-height: 120%;
-                        color: $dark-grey;
+                        color: $dark-purple;
                         text-align: left;
                     }
 
@@ -1182,7 +1182,7 @@ div.up {
             }
 
             button {
-                height: 4.3rem;
+                height: 7.300000000000001rem;
                 width: 100%;
                 max-width: 21.1rem;
 
@@ -2054,7 +2054,7 @@ body#orcamento-confirm {
 
     div.next-step {
         width: 100%;
-        height: 12rem;
+        height: 8rem;
 
         position: fixed;
         bottom: 0;
@@ -2533,7 +2533,7 @@ body#orcamento-carrinho {
 
     div.next-step {
         width: 100%;
-        height: 12rem;
+        height: 8rem;
 
         position: fixed;
         bottom: 0;
@@ -2617,6 +2617,8 @@ body#orcamento-carrinho {
         &::after {
             content: "Usar quantidade mínima";
             position: absolute;
+
+            pointer-events: none;
 
             padding: 1rem;
             border-radius: 1.5rem;

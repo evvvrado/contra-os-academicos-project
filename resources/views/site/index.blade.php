@@ -67,7 +67,7 @@
                 <span>
                     <h4>Bem vindo,</h4>
                     <h2> {{ session()->get("lead")["nome"] }}</h2>
-                    <a href=""><small>Não sou eu</small></a>
+                    <a href=""><small>Não é você? clique aqui!</small></a>
                 </span>
 
 

@@ -5013,7 +5013,7 @@ div.up [fluid] div.niv div.niv-top span h2 {
   font-weight: 600;
   font-size: 3.2rem;
   line-height: 120%;
-  color: #151515;
+  color: #260530;
   text-align: left;
 }
 div.up [fluid] div.niv div.niv-top span p {
@@ -5216,7 +5216,7 @@ div.up [fluid] div.niv div.adicionais div.boxes .box input[type=checkbox]:checke
   background-repeat: no-repeat;
 }
 div.up [fluid] div.niv button {
-  height: 4.3rem;
+  height: 7.3rem;
   width: 100%;
   max-width: 21.1rem;
   margin: 0 auto;
@@ -5954,7 +5954,7 @@ body#orcamento-confirm {
 }
 body#orcamento-confirm div.next-step {
   width: 100%;
-  height: 12rem;
+  height: 8rem;
   position: fixed;
   bottom: 0;
   z-index: 6;
@@ -6275,7 +6275,7 @@ body#orcamento-confirm section.coqueteis-drinks div.niv div.niv-content div.box 
 
 body#orcamento-carrinho div.next-step {
   width: 100%;
-  height: 12rem;
+  height: 8rem;
   position: fixed;
   bottom: 0;
   left: 0;
@@ -6348,6 +6348,7 @@ body#orcamento-carrinho i.reduced {
 body#orcamento-carrinho i.reduced::after {
   content: "Usar quantidade mínima";
   position: absolute;
+  pointer-events: none;
   padding: 1rem;
   border-radius: 1.5rem;
   color: #fff;
