@@ -35,9 +35,7 @@
                                 <th width="456">Descrição</th>
                                 {{-- <th width="175">Valor</th> --}}
                                 <th width="200">Quantidade</th>
-                                {{-- <th width="210">Total</th> --}}
-                                <th width="200">Mensagem de aviso</th>
-                                <th width="200">Resumo do Evento</th>
+                                <th width="200"></th>
                             </tr>
                         </thead>
 
@@ -60,7 +58,6 @@
                                    </td> --}}
 
                                 <td>
-                                    <i class='bx bxs-user-minus reduced'></i>
                                     <input value="1" disabled type="tel" placeholder="250" name="quantidade-produto">
                                 </td>
                                 {{-- <td>
@@ -68,6 +65,11 @@
                                         R$ {{ number_format(session()->get('total_orcamento_produtos'), 2, ',', '.') }}
                                     </strong>
                                 </td> --}}
+
+
+                                <td>
+                                    <input type="checkbox" class="reduced" name="" id="">
+                                </td>
                             </tr>
 
 
@@ -82,6 +84,7 @@
                                     <p class="descricao-produto">O uso de 5 bartenders por pessoa</p>
                                 </td>
 
+
                                 {{-- <td>
                                 <strong class="total-produto">
                                     R$ {{ number_format(session()->get("total_orcamento_produtos"), 2, ",", ".") }}
@@ -89,7 +92,6 @@
                                    </td> --}}
 
                                 <td>
-                                    <i class='bx bxs-user-minus reduced'></i>
                                     <input value="1" disabled type="tel" placeholder="250" name="quantidade-produto">
                                 </td>
                                 {{-- <td>
@@ -97,6 +99,11 @@
                                         R$ {{ number_format(session()->get('total_orcamento_produtos'), 2, ',', '.') }}
                                     </strong>
                                 </td> --}}
+
+
+                                <td>
+                                    <input type="checkbox" class="reduced" name="" id="">
+                                </td>
                             </tr>
 
 
@@ -111,6 +118,7 @@
                                     <p class="descricao-produto">O uso de 5 Barback por pessoa</p>
                                 </td>
 
+
                                 {{-- <td>
                                 <strong class="total-produto">
                                     R$ {{ number_format(session()->get("total_orcamento_produtos"), 2, ",", ".") }}
@@ -118,14 +126,18 @@
                                    </td> --}}
 
                                 <td>
-                                    <i class='bx bx-user-minus reduced'></i>
-                                    <input value="1" type="tel" placeholder="250" name="quantidade-produto">
+                                    <input value="1" disabled type="tel" placeholder="250" name="quantidade-produto">
                                 </td>
                                 {{-- <td>
                                     <strong class="total-produto">
                                         R$ {{ number_format(session()->get('total_orcamento_produtos'), 2, ',', '.') }}
                                     </strong>
                                 </td> --}}
+
+
+                                <td>
+                                    <input type="checkbox" class="reduced" name="" id="">
+                                </td>
                             </tr>
 
 
@@ -140,6 +152,7 @@
                                     <p class="descricao-produto">O uso de 5 Copeiras por pessoa</p>
                                 </td>
 
+
                                 {{-- <td>
                                 <strong class="total-produto">
                                     R$ {{ number_format(session()->get("total_orcamento_produtos"), 2, ",", ".") }}
@@ -147,7 +160,6 @@
                                    </td> --}}
 
                                 <td>
-                                    <i class='bx bxs-user-minus reduced'></i>
                                     <input value="1" disabled type="tel" placeholder="250" name="quantidade-produto">
                                 </td>
                                 {{-- <td>
@@ -155,6 +167,11 @@
                                         R$ {{ number_format(session()->get('total_orcamento_produtos'), 2, ',', '.') }}
                                     </strong>
                                 </td> --}}
+
+
+                                <td>
+                                    <input type="checkbox" class="reduced" name="" id="">
+                                </td>
                             </tr>
 
 
@@ -169,6 +186,7 @@
                                     <p class="descricao-produto">O uso de 5 Estruturas por pessoa</p>
                                 </td>
 
+
                                 {{-- <td>
                                 <strong class="total-produto">
                                     R$ {{ number_format(session()->get("total_orcamento_produtos"), 2, ",", ".") }}
@@ -176,7 +194,6 @@
                                    </td> --}}
 
                                 <td>
-                                    <i class='bx bx-user-minus reduced'></i>
                                     <input value="1" disabled type="tel" placeholder="250" name="quantidade-produto">
                                 </td>
                                 {{-- <td>
@@ -184,6 +201,11 @@
                                         R$ {{ number_format(session()->get('total_orcamento_produtos'), 2, ',', '.') }}
                                     </strong>
                                 </td> --}}
+
+
+                                <td>
+                                    <input type="checkbox" class="reduced" name="" id="">
+                                </td>
                             </tr>
 
 
@@ -219,6 +241,18 @@
 
                         </tbody>
                     </table>
+
+                    <span class="resumo-evento">
+                        <strong>Mensagem de aviso</strong>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Accumsan molestie facilisi nunc, platea.
+                            Ut sit mauris sociis imperdiet nulla cras magna. Habitant nulla
+                            et
+                            hac mattis egestas vulputate mauris lobortis odio. Sed risus, a dui, cras. Nisl eget duis
+                            fermentum scelerisque pretium. Arcu vel eget amet arcu in euismod
+                            vitae.
+                            Amet semper id amet vel purus ut. Eget integer risus in commodo interdum ac nulla. Id in
+                            sagittis, sagittis libero.</p>
+                    </span>
 
                     <span class="resumo-evento">
                         <strong>Resumo do evento</strong>

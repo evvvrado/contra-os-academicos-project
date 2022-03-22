@@ -38,8 +38,8 @@
                                     <th width="456">Descrição</th>
                                     <th width="175">Valor</th>
                                     <th width="221">Quantidade</th>
+                                    <th width="221">Mínima</th>
                                     <th width="210">Total</th>
-                                    <th width="210">Resumo do Evento</th>
                                 </tr>
                             </thead>
 
@@ -133,6 +133,10 @@
                                             <input value="1" type="tel" placeholder="250" name="quantidade-produto">
                                         </td>
 
+
+                                        <td>
+                                            <input type="checkbox" class="reduced" name="" id="">
+                                        </td>
 
                                         <td>
                                             <strong class="total-produto">
