@@ -4840,7 +4840,6 @@ section.carrinho div.niv div.niv-table div.scroll table tbody tr td input[type=c
 }
 section.carrinho div.niv div.niv-table div.scroll table tbody tr td input[type=checkbox]:checked {
   border-color: #27ae60;
-  pointer-events: none;
 }
 section.carrinho div.niv div.niv-table div.scroll table tbody tr td input[type=checkbox]:checked::after {
   background: #27ae60;
