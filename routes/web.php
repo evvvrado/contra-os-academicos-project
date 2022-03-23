@@ -28,9 +28,10 @@ Route::middleware(['orcamento'])->group(function () {
 
     Route::get('/orcamento/servicos', [\App\Http\Controllers\OrcamentoController::class, 'orcamentoENCERRAR'])->name("site.orcamento.encerrar");
     Route::post('/orcamento/servicos/salvar', [\App\Http\Controllers\OrcamentoController::class, 'salvar_servicos_inclusos'])->name("site.orcamento.servicos.salvar");
-    
+
     Route::get('/orcamento/extras', [\App\Http\Controllers\OrcamentoController::class, 'orcamentoENCERRAR2'])->name("site.orcamento.encerrar_2");
     Route::post('/orcamento/salvar_orcamento', [\App\Http\Controllers\OrcamentoController::class, 'salvarorcamento'])->name("site.orcamento.salvar_orcamento");
+    Route::get('/orcamento/acesso', [\App\Http\Controllers\OrcamentoController::class, 'primeiro_acesso'])->name("site.orcamento.finalizado");
     Route::get('/orcamento/finalizar', [\App\Http\Controllers\OrcamentoController::class, 'finalizar'])->name("site.orcamento.finalizar");
 
 

@@ -4400,6 +4400,7 @@ section.tipo div.niv div.niv-content div.scroll div.box input[type=submit] {
   height: 5rem;
   width: 100%;
   max-width: 19.8rem;
+  cursor: pointer;
   z-index: 2;
   font-weight: bold;
   padding: 1.6rem 5.5rem;
@@ -4962,6 +4963,83 @@ section.carrinho div.niv div.niv-send button {
 section.carrinho div.niv div.niv-send button:hover {
   color: #fff;
   background: #56076d;
+}
+section.carrinho div.niv div.niv-content {
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 3rem;
+  background-color: #260530;
+  border-radius: 5rem;
+  padding: 6rem;
+  color: #fff;
+}
+section.carrinho div.niv div.niv-content h2 {
+  color: #e5db00;
+}
+section.carrinho div.niv div.niv-content h2,
+section.carrinho div.niv div.niv-content p {
+  max-width: 70%;
+  text-align: center;
+}
+section.carrinho div.niv div.niv-content button {
+  font-style: normal;
+  font-weight: bold;
+  font-size: 2rem;
+  line-height: 6rem;
+  letter-spacing: 0.01em;
+  text-align: center;
+  color: #260530;
+  height: 6rem;
+  background: #e5db00;
+  border-bottom: 3.2rem;
+  width: 100%;
+  max-width: 30.9rem;
+  transition: 0.32s;
+  padding: 0 4.1rem;
+  border-radius: 3rem;
+}
+section.carrinho div.niv div.niv-content button:hover {
+  color: #fff;
+  background: #56076d;
+}
+section.carrinho div.niv div.niv-content div.button_list {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+  gap: 2rem;
+  flex-wrap: nowrap;
+  /**
+
+  @include responsive(1400px) {}
+  @include responsive(1200px) {}
+  @include responsive(992px) {}
+  @include responsive(730px) {}
+  @include responsive(600px) {}
+
+  **/
+}
+section.carrinho div.niv div.niv-content div.button_list button.alert {
+  background: #985394;
+  color: #fff;
+}
+section.carrinho div.niv div.niv-content div.button_list button.alert:hover {
+  border: 0.1rem solid darkred;
+}
+section.carrinho div.niv div.niv-content div.button_list button.cancel {
+  background: #fff;
+  color: #6c7175;
+}
+section.carrinho div.niv div.niv-content div.button_list button.cancel:hover {
+  opacity: 0.7;
+}
+@media (max-width: 400px) {
+  section.carrinho div.niv div.niv-content div.button_list {
+    flex-direction: column;
+  }
 }
 @media (max-width: 400px) {
   section.carrinho div.niv div.niv-top {
@@ -6368,6 +6446,7 @@ body#orcamento-carrinho div.next-step button {
   color: #fff;
   background: #dbbf00;
   text-transform: uppercase;
+  cursor: pointer;
   font-size: 1.5rem;
   border-radius: 1.1rem;
   display: flex;

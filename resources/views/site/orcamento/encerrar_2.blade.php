@@ -170,26 +170,6 @@
 
 
 
-    <div class="sucess_modal modal">
-        <div fluid>
-            <div class="niv">
-                <div class="box">
-                    <picture>
-                        <img src="{{ asset('site/assets/img/drink_modal.png') }}" alt="">
-                    </picture>
-                    <h2 style="color: green">Orçamento realizado com sucesso!</h2>
-                    <p>Complete seu cadastro registrando uma senha para a sua conta.</p>
-                    <div class="button_list">
-                        <button class="sucess" onclick="">Completar</button>
-                        <button class="alert" onclick="">Sair</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="close-modal">
-        </div>
-    </div>
-
 @endsection
 
 
@@ -226,10 +206,6 @@
 
         $('section.carrinho div.niv div.niv-send button').click(() => {
             window.location.href = '/';
-        })
-
-        $('body#orcamento-carrinho div.next-step input').click(() => {
-            $('div.sucess_modal').showModal();
         })
     </script>
 @endsection
