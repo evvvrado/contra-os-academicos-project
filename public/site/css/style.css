@@ -7237,9 +7237,10 @@ body.minha-area#matriculas-aluno-detalhes section.mA_showcase .container-fluid .
   justify-content: flex-start;
   flex-direction: row;
   gap: 2rem;
-  padding-top: 3rem;
+  padding: 3rem;
   width: 100%;
-  padding-bottom: 6rem;
+  background: #56076d;
+  border-radius: 0.5rem;
 }
 body.minha-area#matriculas-aluno-detalhes section.mA_showcase .container-fluid .container-fav .top picture {
   width: 14rem;
@@ -7256,11 +7257,67 @@ body.minha-area#matriculas-aluno-detalhes section.mA_showcase .container-fluid .
 body.minha-area#matriculas-aluno-detalhes section.mA_showcase .container-fluid .container-fav .top h2 {
   font-size: 3.2rem;
   margin: 0;
+  color: #fff;
 }
 body.minha-area#matriculas-aluno-detalhes section.mA_showcase .container-fluid .container-fav .top h2 p {
   font-size: 1.6rem;
   margin: 0;
   margin-top: 1rem;
+  color: #dbbf00;
+}
+body.minha-area#matriculas-aluno-detalhes section.mA_showcase .container-fluid .container-fav .top .sub {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-direction: row;
+  gap: 2rem;
+  width: 100%;
+  max-width: 19.4rem;
+}
+body.minha-area#matriculas-aluno-detalhes section.mA_showcase .container-fluid .container-fav .top .sub.pagar {
+  justify-content: flex-end;
+  max-width: unset;
+}
+body.minha-area#matriculas-aluno-detalhes section.mA_showcase .container-fluid .container-fav .top .sub.pagar picture {
+  height: 5.5rem;
+  width: 5.5rem;
+  border-radius: 100%;
+  transition: 0.32s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+  background-color: green;
+  color: #fff;
+  cursor: pointer;
+}
+body.minha-area#matriculas-aluno-detalhes section.mA_showcase .container-fluid .container-fav .top .sub.pagar picture img {
+  width: 30%;
+  height: 30%;
+  -o-object-fit: unset;
+     object-fit: unset;
+  filter: brightness(100);
+}
+body.minha-area#matriculas-aluno-detalhes section.mA_showcase .container-fluid .container-fav .top .sub.pagar picture:hover {
+  background-color: #56076d;
+  border: solid 1px #fff;
+}
+body.minha-area#matriculas-aluno-detalhes section.mA_showcase .container-fluid .container-fav .top .sub.pagar picture:hover img {
+  mix-blend-mode: unset;
+  filter: brightness(100);
+}
+body.minha-area#matriculas-aluno-detalhes section.mA_showcase .container-fluid .container-fav .top .sub picture.thumb {
+  height: 4.7rem;
+  width: 4.7rem;
+  border-radius: 100%;
+  background-color: #fbfbfb;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+}
+body.minha-area#matriculas-aluno-detalhes section.mA_showcase .container-fluid .container-fav .top .sub span {
+  font-size: 1.2rem;
 }
 body.minha-area#matriculas-aluno-detalhes section.mA_showcase .container-fluid .container-fav .info {
   margin-top: 2rem;

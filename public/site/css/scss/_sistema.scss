@@ -897,10 +897,13 @@ body.minha-area {
                         @include flex(row, center, flex-start);
                         gap: 2rem;
 
-                        padding-top: 3rem;
+                        padding: 3rem;
 
                         width: 100%;
-                        padding-bottom: 6rem;
+                        // padding-bottom: 6rem;
+
+                        background: $system-main;
+                        border-radius: 0.5rem;
 
                         picture {
                             width: 14rem;
@@ -913,11 +916,69 @@ body.minha-area {
                         h2 {
                             font-size: 3.2rem;
                             margin: 0;
+                            color: $white;
 
                             p {
                                 font-size: 1.6rem;
                                 margin: 0;
                                 margin-top: 1rem;
+                                color: $system-box-secondary;
+                            }
+                        }
+
+                        .sub {
+                            @include flex(row, center, space-between);
+                            gap: 2rem;
+                            width: 100%;
+                            max-width: 19.4rem;
+
+                            &.pagar {
+                                justify-content: flex-end;
+                                max-width: unset;
+
+                                picture {
+                                    height: 5.5rem;
+                                    width: 5.5rem;
+
+                                    border-radius: 100%;
+
+                                    transition: 0.32s;
+
+                                    @include flex(row, center, center);
+
+                                    background-color: green;
+                                    color: $white;
+                                    cursor: pointer;
+                                    img {
+                                        width: 30%;
+                                        height: 30%;
+                                        object-fit: unset;
+                                        filter: brightness(100);
+                                    }
+                                    &:hover {
+                                        background-color: $system-main;
+                                        border: solid 1px $white;
+
+                                        img {
+                                            mix-blend-mode: unset;
+                                            filter: brightness(100);
+                                        }
+                                    }
+                                }
+                            }
+
+                            picture.thumb {
+                                height: 4.7rem;
+                                width: 4.7rem;
+
+                                border-radius: 100%;
+                                background-color: $system-header-alternative;
+
+                                @include flex(row, center, center);
+                            }
+
+                            span {
+                                font-size: 1.2rem;
                             }
                         }
                     }
