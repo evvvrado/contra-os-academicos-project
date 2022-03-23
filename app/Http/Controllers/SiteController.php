@@ -11,7 +11,7 @@ use App\Models\Noticia;
 use App\Models\Anuncio;
 use App\Models\Produto;
 use App\Models\Depoimento;
-use App\Models\Lead;
+use App\Models\Cliente;
 use App\Models\Duvida;
 use App\Models\ProdutosIngrediente;
 
@@ -103,10 +103,11 @@ class SiteController extends Controller
 
     public function logarCliente(Request $request)
     {
-        $lead = Lead::where("email", $request->email)->first();
-        if($lead){
-            if($request->senha == $lead->senha){
-                session()->put(["cliente" => $lead->toArray()]);
+        $cliente = Cliente::where("email", $request->email)->first();
+        if($cliente){
+            if($request->senha == $cliente->senha){
+                session()->put(["cliente" => $cliente->toArray()]);
+                session()->put(["lead" => $cliente->toArray()]);
                 return redirect()->route("minha-area.cliente");
             }else{
                 toastr()->error("Informações de usuário incorretas!");

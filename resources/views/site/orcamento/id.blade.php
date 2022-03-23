@@ -19,7 +19,7 @@
         </div>
 
         <div class="niv-form">
-            <form action="{{ route('site.orcamento.evento')}}" method="post">
+            <form action="{{ route('site.lead.cadastrar')}}" method="post">
                 @csrf
                 <label>
                     <span>Nome *</span>
