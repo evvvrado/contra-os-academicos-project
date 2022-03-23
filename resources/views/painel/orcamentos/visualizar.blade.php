@@ -48,6 +48,26 @@ use App\Models\Parametro;
                     </div>
                 </div>
             </div>
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-5">
+                                <label>Checkout de Pagamento</label>
+                                <input type="url" class="form-control">
+                            </div>
+                            <div class="col-5">
+                                <label>Checkout de Compartilhamento</label>
+                                <input type="url" class="form-control">
+                            </div>
+
+                            <div class="col-2 p-1">
+                                <button class="btn btn-primary mt-4" style="width: 100%;">Salvar</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
             <div class="col-12">
                 <div class="card">
