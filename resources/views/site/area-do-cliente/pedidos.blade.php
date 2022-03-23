@@ -5,18 +5,18 @@
 @section('content')
 
 
-<section class="mA_showcase">
-    <div class="container-fluid">
-        <div class="container-fav">
-            <h2>Meus Orçamentos</h2>
+    <section class="mA_showcase">
+        <div class="container-fluid">
+            <div class="container-fav">
+                <h2>Meus Orçamentos</h2>
 
-            <main>
-                <div class="boxes">
-                    {{-- @if (count($aluno->pedidos) <= 0) <h3>Ainda não há nenhum pedido</h3>
+                <main>
+                    <div class="boxes">
+                        {{-- @if (count($aluno->pedidos) <= 0) <h3>Ainda não há nenhum pedido</h3>
 
                         @else
 
-                        @foreach ($aluno->pedidos->sortByDesc("created_at") as $pedido)
+                        @foreach ($aluno->pedidos->sortByDesc('created_at') as $pedido)
                         <div class="box" @if ($pedido->forma == 0)
                             app
                             @elseif($pedido->forma== 1)
@@ -71,67 +71,105 @@
                         @endforeach
                         @endif --}}
 
-                        @if ($orcamentos->count() == 0) <h3>Ainda não há nenhum pedido</h3>
+                        @if ($orcamentos->count() == 0)
+                            <h3>Ainda não há nenhum pedido</h3>
+                        @else
+                            @foreach ($orcamentos->sortByDesc('created_at') as $orcamento)
+                                @php
+                                    $parteData = explode('-', $orcamento->data);
+                                    $dataInvertida = $parteData[1] . '/' . $parteData[2] . '/' . $parteData[0];
+                                @endphp
 
-                            @else
+                                <a href="{{ route('minha-area.cliente-orcamentos', ['orcamento' => $orcamento]) }}">
+                                    <div class="box">
 
-                            @foreach ($orcamentos->sortByDesc("created_at") as $orcamento)
+                                        @switch($orcamento->tipo)
+                                            @case(0)
+                                                <picture class="thumbnail">
+                                                    <img src="{{ asset('site/assets/img/info-banner.png') }}" alt="">
+                                                </picture>
+                                            @break
 
-                            @php
-                                $parteData = explode("-", $orcamento->data);    
-                                $dataInvertida = $parteData[1] . "/" . $parteData[2] . "/" . $parteData[0];
-                            @endphp         
+                                            @case(1)
+                                                <picture class="thumbnail">
+                                                    <img src="{{ asset('site/assets/img/funcionamento_banner.png') }}" alt="">
+                                                </picture>
+                                            @break
 
-                            <a href="{{ route('minha-area.cliente-orcamentos', ['orcamento' => $orcamento]) }}">
-                                <div class="box" app>
+                                            @case(2)
+                                                <picture class="thumbnail">
+                                                    <img src="{{ asset('site/assets/img/supermenu_banner.png') }}" alt="">
+                                                </picture>
+                                            @break
+                                        @endswitch
 
-                                    <strong>Festa {{ $orcamento->tipo }}</strong>
+                                        <strong>Festa {{ config('orcamentos.tipos')[$orcamento->tipo] }}</strong>
 
-                                    <div class="info">
-                                        <div>
-                                            <picture>
-                                                <img src="{{asset('site/assets/sistema/calendar.svg')}}" alt="">
-                                            </picture>
-                                            <p>{{ $dataInvertida }}</p>
+                                        <div class="info">
+                                            <div>
+                                                <picture>
+                                                    <img src="{{ asset('site/assets/sistema/calendar.svg') }}" alt="">
+                                                </picture>
+                                                <p>{{ $dataInvertida }}</p>
+                                            </div>
+                                            <div>
+                                                <picture>
+                                                    <img src="{{ asset('site/assets/sistema/plane.svg') }}" alt="">
+                                                </picture>
+                                                <p>{{ $orcamento->produtos->count() }} Produtos</p>
+                                            </div>
+
+
+                                            <div>
+                                                <picture>
+                                                    <img src="{{ asset('site/assets/sistema/pinData.svg') }}" alt="">
+                                                </picture>
+                                                <p>
+                                                    {{ $orcamento->cep }}
+                                                </p>
+                                            </div>
                                         </div>
-                                        <div>
-                                            <picture>
-                                                <img src="{{asset('site/assets/sistema/plane.svg')}}" alt="">
-                                            </picture>
-                                            <p>{{ $orcamento->produtos->count() }} Produtos</p>
-                                        </div>
+
+                                        {{-- <button>
+                                            Pagar
+                                            <div class="_svg">
+                                                <img src="{{ asset('site/assets/sistema/buttonArrowRight.svg') }}" alt="">
+                                            </div>
+                                        </button>
+
+
+                                        <button>
+                                            Compartilhar
+                                            <div class="_svg">
+                                                <img src="{{ asset('site/assets/sistema/buttonArrowRight.svg') }}" alt="">
+                                            </div>
+                                        </button> --}}
+
+
+                                        @if ($orcamento->situacao == 2)
+                                            <div class="sub pagar">
+                                                <picture>
+                                                    <img src="{{ asset('site/assets/sistema/dollar.svg') }} " alt="">
+                                                </picture>
+                                                <picture>
+                                                    <img src="{{ asset('site/assets/sistema/threeDots.svg') }} " alt="">
+                                                </picture>
+                                            @else
+                                                <div class="sub">
+                                                    <picture>
+                                                        <img src="{{ asset('site/assets/sistema/approved.svg') }} "
+                                                            alt="">
+                                                    </picture>
+
+                                                    <p>{{ config('situacao')[$orcamento->situacao] }}</p>
+                                        @endif
                                     </div>
+                    </div>
+                    </a>
+                    @endforeach
+                    @endif
 
-                                    <button>
-                                        Pagar
-                                        <div class="_svg">
-                                            <img src="{{asset('site/assets/sistema/buttonArrowRight.svg')}}" alt="">
-                                        </div>
-                                    </button>
-
-
-                                    <button>
-                                        Compartilhar
-                                        <div class="_svg">
-                                            <img src="{{asset('site/assets/sistema/buttonArrowRight.svg')}}" alt="">
-                                        </div>
-                                    </button>
-                                    <div class="sub">
-
-                                        <picture>
-                                            <img src="{{ asset('site/assets/sistema/dollar.svg') }} " alt="">
-                                        </picture>
-
-                                        <span>Aguardando Pag.</span>
-                                    </div>
-                                </div>
-                            </a>
-                            
-
-                            @endforeach
-                        @endif
-
-                        {{-- <div class="box --new">
+                    {{-- <div class="box --new">
                             <form action="{{ route('site.orcamento.evento')}}" method="post">
                                 @csrf
                                 <input type="submit" value="Novo Orçamento">
@@ -139,48 +177,18 @@
                             </form>
                         </div> --}}
 
-                        <div class="box --new">
-                            <a href="{{ route('site.orcamento.evento')}}" title="Novo orçamento">
-                                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Capa_1" x="0px" y="0px" viewBox="0 0 490 490"
-                                    style="enable-background:new 0 0 490 490;" xml:space="preserve">
+                    <div class="box --new">
+                        <a href="{{ route('site.orcamento.evento') }}" title="Novo orçamento">
+                            <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1"
+                                id="Capa_1" x="0px" y="0px" viewBox="0 0 490 490" style="enable-background:new 0 0 490 490;"
+                                xml:space="preserve">
+                                <g>
                                     <g>
                                         <g>
-                                            <g>
-                                                <path
-                                                    d="M227.8,174.1v53.7h-53.7c-9.5,0-17.2,7.7-17.2,17.2s7.7,17.2,17.2,17.2h53.7v53.7c0,9.5,7.7,17.2,17.2,17.2     s17.1-7.7,17.1-17.2v-53.7h53.7c9.5,0,17.2-7.7,17.2-17.2s-7.7-17.2-17.2-17.2h-53.7v-53.7c0-9.5-7.7-17.2-17.1-17.2     S227.8,164.6,227.8,174.1z" />
-                                                <path
-                                                    d="M71.7,71.7C25.5,118,0,179.5,0,245s25.5,127,71.8,173.3C118,464.5,179.6,490,245,490s127-25.5,173.3-71.8     C464.5,372,490,310.4,490,245s-25.5-127-71.8-173.3C372,25.5,310.5,0,245,0C179.6,0,118,25.5,71.7,71.7z M455.7,245     c0,56.3-21.9,109.2-61.7,149s-92.7,61.7-149,61.7S135.8,433.8,96,394s-61.7-92.7-61.7-149S56.2,135.8,96,96s92.7-61.7,149-61.7     S354.2,56.2,394,96S455.7,188.7,455.7,245z" />
-                                            </g>
-                                        </g>
-                                    <g>
-                                        </g>
-                                        <g>
-                                        </g>
-                                        <g>
-                                        </g>
-                                        <g>
-                                        </g>
-                                        <g>
-                                        </g>
-                                        <g>
-                                        </g>
-                                        <g>
-                                        </g>
-                                        <g>
-                                        </g>
-                                        <g>
-                                        </g>
-                                        <g>
-                                        </g>
-                                        <g>
-                                        </g>
-                                        <g>
-                                        </g>
-                                        <g>
-                                        </g>
-                                        <g>
-                                        </g>
-                                        <g>
+                                            <path
+                                                d="M227.8,174.1v53.7h-53.7c-9.5,0-17.2,7.7-17.2,17.2s7.7,17.2,17.2,17.2h53.7v53.7c0,9.5,7.7,17.2,17.2,17.2     s17.1-7.7,17.1-17.2v-53.7h53.7c9.5,0,17.2-7.7,17.2-17.2s-7.7-17.2-17.2-17.2h-53.7v-53.7c0-9.5-7.7-17.2-17.1-17.2     S227.8,164.6,227.8,174.1z" />
+                                            <path
+                                                d="M71.7,71.7C25.5,118,0,179.5,0,245s25.5,127,71.8,173.3C118,464.5,179.6,490,245,490s127-25.5,173.3-71.8     C464.5,372,490,310.4,490,245s-25.5-127-71.8-173.3C372,25.5,310.5,0,245,0C179.6,0,118,25.5,71.7,71.7z M455.7,245     c0,56.3-21.9,109.2-61.7,149s-92.7,61.7-149,61.7S135.8,433.8,96,394s-61.7-92.7-61.7-149S56.2,135.8,96,96s92.7-61.7,149-61.7     S354.2,56.2,394,96S455.7,188.7,455.7,245z" />
                                         </g>
                                     </g>
                                     <g>
@@ -213,17 +221,48 @@
                                     </g>
                                     <g>
                                     </g>
-                                </svg>
-                            </a>
-                        </div>
+                                </g>
+                                <g>
+                                </g>
+                                <g>
+                                </g>
+                                <g>
+                                </g>
+                                <g>
+                                </g>
+                                <g>
+                                </g>
+                                <g>
+                                </g>
+                                <g>
+                                </g>
+                                <g>
+                                </g>
+                                <g>
+                                </g>
+                                <g>
+                                </g>
+                                <g>
+                                </g>
+                                <g>
+                                </g>
+                                <g>
+                                </g>
+                                <g>
+                                </g>
+                                <g>
+                                </g>
+                            </svg>
+                        </a>
+                    </div>
 
 
 
-                </div>
+            </div>
             </main>
         </div>
-    </div>
-</section>
+        </div>
+    </section>
 
 
 

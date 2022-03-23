@@ -28,9 +28,10 @@ Route::middleware(['orcamento'])->group(function () {
 
     Route::get('/orcamento/servicos', [\App\Http\Controllers\OrcamentoController::class, 'orcamentoENCERRAR'])->name("site.orcamento.encerrar");
     Route::post('/orcamento/servicos/salvar', [\App\Http\Controllers\OrcamentoController::class, 'salvar_servicos_inclusos'])->name("site.orcamento.servicos.salvar");
-    
+
     Route::get('/orcamento/extras', [\App\Http\Controllers\OrcamentoController::class, 'orcamentoENCERRAR2'])->name("site.orcamento.encerrar_2");
     Route::post('/orcamento/salvar_orcamento', [\App\Http\Controllers\OrcamentoController::class, 'salvarorcamento'])->name("site.orcamento.salvar_orcamento");
+    Route::get('/orcamento/acesso', [\App\Http\Controllers\OrcamentoController::class, 'primeiro_acesso'])->name("site.orcamento.finalizado");
     Route::get('/orcamento/finalizar', [\App\Http\Controllers\OrcamentoController::class, 'finalizar'])->name("site.orcamento.finalizar");
 
 
@@ -181,8 +182,8 @@ Route::post('/minha-area/dados/senha/nova_salvar', [\App\Http\Controllers\AreaCl
 Route::middleware(['cliente'])->group(function () {
     Route::get('/minha-area', [\App\Http\Controllers\AreaClientesController::class, 'clienteArea'])->name("minha-area.cliente");
     Route::get('/minha-area/orcamento/detalhe/{orcamento}', [\App\Http\Controllers\AreaClientesController::class, 'clienteOrcamentos'])->name("minha-area.cliente-orcamentos");
-    Route::get('/minha-area/pedidos', [\App\Http\Controllers\AreaClientesController::class, 'clienteAreaPedidos'])->name("minha-area.cliente-pedidos");
-    Route::get('/minha-area/pedidos/detalhes', [\App\Http\Controllers\AreaClientesController::class, 'clienteAreaPedidosDetalhes'])->name("minha-area.cliente-pedidos-detalhes");
+    Route::get('/minha-area/orcamentos', [\App\Http\Controllers\AreaClientesController::class, 'clienteAreaPedidos'])->name("minha-area.cliente-pedidos");
+    Route::get('/minha-area/orcamentos/detalhes', [\App\Http\Controllers\AreaClientesController::class, 'clienteAreaPedidosDetalhes'])->name("minha-area.cliente-pedidos-detalhes");
     Route::get('/minha-area/matriculas', [\App\Http\Controllers\AreaClientesController::class, 'clienteAreaMatriculas'])->name("minha-area.cliente-matriculas");
     Route::get('/minha-area/matriculas/detalhes', [\App\Http\Controllers\AreaClientesController::class, 'clienteAreaMatriculasDetalhes'])->name("minha-area.cliente-matriculas-detalhes");
     Route::get('/minha-area/dados', [\App\Http\Controllers\AreaClientesController::class, 'clienteAreaDados'])->name("minha-area.cliente-dados");

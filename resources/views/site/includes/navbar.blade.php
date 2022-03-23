@@ -51,7 +51,10 @@
                     </a>
                 @else
                     <a href="{{ route('minha-area.cliente') }}">
-                        <img src="{{ asset(App\Models\Cliente::find(session()->get('cliente')['id'])->avatar) }}"
+                        <img 
+                            @if (App\Models\Cliente::find(session()->get('cliente')['id'])->avatar) 
+                            src="{{ asset(App\Models\Cliente::find(session()->get('cliente')['id'])->avatar) }}"
+                             @else src="{{ asset('admin/images/thumb-padrao.png') }}" @endif
                             alt="logado">
                     </a>
                 @endif

@@ -33,25 +33,25 @@ class OrcamentoController extends Controller
     }
     public function evento()
     {
-        if(!session()->get("lead")){
+        if (!session()->get("lead")) {
             return redirect()->route("site.index");
         }
         return view("site.orcamento.evento");
     }
     public function informacoes($evento)
     {
-        if(!session()->get("lead")){
+        if (!session()->get("lead")) {
             return redirect()->route("site.index");
         }
 
-        switch($evento){
-            case('casamento'):
+        switch ($evento) {
+            case ('casamento'):
                 $tipo = 0;
                 break;
-            case('corporativo'):
+            case ('corporativo'):
                 $tipo = 1;
                 break;
-            case('aniversario'):
+            case ('aniversario'):
                 $tipo = 2;
                 break;
         }
@@ -68,7 +68,7 @@ class OrcamentoController extends Controller
 
     public function cadastrar_etapa1(Request $request)
     {
-        if(!session()->get("lead")){
+        if (!session()->get("lead")) {
             return redirect()->route("site.index");
         }
         $orcamento = Orcamento::find(session()->get("orcamento"));
@@ -79,7 +79,7 @@ class OrcamentoController extends Controller
         $orcamento->qtd_pessoas = $request->pessoas;
         $orcamento->save();
 
-        $parametro = Parametro::first(); 
+        $parametro = Parametro::first();
         // $qtd_drinks = round(($orcamento->pessoas / $parametro->tipos_drinks_numero) * $parametro->tipos_drinks_convidados);
         // session()->put(["qtd_tipos_drinks" => $qtd_drinks]);
 
@@ -93,10 +93,10 @@ class OrcamentoController extends Controller
         // $valores = json_decode($parametro->valor_km_rodado, true);
         // dd($valores);
         // if ($valores) {
-            $ingredientes_filtro = Ingrediente::whereIn('id', [1, 2])
-                ->get();
+        $ingredientes_filtro = Ingrediente::whereIn('id', [1, 2])
+            ->get();
         // } else {
-            // $ingredientes_filtro = Ingrediente::all();
+        // $ingredientes_filtro = Ingrediente::all();
         // }
 
         // dd($ingredientes_filtro);
@@ -109,11 +109,9 @@ class OrcamentoController extends Controller
         $orcamento = Orcamento::find(session()->get("orcamento"));
         $produtos = $orcamento->produtos;
 
-        if($produtos->count() > 0) {
+        if ($produtos->count() > 0) {
             return view("site.orcamento.confirmar", ["produtos" => $produtos]);
-        }
-        else 
-        {
+        } else {
             return redirect()->route("site.orcamento.lista")->with("erro", "Você deve escolher pelo menos um drink");
         }
     }
@@ -133,18 +131,19 @@ class OrcamentoController extends Controller
         return view("site.orcamento.encerrar", ["servicos" => $servicos, "orcamento" => $orcamento]);
     }
 
-    public function salvar_servicos_inclusos(Request $request){
+    public function salvar_servicos_inclusos(Request $request)
+    {
         $orcamento = Orcamento::find(session()->get("orcamento"));
         $dados = $request->all();
-        foreach($dados["servicos"] as $servico_id => $infos){
+        foreach ($dados["servicos"] as $servico_id => $infos) {
             $servico = Servico::find($servico_id);
-            if(!$orcamento->servicos->contains($servico)){
+            if (!$orcamento->servicos->contains($servico)) {
                 $orcamento_servico = new OrcamentoServico;
                 $orcamento_servico->orcamento_id = $orcamento->id;
                 $orcamento_servico->servico_id = $servico_id;
-                if(isset($infos["check_minimo"])){
+                if (isset($infos["check_minimo"])) {
                     $orcamento_servico->qtd = $infos["minimo"];
-                }else{
+                } else {
                     $orcamento_servico->qtd = $infos["ideal"];
                 }
                 $orcamento_servico->valor = $orcamento_servico->qtd * $servico->valor;
@@ -167,10 +166,10 @@ class OrcamentoController extends Controller
         $orcamento = Orcamento::find(session()->get("orcamento"));
 
         $dados = $request->all();
-        foreach($dados["servicos"] as $servico_id => $infos){
-            if($infos["quantidade"] > 0){
+        foreach ($dados["servicos"] as $servico_id => $infos) {
+            if ($infos["quantidade"] > 0) {
                 $servico = Servico::find($servico_id);
-                if(!$orcamento->servicos->contains($servico)){
+                if (!$orcamento->servicos->contains($servico)) {
                     $orcamento_servico = new OrcamentoServico;
                     $orcamento_servico->orcamento_id = $orcamento->id;
                     $orcamento_servico->servico_id = $servico_id;
@@ -183,11 +182,6 @@ class OrcamentoController extends Controller
 
         $orcamento->finalizado = true;
         $orcamento->save();
-
-        $cliente = Cliente::find(session()->get("lead")["id"]);
-        if(!$cliente->senha) {
-            session()->flash("primeiro_login", true);
-        }
 
         // $produto_info = Produto::where('id', $produto->produto_id)->first();
 
@@ -223,22 +217,29 @@ class OrcamentoController extends Controller
         // return view("site.index", ["produtos" => $produtos, "noticias" => $noticias, "publicidade" => $publicidade]);
     }
 
-    public function finalizar(){
-        if(!session()->get("primeiro_login")) {
+    public function finalizar()
+    {
+        return view("site.orcamento.finalizado");
+    }
+
+    public function primeiro_acesso()
+    {
+        $cliente = Cliente::find(session()->get("lead")["id"]);
+        if ($cliente->senha) {
             return redirect()->route("minha-area.cliente-pedidos");
         } else {
             return view("site.area-do-cliente.nova_senha");
         }
     }
 
-    public function escolher_produto(Produto $produto) 
+    public function escolher_produto(Produto $produto)
     {
         $orcamento = Orcamento::find(session()->get("orcamento"));
         $verifica_produto = $orcamento->produtos->contains($produto);
 
         $parametro = Parametro::first();
 
-        if(!$verifica_produto) {
+        if (!$verifica_produto) {
             $qtd_drinks = Round(($orcamento->qtd_pessoas * $parametro->drinks_numero) / $parametro->drinks_convidados);
 
             $produto_insercao = new OrcamentoProduto;
@@ -250,7 +251,7 @@ class OrcamentoController extends Controller
             $ingredientes = $produto->ingredientes;
             foreach ($ingredientes as $ingrediente) {
                 $marca = $ingrediente->marcas->where("padrao", true)->first();
-                if($marca){
+                if ($marca) {
                     $produto_ingrediente_insercao = new OrcamentoProdutoIngrediente;
                     $produto_ingrediente_insercao->orcamento_produto_id = $produto_insercao->id;
                     $produto_ingrediente_insercao->ingrediente_id = $ingrediente->id;
@@ -262,7 +263,7 @@ class OrcamentoController extends Controller
             $acessorios = $produto->acessorios;
             foreach ($acessorios as $acessorio) {
                 $marca = $acessorio->marcas->where("padrao", true)->first();
-                if($marca){
+                if ($marca) {
                     $produto_acessorio_insercao = new OrcamentoProdutoAcessorio;
                     $produto_acessorio_insercao->orcamento_produto_id = $produto_insercao->id;
                     $produto_acessorio_insercao->acessorio_id = $acessorio->id;
@@ -276,12 +277,13 @@ class OrcamentoController extends Controller
         }
     }
 
-    public function remover_produtos() {
+    public function remover_produtos()
+    {
 
         $orcamentoprodutos = OrcamentoProduto::where('orcamento_id', session()->get("orcamento"))->get();
 
-        foreach($orcamentoprodutos as $orcamentoproduto) {
+        foreach ($orcamentoprodutos as $orcamentoproduto) {
             $orcamentoproduto->delete();
         }
-    } 
+    }
 }

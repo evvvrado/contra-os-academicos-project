@@ -28,9 +28,10 @@ $usuario = \App\Models\Usuario::find(session()->get('usuario')['id']);
     @yield("styles")
 
     <style>
-        .bx-minus-circle{
+        .bx-minus-circle {
             font-size: 16px !important;
         }
+
     </style>
 </head>
 
@@ -61,12 +62,14 @@ $usuario = \App\Models\Usuario::find(session()->get('usuario')['id']);
                                 <img src="{{ asset('site/assets/img/_logoBIRITTAS.svg') }}" alt="" width="22">
                             </span>
                             <span class="logo-lg">
-                                <img class="" src="{{ asset('site/assets/img/_logoBIRITTAS.svg') }}" alt="" height="44">
+                                <img class="" src="{{ asset('site/assets/img/_logoBIRITTAS.svg') }}"
+                                    alt="" height="44">
                             </span>
                         </a>
                     </div>
 
-                    <button type="button" class="btn btn-sm px-3 font-size-16 header-item waves-effect" id="vertical-menu-btn" style="color: white;">
+                    <button type="button" class="btn btn-sm px-3 font-size-16 header-item waves-effect"
+                        id="vertical-menu-btn" style="color: white;">
                         <i class="fa fa-fw fa-bars"></i>
                     </button>
 
@@ -126,19 +129,24 @@ $usuario = \App\Models\Usuario::find(session()->get('usuario')['id']);
                             <div class="px-lg-2">
                                 <div class="row g-0">
                                     <div class="col">
-                                        <a class="dropdown-icon-item" href="https://www.instagram.com/abs.brasil/" target="_blank">
-                                            <img src="{{ asset('admin/images/icone_instagram.png') }}" alt="Instagram">
+                                        <a class="dropdown-icon-item" href="https://www.instagram.com/abs.brasil/"
+                                            target="_blank">
+                                            <img src="{{ asset('admin/images/icone_instagram.png') }}"
+                                                alt="Instagram">
                                             <span>Instagram</span>
                                         </a>
                                     </div>
                                     <div class="col">
-                                        <a class="dropdown-icon-item" href="https://www.facebook.com/ABS-Brasil-105852698310241" target="_blank">
+                                        <a class="dropdown-icon-item"
+                                            href="https://www.facebook.com/ABS-Brasil-105852698310241" target="_blank">
                                             <img src="{{ asset('admin/images/icone_facebook.png') }}" alt="Facebook">
                                             <span>Facebook</span>
                                         </a>
                                     </div>
                                     <div class="col">
-                                        <a class="dropdown-icon-item" href="https://www.youtube.com/channel/UCjm6Wo9sSzg3L88oFicZvYg" target="_blank">
+                                        <a class="dropdown-icon-item"
+                                            href="https://www.youtube.com/channel/UCjm6Wo9sSzg3L88oFicZvYg"
+                                            target="_blank">
                                             <img src="{{ asset('admin/images/icone_youtube.png') }}" alt="Youtube">
                                             <span>Youtube</span>
                                         </a>
@@ -176,12 +184,14 @@ $usuario = \App\Models\Usuario::find(session()->get('usuario')['id']);
                     </div>
 
                     <div class="dropdown d-inline-block">
-                        <button type="button" class="btn header-item noti-icon waves-effect" id="page-header-notifications-dropdown" data-bs-toggle="dropdown" aria-haspopup="true"
+                        <button type="button" class="btn header-item noti-icon waves-effect"
+                            id="page-header-notifications-dropdown" data-bs-toggle="dropdown" aria-haspopup="true"
                             aria-expanded="false">
                             <i class="bx bx-bell bx-tada"></i>
                             {{-- <span class="badge bg-danger rounded-pill">0</span> --}}
                         </button>
-                        <div class="dropdown-menu dropdown-menu-lg dropdown-menu-end p-0" aria-labelledby="page-header-notifications-dropdown">
+                        <div class="dropdown-menu dropdown-menu-lg dropdown-menu-end p-0"
+                            aria-labelledby="page-header-notifications-dropdown">
                             <div class="p-3">
                                 <div class="row align-items-center">
                                     <div class="col">
@@ -216,8 +226,10 @@ $usuario = \App\Models\Usuario::find(session()->get('usuario')['id']);
                     </div>
 
                     <div class="dropdown d-inline-block">
-                        <button type="button" class="btn header-item waves-effect" id="page-header-user-dropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <span class="d-none d-xl-inline-block ms-1" style="color: white;" key="t-henry">{{ session()->get('usuario')['nome'] }}</span>
+                        <button type="button" class="btn header-item waves-effect" id="page-header-user-dropdown"
+                            data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <span class="d-none d-xl-inline-block ms-1" style="color: white;"
+                                key="t-henry">{{ session()->get('usuario')['nome'] }}</span>
                             <i class="mdi mdi-chevron-down d-none d-xl-inline-block"></i>
                         </button>
                         <div class="dropdown-menu dropdown-menu-end">
@@ -228,7 +240,8 @@ $usuario = \App\Models\Usuario::find(session()->get('usuario')['id']);
                                     key="t-settings">Settings</span></a>
                             <a class="dropdown-item" href="#"><i class="bx bx-lock-open font-size-16 align-middle me-1"></i> <span key="t-lock-screen">Lock screen</span></a>
                             <div class="dropdown-divider"></div> --}}
-                            <a class="dropdown-item text-danger" href="{{ route('painel.sair') }}"><i class="bx bx-power-off font-size-16 align-middle me-1 text-danger"></i> <span
+                            <a class="dropdown-item text-danger" href="{{ route('painel.sair') }}"><i
+                                    class="bx bx-power-off font-size-16 align-middle me-1 text-danger"></i> <span
                                     key="t-logout">Sair</span></a>
                         </div>
                     </div>
@@ -273,7 +286,8 @@ $usuario = \App\Models\Usuario::find(session()->get('usuario')['id']);
                             <ul class="sub-menu" aria-expanded="false">
                                 <li><a href="{{ route('painel.produtos') }}" key="t-default">Produtos</a></li>
                                 <li><a href="{{ route('painel.servicos') }}" key="t-default">Serviços</a></li>
-                                <li><a href="{{ route('painel.ingredientes') }}" key="t-default">Ingredientes</a></li>
+                                <li><a href="{{ route('painel.ingredientes') }}" key="t-default">Ingredientes</a>
+                                </li>
                                 <li><a href="{{ route('painel.acessorios') }}" key="t-default">Acessórios</a></li>
                                 <li><a href="{{ route('painel.parametros') }}" key="t-default">Parâmetros</a></li>
                                 {{-- <li><a href="{{ route('painel.marcas') }}" key="t-default">Marcas</a></li> --}}
@@ -351,7 +365,8 @@ $usuario = \App\Models\Usuario::find(session()->get('usuario')['id']);
                         </div> --}}
                         <div class="col-12">
                             <div class="text-sm-end d-none d-sm-block">
-                                <a href=""><img src="{{ asset('site/img/_logo7seven_black.png') }}" height="20px" alt=""></a>
+                                <a href=""><img src="{{ asset('site/img/_logo7seven_black.png') }}" height="20px"
+                                        alt=""></a>
                             </div>
                         </div>
                     </div>
@@ -376,8 +391,13 @@ $usuario = \App\Models\Usuario::find(session()->get('usuario')['id']);
     <script src="{{ asset('admin/js/jquery.mask.min.js') }}"></script>
 
     <script>
-        $('.dinheiro').mask('#.##0,00', {reverse: true, placeholder: "R$ 0,00"});
-        $('.telefone_ddd').mask('(00) 00000-0000', {placeholder: "(00) 00000-0000"});
+        $('.dinheiro').mask('#.##0,00', {
+            reverse: true,
+            placeholder: "R$ 0,00"
+        });
+        $('.telefone_ddd').mask('(00) 00000-0000', {
+            placeholder: "(00) 00000-0000"
+        });
     </script>
     @toastr_js
     @toastr_render
@@ -389,14 +409,14 @@ $usuario = \App\Models\Usuario::find(session()->get('usuario')['id']);
     <script src="{{ asset('admin/js/app.js') }}"></script>
     <script>
         window.addEventListener('notificaToastr', event => {
-            if(event.detail.tipo == 'success'){
+            if (event.detail.tipo == 'success') {
                 toastr.success(event.detail.mensagem);
-            }else if(event.detail.tipo == 'error'){
+            } else if (event.detail.tipo == 'error') {
                 toastr.error(event.detail.mensagem);
             }
         });
         var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
-        var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
+        var tooltipList = tooltipTriggerList.map(function(tooltipTriggerEl) {
             return new bootstrap.Tooltip(tooltipTriggerEl)
         })
     </script>

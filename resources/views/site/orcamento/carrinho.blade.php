@@ -137,7 +137,8 @@ use App\Models\Parametro;
                 <span>
                     <h2>Meu Carrinho - Resumo dos produtos</h2>
 
-                    <p>Com base no numero de convidados você pode escolher <i>{{ \App\Classes\Orcamento::qtdTiposDrinks($orcamento->qtd_pessoas) }}
+                    <p>Com base no numero de convidados você pode escolher
+                        <i>{{ \App\Classes\Orcamento::qtdTiposDrinks($orcamento->qtd_pessoas) }}
                             drinks</i></p>
                 </span>
 
@@ -315,7 +316,7 @@ use App\Models\Parametro;
                                     <td>
                                         <button class="remover-produto"
                                             onclick="escolher_produto({{ $orcamento_produto->produto_id }});
-                                                                                                    $(this).closest('tr').attr('hide', '');">
+                                                                                                        $(this).closest('tr').attr('hide', '');">
                                             <picture>
                                                 <img src="{{ asset('site/assets/img/icon_remove.svg') }}"
                                                     alt="Remover ícone">
@@ -343,7 +344,9 @@ use App\Models\Parametro;
                                     </td>
 
                                     <td>
-                                        <input disabled value="{{ \App\Classes\Orcamento::qtdDrinks($orcamento->qtd_pessoas) }}" type="tel" placeholder="Quantidade">
+                                        <input disabled
+                                            value="{{ \App\Classes\Orcamento::qtdDrinks($orcamento->qtd_pessoas) }}"
+                                            type="tel" placeholder="Quantidade">
                                         {{-- <input hidden value="" type="tel" placeholder="Quantidade"
                                             name="quantidade_produto"> --}}
                                     </td>
@@ -364,21 +367,6 @@ use App\Models\Parametro;
                                     </td>
                                 </tr>
                             @endforeach
-
-                            <tr>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td>
-                                    <strong class="total-produto">
-                                        @php
-                                            session()->put(['total_orcamento_produtos' => $total]);
-                                        @endphp
-                                    </strong>
-                                </td>
-                            </tr>
                         </tbody>
                     </table>
                 </div>

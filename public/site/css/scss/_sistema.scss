@@ -287,10 +287,11 @@ body.minha-area {
                         padding: 2.4rem 2.8rem;
 
                         border-radius: 0.4rem;
+                        transition: 0.32s;
 
                         strong {
                             color: $system-main;
-                            font-size: 1.8rem;
+                            font-size: 2.4rem;
                             display: block;
 
                             margin-bottom: 0.8rem;
@@ -727,14 +728,26 @@ body.minha-area {
                             gap: 3rem;
                             height: unset;
                             min-height: 37.8rem;
+                            width: 28rem;
 
                             cursor: pointer !important;
 
+                            picture.thumbnail {
+                                height: 15.5rem;
+                                width: 100%;
+                                border-radius: 0.5rem;
+                                @include picframe();
+                            }
                             .info {
                                 div {
                                     @include flex(row, center, flex-start);
                                     gap: 1rem;
                                 }
+                            }
+
+                            &:hover {
+                                border-color: black;
+                                opacity: 0.9;
                             }
 
                             &[app] {
@@ -744,7 +757,7 @@ body.minha-area {
                             }
 
                             &.--new {
-                                height: 100%;
+                                height: 45.1rem;
                                 align-items: center;
                                 justify-content: center;
 
@@ -777,6 +790,32 @@ body.minha-area {
                             gap: 2rem;
                             width: 100%;
                             max-width: 19.4rem;
+
+                            &.pagar {
+                                justify-content: center;
+                                max-width: unset;
+
+                                picture {
+                                    height: 5.5rem;
+                                    width: 5.5rem;
+
+                                    transition: 0.32s;
+
+                                    background-color: $system-box-secondary;
+                                    color: $white;
+                                    img {
+                                        mix-blend-mode: darken;
+                                    }
+                                    &:hover {
+                                        background-color: $system-main;
+
+                                        img {
+                                            mix-blend-mode: unset;
+                                            filter: brightness(100);
+                                        }
+                                    }
+                                }
+                            }
 
                             picture {
                                 height: 4.7rem;
@@ -858,10 +897,13 @@ body.minha-area {
                         @include flex(row, center, flex-start);
                         gap: 2rem;
 
-                        padding-top: 3rem;
+                        padding: 3rem;
 
                         width: 100%;
-                        padding-bottom: 6rem;
+                        // padding-bottom: 6rem;
+
+                        background: $system-main;
+                        border-radius: 0.5rem;
 
                         picture {
                             width: 14rem;
@@ -874,11 +916,69 @@ body.minha-area {
                         h2 {
                             font-size: 3.2rem;
                             margin: 0;
+                            color: $white;
 
                             p {
                                 font-size: 1.6rem;
                                 margin: 0;
                                 margin-top: 1rem;
+                                color: $system-box-secondary;
+                            }
+                        }
+
+                        .sub {
+                            @include flex(row, center, space-between);
+                            gap: 2rem;
+                            width: 100%;
+                            max-width: 19.4rem;
+
+                            &.pagar {
+                                justify-content: flex-end;
+                                max-width: unset;
+
+                                picture {
+                                    height: 5.5rem;
+                                    width: 5.5rem;
+
+                                    border-radius: 100%;
+
+                                    transition: 0.32s;
+
+                                    @include flex(row, center, center);
+
+                                    background-color: green;
+                                    color: $white;
+                                    cursor: pointer;
+                                    img {
+                                        width: 30%;
+                                        height: 30%;
+                                        object-fit: unset;
+                                        filter: brightness(100);
+                                    }
+                                    &:hover {
+                                        background-color: $system-main;
+                                        border: solid 1px $white;
+
+                                        img {
+                                            mix-blend-mode: unset;
+                                            filter: brightness(100);
+                                        }
+                                    }
+                                }
+                            }
+
+                            picture.thumb {
+                                height: 4.7rem;
+                                width: 4.7rem;
+
+                                border-radius: 100%;
+                                background-color: $system-header-alternative;
+
+                                @include flex(row, center, center);
+                            }
+
+                            span {
+                                font-size: 1.2rem;
                             }
                         }
                     }
@@ -905,6 +1005,7 @@ body.minha-area {
                                 }
                                 h2 {
                                     margin-top: 2rem;
+                                    margin-bottom: 1rem;
                                     text-align: center;
 
                                     i {
@@ -954,10 +1055,27 @@ body.minha-area {
                                     }
                                 }
 
+                                p {
+                                    text-align: center;
+                                    overflow: hidden;
+
+                                    display: block;
+                                    margin: 0 auto;
+
+                                    color: $system-box-secondary;
+
+                                    width: 0;
+                                    transition: 0.32s;
+                                }
+
                                 &:hover {
                                     cursor: pointer;
                                     h2::before {
                                         width: 40%;
+                                    }
+
+                                    p {
+                                        width: 100%;
                                     }
                                 }
                             }
@@ -1156,8 +1274,46 @@ body.minha-area {
                                                         text-align: center;
                                                         color: $grey;
                                                     }
+                                                    input[type="checkbox"] {
+                                                        height: 2.3rem;
+                                                        width: 3.8rem;
 
-                                                    input {
+                                                        border: solid 0.4rem #eb5757;
+                                                        margin: 0 auto !important;
+
+                                                        border-radius: 2rem;
+                                                        position: relative;
+                                                        transition: 0.32s;
+
+                                                        cursor: pointer;
+
+                                                        @include flex(row, center, center);
+
+                                                        &::after {
+                                                            width: 1.1rem;
+                                                            height: 1.1rem;
+                                                            background: #eb5757;
+
+                                                            border-radius: 100%;
+                                                            transition: 0.32s;
+
+                                                            position: absolute;
+                                                            content: "";
+
+                                                            left: 0.2rem;
+                                                        }
+
+                                                        &:checked {
+                                                            border-color: #27ae60;
+
+                                                            &::after {
+                                                                background: #27ae60;
+                                                                left: 1.8rem;
+                                                            }
+                                                        }
+                                                    }
+
+                                                    input[type="tel"] {
                                                         height: 4.8rem;
                                                         width: 11.4rem;
 
@@ -1192,6 +1348,7 @@ body.minha-area {
 
                                 span.resumo-evento {
                                     padding: 5.1rem;
+                                    padding-right: 2rem;
                                     border: solid 0.1rem $table-border;
                                     width: 100%;
                                     border-top: none;
@@ -1211,7 +1368,7 @@ body.minha-area {
                                         line-height: 140%;
                                         color: $grey;
 
-                                        max-width: 90%;
+                                        // max-width: 90%;
 
                                         margin-top: 1.7rem;
                                     }

@@ -49,11 +49,11 @@
                                                 <td class="sorting_1 dtr-control">{{ $lead->email }}</td>
                                                 <td class="sorting_1 dtr-control">{{ $lead->created_at }}</td>
                                                 @if ($lead->orcamentos->count() > 0)
-                                                    <td>
+                                                    {{-- <td>
                                                         <a class="btn btn-success"
                                                             href="{{ route('painel.leads.orcamento', ['orcamento' => $lead]) }}"
                                                             role="button">Orçamentos</a>
-                                                    </td>
+                                                    </td> --}}
                                                 @else
                                                     <td>
                                                         <a class="btn btn-success" href="#" role="button">Jornada</a>
