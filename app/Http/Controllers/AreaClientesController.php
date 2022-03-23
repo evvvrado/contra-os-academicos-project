@@ -88,7 +88,7 @@ class AreaClientesController extends Controller
 
     public function clienteAreaDadosSenhaNovaSalvar(Request $request)
     {
-        $usuario = Cliente::find(session()->get("Cliente")["id"]);
+        $usuario = Cliente::find(session()->get("lead")["id"]);
         $usuario->senha = $request->senha;
         $usuario->save();
 
