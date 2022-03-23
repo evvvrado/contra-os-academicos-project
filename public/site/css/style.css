@@ -6708,12 +6708,13 @@ body.minha-area section.mA_parcelas .container-fluid .container-fav div.boxes di
   position: relative;
   padding: 2.4rem 2.8rem;
   border-radius: 0.4rem;
+  transition: 0.32s;
 }
 body.minha-area section.mA_showcase .container-fluid .container-fav div.boxes div.box strong,
 body.minha-area section.mA_produtos .container-fluid .container-fav div.boxes div.box strong,
 body.minha-area section.mA_parcelas .container-fluid .container-fav div.boxes div.box strong {
   color: #56076d;
-  font-size: 1.8rem;
+  font-size: 2.4rem;
   display: block;
   margin-bottom: 0.8rem;
 }
@@ -7100,7 +7101,20 @@ body.minha-area#pedidos-aluno section.mA_showcase .container-fluid .container-fa
   gap: 3rem;
   height: unset;
   min-height: 37.8rem;
+  width: 28rem;
   cursor: pointer !important;
+}
+body.minha-area#pedidos-aluno section.mA_showcase .container-fluid .container-fav div.boxes div.box picture.thumbnail {
+  height: 15.5rem;
+  width: 100%;
+  border-radius: 0.5rem;
+  overflow: hidden;
+}
+body.minha-area#pedidos-aluno section.mA_showcase .container-fluid .container-fav div.boxes div.box picture.thumbnail img {
+  height: 100%;
+  width: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
 }
 body.minha-area#pedidos-aluno section.mA_showcase .container-fluid .container-fav div.boxes div.box .info div {
   display: flex;
@@ -7109,12 +7123,16 @@ body.minha-area#pedidos-aluno section.mA_showcase .container-fluid .container-fa
   flex-direction: row;
   gap: 1rem;
 }
+body.minha-area#pedidos-aluno section.mA_showcase .container-fluid .container-fav div.boxes div.box:hover {
+  border-color: black;
+  opacity: 0.9;
+}
 body.minha-area#pedidos-aluno section.mA_showcase .container-fluid .container-fav div.boxes div.box[app] {
   border: solid 1px lime;
   width: 28rem;
 }
 body.minha-area#pedidos-aluno section.mA_showcase .container-fluid .container-fav div.boxes div.box.--new {
-  height: 100%;
+  height: 45.1rem;
   align-items: center;
   justify-content: center;
 }
@@ -7143,6 +7161,27 @@ body.minha-area#pedidos-aluno section.mA_showcase .container-fluid .container-fa
   gap: 2rem;
   width: 100%;
   max-width: 19.4rem;
+}
+body.minha-area#pedidos-aluno section.mA_showcase .container-fluid .container-fav div.boxes .sub.pagar {
+  justify-content: center;
+  max-width: unset;
+}
+body.minha-area#pedidos-aluno section.mA_showcase .container-fluid .container-fav div.boxes .sub.pagar picture {
+  height: 5.5rem;
+  width: 5.5rem;
+  transition: 0.32s;
+  background-color: #dbbf00;
+  color: #fff;
+}
+body.minha-area#pedidos-aluno section.mA_showcase .container-fluid .container-fav div.boxes .sub.pagar picture img {
+  mix-blend-mode: darken;
+}
+body.minha-area#pedidos-aluno section.mA_showcase .container-fluid .container-fav div.boxes .sub.pagar picture:hover {
+  background-color: #56076d;
+}
+body.minha-area#pedidos-aluno section.mA_showcase .container-fluid .container-fav div.boxes .sub.pagar picture:hover img {
+  mix-blend-mode: unset;
+  filter: brightness(100);
 }
 body.minha-area#pedidos-aluno section.mA_showcase .container-fluid .container-fav div.boxes .sub picture {
   height: 4.7rem;
@@ -7245,6 +7284,7 @@ body.minha-area#matriculas-aluno-detalhes section.mA_showcase .container-fluid .
 }
 body.minha-area#matriculas-aluno-detalhes section.mA_showcase .container-fluid .container-fav .info.--special picture h2 {
   margin-top: 2rem;
+  margin-bottom: 1rem;
   text-align: center;
   position: relative;
 }
@@ -7281,11 +7321,23 @@ body.minha-area#matriculas-aluno-detalhes section.mA_showcase .container-fluid .
   height: 2px;
   background-color: #56076d;
 }
+body.minha-area#matriculas-aluno-detalhes section.mA_showcase .container-fluid .container-fav .info.--special picture p {
+  text-align: center;
+  overflow: hidden;
+  display: block;
+  margin: 0 auto;
+  color: #dbbf00;
+  width: 0;
+  transition: 0.32s;
+}
 body.minha-area#matriculas-aluno-detalhes section.mA_showcase .container-fluid .container-fav .info.--special picture:hover {
   cursor: pointer;
 }
 body.minha-area#matriculas-aluno-detalhes section.mA_showcase .container-fluid .container-fav .info.--special picture:hover h2::before {
   width: 40%;
+}
+body.minha-area#matriculas-aluno-detalhes section.mA_showcase .container-fluid .container-fav .info.--special picture:hover p {
+  width: 100%;
 }
 body.minha-area#matriculas-aluno-detalhes section.mA_showcase .container-fluid .container-fav .info div {
   display: flex;
@@ -7477,7 +7529,38 @@ body.minha-area#matriculas-aluno-detalhes section.mA_showcase .container-fluid .
   text-align: center;
   color: #323b4b;
 }
-body.minha-area#matriculas-aluno-detalhes section.mA_showcase .container-fluid .container-fav main .list div.niv-table div.scroll table tbody tr td input {
+body.minha-area#matriculas-aluno-detalhes section.mA_showcase .container-fluid .container-fav main .list div.niv-table div.scroll table tbody tr td input[type=checkbox] {
+  height: 2.3rem;
+  width: 3.8rem;
+  border: solid 0.4rem #eb5757;
+  margin: 0 auto !important;
+  border-radius: 2rem;
+  position: relative;
+  transition: 0.32s;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+}
+body.minha-area#matriculas-aluno-detalhes section.mA_showcase .container-fluid .container-fav main .list div.niv-table div.scroll table tbody tr td input[type=checkbox]::after {
+  width: 1.1rem;
+  height: 1.1rem;
+  background: #eb5757;
+  border-radius: 100%;
+  transition: 0.32s;
+  position: absolute;
+  content: "";
+  left: 0.2rem;
+}
+body.minha-area#matriculas-aluno-detalhes section.mA_showcase .container-fluid .container-fav main .list div.niv-table div.scroll table tbody tr td input[type=checkbox]:checked {
+  border-color: #27ae60;
+}
+body.minha-area#matriculas-aluno-detalhes section.mA_showcase .container-fluid .container-fav main .list div.niv-table div.scroll table tbody tr td input[type=checkbox]:checked::after {
+  background: #27ae60;
+  left: 1.8rem;
+}
+body.minha-area#matriculas-aluno-detalhes section.mA_showcase .container-fluid .container-fav main .list div.niv-table div.scroll table tbody tr td input[type=tel] {
   height: 4.8rem;
   width: 11.4rem;
   margin: auto auto;
@@ -7498,6 +7581,7 @@ body.minha-area#matriculas-aluno-detalhes section.mA_showcase .container-fluid .
 }
 body.minha-area#matriculas-aluno-detalhes section.mA_showcase .container-fluid .container-fav main .list div.niv-table span.resumo-evento {
   padding: 5.1rem;
+  padding-right: 2rem;
   border: solid 0.1rem #e7ebee;
   width: 100%;
   border-top: none;
@@ -7514,7 +7598,6 @@ body.minha-area#matriculas-aluno-detalhes section.mA_showcase .container-fluid .
   font-size: 1.4rem;
   line-height: 140%;
   color: #323b4b;
-  max-width: 90%;
   margin-top: 1.7rem;
 }
 @media (max-width: 800px) {
