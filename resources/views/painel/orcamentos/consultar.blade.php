@@ -15,60 +15,14 @@
 
 @section('conteudo')
     <div class="row">
-<<<<<<< HEAD
-        <div class="col-12">
-            <div class="row">
-                <div class=" col-12 mb-3" style="border-radius: 5px; background-color:var(--principal);">
-                    <a name="" style="opacity: 0; pointer-events: none; id=" button-add" class="btn"
-=======
         <div class="col-9">
             <div class="row" style="padding: 0 15px">
                 <div class=" col-12 mb-3" style="border-radius: 5px; background-color:var(--principal);">
                     <a name="" style="opacity: 0; pointer-events: none; id=" class="btn"
->>>>>>> 81b70ac21abcf7e4ba386b3daa5984a060a0e950
                         style="height: 100%; padding-left: 0;" style="padding-left: 0;" href="#">
                         <i class="bx bx-plus" aria-hidden="true"></i> Adicionar
                     </a>
                 </div>
-<<<<<<< HEAD
-            </div>
-
-            <div class="row">
-                <div class="card">
-                    <div class="card-body">
-                        <i id="search-icon" class="bx bx-search" aria-hidden="true"></i>
-                    </div>
-                    <div class="row">
-                        <div class="col-sm-12">
-                            <table
-                                class="tabela_export table table-bordered dt-responsive nowrap w-100 dataTable no-footer dtr-inline"
-                                role="grid" aria-describedby="datatable_info">
-                                <thead>
-                                    <tr role="row">
-                                        <th>Nome</th>
-                                        <th>Telefone</th>
-                                        <th>E-mail</th>
-                                        <th>Data</th>
-                                        <th></th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    @foreach ($orcamentos as $orcamento)
-                                        <tr class="odd">
-                                            <td class="sorting_1 dtr-control">{{ $orcamento->nome }}</td>
-                                            <td class="sorting_1 dtr-control">{{ $orcamento->telefone }}</td>
-                                            <td class="sorting_1 dtr-control">{{ $orcamento->email }}</td>
-                                            <td class="sorting_1 dtr-control">{{ $orcamento->created_at }}</td>
-                                            <td>
-                                                <a class="btn btn-success"
-                                                    href="{{ route('painel.leads.orcamento', ['orcamento' => $orcamento]) }}"
-                                                    role="button">Orçamentos</a>
-                                            </td>
-                                        </tr>
-                                    @endforeach
-                                </tbody>
-                            </table>
-=======
 
                 <div class="card">
                     <div class="card-body">
@@ -160,7 +114,6 @@
                                     <i class="bx bx-block font-size-16 align-middle me-2"></i> Limpar
                                 </button>
                             </div>
->>>>>>> 81b70ac21abcf7e4ba386b3daa5984a060a0e950
                         </div>
                     </div>
                 </div>
@@ -172,12 +125,6 @@
 
 @section('scripts')
     <!-- Required datatable js -->
-<<<<<<< HEAD
-    <script src="{{ asset('admin/libs/datatables.net/js/jquery.dataTables.min.js') }}"></script>
-    <script src="{{ asset('admin/libs/datatables.net-bs4/js/dataTables.bootstrap4.min.js') }}"></script>
-    <script>
-        $(document).ready(function() {
-=======
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.8.4/moment.min.js"></script>
     <script src="{{ asset('admin/libs/datatables.net/js/jquery.dataTables.min.js') }}"></script>
     <script src="{{ asset('admin/libs/datatables.net-bs4/js/dataTables.bootstrap4.min.js') }}"></script>
@@ -185,7 +132,6 @@
     <script>
         $(document).ready(function() {
             $.fn.dataTable.moment( 'DD/MM/YYYY HH:mm:ss' );    //Formatação com Hora
->>>>>>> 81b70ac21abcf7e4ba386b3daa5984a060a0e950
             $('.tabela_export').DataTable({
                 language: {
                     "emptyTable": "Nenhum registro encontrado",
