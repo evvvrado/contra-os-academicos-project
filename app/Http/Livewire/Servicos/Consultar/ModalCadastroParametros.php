@@ -27,8 +27,8 @@ class ModalCadastroParametros extends Component
     }
 
     public function salvar(){
-        $teste = ServicoParametro::where([["quantidade_minima_pessoas", "<=", $this->quantidade_minima_pessoas], ["quantidade_maxima_pessoas", ">=", $this->quantidade_minima_pessoas]])
-                                    ->orWhere([["quantidade_minima_pessoas", "<=", $this->quantidade_maxima_pessoas], ["quantidade_maxima_pessoas", ">=", $this->quantidade_maxima_pessoas]])->first();
+        $teste = ServicoParametro::where([["id", "=", $this->servico->id], ["quantidade_minima_pessoas", "<=", $this->quantidade_minima_pessoas], ["quantidade_maxima_pessoas", ">=", $this->quantidade_minima_pessoas]])
+                                    ->orWhere([["id", "=", $this->servico->id], ["quantidade_minima_pessoas", "<=", $this->quantidade_maxima_pessoas], ["quantidade_maxima_pessoas", ">=", $this->quantidade_maxima_pessoas]])->first();
         if(!$teste){
             $parametros = new ServicoParametro;
             $parametros->servico_id = $this->servico->id;
