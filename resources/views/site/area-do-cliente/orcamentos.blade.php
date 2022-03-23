@@ -17,15 +17,24 @@
         <div class="container-fluid">
             <div class="container-fav">
                 <div class="top">
-                    {{-- <picture>
-                    <img src="{{ asset('/site/assets/sistema/capaMatricula.jpg')}}" alt="">
-                </picture> --}}
+                    <picture class="thumb">
+                        <img src="{{ asset('site/assets/img/drink_modal.png ') }}" alt="">
+                    </picture>
 
                     <h2>
                         Festa {{ config('orcamentos.tipos')[$orcamento->tipo] }} do dia
                         {{ date('d/m/Y', strtotime($orcamento->data)) }}
                         <p>Para {{ $orcamento->qtd_pessoas }} convidados</p>
                     </h2>
+
+                    <div class="sub pagar">
+                        <picture>
+                            <img src="{{ asset('site/assets/sistema/dollar.svg') }} " alt="">
+                        </picture>
+                        <picture>
+                            <img src="{{ asset('site/assets/sistema/threeDots.svg') }} " alt="">
+                        </picture>
+                    </div>
                 </div>
 
                 <div class="info">
