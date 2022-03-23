@@ -265,11 +265,7 @@
                     "thousands": "."
                 },
                 order: [
-<<<<<<< HEAD
-                    [3, "desc"]
-=======
                     [0, "desc"]
->>>>>>> 81b70ac21abcf7e4ba386b3daa5984a060a0e950
                 ]
 
             });
