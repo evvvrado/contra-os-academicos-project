@@ -22,7 +22,7 @@
             <div class="niv-table">
                 <div class="scroll">
                     {{-- <form action="{{ route('site.orcamento.salvar_orcamento') }}" method="post"> --}}
-                    <form action="javascript: void(0)" method="post">
+                    <form action="{{ route('site.orcamento.salvar_orcamento') }}" method="post">
                         @csrf
                         <div class="next-step">
                             <h2>Leve sua festa <i>além</i></h2>
@@ -38,8 +38,8 @@
                                     <th width="456">Descrição</th>
                                     <th width="175">Valor</th>
                                     <th width="221">Quantidade</th>
+                                    {{-- <th width="221">Mínima</th> --}}
                                     <th width="210">Total</th>
-                                    <th width="210">Resumo do Evento</th>
                                 </tr>
                             </thead>
 
@@ -66,8 +66,8 @@
                                             <td>
                                                 <i onClick="remove('{{ $servico->valor }}')" class="fa fa-window-minimize"
                                                     style="cursor:pointer; margin: 4px;"></i>
-                                                <input value="1" type="number" min="0" step="1" placeholder="250"
-                                                    name="{{ $servico->id }}" id="qtd">
+                                                <input value="1" type="tel" min="0" step="1" placeholder="250"
+                                                    name="servicos[{{ $servico->id }}][quantidade]" id="qtd" readonly>
                                                 <i onClick="add('{{ $servico->valor }}')" class="fa fa-plus"
                                                     style="cursor:pointer; "></i>
                                             </td>
@@ -133,6 +133,10 @@
                                             <input value="1" type="tel" placeholder="250" name="quantidade-produto">
                                         </td>
 
+
+                                        <td>
+                                            <input type="checkbox" class="reduced" name="" id="">
+                                        </td>
 
                                         <td>
                                             <strong class="total-produto">

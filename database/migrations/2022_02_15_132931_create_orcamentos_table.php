@@ -20,7 +20,7 @@ class CreateOrcamentosTable extends Migration
             $table->string("cep")->nullable();
             $table->date("data")->nullable();
             $table->tinyInteger("duracao")->nullable();
-            $table->string("outras_bebidas")->nullable();
+            $table->tinyInteger("outras_bebidas")->nullable();
             $table->string("qtd_pessoas")->nullable();
             $table->string("rua", 100)->nullable();
             $table->string("cidade", 50)->nullable();

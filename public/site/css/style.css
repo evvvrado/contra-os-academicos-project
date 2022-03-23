@@ -3237,6 +3237,9 @@ section.coqueteis-lista div.niv div.list div.scroll div.box strong {
   line-height: 120%;
   letter-spacing: 0.05em;
   color: #6c7175;
+  height: 2rem;
+  display: block;
+  overflow: hidden;
 }
 section.coqueteis-lista div.niv div.list div.scroll div.box input[type=checkbox] {
   height: 2.3rem;
@@ -3272,6 +3275,16 @@ section.coqueteis-lista div.niv div.list div.scroll div.box input[type=checkbox]
 section.coqueteis-lista div.niv div.list div.scroll div.box picture {
   width: 9rem;
   height: 20.5rem;
+  overflow: hidden;
+}
+section.coqueteis-lista div.niv div.list div.scroll div.box picture img {
+  height: 100%;
+  width: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+section.coqueteis-lista div.niv div.list div.scroll div.box picture img {
+  height: 100%;
 }
 section.coqueteis-lista div.niv div.list-button img {
   cursor: pointer;
@@ -4801,7 +4814,38 @@ section.carrinho div.niv div.niv-table div.scroll table tbody tr td p.descricao-
   text-align: center;
   color: #323b4b;
 }
-section.carrinho div.niv div.niv-table div.scroll table tbody tr td input {
+section.carrinho div.niv div.niv-table div.scroll table tbody tr td input[type=checkbox] {
+  height: 2.3rem;
+  width: 3.8rem;
+  border: solid 0.4rem #eb5757;
+  margin: 0 auto !important;
+  border-radius: 2rem;
+  position: relative;
+  transition: 0.32s;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+}
+section.carrinho div.niv div.niv-table div.scroll table tbody tr td input[type=checkbox]::after {
+  width: 1.1rem;
+  height: 1.1rem;
+  background: #eb5757;
+  border-radius: 100%;
+  transition: 0.32s;
+  position: absolute;
+  content: "";
+  left: 0.2rem;
+}
+section.carrinho div.niv div.niv-table div.scroll table tbody tr td input[type=checkbox]:checked {
+  border-color: #27ae60;
+}
+section.carrinho div.niv div.niv-table div.scroll table tbody tr td input[type=checkbox]:checked::after {
+  background: #27ae60;
+  left: 1.8rem;
+}
+section.carrinho div.niv div.niv-table div.scroll table tbody tr td input[type=tel] {
   height: 4.8rem;
   width: 11.4rem;
   margin: auto auto;
@@ -6338,14 +6382,14 @@ body#orcamento-carrinho div.next-step button:hover {
   background: #e5db00;
   color: #260530;
 }
-body#orcamento-carrinho i.reduced {
+body#orcamento-carrinho .reduced {
   font-size: 2.3rem;
   color: #56076d;
   cursor: pointer;
   margin-right: 1rem;
   position: relative;
 }
-body#orcamento-carrinho i.reduced::after {
+body#orcamento-carrinho .reduced::before {
   content: "Usar quantidade mínima";
   position: absolute;
   pointer-events: none;
@@ -6354,7 +6398,6 @@ body#orcamento-carrinho i.reduced::after {
   color: #fff;
   background-color: #26053071;
   top: 0;
-  right: -370%;
   font-family: "Inter", sans-serif;
   font-style: normal;
   font-weight: normal;
@@ -6365,8 +6408,8 @@ body#orcamento-carrinho i.reduced::after {
   transition: 0.32s;
   opacity: 0;
 }
-body#orcamento-carrinho i.reduced:hover::after {
-  top: -240%;
+body#orcamento-carrinho .reduced:hover::before {
+  top: -300%;
   opacity: 1;
 }
 

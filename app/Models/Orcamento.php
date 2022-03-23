@@ -17,7 +17,15 @@ class Orcamento extends Model
         return $this->hasMany(OrcamentoProduto::class);
     }
 
-    public function lead(){
-        return $this->belongsTo(Lead::class);
+    public function cliente(){
+        return $this->belongsTo(Cliente::class);
+    }
+
+    public function orcamento_servicos(){
+        return $this->hasMany(OrcamentoServico::class);
+    }
+
+    public function servicos(){
+        return $this->belongsToMany(Servico::class, "orcamento_servicos");
     }
 }

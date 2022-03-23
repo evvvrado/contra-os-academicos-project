@@ -17,27 +17,12 @@ class LeadsController extends Controller
     }
 
     //
-    public function consultar_orcamentos(Request $request){
-
-        $leads= Orcamento::all();
-
-        // $leads = Lead::where('orcamento', true)->get();
-        return view("painel.leads.consultar", ["leads" => $leads]);
-    }
-
-    //
     public function orcamentoDetalhe(Orcamento $orcamento){
         $lead = Lead::where('id', $orcamento->lead_id)->first();
 
-        $servicos_sim = OrcamentoServico::where('orcamento_id', $orcamento->id)
-        ->join('servicos', 'servico_id', 'servicos.id')
-        ->where('incluso', true)
-        ->get();
+        $servicos_sim = $orcamento->servicos->where("incluso", true);
 
-        $servicos_nao = OrcamentoServico::where('orcamento_id', $orcamento->id)
-        ->join('servicos', 'servico_id', 'servicos.id')
-        ->where('incluso', false)
-        ->get();
+        $servicos_nao = $orcamento->servicos->where("incluso", false);
 
         $orcamentoprodutos = $orcamento->orcamento_produtos;
 

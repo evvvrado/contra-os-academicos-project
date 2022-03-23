@@ -137,7 +137,7 @@ use App\Models\Parametro;
                 <span>
                     <h2>Meu Carrinho - Resumo dos produtos</h2>
 
-                    <p>Com base no numero de convidados você pode escolher <i>{{ session()->get('qtd_tipos_drinks') }}
+                    <p>Com base no numero de convidados você pode escolher <i>{{ \App\Classes\Orcamento::qtdTiposDrinks($orcamento->qtd_pessoas) }}
                             drinks</i></p>
                 </span>
 
@@ -343,9 +343,9 @@ use App\Models\Parametro;
                                     </td>
 
                                     <td>
-                                        <input disabled value="NUMERO DIVIDO" type="tel" placeholder="Quantidade">
-                                        <input hidden value="NUMERO DIVIDO" type="tel" placeholder="Quantidade"
-                                            name="quantidade_produto">
+                                        <input disabled value="{{ \App\Classes\Orcamento::qtdDrinks($orcamento->qtd_pessoas) }}" type="tel" placeholder="Quantidade">
+                                        {{-- <input hidden value="" type="tel" placeholder="Quantidade"
+                                            name="quantidade_produto"> --}}
                                     </td>
 
                                     {{-- <td>

@@ -208,19 +208,18 @@
     <section class="coqueteis-drinks">
         <div class="niv">
             <div class="niv-top">
-                <h5>Orçamento: #{{ session()->get('orcamento')['id'] }}</h5>
                 <h4>Bora surpreender</h4>
                 <h2>
                     Com base no numero de <br>
-                    convidados você pode escolher <i>{{ session()->get('qtd_tipos_drinks') }} drinks</i>
+                    convidados você pode escolher <i> {{ \App\Classes\Orcamento::qtdTiposDrinks($orcamento->qtd_pessoas) }} drinks</i>
                 </h2>
             </div>
 
             <div class="niv-content">
 
-                @if ($produtos_escolhidos)
+                @if ($orcamento->produtos->count() > 0)
 
-                    @foreach ($produtos_escolhidos as $produto_escolhido)
+                    @foreach ($orcamento->produtos as $produto_escolhido)
                         @if ($produto_escolhido->lancamento == true)
                             @php
                                 $lancamento = 'lancamento';

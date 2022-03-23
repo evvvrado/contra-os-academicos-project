@@ -14,9 +14,6 @@ Produtos / <a style="color: unset" href="{{ route('painel.ingredientes') }}">Ser
     use App\Models\Servico;
 @endphp
 
-
-{{-- <a href="{{ route('painel.ingredientecats') }}" key="t-default">Categorias de Ingrediente</a> --}}
-
 @section('conteudo')
 
 <div class="row">
@@ -34,33 +31,17 @@ Produtos / <a style="color: unset" href="{{ route('painel.ingredientes') }}">Ser
                 </div>
                 <div class="row p-3">
                     <div class="col-sm-12">
-                        <table style="width: 100%" id="datatable" class="table table-bordered dt-responsive  nowrap w-100 clear_both">
+                        <table style="width: 100%" id="datatable" order="[0]" class="table table-bordered dt-responsive  nowrap w-100 clear_both">
                             <thead>
                                 <tr>
                                     <th>Nome</th>
                                     <th>Descrição</th>
                                     <th>Valor</th>
+                                    <th>Incluso</th>
                                     <th style="width: 10%;"></th>
                                 </tr>
                             </thead>
-                            <tbody>                                                        
-                                @foreach ($servicos as $servico)
-                                    <tr>
-                                        <td>{{$servico->nome}}</td>
-                                        <td>{{$servico->descricao}}</td>
-                                        <td>R$ {{str_replace(".", ",", $servico->valor)}}</td>
-                                        <td class="d-flex justify-content-between">
-                                            <a href="{{ route('painel.servicos.editar', ['servico' => $servico]) }} " class="mx-auto">
-                                                <i class="fas fa-pen-square"></i>
-                                            </a>
-
-                                            <a href="{{ route('painel.servicos.deletar', ['servico' => $servico]) }} " class="mx-auto">
-                                                <i style="color: #f46a6a!important;" class="bx bx-minus-circle"></i>
-                                            </a>
-                                        </td>
-                                    </tr>
-                                @endforeach
-                            </tbody>
+                            @livewire('servicos.consultar.datatable')
                         </table>
                     </div>
                 </div>
@@ -68,6 +49,22 @@ Produtos / <a style="color: unset" href="{{ route('painel.ingredientes') }}">Ser
         </div>
     </div>
 </div> 
+
+<!-- Modal -->
+<div class="modal fade" id="modalParametros" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Parâmetros</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                @livewire('servicos.consultar.modal-cadastro-parametros')
+            </div>
+        </div>
+    </div>
+</div>
+
 
 @endsection
 
@@ -77,8 +74,18 @@ Produtos / <a style="color: unset" href="{{ route('painel.ingredientes') }}">Ser
 <script src="{{ asset('admin/libs/datatables.net/js/jquery.dataTables.min.js') }}"></script>
 <script src="{{ asset('admin/libs/datatables.net-bs4/js/dataTables.bootstrap4.min.js') }}"></script>
 <script>
+
+    window.addEventListener("abreModalParametros", event => {
+        $("#modalParametros").modal("show");
+    })
+
+    window.addEventListener("fechaModalParametros", event => {
+        $("#modalParametros").modal("hide");
+    })
+
     $(document).ready(function() {
             $('.table').DataTable({
+                order: [[ 0, "asc" ]],
                 language: {
                     "emptyTable": "Nenhum registro encontrado",
                     "info": "Mostrando de _START_ até _END_ de _TOTAL_ registros",

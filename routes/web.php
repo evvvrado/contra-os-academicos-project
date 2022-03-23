@@ -14,7 +14,7 @@ Route::get('/coqueteis', [\App\Http\Controllers\SiteController::class, 'coquetei
 Route::get('/coqueteis/detalhes/{produto}', [\App\Http\Controllers\SiteController::class, 'coquetel'])->name("site.coquetel");
 
 Route::get('/orcamento/identificacao', [\App\Http\Controllers\OrcamentoController::class, 'orcamentoID'])->name("site.orcamento.id");
-Route::get('/orcamento/tipo', [\App\Http\Controllers\OrcamentoController::class, 'evento'])->name("site.orcamento.evento");
+Route::get('/orcamento/evento', [\App\Http\Controllers\OrcamentoController::class, 'evento'])->name("site.orcamento.evento");
 Route::post('/lead/cadastrar', [\App\Http\Controllers\LeadsController::class, 'cadastrar'])->name("site.lead.cadastrar");
 Route::get('/orcamento/{evento}/informacoes', [\App\Http\Controllers\OrcamentoController::class, 'informacoes'])->name("site.orcamento.informacoes");
 Route::post('/orcamento/cadastrar/etapa/1', [\App\Http\Controllers\OrcamentoController::class, 'cadastrar_etapa1'])->name("site.orcamento.cadastrar.etapa1");
@@ -27,8 +27,11 @@ Route::middleware(['orcamento'])->group(function () {
     Route::get('/orcamento/carrinho/qtd_altera/{orcamento}/{produto}/{qtd}', [\App\Http\Controllers\OrcamentoProdutosController::class, 'alteraQTD'])->name("site.orcamento.altera_qtd");
 
     Route::get('/orcamento/servicos', [\App\Http\Controllers\OrcamentoController::class, 'orcamentoENCERRAR'])->name("site.orcamento.encerrar");
+    Route::post('/orcamento/servicos/salvar', [\App\Http\Controllers\OrcamentoController::class, 'salvar_servicos_inclusos'])->name("site.orcamento.servicos.salvar");
+    
     Route::get('/orcamento/extras', [\App\Http\Controllers\OrcamentoController::class, 'orcamentoENCERRAR2'])->name("site.orcamento.encerrar_2");
     Route::post('/orcamento/salvar_orcamento', [\App\Http\Controllers\OrcamentoController::class, 'salvarorcamento'])->name("site.orcamento.salvar_orcamento");
+    Route::get('/orcamento/finalizar', [\App\Http\Controllers\OrcamentoController::class, 'finalizar'])->name("site.orcamento.finalizar");
 
 
     Route::get('/orcamento/ingrediente/{marca}/{ingrediente}/{orcamentoproduto}', [\App\Http\Controllers\OrcamentoProdutosIngredientesController::class, 'ingredienteTROCAR'])->name("site.orcamento-ingrediente-marca-trocar");
@@ -154,8 +157,8 @@ Route::middleware(['admin'])->group(function () {
 
     // ROTAS DE LEADS
     Route::get('/sistema/leads', [\App\Http\Controllers\LeadsController::class, 'consultar'])->name("painel.leads");
-    Route::get('/sistema/orcamentos', [\App\Http\Controllers\LeadsController::class, 'consultar_orcamentos'])->name("painel.orcamentos");
-    Route::get('/sistema/leads/orcamento/{orcamento}', [\App\Http\Controllers\LeadsController::class, 'orcamentoDetalhe'])->name("painel.leads.orcamento");
+    Route::get('/sistema/orcamentos', [\App\Http\Controllers\OrcamentosController::class, 'consultar'])->name("painel.orcamentos");
+    Route::get('/sistema/orcamento/{orcamento}', [\App\Http\Controllers\OrcamentosController::class, 'visualizar'])->name("painel.orcamento.visualizar");
 
     // ROTAS DE ATIVIDADE DAS PARAMETROS
     Route::get('/parametros', [\App\Http\Controllers\ParametrosController::class, 'consultar'])->name("painel.parametros");
@@ -173,6 +176,7 @@ Route::middleware(['admin'])->group(function () {
 
 Route::get('/minha-area/acessar', [\App\Http\Controllers\SiteController::class, 'acessarCliente'])->name("site.acessar-cliente");
 Route::post('/minha-area/logar', [\App\Http\Controllers\SiteController::class, 'logarCliente'])->name("site.logar-cliente");
+Route::post('/minha-area/dados/senha/nova_salvar', [\App\Http\Controllers\AreaClientesController::class, 'clienteAreaDadosSenhaNovaSalvar'])->name("minha-area.cliente-dados.nova_senha_salvar");
 
 Route::middleware(['cliente'])->group(function () {
     Route::get('/minha-area', [\App\Http\Controllers\AreaClientesController::class, 'clienteArea'])->name("minha-area.cliente");
@@ -186,5 +190,4 @@ Route::middleware(['cliente'])->group(function () {
     Route::post('/minha-area/dados/avatar/alterar', [\App\Http\Controllers\AreaClientesController::class, 'clienteAreaDadosAvatarAlterar'])->name("minha-area.cliente-dados.avatar.alterar");
     Route::post('/minha-area/dados/senha/alterar', [\App\Http\Controllers\AreaClientesController::class, 'clienteAreaDadosSenhaAlterar'])->name("minha-area.cliente-dados.senha.alterar");
     Route::get('/minha-area/deslogar', [\App\Http\Controllers\AreaClientesController::class, 'deslogar'])->name("clienteDeslogar");
-    Route::post('/minha-area/dados/senha/nova_salvar', [\App\Http\Controllers\AreaClientesController::class, 'clienteAreaDadosSenhaNovaSalvar'])->name("minha-area.cliente-dados.nova_senha_salvar");
 });
