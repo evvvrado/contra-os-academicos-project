@@ -4,7 +4,7 @@
 
 @section('content')
 @php
-$cliente = \App\Models\Lead::find(session()->get('cliente')['id']);
+$cliente = \App\Models\Cliente::find(session()->get('cliente')['id']);
 @endphp
 
 <section class="mA_dados">

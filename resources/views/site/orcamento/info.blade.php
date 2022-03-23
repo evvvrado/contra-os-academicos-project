@@ -29,7 +29,6 @@
                 <div class="niv-form">
                     <form action="{{ route('site.orcamento.cadastrar.etapa1') }}" method="post">
                         @csrf
-                        <input type="hidden" name="tipo" value="{{ $tipo }}">
                         <label>
                             <strong>Qual o CEP da realização do evento</strong>
 
@@ -80,13 +79,13 @@
 
                             <fieldset required>
                                 <label>
-                                    <span><input type="radio" value="1" name="alcool"> Com Alcool </span>
+                                    <span><input type="radio" value="0" name="alcool"> Com Alcool </span>
                                 </label>
                                 <label>
-                                    <span><input type="radio" value="2" name="alcool"> Sem Alcool </span>
+                                    <span><input type="radio" value="1" name="alcool"> Sem Alcool </span>
                                 </label>
                                 <label>
-                                    <span><input type="radio" value="3" name="alcool"> Não serão </span>
+                                    <span><input type="radio" value="2" name="alcool"> Não serão </span>
                                 </label>
                             </fieldset>
 

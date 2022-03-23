@@ -93,13 +93,10 @@ class SiteController extends Controller
 
     public function acessarCliente()
     {
-        if (Lead::where("id", session()->get("cliente"))->first()) {
-            $lead = Lead::where("id", session()->get("cliente"))->first();
-
-            return redirect()->route("minha-area.cliente", ["lead" => $lead]);
+        if (session()->get("cliente")) {
+            return redirect()->route("minha-area.cliente");
         }else {
             toastr()->success("Faça login para continuar!");
-            
             return view("site.acesso");
         }
     }

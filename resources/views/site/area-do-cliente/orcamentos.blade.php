@@ -9,7 +9,6 @@ use App\Models\Servico;
 use App\Models\Produto;
 use App\Models\OrcamentoServico;
 use App\Models\OrcamentoProduto;
-use App\Models\MarcaIngrediente;
 @endphp
 
 
@@ -37,7 +36,7 @@ use App\Models\MarcaIngrediente;
                             <img src="{{asset('site/assets/sistema/userData.svg')}}" alt="">
                         </picture>
                         <h4>
-                            {{ $lead_info->nome }}
+                            {{ $cliente->nome }}
                         </h4>
                     </div>
 
@@ -46,7 +45,7 @@ use App\Models\MarcaIngrediente;
                             <img src="{{asset('site/assets/sistema/mailData.svg')}}" alt="">
                         </picture>
                         <h4>
-                            {{ $lead_info->email }}
+                            {{ $cliente->email }}
                         </h4>
                     </div>
 
@@ -55,7 +54,7 @@ use App\Models\MarcaIngrediente;
                             <img src="{{asset('site/assets/sistema/phoneData.svg')}}" alt="">
                         </picture>
                         <h4>
-                            {{ $lead_info->telefone }}
+                            {{ $cliente->telefone }}
                         </h4>
                     </div>
                 </span>
@@ -68,7 +67,7 @@ use App\Models\MarcaIngrediente;
                             <img src="{{asset('site/assets/sistema/flagData.svg')}}" alt="">
                         </picture>
                         <h4>
-                            {{ $orcamento->tipo }}
+                            {{ config("orcamentos.tipos")[$orcamento->tipo] }}
                         </h4>
                     </div>
 
@@ -95,11 +94,7 @@ use App\Models\MarcaIngrediente;
                             <img src="{{asset('site/assets/sistema/calendar.svg')}}" alt="">
                         </picture>
                         <h4>
-                            @php
-                            $parteData = explode("-", $orcamento->data);
-                            $dataInvertida = $parteData[1] . "/" . $parteData[2] . "/" . $parteData[0];
-                            @endphp
-                            {{ $dataInvertida }}
+                            {{ date("d/m/Y", strtotime($orcamento->created_at)) }}
                         </h4>
                     </div>
 
@@ -117,17 +112,7 @@ use App\Models\MarcaIngrediente;
                             <img src="{{asset('site/assets/sistema/drinkData.svg')}}" alt="">
                         </picture>
                         <h4>
-                            @php
-                            if($orcamento->outras_bebidas == 1) {
-                            $outras_bebidas = "Teão outras bebidas com Alcool";
-                            } else if ($orcamento->duracao == 2){
-                            $outras_bebidas = "Teão outras bebidas sem Alcool";
-                            } else {
-                            $outras_bebidas = "Não terá outras bebidas";
-                            }
-                            @endphp
-                            {{ $outras_bebidas }}
-
+                            {{ config("orcamentos.bebidas")[$orcamento->outras_bebidas] }}
                         </h4>
                     </div>
                 </span>
@@ -165,7 +150,7 @@ use App\Models\MarcaIngrediente;
                 <div class="list" active>
                     <div class="niv-table">
                         <div class="scroll">
-                            @if($servicos_sim->count() > 0)
+                            @if($orcamento_servicos_inclusos->count() > 0)
                             <table>
                                 <thead>
                                     <tr>
@@ -178,33 +163,33 @@ use App\Models\MarcaIngrediente;
                                 </thead>
 
                                 <tbody>
-                                    @foreach($servicos_sim as $servico)
+                                    @foreach($orcamento_servicos_inclusos as $orcamento_servico)
                                     <tr>
                                         <td>
                                             <strong class="nome-produto">
-                                                {{ $servico->nome }}
+                                                {{ $orcamento_servico->servico->nome }}
                                             </strong>
                                         </td>
 
                                         <td>
                                             <p class="descricao-produto">
-                                                {{ $servico->descricao }}
+                                                {{ $orcamento_servico->servico->descricao }}
                                             </p>
                                         </td>
 
                                         <td>
                                             <strong class="total-produto">
-                                                R$ {{ number_format($servico->valor, 2, ",", ".") }}
+                                                R$ {{ number_format($orcamento_servico->servico->valor, 2, ",", ".") }}
                                             </strong>
                                         </td>
 
                                         <td>
-                                            <input disabled value="{{ $servico->qtd }}" type="tel" placeholder="250" name="quantidade-produto">
+                                            <input disabled value="{{ $orcamento_servico->qtd }}" type="tel" placeholder="250" name="quantidade-produto">
                                         </td>
 
                                         <td>
                                             <strong class="total-produto">
-                                                R$ {{ number_format($servico->valor, 2, ",", ".") }}
+                                                R$ {{ number_format($orcamento_servico->valor, 2, ",", ".") }}
                                             </strong>
                                         </td>
                                     </tr>
@@ -259,7 +244,7 @@ use App\Models\MarcaIngrediente;
 
                     <div class="niv-table">
                         <div class="scroll">
-                            @if($servicos_nao->count() > 0)
+                            @if($orcamento_servicos_nao_inclusos->count() > 0)
                             <table>
                                 <thead>
                                     <tr>
@@ -272,40 +257,33 @@ use App\Models\MarcaIngrediente;
                                 </thead>
 
                                 <tbody>
-                                    @foreach($servicos_nao as $servico)
+                                    @foreach($orcamento_servicos_nao_inclusos as $orcamento_servico)
                                     <tr>
                                         <td>
                                             <strong class="nome-produto">
-                                                {{ $servico->nome }}
+                                                {{ $orcamento_servico->servico->nome }}
                                             </strong>
                                         </td>
 
                                         <td>
                                             <p class="descricao-produto">
-                                                {{ $servico->descricao }}
+                                                {{ $orcamento_servico->servico->descricao }}
                                             </p>
                                         </td>
 
-
-                                        @php
-                                        $servico_valor = Servico::select('valor')
-                                        ->where('id', $servico->servico_id)
-                                        ->first();
-                                        @endphp
-
                                         <td>
                                             <strong class="total-produto">
-                                                R$ {{ number_format($servico_valor->valor, 2, ",", ".") }}
+                                                R$ {{ number_format($orcamento_servico->servico->valor, 2, ",", ".") }}
                                             </strong>
                                         </td>
 
                                         <td>
-                                            <input disabled value="{{ $servico->qtd }}" type="tel" placeholder="250" name="quantidade-produto">
+                                            <input disabled value="{{ $orcamento_servico->qtd }}" type="tel" placeholder="250" name="quantidade-produto">
                                         </td>
 
                                         <td>
                                             <strong class="total-produto">
-                                                R$ {{ number_format($servico->valor, 2, ",", ".") }}
+                                                R$ {{ number_format($orcamento_servico->valor, 2, ",", ".") }}
                                             </strong>
                                         </td>
                                     </tr>
@@ -368,18 +346,15 @@ use App\Models\MarcaIngrediente;
                         <div style="display: flex; justify-content: space-between; flex-wrap: wrap">
                             @foreach($orcamento->orcamento_produtos as $orcamento_produto)
                                 @php
-                                    $produto = Produto::where('id', $orcamento_produto->produto_id)->first();
+                                    $produto = $orcamento_produto->produto
 
-                                    foreach($produto->ingredientes as $ingrediente) {
-                                        $marcas = MarcaIngrediente::where('ingrediente_id', $ingrediente->id)
-                                        ->where('padrao', 'Sim')
-                                        ->join('marcas', 'marca_id', 'marcas.id')
-                                        ->get();
-                                    }
+                                    // foreach($produto->ingredientes as $ingrediente) {
+                                    //     $marcas = $ingrediente->marcas->where("padrao", true)->first();
+                                    // }
                                 @endphp
                                 <div>
                                     <picture>
-                                        <img width=251 height=271 src="{{$produto->imagem_1}}" alt="">
+                                        <img width=251 height=271 src="{{asset($produto->imagem_preview)}}" alt="">
                                         <h2>{{ $orcamento_produto->qtd }}x <i>{{ $produto->nome }}</i><br>R$ {{ number_format($orcamento_produto->valor, 2, ',', '.') }}</h2>
                                     </picture>
 

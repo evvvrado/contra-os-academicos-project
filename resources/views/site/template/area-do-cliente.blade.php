@@ -21,7 +21,7 @@
 <body id="@yield('id')" class="minha-area">
 
     @php
-    $lead = \App\Models\Lead::find(session()->get('cliente')['id']);
+        $cliente = \App\Models\Cliente::find(session()->get('lead')['id']);
     @endphp
 
 
@@ -77,15 +77,15 @@
 
                 <div class="user">
                     <picture>
-                        @if (!$lead->avatar)
+                        @if (!$cliente->avatar)
                         <img src="{{ asset('site/assets/sistema/menu_user.svg') }}" alt="">
                         @else
-                        <img src="{{ asset($lead->avatar) }}" alt="">
+                        <img src="{{ asset($cliente->avatar) }}" alt="">
                         @endif
                     </picture>
 
                     <div>
-                        <span>Olá, <strong>{{ explode(' ', session()->get('cliente')['nome'])[0] }}</strong></span>
+                        <span>Olá, <strong>{{ explode(' ', session()->get('lead')['nome'])[0] }}</strong></span>
                         <a @if(session()->get("primeiro_login") == "Sim")style="display:none;" @endif href="{{route('clienteDeslogar')}}">
                             Sair
                         </a>

@@ -54,7 +54,7 @@
                     </div>
                     <div class="d-flex flex-wrap gap-2 mt-3">
                         <button id="btn-submit" type="submit" class="btn btn-primary waves-effect waves-light">Salvar</button>
-                        <a href="{{ route('painel.acessorios') }}" class="btn btn-secondary waves-effect waves-light">Cancelar</a>
+                        <a href="{{ route('painel.servicos') }}" class="btn btn-secondary waves-effect waves-light">Cancelar</a>
                     </div>
                 </form>
             </div>

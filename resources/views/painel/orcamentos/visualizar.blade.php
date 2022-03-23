@@ -16,24 +16,24 @@
 @endsection
 
 @php
-use App\Models\Produto;
-use App\Models\OrcamentoProdutosIngredientes;
-use App\Models\OrcamentoProdutosAcessorios;
-use App\Models\ProdutosIngrediente;
-use App\Models\MarcaIngrediente;
-use App\Models\OrcamentoServico;
-use App\Models\OrcamentoProduto;
-use App\Models\Parametro;
+    use App\Models\Produto;
+    use App\Models\OrcamentoProdutoIngrediente;
+    use App\Models\OrcamentoProdutoAcessorio;
+    use App\Models\ProdutoIngrediente;
+    use App\Models\MarcaIngrediente;
+    use App\Models\OrcamentoServico;
+    use App\Models\OrcamentoProduto;
+    use App\Models\Parametro;
 @endphp
 
 @section('titulo')
-    Leads / Orçamentos
+    Orçamentos / Orçamento
 @endsection
 
 @section('conteudo')
     @php
-    $parteData = explode('-', $orcamento->data);
-    $dataInvertida = $parteData[2] . '-' . $parteData[1] . '-' . $parteData[0];
+        $parteData = explode('-', $orcamento->data);
+        $dataInvertida = $parteData[2] . '-' . $parteData[1] . '-' . $parteData[0];
     @endphp
 
     <div id="imprimir">
@@ -67,17 +67,17 @@ use App\Models\Parametro;
                         <div style="display: flex; justify-content:space-between; width:100% !important; flex-wrap: wrap;">
                             <div style="flex: 33%">
                                 <strong>Nome</strong>
-                                <p class="text-muted">{{ $lead->nome }}</p>
+                                <p class="text-muted">{{ $orcamento->cliente->nome }}</p>
                             </div>
 
                             <div style="flex: 33%">
                                 <strong>E-mail</strong>
-                                <p class="text-muted">{{ $lead->email }}</p>
+                                <p class="text-muted">{{ $orcamento->cliente->email }}</p>
                             </div>
 
                             <div style="flex: 33%">
                                 <strong>Telefone</strong>
-                                <p class="text-muted">{{ $lead->telefone }}</p>
+                                <p class="text-muted">{{ $orcamento->cliente->telefone }}</p>
                             </div>
                         </div>
 
@@ -89,7 +89,7 @@ use App\Models\Parametro;
                             style="display: flex; justify-content:space-between; width:100% !important; flex-wrap: wrap;">
                             <div>
                                 <strong>Tipo</strong>
-                                <p class="text-muted">{{ $orcamento->tipo }}</p>
+                                <p class="text-muted">{{ config("orcamentos.tipos")[$orcamento->tipo] }}</p>
                             </div>
 
                             <div>
@@ -295,7 +295,7 @@ use App\Models\Parametro;
                                             <td style="width: 48px; height: 100px">
                                                 <div class="avatar-sm">
                                                     <img style="object-fit: cover; width: 100%; height: 100%;"
-                                                        src="{{ $produto->imagem_1 }}">
+                                                        src="{{ asset($produto->imagem_preview) }}">
                                                 </div>
                                             </td>
                                             <td>
@@ -305,14 +305,11 @@ use App\Models\Parametro;
 
                                                 @foreach ($produto->ingredientes as $ingrediente)
                                                     @php
-                                                        $marca_padrao = MarcaIngrediente::where('ingrediente_id', $ingrediente->id)
-                                                            ->where('padrao', 'Sim')
-                                                            ->join('marcas', 'marcas.id', 'marcas_ingredientes.marca_id')
-                                                            ->first();
+                                                        $marca_padrao = $ingrediente->marcas->where("padrao", true)->first();
                                                         
-                                                        $marca = OrcamentoProdutosIngredientes::where('ingrediente_id', $ingrediente->id)
-                                                            ->where('orcamentoproduto_id', $orcamentoproduto->id)
-                                                            ->join('marcas', 'marcas.id', 'orcamento_produtos_ingredientes.marca_id')
+                                                        $marca = OrcamentoProdutoIngrediente::where('orcamento_produto_ingredientes.ingrediente_id', $ingrediente->id)
+                                                            ->where('orcamento_produto_id', $orcamentoproduto->id)
+                                                            ->join('marcas', 'marcas.id', 'orcamento_produto_ingredientes.marca_id')
                                                             ->first();
                                                     @endphp
 
@@ -351,7 +348,7 @@ use App\Models\Parametro;
                                             <td style="width: 48px; height: 100px">
                                                 <div class="avatar-sm">
                                                     <img style="object-fit: cover; width: 100%; height: 100%;"
-                                                        src="{{ $produto->imagem_1 }}">
+                                                        src="{{ asset($produto->imagem_preview) }}">
                                                 </div>
                                             </td>
                                             <td>

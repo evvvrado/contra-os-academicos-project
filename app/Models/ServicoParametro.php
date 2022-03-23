@@ -5,11 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class OrcamentoServico extends Model
+class ServicoParametro extends Model
 {
     use HasFactory;
-
-    public function servico(){
-        return $this->belongsTo(Servico::class);
-    }
 }
