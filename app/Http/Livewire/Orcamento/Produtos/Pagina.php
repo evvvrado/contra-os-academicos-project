@@ -61,8 +61,8 @@ class Pagina extends Component
                     // Multiplica a quantidade do ingrediente em uma unidade do mesmo pela quantidade de drinks. Divide o resultado pela quantidade existente em uma embalagem
                     // do ingrediente, descobrindo quantas embalagens serão usadas. Arredonda o resultado pra cima, pois mesmo que use apenas uma parte de uma embalgem,
                     // ela deve ser considerada inteira como gasta. Após isso multiplica pelo valor da embalagem pra obter o resultado.
-                    $produto_insercao->valor += ceil(($marca->quantidade_ingrediente_unidade * $produto_insercao->qtd) / $marca->quantidade_embalagem) * $marca->valor_embalagem;
-                    $produto_insercao->save();
+                    // $produto_insercao->valor += ceil(($marca->quantidade_ingrediente_unidade * $produto_insercao->qtd) / $marca->quantidade_embalagem) * $marca->valor_embalagem;
+                    // $produto_insercao->save();
                 }
             }
 
@@ -80,8 +80,8 @@ class Pagina extends Component
                     // Multiplica a quantidade do ingrediente em uma unidade do mesmo pela quantidade de drinks. Divide o resultado pela quantidade existente em uma embalagem
                     // do ingrediente, descobrindo quantas embalagens serão usadas. Arredonda o resultado pra cima, pois mesmo que use apenas uma parte de uma embalgem,
                     // ela deve ser considerada inteira como gasta. Após isso multiplica pelo valor da embalagem pra obter o resultado.
-                    $produto_insercao->valor += ceil(($marca->quantidade_ingrediente_unidade * $produto_insercao->qtd) / $marca->quantidade_embalagem) * $marca->valor_embalagem;
-                    $produto_insercao->save();
+                    // $produto_insercao->valor += ceil(($marca->quantidade_ingrediente_unidade * $produto_insercao->qtd) / $marca->quantidade_embalagem) * $marca->valor_embalagem;
+                    // $produto_insercao->save();
                 }
             }
         } else {

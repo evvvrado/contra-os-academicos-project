@@ -164,6 +164,24 @@ class OrcamentoController extends Controller
             }
         }
 
+        foreach($orcamento->orcamento_produtos as $orcamento_produto){
+            $orcamento_produto->qtd = ceil(\App\Classes\Orcamento::qtdDrinks($orcamento->qtd_pessoas) / $orcamento->produtos->count());
+            $orcamento_produto->valor = 0;
+            
+            $orcamento_produto_ingredientes = $orcamento_produto->orcamento_produto_ingredientes;
+            foreach($orcamento_produto_ingredientes as $orcamento_produto_ingrediente){
+                $marca = $orcamento_produto_ingrediente->marca;
+                $orcamento_produto->valor += ceil(($marca->quantidade_ingrediente_unidade * $orcamento_produto->qtd) / $marca->quantidade_embalagem) * $marca->valor_embalagem;
+            }
+
+            $orcamento_produto_acessorios = $orcamento_produto->orcamento_produto_acessorios;
+            foreach($orcamento_produto_acessorios as $orcamento_produto_acessorio){
+                $marca = $orcamento_produto_acessorio->marca;
+                $orcamento_produto->valor += ceil(($marca->quantidade_ingrediente_unidade * $orcamento_produto->qtd) / $marca->quantidade_embalagem) * $marca->valor_embalagem;
+            }
+            $orcamento_produto->save();
+        }
+
         $orcamento->finalizado = true;
         $orcamento->save();
 
