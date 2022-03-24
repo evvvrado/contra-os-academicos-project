@@ -21,8 +21,8 @@ class AreaClientesController extends Controller
     public function clienteArea()
     {
         // $orcamentos = Orcamento::where('cliente_id', session()->get("cliente")["id"])->get();
-        // $lead = Lead::where('id', session()->get("cliente")["id"])->first();
-        if(!session()->get("primeiro_login")) {
+        // $Cliente = Cliente::where('id', session()->get("cliente")["id"])->first();
+        if (!session()->get("primeiro_login")) {
             return redirect()->route("minha-area.cliente-pedidos");
         } else {
             return view("site.area-do-cliente.nova_senha");
@@ -58,7 +58,7 @@ class AreaClientesController extends Controller
 
     public function clienteAreaDadosSalvar(Request $request)
     {
-        $usuario = Lead::find(session()->get("cliente")["id"]);
+        $usuario = Cliente::find(session()->get("cliente")["id"]);
         $usuario->nome = $request->nome;
         $usuario->email = $request->email;
         $usuario->cpf = $request->cpf;
@@ -73,7 +73,7 @@ class AreaClientesController extends Controller
 
     public function clienteAreaDadosSenhaAlterar(Request $request)
     {
-        $usuario = Lead::find(session()->get("cliente")["id"]);
+        $usuario = Cliente::find(session()->get("cliente")["id"]);
         if ($request->senha_antiga == $usuario->senha) {
             $usuario->senha = $request->senha_nova;
             $usuario->save();
@@ -86,20 +86,20 @@ class AreaClientesController extends Controller
         return redirect()->back();
     }
 
-    public function clienteAreaDadosSenhaNovaSalvar(Request $request) 
+    public function clienteAreaDadosSenhaNovaSalvar(Request $request)
     {
         $usuario = Cliente::find(session()->get("lead")["id"]);
         $usuario->senha = $request->senha;
         $usuario->save();
 
         session()->put(["cliente" => $usuario->toArray()]);
-        
+
         return redirect()->route("minha-area.cliente");
     }
 
     // public function clienteAreaDadosSenhaAlterar(Request $request)
     // {
-    //     $usuario = Lead::find(session()->get("cliente")["id"]);
+    //     $usuario = Cliente::find(session()->get("cliente")["id"]);
     //     if (Hash::check($request->senha_antiga, $usuario->senha)) {
     //         $usuario->senha = Hash::make($request->senha_nova);
     //         $usuario->save();
@@ -115,7 +115,7 @@ class AreaClientesController extends Controller
     public function clienteAreaDadosAvatarAlterar(Request $request)
     {
         if ($request->file("avatar")) {
-            $usuario = Lead::find(session()->get("cliente")["id"]);
+            $usuario = Cliente::find(session()->get("cliente")["id"]);
             Storage::delete($usuario->avatar);
             $usuario->avatar = $request->file('avatar')->store(
                 'site/imagens/avatares/' . $usuario->id,
@@ -130,10 +130,10 @@ class AreaClientesController extends Controller
     public function clienteOrcamentos(Orcamento $orcamento)
     {
         $cliente = $orcamento->cliente;
-        $orcamento_servicos_inclusos = OrcamentoServico::where("orcamento_id", $orcamento->id)->whereHas("servico", function($q) {
+        $orcamento_servicos_inclusos = OrcamentoServico::where("orcamento_id", $orcamento->id)->whereHas("servico", function ($q) {
             $q->where("servicos.incluso", true);
         })->get();
-        $orcamento_servicos_nao_inclusos =  OrcamentoServico::where("orcamento_id", $orcamento->id)->whereHas("servico", function($q) {
+        $orcamento_servicos_nao_inclusos =  OrcamentoServico::where("orcamento_id", $orcamento->id)->whereHas("servico", function ($q) {
             $q->where("servicos.incluso", false);
         })->get();
 
