@@ -88,20 +88,7 @@ class OrcamentoController extends Controller
 
     public function lista(Request $request)
     {
-        $orcamento = Orcamento::find(session()->get("orcamento"));
-        $produtos = Produto::whereNotIn("id", $orcamento->produtos->pluck("id"))->get();
-        // $valores = json_decode($parametro->valor_km_rodado, true);
-        // dd($valores);
-        // if ($valores) {
-        $ingredientes_filtro = Ingrediente::whereIn('id', [1, 2])
-            ->get();
-        // } else {
-        // $ingredientes_filtro = Ingrediente::all();
-        // }
-
-        // dd($ingredientes_filtro);
-
-        return view("site.orcamento.lista", ["orcamento" => $orcamento, "produtos" => $produtos, "ingredientes_filtro" => $ingredientes_filtro]);
+        return view("site.orcamento.lista");
     }
 
     public function confirmacao()
@@ -117,10 +104,7 @@ class OrcamentoController extends Controller
     }
     public function carrinho()
     {
-        $orcamento = Orcamento::find(session()->get("orcamento"));
-        $orcamento_produtos = $orcamento->orcamento_produtos;
-
-        return view("site.orcamento.carrinho", ["orcamento_produtos" => $orcamento_produtos, "orcamento" => $orcamento]);
+        return view("site.orcamento.carrinho");
     }
 
     public function orcamentoENCERRAR()

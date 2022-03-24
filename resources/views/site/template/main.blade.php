@@ -6,6 +6,7 @@
     <title>{{ $titulo }}</title>
     @include('site.includes.head')
     @toastr_css
+    @livewireStyles()
     @yield('styles')
 
 </head>
@@ -41,6 +42,7 @@
 
     @toastr_js
     @toastr_render
+    @livewireScripts()
     @yield("scripts")
 
 

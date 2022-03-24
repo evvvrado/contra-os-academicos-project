@@ -37,7 +37,7 @@
     <hr>
     <div class="row">
         <div class="col-12">
-            @if($servico)
+            @if($this->servico)
                 <table class="table">
                     <tbody>
                         <thead>

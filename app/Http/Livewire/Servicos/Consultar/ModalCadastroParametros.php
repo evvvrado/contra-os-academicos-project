@@ -55,10 +55,12 @@ class ModalCadastroParametros extends Component
         $this->quantidade_maxima_pessoas = null;
         $this->quantidade_minima_servico = null;
         $this->quantidade_maxima_servico = null;
+        // $this->servico = null;
     }
 
     public function render()
     {
-        return view('livewire.servicos.consultar.modal-cadastro-parametros');
+        $servico = $this->servico;
+        return view('livewire.servicos.consultar.modal-cadastro-parametros', ["servico" => $servico]);
     }
 }
