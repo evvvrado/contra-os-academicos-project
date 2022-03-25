@@ -161,23 +161,15 @@
                             <span>
                                 <div style="display: flex; justify-content: space-between; flex-wrap: wrap">
                                     @foreach ($orcamento->orcamento_produtos as $orcamento_produto)
-                                        @php
-                                            $produto = $orcamento_produto->produto;
-                                            
-                                            // foreach($produto->ingredientes as $ingrediente) {
-                                            //     $marcas = $ingrediente->marcas->where("padrao", true)->first();
-                                            // }
-                                            
-                                        @endphp
                                         <div>
                                             <picture>
-                                                <img width=251 height=271 src="{{ asset($produto->imagem_preview) }}"
+                                                <img width=251 height=271 src="{{ asset($orcamento_produto->produto->imagem_preview) }}"
                                                     alt="">
-                                                <h2>{{ $orcamento_produto->qtd }}x <i>{{ $produto->nome }}</i></h2>
+                                                <h2>{{ $orcamento_produto->qtd }}x <i>{{ $orcamento_produto->produto->nome }}</i></h2>
 
 
 
-                                                @foreach ($produto->ingredientes as $ingrediente)
+                                                @foreach ($orcamento_produto->produto->ingredientes as $ingrediente)
                                                     <p>{{ $ingrediente->nome }}</p>
                                                 @endforeach
                                             </picture>
@@ -201,39 +193,29 @@
                                                 <th width="206">Nome dos serviços</th>
                                                 <th width="456">Descrição</th>
                                                 {{-- <th width="175">Valor</th> --}}
-                                                <th width="200">Quantidade Ideal</th>
-                                                <th width="200">Quantidade Mínima</th>
-                                                <th width="200"></th>
+                                                <th width="200">Quantidade</th>
                                             </tr>
                                         </thead>
 
                                         <tbody>
+                                            @foreach($orcamento_servicos_inclusos as $orcamento_servico_incluso)
+                                                <tr>
+                                                    <td>
+                                                        <strong class="nome-produto">
+                                                            {{ $orcamento_servico_incluso->servico->nome }}
+                                                        </strong>
+                                                    </td>
 
-                                            <tr>
-                                                <td>
-                                                    <strong class="nome-produto">
-                                                        Nome do serviço
-                                                    </strong>
-                                                </td>
-
-                                                <td>
-                                                    <p class="descricao-produto">
-                                                        Descrição
-                                                    </p>
-                                                </td>
-                                                <td>
-                                                    <input value="2" readonly type="tel">
-                                                </td>
-
-                                                <td>
-                                                    <input value="2" readonly type="tel">
-                                                </td>
-
-                                                <td>
-                                                    <input type="checkbox" class="reduced" id="">
-                                                </td>
-                                            </tr>
-
+                                                    <td>
+                                                        <p class="descricao-produto">
+                                                            {{ $orcamento_servico_incluso->servico->descricao }}
+                                                        </p>
+                                                    </td>
+                                                    <td>
+                                                        <input value="{{ $orcamento_servico_incluso->qtd }}" readonly type="tel">
+                                                    </td>
+                                                </tr>
+                                            @endforeach
                                         </tbody>
                                     </table>
                                 </form>
@@ -292,37 +274,36 @@
                                         </thead>
 
                                         <tbody>
-                                            <tr>
-                                                <td>
-                                                    <strong class="nome-produto">
-                                                        Nome do serviço
-                                                    </strong>
-                                                </td>
+                                            @foreach($orcamento_servicos_nao_inclusos as $orcamento_servico_nao_incluso)
+                                                <tr>
+                                                    <td>
+                                                        <strong class="nome-produto">
+                                                            {{ $orcamento_servico_nao_incluso->servico->nome }}
+                                                        </strong>
+                                                    </td>
 
-                                                <td>
-                                                    <p class="descricao-produto">Descrição do serviço</p>
-                                                </td>
+                                                    <td>
+                                                        <p class="descricao-produto">{{ $orcamento_servico_nao_incluso->servico->descricao }}</p>
+                                                    </td>
 
-                                                <td>
-                                                    <strong class="total-produto">
-                                                        R$ 500,00
-                                                    </strong>
-                                                </td>
+                                                    <td>
+                                                        <strong class="total-produto">
+                                                            R${{ number_format($orcamento_servico_nao_incluso->servico->valor, 2, ",", ".") }}
+                                                        </strong>
+                                                    </td>
 
-                                                <td>
-                                                    <i class="fa fa-window-minimize"
-                                                        style="cursor:pointer; margin: 4px;"></i>
-                                                    <input value="1" type="tel" min="0" step="1" placeholder="250" name=""
-                                                        id="qtd" readonly>
-                                                    <i class="fa fa-plus" style="cursor:pointer; "></i>
-                                                </td>
+                                                    <td>
+                                                        <input value="{{ $orcamento_servico_nao_incluso->qtd }}" type="tel" min="0" step="1" name=""
+                                                            id="qtd" readonly>
+                                                    </td>
 
-                                                <td>
-                                                    <strong id="valor_total" class="total-produto">
-                                                        R$ 500,00
-                                                    </strong>
-                                                </td>
-                                            </tr>
+                                                    <td>
+                                                        <strong id="valor_total" class="total-produto">
+                                                            R${{ number_format($orcamento_servico_nao_incluso->valor, 2, ",", ".") }}
+                                                        </strong>
+                                                    </td>
+                                                </tr>
+                                            @endforeach
                                         </tbody>
                                     </table>
                                 </form>

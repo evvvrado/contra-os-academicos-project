@@ -12,4 +12,8 @@ class OrcamentoProdutoAcessorio extends Model
     public function acessorio(){
         return $this->belongsTo(Acessorio::class);
     }
+
+    public function marca(){
+        return $this->belongsTo(Marca::class);
+    }
 }

@@ -88,20 +88,7 @@ class OrcamentoController extends Controller
 
     public function lista(Request $request)
     {
-        $orcamento = Orcamento::find(session()->get("orcamento"));
-        $produtos = Produto::whereNotIn("id", $orcamento->produtos->pluck("id"))->get();
-        // $valores = json_decode($parametro->valor_km_rodado, true);
-        // dd($valores);
-        // if ($valores) {
-        $ingredientes_filtro = Ingrediente::whereIn('id', [1, 2])
-            ->get();
-        // } else {
-        // $ingredientes_filtro = Ingrediente::all();
-        // }
-
-        // dd($ingredientes_filtro);
-
-        return view("site.orcamento.lista", ["orcamento" => $orcamento, "produtos" => $produtos, "ingredientes_filtro" => $ingredientes_filtro]);
+        return view("site.orcamento.lista");
     }
 
     public function confirmacao()
@@ -117,10 +104,7 @@ class OrcamentoController extends Controller
     }
     public function carrinho()
     {
-        $orcamento = Orcamento::find(session()->get("orcamento"));
-        $orcamento_produtos = $orcamento->orcamento_produtos;
-
-        return view("site.orcamento.carrinho", ["orcamento_produtos" => $orcamento_produtos, "orcamento" => $orcamento]);
+        return view("site.orcamento.carrinho");
     }
 
     public function orcamentoENCERRAR()
@@ -178,6 +162,24 @@ class OrcamentoController extends Controller
                     $orcamento_servico->save();
                 }
             }
+        }
+
+        foreach($orcamento->orcamento_produtos as $orcamento_produto){
+            $orcamento_produto->qtd = ceil(\App\Classes\Orcamento::qtdDrinks($orcamento->qtd_pessoas) / $orcamento->produtos->count());
+            $orcamento_produto->valor = 0;
+            
+            $orcamento_produto_ingredientes = $orcamento_produto->orcamento_produto_ingredientes;
+            foreach($orcamento_produto_ingredientes as $orcamento_produto_ingrediente){
+                $marca = $orcamento_produto_ingrediente->marca;
+                $orcamento_produto->valor += ceil(($marca->quantidade_ingrediente_unidade * $orcamento_produto->qtd) / $marca->quantidade_embalagem) * $marca->valor_embalagem;
+            }
+
+            $orcamento_produto_acessorios = $orcamento_produto->orcamento_produto_acessorios;
+            foreach($orcamento_produto_acessorios as $orcamento_produto_acessorio){
+                $marca = $orcamento_produto_acessorio->marca;
+                $orcamento_produto->valor += ceil(($marca->quantidade_ingrediente_unidade * $orcamento_produto->qtd) / $marca->quantidade_embalagem) * $marca->valor_embalagem;
+            }
+            $orcamento_produto->save();
         }
 
         $orcamento->finalizado = true;

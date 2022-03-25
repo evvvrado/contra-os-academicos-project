@@ -39,15 +39,16 @@
                                             <th>Tipo</th>
                                             <th>Valor</th>
                                             <th></th>
+                                            <th></th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        @foreach ($orcamentos as $orcamento)
+                                        @foreach ($orcamentos->where("finalizado", true) as $orcamento)
                                             <tr class="odd">
                                                 <td class="sorting_1 dtr-control">{{ date("d/m/Y H:i:s", strtotime($orcamento->created_at))}}</td>
                                                 <td class="sorting_1 dtr-control">{{ $orcamento->cliente->nome }}</td>
                                                 <td class="sorting_1 dtr-control">{{ config("orcamentos.tipos")[$orcamento->tipo] }}</td>
-                                                <td class="sorting_1 dtr-control">R${{ number_format($orcamento->valor, 2, ",", ".") }}</td>
+                                                <td class="sorting_1 dtr-control">R${{ \App\Classes\Orcamento::totalOrcamento($orcamento) }}</td>
                                                 <td class="text-center"><a href="{{ route('painel.orcamento.visualizar', ['orcamento' => $orcamento]) }}"><i class="fa fa-search" aria-hidden="true"></i></a></td>
                                             </tr>
                                         @endforeach

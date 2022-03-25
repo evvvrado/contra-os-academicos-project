@@ -8,28 +8,23 @@ use App\Models\Parametro;
 class ParametrosController extends Controller
 {
     public function consultar(){
-        return view("painel.parametros.consultar");
+        $parametros = Parametro::first();
+        return view("painel.parametros.consultar", ["parametros" => $parametros]);
     }
 
     public function salvar(Request $request){
-        Parametro::where('id', 1)
-        ->update(['valor_1' => $request->valor_km]);
-
-        Parametro::where('id', 2)
-        ->update(['valor_1' => $request->valor_1_param_2, 'valor_2' => $request->valor_2_param_2]);
-
-        Parametro::where('id', 3)
-        ->update(['valor_1' => $request->valor_1_param_3, 'valor_2' => $request->valor_2_param_3]);
-
-        Parametro::where('id', 4)
-        ->update(['valor_1' => $request->valor_1_param_4, 'valor_2' => $request->valor_2_param_4]);
-        
-        Parametro::where('id', 5)
-        ->update(['valor_1' => $request->ingredientes]);
-
-        Parametro::where('id', 6)
-        ->update(['valor_1' => $request->mais_visitados]);
-
-        return view("painel.parametros.consultar");
+        $parametros = Parametro::first();
+        $parametros->valor_km_rodado = $request->valor_km_rodado;
+        $parametros->quantidade_mais_visitados = $request->quantidade_mais_visitados;
+        $parametros->garcons_convidados = $request->garcons_convidados;
+        $parametros->garcons_numero = $request->garcons_numero;
+        $parametros->drinks_convidados = $request->drinks_convidados;
+        $parametros->drinks_numero = $request->drinks_numero;
+        $parametros->tipos_drinks_convidados = $request->tipos_drinks_convidados;
+        $parametros->tipos_drinks_numero = $request->tipos_drinks_numero;
+        $parametros->categoria_filtro = $request->categoria_filtro;
+        $parametros->save();
+        toastr()->success("Parâmetros salvos com sucesso!");
+        return redirect()->back();
     }
 }
