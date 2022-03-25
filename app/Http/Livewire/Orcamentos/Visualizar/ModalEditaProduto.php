@@ -11,17 +11,22 @@ class ModalEditaProduto extends Component
     public $orcamento_produto;
     public $nome_produto;
     public $quantidade;
-    public $marcas = [];
+    public $marcas_ingredientes = [];
+    public $marcas_acessorios = [];
 
     protected $listeners = ["carregaModalEditaProduto"];
 
     public function carregaModalEditaProduto(OrcamentoProduto $orcamento_produto){
-        $this->marcas = [];
+        $this->marcas_ingredientes = [];
+        $this->marcas_acessorios = [];
         $this->orcamento_produto = $orcamento_produto;
         $this->nome_produto = $this->orcamento_produto->produto->nome;
         $this->quantidade = $this->orcamento_produto->qtd;
         foreach($orcamento_produto->orcamento_produto_ingredientes as $orcamento_produto_ingrediente){
-            $this->marcas[$orcamento_produto_ingrediente->id] = $orcamento_produto_ingrediente->marca_id;
+            $this->marcas_ingredientes[$orcamento_produto_ingrediente->id] = $orcamento_produto_ingrediente->marca_id;
+        }
+        foreach($orcamento_produto->orcamento_produto_acessorios as $orcamento_produto_acessorio){
+            $this->marcas_acessorios[$orcamento_produto_acessorio->id] = $orcamento_produto_acessorio->marca_id;
         }
         $this->dispatchBrowserEvent("abreModalEditaProduto");
     }
@@ -30,23 +35,20 @@ class ModalEditaProduto extends Component
         $this->orcamento_produto->qtd = $this->quantidade;
         $this->orcamento_produto->valor = 0;
 
-        foreach($this->marcas as $orcamento_produto_ingrediente_id => $marca_id){
+        foreach($this->marcas_ingredientes as $orcamento_produto_ingrediente_id => $marca_id){
             $orcamento_produto_ingrediente = $this->orcamento_produto->orcamento_produto_ingredientes->where("id", $orcamento_produto_ingrediente_id)->first();
             $orcamento_produto_ingrediente->marca_id = $marca_id;
             $orcamento_produto_ingrediente->save();
         }
 
-        $orcamento_produto_ingredientes = $this->orcamento_produto->orcamento_produto_ingredientes;
-        foreach($orcamento_produto_ingredientes as $orcamento_produto_ingrediente){
-            $marca = $orcamento_produto_ingrediente->marca;
-            $this->orcamento_produto->valor += ceil(($marca->quantidade_ingrediente_unidade * $this->orcamento_produto->qtd) / $marca->quantidade_embalagem) * $marca->valor_embalagem;
+        foreach($this->marcas_acessorios as $orcamento_produto_acessorio_id => $marca_id){
+            $orcamento_produto_acessorio = $this->orcamento_produto->orcamento_produto_acessorios->where("id", $orcamento_produto_acessorio_id)->first();
+            $orcamento_produto_acessorio->marca_id = $marca_id;
+            $orcamento_produto_acessorio->save();
         }
 
-        $orcamento_produto_acessorios = $this->orcamento_produto->orcamento_produto_acessorios;
-        foreach($orcamento_produto_acessorios as $orcamento_produto_acessorio){
-            $marca = $orcamento_produto_acessorio->marca;
-            $this->orcamento_produto->valor += ceil(($marca->quantidade_ingrediente_unidade * $this->orcamento_produto->qtd) / $marca->quantidade_embalagem) * $marca->valor_embalagem;
-        }
+        \App\Classes\Orcamento::atualizaOrcamentoProduto($this->orcamento_produto);
+
         $this->orcamento_produto->save();
         $this->dispatchBrowserEvent("fechaModalEditaProduto");
         $this->emit("refreshPagina");

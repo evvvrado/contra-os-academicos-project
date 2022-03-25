@@ -52,6 +52,21 @@
             </div>
         </div>
     </div>
+
+    <div class="modal fade" id="modalAdicionaProduto" tabindex="-1" role="dialog" aria-labelledby="modelTitleId"
+        aria-hidden="true">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Informações do Drink</h5>
+                    <i data-bs-dismiss="modal" aria-label="Close" class="fas fa-times cpointer"></i>
+                </div>
+                <div class="modal-body bg-modal">
+                    @livewire('orcamentos.visualizar.modal-adiciona-produto', ['orcamento' => $orcamento])
+                </div>
+            </div>
+        </div>
+    </div>
 @endsection
 
 

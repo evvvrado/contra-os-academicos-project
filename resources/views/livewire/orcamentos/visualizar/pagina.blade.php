@@ -201,7 +201,7 @@
                         </div>
 
                         <div class="tab-pane active" id="drinks" role="tabpanel">
-                            <button class="btn-atualizar p-2" data-bs-toggle="modal" data-bs-target="#modalDesconto"><i
+                            <button class="btn-atualizar p-2" onclick="Livewire.emit('carregaModalAdicionaProduto')"><i
                                     class="fas fa-plus"></i> Adicionar</button>
                             <table class="table table-nowrap align-middle table-hover mb-0">
                                 <tbody>
@@ -253,6 +253,11 @@
                                                         data-bs-placement="top" title="" data-bs-original-title="Editar"
                                                         aria-label="Editar"></i>
                                                 </a>
+                                                <a class="ms-3 cpointer" wire:click='removeOrcamentoProduto({{ $orcamento_produto->id }})'>
+                                                    <i class="fas fa-times iS" data-bs-toggle="tooltip"
+                                                        data-bs-placement="top" title="" data-bs-original-title="Editar"
+                                                        aria-label="Editar" style="color: red;"></i>
+                                                </a>
                                             </td>
 
                                         </tr>
@@ -294,36 +299,46 @@
 
                             <tbody>
                                 @php
-                                    $orcamento_produto_ingredientes = \App\Models\OrcamentoProdutoIngrediente::whereIn("orcamento_produto_id", $orcamento->orcamento_produtos->pluck("id"))->orderBy("ingrediente_id")->get();
+                                    $orcamento_produtos = $orcamento->orcamento_produtos;
+                                    $ingredientes = [];
+                                    foreach($orcamento_produtos as $orcamento_produto){
+                                        foreach($orcamento_produto->orcamento_produto_ingredientes as $orcamento_produto_ingrediente){
+                                            if(isset($ingredientes[$orcamento_produto_ingrediente->ingrediente_id]) && isset($ingredientes[$orcamento_produto_ingrediente->ingrediente_id][$orcamento_produto_ingrediente->marca_id])){
+                                                $ingredientes[$orcamento_produto_ingrediente->ingrediente_id][$orcamento_produto_ingrediente->marca_id] += $orcamento_produto->qtd;
+                                            }else{
+                                                $ingredientes[$orcamento_produto_ingrediente->ingrediente_id][$orcamento_produto_ingrediente->marca_id] = $orcamento_produto->qtd;
+                                            }
+                                        }
+                                    }
                                 @endphp
-                                @foreach ($orcamento_produto_ingredientes->groupBy(["ingrediente_id", "marca_id"]) as $orcamento_produto_ingredientes_marcas)
+                                @foreach ($ingredientes as $ingrediente_id => $marcas)
                                     @php
-                                        // dd($orcamento_produto_ingredientes_marcas);
+                                        $ingrediente = \App\Models\Ingrediente::find($ingrediente_id);
                                     @endphp
-                                    @foreach($orcamento_produto_ingredientes_marcas as $orcamento_produto_ingredientes_marca)
+                                    @foreach($marcas as $marca_id => $quantidade)
                                         @php
-                                            // dd($orcamento_produto_ingredientes_marca);
+                                            $marca = \App\Models\Marca::find($marca_id);
                                         @endphp
                                         <tr>
                                             <td style="width: 48px; height: 100px">
                                                 <div class="avatar-sm">
                                                     <img style="object-fit: cover; width: 100%; height: 100%;"
-                                                        src="{{ asset($orcamento_produto_ingredientes_marca->first()->marca->imagem) }}">
+                                                        src="{{ asset($marca->imagem) }}">
                                                 </div>
                                             </td>
                                             <td>
-                                                <h5 class="font-size-14 mb-1">{{ $orcamento_produto_ingredientes_marca->first()->ingrediente->nome }}<br> <strong>{{ $orcamento_produto_ingredientes_marca->first()->marca->nome }}</strong> -
-                                                    {{ FuncoesOrcamento::qtdEmbalagensUsadas($orcamento_produto_ingredientes_marca->first()->marca, $orcamento_produto->qtd * $orcamento_produto_ingredientes_marca->count()) }} {{ $orcamento_produto_ingredientes_marca->first()->marca->embalagem }}</h5>
+                                                <h5 class="font-size-14 mb-1">{{ $ingrediente->nome }}<br> <strong>{{ $marca->nome }}</strong> -
+                                                    {{ FuncoesOrcamento::qtdEmbalagensUsadas($marca, $quantidade) }} {{ $marca->embalagem }}</h5>
                                             </td>
 
                                             <td>
-                                                <strong>{{ $orcamento_produto_ingredientes_marca->first()->marca->nome_unidade }}: </strong> {{ $orcamento_produto_ingredientes_marca->first()->marca->quantidade_ingrediente_unidade }}{{ config("marcas.unidades_medida")[$orcamento_produto_ingredientes_marca->first()->marca->unidade_medida]}}<br>
-                                                <strong>{{ $orcamento_produto_ingredientes_marca->first()->marca->embalagem }}: </strong> {{ $orcamento_produto_ingredientes_marca->first()->marca->quantidade_embalagem }}{{ config("marcas.unidades_medida")[$orcamento_produto_ingredientes_marca->first()->marca->unidade_medida] }}<br>
+                                                <strong>{{ $marca->nome_unidade }}: </strong> {{ $marca->quantidade_ingrediente_unidade }}{{ config("marcas.unidades_medida")[$marca->unidade_medida]}}<br>
+                                                <strong>{{ $marca->embalagem }}: </strong> {{ $marca->quantidade_embalagem }}{{ config("marcas.unidades_medida")[$marca->unidade_medida] }}<br>
                                             </td>
 
                                             <td>
-                                                <strong>Unidade: </strong> R$ {{ number_format($orcamento_produto_ingredientes_marca->first()->marca->valor_embalagem, 2, ",", ".") }}<br>
-                                                <strong>Total: </strong> R$ {{ number_format(FuncoesOrcamento::qtdEmbalagensUsadas($orcamento_produto_ingredientes_marca->first()->marca, $orcamento_produto->qtd * $orcamento_produto_ingredientes_marca->count()) * $orcamento_produto_ingredientes_marca->first()->marca->valor_embalagem, 2, ",", ".") }}
+                                                <strong>Unidade: </strong> R$ {{ number_format($marca->valor_embalagem, 2, ",", ".") }}<br>
+                                                <strong>Total: </strong> R$ {{ number_format(FuncoesOrcamento::qtdEmbalagensUsadas($marca, $quantidade) * $marca->valor_embalagem, 2, ",", ".") }}
                                             </td>
                                         </tr>
                                     @endforeach

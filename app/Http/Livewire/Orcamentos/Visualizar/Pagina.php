@@ -5,6 +5,7 @@ namespace App\Http\Livewire\Orcamentos\Visualizar;
 use Livewire\Component;
 use App\Models\Orcamento;
 use App\Models\OrcamentoServico;
+use App\Models\OrcamentoProduto;
 
 class Pagina extends Component
 {
@@ -23,6 +24,11 @@ class Pagina extends Component
         $this->servicos_nao = OrcamentoServico::where("orcamento_id", $this->orcamento->id)->whereHas("servico", function($q){
             $q->where("incluso", false);
         })->get();
+    }
+
+    public function removeOrcamentoProduto(OrcamentoProduto $orcamento_produto){
+        $orcamento_produto->delete();
+        $this->emit("refreshPagina");
     }
 
     public function render()

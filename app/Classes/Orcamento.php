@@ -5,6 +5,7 @@ use App\Models\Parametro;
 use App\Models\ServicoParametro;
 use App\Models\Servico;
 use App\Models\Marca;
+use App\Models\OrcamentoProduto;
 use App\Models\OrcamentoDesconto;
 use App\Models\OrcamentoServico;
 use App\Models\Orcamento as Orc;
@@ -71,5 +72,21 @@ class Orcamento
         return number_format((Orcamento::aplicaDesconto($desconto_total, Orcamento::aplicaDesconto($desconto_drinks, $orcamento->orcamento_produtos->sum("valor")) 
                         + Orcamento::aplicaDesconto($desconto_servicos_inclusos, $servicos_sim->sum("valor"))
                         + Orcamento::aplicaDesconto($desconto_servicos_extras, $servicos_nao->sum("valor")))), 2, ',', '.');
+    }
+
+    public static function atualizaOrcamentoProduto(OrcamentoProduto $orcamento_produto){
+        $orcamento_produto_ingredientes = $orcamento_produto->orcamento_produto_ingredientes;
+        foreach($orcamento_produto_ingredientes as $orcamento_produto_ingrediente){
+            $marca = $orcamento_produto_ingrediente->marca;
+            $orcamento_produto->valor += ceil(($marca->quantidade_ingrediente_unidade * $orcamento_produto->qtd) / $marca->quantidade_embalagem) * $marca->valor_embalagem;
+        }
+
+        $orcamento_produto_acessorios = $orcamento_produto->orcamento_produto_acessorios;
+        foreach($orcamento_produto_acessorios as $orcamento_produto_acessorio){
+            $marca = $orcamento_produto_acessorio->marca;
+            $orcamento_produto->valor += ceil(($marca->quantidade_ingrediente_unidade * $orcamento_produto->qtd) / $marca->quantidade_embalagem) * $marca->valor_embalagem;
+        }
+
+        $orcamento_produto->save();
     }
 }
