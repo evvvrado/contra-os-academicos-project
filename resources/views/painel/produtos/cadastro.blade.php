@@ -69,7 +69,7 @@ use App\Models\Ingrediente;
 
                                 <div class="form-group col-6 col-lg-6 mt-3">
                                     <label>Harmonização</label>
-                                    <input required name="harmonizacao" type="text" class="form-control">
+                                    <input required name="harmonizacao" type="text" maxlength="255" class="form-control">
                                 </div>
 
                                 <div class="form-group col-6 col-lg-6 mt-3">

@@ -18,7 +18,7 @@ class CreateIngredientesTable extends Migration
             $table->string("nome", 100);
             $table->unsignedBigInteger("ingrediente_categoria_id")->nullable();
             $table->string("fornecedor", 100);
-            $table->string("tel_fornecedor", 20);
+            $table->string("tel_fornecedor", 20)->nullable();
             $table->tinyInteger("validade");
             $table->timestamps();
             $table->foreign('ingrediente_categoria_id')->references('id')->on('ingrediente_categorias')->onDelete('set null');

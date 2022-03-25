@@ -5,7 +5,7 @@
         <div class="row">
             <div class="form-group col-6 col-lg-6 mt-3">
                 <label>Nome</label>
-                <input required name="nome" type="text" class="form-control" wire:model="nome">
+                <input required name="nome" type="text" class="form-control" wire:model="nome" maxlength="100">
             </div>
 
             <div class="form-group col-6 col-lg-6 mt-3">
@@ -18,7 +18,7 @@
 
             <div class="form-group col-6 col-lg-3 mt-3">
                 <label>Nome da unidade</label>
-                <input required name="nome_unidade" type="text" class="form-control" wire:model="nome_unidade">
+                <input required name="nome_unidade" type="text" class="form-control" wire:model="nome_unidade" maxlength="50">
                 <small>Ex: Dose</small>
             </div>
 
@@ -40,7 +40,7 @@
 
             <div class="form-group col-6 col-lg-4 mt-3">
                 <label>Nome da Embalagem</label>
-                <input required name="embalagem" type="text" class="form-control" wire:model="embalagem">
+                <input required name="embalagem" type="text" class="form-control" wire:model="embalagem" maxlength="50">
                 <small>Ex: Garrafa</small>
             </div>
 
