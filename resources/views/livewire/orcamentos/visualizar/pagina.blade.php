@@ -248,7 +248,7 @@
                                             </td>
 
                                             <td>
-                                                <a href="" class="mx-auto">
+                                                <a class="mx-auto cpointer" onclick="Livewire.emit('carregaModalEditaProduto', {{ $orcamento_produto }})">
                                                     <i class="fas fa-pen-square iS" data-bs-toggle="tooltip"
                                                         data-bs-placement="top" title="" data-bs-original-title="Editar"
                                                         aria-label="Editar"></i>
@@ -296,31 +296,34 @@
                                 @php
                                     $orcamento_produto_ingredientes = \App\Models\OrcamentoProdutoIngrediente::whereIn("orcamento_produto_id", $orcamento->orcamento_produtos->pluck("id"))->orderBy("ingrediente_id")->get();
                                 @endphp
-                                @foreach ($orcamento_produto_ingredientes->groupBy(["ingrediente_id", "marca_id"]) as $orcamento_produto_ingredientes)
+                                @foreach ($orcamento_produto_ingredientes->groupBy(["ingrediente_id", "marca_id"]) as $orcamento_produto_ingredientes_marcas)
                                     @php
-                                        $orcamento_produto_ingredientes = $orcamento_produto_ingredientes->first();
+                                        // dd($orcamento_produto_ingredientes_marcas);
                                     @endphp
-                                    @foreach($orcamento_produto->orcamento_produto_ingredientes as $orcamento_produto_ingrediente)
+                                    @foreach($orcamento_produto_ingredientes_marcas as $orcamento_produto_ingredientes_marca)
+                                        @php
+                                            // dd($orcamento_produto_ingredientes_marca);
+                                        @endphp
                                         <tr>
                                             <td style="width: 48px; height: 100px">
                                                 <div class="avatar-sm">
                                                     <img style="object-fit: cover; width: 100%; height: 100%;"
-                                                        src="{{ asset($orcamento_produto_ingredientes->first()->marca->imagem) }}">
+                                                        src="{{ asset($orcamento_produto_ingredientes_marca->first()->marca->imagem) }}">
                                                 </div>
                                             </td>
                                             <td>
-                                                <h5 class="font-size-14 mb-1">{{ $orcamento_produto_ingredientes->first()->ingrediente->nome }}<br> <strong>{{ $orcamento_produto_ingredientes->first()->marca->nome }}</strong> -
-                                                    {{ FuncoesOrcamento::qtdEmbalagensUsadas($orcamento_produto_ingredientes->first()->marca, $orcamento_produto->qtd * $orcamento_produto_ingredientes->count()) }} {{ $orcamento_produto_ingredientes->first()->marca->embalagem }}</h5>
+                                                <h5 class="font-size-14 mb-1">{{ $orcamento_produto_ingredientes_marca->first()->ingrediente->nome }}<br> <strong>{{ $orcamento_produto_ingredientes_marca->first()->marca->nome }}</strong> -
+                                                    {{ FuncoesOrcamento::qtdEmbalagensUsadas($orcamento_produto_ingredientes_marca->first()->marca, $orcamento_produto->qtd * $orcamento_produto_ingredientes_marca->count()) }} {{ $orcamento_produto_ingredientes_marca->first()->marca->embalagem }}</h5>
                                             </td>
 
                                             <td>
-                                                <strong>{{ $orcamento_produto_ingredientes->first()->marca->nome_unidade }}: </strong> {{ $orcamento_produto_ingredientes->first()->marca->quantidade_ingrediente_unidade }}{{ config("marcas.unidades_medida")[$orcamento_produto_ingredientes->first()->marca->unidade_medida]}}<br>
-                                                <strong>{{ $orcamento_produto_ingredientes->first()->marca->embalagem }}: </strong> {{ $orcamento_produto_ingredientes->first()->marca->quantidade_embalagem }}{{ config("marcas.unidades_medida")[$orcamento_produto_ingredientes->first()->marca->unidade_medida] }}<br>
+                                                <strong>{{ $orcamento_produto_ingredientes_marca->first()->marca->nome_unidade }}: </strong> {{ $orcamento_produto_ingredientes_marca->first()->marca->quantidade_ingrediente_unidade }}{{ config("marcas.unidades_medida")[$orcamento_produto_ingredientes_marca->first()->marca->unidade_medida]}}<br>
+                                                <strong>{{ $orcamento_produto_ingredientes_marca->first()->marca->embalagem }}: </strong> {{ $orcamento_produto_ingredientes_marca->first()->marca->quantidade_embalagem }}{{ config("marcas.unidades_medida")[$orcamento_produto_ingredientes_marca->first()->marca->unidade_medida] }}<br>
                                             </td>
 
                                             <td>
-                                                <strong>Unidade: </strong> R$ {{ number_format($orcamento_produto_ingredientes->first()->marca->valor_embalagem, 2, ",", ".") }}<br>
-                                                <strong>Total: </strong> R$ {{ number_format(FuncoesOrcamento::qtdEmbalagensUsadas($orcamento_produto_ingredientes->first()->marca, $orcamento_produto->qtd * $orcamento_produto_ingredientes->count()) * $orcamento_produto_ingredientes->first()->marca->valor_embalagem, 2, ",", ".") }}
+                                                <strong>Unidade: </strong> R$ {{ number_format($orcamento_produto_ingredientes_marca->first()->marca->valor_embalagem, 2, ",", ".") }}<br>
+                                                <strong>Total: </strong> R$ {{ number_format(FuncoesOrcamento::qtdEmbalagensUsadas($orcamento_produto_ingredientes_marca->first()->marca, $orcamento_produto->qtd * $orcamento_produto_ingredientes_marca->count()) * $orcamento_produto_ingredientes_marca->first()->marca->valor_embalagem, 2, ",", ".") }}
                                             </td>
                                         </tr>
                                     @endforeach
@@ -348,19 +351,13 @@
                                 <div class="col-7">
                                     <div class="text-primary p-3">
                                         @php
-                                            $desconto_drinks = $orcamento->descontos->where("alvo", 0)->first();
-                                            $desconto_servicos_inclusos = $orcamento->descontos->where("alvo", 1)->first();
-                                            $desconto_servicos_extras = $orcamento->descontos->where("alvo", 2)->first();
                                             $desconto_total = $orcamento->descontos->where("alvo", 3)->first();
                                         @endphp
                                         <h5 class="text-primary">Total do Orçamento!</h5>
                                         <p>Valor total gerado pelo orçamento</p>
 
                                         <div class="text-muted mt-4">
-                                            <h4 class="text-primary">R$
-                                                {{ number_format((FuncoesOrcamento::aplicaDesconto($desconto_total, FuncoesOrcamento::aplicaDesconto($desconto_drinks, $orcamento->orcamento_produtos->sum("valor")) 
-                                                                + FuncoesOrcamento::aplicaDesconto($desconto_servicos_inclusos, $servicos_sim->sum("valor"))
-                                                                + FuncoesOrcamento::aplicaDesconto($desconto_servicos_extras, $servicos_nao->sum("valor")))), 2, ',', '.') }}</h4>
+                                            <h4 class="text-primary">R$ {{ FuncoesOrcamento::totalOrcamento($orcamento) }}</h4>
                                             <div class="d-flex">
                                                 @if($desconto_total)
                                                     <span class="badge badge-soft-success font-size-12 mx-1 ">{{ number_format($desconto_total->valor) }}({{ config("descontos.tipos")[$desconto_total->tipo] }})</span> de
