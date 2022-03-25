@@ -28,4 +28,8 @@ class Orcamento extends Model
     public function servicos(){
         return $this->belongsToMany(Servico::class, "orcamento_servicos");
     }
+
+    public function descontos(){
+        return $this->hasMany(OrcamentoDesconto::class);
+    }
 }

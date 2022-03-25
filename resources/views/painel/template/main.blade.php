@@ -401,7 +401,7 @@ $usuario = \App\Models\Usuario::find(session()->get('usuario')['id']);
     </script>
     @toastr_js
     @toastr_render
-
+    @stack("scripts")
     <!-- dashboard init -->
     {{-- <script src="{{asset('admin/js/pages/dashboard.init.js')}}"></script> --}}
 

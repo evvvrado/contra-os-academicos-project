@@ -4,6 +4,8 @@ namespace App\Classes;
 use App\Models\Parametro;
 use App\Models\ServicoParametro;
 use App\Models\Servico;
+use App\Models\Marca;
+use App\Models\OrcamentoDesconto;
 
 class Orcamento
 {
@@ -33,6 +35,23 @@ class Orcamento
             return $parametro->quantidade_minima_servico;
         }else{
             return "ERRO";
+        }
+    }
+
+    public static function qtdEmbalagensUsadas(Marca $marca, $qtd){
+        return ceil($marca->quantidade_ingrediente_unidade * $qtd / $marca->quantidade_embalagem);
+    }
+
+    public static function aplicaDesconto(OrcamentoDesconto $desconto = null, $valor){
+        if($desconto){
+            if($desconto->tipo === 0){
+                return ($valor - $desconto->valor);
+            }
+            if($desconto->tipo === 1){
+                return ($valor - ($valor * $desconto->valor) / 100);
+            }
+        }else{
+            return $valor;
         }
     }
 }
