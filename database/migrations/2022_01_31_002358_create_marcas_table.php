@@ -20,9 +20,6 @@ class CreateMarcasTable extends Migration
             $table->boolean("padrao")->default(true);
             $table->string("nome");
             $table->string("imagem")->nullable();
-            $table->string("nome_unidade");
-            $table->tinyInteger("unidade_medida");
-            $table->double("quantidade_ingrediente_unidade");
             $table->string("embalagem");
             $table->double("quantidade_embalagem");
             $table->double("valor_embalagem")->default(0);

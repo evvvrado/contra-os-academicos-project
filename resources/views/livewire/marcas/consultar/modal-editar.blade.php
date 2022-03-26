@@ -16,28 +16,6 @@
                 </select>
             </div>
 
-            <div class="form-group col-6 col-lg-3 mt-3">
-                <label>Nome da unidade</label>
-                <input required name="nome_unidade" type="text" class="form-control" wire:model="nome_unidade" maxlength="50">
-                <small>Ex: Dose</small>
-            </div>
-
-            <div class="form-group col-6 col-lg-3 mt-3">
-                <label>Unidade de Medida</label>
-                <select required name="unidade_medida" type="text" class="form-control" wire:model="unidade_medida">
-                    <option value="">Selecione</option>
-                    @foreach(config("marcas.unidades_medida") as $key => $unidade)
-                        <option value="{{ $key }}">{{ $unidade }}</option>
-                    @endforeach
-                </select>
-            </div>
-
-            <div class="form-group col-6 col-lg-6 mt-3">
-                <label>Quantidade do ingrediente por unidade</label>
-                <input required name="quantidade_ingrediente_unidade" type="number" step="0.01" min="0" class="form-control" wire:model="quantidade_ingrediente_unidade">
-                <small>Ex: O valor 50 significaria que 1 dose possui 50ml </small>
-            </div>
-
             <div class="form-group col-6 col-lg-4 mt-3">
                 <label>Nome da Embalagem</label>
                 <input required name="embalagem" type="text" class="form-control" wire:model="embalagem" maxlength="50">

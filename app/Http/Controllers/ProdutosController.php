@@ -59,7 +59,6 @@ class ProdutosController extends Controller
 
         $produto->save();
 
-        $produto->ingredientes()->sync($request->ingredientes);
         $produto->acessorios()->sync($request->acessorios);
 
         toastr()->success("produto salvo com sucesso!");

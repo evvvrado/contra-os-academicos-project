@@ -24,7 +24,8 @@ class CreateParametrosTable extends Migration
             $table->integer("drinks_numero")->default(1);
             $table->integer("tipos_drinks_convidados")->default(1);
             $table->integer("tipos_drinks_numero")->default(1);
-            $table->timestamps();
+            $table->unsignedBigInteger("categoria_filtro")->nullable();
+            $table->foreign('categoria_filtro')->references('id')->on('ingrediente_categorias')->onDelete('cascade');$table->timestamps();
         });
 
         DB::table('parametros')->insert([

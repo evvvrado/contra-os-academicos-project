@@ -12,4 +12,8 @@ class Acessorio extends Model
     public function marcas(){
         return $this->hasMany(Marca::class);
     }
+
+    public function fornecedores(){
+        return $this->belongsToMany(Fornecedor::class, "acessorio_fornecedors");
+    }
 }

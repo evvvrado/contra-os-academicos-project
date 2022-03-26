@@ -16,9 +16,6 @@ class ModalEditar extends Component
     public $marca_id;
     public $nome;
     public $padrao;
-    public $nome_unidade;
-    public $unidade_medida;
-    public $quantidade_ingrediente_unidade;
     public $embalagem;
     public $quantidade_embalagem;
     public $valor_embalagem;
@@ -30,9 +27,6 @@ class ModalEditar extends Component
         $this->marca_id = $marca->id;
         $this->nome = $marca->nome;
         $this->padrao = $marca->padrao;
-        $this->nome_unidade = $marca->nome_unidade;
-        $this->unidade_medida = $marca->unidade_medida;
-        $this->quantidade_ingrediente_unidade = $marca->quantidade_ingrediente_unidade;
         $this->embalagem = $marca->embalagem;
         $this->quantidade_embalagem = $marca->quantidade_embalagem;
         $this->valor_embalagem = $marca->valor_embalagem;
@@ -43,9 +37,6 @@ class ModalEditar extends Component
         $marca = Marca::find($this->marca_id);
         $marca->nome  = $this->nome;
         $marca->padrao  = $this->padrao;
-        $marca->nome_unidade  = $this->nome_unidade;
-        $marca->unidade_medida  = $this->unidade_medida;
-        $marca->quantidade_ingrediente_unidade  = $this->quantidade_ingrediente_unidade;
         $marca->embalagem  = $this->embalagem;
         $marca->quantidade_embalagem  = $this->quantidade_embalagem;
         if($marca->valor_embalagem != $this->valor_embalagem){
@@ -71,9 +62,6 @@ class ModalEditar extends Component
         $this->marca_id = null;
         $this->nome = null;
         $this->padrao = null;
-        $this->nome_unidade = null;
-        $this->unidade_medida = null;
-        $this->quantidade_ingrediente_unidade = null;
         $this->embalagem = null;
         $this->quantidade_embalagem = null;
         $this->valor_embalagem = null;

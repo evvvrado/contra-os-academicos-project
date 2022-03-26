@@ -26,7 +26,7 @@ $usuario = \App\Models\Usuario::find(session()->get('usuario')['id']);
     @toastr_css
     @livewireStyles()
     @yield("styles")
-
+    @stack("styles")
     <style>
         .bx-minus-circle {
             font-size: 16px !important;
@@ -290,7 +290,7 @@ $usuario = \App\Models\Usuario::find(session()->get('usuario')['id']);
                                 </li>
                                 <li><a href="{{ route('painel.acessorios') }}" key="t-default">Acessórios</a></li>
                                 <li><a href="{{ route('painel.parametros') }}" key="t-default">Parâmetros</a></li>
-                                {{-- <li><a href="{{ route('painel.marcas') }}" key="t-default">Marcas</a></li> --}}
+                                <li><a href="{{ route('painel.fornecedores') }}" key="t-default">Fornecedores</a></li>
                             </ul>
                         </li>
 

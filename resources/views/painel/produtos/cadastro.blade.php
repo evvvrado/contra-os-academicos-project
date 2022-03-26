@@ -80,30 +80,6 @@ use App\Models\Ingrediente;
                                         <option value="0">Não</option>
                                     </select>
                                 </div>
-
-                                <div class="form-group col-6 col-lg-6 mt-3">
-                                    <label class="form-label">Ingredientes</label>
-
-                                    <select multiple style="height: 52px !important;"
-                                        class="select2 form-control select2-multiple" multiple="multiple"
-                                        data-placeholder="Selecione os ingredientes" required name="ingredientes[]">
-                                        @php
-                                            $ingrediente_categorias = IngredienteCategoria::all();
-                                        @endphp
-
-                                        @foreach ($ingrediente_categorias as $ingrediente_categoria)
-                                            <optgroup label="{{ $ingrediente_categoria->nome }}">
-                                                @php
-                                                    $ingredientes = $ingrediente_categoria->ingredientes;
-                                                @endphp
-                                                @foreach ($ingredientes as $ingrediente)
-                                                    <option value="{{ $ingrediente->id }}">{{ $ingrediente->nome }}</option>
-                                                @endforeach
-                                            </optgroup>
-                                        @endforeach
-                                    </select>
-                                </div>
-
                                 <div class="form-group col-6 col-lg-6 mt-3">
                                     <label class="form-label">Acessórios</label>
 
