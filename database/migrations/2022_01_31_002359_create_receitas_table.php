@@ -17,7 +17,7 @@ class CreateReceitasTable extends Migration
             $table->id();
             $table->unsignedBigInteger("produto_id");
             $table->string("nome", 100);
-            $table->defeault("custos_adicionais")->default(0);
+            $table->double("custos_adicionais")->default(0);
             $table->boolean("ativo")->default(true);
             $table->boolean("padrao")->default(false);
             $table->timestamps();
