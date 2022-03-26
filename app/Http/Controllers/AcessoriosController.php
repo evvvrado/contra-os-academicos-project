@@ -24,7 +24,12 @@ class AcessoriosController extends Controller
     }
 
     public function editar(Acessorio $acessorio){
-        return view("painel.acessorios.editar", ["acessorio" => $acessorio]);
+        $categorias = AcessorioCategoria::where("ativo", true)->get();
+        if($categorias->count() == 0){
+            toastr()->error("Cadastre uma categoria antes de cadastrar um acessório.");
+            return redirect()->back();
+        }
+        return view("painel.acessorios.editar", ["acessorio" => $acessorio, "categorias" => $categorias]);
     }
 
     public function deletar(Acessorio $acessorio){
