@@ -59,8 +59,6 @@ class ProdutosController extends Controller
 
         $produto->save();
 
-        $produto->acessorios()->sync($request->acessorios);
-
         toastr()->success("produto salvo com sucesso!");
 
         return redirect()->route("painel.produtos");

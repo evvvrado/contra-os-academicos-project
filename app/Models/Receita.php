@@ -16,4 +16,12 @@ class Receita extends Model
     public function receita_ingredientes(){
         return $this->hasMany(ReceitaIngrediente::class);
     }
+
+    public function acessorios(){
+        return $this->belongsToMany(Acessorio::class, "receita_acessorios");
+    }
+
+    public function receita_acessorios(){
+        return $this->hasMany(ReceitaAcessorio::class);
+    }
 }

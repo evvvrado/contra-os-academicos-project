@@ -26,21 +26,7 @@
                 <div class="card">
                     <div class="card-body">
                         <div class="row">
-                            <div class="col-sm-12">
-                                <table id="datatable"
-                                    class="table table-bordered dt-responsive nowrap w-100 dataTable no-footer dtr-inline"
-                                    role="grid" aria-describedby="datatable_info" style="width: 1185px;">
-                                    <thead>
-                                        <tr role="row">
-                                            <th style="width: 70%">Nome</th>
-                                            <th style="width: 10%;">Custo Adicional</th>
-                                            <th style="width: 10%;">Qtd. Ingredientes</th>
-                                            <th style="width: 10%" class="text-center"></th>
-                                        </tr>
-                                    </thead>
-                                    @livewire('receitas.consultar.datatable', ['produto' => $produto])
-                                </table>
-                            </div>
+                            @livewire('receitas.consultar.datatable', ['produto' => $produto])
                         </div>
                     </div>
                 </div>
@@ -49,6 +35,7 @@
     </div>
     @livewire('receitas.consultar.modal-cadastro', ['produto_id' => $produto->id])
     @livewire('receitas.consultar.ingredientes.modal-cadastro', ['produto_id' => $produto->id])
+    @livewire('receitas.consultar.acessorios.modal-cadastro', ['produto_id' => $produto->id])
 @endsection
 
 
