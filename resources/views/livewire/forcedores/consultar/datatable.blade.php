@@ -8,7 +8,7 @@
                     <i class="fas fa-pen-square iS" data-bs-toggle="tooltip" data-bs-placement="top" title="Editar"></i>
                 </a>
                 <a class="cpointer ms-3" wire:click="removerFornecedor({{ $fornecedor->id }})">
-                    <i style="color: #f46a6a!important;" class="bx bx-minus-circle iS"></i>
+                    <i style="color: #f46a6a!important;" class="fas fa-minus-circle iS"></i>
                 </a>
             </td>
         </tr>

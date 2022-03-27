@@ -22,7 +22,7 @@
                     </a>
                 @endif
                 <a href="{{ route('painel.servicos.deletar', ['servico' => $servico]) }} " class="mx-auto">
-                    <i style="color: #f46a6a!important;" class="bx bx-minus-circle iS"></i>
+                    <i style="color: #f46a6a!important;" class="fas fa-minus-circle iS"></i>
                 </a>
             </td>
         </tr>

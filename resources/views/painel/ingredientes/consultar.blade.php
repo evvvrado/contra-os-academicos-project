@@ -51,7 +51,6 @@ use App\Models\Marca;
                         <i class="bx bx-plus" aria-hidden="true"></i>
                     </a>
                 </div>
-
                 <table id="datatable" class="table table-bordered dt-responsive  nowrap w-100 clear_both"
                     style="background-color: #FFF !important;">
                     <thead>

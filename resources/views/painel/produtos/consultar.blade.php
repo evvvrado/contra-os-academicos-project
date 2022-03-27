@@ -38,6 +38,20 @@ use App\Models\Parametro;
                         <i id="search-icon" class="bx bx-search" aria-hidden="true"></i>
                         <div class="row">
                             <div class="col-sm-12">
+                                <div class="d-flex flex-row mb-3">
+                                    <div>
+                                        <i class="fas fa-calendar iS" data-bs-toggle="tooltip" data-bs-placement="top" title="Ingredientes"></i> Marcar ou desmarcar como lançamento
+                                    </div>
+                                    <div class="ms-3">
+                                        <i class="fas fa-list iS" data-bs-toggle="tooltip" data-bs-placement="top" title="Acessórios"></i> Receitas
+                                    </div>
+                                    <div class="ms-3">
+                                        <i class="fas fa-pen-square iS" data-bs-toggle="tooltip" data-bs-placement="top" title="Editar"></i> Editar Produto
+                                    </div>
+                                    <div class="ms-3">
+                                        <i style="color: #f46a6a!important;" data-bs-toggle="tooltip" data-bs-placement="top" title="Excluir" class="fas fa-minus-circle iS"></i> Excluir Produto
+                                    </div>
+                                </div>
                                 <table id="datatable"
                                     class="table table-bordered dt-responsive nowrap w-100 dataTable no-footer dtr-inline"
                                     role="grid" aria-describedby="datatable_info" style="width: 1185px;">
