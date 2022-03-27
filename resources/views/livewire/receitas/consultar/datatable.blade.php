@@ -1,7 +1,16 @@
 <div class="col-12">
-    <div class="row">
-        <div class="col-12">
-            <small>O custo total leva em conta o custo da receita pra uma unidade deste produto utilizando as marcas padrões.</small>
+    <div class="d-flex flex-row mb-3">
+        <div>
+            <i class="fas fa-wine-bottle iS" data-bs-toggle="tooltip" data-bs-placement="top" title="Ingredientes"></i> Ingredientes
+        </div>
+        <div class="ms-3">
+            <i class="fas fa-glass-martini iS" data-bs-toggle="tooltip" data-bs-placement="top" title="Acessórios"></i> Acessórios
+        </div>
+        <div class="ms-3">
+            <i class="fas fa-pen-square iS" data-bs-toggle="tooltip" data-bs-placement="top" title="Editar"></i> Editar Receita
+        </div>
+        <div class="ms-3">
+            <i style="color: #f46a6a!important;" data-bs-toggle="tooltip" data-bs-placement="top" title="Excluir" class="fas fa-minus-circle iS"></i> Excluir Receita
         </div>
     </div>
     <table id="datatable"
@@ -36,7 +45,7 @@
                             <i class="fas fa-pen-square iS" data-bs-toggle="tooltip" data-bs-placement="top" title="Editar"></i>
                         </a>
                         <a class="cpointer" wire:click="removerReceita({{ $receita->id }})">
-                            <i style="color: #f46a6a!important;" data-bs-toggle="tooltip" data-bs-placement="top" title="Excluir" class="bx bx-minus-circle iS"></i>
+                            <i style="color: #f46a6a!important;" data-bs-toggle="tooltip" data-bs-placement="top" title="Excluir" class="fas fa-minus-circle iS"></i>
                         </a>
         
                     </td>

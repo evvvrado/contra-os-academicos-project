@@ -5472,6 +5472,7 @@ fieldset:disabled .btn {
     width: auto;
     margin: 0.5rem;
     pointer-events: none;
+    box-shadow: 2px 2px 15px black;
 }
 .modal.fade .modal-dialog {
     -webkit-transition: -webkit-transform 0.3s ease-out;

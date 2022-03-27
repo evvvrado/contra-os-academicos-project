@@ -4,6 +4,7 @@ namespace App\Http\Livewire\Ingredientes\Consultar;
 
 use Livewire\Component;
 use App\Models\Ingrediente;
+use App\Models\Fornecedor;
 
 class ModalCadastro extends Component
 {
@@ -13,7 +14,8 @@ class ModalCadastro extends Component
     public $ingrediente_categoria_id = 1;
     public $fornecedores;
     public $unidade_medida = 0;
-    public $validade = 0;
+    public $validade = 1;
+    public $vitalicio = null;
 
     protected $listeners = ["carregaModalCadastroIngrediente", "carregaModalEdicaoIngrediente"];
 
@@ -23,7 +25,8 @@ class ModalCadastro extends Component
         $this->ingrediente_categoria_id = 1;
         $this->fornecedores = null;
         $this->unidade_medida = 0;
-        $this->validade = 0;
+        $this->validade = 1;
+        $this->vitalicio = null;
         $this->dispatchBrowserEvent("abreModalCadastroIngrediente");
     }
 
@@ -34,6 +37,7 @@ class ModalCadastro extends Component
         $this->fornecedores = $this->ingrediente->fornecedores->pluck("id");
         $this->unidade_medida = $this->ingrediente->unidade_medida;
         $this->validade = $this->ingrediente->validade;
+        $this->vitalicio = $this->ingrediente->vitalicio;
         $this->dispatchBrowserEvent("abreModalCadastroIngrediente"); 
     }
 
@@ -46,7 +50,22 @@ class ModalCadastro extends Component
         $this->ingrediente->ingrediente_categoria_id = $this->ingrediente_categoria_id;
         $this->ingrediente->unidade_medida = $this->unidade_medida;
         $this->ingrediente->validade = $this->validade;
+
+        if($this->vitalicio){
+            $this->ingrediente->vitalicio = true;
+        }
+
         $this->ingrediente->save();
+
+        for($i = 0; $i < count($this->fornecedores); $i++){
+            if(!is_numeric($this->fornecedores[$i])){
+                $fornecedor = new Fornecedor;
+                $fornecedor->nome = $this->fornecedores[$i];
+                $fornecedor->save();
+                $this->fornecedores[$i] = $fornecedor->id;
+                $this->dispatchBrowserEvent("addSelect2Option", ["id" => $fornecedor->id, "nome" => $fornecedor->nome]);
+            }
+        }
 
         $this->ingrediente->fornecedores()->sync($this->fornecedores);
 
