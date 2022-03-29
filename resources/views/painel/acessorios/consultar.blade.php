@@ -229,7 +229,7 @@ use App\Models\MarcaAcessorio;
 @section('scripts')
 <script>
     function editar_marca(id, padrao) {
-        $('#id_ingrediente').val(id);
+        $('#id_acessorio').val(id);
 
         if (padrao == "Sim") {
             $("#padrao_cadastro").prop("disabled", true);
