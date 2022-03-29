@@ -17,11 +17,16 @@ class ModalCadastro extends Component
     protected $listeners = ["carregaModalCadastroAcessorios", "atualizaModalCadastroAcessorios" => '$refresh'];
 
     public function carregaModalCadastroAcessorios(Receita $receita){
-        $this->acessorio_id = Acessorio::first()->id;
-        $this->quantidade = 1;
-        $this->receita = $receita;
-        $this->receita_acessorios = $this->receita->receita_acessorios;
-        $this->dispatchBrowserEvent("abreModalCadastroAcessorios");
+        $acessorio = Acessorio::first();
+        if($acessorio){
+            $this->acessorio_id = $acessorio->id;
+            $this->quantidade = 1;
+            $this->receita = $receita;
+            $this->receita_acessorios = $this->receita->receita_acessorios;
+            $this->dispatchBrowserEvent("abreModalCadastroAcessorios");
+        }else{
+            $this->dispatchBrowserEvent('notificaToastr', ['tipo' => 'error', 'mensagem' => 'Você precisa ter um acessório cadastrado.']);   
+        }        
     }
 
     public function adicionar(){
