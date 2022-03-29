@@ -18,7 +18,7 @@
                         </div>
                         <div class=" col-4 mb-3">
                             <label class="form-label">Quantidade</label>
-                            <input type="number" class="form-control" step="0.01" wire:model='quantidade' min="1" required>
+                            <input type="number" class="form-control" step="0.01" wire:model='quantidade' min="0" required>
                         </div>
                     </div>
                     <div class="row">
