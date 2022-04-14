@@ -6,7 +6,7 @@ return [
         1 => "L",
         2 => "Kg",
         3 => "g",
-        4 => "Unidades"
+        4 => " Unidades"
     ],
 ];
 

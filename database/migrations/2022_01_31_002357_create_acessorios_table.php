@@ -17,8 +17,7 @@ class CreateAcessoriosTable extends Migration
             $table->id();
             $table->string("nome", 100);
             $table->unsignedBigInteger("acessorio_categoria_id")->nullable();
-            $table->string("fornecedor", 100);
-            $table->string("tel_fornecedor", 20);
+            $table->tinyInteger("unidade_medida");
             $table->string("validade", 100);
             $table->timestamps();
             $table->foreign('acessorio_categoria_id')->references('id')->on('acessorio_categorias')->onDelete('set null');

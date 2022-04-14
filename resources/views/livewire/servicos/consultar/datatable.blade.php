@@ -15,14 +15,12 @@
                 <a href="{{ route('painel.servicos.editar', ['servico' => $servico]) }} " class="mx-auto">
                     <i class="fas fa-pen-square iS"></i>
                 </a>
-                @if ($servico->incluso)
-                    <a class="cpointer" onclick="Livewire.emit('carregaModalParametros', {{ $servico->id }})"
-                        class="mx-auto">
-                        <i class="fas fa-cog iS"></i>
-                    </a>
-                @endif
+                <a class="cpointer" onclick="Livewire.emit('carregaModalParametros', {{ $servico->id }})"
+                    class="mx-auto">
+                    <i class="fas fa-cog iS"></i>
+                </a>
                 <a href="{{ route('painel.servicos.deletar', ['servico' => $servico]) }} " class="mx-auto">
-                    <i style="color: #f46a6a!important;" class="bx bx-minus-circle iS"></i>
+                    <i style="color: #f46a6a!important;" class="fas fa-minus-circle iS"></i>
                 </a>
             </td>
         </tr>

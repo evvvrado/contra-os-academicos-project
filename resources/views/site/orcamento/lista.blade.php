@@ -4,6 +4,7 @@
 
 @section('content')
 
+<<<<<<< HEAD
     @php
     use App\Models\Ingrediente;
     @endphp
@@ -333,6 +334,10 @@
         </div>
     </section>
 
+=======
+    @livewire('orcamento.produtos.pagina')
+    
+>>>>>>> c28001b6bb903f429364cf32ffc47ac5fff7c0b1
 @endsection
 
 @section('scripts')

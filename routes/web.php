@@ -115,6 +115,9 @@ Route::middleware(['admin'])->group(function () {
     Route::post('/sistema/produtos/cadastrar', [\App\Http\Controllers\ProdutosController::class, 'cadastrar'])->name("painel.produtos.cadastrar");
     Route::get('/sistema/produtos/deletar/{produto}', [\App\Http\Controllers\ProdutosController::class, 'deletar'])->name("painel.produtos.deletar");
 
+    // ROTAS DE RECEITAS
+    Route::get('/sistema/produto/{produto}/receitas', [\App\Http\Controllers\ReceitasController::class, 'consultar'])->name("painel.receitas");
+
     // ROTAS DE CATEGORIAS DE INGREDIENTE
     Route::post('/sistema/ingredientecats/salvar', [\App\Http\Controllers\IngredienteCategoriasController::class, 'salvar'])->name("painel.ingredientecats.salvar");
     Route::post('/sistema/ingredientecats/editar', [\App\Http\Controllers\IngredienteCategoriasController::class, 'editar'])->name("painel.ingredientecats.editar");
@@ -127,6 +130,9 @@ Route::middleware(['admin'])->group(function () {
     Route::post('/sistema/acessorios/cadastrar', [\App\Http\Controllers\AcessoriosController::class, 'cadastrar'])->name("painel.acessorios.cadastrar");
     Route::post('/sistema/acessorios/salvar', [\App\Http\Controllers\AcessoriosController::class, 'salvar'])->name("painel.acessorios.salvar");
     Route::get('/sistema/acessorios/deletar/{acessorio}', [\App\Http\Controllers\AcessoriosController::class, 'deletar'])->name("painel.acessorios.deletar");
+
+    // ROTAS DE FORNECEDORES
+    Route::get('/sistema/fornecedores', [\App\Http\Controllers\FornecedoresController::class, 'consultar'])->name("painel.fornecedores");
 
     // ROTAS DE CATEGORIA DE ACESSÓRIOS
     Route::post('/sistema/acessoriocats/salvar', [\App\Http\Controllers\AcessorioCategoriasController::class, 'salvar'])->name("painel.acessoriocats.salvar");
@@ -143,8 +149,8 @@ Route::middleware(['admin'])->group(function () {
 
     // ROTAS DE MARCAS
 
-    Route::get('/sistema/marcas/{ingrediente}', [\App\Http\Controllers\MarcasController::class, 'consultar_ingrediente'])->name("painel.marcas.ingredientes");
-    Route::get('/sistema/marcas/{acessorio}', [\App\Http\Controllers\MarcasController::class, 'consultar_acessorio'])->name("painel.marcas.acessorios");
+    Route::get('/sistema/ingredientes/marcas/{ingrediente}', [\App\Http\Controllers\MarcasController::class, 'consultar_ingrediente'])->name("painel.marcas.ingredientes");
+    Route::get('/sistema/acessorios/marcas/{acessorio}', [\App\Http\Controllers\MarcasController::class, 'consultar_acessorio'])->name("painel.marcas.acessorios");
 
     Route::get('/sistema/marcas/cadastro', [\App\Http\Controllers\MarcasController::class, 'cadastro'])->name("painel.marcas.cadastro");
     Route::post('/sistema/marcas/cadastrar', [\App\Http\Controllers\MarcasController::class, 'cadastrar'])->name("painel.marcas.cadastrar");

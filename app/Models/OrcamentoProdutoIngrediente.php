@@ -12,4 +12,8 @@ class OrcamentoProdutoIngrediente extends Model
     public function ingrediente(){
         return $this->belongsTo(Ingrediente::class);
     }
+
+    public function marca(){
+        return $this->belongsTo(Marca::class);
+    }
 }

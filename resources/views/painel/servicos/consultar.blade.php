@@ -31,6 +31,17 @@ Produtos / <a style="color: unset" href="{{ route('painel.ingredientes') }}">Ser
                 </div>
                 <div class="row p-3">
                     <div class="col-sm-12">
+                        <div class="d-flex flex-row mb-3">
+                            <div>
+                                <i class="fas fa-cog iS" data-bs-toggle="tooltip" data-bs-placement="top" title="Ingredientes"></i> Parâmetros para serviços inclusos
+                            </div>
+                            <div class="ms-3">
+                                <i class="fas fa-pen-square iS" data-bs-toggle="tooltip" data-bs-placement="top" title="Editar"></i> Editar Serviço
+                            </div>
+                            <div class="ms-3">
+                                <i style="color: #f46a6a!important;" data-bs-toggle="tooltip" data-bs-placement="top" title="Excluir" class="fas fa-minus-circle iS"></i> Excluir Serviço
+                            </div>
+                        </div>
                         <table style="width: 100%" id="datatable" order="[0]" class="table table-bordered dt-responsive  nowrap w-100 clear_both">
                             <thead>
                                 <tr>

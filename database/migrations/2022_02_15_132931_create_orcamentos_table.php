@@ -27,7 +27,9 @@ class CreateOrcamentosTable extends Migration
             $table->string("estado", 2)->nullable();
             $table->string("pais", 30)->nullable();
             $table->boolean("aberto")->default(true);
+            $table->tinyInteger("situacao")->default(0);
             $table->double("valor", 10, 2)->nullable()->default(null);
+            $table->boolean("finalizado")->default(false);
             $table->foreign('cliente_id')->references('id')->on('clientes')->onDelete('cascade');
             $table->timestamps();
         });

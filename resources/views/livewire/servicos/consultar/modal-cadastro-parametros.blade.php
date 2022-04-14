@@ -6,7 +6,7 @@
             </div>
             <div class="d-flex flex-row mt-2">
                 <div class="mb-3 flex-fill">
-                    <input type="number" class="form-control" name="" id="" step="1" min="1" wire:model='quantidade_minima_pessoas'>
+                    <input type="number" class="form-control" name="" id="" step="1" min="1" wire:model='quantidade_minima_pessoas' readonly>
                 </div>
                 <div class="mx-1 mt-2">
                     até
@@ -37,7 +37,7 @@
     <hr>
     <div class="row">
         <div class="col-12">
-            @if($servico)
+            @if($this->servico)
                 <table class="table">
                     <tbody>
                         <thead>

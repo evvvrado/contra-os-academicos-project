@@ -5263,11 +5263,11 @@ td {
 }
 
 .custom-timeline {
-    height: 285px;
+    height: 350px;
     overflow-y: scroll;
 }
 .custom-timeline-2 {
-    height: 264px;
+    max-height: 350px;
     overflow-y: scroll;
 }
 
@@ -5307,4 +5307,8 @@ td {
     display: flex;
     justify-content: center;
     margin-top: 15px;
+}
+
+.text-roxo{
+    color: #56076d;
 }

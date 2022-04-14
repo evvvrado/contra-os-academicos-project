@@ -69,9 +69,6 @@ class MarcasController extends Controller
         }else{
             $marca->padrao = 0;
         }
-        $marca->nome_unidade = $request->nome_unidade;
-        $marca->unidade_medida = $request->unidade_medida;
-        $marca->quantidade_ingrediente_unidade = $request->quantidade_ingrediente_unidade;
         $marca->embalagem = $request->embalagem;
         $marca->quantidade_embalagem = $request->quantidade_embalagem;
         $marca->valor_embalagem = $request->valor_embalagem;
