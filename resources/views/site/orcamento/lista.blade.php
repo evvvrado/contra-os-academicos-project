@@ -211,7 +211,8 @@
                 <h4>Bora surpreender</h4>
                 <h2>
                     Com base no numero de <br>
-                    convidados você pode escolher <i> {{ \App\Classes\Orcamento::qtdTiposDrinks($orcamento->qtd_pessoas) }} drinks</i>
+                    convidados você pode escolher <i>
+                        {{ \App\Classes\Orcamento::qtdTiposDrinks($orcamento->qtd_pessoas) }} drinks</i>
                 </h2>
             </div>
 
@@ -302,31 +303,31 @@
                 @endforeach
 
                 {{-- <div class="box" niv-fade data-cal="140" data-teor="86" visitado lancamento>
-                <picture>
-                    <img src="{{ asset('/site/assets/img/drink_2.png') }}" alt="imagem representativa">
-                </picture>
+            <picture>
+                <img src="{{ asset('/site/assets/img/drink_2.png') }}" alt="imagem representativa">
+            </picture>
 
-                <strong>CHEROKEE</strong>
-                <p>Um coquetel moderno, que recebeu este nome devido á sua cor, associada...</p>
+            <strong>CHEROKEE</strong>
+            <p>Um coquetel moderno, que recebeu este nome devido á sua cor, associada...</p>
 
-                <div>
-                    <strong>Teor alcóolico</strong>
-                    <p>86%</p>
-                    <strong>Valor Calórico</strong>
-                    <p>140 cal.</p>
-                    <strong>Valor Calórico</strong>
+            <div>
+                <strong>Teor alcóolico</strong>
+                <p>86%</p>
+                <strong>Valor Calórico</strong>
+                <p>140 cal.</p>
+                <strong>Valor Calórico</strong>
 
-                    <span>
-                        <img src="{{ asset('site/assets/img/icon_star.svg') }}" alt="estrela de nota">
-                        <img src="{{ asset('site/assets/img/icon_star.svg') }}" alt="estrela de nota">
-                        <img src="{{ asset('site/assets/img/icon_star.svg') }}" alt="estrela de nota">
-                        <img src="{{ asset('site/assets/img/icon_star.svg') }}" alt="estrela de nota">
-                        <img src="{{ asset('site/assets/img/icon_star.svg') }}" alt="estrela de nota">
-                    </span>
+                <span>
+                    <img src="{{ asset('site/assets/img/icon_star.svg') }}" alt="estrela de nota">
+                    <img src="{{ asset('site/assets/img/icon_star.svg') }}" alt="estrela de nota">
+                    <img src="{{ asset('site/assets/img/icon_star.svg') }}" alt="estrela de nota">
+                    <img src="{{ asset('site/assets/img/icon_star.svg') }}" alt="estrela de nota">
+                    <img src="{{ asset('site/assets/img/icon_star.svg') }}" alt="estrela de nota">
+                </span>
 
-                    <input type="checkbox" name="habilitar">
-                </div>
-            </div> --}}
+                <input type="checkbox" name="habilitar">
+            </div>
+        </div> --}}
 
             </div>
         </div>

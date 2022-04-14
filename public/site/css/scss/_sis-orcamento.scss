@@ -623,6 +623,10 @@ section.carrinho {
     padding-top: 15.6rem;
     padding-bottom: 29rem;
 
+    body.concluido & {
+        padding-bottom: 7rem;
+    }
+
     div.niv {
         @include flex(column, flex-end, flex-start);
 
@@ -746,14 +750,15 @@ section.carrinho {
                                     text-align: center;
                                     color: $grey;
                                 }
+
                                 input[type="checkbox"] {
-                                    height: 2.3rem;
-                                    width: 3.8rem;
+                                    height: 3.3rem;
+                                    width: 5.8rem;
 
-                                    border: solid 0.4rem #eb5757;
-                                    margin: 0 auto !important;
+                                    border: solid 0.3rem #8d8d8d;
+                                    // margin: 0 auto !important;
 
-                                    border-radius: 2rem;
+                                    border-radius: 1rem;
                                     position: relative;
                                     transition: 0.32s;
 
@@ -762,27 +767,38 @@ section.carrinho {
                                     @include flex(row, center, center);
 
                                     &::after {
-                                        width: 1.1rem;
-                                        height: 1.1rem;
-                                        background: #eb5757;
+                                        // width: 1.1rem;
+                                        // height: 1.1rem;
+                                        color: #8d8d8d;
 
                                         border-radius: 100%;
                                         transition: 0.32s;
 
                                         position: absolute;
-                                        content: "";
+                                        content: "NÃO";
 
-                                        left: 0.2rem;
+                                        // left: 0.2rem;
+                                    }
+
+                                    &:active {
+                                        &::after {
+                                            transform: scale(0);
+                                        }
                                     }
 
                                     &:checked {
                                         border-color: #27ae60;
+                                        background: #27ae60;
 
                                         &::after {
-                                            background: #27ae60;
-                                            left: 1.8rem;
+                                            color: $white;
+                                            content: "SIM";
                                         }
                                     }
+                                }
+
+                                .info_svg {
+                                    cursor: pointer;
                                 }
 
                                 input[type="tel"] {
@@ -802,7 +818,16 @@ section.carrinho {
                                     line-height: 100%;
                                     color: $grey;
                                 }
+
                                 text-align: center;
+
+                                div.flex-row {
+                                    @include flex(row, center, center);
+                                    gap: 1rem;
+
+                                    width: 100%;
+                                    height: 100%;
+                                }
                             }
 
                             transition: 0.32s;
@@ -820,7 +845,7 @@ section.carrinho {
 
             span.resumo-evento {
                 padding: 5.1rem;
-                padding-right: 2rem;
+                padding-right: 5rem;
                 border: solid 0.1rem $table-border;
                 width: 100%;
                 border-top: none;
@@ -2703,10 +2728,10 @@ body#orcamento-carrinho {
     }
 
     .reduced {
-        font-size: 2.3rem;
+        //font-size: 2.3rem;
         color: $main-purple;
         cursor: pointer;
-        margin-right: 1rem;
+        //margin-right: 1rem;
         position: relative;
 
         &::before {
@@ -2721,7 +2746,9 @@ body#orcamento-carrinho {
             color: $white;
             background-color: #26053071;
 
-            top: 0;
+            top: 150%;
+            left: 50%;
+            transform: translate(-50%, -60%);
 
             font-family: "Inter", sans-serif;
             font-style: normal;
@@ -2736,7 +2763,7 @@ body#orcamento-carrinho {
 
         &:hover {
             &::before {
-                top: -300%;
+                top: -50%;
                 opacity: 1;
             }
         }

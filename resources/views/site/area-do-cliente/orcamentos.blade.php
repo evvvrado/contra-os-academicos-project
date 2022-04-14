@@ -27,6 +27,12 @@
                         <p>Para {{ $orcamento->qtd_pessoas }} convidados</p>
                     </h2>
 
+                    <h1 class="status">
+                        {{-- NOVO --}}
+                        {{-- AGUARDANDO --}}
+                        APROVADO
+                    </h1>
+
                     <div class="sub pagar">
                         <picture>
                             <img src="{{ asset('site/assets/sistema/dollar.svg') }} " alt="">
@@ -158,7 +164,7 @@
                 <main>
                     <div class="list" active>
                         <div class="info --special">
-                            <span>
+                            {{-- <span>
                                 <div style="display: flex; justify-content: space-between; flex-wrap: wrap">
                                     @foreach ($orcamento->orcamento_produtos as $orcamento_produto)
                                         @php
@@ -185,7 +191,80 @@
                                         </div>
                                     @endforeach
                                 </div>
-                            </span>
+                            </span> --}}
+
+
+                            <section class="coqueteis-drinks">
+                                <div class="niv">
+                                    <div class="niv-content">
+
+                                        {{-- @if ($orcamento->produtos->count() > 0)
+
+                                            @foreach ($orcamento->produtos as $produto_escolhido)
+                                                @if ($produto_escolhido->lancamento == true)
+                                                    @php
+                                                        $lancamento = 'lancamento';
+                                                    @endphp
+                                                @else
+                                                    @php
+                                                        $lancamento = '';
+                                                    @endphp
+                                                @endif
+
+                                                <div class="box @foreach ($produto_escolhido->ingredientes as $ingrediente) {{ $ingrediente->nome }} @endforeach"
+                                                    niv-fade data-cal="{{ $produto_escolhido->calorias }}"
+                                                    data-teor="{{ $produto_escolhido->teor_alcoolico }}"
+                                                    {{ $lancamento }}>
+                                                    <picture>
+                                                        <img src="{{ asset($produto_escolhido->imagem_preview) }}"
+                                                            alt="imagem representativa"
+                                                            style="width: auto; height: 100%; margin: auto;">
+                                                    </picture>
+
+                                                    <strong>{{ $produto_escolhido->nome }}</strong>
+                                                    <p>{{ mb_strimwidth($produto_escolhido->descricao, 0, 72, '...') }}
+                                                    </p>
+
+                                                    <div>
+                                                        <strong>Teor alcóolico</strong>
+                                                        <p>{{ $produto_escolhido->teor_alcoolico }}%</p>
+                                                        <strong>Valor Calórico</strong>
+                                                        <p>{{ $produto_escolhido->calorias }} cal.</p>
+                                                        <strong>Nota</strong>
+
+                                                        <span>
+                                                            @for ($i = 0; $i < $produto_escolhido->nota; $i++)
+                                                                <img src="{{ asset('site/assets/img/icon_star.svg') }}"
+                                                                    alt="estrela de nota">
+                                                            @endfor
+                                                        </span>
+
+                                                        <input onclick="escolher_produto({{ $produto_escolhido->id }})"
+                                                            checked type="checkbox" name="desabilitar">
+                                                    </div>
+                                                </div>
+                                            @endforeach
+                                        @endif --}}
+
+
+                                        <div class="box" niv-fade data-cal="140" data-teor="86" visitado
+                                            lancamento>
+                                            <picture>
+                                                <img src="{{ asset('/site/assets/img/drink_2.png') }}"
+                                                    alt="imagem representativa">
+                                            </picture>
+
+                                            <strong>CHEROKEE</strong>
+                                            <p>Um coquetel moderno, que recebeu este nome devido á sua cor, associada...</p>
+
+                                            <div>
+                                                <input type="checkbox" name="habilitar" checked>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </section>
                         </div>
                     </div>
 
@@ -203,7 +282,7 @@
                                                 {{-- <th width="175">Valor</th> --}}
                                                 <th width="200">Quantidade Ideal</th>
                                                 <th width="200">Quantidade Mínima</th>
-                                                <th width="200"></th>
+                                                <th width="200">Usar Quantidade Mínima</th>
                                             </tr>
                                         </thead>
 
@@ -230,7 +309,18 @@
                                                 </td>
 
                                                 <td>
-                                                    <input type="checkbox" class="reduced" id="">
+                                                    <div class="flex-row">
+                                                        <input type="checkbox" id="">
+                                                        <div class="reduced">
+                                                            <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px"
+                                                                width="24" height="24" viewBox="0 0 24 24"
+                                                                style=" fill:#8d8d8d;" class="info_svg ">
+                                                                <path
+                                                                    d="M 12 2 C 6.4889971 2 2 6.4889971 2 12 C 2 17.511003 6.4889971 22 12 22 C 17.511003 22 22 17.511003 22 12 C 22 6.4889971 17.511003 2 12 2 z M 12 4 C 16.430123 4 20 7.5698774 20 12 C 20 16.430123 16.430123 20 12 20 C 7.5698774 20 4 16.430123 4 12 C 4 7.5698774 7.5698774 4 12 4 z M 11 7 L 11 9 L 13 9 L 13 7 L 11 7 z M 11 11 L 11 17 L 13 17 L 13 11 L 11 11 z">
+                                                                </path>
+                                                            </svg>
+                                                        </div>
+                                                    </div>
                                                 </td>
                                             </tr>
 

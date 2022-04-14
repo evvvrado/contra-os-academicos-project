@@ -273,6 +273,24 @@ body.minha-area {
                     margin-bottom: 3.3rem;
                 }
 
+                h1.status {
+                    font-size: 14.7rem;
+                    -webkit-text-stroke-width: 1px;
+                    -webkit-text-stroke-color: white;
+                    color: transparent;
+                    position: absolute;
+                    right: 0;
+                    bottom: 0;
+
+                    mix-blend-mode: overlay;
+
+                    z-index: 1;
+                }
+
+                div.top {
+                    position: relative;
+                }
+
                 div.boxes {
                     @include flex(row, center, flex-start);
                     flex-wrap: wrap;
@@ -293,6 +311,8 @@ body.minha-area {
                             color: $system-main;
                             font-size: 2.4rem;
                             display: block;
+
+                            @include limitText(5.8rem, 2);
 
                             margin-bottom: 0.8rem;
                         }
@@ -790,6 +810,7 @@ body.minha-area {
                             gap: 2rem;
                             width: 100%;
                             max-width: 19.4rem;
+                            z-index: 2;
 
                             &.pagar {
                                 justify-content: center;
@@ -801,10 +822,11 @@ body.minha-area {
 
                                     transition: 0.32s;
 
-                                    background-color: $system-box-secondary;
+                                    background-color: green;
                                     color: $white;
                                     img {
-                                        mix-blend-mode: darken;
+                                        mix-blend-mode: unset;
+                                        filter: brightness(100);
                                     }
                                     &:hover {
                                         background-color: $system-main;
@@ -932,6 +954,8 @@ body.minha-area {
                             width: 100%;
                             max-width: 19.4rem;
 
+                            z-index: 2;
+
                             &.pagar {
                                 justify-content: flex-end;
                                 max-width: unset;
@@ -993,95 +1017,194 @@ body.minha-area {
                         &.--special {
                             max-width: 100%;
 
-                            div {
-                                flex-wrap: wrap;
-                                justify-content: flex-start;
-                                gap: 7rem;
-                            }
+                            div.niv-content {
+                                div.box {
+                                    height: 45rem;
+                                    @include fade(translateY(45px), 1s);
 
-                            picture {
-                                img {
-                                    border-radius: 1.5rem;
-                                }
-                                h2 {
-                                    margin-top: 2rem;
-                                    margin-bottom: 1rem;
-                                    text-align: center;
-
-                                    i {
-                                        text-transform: none;
-                                        font-style: normal;
-                                        font-size: 2rem;
-
-                                        color: #dbbf00;
+                                    &:hover {
+                                        transform: none;
                                     }
 
-                                    position: relative;
+                                    div {
+                                        margin-top: 2.9rem;
 
-                                    &::after {
-                                        position: absolute;
-                                        content: "";
-                                        display: block;
+                                        @include flex(column, center, center);
 
-                                        top: -10px;
-                                        left: 0;
-                                        right: 0;
+                                        strong {
+                                            margin-top: 1.2rem;
 
-                                        margin: 0 auto;
+                                            font-family: Inter;
+                                            font-style: normal;
+                                            font-weight: 500;
+                                            font-size: 15px;
+                                            line-height: 120%;
+                                            /* identical to box height, or 18px */
 
-                                        width: 0;
-                                        height: 0;
-                                        border-left: 5px solid transparent;
-                                        border-right: 5px solid transparent;
+                                            text-align: center;
+                                            letter-spacing: 0.05em;
 
-                                        border-bottom: 5px solid $system-main;
+                                            /* Cinza */
+
+                                            color: $details-grey;
+                                        }
+
+                                        p,
+                                        img {
+                                            margin-top: 0.9rem;
+
+                                            font-family: Inter;
+                                            font-style: normal;
+                                            font-weight: 300;
+                                            font-size: 15px;
+                                            line-height: 120%;
+                                            /* identical to box height, or 18px */
+
+                                            text-align: center;
+                                            letter-spacing: 0.05em;
+
+                                            /* Cinza */
+
+                                            color: $details-grey;
+                                        }
+
+                                        span {
+                                            @include flex(row, center, center);
+                                            gap: 0.7rem;
+                                        }
                                     }
 
-                                    &::before {
+                                    input[type="checkbox"] {
+                                        height: 3.9rem;
+                                        width: 6.1rem;
+
+                                        margin-top: 2.7rem;
+
+                                        border: solid 0.6rem #eb5757;
+
+                                        border-radius: 2rem;
+                                        position: relative;
                                         transition: 0.32s;
-                                        position: absolute;
-                                        content: "";
-                                        display: block;
 
-                                        top: 110%;
-                                        left: 0;
-                                        right: 0;
+                                        cursor: pointer;
 
-                                        margin: 0 auto;
+                                        @include flex(row, center, center);
 
-                                        width: 0;
-                                        height: 2px;
-                                        background-color: $system-main;
-                                    }
-                                }
+                                        &::after {
+                                            width: 2.1rem;
+                                            height: 2.1rem;
+                                            background: #eb5757;
 
-                                p {
-                                    text-align: center;
-                                    overflow: hidden;
+                                            border-radius: 100%;
+                                            transition: 0.32s;
 
-                                    display: block;
-                                    margin: 0 auto;
+                                            position: absolute;
+                                            content: "";
 
-                                    color: $system-box-secondary;
+                                            left: 0.4rem;
+                                        }
 
-                                    width: 0;
-                                    transition: 0.32s;
-                                }
+                                        &:checked {
+                                            border-color: #27ae60;
 
-                                &:hover {
-                                    cursor: pointer;
-                                    h2::before {
-                                        width: 40%;
-                                    }
-
-                                    p {
-                                        width: 100%;
+                                            &::after {
+                                                background: #27ae60;
+                                                left: 2.5rem;
+                                            }
+                                        }
                                     }
                                 }
                             }
+
+                            // div {
+                            //     flex-wrap: wrap;
+                            //     justify-content: flex-start;
+                            //     gap: 7rem;
+                            // }
+
+                            // picture {
+                            //     img {
+                            //         border-radius: 1.5rem;
+                            //     }
+                            //     h2 {
+                            //         margin-top: 2rem;
+                            //         margin-bottom: 1rem;
+                            //         text-align: center;
+
+                            //         i {
+                            //             text-transform: none;
+                            //             font-style: normal;
+                            //             font-size: 2rem;
+
+                            //             color: #dbbf00;
+                            //         }
+
+                            //         position: relative;
+
+                            //         &::after {
+                            //             position: absolute;
+                            //             content: "";
+                            //             display: block;
+
+                            //             top: -10px;
+                            //             left: 0;
+                            //             right: 0;
+
+                            //             margin: 0 auto;
+
+                            //             width: 0;
+                            //             height: 0;
+                            //             border-left: 5px solid transparent;
+                            //             border-right: 5px solid transparent;
+
+                            //             border-bottom: 5px solid $system-main;
+                            //         }
+
+                            //         &::before {
+                            //             transition: 0.32s;
+                            //             position: absolute;
+                            //             content: "";
+                            //             display: block;
+
+                            //             top: 110%;
+                            //             left: 0;
+                            //             right: 0;
+
+                            //             margin: 0 auto;
+
+                            //             width: 0;
+                            //             height: 2px;
+                            //             background-color: $system-main;
+                            //         }
+                            //     }
+
+                            //     p {
+                            //         text-align: center;
+                            //         overflow: hidden;
+
+                            //         display: block;
+                            //         margin: 0 auto;
+
+                            //         color: $system-box-secondary;
+
+                            //         width: 0;
+                            //         transition: 0.32s;
+                            //     }
+
+                            //     &:hover {
+                            //         cursor: pointer;
+                            //         h2::before {
+                            //             width: 40%;
+                            //         }
+
+                            //         p {
+                            //             width: 100%;
+                            //         }
+                            //     }
+                            // }
                         }
 
-                        div {
+                        span div {
                             @include flex(row, center, flex-start);
                             gap: 1.4rem;
 
@@ -1274,14 +1397,15 @@ body.minha-area {
                                                         text-align: center;
                                                         color: $grey;
                                                     }
+
                                                     input[type="checkbox"] {
-                                                        height: 2.3rem;
-                                                        width: 3.8rem;
+                                                        height: 3.3rem;
+                                                        width: 5.8rem;
 
-                                                        border: solid 0.4rem #eb5757;
-                                                        margin: 0 auto !important;
+                                                        border: solid 0.3rem #8d8d8d;
+                                                        // margin: 0 auto !important;
 
-                                                        border-radius: 2rem;
+                                                        border-radius: 1rem;
                                                         position: relative;
                                                         transition: 0.32s;
 
@@ -1290,27 +1414,38 @@ body.minha-area {
                                                         @include flex(row, center, center);
 
                                                         &::after {
-                                                            width: 1.1rem;
-                                                            height: 1.1rem;
-                                                            background: #eb5757;
+                                                            // width: 1.1rem;
+                                                            // height: 1.1rem;
+                                                            color: #8d8d8d;
 
                                                             border-radius: 100%;
                                                             transition: 0.32s;
 
                                                             position: absolute;
-                                                            content: "";
+                                                            content: "NÃO";
 
-                                                            left: 0.2rem;
+                                                            // left: 0.2rem;
+                                                        }
+
+                                                        &:active {
+                                                            &::after {
+                                                                transform: scale(0);
+                                                            }
                                                         }
 
                                                         &:checked {
                                                             border-color: #27ae60;
+                                                            background: #27ae60;
 
                                                             &::after {
-                                                                background: #27ae60;
-                                                                left: 1.8rem;
+                                                                color: $white;
+                                                                content: "SIM";
                                                             }
                                                         }
+                                                    }
+
+                                                    .info_svg {
+                                                        cursor: pointer;
                                                     }
 
                                                     input[type="tel"] {
@@ -1330,7 +1465,16 @@ body.minha-area {
                                                         line-height: 100%;
                                                         color: $grey;
                                                     }
+
                                                     text-align: center;
+
+                                                    div.flex-row {
+                                                        @include flex(row, center, center);
+                                                        gap: 1rem;
+
+                                                        width: 100%;
+                                                        height: 100%;
+                                                    }
                                                 }
 
                                                 transition: 0.32s;
@@ -1348,7 +1492,7 @@ body.minha-area {
 
                                 span.resumo-evento {
                                     padding: 5.1rem;
-                                    padding-right: 2rem;
+                                    padding-right: 5rem;
                                     border: solid 0.1rem $table-border;
                                     width: 100%;
                                     border-top: none;

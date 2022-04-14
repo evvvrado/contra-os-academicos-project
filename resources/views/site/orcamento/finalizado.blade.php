@@ -1,6 +1,6 @@
 @extends('site.template.main', ['titulo' => Definition::NAME.' | Orçamento Concluído!'])
 
-@section('body_attr', 'id=orcamento-carrinho')
+@section('body_attr', 'id=orcamento-carrinho class=concluido')
 
 @section('styles')
     <link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css' rel='stylesheet'>
@@ -14,7 +14,7 @@
         <div class="niv">
             <div class="niv-content">
 
-                <h2>Seu orçamento foi concluído com sucesso!</h2>
+                <h2>SEU ORÇAMENTO FOI CONCLUÍDO COM SUCESSO!</h2>
 
 
                 <picture>
