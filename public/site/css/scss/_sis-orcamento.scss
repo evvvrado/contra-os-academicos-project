@@ -1860,26 +1860,142 @@ body#orcamento-lista {
             }
 
             div.niv-content {
+                // div.box {
+                //     height: 66.3rem;
+                //     @include fade(translateY(45px), 1s);
+
+                //     &:hover {
+                //         transform: none;
+                //     }
+
+                //     div {
+                //         margin-top: 2.9rem;
+
+                //         @include flex(column, center, center);
+
+                //         strong {
+                //             margin-top: 1.2rem;
+
+                //             font-family: Inter;
+                //             font-style: normal;
+                //             font-weight: 500;
+                //             font-size: 15px;
+                //             line-height: 120%;
+                //             /* identical to box height, or 18px */
+
+                //             text-align: center;
+                //             letter-spacing: 0.05em;
+
+                //             /* Cinza */
+
+                //             color: $details-grey;
+                //         }
+
+                //         p,
+                //         img {
+                //             margin-top: 0.9rem;
+
+                //             font-family: Inter;
+                //             font-style: normal;
+                //             font-weight: 300;
+                //             font-size: 15px;
+                //             line-height: 120%;
+                //             /* identical to box height, or 18px */
+
+                //             text-align: center;
+                //             letter-spacing: 0.05em;
+
+                //             /* Cinza */
+
+                //             color: $details-grey;
+                //         }
+
+                //         span {
+                //             @include flex(row, center, center);
+                //             gap: 0.7rem;
+                //         }
+                //     }
+
+                //     input[type="checkbox"] {
+                //         height: 3.9rem;
+                //         width: 6.1rem;
+
+                //         margin-top: 2.7rem;
+
+                //         border: solid 0.6rem #eb5757;
+
+                //         border-radius: 2rem;
+                //         position: relative;
+                //         transition: 0.32s;
+
+                //         cursor: pointer;
+
+                //         @include flex(row, center, center);
+
+                //         &::after {
+                //             width: 2.1rem;
+                //             height: 2.1rem;
+                //             background: #eb5757;
+
+                //             border-radius: 100%;
+                //             transition: 0.32s;
+
+                //             position: absolute;
+                //             content: "";
+
+                //             left: 0.4rem;
+                //         }
+
+                //         &:checked {
+                //             border-color: #27ae60;
+
+                //             &::after {
+                //                 background: #27ae60;
+                //                 left: 2.5rem;
+                //             }
+                //         }
+                //     }
+                // }
                 div.box {
-                    height: 66.3rem;
+                    height: 32.8rem;
+                    max-width: 59.2rem;
                     @include fade(translateY(45px), 1s);
+                    @include flex(row, center, space-between);
+                    position: relative;
+
+                    margin-left: 1.5rem;
+                    margin-top: 1.5rem;
+
+                    cursor: default;
+
+                    padding: 2.6rem 2.5rem 2.5rem 3.2rem;
+
+                    picture {
+                        max-width: 14.4rem;
+                        height: 21.7rem;
+                    }
 
                     &:hover {
                         transform: none;
                     }
 
-                    div {
+                    main {
                         margin-top: 2.9rem;
 
-                        @include flex(column, center, center);
+                        background: #fafafa;
+                        box-shadow: 2.2388px 3.35821px 5.97014px rgba(0, 0, 0, 0.1);
+                        border-radius: 7.46268px;
+
+                        padding: 2.4rem 1.7rem;
+
+                        height: 8.4rem;
+                        @include flex(row, center, space-between);
 
                         strong {
-                            margin-top: 1.2rem;
-
                             font-family: Inter;
                             font-style: normal;
                             font-weight: 500;
-                            font-size: 15px;
+                            font-size: 1.2rem;
                             line-height: 120%;
                             /* identical to box height, or 18px */
 
@@ -1889,16 +2005,15 @@ body#orcamento-lista {
                             /* Cinza */
 
                             color: $details-grey;
+                            margin-top: 0;
                         }
 
                         p,
                         img {
-                            margin-top: 0.9rem;
-
                             font-family: Inter;
                             font-style: normal;
                             font-weight: 300;
-                            font-size: 15px;
+                            font-size: 1.2rem;
                             line-height: 120%;
                             /* identical to box height, or 18px */
 
@@ -1908,51 +2023,100 @@ body#orcamento-lista {
                             /* Cinza */
 
                             color: $details-grey;
+
+                            margin-top: 0;
                         }
 
                         span {
                             @include flex(row, center, center);
                             gap: 0.7rem;
                         }
+
+                        div {
+                            gap: 0.72rem;
+                            @include flex(column, center, center);
+
+                            max-width: 36.6rem;
+                        }
                     }
 
-                    input[type="checkbox"] {
-                        height: 3.9rem;
-                        width: 6.1rem;
+                    form {
+                        width: 100%;
 
-                        margin-top: 2.7rem;
+                        select {
+                            height: 4.8rem;
+                            display: block;
+                            width: 32.4rem;
 
-                        border: solid 0.6rem #eb5757;
+                            padding: 1.1rem 2.6rem;
 
-                        border-radius: 2rem;
-                        position: relative;
-                        transition: 0.32s;
+                            background: url("/site/assets/img/select_background.png");
+                            background-size: 100% 100%;
 
-                        cursor: pointer;
-
-                        @include flex(row, center, center);
-
-                        &::after {
-                            width: 2.1rem;
-                            height: 2.1rem;
-                            background: #eb5757;
-
-                            border-radius: 100%;
-                            transition: 0.32s;
-
-                            position: absolute;
-                            content: "";
-
-                            left: 0.4rem;
+                            // background-color: white;
                         }
 
-                        &:checked {
-                            border-color: #27ae60;
+                        button {
+                            width: 2.5rem;
+                            height: 2.5rem;
 
-                            &::after {
-                                background: #27ae60;
-                                left: 2.5rem;
+                            background-color: green;
+
+                            top: 1rem;
+                            right: 1rem;
+                            position: absolute;
+
+                            color: $white;
+
+                            font-size: 1.8rem;
+
+                            border-radius: 50%;
+                            transition: 0.32s;
+
+                            &:hover {
+                                transform: scale(1.05);
+                                opacity: 0.8;
                             }
+                        }
+                    }
+
+                    span {
+                        text-align: left;
+                        width: 100%;
+                        max-width: 36.6rem;
+
+                        p {
+                            color: $details-grey;
+                        }
+                    }
+
+                    button.remove {
+                        position: absolute;
+                        right: 2.5rem;
+                        top: 2.6rem;
+
+                        svg {
+                            path {
+                                transition: 0.32s;
+                            }
+                        }
+
+                        &:hover {
+                            svg {
+                                path {
+                                    stroke: red;
+                                }
+                            }
+                        }
+                    }
+
+                    div.stars {
+                        @include flex(row, center, center);
+                        gap: 0.5rem;
+
+                        img {
+                            height: 1.8rem;
+                            width: 1.8rem;
                         }
                     }
                 }
