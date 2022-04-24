@@ -80,7 +80,7 @@
             </div>
 
             <div class="niv-content">
-
+                
                 @if ($orcamento->produtos->count() > 0)
 
                     @foreach ($orcamento->produtos as $produto_escolhido)
@@ -149,7 +149,7 @@
                             <li><input type="checkbox" name="">Caqui</li>
                             <li><input type="checkbox" name="">Goiaba</li>
                         </ul>
-                    </div>
+                    @endforeach
 
                     <div class="col">
                         <div class="title">
@@ -195,8 +195,8 @@
                             <li><input type="checkbox" name="">Ypióca</li>
                         </ul>
                     </div>
-                </div>
-            </main>
+                @endif
+            </div>
 
             <div class="end">
                 <button>Aplicar filtro</button>
@@ -327,7 +327,7 @@
         <div class="niv-top">
             <h4>Bora surpreender</h4>
             <h2>
-                Com base no numero de <br>
+                Com base no numero de<br>
                 convidados você pode escolher <i>
                     {{ \App\Classes\Orcamento::qtdTiposDrinks($orcamento->qtd_pessoas) }} drinks</i>
             </h2>
