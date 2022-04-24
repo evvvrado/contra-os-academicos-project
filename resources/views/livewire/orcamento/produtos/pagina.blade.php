@@ -4,9 +4,136 @@
             <main>
                 <div class="scroll">
 
-                    <div class="col">
-                        <div class="title">
-                            Filtro por ingredientes
+                    @foreach ($ingredientes_filtro as $ingrediente_filtro)
+                        @php
+                            $marca = $ingrediente_filtro->marcas->where('padrao', true)->first();
+                        @endphp
+
+                        @if ($marca)
+                            <div class="box" niv-fade>
+                                <div>
+
+                                    <picture>
+                                        <img src="{{ asset($marca->imagem) }}" alt="bebida representativa">
+                                    </picture>
+
+                                    <strong>{{ $ingrediente_filtro->nome }}</strong>
+                                </div>
+
+                                <input type="checkbox" data-marca="{{ $ingrediente_filtro->nome }}" name="slide">
+                            </div>
+                        @endif
+                    @endforeach
+
+                </div>
+            </div>
+            <div class="list-button">
+                <img src="{{ asset('site/assets/img/coqueteis-right.png') }}" alt="seta para direita">
+            </div>
+        </div>
+    </section>
+
+    <section class="coqueteis-filtro">
+        <div class="niv">
+            <div class="filtro">
+                <picture>
+                    <img src="{{ asset('site/assets/img/icon_filter.svg') }}" alt="ícone de filtro">
+                </picture>
+                <strong>FILTRO</strong>
+            </div>
+            <div class="filtros">
+                <span>
+                    <input type="checkbox" name="visitado">
+                    <p>Mais visitados</p>
+                </span>
+
+                <span>
+                    <input type="checkbox" name="lancamento">
+                    <p>Lançamentos</p>
+                </span>
+
+                <span>
+                    <p>Calóricos</p>
+                    <input type="range" name="caloria" min="0" max="1000" value="0">
+                </span>
+
+
+                <span>
+                    <p>Teor Alcólico</p>
+                    <input type="range" name="teor" min="0" max="100" value="0">
+                </span>
+
+
+            </div>
+        </div>
+    </section>
+
+    <section class="coqueteis-drinks">
+        <div class="niv">
+            <div class="niv-top">
+                <h4>Bora surpreender</h4>
+                <h2>
+                    Com base no numero de <br>
+                    convidados você pode escolher <i>
+                        {{ \App\Classes\Orcamento::qtdTiposDrinks($orcamento->qtd_pessoas) }} drinks</i>
+                </h2>
+            </div>
+
+            <div class="niv-content">
+
+                @if ($orcamento->produtos->count() > 0)
+
+                    @foreach ($orcamento->produtos as $produto_escolhido)
+                        @if ($produto_escolhido->lancamento == true)
+                            @php
+                                $lancamento = 'lancamento';
+                            @endphp
+                        @else
+                            @php
+                                $lancamento = '';
+                            @endphp
+                        @endif
+
+                        <div class="box " niv-fade data-cal="{{ $produto_escolhido->calorias }}"
+                            data-teor="{{ $produto_escolhido->teor_alcoolico }}" {{ $lancamento }}>
+                            <picture>
+                                <img src="{{ asset($produto_escolhido->imagem_preview) }}"
+                                    alt="imagem representativa" style="width: auto; height: 100%; margin: auto;">
+                            </picture>
+
+
+                            <span>
+                                <strong>{{ $produto_escolhido->nome }}</strong>
+                                <p>{{ mb_strimwidth($produto_escolhido->descricao, 0, 72, '...') }}</p>
+
+                                <main>
+                                    <div>
+                                        <strong>Teor alcóolico</strong>
+                                        <p>{{ $produto_escolhido->teor_alcoolico }}%</p>
+                                    </div>
+
+                                    <div>
+                                        <strong>Valor Calórico</strong>
+                                        <p>{{ $produto_escolhido->calorias }} cal.</p>
+                                    </div>
+
+                                    <div>
+                                        <strong>Nota</strong>
+                                        @for ($i = 0; $i < $produto_escolhido->nota; $i++)
+                                            <img src="{{ asset('site/assets/img/icon_star.svg') }}"
+                                                alt="estrela de nota">
+                                        @endfor
+                                    </div>
+
+                                    <input onclick="escolher_produto({{ $produto_escolhido->id }})" checked
+                                        type="checkbox" name="desabilitar">
+                                </main>
+
+                                <form action="">
+                                    <button class="remove">X</button>
+
+                                </form>
+                            </span>
                         </div>
 
                         <ul>
@@ -221,9 +348,10 @@
                         @endphp
                     @endif
 
-                    <div class="box @foreach ($produto_escolhido->ingredientes as $ingrediente) {{ $ingrediente->nome }} @endforeach"
-                        niv-fade data-cal="{{ $produto_escolhido->calorias }}"
-                        data-teor="{{ $produto_escolhido->teor_alcoolico }}" {{ $lancamento }}>
+
+
+                    <div class="box" niv-fade data-cal="{{ $produto->calorias }}"
+                        data-teor="{{ $produto->teor_alcoolico }}" {{ $lancamento }}>
                         <picture>
                             <img src="{{ asset($produto_escolhido->imagem_preview) }}" alt="imagem representativa"
                                 style="width: auto; height: 100%; margin: auto;">
