@@ -257,21 +257,10 @@
                                         type="checkbox" name="desabilitar">
                                 </main>
 
-                                <main>
-                                    <form action="">
-                                        <select name="" id="">
-                                            <option value="" id="">Selecionar receita</option>
-                                            <option value="" id="">.</option>
-                                            <option value="" id="">.</option>
-                                            <option value="" id="">.</option>
-                                        </select>
+                                <form action="">
+                                    <button class="remove">X</button>
 
-                                        <button>+</button>
-
-                                    </form>
-
-
-                                </main>
+                                </form>
                             </span>
                         </div>
                     @endforeach
@@ -287,6 +276,8 @@
                             $lancamento = '';
                         @endphp
                     @endif
+
+
 
                     <div class="box" niv-fade data-cal="{{ $produto->calorias }}"
                         data-teor="{{ $produto->teor_alcoolico }}" {{ $lancamento }}>
