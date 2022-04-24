@@ -5,7 +5,7 @@
 @section('content')
 
     @livewire('orcamento.produtos.pagina')
-    
+
 @endsection
 
 @section('scripts')

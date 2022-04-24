@@ -26,11 +26,11 @@
                     @endforeach
 
                 </div>
-            </div>
-            <div class="list-button">
-                <img src="{{ asset('site/assets/img/coqueteis-right.png') }}" alt="seta para direita">
-            </div>
         </div>
+        <div class="list-button">
+            <img src="{{ asset('site/assets/img/coqueteis-right.png') }}" alt="seta para direita">
+        </div>
+    </div>
     </section>
 
     <section class="coqueteis-filtro">
@@ -80,7 +80,7 @@
             </div>
 
             <div class="niv-content">
-                
+
                 @if ($orcamento->produtos->count() > 0)
 
                     @foreach ($orcamento->produtos as $produto_escolhido)
@@ -97,8 +97,8 @@
                         <div class="box " niv-fade data-cal="{{ $produto_escolhido->calorias }}"
                             data-teor="{{ $produto_escolhido->teor_alcoolico }}" {{ $lancamento }}>
                             <picture>
-                                <img src="{{ asset($produto_escolhido->imagem_preview) }}"
-                                    alt="imagem representativa" style="width: auto; height: 100%; margin: auto;">
+                                <img src="{{ asset($produto_escolhido->imagem_preview) }}" alt="imagem representativa"
+                                    style="width: auto; height: 100%; margin: auto;">
                             </picture>
 
 
@@ -206,7 +206,7 @@
                 <img src="{{ asset('site/assets/img/close_icon_modal.svg') }}" alt="ícone de fechar">
             </div>
         </div>
-    </div>
+</div>
 </div>
 
 <div class="next-step">
@@ -350,32 +350,45 @@
 
 
 
-                    <div class="box" niv-fade data-cal="{{ $produto->calorias }}"
+                    <div class="box " niv-fade data-cal="{{ $produto->calorias }}"
                         data-teor="{{ $produto->teor_alcoolico }}" {{ $lancamento }}>
                         <picture>
-                            <img src="{{ asset($produto_escolhido->imagem_preview) }}" alt="imagem representativa"
+                            <img src="{{ asset($produto->imagem_preview) }}" alt="imagem representativa"
                                 style="width: auto; height: 100%; margin: auto;">
                         </picture>
 
-                        <strong>{{ $produto_escolhido->nome }}</strong>
-                        <p>{{ mb_strimwidth($produto_escolhido->descricao, 0, 72, '...') }}</p>
 
-                        <div>
-                            <strong>Teor alcóolico</strong>
-                            <p>{{ $produto_escolhido->teor_alcoolico }}%</p>
-                            <strong>Valor Calórico</strong>
-                            <p>{{ $produto_escolhido->calorias }} cal.</p>
-                            <strong>Nota</strong>
+                        <span>
+                            <strong>{{ $produto->nome }}</strong>
+                            <p>{{ mb_strimwidth($produto->descricao, 0, 72, '...') }}</p>
 
-                            <span>
-                                @for ($i = 0; $i < $produto_escolhido->nota; $i++)
-                                    <img src="{{ asset('site/assets/img/icon_star.svg') }}" alt="estrela de nota">
-                                @endfor
-                            </span>
+                            <main>
+                                <div>
+                                    <strong>Teor alcóolico</strong>
+                                    <p>{{ $produto->teor_alcoolico }}%</p>
+                                </div>
 
-                            <input onclick="escolher_produto({{ $produto_escolhido->id }})" checked type="checkbox"
-                                name="desabilitar">
-                        </div>
+                                <div>
+                                    <strong>Valor Calórico</strong>
+                                    <p>{{ $produto->calorias }} cal.</p>
+                                </div>
+
+                                <div>
+                                    <strong>Nota</strong>
+                                    @for ($i = 0; $i < $produto->nota; $i++)
+                                        <img src="{{ asset('site/assets/img/icon_star.svg') }}"
+                                            alt="estrela de nota">
+                                    @endfor
+                                </div>
+
+                                <input onclick="escolher_produto({{ $produto->id }})" checked type="checkbox"
+                                    name="desabilitar">
+                            </main>
+
+                            <form action="">
+                                <button class="remove">X</button>
+                            </form>
+                        </span>
                     </div>
                 @endforeach
             @endif
@@ -391,7 +404,56 @@
                     @endphp
                 @endif
 
-                <div class="box" niv-fade data-cal="{{ $produto->calorias }}" data-teor="{{ $produto->teor_alcoolico }}" {{ $lancamento }}>
+                <div class="box " niv-fade data-cal="{{ $produto->calorias }}"
+                    data-teor="{{ $produto->teor_alcoolico }}" {{ $lancamento }}>
+                    <picture>
+                        <img src="{{ asset($produto->imagem_preview) }}" alt="imagem representativa"
+                            style="width: auto; height: 100%; margin: auto;">
+                    </picture>
+
+
+                    <span>
+                        <strong>{{ $produto->nome }}</strong>
+                        <p>{{ mb_strimwidth($produto->descricao, 0, 72, '...') }}</p>
+
+                        <main>
+                            <div>
+                                <strong>Teor alcóolico</strong>
+                                <p>{{ $produto->teor_alcoolico }}%</p>
+                            </div>
+
+                            <div>
+                                <strong>Valor Calórico</strong>
+                                <p>{{ $produto->calorias }} cal.</p>
+                            </div>
+
+                            <div>
+                                <strong>Nota</strong>
+                                @for ($i = 0; $i < $produto->nota; $i++)
+                                    <img src="{{ asset('site/assets/img/icon_star.svg') }}" alt="estrela de nota">
+                                @endfor
+                            </div>
+
+                            <input onclick="escolher_produto({{ $produto->id }})" checked type="checkbox"
+                                name="desabilitar">
+                        </main>
+
+                        <main>
+                            <form action="">
+                                <select name="" id="">
+                                    <option value="">Escolher receita</option>
+                                    <option value=""></option>
+                                    <option value=""></option>
+                                    <option value=""></option>
+                                    <option value=""></option>
+                                </select>
+                                <button class="remove">+</button>
+                            </form>
+                        </main>
+                    </span>
+                </div>
+                {{-- <div class="box" niv-fade data-cal="{{ $produto->calorias }}"
+                    data-teor="{{ $produto->teor_alcoolico }}" {{ $lancamento }}>
                     <picture>
                         <img src="{{ asset($produto->imagem_preview) }}" alt="imagem representativa"
                             style="width: auto; height: 100%; margin: auto;">
@@ -415,7 +477,7 @@
 
                         <input onclick="escolher_produto({{ $produto->id }})" type="checkbox" name="habilitar">
                     </div>
-                </div>
+                </div> --}}
             @endforeach
 
             {{-- <div class="box" niv-fade data-cal="140" data-teor="86" visitado lancamento>
