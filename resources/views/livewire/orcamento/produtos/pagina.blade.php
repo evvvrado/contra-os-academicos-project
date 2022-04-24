@@ -375,10 +375,13 @@
 
                                 <div>
                                     <strong>Nota</strong>
-                                    @for ($i = 0; $i < $produto->nota; $i++)
-                                        <img src="{{ asset('site/assets/img/icon_star.svg') }}"
-                                            alt="estrela de nota">
-                                    @endfor
+
+                                    <span>
+                                        @for ($i = 0; $i < $produto->nota; $i++)
+                                            <img src="{{ asset('site/assets/img/icon_star.svg') }}"
+                                                alt="estrela de nota">
+                                        @endfor
+                                    </span>
                                 </div>
 
                                 <input onclick="escolher_produto({{ $produto->id }})" checked type="checkbox"
@@ -429,9 +432,12 @@
 
                             <div>
                                 <strong>Nota</strong>
-                                @for ($i = 0; $i < $produto->nota; $i++)
-                                    <img src="{{ asset('site/assets/img/icon_star.svg') }}" alt="estrela de nota">
-                                @endfor
+                                <span>
+                                    @for ($i = 0; $i < $produto->nota; $i++)
+                                        <img src="{{ asset('site/assets/img/icon_star.svg') }}"
+                                            alt="estrela de nota">
+                                    @endfor
+                                </span>
                             </div>
 
                             <input onclick="escolher_produto({{ $produto->id }})" checked type="checkbox"
