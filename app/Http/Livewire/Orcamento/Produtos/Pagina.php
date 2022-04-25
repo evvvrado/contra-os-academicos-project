@@ -11,6 +11,7 @@ use App\Models\OrcamentoProdutoAcessorio;
 use App\Models\Produto;
 use App\Models\Ingrediente;
 use App\Classes\Orcamento as FuncoesOrcamento;
+use App\Models\Receita;
 
 class Pagina extends Component
 {
@@ -19,35 +20,42 @@ class Pagina extends Component
     public $orcamento;
     public $produtos;
     public $ingredientes_filtro;
+    public $receitas = [];
 
     protected $listeners = ["atualizaPagina", "refresh" => '$refresh'];
 
     public function mount(){
         $this->parametros = Parametro::first();
         $this->orcamento = Orcamento::find(session()->get("orcamento"));
-        $this->produtos = Produto::whereNotIn("id", $this->orcamento->produtos->pluck("id"))->get();
+        // dd($this->orcamento->orcamento_produtos->groupBy("produto_id"));
+        $receitas = Receita::whereNotIn("id", $this->orcamento->receitas->pluck("id"))->get();
+        // dd();
+        $this->produtos = Produto::whereIn("id", $receitas->unique("produto_id")->values()->pluck("produto_id"))->get();
         $this->ingredientes_filtro = Ingrediente::where("ingrediente_categoria_id", $this->parametros->categoria_filtro)->get();
     }
 
     public function atualizaPagina(){
-        $this->produtos = Produto::whereNotIn("id", $this->orcamento->produtos->pluck("id"))->get();
+        $receitas = Receita::whereNotIn("id", $this->orcamento->receitas->pluck("id"))->get();
+        $this->produtos = Produto::whereIn("id", $receitas->unique("produto_id")->values()->pluck("produto_id"))->get();
         $this->emit("refresh");
     }
 
-    public function selecionar(Produto $produto){
-        $verifica_produto = $this->orcamento->produtos->contains($produto);
+    public function selecionar($produto_id){
+        $receita = Receita::find($this->receitas[$produto_id]);
+        $verifica_receita = $this->orcamento->receitas->contains($receita);
 
-        if (!$verifica_produto) {
+        if (!$verifica_receita) {
             $qtd_drinks = FuncoesOrcamento::qtdDrinks($this->orcamento->qtd_pessoas);
             // $qtd_drinks = Round(($orcamento->qtd_pessoas * $parametro->drinks_numero) / $parametro->drinks_convidados);
 
             $produto_insercao = new OrcamentoProduto;
             $produto_insercao->orcamento_id = $this->orcamento->id;
-            $produto_insercao->produto_id = $produto->id;
+            $produto_insercao->produto_id = $receita->produto_id;
+            $produto_insercao->receita_id = $receita->id;
             $produto_insercao->qtd = $qtd_drinks;
             $produto_insercao->save();
 
-            $ingredientes = $produto->ingredientes;
+            $ingredientes = $receita->ingredientes;
             foreach ($ingredientes as $ingrediente) {
                 $marca = $ingrediente->marcas->where("padrao", true)->first();
                 if ($marca) {
@@ -66,7 +74,7 @@ class Pagina extends Component
                 }
             }
 
-            $acessorios = $produto->acessorios;
+            $acessorios = $receita->acessorios;
             foreach ($acessorios as $acessorio) {
                 $marca = $acessorio->marcas->where("padrao", true)->first();
                 if ($marca) {

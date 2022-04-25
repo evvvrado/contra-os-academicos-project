@@ -13,6 +13,10 @@ class OrcamentoProduto extends Model
         return $this->belongsTo(Produto::class);
     }
 
+    public function receita(){
+        return $this->belongsTo(Receita::class);
+    }
+
     public function orcamento_produto_ingredientes(){
         return $this->hasMany(OrcamentoProdutoIngrediente::class);
     }

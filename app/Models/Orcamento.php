@@ -13,6 +13,10 @@ class Orcamento extends Model
         return $this->belongsToMany(Produto::class, 'orcamento_produtos');
     }
 
+    public function receitas(){
+        return $this->belongsToMany(Receita::class, "orcamento_produtos");
+    }
+
     public function orcamento_produtos(){
         return $this->hasMany(OrcamentoProduto::class);
     }
