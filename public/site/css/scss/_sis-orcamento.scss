@@ -1860,6 +1860,7 @@ body#orcamento-lista {
             }
 
             div.niv-content {
+                margin-bottom: 3rem;
                 // div.box {
                 //     height: 66.3rem;
                 //     @include fade(translateY(45px), 1s);
@@ -1958,12 +1959,12 @@ body#orcamento-lista {
                 // }
                 div.box {
                     height: 32.8rem;
-                    max-width: 59.2rem;
+                    max-width: 49%;
                     @include fade(translateY(45px), 1s);
                     @include flex(row, center, space-between);
                     position: relative;
 
-                    margin-left: 1.5rem;
+                    margin-right: auto;
                     margin-top: 1.5rem;
 
                     cursor: default;
@@ -2060,11 +2061,13 @@ body#orcamento-lista {
                             width: 2.5rem;
                             height: 2.5rem;
 
-                            background-color: green;
+                            &:not(.not-absolute) {
+                                top: 1rem;
+                                right: 1rem;
+                                position: absolute;
+                            }
 
-                            top: 1rem;
-                            right: 1rem;
-                            position: absolute;
+                            background-color: green;
 
                             color: $white;
 
@@ -2073,9 +2076,16 @@ body#orcamento-lista {
                             border-radius: 50%;
                             transition: 0.32s;
 
+                            display: grid;
+                            align-content: center;
+
                             &:hover {
                                 transform: scale(1.05);
                                 opacity: 0.8;
+                            }
+
+                            &.remove {
+                                background-color: transparent;
                             }
                         }
                     }
@@ -2117,6 +2127,89 @@ body#orcamento-lista {
                         img {
                             height: 1.8rem;
                             width: 1.8rem;
+                        }
+                    }
+
+                    &.--selected {
+                        border: solid 1px rgba(0, 128, 0, 0.199);
+                        height: 27rem;
+
+                        main {
+                            height: 12rem;
+                            overflow-y: auto;
+                            padding: 0;
+
+                            justify-content: flex-start;
+                            align-items: flex-start;
+
+                            &::-webkit-scrollbar {
+                                background-color: transparent;
+                                width: 0.3rem;
+                            }
+                            &::-webkit-scrollbar-thumb {
+                                background-color: $main-orange;
+                                border-radius: 0.5rem;
+                            }
+
+                            &::-webkit-scrollbar-track {
+                                background-color: transparent;
+                            }
+
+                            ul {
+                                width: 100%;
+                                li {
+                                    width: 100%;
+
+                                    &:first-child {
+                                        a {
+                                            border-top-left-radius: 0.5rem;
+                                            border-top-right-radius: 0.5rem;
+                                        }
+                                    }
+                                    &:last-child {
+                                        a {
+                                            border-bottom-left-radius: 0.5rem;
+                                            border-bottom-right-radius: 0.5rem;
+                                        }
+                                    }
+
+                                    a {
+                                        display: block;
+                                        padding: 1rem;
+                                        width: 100%;
+                                        transition: 0.32s;
+                                        &:hover {
+                                            background-color: #ffeaea;
+                                            cursor: pointer;
+                                        }
+
+                                        svg {
+                                            transition: 0.32s;
+                                            transform: scale(0);
+                                            position: absolute;
+                                            right: 1rem;
+                                            top: 0;
+                                            bottom: 0;
+
+                                            font-size: 1.2rem;
+
+                                            margin: auto 0;
+                                            width: max-content;
+                                            display: block;
+
+                                            content: "Excluir";
+                                        }
+
+                                        &:hover {
+                                            svg {
+                                                transform: scale(1);
+                                            }
+                                        }
+
+                                        position: relative;
+                                    }
+                                }
+                            }
                         }
                     }
                 }
