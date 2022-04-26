@@ -491,8 +491,7 @@
                                             @endif
                                         @endforeach
                                     </select>
-                                    <button class="remove"
-                                        wire:click="selecionar({{ $receita->produto_id }})">+</button>
+                                    <button wire:click="selecionar({{ $receita->produto_id }})">+</button>
                                 </form>
                             </main>
                         </span>
