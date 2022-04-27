@@ -213,7 +213,7 @@
         <h2>Leve sua festa <i>além</i></h2>
         <p>Continue sua jornada indo pra próxima página</p>
 
-        <a href="{{ route('site.orcamento.confirmacao') }}">Continuar</a>
+        <a href="{{ route('site.orcamento.carrinho') }}">Continuar</a>
     </div>
 
     <section class="coqueteis-lista">
