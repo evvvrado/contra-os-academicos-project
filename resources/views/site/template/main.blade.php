@@ -7,7 +7,7 @@ include_once app_path() . '/Includes/definition.php';
 
 <head>
 
-    <title>{{ TITULO }}</title>
+    <title>{{ TITLE }}</title>
     @include('site.includes.head')
     @toastr_css
     @livewireStyles()

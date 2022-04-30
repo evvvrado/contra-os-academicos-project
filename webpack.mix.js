@@ -2,7 +2,7 @@ const mix = require('laravel-mix');
 
 mix.sass('public/site/css/scss/main.scss', 'public/site/css/style.css').options({
     processCssUrls: false,
-    outputStyle: 'compressed'
+    // outputStyle: 'compressed'
 });;
 
 mix.scripts('public/site/js/niv', 'public/site/js/main.js');

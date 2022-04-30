@@ -2,24 +2,24 @@
 
 
 
-define("NAME", "hyp8tec");
-define("DESCRIPTION", "Buscamos a inovação em meio ao tradicional, uma agência para a SUA agência. Desenvolvedores criativos, capacitados e proativos para te fazer EVOLUIR.");
-define("KEYWORDS", "Desenvolvedores, Web, Agências, Profissionais, Criativos, Front-end, Back-end, Websites");
-define("TITLE", "we are hyp8.");
-define("URL", "www.hyp8tec.com.br");
+define("NAME", "Contra os Acadêmicos");
+define("DESCRIPTION", "Buscamos mostrar um ponto de vista filosófico não convencional entre os acadêmicos.");
+define("KEYWORDS", " abril  acadêmicos,acessadas,acesso,afins,apoie,aprendizagem,aqui,aquino,artigos,atingir,autodidata,auxiliar,bibliografias  biblioteca,blog,carvalho,como,confira,conheça,contato,content,conteúdos  contra,cotidiano,destaque,educacional,enciclopédia  ensaio,ensaios,ensino,esta,estudante,estudantes,estudo,está,exact,felicidade filosofia,filosófica,fornecimento,fórum,geral,guias  hidden,home,homem,independente,iniciativa,inultrapassável,justiça leitura lista,listas,livraria,mail,mais,março,matches,medo,medos,melhor,morte,nossa,nossos,objetivo,olavo  ordenada  para,parceiros  parte,perfeitamente,perspectiva,política,porque,procurar,professores  projeto,pronto,qualidade,receber,relacionados resenha  search  sobre,superá,surgiu,temas,temores,terá,title,todos,tomás,tratado,união,variados,verdade,você,voltado,voluntária ");
+define("TITLE", "Contra os Acadêmicos | Filosofia. Mas só da boa.");
+define("URL", "https://contraosacademicos.com.br");
 define("IMGALT", "Imagem representativa");
-define("THEME", "#090919");
+define("THEME", "#EAEAEA");
 
-define("FONTS", "");
+define("FONTS", "https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&display=swap");
 
 
-define("EMAIL", "hyp8tec@gmail.com");
-define("TELEFONE", "35988090305");
-define("TELEFONE_SECUNDARIO", "35988090305");
-define("WHATSAPP", "35988090305");
-define("INSTAGRAM", "https://www.instagram.com/hyp8tec");
-define("FACEBOOK", "https://www.instagram.com/hyp8tec");
-define("YOUTUBE", "https://www.instagram.com/hyp8tec");
+// define("EMAIL", "hyp8tec@gmail.com");
+// define("TELEFONE", "35988090305");
+// define("TELEFONE_SECUNDARIO", "35988090305");
+// define("WHATSAPP", "35988090305");
+define("INSTAGRAM", "https://www.instagram.com/contraosacademicos/");
+define("FACEBOOK", "https://www.facebook.com/contraosacademicos/");
+define("YOUTUBE", "https://www.youtube.com/channel/UC3NjjjKEtzVCJOu7N9jLXzg");
 
 define("ENDERECO", "Rua João Cesário, 180 - Jardim América, 180 - Alfenas, MG");
 

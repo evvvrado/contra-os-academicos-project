@@ -17,8 +17,8 @@
 
     <meta property="og:title" content="{{ TITLE }}" />
     <meta property='og:site_name' content='{{ TITLE }}'>
-    <meta property="og:image" content="{{ asset('/site/img/_og140.jpg') }}" />
-    <meta property='og:image:secure_url' content='{{ asset('/site/img/_og140.jpg') }}'>
+    {{-- <meta property="og:image" content="{{ asset('/site/img/_og140.jpg') }}" /> --}}
+    {{-- <meta property='og:image:secure_url' content='{{ asset('/site/img/_og140.jpg') }}'> --}}
     <meta property='og:image:type' content='png'>
     <meta property='og:image:alt' content='{{ IMGALT }}'>
     <meta property="og:url" content="{{ URL }}" />
@@ -28,7 +28,7 @@
     <meta name='twitter:title' content='{{ TITLE }}'>
     <meta name='twitter:description' content='{{ DESCRIPTION }}'>
     <meta name='twitter:card' content='summary'>
-    <meta name='twitter:image' content='{{ asset('/site/img/_og140.jpg') }}'>
+    {{-- <meta name='twitter:image' content='{{ asset('/site/img/_og140.jpg') }}'> --}}
     <meta name='twitter:image:alt' content='{{ IMGALT }}'>
 
 
@@ -49,7 +49,6 @@
     <link rel="preload" type='application/javascript' href="{{ asset('/site/js/main.js') }}" as="script" />
 
     <link rel="stylesheet" href="{{ asset('/site/css/style.css') }}" />
-    <link rel="stylesheet" href="{{ asset('/site/css/edit.css') }}" />
 
     <title>{{ TITLE }}</title>
 
@@ -59,6 +58,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
     <link href="{{ FONTS }}" rel="stylesheet">
+    <link href="http://fonts.cdnfonts.com/css/palatino-linotype" rel="stylesheet">
 
     <!-- Fontes -->
 </head>

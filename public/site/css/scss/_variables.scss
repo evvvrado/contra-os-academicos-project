@@ -5,8 +5,8 @@
 
 // ========= FONTES IMPORTANTES ========= //
 
-$font-primary: "Arial", sans-serif;
-$font-secundary: "Arial", sans-serif;
+$font-primary: "Open Sans", sans-serif;
+$font-secundary: "Palatino Linotype", sans-serif;
 $font-tertiary: unset;
 
 $font-title: $font-primary;
@@ -14,10 +14,18 @@ $font-text: $font-secundary;
 
 // ========= CORES IMPORTANTES ========= //
 
-$primary: unset;
-$secondary: unset;
-$tertiary: unset;
+$primary: #5b2222;
+$secondary: #3a1616;
+$tertiary: #f2d027;
 $quaternary: unset;
+
+$preto-contra: #242424;
+$creme-contra: #fdf6d6;
+$cinza-contra: #eaeaea;
+$mid-cinza-contra: #716f6f;
+$branco-contra: #ffffff;
+
+$anchor-blue: #2f80ed;
 
 // ========= CORES DEFAULT ========= //
 

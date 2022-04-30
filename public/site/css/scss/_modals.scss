@@ -55,64 +55,6 @@ div.modal {
 
             @include flex(column, center, center);
             gap: 3rem;
-
-            h2,
-            p {
-                max-width: 34.2rem;
-            }
-
-            p {
-                font-weight: 500;
-                font-size: 1.8rem;
-                line-height: 120%;
-                text-align: center;
-                color: $grey;
-            }
-
-            h2 {
-                font-family: Inter;
-                font-style: normal;
-                font-weight: 600;
-                font-size: 3.2rem;
-                line-height: 120%;
-
-                text-align: center;
-                color: $grey;
-            }
-
-            button {
-                @include h1-btn(6rem, 30.9rem);
-                border-radius: 3rem;
-            }
-
-            div.button_list {
-                @include flex(row, center, center);
-                gap: 2rem;
-                flex-wrap: nowrap;
-
-                button {
-                    &.alert {
-                        background: $lighter-purple;
-                        color: $white;
-
-                        &:hover {
-                            border: 0.1rem solid darkred;
-                        }
-                    }
-
-                    &.cancel {
-                        background: $white;
-                        color: $text-grey;
-
-                        &:hover {
-                            opacity: 0.7;
-                        }
-                    }
-                }
-                @include responsive(400px) {
-                    flex-direction: column;
-                }
-            }
         }
     }
 

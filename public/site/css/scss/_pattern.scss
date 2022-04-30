@@ -1,11 +1,22 @@
 // ========= PADRÃO USADO EM TEXTOS ========= //
 
 h1 {
-  color: unset;
+  font-family: $font-title;
+  color: $branco-contra;
+
+  font-weight: 700;
+  font-size: 4.8rem;
+  line-height: 6.5rem;
 }
 h2 {
-  color: unset;
+  font-family: $font-title;
+  color: $preto-contra;
+
+  font-weight: 700;
+  font-size: 2.4rem;
+  line-height: 3.2rem;
 }
+
 h3 {
   color: unset;
 }
@@ -14,6 +25,7 @@ h4 {
 }
 p {
   color: unset;
+  font-size: 1.2rem;
 }
 
 // ========= PADRÃO USADO EM COMPONENTES ========= //
@@ -23,24 +35,90 @@ form {
     input,
     textarea,
     select {
-      background-color: white;
+      background-color: $white;
+      border: 1px solid $cinza-contra;
+      border-radius: 4px;
+
+      height: 4.3rem;
+      padding-left: 1.7rem;
+
+      font-weight: 400;
+      font-size: 1.2rem;
+      line-height: 1.6rem;
+
+      &::placeholder {
+        color: $mid-cinza-contra;
+      }
     }
   }
 }
 
-a {
+a:not(a.button) {
   color: unset;
+  transition: 0.32s;
+
+  &.--plus {
+    font-family: $font-title;
+    color: $tertiary;
+
+    font-style: normal;
+    font-weight: 700;
+    font-size: 1.4rem;
+    line-height: 1.9rem;
+    padding-left: 1.2rem;
+
+    display: flex;
+    position: relative;
+    align-items: center;
+
+    &::after {
+      left: 0;
+      content: url("/site/assets/img/icon_plus_anchor.svg");
+      position: absolute;
+    }
+  }
+
+  &.--blue {
+    color: $anchor-blue;
+  }
+
   &:hover,
   &:focus {
     color: $secondary;
   }
 }
 
-.btn:has(a, button) {
+.button:has(a, button) {
+  --width: 19.5rem;
+  --height: 4.2rem;
+  // --padding-x: 6.9rem;
+  // --padding-y: 0.7rem;
+  --font-size: 2rem;
+  --font-color: $white;
+  --background-color: $primary;
+
   background-color: unset;
+  border-radius: 4px;
+
+  font-family: $font-title;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 100%;
+
+  height: var(--height);
+  width: var(--width);
+  // padding: var(--padding-x) var(--padding-y);
+  font-size: var(--font-size);
+
+  @extend %totalcenter;
 
   &:hover,
   &:focus {
-    color: unset;
+    background: var(--font-color);
+    color: var(--background-color);
+  }
+
+  &:active {
+    border: 2px $mid-cinza-contra solid;
   }
 }
