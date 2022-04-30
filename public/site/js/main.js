@@ -86,12 +86,7 @@ $('.modal button.cancel').click(function () {
 $(document).ready(() => {
   $(".--initial[niv-fade]").removeAttr("niv-fade");
 
-  $(".backdrop").animate(
-    {
-      opacity: 0,
-    },
-    3000
-  );
+  $(".backdrop").removeAttr('show');
 
   var i = 0;
   $(document).scroll(() => {

@@ -20,18 +20,18 @@ html {
 
   /* Track */
   &::-webkit-scrollbar-track {
-    background: $primary;
+    background: $branco-contra;
   }
 
   /* Handle */
   &::-webkit-scrollbar-thumb {
-    background: $secondary;
+    background: $primary;
   }
 
   /* Handle on hover */
   &::-webkit-scrollbar-thumb:hover {
     cursor: pointer;
-    background: $secondary;
+    background: $primary;
   }
 
   /* CUSTOM ATTR */
@@ -52,7 +52,7 @@ html {
     margin: 0;
     padding: 0;
     border: none;
-    box-sizing: border-box;
+    box-sizing: border-box !important;
     list-style: none;
     outline: none;
     text-decoration: none;
@@ -111,5 +111,9 @@ html {
 
   @include responsive(600px) {
     font-size: 52%;
+  }
+
+  body {
+    background: $cinza-contra;
   }
 }

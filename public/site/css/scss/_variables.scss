@@ -9,8 +9,8 @@ $font-primary: "Open Sans", sans-serif;
 $font-secundary: "Palatino Linotype", sans-serif;
 $font-tertiary: unset;
 
-$font-title: $font-primary;
-$font-text: $font-secundary;
+$font-title: $font-secundary;
+$font-text: $font-primary;
 
 // ========= CORES IMPORTANTES ========= //
 
@@ -26,6 +26,8 @@ $mid-cinza-contra: #716f6f;
 $branco-contra: #ffffff;
 
 $anchor-blue: #2f80ed;
+
+$border-active: #a73535a9;
 
 // ========= CORES DEFAULT ========= //
 
@@ -61,30 +63,30 @@ $opacity-bg: rgba(0, 0, 0, 0.74);
 // ROOT VARIABLES
 
 :root {
-    --black: $black;
-    --white: $white;
-    --blue: $blue;
-    --indigo: $indigo;
-    --purple: $purple;
-    --pink: $pink;
-    --red: $red;
-    --orange: $orange;
-    --yellow: $yellow;
-    --green: $green;
-    --teal: $teal;
-    --cyan: $cyan;
-    --white: $white;
-    --grey: $grey;
-    --grey-dark: $grey-dark;
-    --success: $success;
-    --info: $info;
-    --warning: $warning;
-    --danger: $danger;
-    --light: $light;
-    --dark: $dark;
-    --muted: $muted;
+    --black: #{$black};
+    --white: #{$white};
+    --blue: #{$blue};
+    --indigo: #{$indigo};
+    --purple: #{$purple};
+    --pink: #{$pink};
+    --red: #{$red};
+    --orange: #{$orange};
+    --yellow: #{$yellow};
+    --green: #{$green};
+    --teal: #{$teal};
+    --cyan: #{$cyan};
+    --white: #{$white};
+    --grey: #{$grey};
+    --grey-dark: #{$grey-dark};
+    --success: #{$success};
+    --info: #{$info};
+    --warning: #{$warning};
+    --danger: #{$danger};
+    --light: #{$light};
+    --dark: #{$dark};
+    --muted: #{$muted};
 
-    --hyp8-dark: $hyp8-dark;
+    --hyp8-dark: #{$hyp8-dark};
 
-    --opacity-bg: $opacity-bg;
+    --opacity-bg: #{$opacity-bg};
 }

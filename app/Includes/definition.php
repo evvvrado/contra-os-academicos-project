@@ -19,6 +19,7 @@ define("FONTS", "https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700
 // define("WHATSAPP", "35988090305");
 define("INSTAGRAM", "https://www.instagram.com/contraosacademicos/");
 define("FACEBOOK", "https://www.facebook.com/contraosacademicos/");
+define("TWITTER", "https://twitter.com/Contracademicos");
 define("YOUTUBE", "https://www.youtube.com/channel/UC3NjjjKEtzVCJOu7N9jLXzg");
 
 define("ENDERECO", "Rua João Cesário, 180 - Jardim América, 180 - Alfenas, MG");

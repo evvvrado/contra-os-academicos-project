@@ -26,12 +26,14 @@ h4 {
 p {
   color: unset;
   font-size: 1.2rem;
+  font-family: $font-text;
 }
 
 // ========= PADRÃO USADO EM COMPONENTES ========= //
 
 form {
   label {
+    display: block;
     input,
     textarea,
     select {
@@ -48,6 +50,22 @@ form {
 
       &::placeholder {
         color: $mid-cinza-contra;
+      }
+    }
+
+    input[type="checkbox"] {
+      all: unset;
+      background-color: $creme-contra;
+      border-radius: 0.4rem;
+      border: solid 1px $primary;
+
+      width: 1.2rem;
+      aspect-ratio: 1/1;
+
+      margin-right: 1.2rem;
+
+      &:checked {
+        background-color: $primary;
       }
     }
   }
@@ -88,16 +106,16 @@ a:not(a.button) {
   }
 }
 
-.button:has(a, button) {
+.button:is(a, button) {
   --width: 19.5rem;
   --height: 4.2rem;
   // --padding-x: 6.9rem;
   // --padding-y: 0.7rem;
   --font-size: 2rem;
-  --font-color: $white;
-  --background-color: $primary;
+  --font-color: #{$white};
+  --background-color: #{$primary};
 
-  background-color: unset;
+  background-color: var(--background-color);
   border-radius: 4px;
 
   font-family: $font-title;
@@ -105,16 +123,20 @@ a:not(a.button) {
   font-weight: 400;
   line-height: 100%;
 
+  transition: 0.32s;
+
   height: var(--height);
   width: var(--width);
   // padding: var(--padding-x) var(--padding-y);
   font-size: var(--font-size);
+  color: var(--font-color);
 
   @extend %totalcenter;
 
   &:hover,
   &:focus {
     background: var(--font-color);
+    border: solid 2px var(--background-color);
     color: var(--background-color);
   }
 

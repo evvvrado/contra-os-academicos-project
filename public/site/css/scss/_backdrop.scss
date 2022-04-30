@@ -8,11 +8,20 @@
     display: flex;
     pointer-events: none;
     z-index: 666;
+    opacity: 0;
 
-    picture {
+    transition: 3s;
+
+    &[show] {
+        opacity: 1;
+        transform: scale(1.7);
+    }
+
+    // display: none;
+
+    div {
         @include flex(row, center, center);
         gap: 1.2rem;
-
         align-self: center;
         margin: auto auto;
     }

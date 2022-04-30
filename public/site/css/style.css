@@ -1,34 +1,34 @@
-.button:has(a, button) {
+header div[fluid] div.niv > div div.search-button, header div[fluid] div.user-circle, .button:is(a, button) {
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
 :root {
-  --black: $black;
-  --white: $white;
-  --blue: $blue;
-  --indigo: $indigo;
-  --purple: $purple;
-  --pink: $pink;
-  --red: $red;
-  --orange: $orange;
-  --yellow: $yellow;
-  --green: $green;
-  --teal: $teal;
-  --cyan: $cyan;
-  --white: $white;
-  --grey: $grey;
-  --grey-dark: $grey-dark;
-  --success: $success;
-  --info: $info;
-  --warning: $warning;
-  --danger: $danger;
-  --light: $light;
-  --dark: $dark;
-  --muted: $muted;
-  --hyp8-dark: $hyp8-dark;
-  --opacity-bg: $opacity-bg;
+  --black: #000;
+  --white: #fff;
+  --blue: #007bff;
+  --indigo: #6610f2;
+  --purple: #6f42c1;
+  --pink: #e83e8c;
+  --red: #dc3545;
+  --orange: #fd7e14;
+  --yellow: #ffc107;
+  --green: #28a745;
+  --teal: #20c997;
+  --cyan: #17a2b8;
+  --white: #fff;
+  --grey: #6c757d;
+  --grey-dark: #343a40;
+  --success: #28a745;
+  --info: #17a2b8;
+  --warning: #ffc107;
+  --danger: #dc3545;
+  --light: #f8f9fa;
+  --dark: #343a40;
+  --muted: #616161;
+  --hyp8-dark: #202020;
+  --opacity-bg: rgba(0, 0, 0, 0.74);
 }
 
 @media (prefers-reduced-motion: no-preference) {
@@ -38,7 +38,7 @@
 }
 html {
   font-size: 62.5%;
-  font-family: "Palatino Linotype", sans-serif;
+  font-family: "Open Sans", sans-serif;
   scroll-behavior: smooth;
   /* Track */
   /* Handle */
@@ -68,14 +68,14 @@ html::-webkit-scrollbar {
   width: 0.5rem;
 }
 html::-webkit-scrollbar-track {
-  background: #5b2222;
+  background: #ffffff;
 }
 html::-webkit-scrollbar-thumb {
-  background: #3a1616;
+  background: #5b2222;
 }
 html::-webkit-scrollbar-thumb:hover {
   cursor: pointer;
-  background: #3a1616;
+  background: #5b2222;
 }
 html [disabled] {
   pointer-events: none;
@@ -89,7 +89,7 @@ html * {
   margin: 0;
   padding: 0;
   border: none;
-  box-sizing: border-box;
+  box-sizing: border-box !important;
   list-style: none;
   outline: none;
   text-decoration: none;
@@ -139,6 +139,9 @@ html [niv-follow] {
   html {
     font-size: 52%;
   }
+}
+html body {
+  background: #eaeaea;
 }
 
 @-webkit-keyframes upandown {
@@ -239,7 +242,7 @@ html [niv-follow] {
   }
 }
 h1 {
-  font-family: "Open Sans", sans-serif;
+  font-family: "Palatino Linotype", sans-serif;
   color: #ffffff;
   font-weight: 700;
   font-size: 4.8rem;
@@ -247,7 +250,7 @@ h1 {
 }
 
 h2 {
-  font-family: "Open Sans", sans-serif;
+  font-family: "Palatino Linotype", sans-serif;
   color: #242424;
   font-weight: 700;
   font-size: 2.4rem;
@@ -265,8 +268,12 @@ h4 {
 p {
   color: unset;
   font-size: 1.2rem;
+  font-family: "Open Sans", sans-serif;
 }
 
+form label {
+  display: block;
+}
 form label input,
 form label textarea,
 form label select {
@@ -290,13 +297,25 @@ form label textarea::placeholder,
 form label select::placeholder {
   color: #716f6f;
 }
+form label input[type=checkbox] {
+  all: unset;
+  background-color: #fdf6d6;
+  border-radius: 0.4rem;
+  border: solid 1px #5b2222;
+  width: 1.2rem;
+  aspect-ratio: 1/1;
+  margin-right: 1.2rem;
+}
+form label input[type=checkbox]:checked {
+  background-color: #5b2222;
+}
 
 a:not(a.button) {
   color: unset;
   transition: 0.32s;
 }
 a:not(a.button).--plus {
-  font-family: "Open Sans", sans-serif;
+  font-family: "Palatino Linotype", sans-serif;
   color: #f2d027;
   font-style: normal;
   font-weight: 700;
@@ -319,27 +338,30 @@ a:not(a.button):hover, a:not(a.button):focus {
   color: #3a1616;
 }
 
-.button:has(a, button) {
+.button:is(a, button) {
   --width: 19.5rem;
   --height: 4.2rem;
   --font-size: 2rem;
-  --font-color: $white;
-  --background-color: $primary;
-  background-color: unset;
+  --font-color: #fff;
+  --background-color: #5b2222;
+  background-color: var(--background-color);
   border-radius: 4px;
-  font-family: "Open Sans", sans-serif;
+  font-family: "Palatino Linotype", sans-serif;
   font-style: normal;
   font-weight: 400;
   line-height: 100%;
+  transition: 0.32s;
   height: var(--height);
   width: var(--width);
   font-size: var(--font-size);
+  color: var(--font-color);
 }
-.button:has(a, button):hover, .button:has(a, button):focus {
+.button:is(a, button):hover, .button:is(a, button):focus {
   background: var(--font-color);
+  border: solid 2px var(--background-color);
   color: var(--background-color);
 }
-.button:has(a, button):active {
+.button:is(a, button):active {
   border: 2px #716f6f solid;
 }
 
@@ -368,9 +390,193 @@ header {
   @include responsive(600px) {}
 
   **/
+  /**
+
+  @include responsive(1400px) {}
+  @include responsive(1200px) {}
+  @include responsive(992px) {}
+  @include responsive(730px) {}
+  @include responsive(600px) {}
+
+  **/
+  /**
+
+  @include responsive(1400px) {}
+  @include responsive(1200px) {}
+  @include responsive(992px) {}
+  @include responsive(730px) {}
+  @include responsive(600px) {}
+
+  **/
 }
-header._hi {
-  top: -100rem;
+header._hi div[fluid] {
+  padding-top: 0.4rem;
+  padding-bottom: 0.4rem;
+}
+header._hi div[fluid] div.niv nav, header._hi div[fluid] div.niv > div {
+  position: relative;
+  top: -20rem;
+}
+header div[fluid] {
+  background-color: #fff;
+  padding-top: 1.4rem;
+  padding-bottom: 1.4rem;
+  position: relative;
+  transition: 0.32s;
+}
+header div[fluid] div.user-circle {
+  position: absolute;
+  right: 3.1rem;
+  cursor: pointer;
+  top: 0;
+  bottom: 0;
+  margin: auto 0;
+  height: 4.4rem;
+  width: 4.4rem;
+  background: #eaeaea;
+  border-radius: 4.4rem;
+  transition: 0.32s;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+}
+header div[fluid] div.user-circle img {
+  transition: 0.32s;
+}
+header div[fluid] div.user-circle:hover, header div[fluid] div.user-circle:focus {
+  background-color: #5b2222;
+}
+header div[fluid] div.user-circle:hover img, header div[fluid] div.user-circle:focus img {
+  filter: brightness(100);
+}
+header div[fluid] div.user-circle:active {
+  background-color: #a73535a9;
+}
+header div[fluid] div.niv {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  flex-direction: row;
+  padding-right: 2.8rem;
+  padding-left: 2.8rem;
+}
+header div[fluid] div.niv a.logo-header img {
+  transition: 0.32s;
+}
+header div[fluid] div.niv nav {
+  width: 100%;
+  max-width: 14.7rem;
+  margin-right: auto;
+  margin-left: 11.5rem;
+  position: relative;
+  top: 0;
+  transition: 0.32s;
+}
+header div[fluid] div.niv nav ul {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  flex-direction: row;
+  gap: 1.6rem;
+}
+header div[fluid] div.niv nav ul li a[title=menu] {
+  display: block;
+  padding: 2.4rem;
+  border-right: 1px #eaeaea solid;
+  transition: 0.32s;
+}
+header div[fluid] div.niv nav ul li a[title=menu] img {
+  transition: 0.32s;
+}
+header div[fluid] div.niv nav ul li a[title=menu]:hover img, header div[fluid] div.niv nav ul li a[title=menu]:focus img {
+  transform-origin: center;
+  transform: scale(1.1);
+}
+header div[fluid] div.niv nav ul li a:not(a[title=menu]) {
+  color: #716f6f;
+  font-family: "Palatino Linotype", sans-serif;
+  font-weight: 700;
+  font-size: 1.6rem;
+  line-height: 2.2rem;
+  -webkit-text-decoration-line: underline;
+          text-decoration-line: underline;
+  transition: 0.32s;
+  z-index: 1;
+  position: relative;
+}
+header div[fluid] div.niv nav ul li a:not(a[title=menu])::before {
+  height: 100%;
+  width: 0;
+  background-color: #5b2222;
+  transition: 0.32s ease-in-out;
+  left: -0.5rem;
+  position: absolute;
+  content: "";
+  z-index: -1;
+  padding-right: 0;
+  padding-left: 0;
+}
+header div[fluid] div.niv nav ul li a:not(a[title=menu]):hover, header div[fluid] div.niv nav ul li a:not(a[title=menu]):focus {
+  color: #fff;
+}
+header div[fluid] div.niv nav ul li a:not(a[title=menu]):hover::before, header div[fluid] div.niv nav ul li a:not(a[title=menu]):focus::before {
+  padding-right: 1.5rem;
+  padding-left: 1.5rem;
+  width: 100%;
+}
+header div[fluid] div.niv > div {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  flex-direction: row;
+  gap: 3.3rem;
+  position: relative;
+  top: 0;
+  transition: 0.32s;
+}
+header div[fluid] div.niv > div div.search-button {
+  height: 3.2rem;
+  width: 3.2rem;
+  background-color: #eaeaea;
+  border-radius: 100%;
+  cursor: pointer;
+  transition: 0.32s;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+}
+header div[fluid] div.niv > div div.search-button:hover, header div[fluid] div.niv > div div.search-button:focus {
+  background-color: #5b2222;
+}
+header div[fluid] div.niv > div div.search-button:hover img, header div[fluid] div.niv > div div.search-button:focus img {
+  filter: brightness(100);
+}
+header div[fluid] div.niv > div div.search-button:active {
+  background-color: #a73535a9;
+}
+header div[fluid] div.niv > div a.button {
+  --height: 4.2rem;
+  --width: 19.5rem;
+}
+@media (max-width: 1150px) {
+  header div[fluid] div.niv {
+    padding-right: 5rem;
+  }
+}
+@media (max-width: 900px) {
+  header div[fluid] div.niv {
+    padding-right: 10rem;
+  }
+}
+@media (max-width: 600px) {
+  header div[fluid] div.niv > div a.button {
+    display: none;
+  }
+  header div[fluid] div.niv nav {
+    margin-left: auto;
+  }
 }
 .backdrop {
   background: #5b2222;
@@ -382,8 +588,14 @@ header._hi {
   display: flex;
   pointer-events: none;
   z-index: 666;
+  opacity: 0;
+  transition: 3s;
 }
-.backdrop picture {
+.backdrop[show] {
+  opacity: 1;
+  transform: scale(1.7);
+}
+.backdrop div {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -391,6 +603,260 @@ header._hi {
   gap: 1.2rem;
   align-self: center;
   margin: auto auto;
+}
+
+footer div[fluid] {
+  background-color: #242424;
+  padding-top: 5.3rem;
+  /**
+
+  @include responsive(1400px) {}
+  @include responsive(1200px) {}
+  @include responsive(992px) {}
+  @include responsive(730px) {}
+  @include responsive(600px) {}
+
+  **/
+  /**
+
+  @include responsive(1400px) {}
+  @include responsive(1200px) {}
+  @include responsive(992px) {}
+  @include responsive(730px) {}
+  @include responsive(600px) {}
+
+  **/
+  /**
+
+  @include responsive(1400px) {}
+  @include responsive(1200px) {}
+  @include responsive(992px) {}
+  @include responsive(730px) {}
+  @include responsive(600px) {}
+
+  **/
+}
+footer div[fluid] div.niv {
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  flex-direction: row;
+}
+footer div[fluid] div.niv div.logo-content {
+  width: 100%;
+  max-width: 38.3rem;
+}
+footer div[fluid] div.niv div.logo-content p {
+  margin-top: 1.8rem;
+  margin-bottom: 4.3rem;
+  max-width: 32.8rem;
+  font-size: 1.4rem;
+  color: #fff;
+  font-weight: 400;
+  line-height: 1.9rem;
+}
+footer div[fluid] div.niv div.logo-content a.button {
+  --background-color: #f2d027;
+  --font-color: #242424;
+  --height: 3.2rem;
+  --width: 11.4rem;
+  font-weight: 700;
+  font-size: 1.4rem;
+  margin-bottom: 4.9rem;
+}
+footer div[fluid] div.niv div.logo-content ul.social {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  flex-direction: row;
+  gap: 1.825rem;
+  margin-bottom: 10.4rem;
+}
+footer div[fluid] div.niv div.logo-content ul.social li a img {
+  transition: 0.32s;
+  box-sizing: border-box;
+}
+footer div[fluid] div.niv div.logo-content ul.social li a img:hover {
+  opacity: 0.7;
+}
+footer div[fluid] div.niv div.categorias-content {
+  padding-top: 2.9rem;
+  padding-left: 5.7rem;
+  position: relative;
+}
+footer div[fluid] div.niv div.categorias-content::after {
+  border-left: #eaeaea 1px solid;
+  content: "";
+  position: absolute;
+  height: 45.8rem;
+  width: 100%;
+  left: 0;
+  top: 0;
+  pointer-events: none;
+  opacity: 0.2;
+}
+footer div[fluid] div.niv div.categorias-content h2 {
+  color: #fff;
+  position: relative;
+  margin-bottom: 3.3rem;
+}
+footer div[fluid] div.niv div.categorias-content h2::after {
+  bottom: -1.5rem;
+  left: 0;
+  content: "";
+  position: absolute;
+  width: 6.4rem;
+  height: 0.1rem;
+  background-color: #f2d027;
+}
+footer div[fluid] div.niv div.categorias-content ul {
+  display: inline-block;
+}
+footer div[fluid] div.niv div.categorias-content ul li {
+  margin-bottom: 1.3rem;
+  font-weight: 400;
+  font-size: 1.4rem;
+  line-height: 100%;
+  color: #fff;
+}
+footer div[fluid] div.niv div.categorias-content ul li:first-child {
+  padding-right: 9.8rem;
+}
+footer div[fluid] div.niv div.categorias-content ul li a {
+  position: relative;
+}
+footer div[fluid] div.niv div.categorias-content ul li a::after {
+  bottom: -0.5rem;
+  left: 0;
+  content: "";
+  position: absolute;
+  width: 0;
+  height: 0.1rem;
+  background-color: #f2d027;
+  transition: 0.32s;
+}
+footer div[fluid] div.niv div.categorias-content ul li a:hover {
+  opacity: 0.7;
+  color: #fff;
+}
+footer div[fluid] div.niv div.categorias-content ul li a:hover::after {
+  width: 100%;
+}
+footer div[fluid] div.niv div.newsletter-content {
+  bottom: 0;
+  height: 26.4rem;
+  width: 30.5rem;
+  margin-top: auto;
+  background-color: #fdf6d6;
+  padding: 3.2rem 0 0 3.6rem;
+  border-radius: 4px;
+  margin-right: -12.9rem;
+  position: relative;
+}
+footer div[fluid] div.niv div.newsletter-content picture.selo {
+  position: absolute;
+  right: 3.4rem;
+  top: -1.6rem;
+}
+footer div[fluid] div.niv div.newsletter-content h3 {
+  font-family: "Palatino Linotype", sans-serif;
+  font-weight: 700;
+  font-size: 1.8rem;
+  line-height: 2.4rem;
+  color: #5b2222;
+  position: relative;
+  margin-bottom: 3.7rem;
+}
+footer div[fluid] div.niv div.newsletter-content h3::after {
+  bottom: -0.8rem;
+  left: 0;
+  content: "";
+  position: absolute;
+  width: 6.4rem;
+  height: 0.1rem;
+  background-color: #f2d027;
+}
+footer div[fluid] div.niv div.newsletter-content form label {
+  margin-bottom: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  flex-direction: row;
+  width: 100%;
+}
+footer div[fluid] div.niv div.newsletter-content form label input:not(input[type=checkbox]) {
+  width: 22.7rem;
+}
+footer div[fluid] div.niv div.newsletter-content form label span {
+  font-size: 1.2rem;
+}
+footer div[fluid] div.niv div.newsletter-content form button.button {
+  --width: 11.4rem;
+  --height: 3.2rem;
+  --font-size: 1.4rem;
+}
+@media (max-width: 800px) {
+  footer div[fluid] {
+    position: relative;
+  }
+  footer div[fluid] div.niv div.newsletter-content {
+    position: absolute;
+    margin: unset;
+    right: 0;
+    bottom: 0;
+  }
+}
+@media (max-width: 600px) {
+  footer div[fluid] {
+    padding-bottom: 9rem;
+  }
+  footer div[fluid] div.niv div.categorias-content {
+    padding-top: unset;
+  }
+}
+@media (max-width: 500px) {
+  footer div[fluid] {
+    padding-bottom: 2rem;
+    padding-top: 0;
+  }
+  footer div[fluid] div.niv {
+    flex-direction: column-reverse;
+    gap: 3rem;
+  }
+  footer div[fluid] div.niv div.logo-content {
+    text-align: center;
+    margin-top: 6rem;
+  }
+  footer div[fluid] div.niv div.logo-content a,
+footer div[fluid] div.niv div.logo-content img,
+footer div[fluid] div.niv div.logo-content p {
+    margin: 0 auto;
+    margin-bottom: 2rem;
+  }
+  footer div[fluid] div.niv div.logo-content ul.social {
+    justify-content: center;
+    margin-bottom: 2rem;
+  }
+  footer div[fluid] div.niv div.categorias-content::after {
+    display: none;
+  }
+  footer div[fluid] div.niv div.newsletter-content {
+    position: relative;
+    index: unset;
+    width: 100%;
+    top: -2rem;
+  }
+  footer div[fluid] div.niv div.newsletter-content form {
+    width: 100%;
+    padding-right: 3.2rem;
+  }
+  footer div[fluid] div.niv div.newsletter-content form label input:not(input[type=checkbox]) {
+    width: 100%;
+    font-size: 1.7rem;
+  }
+  footer div[fluid] div.niv div.newsletter-content form label span {
+    font-size: 1.7rem;
+  }
 }
 
 div.modal {
