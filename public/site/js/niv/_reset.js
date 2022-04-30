@@ -63,8 +63,6 @@ function number_format(number, decimals, dec_point, thousands_sep) {
     return s.join(dec);
 }
 
-
-
 (function ($) {
     $.fn.toggleAttr = function (attr) {
         if ($(this).attr(attr) == '') {
@@ -78,4 +76,9 @@ function number_format(number, decimals, dec_point, thousands_sep) {
 })(jQuery);
 
 
-console.log("%c👋 Opa, bom dia!\n%cEstá perdido? a estrada é pelo %coutro lado!!\n%cMas já que já está aqui, da uma olhadinha no nosso site\n%chttps://hyp8.com.br ✨", "font-family: consolas;", "font-family: consolas;", "font-family: consolas; font-weight: bold;color: red;", "font-family: consolas;", "font-family: consolas; color:$FF3434; ")
+
+
+console.log("\n%cmade with ❤ by %c@evvvrado", "text-style:none;  font-family: consolas; color:$white; background-color: #66EB6E; padding: 5px; margin-top: 5px; margin-bottom: 15px;", "text-style:none;  font-family: consolas; color:#fff; background-color: #66EB6E; padding: 5px; margin-top: 5px; margin-bottom: 15px;")
+
+
+

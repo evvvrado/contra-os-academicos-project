@@ -1,37 +1,46 @@
-h1 {
-  font-family: "Anton", sans-serif;
-  font-style: normal;
-  font-weight: normal;
-  font-size: 4.7rem;
-  line-height: 121.7%;
-  letter-spacing: 0.055em;
-}
+// ========= PADRÃO USADO EM TEXTOS ========= //
 
+h1 {
+  color: unset;
+}
 h2 {
-  font-family: "Anton", sans-serif;
-  font-style: normal;
-  font-weight: normal;
-  font-size: 2.8rem;
-  line-height: 121.7%;
-  letter-spacing: 0.055em;
+  color: unset;
 }
 h3 {
-  font-family: "Anton", sans-serif;
-  font-style: normal;
-  font-weight: normal;
-  font-size: 2.2rem;
-  line-height: 121.7%;
-  letter-spacing: 0.055em;
+  color: unset;
 }
 h4 {
-  font-weight: 500;
-  font-size: 1.8rem;
-  line-height: 121.7%;
-  letter-spacing: 0.055em;
-
-  color: $main-yellow;
+  color: unset;
 }
 p {
-  line-height: 150%;
-  letter-spacing: 0.02em;
+  color: unset;
+}
+
+// ========= PADRÃO USADO EM COMPONENTES ========= //
+
+form {
+  label {
+    input,
+    textarea,
+    select {
+      background-color: white;
+    }
+  }
+}
+
+a {
+  color: unset;
+  &:hover,
+  &:focus {
+    color: $secondary;
+  }
+}
+
+.btn:has(a, button) {
+  background-color: unset;
+
+  &:hover,
+  &:focus {
+    color: unset;
+  }
 }

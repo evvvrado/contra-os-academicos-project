@@ -1,26 +1,82 @@
-$main-purple: #56076d;
-$main-orange: #dbbf00;
-$main-yellow: #e5db00;
-$main-green: #079e43;
+// ========= VÁRIAVEIS NECESSÁRIAS ========= //
+// ========= VÁRIAVEIS NECESSÁRIAS ========= //
+// ========= VÁRIAVEIS NECESSÁRIAS ========= //
+// ========= VÁRIAVEIS NECESSÁRIAS ========= //
 
-$dark-purple: #260530;
-$light-purple: #3c1f5a;
-$lighter-purple: #985394;
-$form-purple: #45244f;
+// ========= FONTES IMPORTANTES ========= //
 
-$black: black;
+$font-primary: "Arial", sans-serif;
+$font-secundary: "Arial", sans-serif;
+$font-tertiary: unset;
 
-$grey: #323b4b;
-$saturated-grey: #3a3a3a;
-$light-grey: #c4c4c4;
-$middle-grey: #f6f6f8;
-$dark-grey: #151515;
-$text-grey: #6c7175;
-$filter-grey: #ededf1;
-$details-grey: #808080;
+$font-title: $font-primary;
+$font-text: $font-secundary;
 
-$table-border: #e7ebee;
+// ========= CORES IMPORTANTES ========= //
 
+$primary: unset;
+$secondary: unset;
+$tertiary: unset;
+$quaternary: unset;
+
+// ========= CORES DEFAULT ========= //
+
+$black: #000;
 $white: #fff;
+$blue: #007bff;
+$indigo: #6610f2;
+$purple: #6f42c1;
+$pink: #e83e8c;
+$red: #dc3545;
+$orange: #fd7e14;
+$yellow: #ffc107;
+$green: #28a745;
+$teal: #20c997;
+$cyan: #17a2b8;
+$white: #fff;
+$grey: #6c757d;
+$grey-dark: #343a40;
+$success: #28a745;
+$info: #17a2b8;
+$warning: #ffc107;
+$danger: #dc3545;
+$light: #f8f9fa;
+$dark: #343a40;
+$muted: #616161;
 
-$range-gradient: linear-gradient(270deg, #540000 0%, #aa2020 44.05%, #e07159 68.07%, #75ed2b 95.51%); ;
+$hyp8-dark: #202020;
+
+$opacity-bg: rgba(0, 0, 0, 0.74);
+
+// $cubic: cubic-bezier(0.5, 0, 0, 1);
+
+// ROOT VARIABLES
+
+:root {
+    --black: $black;
+    --white: $white;
+    --blue: $blue;
+    --indigo: $indigo;
+    --purple: $purple;
+    --pink: $pink;
+    --red: $red;
+    --orange: $orange;
+    --yellow: $yellow;
+    --green: $green;
+    --teal: $teal;
+    --cyan: $cyan;
+    --white: $white;
+    --grey: $grey;
+    --grey-dark: $grey-dark;
+    --success: $success;
+    --info: $info;
+    --warning: $warning;
+    --danger: $danger;
+    --light: $light;
+    --dark: $dark;
+    --muted: $muted;
+
+    --hyp8-dark: $hyp8-dark;
+
+    --opacity-bg: $opacity-bg;
+}

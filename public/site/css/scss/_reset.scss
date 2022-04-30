@@ -6,12 +6,12 @@
 
 html {
   font-size: 62.5%;
-  font-family: "Inter", sans-serif;
+  font-family: $font-text;
   scroll-behavior: smooth;
 
   ::selection {
-    color: $dark-purple;
-    background: $main-orange;
+    color: $primary;
+    background: $secondary;
   }
 
   &::-webkit-scrollbar {
@@ -20,20 +20,33 @@ html {
 
   /* Track */
   &::-webkit-scrollbar-track {
-    background: $dark-purple;
+    background: $primary;
   }
 
   /* Handle */
   &::-webkit-scrollbar-thumb {
-    background: $main-orange;
-    border-radius: 15rem;
+    background: $secondary;
   }
 
   /* Handle on hover */
   &::-webkit-scrollbar-thumb:hover {
     cursor: pointer;
-    background: $dark-purple;
+    background: $secondary;
   }
+
+  /* CUSTOM ATTR */
+
+  [disabled] {
+    pointer-events: none;
+    filter: grayscale(0);
+  }
+
+  [hide] {
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  /* RESET */
 
   * {
     margin: 0;
@@ -43,12 +56,25 @@ html {
     list-style: none;
     outline: none;
     text-decoration: none;
-    color: unset;
+
     font-size: 1.6rem;
   }
 
-  picture {
-    display: block;
+  body.overflow {
+    height: 100vh;
+    width: 100vw;
+    overflow: hidden;
+
+    div[fluid],
+    section {
+      padding-right: 2rem;
+    }
+  }
+
+  a,
+  button {
+    all: unset;
+    cursor: pointer;
   }
 
   img {
@@ -56,22 +82,9 @@ html {
     display: block;
   }
 
-  button {
-    background-color: transparent;
-    cursor: pointer;
-  }
-
   ul,
   ol {
     margin: 0;
-  }
-
-  select,
-  input {
-    appearance: none;
-    line-height: normal;
-    border: none;
-    position: relative;
   }
 
   /* GRID */
@@ -100,8 +113,3 @@ html {
     font-size: 52%;
   }
 }
-
-// NIV
-// BACKDROP
-// Z-INDEX 666
-// ESTRUTURAÇÃO

@@ -1,52 +1,10 @@
-@mixin h1-btn($height, $width) {
-  font-style: normal;
-  font-weight: bold;
-  font-size: 2rem;
-  line-height: $height;
-  letter-spacing: 0.01em;
-  text-align: center;
-
-  color: $dark-purple;
-  height: $height;
-  background: $main-yellow;
-  border-bottom: 3.2rem;
-  width: 100%;
-  max-width: $width;
-
-  transition: 0.32s;
-
-  padding: 0 4.1rem;
-
-  &:hover {
-    color: $white;
-    background: $main-purple;
-  }
-}
+// ========= DEFINIÇÃO DE MIXINS ========= // @include
 
 @mixin flex($direction, $align, $justify) {
   display: flex;
   align-items: $align;
   justify-content: $justify;
   flex-direction: $direction;
-}
-
-@mixin fade($transform, $time, $delay: 0s) {
-  transition: $time;
-  transition-delay: $delay;
-  &[niv-fade] {
-    opacity: 0;
-    transform: $transform;
-  }
-}
-
-@mixin picframe() {
-  overflow: hidden;
-
-  img {
-    height: 100%;
-    width: 100%;
-    object-fit: cover;
-  }
 }
 
 @mixin limitText($height, $lines) {
@@ -72,4 +30,49 @@
   @include responsive(600px) {}
 
   **/
+}
+
+@mixin margin-y($margin) {
+  margin-top: $margin;
+  margin-bottom: $margin;
+}
+
+@mixin margin-x($margin) {
+  margin-right: $margin;
+  margin-left: $margin;
+}
+
+@mixin padding-y($padding) {
+  padding-top: $padding;
+  padding-bottom: $padding;
+}
+
+@mixin padding-x($padding) {
+  padding-right: $padding;
+  padding-left: $padding;
+}
+
+// ========= DEFINIÇÃO DE PLACEHOLDERS ========= // @extend
+
+%picframe {
+  overflow: hidden;
+  display: block;
+
+  img {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+  }
+}
+
+%totalcenter {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+// ========= DEFINIÇÃO DE FUNCTIONS ========= // nome(valor)
+
+@function calculate-width($col-span) {
+  @return 100% / $col-span;
 }

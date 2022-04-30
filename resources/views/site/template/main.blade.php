@@ -1,9 +1,13 @@
+@php
+include_once app_path() . '/Includes/definition.php';
+@endphp
+
 <!DOCTYPE html>
 <html lang="pt-br">
 
 <head>
 
-    <title>{{ $titulo }}</title>
+    <title>{{ TITULO }}</title>
     @include('site.includes.head')
     @toastr_css
     @livewireStyles()
@@ -13,26 +17,6 @@
 
 <body @yield("body_attr")>
     @include('site.includes.navbar')
-
-    @if (session()->get('erro'))
-        <div class="erro_modal modal">
-            <div fluid>
-                <div class="niv">
-                    <div class="box">
-                        <h2>Opa!</h2>
-                        <h2>Ocorreu um erro!</h2>
-                        <p>{{ session()->get('erro') }}</p>
-                        <div class="button_list">
-                            <button class="alert" onclick="$('div.erro_modal').hideModal()">Entendi</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="close-modal">
-            </div>
-        </div>
-    @endif
-
 
     @yield('content')
 
@@ -44,15 +28,6 @@
     @toastr_render
     @livewireScripts()
     @yield("scripts")
-
-
-
-
-    @if (session()->get('erro'))
-        <script>
-            $('.erro_modal').showModal();
-        </script>
-    @endif
 
 </body>
 
