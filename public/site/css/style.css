@@ -1,8 +1,8 @@
-section.hero div.niv div.col div.colunistas ul.lista-colunistas li picture {
+section.conteudo div.niv div.content-area div.scroll a.box picture, section.hero div.niv div.col div.colunistas ul.lista-colunistas li picture {
   overflow: hidden;
   display: block;
 }
-section.hero div.niv div.col div.colunistas ul.lista-colunistas li picture img {
+section.conteudo div.niv div.content-area div.scroll a.box picture img, section.hero div.niv div.col div.colunistas ul.lista-colunistas li picture img {
   height: 100%;
   width: 100%;
   -o-object-fit: cover;
@@ -344,6 +344,9 @@ a:not(a.button).--plus::after {
   content: url("/site/assets/img/icon_plus_anchor.svg");
   position: absolute;
 }
+a:not(a.button).--plus:hover {
+  letter-spacing: 0.095em;
+}
 a:not(a.button).--blue {
   color: #2f80ed;
 }
@@ -615,34 +618,34 @@ header div[fluid] div.niv > div a.button {
   gap: 1.2rem;
   align-self: center;
   margin: auto auto;
+  perspective: 600px;
+  position: relative;
+}
+.backdrop div img {
+  display: block;
+  transform: rotateY(180deg);
+  transform-style: preserve-3d;
+  -webkit-backface-visibility: visible;
+          backface-visibility: visible;
   -webkit-animation: card-flip infinite linear 1s;
           animation: card-flip infinite linear 1s;
-  transform-style: preserve-3d;
-  -webkit-backface-visibility: hidden;
-          backface-visibility: hidden;
 }
 
 @-webkit-keyframes card-flip {
   0% {
-    transform: rotateY(180deg);
-  }
-  50% {
     transform: rotateY(0);
   }
   100% {
-    transform: rotateY(180deg);
+    transform: rotateY(360deg);
   }
 }
 
 @keyframes card-flip {
   0% {
-    transform: rotateY(180deg);
-  }
-  50% {
     transform: rotateY(0);
   }
   100% {
-    transform: rotateY(180deg);
+    transform: rotateY(360deg);
   }
 }
 footer div[fluid] {
@@ -1012,12 +1015,21 @@ section.hero div.niv a.card.mini-card > strong {
   line-height: 2.4rem;
   color: #ffffff;
   z-index: 1;
+  height: 13.2rem;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 5;
+  -webkit-box-orient: vertical;
+  text-overflow: ellipsis;
 }
 section.hero div.niv a.card.mini-card p,
 section.hero div.niv a.card.mini-card p strong {
   font-size: 1.4rem;
   color: #fff;
   z-index: 1;
+}
+section.hero div.niv a.card:hover, section.hero div.niv a.card:focus {
+  letter-spacing: 1px;
 }
 section.hero div.niv div.col div.colunistas {
   height: 37.6rem;
@@ -1091,11 +1103,11 @@ section.hero div.niv div.col div.colunistas ul.lista-colunistas li:hover, sectio
   section.hero div.niv {
     flex-wrap: wrap;
   }
-  section.hero div.niv div.card.main-card {
+  section.hero div.niv a.card.main-card {
     max-width: 100%;
     background-size: cover !important;
   }
-  section.hero div.niv div.card.mini-card {
+  section.hero div.niv a.card.mini-card {
     max-width: 100%;
     background-size: cover !important;
   }
@@ -1127,6 +1139,375 @@ section.hero div.niv div.col div.colunistas ul.lista-colunistas li:hover, sectio
   section.hero div.niv div.col div.colunistas ul.lista-colunistas li div span:first-child,
 section.hero div.niv div.col div.colunistas ul.lista-colunistas li div span:last-child {
     font-size: 2rem;
+  }
+}
+
+section.blog-news {
+  padding-bottom: 2.2rem;
+}
+section.blog-news div.niv {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  flex-direction: row;
+  /**
+
+  @include responsive(1400px) {}
+  @include responsive(1200px) {}
+  @include responsive(992px) {}
+  @include responsive(730px) {}
+  @include responsive(600px) {}
+
+  **/
+  /**
+
+  @include responsive(1400px) {}
+  @include responsive(1200px) {}
+  @include responsive(992px) {}
+  @include responsive(730px) {}
+  @include responsive(600px) {}
+
+  **/
+}
+section.blog-news div.niv div.blog-area {
+  width: 100%;
+  max-width: 64.2rem;
+  height: 30.8rem;
+  background-color: #242424;
+  border-radius: 4px;
+  padding: 2.1rem 2.4rem 1.8rem 2.4rem;
+}
+section.blog-news div.niv div.blog-area div.top-title {
+  width: 100%;
+  margin-bottom: 2rem;
+}
+section.blog-news div.niv div.blog-area div.top-title,
+section.blog-news div.niv div.blog-area div.top-title h2 {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-direction: row;
+}
+section.blog-news div.niv div.blog-area div.top-title h2 {
+  color: #fff;
+}
+section.blog-news div.niv div.blog-area div.top-title h2 picture {
+  margin-right: 1rem;
+}
+section.blog-news div.niv div.blog-area div.content div.scroll {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  flex-direction: row;
+  width: 100%;
+}
+section.blog-news div.niv div.blog-area div.content div.scroll a.card {
+  width: 100%;
+  max-width: 14.3rem;
+  height: 22.3rem;
+  overflow: hidden;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  flex-direction: column;
+  padding: 1.3rem;
+  background-size: cover !important;
+  background-position: center !important;
+  border-radius: 0.4rem 0.4rem 0 0;
+}
+section.blog-news div.niv div.blog-area div.content div.scroll a.card span,
+section.blog-news div.niv div.blog-area div.content div.scroll a.card strong {
+  font-family: "Palatino Linotype", sans-serif;
+  font-weight: 700;
+  font-size: 1.4rem;
+  line-height: 1.9rem;
+  color: #fff;
+}
+section.blog-news div.niv div.blog-area div.content div.scroll a.card span {
+  vertical-align: middle;
+  -webkit-text-decoration-line: underline;
+          text-decoration-line: underline;
+}
+section.blog-news div.niv div.blog-area div.content div.scroll a.card strong {
+  height: 7rem;
+  max-width: 10rem;
+  position: relative;
+}
+section.blog-news div.niv div.blog-area div.content div.scroll a.card strong:after {
+  height: 0.2rem;
+  width: 6.5rem;
+  background-color: #f2d027;
+  content: "";
+  position: absolute;
+  left: 0;
+  top: -0.4rem;
+}
+section.blog-news div.niv div.news-area {
+  height: 30.8rem;
+  width: 100%;
+  max-width: 38rem;
+  background-color: #ffffff;
+  border-radius: 4px;
+  padding: 2.2rem;
+}
+section.blog-news div.niv div.news-area h3 {
+  font-size: 1.4rem;
+  color: #5b2222;
+  font-family: "Palatino Linotype", sans-serif;
+  font-weight: 400;
+  margin-bottom: 3.7rem;
+  position: relative;
+}
+section.blog-news div.niv div.news-area h3::after {
+  width: 18rem;
+  height: 0.1rem;
+  background-color: #5b2222;
+  left: 0;
+  bottom: -0.8rem;
+  position: absolute;
+  content: "";
+}
+section.blog-news div.niv div.news-area form label span {
+  font-size: 1.4rem;
+  color: #716f6f;
+}
+section.blog-news div.niv div.news-area form label input:not(input[type=checkbox]) {
+  width: 100%;
+  margin-bottom: 1.1rem;
+  margin-top: 1.1rem;
+}
+section.blog-news div.niv div.news-area form label.checkbox {
+  margin-bottom: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  flex-direction: row;
+  width: 100%;
+}
+section.blog-news div.niv div.news-area form label.checkbox span {
+  font-weight: 400;
+  font-size: 1.2rem;
+  line-height: 1.6rem;
+  color: #716f6f;
+}
+section.blog-news div.niv div.news-area form label.checkbox input[type=checkbox] {
+  background-color: #fff;
+}
+section.blog-news div.niv div.news-area form > div {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-direction: row;
+  width: 100%;
+  margin-top: 4.9rem;
+}
+section.blog-news div.niv div.news-area form > div button.button {
+  --width: 11.4rem;
+  --height: 3.2rem;
+  --font-size: 1.4rem;
+}
+section.blog-news div.niv div.news-area form > div div.pictures {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  flex-direction: row;
+  gap: 0.7rem;
+}
+@media (max-width: 800px) {
+  section.blog-news div.niv {
+    flex-direction: column;
+    gap: 1rem;
+  }
+  section.blog-news div.niv div.blog-area,
+section.blog-news div.niv div.news-area {
+    width: 100%;
+    max-width: unset;
+  }
+}
+@media (max-width: 500px) {
+  section.blog-news div.niv div.blog-area div.content {
+    width: 100%;
+    overflow: auto;
+  }
+  section.blog-news div.niv div.blog-area div.content div.scroll {
+    width: -webkit-max-content;
+    width: -moz-max-content;
+    width: max-content;
+    gap: 3rem;
+  }
+}
+
+section.conteudo {
+  background: linear-gradient(0deg, rgba(0, 0, 0, 0) 7%, #fdf6d6 7%);
+  padding-top: 4.7rem;
+  padding-bottom: 2.4rem;
+}
+section.conteudo div.niv {
+  /**
+
+  @include responsive(1400px) {}
+  @include responsive(1200px) {}
+  @include responsive(992px) {}
+  @include responsive(730px) {}
+  @include responsive(600px) {}
+
+  **/
+  /**
+
+  @include responsive(1400px) {}
+  @include responsive(1200px) {}
+  @include responsive(992px) {}
+  @include responsive(730px) {}
+  @include responsive(600px) {}
+
+  **/
+}
+section.conteudo div.niv div.top-area {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-direction: row;
+  margin-bottom: 3.8rem;
+}
+section.conteudo div.niv div.top-area h2 {
+  color: #242424;
+  position: relative;
+  z-index: 1;
+}
+section.conteudo div.niv div.top-area h2::after {
+  width: 13.4rem;
+  height: 0.7rem;
+  background-color: #fff;
+  position: absolute;
+  content: "";
+  bottom: 0;
+  left: 0;
+  z-index: -1;
+}
+section.conteudo div.niv div.top-area ul {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  flex-direction: row;
+  width: 38.8rem;
+}
+section.conteudo div.niv div.top-area ul li {
+  width: 100%;
+  text-align: center;
+  border-bottom: solid 2px #ffffff;
+  padding-bottom: 0.7rem;
+  font-family: "Palatino Linotype", sans-serif;
+  font-weight: 700;
+  font-size: 1.4rem;
+  color: #716f6f;
+  transition: 0.32s;
+  cursor: pointer;
+}
+section.conteudo div.niv div.top-area ul li[active] {
+  border-bottom: 5px #5b2222 solid;
+  color: #5b2222;
+}
+section.conteudo div.niv div.top-area a.button {
+  --background-color: #fff;
+  --font-color: #3a1616;
+  --width: 12.1rem;
+  --height: 3.5rem;
+  gap: 1.4rem;
+  font-size: 1.4rem;
+}
+section.conteudo div.niv div.content-area div.scroll {
+  display: none;
+  gap: 2.4rem;
+  flex-wrap: wrap;
+}
+section.conteudo div.niv div.content-area div.scroll[active] {
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  flex-direction: row;
+}
+section.conteudo div.niv div.content-area div.scroll a.box {
+  display: block;
+  width: 100%;
+  max-width: 24rem;
+  height: 32.5rem;
+  overflow: hidden;
+  border-radius: 0.4rem;
+}
+section.conteudo div.niv div.content-area div.scroll a.box picture {
+  width: 100%;
+  height: 15.5rem;
+}
+section.conteudo div.niv div.content-area div.scroll a.box div.box-content {
+  background-color: #fff;
+  width: 100%;
+  height: 17rem;
+  padding: 1.2rem;
+}
+section.conteudo div.niv div.content-area div.scroll a.box div.box-content span {
+  font-family: "Palatino Linotype", sans-serif;
+  font-weight: 700;
+  font-size: 1.2rem;
+  line-height: 1.6rem;
+  color: #5b2222;
+}
+section.conteudo div.niv div.content-area div.scroll a.box div.box-content strong {
+  font-family: "Palatino Linotype", sans-serif;
+  font-weight: 700;
+  font-size: 1.6rem;
+  line-height: 2.2rem;
+  color: #242424;
+  display: block;
+  height: 4.7rem;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  text-overflow: ellipsis;
+  margin-top: 0.3rem;
+  margin-bottom: 0.5rem;
+}
+section.conteudo div.niv div.content-area div.scroll a.box div.box-content hr {
+  width: 12rem;
+  height: 1px;
+  background-color: #eaeaea;
+}
+section.conteudo div.niv div.content-area div.scroll a.box div.box-content p {
+  display: block;
+  margin-top: 1.6rem;
+  color: #716f6f;
+  height: 5rem;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  text-overflow: ellipsis;
+}
+@media (max-width: 800px) {
+  section.conteudo div.niv div.content-area div.scroll {
+    gap: 1rem;
+  }
+}
+@media (max-width: 600px) {
+  section.conteudo div.niv div.top-area {
+    gap: 3rem;
+    flex-direction: column;
+  }
+  section.conteudo div.niv div.content-area {
+    width: 100%;
+    overflow: auto;
+    -ms-scroll-snap-type: x mandatory;
+        scroll-snap-type: x mandatory;
+  }
+  section.conteudo div.niv div.content-area div.scroll {
+    flex-direction: row;
+    width: -webkit-max-content;
+    width: -moz-max-content;
+    width: max-content;
+    gap: 2rem;
+  }
+  section.conteudo div.niv div.content-area div.scroll a.box {
+    scroll-snap-align: start;
   }
 }
 
@@ -1192,4 +1573,9 @@ div.modal .close-modal {
   width: 100%;
   z-index: 1;
   content: "";
+}
+
+i.niv-arrow-right {
+  content: url("/site/assets/img/arrow_blog.svg");
+  margin-left: 0.3rem;
 }

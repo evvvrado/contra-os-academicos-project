@@ -97,6 +97,10 @@ a:not(a.button) {
       content: url("/site/assets/img/icon_plus_anchor.svg");
       position: absolute;
     }
+
+    &:hover {
+      letter-spacing: 0.095em;
+    }
   }
 
   &.--blue {

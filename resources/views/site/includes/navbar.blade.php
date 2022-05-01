@@ -1,5 +1,5 @@
     <div class="backdrop" show>
-        <div>
+        <div class="card">
             <img src="{{ asset('site/assets/img/logo_branca_footer.png') }}" alt="Logo {{ NAME }}">
         </div>
     </div>

@@ -1,0 +1,172 @@
+section.conteudo {
+    background: linear-gradient(0deg, rgba(0, 0, 0, 0) 7%, $creme-contra 7%);
+    padding-top: 4.7rem;
+    padding-bottom: 2.4rem;
+
+    div.niv {
+        div.top-area {
+            @include flex(row, center, space-between);
+            margin-bottom: 3.8rem;
+
+            h2 {
+                color: $preto-contra;
+                position: relative;
+                z-index: 1;
+
+                &::after {
+                    width: 13.4rem;
+                    height: 0.7rem;
+
+                    background-color: $white;
+
+                    position: absolute;
+                    content: "";
+
+                    bottom: 0;
+                    left: 0;
+                    z-index: -1;
+                }
+            }
+
+            ul {
+                @include flex(row, center, flex-start);
+                width: 38.8rem;
+
+                li {
+                    width: 100%;
+                    text-align: center;
+
+                    border-bottom: solid 2px $branco-contra;
+                    padding-bottom: 0.7rem;
+
+                    font-family: $font-secondary;
+                    font-weight: 700;
+                    font-size: 1.4rem;
+                    color: $mid-cinza-contra;
+
+                    transition: 0.32s;
+
+                    cursor: pointer;
+
+                    &[active] {
+                        border-bottom: 5px $primary solid;
+                        color: $primary;
+                    }
+                }
+            }
+
+            a.button {
+                --background-color: #{$white};
+                --font-color: #{$secondary};
+                --width: 12.1rem;
+                --height: 3.5rem;
+
+                gap: 1.4rem;
+                font-size: 1.4rem;
+            }
+        }
+
+        div.content-area {
+            div.scroll {
+                display: none;
+                &[active] {
+                    @include flex(row, flex-start, flex-start);
+                }
+                gap: 2.4rem;
+                flex-wrap: wrap;
+                a.box {
+                    display: block;
+                    width: 100%;
+                    max-width: 24rem;
+                    height: 32.5rem;
+
+                    overflow: hidden;
+                    border-radius: 0.4rem;
+
+                    picture {
+                        @extend %picframe;
+                        width: 100%;
+                        height: 15.5rem;
+                    }
+
+                    div.box-content {
+                        background-color: $white;
+                        width: 100%;
+                        height: 17rem;
+                        padding: 1.2rem;
+
+                        span {
+                            font-family: $font-secondary;
+                            font-weight: 700;
+                            font-size: 1.2rem;
+                            line-height: 1.6rem;
+                            color: $primary;
+                        }
+
+                        strong {
+                            font-family: $font-secondary;
+                            font-weight: 700;
+                            font-size: 1.6rem;
+                            line-height: 2.2rem;
+                            color: $preto-contra;
+                            display: block;
+                            @include limitText(4.7rem, 2);
+                            margin-top: 0.3rem;
+                            margin-bottom: 0.5rem;
+                        }
+
+                        hr {
+                            width: 12rem;
+                            height: 1px;
+
+                            background-color: $cinza-contra;
+                        }
+
+                        p {
+                            display: block;
+                            margin-top: 1.6rem;
+                            color: $mid-cinza-contra;
+
+                            @include limitText(5rem, 3);
+                        }
+                    }
+                }
+
+                &[data-filter="videos"] {
+                    a.box {
+                    }
+                }
+            }
+        }
+
+        @include responsive(800px) {
+            div.content-area {
+                div.scroll {
+                    gap: 1rem;
+                }
+            }
+        }
+
+        @include responsive(600px) {
+            div.top-area {
+                gap: 3rem;
+                flex-direction: column;
+            }
+
+            div.content-area {
+                width: 100%;
+                overflow: auto;
+                scroll-snap-type: x mandatory;
+                div.scroll {
+                    flex-direction: row;
+                    width: max-content;
+                    gap: 2rem;
+
+                    a.box {
+                        scroll-snap-align: start;
+                    }
+                }
+            }
+        }
+    }
+}

@@ -93,6 +93,8 @@ section.hero {
                     line-height: 2.4rem;
                     color: $branco-contra;
                     z-index: 1;
+
+                    @include limitText(13.2rem, 5);
                 }
 
                 p,
@@ -101,6 +103,11 @@ section.hero {
                     color: $white;
                     z-index: 1;
                 }
+            }
+
+            &:hover,
+            &:focus {
+                letter-spacing: 1px;
             }
         }
 
@@ -193,7 +200,7 @@ section.hero {
         div.niv {
             flex-wrap: wrap;
 
-            div.card {
+            a.card {
                 &.main-card {
                     max-width: 100%;
                     background-size: cover !important;
