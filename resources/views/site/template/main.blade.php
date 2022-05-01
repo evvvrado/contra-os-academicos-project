@@ -1,7 +1,3 @@
-@php
-include_once app_path() . '/Includes/definition.php';
-@endphp
-
 <!DOCTYPE html>
 <html lang="pt-br">
 
