@@ -1,0 +1,35 @@
+section.lista-destaque {
+    margin-bottom: 2.4rem;
+    div.niv {
+        & > h2 {
+            color: $preto-contra;
+            width: max-content;
+            margin-bottom: 2.4rem;
+
+            --item-color: #{$creme-contra};
+            --right: 0;
+            --left: unset;
+        }
+
+        div.boxes-area {
+            div.scroll {
+                @include flex(row, flex-start, space-between);
+            }
+        }
+    }
+    @include responsive(800px) {
+        div.niv {
+            div.boxes-area {
+                div.scroll {
+                    flex-wrap: wrap;
+                    gap: 1rem;
+                    flex-grow: 2/2;
+
+                    a.box-destaque {
+                        max-width: 20rem;
+                    }
+                }
+            }
+        }
+    }
+}

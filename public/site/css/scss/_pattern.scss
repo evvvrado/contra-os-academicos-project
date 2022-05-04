@@ -15,6 +15,36 @@ h2 {
   font-weight: 700;
   font-size: 2.4rem;
   line-height: 3.2rem;
+
+  &.--bar {
+    --bottom: 0;
+    --left: 0;
+    --right: unset;
+    --top: unset;
+
+    --width: 13.4rem;
+    --height: 0.7rem;
+    --item-color: #{$white};
+
+    position: relative;
+    z-index: 1;
+
+    &::after {
+      width: var(--width);
+      height: var(--height);
+
+      background-color: var(--item-color);
+
+      position: absolute;
+      content: "";
+
+      bottom: var(--bottom);
+      left: var(--left);
+      top: var(--top);
+      right: var(--right);
+      z-index: -1;
+    }
+  }
 }
 
 h3 {
@@ -149,5 +179,64 @@ a:not(a.button) {
 
   &:active {
     border: 2px $mid-cinza-contra solid;
+  }
+}
+
+.box-destaque {
+  height: 33.5rem;
+  width: 100%;
+  max-width: 24rem;
+
+  border-radius: 0.4rem;
+  z-index: 0;
+  padding: 2.4rem 2.8rem 3.4rem 2.4rem;
+
+  @include flex(column, flex-start, flex-end);
+  background-color: red;
+
+  &:hover {
+    h2 {
+      letter-spacing: 0.1rem;
+
+      &::after {
+        width: 100%;
+      }
+    }
+  }
+
+  h2 {
+    height: 6.4rem;
+    z-index: 2;
+    color: $white;
+    line-height: 3.2rem;
+    transition: 0.32s;
+
+    position: relative;
+
+    &::after {
+      transition: 0.32s;
+      position: absolute;
+      content: "";
+      bottom: -0.5rem;
+      left: 0;
+
+      width: 5.2rem;
+      height: 0.2rem;
+      background-color: $tertiary;
+    }
+  }
+
+  position: relative;
+  &::before {
+    z-index: 1;
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+
+    background: linear-gradient(180deg, rgba(0, 0, 0, 0) -29.41%, #242424 100%);
+    border-radius: 4px;
   }
 }

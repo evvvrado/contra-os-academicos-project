@@ -1,0 +1,351 @@
+section.indicacao-cast {
+    div.niv {
+        @include flex(row, flex-start, space-between);
+        flex-wrap: wrap;
+        gap: 2rem;
+
+        div.indicacao-area {
+            width: 100%;
+            max-width: 50.4rem;
+            div.box {
+                height: 51.6rem;
+                width: 100%;
+                background-color: $white;
+                border-radius: 4px;
+
+                div.box-top {
+                    background: $primary;
+                    padding: 3.5rem 1.8rem 1.9rem 2.4rem;
+
+                    @include flex(row, flex-end, space-between);
+                    border-radius: 4px 4px 0 0;
+
+                    p {
+                        font-size: 1.8rem;
+                        color: $creme-contra;
+                    }
+
+                    h2 {
+                        color: $white;
+                    }
+                }
+
+                &.--livro {
+                    div.box-content {
+                        padding: 2.8rem 0rem 4.2rem 2.6rem;
+
+                        & > span {
+                            font-family: $font-secondary;
+                            font-weight: 400;
+                            font-size: 1.8rem;
+                            line-height: 2.4rem;
+                            color: $black;
+                        }
+                        & > h2 {
+                            color: $black;
+                            display: block;
+                            margin-bottom: 1.9rem;
+                        }
+                        main {
+                            width: 100%;
+                            @include flex(row, flex-end, flex-start);
+
+                            gap: 3.4rem;
+
+                            div.--novidade {
+                                picture {
+                                    width: 100%;
+                                    max-width: 18.3rem;
+                                    height: 25.1rem;
+
+                                    @extend %picframe;
+                                }
+
+                                position: relative;
+                                &::after {
+                                    position: absolute;
+                                    content: "Novidade";
+
+                                    top: 1.67rem;
+                                    right: -4.8rem;
+
+                                    height: 2.7rem;
+                                    width: 100%;
+                                    max-width: 10rem;
+                                    border-radius: 0.4rem;
+                                    background-color: #eb5757;
+
+                                    font-family: $font-text;
+                                    font-weight: 700;
+                                    font-size: 1.2rem;
+                                    color: $white;
+
+                                    @extend %totalcenter;
+                                }
+                            }
+
+                            div.info {
+                                a.button {
+                                    --width: 11.4rem;
+                                    --height: 3.2rem;
+                                    --font-size: 1.4rem;
+                                    margin-top: 5.2rem;
+                                }
+
+                                span:is(.valor, .riscado, .desconto) {
+                                    font-family: $font-text;
+                                    font-style: normal;
+                                    color: $black;
+                                }
+
+                                span.valor {
+                                    font-weight: 700;
+                                    font-size: 4.638rem;
+                                    line-height: 4.3rem;
+                                }
+
+                                span.riscado {
+                                    font-weight: 400;
+                                    font-size: 2.319rem;
+                                    line-height: 2.2rem;
+
+                                    position: relative;
+
+                                    &::after {
+                                        position: absolute;
+                                        content: "";
+                                        width: 100%;
+                                        height: 1px;
+                                        background-color: $tertiary;
+
+                                        top: 0;
+                                        bottom: 0;
+                                        left: 0;
+
+                                        margin: auto 0;
+                                    }
+                                }
+
+                                span.desconto {
+                                    padding: 0.9rem;
+
+                                    background: #6fcf97;
+                                    border-radius: 1.97px;
+
+                                    position: relative;
+                                    left: 1rem;
+                                    top: -1rem;
+
+                                    font-weight: 700;
+                                    font-size: 1.6rem;
+                                    color: $black;
+                                }
+                            }
+                        }
+                    }
+                }
+
+                &.--video {
+                    div.box-content {
+                        height: 40rem;
+                        overflow: hidden;
+
+                        @extend %picframe;
+                        border-radius: 0 0 4px 4px;
+
+                        position: relative;
+                        transition: 0.32s;
+
+                        img {
+                            transition: 0.32s;
+                        }
+
+                        &::after {
+                            content: "";
+                            width: 5.9rem;
+                            height: 5.9rem;
+                            position: absolute;
+                            top: 0;
+                            bottom: 0;
+                            right: 0;
+                            left: 0;
+
+                            transition: 0.32s;
+
+                            margin: auto;
+
+                            background: url("/site/assets/img/icon_play_indicacao.svg");
+                            background-size: cover;
+                        }
+
+                        &:hover,
+                        &:focus {
+                            cursor: pointer;
+                            img {
+                                transform: scale(1.05);
+                                transform-origin: center;
+                            }
+
+                            &::after {
+                                transform: scale(0.4);
+                                transform-origin: center;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        div.contraCast-area {
+            width: 100%;
+            max-width: 50.4rem;
+
+            div.banner-area {
+                padding: 2rem;
+                @include flex(row, flex-end, space-between);
+                height: 20.9rem;
+                width: 100%;
+
+                background: url("/site/assets/img/banner_podcast.jpg");
+
+                border-radius: 4px 4px 0 0;
+
+                & > div {
+                    h2 {
+                        color: $white;
+                    }
+                    h3 {
+                        color: $tertiary;
+                        font-family: $font-secondary;
+                        font-weight: 400;
+                        font-size: 1.6573rem;
+                        line-height: 2.2rem;
+                    }
+                }
+            }
+
+            div.content-area {
+                background: $white;
+                border-radius: 0 0 4px 4px;
+
+                width: 100%;
+                padding-top: 2rem;
+
+                ul {
+                    width: 100%;
+                    height: 28.5rem;
+                    overflow: auto;
+
+                    &::-webkit-scrollbar {
+                        width: 0.5rem;
+                    }
+
+                    /* Track */
+                    &::-webkit-scrollbar-track {
+                        background: $branco-contra;
+                    }
+
+                    /* Handle */
+                    &::-webkit-scrollbar-thumb {
+                        background: $primary;
+                    }
+
+                    /* Handle on hover */
+                    &::-webkit-scrollbar-thumb:hover {
+                        cursor: pointer;
+                        background: $primary;
+                    }
+
+                    li {
+                        width: 100%;
+                        @include flex(row, center, space-between);
+                        transition: 0.32s;
+
+                        padding: 2rem;
+
+                        &:not(&:last-child) {
+                            border-bottom: 1px dashed #eaeaea;
+                        }
+
+                        main {
+                            max-width: 25.5rem;
+
+                            small {
+                                font-style: normal;
+                                font-weight: 400;
+                                font-size: 1.2rem;
+                                line-height: 1.6rem;
+                                color: $mid-cinza-contra;
+                                display: block;
+                                margin-bottom: 0.5rem;
+                            }
+
+                            strong {
+                                font-family: $font-secondary;
+                                font-style: normal;
+                                font-weight: 400;
+                                font-size: 1.8rem;
+                                line-height: 2.4rem;
+                                color: $preto-contra;
+                                max-width: 25.5rem;
+                            }
+
+                            hr {
+                                width: 7.7rem;
+                                height: 1px;
+                                background-color: $mid-cinza-contra;
+
+                                @include margin-y(0.5rem);
+                            }
+
+                            span {
+                                font-family: $font-secondary;
+                                font-style: normal;
+                                font-weight: 400;
+                                font-size: 1.4rem;
+                                line-height: 1.9rem;
+                                color: $primary;
+                            }
+                        }
+
+                        &:hover {
+                            cursor: pointer;
+                            background: #eaeaea;
+                        }
+                    }
+                }
+            }
+        }
+
+        @include responsive(800px) {
+            div.indicacao-area,
+            div.contraCast-area {
+                max-width: 100%;
+            }
+
+            div.indicacao-area {
+                div.box.--livro {
+                    div.box-content {
+                        main {
+                            width: 80%;
+                            justify-content: space-between;
+                        }
+                    }
+                }
+            }
+        }
+
+        @include responsive(500px) {
+            div.indicacao-area {
+                div.box.--livro {
+                    height: unset;
+                    div.box-content {
+                        main {
+                            flex-wrap: wrap;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

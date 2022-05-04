@@ -181,7 +181,7 @@
     <section class="conteudo">
         <div class="niv">
             <div class="top-area">
-                <h2>
+                <h2 class="--bar">
                     Conteúdo
                 </h2>
 
@@ -459,6 +459,163 @@
         </div>
     </section>
 
+    <section class="lista-destaque">
+        <div class="niv">
+            <h2 class="--bar">Lista em destaque</h2>
+
+            <div class="boxes-area">
+                <div class="scroll">
+                    <a href="#" class="box-destaque"
+                        style="background-image: url({{ asset('site/assets/img/banner_lista4_destaque.jpg') }})">
+                        <h2>Grandes Compositores</h2>
+                    </a>
+                    <a href="#" class="box-destaque"
+                        style="background-image: url({{ asset('site/assets/img/banner_lista3_destaque.jpg') }})">
+                        <h2>Cinema</h2>
+                    </a>
+                    <a href="#" class="box-destaque"
+                        style="background-image: url({{ asset('site/assets/img/banner_lista2_destaque.jpg') }})">
+                        <h2>Parte 8 Rússia</h2>
+                    </a>
+                    <a href="#" class="box-destaque"
+                        style="background-image: url({{ asset('site/assets/img/banner_lista1_destaque.jpg') }})">
+                        <h2>Química</h2>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="indicacao-cast">
+        <div class="niv">
+            <div class="indicacao-area">
+                <div class="box --livro">
+                    <div class="box-top">
+                        <div>
+
+                            <p>Indicação</p>
+                            <h2>Livro em Destaque</h2>
+                        </div>
+
+                        <a href="#" class="--plus">
+                            Ir para livraria
+                        </a>
+                    </div>
+                    <div class="box-content">
+                        <span>Frederick Copleston</span>
+                        <h2>Uma história da filosofia - Vol .1</h2>
+
+                        <main>
+                            <div class="--novidade">
+                                <picture>
+                                    <img src="{{ asset('site/assets/img/livro_indicacao.jpg') }}" alt="Livro Indicado">
+                                </picture>
+                            </div>
+
+                            <div class="info">
+                                <div class="valor-antigo">
+                                    <span class="riscado">
+                                        R$ 149,00
+                                    </span>
+
+                                    <span class="desconto">
+                                        -36 %
+                                    </span>
+                                </div>
+
+                                <span class="valor">
+                                    R$ 95,84
+                                </span>
+
+                                <a href="#" class="button">Comprar</a>
+                            </div>
+                        </main>
+                    </div>
+                </div>
+
+                {{-- <div class="box --video">
+                    <div class="box-top">
+                        <div>
+
+                            <p>Indicação</p>
+                            <h2>Livro em Destaque</h2>
+                        </div>
+
+                        <a href="#" class="--plus">
+                            Ir para livraria
+                        </a>
+                    </div>
+                    <div class="box-content">
+                        <picture>
+                            <img src="{{ asset('site/assets/img/video_indicacao.png') }}" alt="Vídeo Indicado">
+                        </picture>
+                    </div>
+                </div> --}}
+            </div>
+
+            <div class="contraCast-area">
+                <div class="banner-area">
+                    <div>
+                        <picture>
+                            <img src="{{ asset('site/assets/img/logo_branca_podcast.png') }}"
+                                alt="Logo {{ NAME }}">
+                        </picture>
+
+                        <h2>ContraCast</h2>
+                        <h3>online</h3>
+                    </div>
+
+                    <a href="#" class="--plus">saiba mais</a>
+                </div>
+                <div class="content-area">
+                    <ul>
+                        <li>
+                            <main>
+                                <small>Episódio 1</small>
+                                <strong>Filosofia como objeto reparador do mundo</strong>
+
+                                <hr>
+
+                                <span>Duração: 65:12</span>
+                            </main>
+
+                            <aside>
+                                <img src="{{ asset('site/assets/img/icon_play_podcast.svg') }}" alt="ícone de play">
+                            </aside>
+                        </li>
+                        <li>
+                            <main>
+                                <small>Episódio 2</small>
+                                <strong>Qual o futuro da esquerda mundial?</strong>
+
+                                <hr>
+
+                                <span>Duração: 36:12</span>
+                            </main>
+
+                            <aside>
+                                <img src="{{ asset('site/assets/img/icon_play_podcast.svg') }}" alt="ícone de play">
+                            </aside>
+                        </li>
+                        <li>
+                            <main>
+                                <small>Episódio 3</small>
+                                <strong>Qual o futuro da direita mundial?</strong>
+
+                                <hr>
+
+                                <span>Duração: 36:12</span>
+                            </main>
+
+                            <aside>
+                                <img src="{{ asset('site/assets/img/icon_play_podcast.svg') }}" alt="ícone de play">
+                            </aside>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
 
 @endsection
 

@@ -1,15 +1,15 @@
-section.conteudo div.niv div.content-area div.scroll a.box picture, section.hero div.niv div.col div.colunistas ul.lista-colunistas li picture {
+section.indicacao-cast div.niv div.indicacao-area div.box.--video div.box-content, section.indicacao-cast div.niv div.indicacao-area div.box.--livro div.box-content main div.--novidade picture, section.conteudo div.niv div.content-area div.scroll a.box picture, section.hero div.niv div.col div.colunistas ul.lista-colunistas li picture {
   overflow: hidden;
   display: block;
 }
-section.conteudo div.niv div.content-area div.scroll a.box picture img, section.hero div.niv div.col div.colunistas ul.lista-colunistas li picture img {
+section.indicacao-cast div.niv div.indicacao-area div.box.--video div.box-content img, section.indicacao-cast div.niv div.indicacao-area div.box.--livro div.box-content main div.--novidade picture img, section.conteudo div.niv div.content-area div.scroll a.box picture img, section.hero div.niv div.col div.colunistas ul.lista-colunistas li picture img {
   height: 100%;
   width: 100%;
   -o-object-fit: cover;
      object-fit: cover;
 }
 
-section.hero div.niv a.card.main-card div.top-bar span.categoria, header div[fluid] div.niv > div div.search-button, header div[fluid] div.user-circle, .button:is(a, button) {
+section.indicacao-cast div.niv div.indicacao-area div.box.--livro div.box-content main div.--novidade::after, section.hero div.niv a.card.main-card div.top-bar span.categoria, header div[fluid] div.niv > div div.search-button, header div[fluid] div.user-circle, .button:is(a, button) {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -267,6 +267,29 @@ h2 {
   font-size: 2.4rem;
   line-height: 3.2rem;
 }
+h2.--bar {
+  --bottom: 0;
+  --left: 0;
+  --right: unset;
+  --top: unset;
+  --width: 13.4rem;
+  --height: 0.7rem;
+  --item-color: #fff;
+  position: relative;
+  z-index: 1;
+}
+h2.--bar::after {
+  width: var(--width);
+  height: var(--height);
+  background-color: var(--item-color);
+  position: absolute;
+  content: "";
+  bottom: var(--bottom);
+  left: var(--left);
+  top: var(--top);
+  right: var(--right);
+  z-index: -1;
+}
 
 h3 {
   color: unset;
@@ -379,6 +402,56 @@ a:not(a.button):hover, a:not(a.button):focus {
 }
 .button:is(a, button):active {
   border: 2px #716f6f solid;
+}
+
+.box-destaque {
+  height: 33.5rem;
+  width: 100%;
+  max-width: 24rem;
+  border-radius: 0.4rem;
+  z-index: 0;
+  padding: 2.4rem 2.8rem 3.4rem 2.4rem;
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-end;
+  flex-direction: column;
+  background-color: red;
+  position: relative;
+}
+.box-destaque:hover h2 {
+  letter-spacing: 0.1rem;
+}
+.box-destaque:hover h2::after {
+  width: 100%;
+}
+.box-destaque h2 {
+  height: 6.4rem;
+  z-index: 2;
+  color: #fff;
+  line-height: 3.2rem;
+  transition: 0.32s;
+  position: relative;
+}
+.box-destaque h2::after {
+  transition: 0.32s;
+  position: absolute;
+  content: "";
+  bottom: -0.5rem;
+  left: 0;
+  width: 5.2rem;
+  height: 0.2rem;
+  background-color: #f2d027;
+}
+.box-destaque::before {
+  z-index: 1;
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0) -29.41%, #242424 100%);
+  border-radius: 4px;
 }
 
 header {
@@ -1371,18 +1444,6 @@ section.conteudo div.niv div.top-area {
 }
 section.conteudo div.niv div.top-area h2 {
   color: #242424;
-  position: relative;
-  z-index: 1;
-}
-section.conteudo div.niv div.top-area h2::after {
-  width: 13.4rem;
-  height: 0.7rem;
-  background-color: #fff;
-  position: absolute;
-  content: "";
-  bottom: 0;
-  left: 0;
-  z-index: -1;
 }
 section.conteudo div.niv div.top-area ul {
   display: flex;
@@ -1508,6 +1569,345 @@ section.conteudo div.niv div.content-area div.scroll a.box div.box-content p {
   }
   section.conteudo div.niv div.content-area div.scroll a.box {
     scroll-snap-align: start;
+  }
+}
+
+section.lista-destaque {
+  margin-bottom: 2.4rem;
+  /**
+
+  @include responsive(1400px) {}
+  @include responsive(1200px) {}
+  @include responsive(992px) {}
+  @include responsive(730px) {}
+  @include responsive(600px) {}
+
+  **/
+}
+section.lista-destaque div.niv > h2 {
+  color: #242424;
+  width: -webkit-max-content;
+  width: -moz-max-content;
+  width: max-content;
+  margin-bottom: 2.4rem;
+  --item-color: #fdf6d6;
+  --right: 0;
+  --left: unset;
+}
+section.lista-destaque div.niv div.boxes-area div.scroll {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  flex-direction: row;
+}
+@media (max-width: 800px) {
+  section.lista-destaque div.niv div.boxes-area div.scroll {
+    flex-wrap: wrap;
+    gap: 1rem;
+    flex-grow: 2/2;
+  }
+  section.lista-destaque div.niv div.boxes-area div.scroll a.box-destaque {
+    max-width: 20rem;
+  }
+}
+
+section.indicacao-cast div.niv {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 2rem;
+  /**
+
+  @include responsive(1400px) {}
+  @include responsive(1200px) {}
+  @include responsive(992px) {}
+  @include responsive(730px) {}
+  @include responsive(600px) {}
+
+  **/
+  /**
+
+  @include responsive(1400px) {}
+  @include responsive(1200px) {}
+  @include responsive(992px) {}
+  @include responsive(730px) {}
+  @include responsive(600px) {}
+
+  **/
+}
+section.indicacao-cast div.niv div.indicacao-area {
+  width: 100%;
+  max-width: 50.4rem;
+}
+section.indicacao-cast div.niv div.indicacao-area div.box {
+  height: 51.6rem;
+  width: 100%;
+  background-color: #fff;
+  border-radius: 4px;
+}
+section.indicacao-cast div.niv div.indicacao-area div.box div.box-top {
+  background: #5b2222;
+  padding: 3.5rem 1.8rem 1.9rem 2.4rem;
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  flex-direction: row;
+  border-radius: 4px 4px 0 0;
+}
+section.indicacao-cast div.niv div.indicacao-area div.box div.box-top p {
+  font-size: 1.8rem;
+  color: #fdf6d6;
+}
+section.indicacao-cast div.niv div.indicacao-area div.box div.box-top h2 {
+  color: #fff;
+}
+section.indicacao-cast div.niv div.indicacao-area div.box.--livro div.box-content {
+  padding: 2.8rem 0rem 4.2rem 2.6rem;
+}
+section.indicacao-cast div.niv div.indicacao-area div.box.--livro div.box-content > span {
+  font-family: "Palatino Linotype", sans-serif;
+  font-weight: 400;
+  font-size: 1.8rem;
+  line-height: 2.4rem;
+  color: #000;
+}
+section.indicacao-cast div.niv div.indicacao-area div.box.--livro div.box-content > h2 {
+  color: #000;
+  display: block;
+  margin-bottom: 1.9rem;
+}
+section.indicacao-cast div.niv div.indicacao-area div.box.--livro div.box-content main {
+  width: 100%;
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-start;
+  flex-direction: row;
+  gap: 3.4rem;
+}
+section.indicacao-cast div.niv div.indicacao-area div.box.--livro div.box-content main div.--novidade {
+  position: relative;
+}
+section.indicacao-cast div.niv div.indicacao-area div.box.--livro div.box-content main div.--novidade picture {
+  width: 100%;
+  max-width: 18.3rem;
+  height: 25.1rem;
+}
+section.indicacao-cast div.niv div.indicacao-area div.box.--livro div.box-content main div.--novidade::after {
+  position: absolute;
+  content: "Novidade";
+  top: 1.67rem;
+  right: -4.8rem;
+  height: 2.7rem;
+  width: 100%;
+  max-width: 10rem;
+  border-radius: 0.4rem;
+  background-color: #eb5757;
+  font-family: "Open Sans", sans-serif;
+  font-weight: 700;
+  font-size: 1.2rem;
+  color: #fff;
+}
+section.indicacao-cast div.niv div.indicacao-area div.box.--livro div.box-content main div.info a.button {
+  --width: 11.4rem;
+  --height: 3.2rem;
+  --font-size: 1.4rem;
+  margin-top: 5.2rem;
+}
+section.indicacao-cast div.niv div.indicacao-area div.box.--livro div.box-content main div.info span:is(.valor, .riscado, .desconto) {
+  font-family: "Open Sans", sans-serif;
+  font-style: normal;
+  color: #000;
+}
+section.indicacao-cast div.niv div.indicacao-area div.box.--livro div.box-content main div.info span.valor {
+  font-weight: 700;
+  font-size: 4.638rem;
+  line-height: 4.3rem;
+}
+section.indicacao-cast div.niv div.indicacao-area div.box.--livro div.box-content main div.info span.riscado {
+  font-weight: 400;
+  font-size: 2.319rem;
+  line-height: 2.2rem;
+  position: relative;
+}
+section.indicacao-cast div.niv div.indicacao-area div.box.--livro div.box-content main div.info span.riscado::after {
+  position: absolute;
+  content: "";
+  width: 100%;
+  height: 1px;
+  background-color: #f2d027;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  margin: auto 0;
+}
+section.indicacao-cast div.niv div.indicacao-area div.box.--livro div.box-content main div.info span.desconto {
+  padding: 0.9rem;
+  background: #6fcf97;
+  border-radius: 1.97px;
+  position: relative;
+  left: 1rem;
+  top: -1rem;
+  font-weight: 700;
+  font-size: 1.6rem;
+  color: #000;
+}
+section.indicacao-cast div.niv div.indicacao-area div.box.--video div.box-content {
+  height: 40rem;
+  overflow: hidden;
+  border-radius: 0 0 4px 4px;
+  position: relative;
+  transition: 0.32s;
+}
+section.indicacao-cast div.niv div.indicacao-area div.box.--video div.box-content img {
+  transition: 0.32s;
+}
+section.indicacao-cast div.niv div.indicacao-area div.box.--video div.box-content::after {
+  content: "";
+  width: 5.9rem;
+  height: 5.9rem;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  transition: 0.32s;
+  margin: auto;
+  background: url("/site/assets/img/icon_play_indicacao.svg");
+  background-size: cover;
+}
+section.indicacao-cast div.niv div.indicacao-area div.box.--video div.box-content:hover, section.indicacao-cast div.niv div.indicacao-area div.box.--video div.box-content:focus {
+  cursor: pointer;
+}
+section.indicacao-cast div.niv div.indicacao-area div.box.--video div.box-content:hover img, section.indicacao-cast div.niv div.indicacao-area div.box.--video div.box-content:focus img {
+  transform: scale(1.05);
+  transform-origin: center;
+}
+section.indicacao-cast div.niv div.indicacao-area div.box.--video div.box-content:hover::after, section.indicacao-cast div.niv div.indicacao-area div.box.--video div.box-content:focus::after {
+  transform: scale(0.4);
+  transform-origin: center;
+}
+section.indicacao-cast div.niv div.contraCast-area {
+  width: 100%;
+  max-width: 50.4rem;
+}
+section.indicacao-cast div.niv div.contraCast-area div.banner-area {
+  padding: 2rem;
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  flex-direction: row;
+  height: 20.9rem;
+  width: 100%;
+  background: url("/site/assets/img/banner_podcast.jpg");
+  border-radius: 4px 4px 0 0;
+}
+section.indicacao-cast div.niv div.contraCast-area div.banner-area > div h2 {
+  color: #fff;
+}
+section.indicacao-cast div.niv div.contraCast-area div.banner-area > div h3 {
+  color: #f2d027;
+  font-family: "Palatino Linotype", sans-serif;
+  font-weight: 400;
+  font-size: 1.6573rem;
+  line-height: 2.2rem;
+}
+section.indicacao-cast div.niv div.contraCast-area div.content-area {
+  background: #fff;
+  border-radius: 0 0 4px 4px;
+  width: 100%;
+  padding-top: 2rem;
+}
+section.indicacao-cast div.niv div.contraCast-area div.content-area ul {
+  width: 100%;
+  height: 28.5rem;
+  overflow: auto;
+  /* Track */
+  /* Handle */
+  /* Handle on hover */
+}
+section.indicacao-cast div.niv div.contraCast-area div.content-area ul::-webkit-scrollbar {
+  width: 0.5rem;
+}
+section.indicacao-cast div.niv div.contraCast-area div.content-area ul::-webkit-scrollbar-track {
+  background: #ffffff;
+}
+section.indicacao-cast div.niv div.contraCast-area div.content-area ul::-webkit-scrollbar-thumb {
+  background: #5b2222;
+}
+section.indicacao-cast div.niv div.contraCast-area div.content-area ul::-webkit-scrollbar-thumb:hover {
+  cursor: pointer;
+  background: #5b2222;
+}
+section.indicacao-cast div.niv div.contraCast-area div.content-area ul li {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-direction: row;
+  transition: 0.32s;
+  padding: 2rem;
+}
+section.indicacao-cast div.niv div.contraCast-area div.content-area ul li:not(section.indicacao-cast div.niv div.contraCast-area div.content-area ul li:last-child) {
+  border-bottom: 1px dashed #eaeaea;
+}
+section.indicacao-cast div.niv div.contraCast-area div.content-area ul li main {
+  max-width: 25.5rem;
+}
+section.indicacao-cast div.niv div.contraCast-area div.content-area ul li main small {
+  font-style: normal;
+  font-weight: 400;
+  font-size: 1.2rem;
+  line-height: 1.6rem;
+  color: #716f6f;
+  display: block;
+  margin-bottom: 0.5rem;
+}
+section.indicacao-cast div.niv div.contraCast-area div.content-area ul li main strong {
+  font-family: "Palatino Linotype", sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 1.8rem;
+  line-height: 2.4rem;
+  color: #242424;
+  max-width: 25.5rem;
+}
+section.indicacao-cast div.niv div.contraCast-area div.content-area ul li main hr {
+  width: 7.7rem;
+  height: 1px;
+  background-color: #716f6f;
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+section.indicacao-cast div.niv div.contraCast-area div.content-area ul li main span {
+  font-family: "Palatino Linotype", sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 1.4rem;
+  line-height: 1.9rem;
+  color: #5b2222;
+}
+section.indicacao-cast div.niv div.contraCast-area div.content-area ul li:hover {
+  cursor: pointer;
+  background: #eaeaea;
+}
+@media (max-width: 800px) {
+  section.indicacao-cast div.niv div.indicacao-area,
+section.indicacao-cast div.niv div.contraCast-area {
+    max-width: 100%;
+  }
+  section.indicacao-cast div.niv div.indicacao-area div.box.--livro div.box-content main {
+    width: 80%;
+    justify-content: space-between;
+  }
+}
+@media (max-width: 500px) {
+  section.indicacao-cast div.niv div.indicacao-area div.box.--livro {
+    height: unset;
+  }
+  section.indicacao-cast div.niv div.indicacao-area div.box.--livro div.box-content main {
+    flex-wrap: wrap;
   }
 }
 
