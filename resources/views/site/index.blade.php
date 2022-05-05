@@ -617,6 +617,72 @@
         </div>
     </section>
 
+    <section class="cursos">
+        <div class="niv">
+            <h2>Cursos</h2>
+
+            <div class="boxes-area">
+                <div class="scroll">
+                    <a href="#" class="box-destaque"
+                        style="background-image: url({{ asset('site/assets/img/banner_curso4_cursos.jpg') }})">
+                        <div class="tags">
+                            <span class="--filled">Novo</span>
+                            <span>Filosofia</span>
+                        </div>
+                        <h2>Filosofia Avançada</h2>
+                    </a>
+
+
+                    <a href="#" class="box-destaque"
+                        style="background-image: url({{ asset('site/assets/img/banner_curso3_cursos.jpg') }})">
+                        <div class="tags">
+                            <span>História</span>
+                        </div>
+                        <h2>A vida humana</h2>
+
+                    </a>
+
+
+                    <a href="#" class="box-destaque"
+                        style="background-image: url({{ asset('site/assets/img/banner_curso2_cursos.jpg') }})">
+                        <div class="tags">
+                            <span>História</span>
+                        </div>
+                        <h2>Descontrução Mundial</h2>
+
+                    </a>
+
+
+                    <a href="#" class="box-destaque"
+                        style="background-image: url({{ asset('site/assets/img/banner_curso1_cursos.jpg') }})">
+                        <div class="tags">
+                            <span>Arte</span>
+                        </div>
+                        <h2>Michelangelo</h2>
+                    </a>
+                </div>
+            </div>
+
+            <a href="#" class="--plus">Ver todos os cursos</a>
+        </div>
+    </section>
+
+    <section class="parceiros">
+        <div class="niv">
+            <h2 class="--bar">
+                Nossos parceiros
+            </h2>
+
+            <div class="partners">
+                <a href="#"><img src="{{ asset('site/assets/img/logo_parceiro1.png') }}" alt="Logo parceiro"></a>
+                <a href="#"><img src="{{ asset('site/assets/img/logo_parceiro2.png') }}" alt="Logo parceiro"></a>
+                <a href="#"><img src="{{ asset('site/assets/img/logo_parceiro3.png') }}" alt="Logo parceiro"></a>
+                <a href="#"><img src="{{ asset('site/assets/img/logo_parceiro4.png') }}" alt="Logo parceiro"></a>
+                <a href="#"><img src="{{ asset('site/assets/img/logo_parceiro5.png') }}" alt="Logo parceiro"></a>
+            </div>
+        </div>
+    </section>
+
 @endsection
 
 @section('scripts')

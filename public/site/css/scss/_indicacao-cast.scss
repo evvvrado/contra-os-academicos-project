@@ -1,4 +1,5 @@
 section.indicacao-cast {
+    margin-bottom: 2.4rem;
     div.niv {
         @include flex(row, flex-start, space-between);
         flex-wrap: wrap;

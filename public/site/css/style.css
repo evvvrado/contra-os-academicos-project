@@ -9,7 +9,7 @@ section.indicacao-cast div.niv div.indicacao-area div.box.--video div.box-conten
      object-fit: cover;
 }
 
-section.indicacao-cast div.niv div.indicacao-area div.box.--livro div.box-content main div.--novidade::after, section.hero div.niv a.card.main-card div.top-bar span.categoria, header div[fluid] div.niv > div div.search-button, header div[fluid] div.user-circle, .button:is(a, button) {
+section.parceiros div.niv div.partners a, section.cursos div.niv div.boxes-area div.scroll a.box-destaque div.tags span, section.indicacao-cast div.niv div.indicacao-area div.box.--livro div.box-content main div.--novidade::after, section.hero div.niv a.card.main-card div.top-bar span.categoria, header div[fluid] div.niv > div div.search-button, header div[fluid] div.user-circle, .button:is(a, button) {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -1611,6 +1611,9 @@ section.lista-destaque div.niv div.boxes-area div.scroll {
   }
 }
 
+section.indicacao-cast {
+  margin-bottom: 2.4rem;
+}
 section.indicacao-cast div.niv {
   display: flex;
   align-items: flex-start;
@@ -1908,6 +1911,135 @@ section.indicacao-cast div.niv div.contraCast-area {
   }
   section.indicacao-cast div.niv div.indicacao-area div.box.--livro div.box-content main {
     flex-wrap: wrap;
+  }
+}
+
+section.cursos {
+  background: #242424;
+  padding-top: 5.6rem;
+  padding-bottom: 3.8rem;
+}
+section.cursos div.niv h2 {
+  margin-bottom: 2.4rem;
+  color: #fff;
+}
+section.cursos div.niv div.boxes-area {
+  margin-bottom: 3.7rem;
+  /**
+
+  @include responsive(1400px) {}
+  @include responsive(1200px) {}
+  @include responsive(992px) {}
+  @include responsive(730px) {}
+  @include responsive(600px) {}
+
+  **/
+}
+section.cursos div.niv div.boxes-area div.scroll {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  flex-direction: row;
+}
+section.cursos div.niv div.boxes-area div.scroll a.box-destaque {
+  justify-content: space-between;
+}
+section.cursos div.niv div.boxes-area div.scroll a.box-destaque div.tags {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-direction: row;
+}
+section.cursos div.niv div.boxes-area div.scroll a.box-destaque div.tags span {
+  height: 3.2rem;
+  border-radius: 4px;
+  color: #fff;
+  font-family: "Palatino Linotype", sans-serif;
+  font-weight: 700;
+  font-size: 1.4rem;
+  color: #fff;
+  min-width: 7.3rem;
+  border: 1px solid #fff;
+}
+section.cursos div.niv div.boxes-area div.scroll a.box-destaque div.tags span.--filled {
+  border: none;
+  background-color: #f2d027;
+  color: #242424;
+}
+@media (max-width: 1000px) {
+  section.cursos div.niv div.boxes-area {
+    overflow-x: auto;
+    -ms-scroll-snap-type: x mandatory;
+        scroll-snap-type: x mandatory;
+  }
+  section.cursos div.niv div.boxes-area div.scroll {
+    width: -webkit-max-content;
+    width: -moz-max-content;
+    width: max-content;
+    gap: 3rem;
+  }
+  section.cursos div.niv div.boxes-area div.scroll a.box-destaque {
+    scroll-snap-align: start;
+  }
+}
+
+section.parceiros {
+  padding-top: 2.2rem;
+  padding-bottom: 6.2rem;
+  background-color: #eaeaea;
+  /**
+
+  @include responsive(1400px) {}
+  @include responsive(1200px) {}
+  @include responsive(992px) {}
+  @include responsive(730px) {}
+  @include responsive(600px) {}
+
+  **/
+}
+section.parceiros div.niv h2.--bar {
+  margin: 0 auto;
+  width: -webkit-max-content;
+  width: -moz-max-content;
+  width: max-content;
+}
+section.parceiros div.niv h2.--bar::after {
+  --item-color: #fdf6d6;
+  --right: 0;
+  --left: unset;
+}
+section.parceiros div.niv div.partners {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-direction: row;
+  width: 100%;
+  max-width: 84.9rem;
+  margin: 0 auto;
+  margin-top: 2.2rem;
+}
+section.parceiros div.niv div.partners a {
+  height: 12.3rem;
+  aspect-ratio: 1/1;
+  background-color: #fff;
+  border-radius: 100%;
+}
+section.parceiros div.niv div.partners a img {
+  transition: 0.32s;
+  filter: grayscale(100);
+}
+section.parceiros div.niv div.partners a:hover {
+  transform: scale(1.05);
+}
+section.parceiros div.niv div.partners a:hover img {
+  filter: none;
+  opacity: 1;
+}
+@media (max-width: 600px) {
+  section.parceiros div.niv div.partners {
+    flex-wrap: wrap;
+    gap: 2rem;
   }
 }
 

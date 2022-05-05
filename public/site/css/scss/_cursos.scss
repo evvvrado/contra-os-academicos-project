@@ -1,0 +1,66 @@
+section.cursos {
+    background: $preto-contra;
+    padding-top: 5.6rem;
+    padding-bottom: 3.8rem;
+
+    div.niv {
+        h2 {
+            margin-bottom: 2.4rem;
+            color: $white;
+        }
+
+        div.boxes-area {
+            margin-bottom: 3.7rem;
+
+            div.scroll {
+                @include flex(row, flex-start, space-between);
+                a.box-destaque {
+                    justify-content: space-between;
+
+                    div.tags {
+                        width: 100%;
+                        @include flex(row, center, space-between);
+
+                        span {
+                            height: 3.2rem;
+                            border-radius: 4px;
+
+                            @extend %totalcenter;
+
+                            color: $white;
+
+                            font-family: $font-secondary;
+                            font-weight: 700;
+                            font-size: 1.4rem;
+                            color: $white;
+
+                            min-width: 7.3rem;
+
+                            border: 1px solid $white;
+
+                            &.--filled {
+                                border: none;
+                                background-color: $tertiary;
+                                color: $preto-contra;
+                            }
+                        }
+                    }
+                }
+            }
+
+            @include responsive(1000px) {
+                overflow-x: auto;
+                scroll-snap-type: x mandatory;
+
+                div.scroll {
+                    width: max-content;
+                    gap: 3rem;
+
+                    a.box-destaque {
+                        scroll-snap-align: start;
+                    }
+                }
+            }
+        }
+    }
+}

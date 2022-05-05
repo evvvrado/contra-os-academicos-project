@@ -1,0 +1,57 @@
+section.parceiros {
+    padding-top: 2.2rem;
+    padding-bottom: 6.2rem;
+    background-color: $cinza-contra;
+
+    div.niv {
+        h2.--bar {
+            margin: 0 auto;
+            width: max-content;
+            &::after {
+                --item-color: #{$creme-contra};
+                --right: 0;
+                --left: unset;
+            }
+        }
+
+        div.partners {
+            @include flex(row, center, space-between);
+            width: 100%;
+            max-width: 84.9rem;
+            margin: 0 auto;
+            margin-top: 2.2rem;
+
+            a {
+                height: 12.3rem;
+                aspect-ratio: 1/1;
+
+                background-color: $white;
+                border-radius: 100%;
+
+                @extend %totalcenter;
+
+                img {
+                    transition: 0.32s;
+                    filter: grayscale(100);
+                }
+
+                &:hover {
+                    transform: scale(1.05);
+                    img {
+                        filter: none;
+                        opacity: 1;
+                    }
+                }
+            }
+        }
+    }
+
+    @include responsive(600px) {
+        div.niv {
+            div.partners {
+                flex-wrap: wrap;
+                gap: 2rem;
+            }
+        }
+    }
+}
