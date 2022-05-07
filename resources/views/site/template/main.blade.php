@@ -2,8 +2,8 @@
 <html lang="pt-br">
 
 <head>
+    <title>{{ $titulo }}</title>
 
-    <title>{{ TITLE }}</title>
     @include('site.includes.head')
     @toastr_css
     @livewireStyles()

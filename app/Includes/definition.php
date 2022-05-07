@@ -3,6 +3,7 @@
 
 
 define("NAME", "Contra os Acadêmicos");
+define("SIGLA", "COA |");
 define("DESCRIPTION", "Buscamos mostrar um ponto de vista filosófico não convencional entre os acadêmicos.");
 define("KEYWORDS", " abril  acadêmicos,acessadas,acesso,afins,apoie,aprendizagem,aqui,aquino,artigos,atingir,autodidata,auxiliar,bibliografias  biblioteca,blog,carvalho,como,confira,conheça,contato,content,conteúdos  contra,cotidiano,destaque,educacional,enciclopédia  ensaio,ensaios,ensino,esta,estudante,estudantes,estudo,está,exact,felicidade filosofia,filosófica,fornecimento,fórum,geral,guias  hidden,home,homem,independente,iniciativa,inultrapassável,justiça leitura lista,listas,livraria,mail,mais,março,matches,medo,medos,melhor,morte,nossa,nossos,objetivo,olavo  ordenada  para,parceiros  parte,perfeitamente,perspectiva,política,porque,procurar,professores  projeto,pronto,qualidade,receber,relacionados resenha  search  sobre,superá,surgiu,temas,temores,terá,title,todos,tomás,tratado,união,variados,verdade,você,voltado,voluntária ");
 define("TITLE", "Contra os Acadêmicos | Filosofia. Mas só da boa.");

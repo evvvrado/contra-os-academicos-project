@@ -46,7 +46,6 @@
 
 <link rel="stylesheet" href="{{ asset('/site/css/style.css') }}" />
 
-<title>{{ TITLE }}</title>
 
 <!-- Fontes -->
 

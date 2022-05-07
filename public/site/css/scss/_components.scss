@@ -1,7 +1,9 @@
+// ESSENCIAL
 @import "header";
 @import "backdrop";
 @import "footer";
 
+// HOME
 @import "hero";
 @import "blog-news";
 @import "conteudo";
@@ -9,3 +11,9 @@
 @import "indicacao-cast";
 @import "cursos";
 @import "parceiros";
+
+// GERAL
+@import "banner";
+
+// BLOG
+@import "publicacoes";

@@ -1,0 +1,317 @@
+section.publicacoes {
+    @include flex(row, flex-start, center);
+    padding: 0;
+    padding-top: 4.9rem;
+    margin-bottom: 5.4rem;
+
+    aside {
+        ul.colunistas {
+            margin-right: 2.8rem;
+            margin-left: 5.8rem;
+            li {
+                position: relative;
+                cursor: pointer;
+
+                &:not(:last-child) {
+                    margin-bottom: 2.9rem;
+                }
+
+                picture {
+                    width: 3.8rem;
+                    height: 3.8rem;
+                    position: relative;
+                    z-index: 2;
+
+                    border-radius: 100%;
+                    background-color: $preto-contra;
+                    border: 3px solid $creme-contra;
+                    transition: 0.32s;
+                    @extend %picframe;
+                }
+
+                span {
+                    width: 0;
+                    overflow: hidden;
+                    white-space: nowrap;
+                    height: 3.8rem;
+
+                    position: absolute;
+                    left: 0;
+                    top: 0;
+
+                    z-index: 1;
+
+                    background-color: $creme-contra;
+                    border-radius: 3.8rem;
+                    @extend %totalcenter;
+                    transition: 0.32s;
+                }
+
+                &:hover,
+                &:active {
+                    picture {
+                        transform: scale(1.05);
+                    }
+                    span {
+                        width: 20rem;
+                        padding-left: 3rem;
+                    }
+                }
+            }
+        }
+
+        div.mais-listas {
+            padding: 2.2rem 3.4rem 3.4rem 2.5rem;
+            background-color: $preto-contra;
+            position: relative;
+
+            h3 {
+                color: $white;
+                margin-bottom: 2.5rem;
+            }
+
+            picture.fire-icon {
+                position: absolute;
+
+                right: 1.9rem;
+                top: -1.3rem;
+            }
+
+            ul {
+                li {
+                    &:not(:last-child) {
+                        margin-bottom: 2.3rem;
+                    }
+
+                    a.box {
+                        display: block;
+                        width: 100%;
+                        max-width: 24rem;
+                        height: 32.5rem;
+                        border-radius: 4px;
+                        overflow: hidden;
+                        border-radius: 0.4rem;
+
+                        picture {
+                            @extend %picframe;
+                            width: 100%;
+                            height: 15.5rem;
+                        }
+
+                        div.box-content {
+                            background-color: $white;
+                            width: 100%;
+                            height: 17rem;
+                            padding: 1.2rem;
+
+                            span {
+                                font-family: $font-secondary;
+                                font-weight: 700;
+                                font-size: 1.2rem;
+                                line-height: 1.6rem;
+                                color: $primary;
+                            }
+
+                            strong {
+                                font-family: $font-secondary;
+                                font-weight: 700;
+                                font-size: 1.6rem;
+                                line-height: 2.2rem;
+                                color: $preto-contra;
+                                display: block;
+                                @include limitText(4.7rem, 2);
+                                margin-top: 0.3rem;
+                                margin-bottom: 0.5rem;
+                            }
+
+                            hr {
+                                width: 12rem;
+                                height: 1px;
+
+                                background-color: $cinza-contra;
+                            }
+
+                            p {
+                                display: block;
+                                margin-top: 1.6rem;
+                                color: $mid-cinza-contra;
+
+                                @include limitText(5rem, 3);
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        &:last-child {
+            width: 100%;
+            max-width: 31.7rem;
+        }
+    }
+
+    main {
+        padding: 2.7rem 5.8rem 6.1rem 2.4rem;
+        background-color: $white;
+        max-width: 83.2rem;
+
+        div.niv {
+            padding: 0;
+            width: 100%;
+            div.title-area {
+                margin-bottom: 3.5rem;
+                width: 100%;
+                @include flex(row, center, space-between);
+
+                h3 {
+                    font-family: $font-secondary;
+                    font-weight: 700;
+                    line-height: 2.4rem;
+                    color: $black;
+                }
+
+                a.button {
+                    --background-color: #{$white};
+                    --font-color: #{$secondary};
+                    --width: 12.1rem;
+                    --height: 3.5rem;
+
+                    gap: 1.4rem;
+                    border: solid 1px $secondary;
+                    font-size: 1.4rem;
+
+                    &:hover {
+                        picture {
+                            filter: brightness(0) invert(1);
+                        }
+                    }
+                }
+            }
+
+            div.content-area {
+                @include flex(row, flex-start, flex-start);
+                gap: 1.5rem;
+                flex-wrap: wrap;
+
+                a.box {
+                    display: block;
+                    width: 100%;
+                    max-width: 24rem;
+                    height: 32.5rem;
+                    border: 1px solid #eaeaea;
+                    border-radius: 4px;
+                    overflow: hidden;
+                    border-radius: 0.4rem;
+
+                    picture {
+                        @extend %picframe;
+                        width: 100%;
+                        height: 15.5rem;
+                    }
+
+                    div.box-content {
+                        background-color: $white;
+                        width: 100%;
+                        height: 17rem;
+                        padding: 1.2rem;
+
+                        span {
+                            font-family: $font-secondary;
+                            font-weight: 700;
+                            font-size: 1.2rem;
+                            line-height: 1.6rem;
+                            color: $primary;
+                        }
+
+                        strong {
+                            font-family: $font-secondary;
+                            font-weight: 700;
+                            font-size: 1.6rem;
+                            line-height: 2.2rem;
+                            color: $preto-contra;
+                            display: block;
+                            @include limitText(4.7rem, 2);
+                            margin-top: 0.3rem;
+                            margin-bottom: 0.5rem;
+                        }
+
+                        hr {
+                            width: 12rem;
+                            height: 1px;
+
+                            background-color: $cinza-contra;
+                        }
+
+                        p {
+                            display: block;
+                            margin-top: 1.6rem;
+                            color: $mid-cinza-contra;
+
+                            @include limitText(5rem, 3);
+                        }
+                    }
+                }
+            }
+
+            div.button-area {
+                width: 100%;
+                margin-top: 3.9rem;
+
+                button.button {
+                    --width: 100%;
+                    --font-size: 1.4rem;
+                }
+            }
+        }
+    }
+
+    @include responsive(1150px) {
+        main {
+            max-width: 58rem;
+        }
+    }
+
+    @include responsive(800px) {
+        aside:last-child {
+            display: none;
+        }
+    }
+
+    @include responsive(500px) {
+        flex-direction: column;
+        gap: 2rem;
+        padding-top: 2.5rem;
+
+        aside {
+            width: 100%;
+            ul.colunistas {
+                width: 100%;
+                @include flex(row, center, center);
+                gap: 3rem;
+
+                margin: 0;
+
+                li:not(:last-child) {
+                    margin-bottom: unset;
+
+                    span {
+                        display: none;
+                    }
+                }
+            }
+        }
+
+        main {
+            padding: 2.7rem;
+            div.niv {
+                padding: unset;
+
+                div.content-area {
+                    a.box {
+                        max-width: 100%;
+                    }
+                }
+            }
+        }
+    }
+}

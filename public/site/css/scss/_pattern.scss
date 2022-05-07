@@ -49,6 +49,18 @@ h2 {
 
 h3 {
   color: unset;
+
+  &.hr-bar {
+    @include flex(row, center, flex-start);
+    i {
+      height: 4.3rem;
+      width: 0.5rem;
+      display: block;
+      background-color: $tertiary;
+
+      margin-right: 1.7rem;
+    }
+  }
 }
 h4 {
   color: unset;

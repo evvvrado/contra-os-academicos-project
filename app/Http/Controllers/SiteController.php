@@ -14,4 +14,19 @@ class SiteController extends Controller
     {
         return view("site.index");
     }
+
+    public function blog()
+    {
+        return view("site.blog");
+    }
+
+    public function biblioteca()
+    {
+        return view("site.biblioteca");
+    }
+
+    public function revistas()
+    {
+        return view("site.revistas");
+    }
 }
