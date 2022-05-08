@@ -1,0 +1,74 @@
+section.quem-somos {
+    margin-bottom: 6.2rem;
+    margin-top: 6rem;
+
+    div.niv {
+        background-color: $white;
+        padding: 0;
+
+        div.content {
+            max-height: 36.7rem;
+            overflow: hidden;
+            transition: 0.32s;
+
+            &[complete] {
+                max-height: max-content;
+                padding-bottom: 3rem;
+            }
+
+            @include flex(column, center, flex-start);
+
+            main {
+                max-width: 60rem;
+                padding-top: 2.9rem;
+
+                h2 {
+                    font-size: 3.2rem;
+                    margin-bottom: 1.6rem;
+                    color: $primary;
+                }
+
+                p {
+                    font-family: $font-secondary;
+                    font-weight: 700;
+                    font-size: 1.4rem;
+                    line-height: 1.9rem;
+                }
+            }
+        }
+
+        div.read-more {
+            width: 100%;
+            background-color: rgb(235, 235, 235);
+            height: 5.9rem;
+
+            @include flex(row, center, flex-end);
+            span {
+                font-family: $font-secondary;
+                font-weight: 700;
+                font-size: 2.4rem;
+                text-decoration-line: underline;
+                color: $primary;
+                padding-right: 5.4rem;
+                transition: 0.32s;
+
+                &:hover {
+                    cursor: pointer;
+                    opacity: 0.7;
+                }
+            }
+        }
+    }
+
+    @include responsive(500px) {
+        div.niv {
+            @include padding-x(5rem);
+
+            div.read-more {
+                position: absolute;
+                width: 100%;
+                left: 0;
+            }
+        }
+    }
+}

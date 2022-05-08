@@ -1,0 +1,89 @@
+section.envie-seu-trabalho {
+    div.niv {
+        padding-top: 5.2rem;
+        padding-bottom: 8.9rem;
+        background-color: $white;
+
+        @include flex(column, flex-start, center);
+
+        div.title-area {
+            max-width: 50rem;
+            margin: 0 auto;
+            text-align-last: center;
+            margin-bottom: 4.2rem;
+
+            h2 {
+                font-size: 3.6rem;
+                line-height: 3.6rem;
+                margin-bottom: 3.3rem;
+
+                color: $primary;
+
+                position: relative;
+
+                &::after {
+                    position: absolute;
+                    bottom: -1.3rem;
+                    content: "";
+                    height: 0.4rem;
+                    width: 8.1rem;
+                    background-color: $primary;
+
+                    left: 0;
+                    right: 0;
+
+                    margin: 0 auto;
+                }
+            }
+
+            p {
+                font-family: $font-secondary;
+                font-weight: 400;
+                font-size: 1.4rem;
+                line-height: 100.41%;
+                color: $secondary;
+            }
+        }
+
+        form {
+            width: 100%;
+            max-width: 64.1rem;
+            margin: 0 auto;
+            label {
+                width: 100%;
+                @include flex(row, center, flex-start);
+
+                &:not(:last-child) {
+                    margin-bottom: 2.5rem;
+                }
+
+                textarea {
+                    min-height: 33.3rem;
+                    padding-top: 3rem;
+
+                    font-family: $font-primary;
+                    font-style: normal;
+                    font-weight: 400;
+                    line-height: 100.41%;
+                    font-size: 1.2rem;
+                }
+
+                input:not(input[type="checkbox"]),
+                textarea {
+                    width: 100%;
+                }
+
+                input[type="checkbox"] {
+                    display: block;
+                    background-color: $white;
+
+                    margin-left: auto;
+                }
+
+                span {
+                    font-size: 1.2rem;
+                }
+            }
+        }
+    }
+}

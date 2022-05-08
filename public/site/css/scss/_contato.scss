@@ -1,0 +1,42 @@
+section.contato {
+    background-color: $cinza-contra;
+
+    div.niv {
+        background-color: $white;
+
+        position: relative;
+        z-index: 2;
+        top: -4rem;
+
+        @include padding-y(6.8rem);
+
+        @include flex(row, flex-start, center);
+        form {
+            width: 100%;
+            max-width: 64.1rem;
+            label {
+                width: 100%;
+
+                &:not(:last-child) {
+                    margin-bottom: 2.5rem;
+                }
+
+                textarea {
+                    min-height: 33.3rem;
+                    padding-top: 3rem;
+
+                    font-family: $font-primary;
+                    font-style: normal;
+                    font-weight: 400;
+                    line-height: 100.41%;
+                    font-size: 1.2rem;
+                }
+
+                input,
+                textarea {
+                    width: 100%;
+                }
+            }
+        }
+    }
+}

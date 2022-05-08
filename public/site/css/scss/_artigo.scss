@@ -1,0 +1,724 @@
+section.artigo {
+    padding-top: 10.7rem;
+    margin-bottom: 2.9rem;
+
+    div.niv {
+        &.--row {
+            position: relative;
+            @include flex(row, flex-start, space-between);
+
+            picture.artigo-banner {
+                height: 22.6rem;
+                width: 100%;
+                max-width: 55.2rem;
+
+                position: absolute;
+                top: 0;
+                right: 0;
+
+                @extend %picframe;
+
+                border-radius: 0 0 0 1.2rem;
+            }
+
+            main {
+                background-color: $white;
+
+                width: 100%;
+                max-width: 77.5rem;
+                padding-top: 3.2rem;
+                padding-left: 9rem;
+                padding-bottom: 6.6rem;
+
+                div.title-area {
+                    div.roadmap,
+                    div.roadmap a {
+                        font-family: $font-secondary;
+                        font-weight: 400;
+                        font-size: 1.4rem;
+                        color: $black;
+                    }
+
+                    div.info {
+                        position: relative;
+                        max-width: 34.5rem;
+                        &::after {
+                            position: absolute;
+                            content: "";
+                            left: -2.4rem;
+                            top: 0;
+
+                            height: calc(100% - 2.1rem);
+                            width: 4px;
+                            background-color: $primary;
+                        }
+
+                        h1 {
+                            font-size: 3.6rem;
+                            color: $black;
+                            max-width: 39rem;
+                            line-height: 3.9rem;
+
+                            margin-top: 3.9rem;
+                            margin-bottom: 2.5rem;
+                        }
+
+                        div.author {
+                            @include flex(row, center, flex-start);
+                            gap: 1.3rem;
+
+                            padding-bottom: 1.3rem;
+
+                            picture {
+                                @extend %picframe;
+                                width: 3.8rem;
+                                aspect-ratio: 1/1;
+
+                                border: 1px solid $creme-contra;
+                                border-radius: 100%;
+                            }
+
+                            span {
+                                display: block;
+
+                                &:first-child {
+                                    font-weight: 400;
+                                    font-size: 1.2rem;
+                                    line-height: 1.6rem;
+                                    color: $preto-contra;
+                                }
+                                &:last-child {
+                                    font-family: $font-secondary;
+                                    font-style: normal;
+                                    font-weight: 400;
+                                    font-size: 1.4rem;
+                                    line-height: 1.3rem;
+                                    color: $primary;
+                                }
+                            }
+
+                            border-bottom: solid 1px #eaeaea;
+                        }
+                    }
+                }
+
+                div.text-content {
+                    margin-top: 2.1rem;
+
+                    span.citation {
+                        margin-top: 3.8rem;
+                        padding-bottom: 1.7rem;
+                        margin-bottom: 1.7rem;
+                        display: block;
+
+                        h1 {
+                            font-weight: 700;
+                            font-size: 2.4rem;
+                            line-height: 3.2rem;
+                            color: $black;
+                        }
+
+                        border-bottom: 1px solid #eaeaea;
+
+                        p {
+                            font-family: $font-secondary;
+                            font-weight: 400;
+                            font-size: 1.4rem;
+                            line-height: 1.9rem;
+                            color: $primary;
+                        }
+                    }
+
+                    p {
+                        font-family: $font-secondary;
+                        font-weight: 400;
+                        font-size: 1.4rem;
+                        line-height: 1.9rem;
+
+                        color: $black;
+
+                        max-width: 59.2rem;
+                    }
+                }
+
+                div.apoie-projeto {
+                    margin-top: 2.1rem;
+                    margin-bottom: 1.6rem;
+                    padding-bottom: 2.2rem;
+
+                    width: 100%;
+                    max-width: 58.7rem;
+                    border: solid 1px $cinza-contra;
+                    padding-top: 3.3rem;
+
+                    @include flex(row, center, center);
+                    gap: 4.4rem;
+
+                    div.avatar-side {
+                        picture {
+                            width: 100%;
+                            max-width: 8.1rem;
+                            aspect-ratio: 1/1;
+                            border-radius: 100%;
+
+                            @extend %picframe;
+
+                            margin-bottom: 1.3rem;
+                        }
+
+                        strong {
+                            font-family: $font-secondary;
+                            font-weight: 700;
+                            font-size: 1.2rem;
+                            line-height: 100.41%;
+                            color: $primary;
+                            width: 100%;
+                            text-align: center;
+                            display: block;
+                        }
+
+                        max-width: 8.1rem;
+                    }
+
+                    div.content-side {
+                        max-width: 36.5rem;
+
+                        strong {
+                            font-family: $font-secondary;
+                            font-weight: 700;
+                            font-size: 1.4rem;
+                            color: $preto-contra;
+                            margin-bottom: 2.5rem;
+                            display: block;
+                            position: relative;
+
+                            &::after {
+                                content: "";
+                                position: absolute;
+                                height: 3.4rem;
+                                width: 19.8rem;
+
+                                bottom: -4.5rem;
+                                left: -3.4rem;
+
+                                background: url("/site/assets/img/vector_artigo.svg");
+                            }
+                        }
+
+                        p {
+                            font-size: 1.2rem;
+                            line-height: 1.6rem;
+                            color: $preto-contra;
+                        }
+
+                        button.button {
+                            margin-top: 1rem;
+
+                            --width: 10rem;
+                            --height: 2.3rem;
+                            --background-color: #{$white};
+                            --font-color: #{$primary};
+                            --font-size: 1.2rem;
+
+                            border: solid 1px $primary;
+                            font-weight: bold;
+                        }
+                    }
+                }
+
+                div.bio {
+                    @include flex(row, center, center);
+                    gap: 4.9rem;
+
+                    background-color: $creme-contra;
+
+                    height: 23rem;
+                    width: 100%;
+                    max-width: 58.7rem;
+
+                    margin-bottom: 3.5rem;
+
+                    picture {
+                        width: 100%;
+                        max-width: 15.2rem;
+
+                        aspect-ratio: 1/1;
+                        border: solid 1px $mid-cinza-contra;
+
+                        @extend %picframe;
+
+                        border-radius: 100%;
+                    }
+
+                    div {
+                        max-width: 24.8rem;
+
+                        strong {
+                            font-family: $font-secondary;
+                            font-weight: 700;
+                            font-size: 1.4rem;
+                            line-height: 1.9rem;
+
+                            color: $black;
+                            margin-bottom: 0.8rem;
+                            display: block;
+                        }
+                    }
+                }
+
+                div.actions {
+                    width: 100%;
+                    max-width: 58.7rem;
+                    margin-bottom: 2.5rem;
+
+                    @include flex(row, center, space-between);
+
+                    div.social-buttons {
+                        @include flex(row, center, flex-start);
+                        gap: 2.4rem;
+
+                        div.icon {
+                            @include flex(column, center, center);
+                            gap: 0.8rem;
+
+                            picture {
+                                width: 2.2rem;
+                                aspect-ratio: 1/1;
+                                @extend %totalcenter;
+                                background-color: $cinza-contra;
+                                border-radius: 100%;
+                            }
+
+                            &[active] {
+                                picture {
+                                    background-color: $primary;
+                                    img {
+                                        filter: brightness(0) invert(1);
+                                    }
+                                }
+                            }
+                        }
+                    }
+
+                    div.buttons {
+                        @include flex(row, center, flex-end);
+                        gap: 1.2rem;
+
+                        button.button {
+                            --height: 3.5rem;
+                            border: solid 1px $primary;
+                            --font-color: #{$primary};
+                            --background-color: #{$white};
+                            font-weight: bold;
+                            --font-size: 1.4rem;
+
+                            &:first-child {
+                                --width: 10.2rem;
+                            }
+                            &:last-child {
+                                --width: 16rem;
+                            }
+                        }
+                    }
+                }
+            }
+
+            aside {
+                margin-top: 25.8rem;
+                max-width: 23.6rem;
+
+                position: sticky;
+                top: 10rem;
+
+                div.mais-autor {
+                    background-color: $creme-contra;
+                    padding: 1.5rem 1.8rem;
+                    position: relative;
+                    width: 100%;
+
+                    strong {
+                        font-family: $font-secondary;
+                        font-size: 1.8rem;
+                        color: $black;
+                        display: block;
+                        margin-bottom: 1.6rem;
+
+                        position: relative;
+                        &::after {
+                            width: 4.6rem;
+                            height: 0.1rem;
+                            background-color: $primary;
+
+                            left: 0;
+                            bottom: -1rem;
+
+                            position: absolute;
+                            content: "";
+                        }
+                    }
+
+                    & > picture {
+                        height: 4.9rem;
+                        aspect-ratio: 1/1;
+                        @extend %picframe;
+
+                        border-radius: 100%;
+                        border: solid 1px $creme-contra;
+
+                        position: absolute;
+                        top: -1.4rem;
+                        right: -1.8rem;
+                    }
+
+                    a {
+                        font-family: $font-secondary;
+                        font-weight: 400;
+                        font-size: 1.4rem;
+                        line-height: 1.9rem;
+                        text-decoration-line: underline;
+                        color: $preto-contra;
+                        margin-top: 2.1rem;
+                        display: block;
+                    }
+                }
+
+                div.relacionados {
+                    background-color: $primary;
+
+                    padding: 1.9rem 1.8rem;
+
+                    h3 {
+                        color: $white;
+                        font-family: $font-secondary;
+                        font-size: 1.8rem;
+                        display: block;
+                        margin-bottom: 2.8rem;
+
+                        position: relative;
+                        &::after {
+                            width: 4.6rem;
+                            height: 0.1rem;
+                            background-color: $creme-contra;
+
+                            left: 0;
+                            bottom: -1rem;
+
+                            position: absolute;
+                            content: "";
+                        }
+                    }
+
+                    ul {
+                        padding-bottom: 3.3rem;
+                        li {
+                            &:not(:last-child) {
+                                margin-bottom: 1.5rem;
+                            }
+
+                            a.box {
+                                width: 100%;
+                                max-width: 18.8rem;
+                                display: block;
+
+                                picture {
+                                    width: 100%;
+                                    height: 8.8rem;
+
+                                    @extend %picframe;
+                                    border-radius: 2px 2px 0 0;
+                                }
+
+                                div.content {
+                                    background-color: $white;
+                                    padding: 1.3rem 3.1rem 1.7rem 0.9rem;
+
+                                    strong,
+                                    span,
+                                    p {
+                                        display: block;
+                                        font-family: $font-secondary;
+                                        color: $preto-contra;
+                                    }
+
+                                    span {
+                                        font-weight: 400;
+                                        font-size: 1.2rem;
+                                        margin-bottom: 0.8rem;
+                                    }
+                                    strong {
+                                        font-weight: 700;
+                                        font-size: 1.4rem;
+                                        margin-bottom: 0.8rem;
+
+                                        @include limitText(3.8rem, 2);
+                                    }
+                                    p {
+                                        font-weight: 400;
+                                        font-size: 1.2rem;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+
+                div.atalhos {
+                    background-color: $white;
+
+                    padding: 1.9rem 1.8rem;
+
+                    h3 {
+                        color: $primary;
+                        font-family: $font-secondary;
+                        font-size: 1.8rem;
+                        display: block;
+                        margin-bottom: 2.8rem;
+
+                        position: relative;
+                        &::after {
+                            width: 4.6rem;
+                            height: 0.1rem;
+                            background-color: $primary;
+
+                            left: 0;
+                            bottom: -1rem;
+
+                            position: absolute;
+                            content: "";
+                        }
+                    }
+
+                    ul {
+                        li {
+                            a {
+                                font-size: 1.4rem;
+                                line-height: 180%;
+                                color: $mid-cinza-contra;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        div.cursos {
+            width: 100%;
+            max-width: 77.5rem;
+            background-color: $preto-contra;
+            margin-top: 2.5rem;
+            padding: 1.8rem 2.6rem 2.6rem 2.6rem;
+
+            div.title-area {
+                @include flex(row, center, space-between);
+                margin-bottom: 2.5rem;
+                padding-right: 1.3rem;
+
+                div {
+                    @include flex(row, center, flex-end);
+                    gap: 0.6rem;
+
+                    button {
+                        height: 2.8rem;
+                        aspect-ratio: 1/1;
+
+                        position: relative;
+                        z-index: 2;
+
+                        background-color: $creme-contra;
+                        @extend %totalcenter;
+
+                        border-radius: 50%;
+                        transition: 1s;
+
+                        &:hover,
+                        &:active {
+                            box-shadow: inset 32px 32px $tertiary;
+                            transform: scale(1.01);
+                        }
+                    }
+                }
+
+                h3 {
+                    color: $white;
+                    font-family: $font-secondary;
+                    font-weight: 700;
+                    font-size: 1.8283rem;
+
+                    position: relative;
+
+                    &::after {
+                        position: absolute;
+                        content: "";
+
+                        width: 9.9rem;
+                        height: 0.1rem;
+                        background-color: $creme-contra;
+
+                        bottom: -1.1rem;
+                        left: 0;
+                        right: 0;
+                        display: block;
+                        margin: 0 auto;
+                    }
+                }
+            }
+
+            div.card-area {
+                width: 100%;
+                overflow: auto;
+                margin-bottom: 4.2rem;
+                scroll-behavior: smooth;
+
+                scroll-snap-type: x mandatory;
+
+                &::-webkit-scrollbar {
+                    display: none;
+                }
+
+                div.scroll {
+                    @include flex(row, flex-start, space-between);
+                    width: max-content;
+                    gap: 1rem;
+
+                    a.box-destaque {
+                        justify-content: space-between;
+                        width: 17.2rem;
+                        height: 24rem;
+                        background-size: cover;
+                        scroll-snap-align: start;
+
+                        h2 {
+                            font-size: 1.7rem;
+                            line-height: 2.3rem;
+                            height: 4.6rem;
+                        }
+
+                        div.tags {
+                            width: 100%;
+                            @include flex(row, center, space-between);
+
+                            span {
+                                height: 2.2rem;
+                                border-radius: 4px;
+
+                                @extend %totalcenter;
+
+                                color: $white;
+
+                                font-family: $font-secondary;
+                                font-weight: 700;
+                                font-size: 1.1rem;
+                                color: $white;
+
+                                min-width: 4.8rem;
+
+                                border: 1px solid $white;
+
+                                &.--filled {
+                                    border: none;
+                                    background-color: $tertiary;
+                                    color: $preto-contra;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    @include responsive(800px) {
+        div.niv {
+            &.--row {
+                flex-direction: column-reverse;
+                aside {
+                    display: none;
+                }
+                picture.artigo-banner {
+                    position: static;
+                    max-width: 100%;
+                    margin-bottom: 1rem;
+                    border-radius: 0;
+                }
+            }
+        }
+    }
+
+    @include responsive(600px) {
+        div.niv {
+            &.--row {
+                main {
+                    padding-left: 3rem;
+                    padding-right: 3rem;
+                }
+            }
+        }
+    }
+
+    @include responsive(500px) {
+        div.niv {
+            &.--row {
+                main {
+                    div.text-content {
+                        p {
+                            font-size: 1.8rem;
+                        }
+                    }
+
+                    div.apoie-projeto {
+                        height: unset;
+                        flex-direction: column;
+                        @include padding-x(3rem);
+                        text-align: center;
+
+                        div.avatar-side {
+                            strong {
+                                font-size: 2.8rem;
+                            }
+                        }
+
+                        div.content-side {
+                            strong::after {
+                                display: none;
+                            }
+
+                            strong {
+                                margin-bottom: 1rem;
+                                font-size: 2.4rem;
+                            }
+                            p {
+                                font-size: 1.6rem;
+                            }
+
+                            button {
+                                margin: 0 auto;
+                                margin-top: 4rem;
+                                transform: scale(1.2);
+                            }
+                        }
+                    }
+
+                    div.bio {
+                        flex-direction: column;
+                        gap: 2rem;
+                        height: auto;
+
+                        @include padding-y(2rem);
+
+                        div {
+                            p,
+                            strong {
+                                text-align: center;
+                                font-size: 1.8rem;
+                            }
+                        }
+                    }
+                    div.actions {
+                        flex-direction: column;
+                        gap: 3rem;
+                    }
+                }
+            }
+        }
+    }
+}

@@ -15,6 +15,11 @@ class SiteController extends Controller
         return view("site.index");
     }
 
+    public function sobre()
+    {
+        return view("site.sobre");
+    }
+
     public function blog()
     {
         return view("site.blog");
@@ -28,5 +33,15 @@ class SiteController extends Controller
     public function revistas()
     {
         return view("site.revistas");
+    }
+
+    public function contato()
+    {
+        return view("site.contato");
+    }
+
+    public function artigo()
+    {
+        return view("site.artigo");
     }
 }

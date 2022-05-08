@@ -33,28 +33,24 @@ div.modal {
 
         .box {
             z-index: 2;
-            height: 55.3rem;
+            height: 44.5rem;
             width: 100%;
-            max-width: 59.6rem;
+            max-width: 40rem;
             transition: 0.32s;
 
             background: $white;
 
-            border: 1px solid #dfdfdf;
             box-sizing: border-box;
             box-shadow: 0px 4px 80px 20px rgba(0, 0, 0, 0.25);
-            border-radius: 15px;
+            border-radius: 4px;
+
+            background-color: $white;
 
             position: relative;
             top: -15rem;
             opacity: 0;
 
-            padding: 3rem;
-
-            text-align: center;
-
-            @include flex(column, center, center);
-            gap: 3rem;
+            padding: 1.7rem 2.3rem 1.5rem 1.7rem;
         }
     }
 
@@ -70,5 +66,100 @@ div.modal {
         width: 100%;
         z-index: 1;
         content: "";
+    }
+}
+
+div#referencias_modal {
+    div.niv {
+        div.box {
+            div.title-area {
+                width: 100%;
+                margin-bottom: 1.6rem;
+                @include flex(row, center, space-between);
+
+                button {
+                    width: 1.8rem;
+                    aspect-ratio: 1/1;
+
+                    @extend %totalcenter;
+                    border: solid 2px $primary;
+                    border-radius: 3px;
+                    transition: 0.32s;
+                    img {
+                        transition: 0.32s;
+                    }
+
+                    &:hover,
+                    &:active {
+                        background-color: $primary;
+                        img {
+                            filter: brightness(0) invert(1);
+                        }
+                    }
+                }
+
+                h2 {
+                    font-family: $font-primary;
+                    font-weight: 700;
+                    font-size: 1.6rem;
+                    color: $preto-contra;
+
+                    position: relative;
+
+                    &::after {
+                        width: 28.1rem;
+                        background-color: $creme-contra;
+                        height: 0.3rem;
+
+                        position: absolute;
+                        content: "";
+
+                        left: 0;
+                        bottom: 0;
+                    }
+                }
+            }
+
+            div.content {
+                padding-right: 2rem;
+                max-height: 36rem;
+                overflow: auto;
+
+                &::-webkit-scrollbar {
+                    width: 0.5rem;
+                }
+
+                /* Track */
+                &::-webkit-scrollbar-track {
+                    background: $branco-contra;
+                }
+
+                /* Handle */
+                &::-webkit-scrollbar-thumb {
+                    background: $primary;
+                }
+
+                /* Handle on hover */
+                &::-webkit-scrollbar-thumb:hover {
+                    cursor: pointer;
+                    background: $primary;
+                }
+
+                div.scroll {
+                    height: max-content;
+
+                    ul {
+                        li {
+                            font-weight: 400;
+                            font-size: 1.2rem;
+                            line-height: 180%;
+                            color: $mid-cinza-contra;
+
+                            list-style: disc inside;
+                        }
+                    }
+                }
+            }
+        }
     }
 }

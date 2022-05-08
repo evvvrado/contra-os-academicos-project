@@ -14,6 +14,69 @@ section.banner {
         background-size: cover;
     }
 
+    body#contato & {
+        background: url("/site/assets/img/banner_contato.jpg");
+        background-size: cover;
+
+        div.niv {
+            h2 {
+                font-weight: 700;
+                font-size: 6.4rem;
+                line-height: 8.6rem;
+                margin-top: 2.4rem;
+
+                @include responsive(600px) {
+                    font-size: 5rem;
+                }
+            }
+
+            p {
+                margin-top: 4.1rem;
+                text-align: center;
+
+                font-family: $font-secondary;
+                font-weight: 400;
+                font-size: 1.8rem;
+                color: $creme-contra;
+            }
+        }
+    }
+
+    body#sobre & {
+        background-image: url("/site/assets/img/banner_sobre.jpg");
+        background-size: cover;
+        padding-bottom: 0;
+        margin-bottom: 3.4rem;
+
+        div.niv {
+            h2 {
+                margin-top: 10.1rem;
+                font-size: 6.4rem;
+                line-height: 8.6rem;
+                margin-bottom: 15.7rem;
+
+                @include responsive(500px) {
+                    font-size: 4.5rem;
+                }
+            }
+
+            picture.icon-arrow {
+                width: 4rem;
+                aspect-ratio: 1/1;
+
+                border-radius: 100%;
+                background-color: $branco-contra;
+
+                @extend %totalcenter;
+
+                margin: 0 auto;
+                margin-bottom: -2rem;
+
+                animation: upandown 6s infinite linear;
+            }
+        }
+    }
+
     div.niv {
         div.roadmap,
         div.roadmap a {
