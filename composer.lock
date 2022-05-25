@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "78e5ab9a85d113bbb082b3f683e75832",
+    "content-hash": "561f7df7180767e958c19a03849cc5b4",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -1854,6 +1854,51 @@
                 "visa"
             ],
             "time": "2021-05-28T11:30:31+00:00"
+        },
+        {
+            "name": "kwaadpepper/laravel-responsivefilemanager",
+            "version": "0.1.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Kwaadpepper/laravel-responsivefilemanager.git",
+                "reference": "07a582873d0d5fb9c9a9385691aa9200a346aa4d"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Kwaadpepper/laravel-responsivefilemanager/zipball/07a582873d0d5fb9c9a9385691aa9200a346aa4d",
+                "reference": "07a582873d0d5fb9c9a9385691aa9200a346aa4d",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.1"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Kwaadpepper\\FtpClient\\": "src/FtpClient/",
+                    "Kwaadpepper\\ResponsiveFileManager\\": "src/ResponsiveFileManager/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Jeremy Munsch"
+                }
+            ],
+            "description": "Integrate Alberto Peripolli's Responsive File Manager with Laravel",
+            "keywords": [
+                "filemanager",
+                "laravel",
+                "responsive"
+            ],
+            "support": {
+                "issues": "https://github.com/Kwaadpepper/laravel-responsivefilemanager/issues",
+                "source": "https://github.com/Kwaadpepper/laravel-responsivefilemanager/tree/0.1.2"
+            },
+            "time": "2020-09-26T13:02:56+00:00"
         },
         {
             "name": "laravel/framework",
@@ -9693,5 +9738,5 @@
         "php": "^7.3|^8.0"
     },
     "platform-dev": [],
-    "plugin-api-version": "2.2.0"
+    "plugin-api-version": "2.1.0"
 }

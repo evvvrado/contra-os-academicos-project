@@ -5,7 +5,7 @@ namespace App\Http\Middleware;
 use Closure;
 use Illuminate\Http\Request;
 
-class RedirecionaLogado
+class AdminLogado
 {
     /**
      * Handle an incoming request.
@@ -16,10 +16,10 @@ class RedirecionaLogado
      */
     public function handle(Request $request, Closure $next)
     {
-       if(env("APP_ENV") != "local"){
-            return redirect()->route('site.index');
-       };
-
-        return $next($request);
+        if(session()->get("usuario")){
+            return $next($request);
+        }else{
+            return redirect()->route("painel.login");
+        }
     }
 }

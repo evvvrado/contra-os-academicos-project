@@ -23,6 +23,10 @@ class PainelController extends Controller
     public function logar(Request $request)
     {
         $usuario = Usuario::where("usuario", $request->usuario)->first();
+        // if (Hash::check($request->senha, $usuario->senha)) {
+        //     echo $usuario->senha;
+        //     die();
+        // }
         if ($usuario) {
             if (!$usuario->ativo) {
                 Log::channel('acessos')->info('LOGIN: O usuario bloqueado ' . $usuario->usuario . ' tentou logar no sistema.');
