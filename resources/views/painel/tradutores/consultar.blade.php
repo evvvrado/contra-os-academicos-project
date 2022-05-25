@@ -52,12 +52,12 @@
                                                 @csrf
                                                 <div class="row">
                                                     <div class="col-12 text-center">
-                                                        <img id="foto-preview" src="{{asset($tradutor->foto)}}" style="max-height: 200px;" alt="">
+                                                        <img id="foto-preview{{ $tradutor->id }}" src="{{asset($tradutor->foto)}}" style="max-height: 200px;" alt="">
                                                     </div>
                                                     <div class="row mt-3">
                                                         <div class="col-12 text-center">
-                                                            <label class="btn btn-primary" for="foto-upload">Escolher</label>
-                                                            <input name="foto" id="foto-upload" style="display: none;" type="file" required>
+                                                            <label class="btn btn-primary" for="foto-upload{{ $tradutor->id }}">Escolher</label>
+                                                            <input onchange="mudar_foto(this.files, {{ $tradutor->id }})" name="foto" id="foto-upload{{ $tradutor->id }}" style="display: none;" type="file" required>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -102,12 +102,12 @@
                     @csrf
                     <div class="row">
                         <div class="col-12 text-center">
-                            <img id="foto-preview" src="{{asset('admin/imagens/thumb-padrao.png')}}" style="max-height: 200px;" alt="">
+                            <img id="foto-preview0" src="{{asset('admin/imagens/thumb-padrao.png')}}" style="max-height: 200px;" alt="">
                         </div>
                         <div class="row mt-3">
                             <div class="col-12 text-center">
-                                <label class="btn btn-primary" for="foto-upload">Escolher</label>
-                                <input name="foto" id="foto-upload" style="display: none;" type="file" required>
+                                <label class="btn btn-primary" for="foto-upload0">Escolher</label>
+                                <input onchange="mudar_foto(this.files, 0)" name="foto" id="foto-upload0" style="display: none;" type="file" required>
                             </div>
                         </div>
                     </div>
@@ -138,16 +138,18 @@
     <script src="{{asset('admin/libs/datatables.net/js/jquery.dataTables.min.js')}}"></script>
     <script src="{{asset('admin/libs/datatables.net-bs4/js/dataTables.bootstrap4.min.js')}}"></script>
     <script>
+        function mudar_foto(files, id) {
+            var inp = document.getElementById('foto-upload'+id);
+            var file = files[0];
+            var reader = new FileReader();
+            reader.onload = function(){
+                console.log(this.result)
+                document.getElementById('foto-preview'+id).src = this.result;
+            };
+            reader.readAsDataURL(file);
+        }
+
         $(document).ready(function() {
-            var inp = document.getElementById('foto-upload');
-            inp.addEventListener('change', function(e){
-                var file = this.files[0];
-                var reader = new FileReader();
-                reader.onload = function(){
-                    document.getElementById('foto-preview').src = this.result;
-                    };
-                reader.readAsDataURL(file);
-            },false);
 
             $('#datatable').DataTable( {
                 language:{
