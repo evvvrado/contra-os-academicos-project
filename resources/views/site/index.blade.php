@@ -5,35 +5,37 @@
 @section('content')
     <section class="hero">
         <div class="niv">
-            <a href="#" class="main-card card"
-                style="background: url('{{ asset('site/assets/img/banner_mainbox_hero.jpg') }}')">
+            @foreach($revistas as $key => $revista)
+                @if($key == 0)
+                    <a href="{{ route('site.revista_detalhe', ['revista' => $revista]) }}" class="main-card card" style="background: url('{{ asset($revista->banner) }}')">
 
-                <div class="top-bar">
-                    <span class="categoria">Revista</span>
+                        <div class="top-bar">
+                            <span class="categoria">Revista</span>
 
-                    {{-- <a href="#" class="--plus">Ver mais</a> --}}
-                </div>
+                            {{-- <a href="#" class="--plus">Ver mais</a> --}}
+                        </div>
 
-                <div class="text">
-                    <i>Filosofia</i>
+                        <div class="text">
+                            <i>{{ $revista->categoria->nome }}</i>
 
-                    <h1>Os homens se esqueceram de Deus</h1>
+                            <h1>{{ $revista->titulo }}</h1>
 
-                    <p>Por <strong>Pedro Lucena</strong></p>
-                </div>
-            </a>
+                            <p>Por <strong>{{ $revista->autor->nome }}</strong></p>
+                        </div>
+                    </a>
+                @endif
+            @endforeach
 
             <div class="col">
-                <a href="#" class="mini-card card"
-                    style="background: url({{ asset('site/assets/img/banner_minibox_hero.jpg') }})">
-                    <strong>O Sacrifício - Andrei Tarkovsky</strong>
-                    <p>Por <strong>Pedro Lucena</strong></p>
-                </a>
-                <a href="#" class="mini-card card"
-                    style="background: url({{ asset('site/assets/img/banner_minibox2_hero.jpg') }})">
-                    <strong>Notas aos Quatro Quartetos de T.S. Eliot</strong>
-                    <p>Por <strong>Pedro Lucena</strong></p>
-                </a>
+                @foreach($revistas as $key => $revista)
+                    @if($key > 0)
+                        <a href="{{ route('site.revista_detalhe', ['revista' => $revista]) }}" class="mini-card card"
+                        style="background: url({{ asset($revista->banner) }})">
+                            <strong>{{ $revista->titulo }}</strong>
+                            <p>Por <strong>{{ $revista->autor->nome }}</strong></p>
+                        </a>
+                    @endif
+                @endforeach
             </div>
 
             <div class="col">

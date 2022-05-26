@@ -25,6 +25,15 @@
 
         @yield('styles')
 
+        <style>
+            .escolher_imagem {
+                padding: 0.25rem !important;
+                background-color: #f8f8fb !important;
+                border: 1px solid #f6f6f6 !important;
+                border-radius: 0.25rem !important;
+            }
+        </style>
+
     </head>
 
     <body data-sidebar="dark">
@@ -209,6 +218,12 @@
                                         </li>
                                         <li>
                                             <a href="{{ route('painel.blog') }}" key="t-invoice-list">Blog</a>
+                                        </li>
+                                        <li>
+                                            <a href="{{ route('painel.lista') }}" key="t-invoice-list">Listas</a>
+                                        </li>
+                                        <li>
+                                            <a href="{{ route('painel.revista') }}" key="t-invoice-list">Revistas</a>
                                         </li>
                                     </ul>
                                 </li>

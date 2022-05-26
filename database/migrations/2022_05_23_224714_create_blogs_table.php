@@ -16,7 +16,6 @@ class CreateBlogsTable extends Migration
         Schema::create('blogs', function (Blueprint $table) {
             $table->id();
             $table->string("titulo", 200);
-            $table->string("sub_titulo", 150);
             $table->text("conteudo");
             $table->text("referencias");
             $table->string("banner", 255)->nullable();
@@ -29,6 +28,7 @@ class CreateBlogsTable extends Migration
             $table->foreign('autor_id')->references('id')->on('setors')->onDelete('cascade');
             $table->unsignedBigInteger('tradutor_id');
             $table->foreign('tradutor_id')->references('id')->on('setors')->onDelete('cascade');
+            $table->text("visitas");
             $table->timestamp('created_at')->useCurrent();
             $table->timestamp('updated_at')->useCurrent();      
         });

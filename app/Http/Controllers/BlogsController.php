@@ -21,7 +21,6 @@ class BlogsController extends Controller
     public function cadastrar(Request $request){
         $blog = new Blog;
         $blog->titulo = $request->titulo;
-        $blog->sub_titulo = $request->subtitulo;
         $blog->conteudo = $request->conteudo;
         $blog->referencias = $request->referencias;
         $blog->usuario_id = $request->usuario;
@@ -50,7 +49,6 @@ class BlogsController extends Controller
 
     public function salvar(Request $request, Blog $blog){
         $blog->titulo = $request->titulo;
-        $blog->sub_titulo = $request->subtitulo;
         $blog->conteudo = $request->conteudo;
         $blog->referencias = $request->referencias;
         $blog->usuario_id = $request->usuario;

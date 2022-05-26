@@ -1,22 +1,20 @@
 @extends('painel.template.main')
 
 @section('titulo')
-    Cadastro de Blog
+    Cadastro de Listas
 @endsection
 
 @section('conteudo')
 
 @php
     use App\Models\Usuario;
-    use App\Models\Autor;
     use App\Models\Categoria;
-    use App\Models\Tradutor;
 @endphp
 
 @include('painel.includes.errors')
 
 <div class="row">
-    <form action="{{route('painel.blog.cadastrar')}}" method="POST" enctype="multipart/form-data">
+    <form action="{{route('painel.lista.cadastrar')}}" method="POST" enctype="multipart/form-data">
         @csrf
         <div class="row">
             <div class="col-xl-9 col-lg-8">
@@ -61,19 +59,6 @@
                     <div class="card-body p-4">
                         <div class="row">
                             <div class="form-group col-lg-12">
-                                <label for="referencias">Referências</label>
-                                <textarea required cols="80" class="form-control" id="referencias" name="referencias" rows="16" data-sample-short></textarea>
-                            </div>
-                            
-                            <div class="form-group col-lg-12">
-                                <label class="mt-3" for="exclusivo" class="form-label">Conteúdo Exclusivo</label>
-                                <select id="exclusivo" name="exclusivo" class="form-select" required>
-                                    <option value="">Selecione</option>
-                                    <option value="1">Sim</option>
-                                    <option value="0">Não</option>
-                                </select>
-                            </div>
-                            <div class="form-group col-lg-12">
                                 <label class="mt-3" for="categoria" class="form-label">Categoria</label>
                                 <select id="categoria" name="categoria" class="form-select" required>
                                     <option value="">Selecione</option>
@@ -96,33 +81,6 @@
 
                                     @foreach($usuarios as $usuario)
                                         <option @if(session()->get("usuario")["id"] == $usuario->id) selected @endif value="{{$usuario->id}}">{{$usuario->nome}}</option>
-                                    @endforeach
-                                </select>
-                            </div>
-                            <div class="form-group col-lg-12">
-                                <label class="mt-3" for="autor" class="form-label">Autor</label>
-                                <select id="autor" name="autor" class="form-select" required>
-                                    <option value="">Selecione</option>
-                                    @php
-                                        $autores = Autor::whereAtivo(true)->get();
-                                    @endphp
-
-                                    @foreach($autores as $autor)
-                                        <option value="{{$autor->id}}">{{$autor->nome}}</option>
-                                    @endforeach
-                                </select>
-                            </div>
-
-                            <div class="form-group col-lg-12">
-                                <label class="mt-3" for="tradutor" class="form-label">Tradutor</label>
-                                <select id="tradutor" name="tradutor" class="form-select" required>
-                                    <option value="">Selecione</option>
-                                    @php
-                                        $tradutores = Tradutor::whereAtivo(true)->get();
-                                    @endphp
-
-                                    @foreach($tradutores as $tradutor)
-                                        <option value="{{$tradutor->id}}">{{$tradutor->nome}}</option>
                                     @endforeach
                                 </select>
                             </div>

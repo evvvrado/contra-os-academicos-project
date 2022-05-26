@@ -52,7 +52,7 @@
                                                 @csrf
                                                 <div class="row">
                                                     <div class="col-12 text-center">
-                                                        <img id="foto-preview{{ $autor->id }}" src="{{asset($autor->foto)}}" style="max-height: 200px;" alt="">
+                                                        <img class="escolher_imagem" id="foto-preview{{ $autor->id }}" src="{{asset($autor->foto)}}" style="max-height: 200px;" alt="">
                                                     </div>
                                                     <div class="row mt-3">
                                                         <div class="col-12 text-center">
@@ -65,6 +65,9 @@
                                                     <div class="col-lg-12">
                                                         <label class="mt-3" for="nome">Nome</label>
                                                         <input type="text" class="form-control" name="nome" id="nome" value="{{ $autor->nome }}" required>
+
+                                                        <label class="mt-3" for="link">Link de Divulgação</label>
+                                                        <input type="text" class="form-control" name="link" id="link" value="{{ $autor->link }}">
 
                                                         <label class="mt-3" for="resumo">Resumo</label>
                                                         <textarea rows="8" class="form-control" name="resumo" id="resumo" required>{{ $autor->resumo }}</textarea>
@@ -102,7 +105,7 @@
                     @csrf
                     <div class="row">
                         <div class="col-12 text-center">
-                            <img id="foto-preview0" src="{{asset('admin/imagens/thumb-padrao.png')}}" style="max-height: 200px;" alt="">
+                            <img class="escolher_imagem" id="foto-preview0" src="{{asset('admin/imagens/thumb-padrao.png')}}" style="max-height: 200px;" alt="">
                         </div>
                         <div class="row mt-3">
                             <div class="col-12 text-center">
@@ -115,6 +118,9 @@
                         <div class="col-lg-12">
                             <label class="mt-3" for="nome">Nome</label>
                             <input type="text" class="form-control" name="nome" id="nome" required>
+
+                            <label class="mt-3" for="link">Link de divulgação</label>
+                            <input type="text" class="form-control" name="link" id="link">
 
                             <label class="mt-3" for="resumo">Resumo</label>
                             <textarea rows="8" class="form-control" name="resumo" id="resumo" required></textarea>

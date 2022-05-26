@@ -16,13 +16,13 @@ class CreateListasTable extends Migration
         Schema::create('listas', function (Blueprint $table) {
             $table->id();
             $table->string("titulo", 200);
-            $table->string("sub_titulo", 150);
             $table->text("conteudo");
             $table->string("banner", 255)->nullable();
             $table->unsignedBigInteger("usuario_id");
             $table->foreign('usuario_id')->references('id')->on('usuarios')->onDelete('cascade');
             $table->unsignedBigInteger('categoria_id');
             $table->foreign('categoria_id')->references('id')->on('setors')->onDelete('cascade');
+            $table->text("visitas");
             $table->timestamp('created_at')->useCurrent();
             $table->timestamp('updated_at')->useCurrent();
         });

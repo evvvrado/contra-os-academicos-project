@@ -33,6 +33,20 @@ Route::middleware(['admin'])->group(function () {
     Route::get('/sistema/blog/editar/{blog}', [\App\Http\Controllers\BlogsController::class, 'editar'])->name("painel.blog.editar");
     Route::post('/sistema/blog/salvar/{blog}', [\App\Http\Controllers\BlogsController::class, 'salvar'])->name("painel.blog.salvar");
 
+    // ROTAS DE LISTAS
+    Route::get('/sistema/lista/consultar', [\App\Http\Controllers\ListasController::class, 'consultar'])->name("painel.lista");
+    Route::get('/sistema/lista/cadastro', [\App\Http\Controllers\ListasController::class, 'cadastro'])->name("painel.lista.cadastro");
+    Route::post('/sistema/lista/cadastrar', [\App\Http\Controllers\ListasController::class, 'cadastrar'])->name("painel.lista.cadastrar");
+    Route::get('/sistema/lista/editar/{lista}', [\App\Http\Controllers\ListasController::class, 'editar'])->name("painel.lista.editar");
+    Route::post('/sistema/lista/salvar/{lista}', [\App\Http\Controllers\ListasController::class, 'salvar'])->name("painel.lista.salvar");
+
+    // ROTAS DE REVISTAS
+    Route::get('/sistema/revista/consultar', [\App\Http\Controllers\RevistasController::class, 'consultar'])->name("painel.revista");
+    Route::get('/sistema/revista/cadastro', [\App\Http\Controllers\RevistasController::class, 'cadastro'])->name("painel.revista.cadastro");
+    Route::post('/sistema/revista/cadastrar', [\App\Http\Controllers\RevistasController::class, 'cadastrar'])->name("painel.revista.cadastrar");
+    Route::get('/sistema/revista/editar/{revista}', [\App\Http\Controllers\RevistasController::class, 'editar'])->name("painel.revista.editar");
+    Route::post('/sistema/revista/salvar/{revista}', [\App\Http\Controllers\RevistasController::class, 'salvar'])->name("painel.revista.salvar");
+
     // ROTAS DE USUÁRIOS
     Route::get('/sistema/usuarios', [\App\Http\Controllers\UsuariosController::class, 'consultar'])->name("painel.usuarios");
     Route::get('/sistema/usuarios/inativos', [\App\Http\Controllers\UsuariosController::class, 'consultar_inativos'])->name("painel.usuarios.inativos");
@@ -54,5 +68,6 @@ Route::get('/sobre', [\App\Http\Controllers\SiteController::class, 'sobre'])->na
 Route::get('/blog', [\App\Http\Controllers\SiteController::class, 'blog'])->name("site.blog");
 Route::get('/biblioteca', [\App\Http\Controllers\SiteController::class, 'biblioteca'])->name("site.biblioteca");
 Route::get('/revistas', [\App\Http\Controllers\SiteController::class, 'revistas'])->name("site.revistas");
+Route::get('/revista/{revista}', [\App\Http\Controllers\SiteController::class, 'revista'])->name("site.revista_detalhe");
 Route::get('/contato', [\App\Http\Controllers\SiteController::class, 'contato'])->name("site.contato");
 Route::get('/artigo', [\App\Http\Controllers\SiteController::class, 'artigo'])->name("site.artigo");

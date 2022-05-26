@@ -7,11 +7,11 @@
 @endsection
 
 @section('titulo')
-    Listagem de Tradutores @if(isset($tipo)) {{$tipo}}  @endif
+    Listagem de Listas @if(isset($tipo)) {{$tipo}}  @endif
 @endsection
 
 @section('botoes')
-    <a name="" id="" class="btn btn-success" href="#" data-bs-toggle="modal" data-bs-target=".cadastrar_tradutor" role="button">Novo</a>
+    <a name="" id="" class="btn btn-success" href="{{route('painel.lista.cadastro')}}" role="button">Novo</a>
 @endsection
 
 @section('conteudo')
@@ -22,7 +22,9 @@
                 <table id="datatable" class="table table-bordered dt-responsive  nowrap w-100">
                     <thead>
                         <tr>
-                            <th>Nome</th>
+                            <th>Título</th>
+                            <th>Subtítulo</th>
+                            <th>Autor</th>
                             <th class="text-center">Ações</th>
                         </tr>
                     </thead>
@@ -30,56 +32,16 @@
 
                     <tbody>
 
-                        @foreach($tradutores as $tradutor)
+                        @foreach($listas as $lista)
                             <tr>
-                                <td>{{$tradutor->nome}}</td>
+                                <td>{{$lista->titulo}}</td>
+                                <td>{{$lista->sub_titulo}}</td>
+                                <td></td>
                                 <td class="text-center">
-                                    <a href="#" data-bs-toggle="modal" data-bs-target=".editar_tradutor{{ $tradutor->id }}" class="btn btn-success" role="button">Editar</a>
-                                    <a class="btn btn-danger" href="" role="button">Inativar</a>
+                                    <a href="{{ route('painel.lista.editar', ['lista' => $lista]) }}" class="btn btn-success" role="button">Editar</a>
+                                    <a class="btn btn-danger" href="" role="button">Deletar</a>
                                 </td>
                             </tr>
-
-                            <!--  Large modal example -->
-                            <div class="modal fade editar_tradutor{{ $tradutor->id }}" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
-                                <div class="modal-dialog modal-lg">
-                                    <div class="modal-content">
-                                        <div class="modal-header">
-                                            <h5 class="modal-title" id="myLargeModalLabel">Editando Tradutor</h5>
-                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                        </div>
-                                        <div class="modal-body">
-                                            <form action="{{route('painel.tradutor.salvar', ['tradutor' => $tradutor])}}" method="POST" enctype="multipart/form-data">
-                                                @csrf
-                                                <div class="row">
-                                                    <div class="col-12 text-center">
-                                                        <img class="escolher_imagem" id="foto-preview{{ $tradutor->id }}" src="{{asset($tradutor->foto)}}" style="max-height: 200px;" alt="">
-                                                    </div>
-                                                    <div class="row mt-3">
-                                                        <div class="col-12 text-center">
-                                                            <label class="btn btn-primary" for="foto-upload{{ $tradutor->id }}">Escolher</label>
-                                                            <input onchange="mudar_foto(this.files, {{ $tradutor->id }})" name="foto" id="foto-upload{{ $tradutor->id }}" style="display: none;" type="file" required>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="row">
-                                                    <div class="col-lg-12">
-                                                        <label class="mt-3" for="nome">Nome</label>
-                                                        <input type="text" class="form-control" name="nome" id="nome" value="{{ $tradutor->nome }}" required>
-
-                                                        <label class="mt-3" for="resumo">Resumo</label>
-                                                        <textarea rows="8" class="form-control" name="resumo" id="resumo" required>{{ $tradutor->resumo }}</textarea>
-                                                    </div>
-                                            
-                                                    <div class="col-lg-4 mt-5" >
-                                                        <button type="submit" class="btn btn-primary px-5">Salvar</button>
-                                                    </div>
-                                                </div>
-                                                
-                                            </form>
-                                        </div>
-                                    </div><!-- /.modal-content -->
-                                </div><!-- /.modal-dialog -->
-                            </div><!-- /.modal -->
                         @endforeach
 
                     </tbody>
@@ -89,48 +51,6 @@
     </div> <!-- end col -->
 </div> <!-- end row -->
 
-<!--  Large modal example -->
-<div class="modal fade cadastrar_tradutor" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-lg">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="myLargeModalLabel">Cadastrando Tradutor</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                <form action="{{route('painel.tradutor.cadastrar')}}" method="POST" enctype="multipart/form-data">
-                    @csrf
-                    <div class="row">
-                        <div class="col-12 text-center">
-                            <img class="escolher_imagem" id="foto-preview0" src="{{asset('admin/imagens/thumb-padrao.png')}}" style="max-height: 200px;" alt="">
-                        </div>
-                        <div class="row mt-3">
-                            <div class="col-12 text-center">
-                                <label class="btn btn-primary" for="foto-upload0">Escolher</label>
-                                <input onchange="mudar_foto(this.files, 0)" name="foto" id="foto-upload0" style="display: none;" type="file" required>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-lg-12">
-                            <label class="mt-3" for="nome">Nome</label>
-                            <input type="text" class="form-control" name="nome" id="nome" required>
-
-                            <label class="mt-3" for="resumo">Resumo</label>
-                            <textarea rows="8" class="form-control" name="resumo" id="resumo" required></textarea>
-                        </div>
-                
-                        <div class="col-lg-4 mt-5" >
-                            <button type="submit" class="btn btn-primary px-5">Salvar</button>
-                        </div>
-                    </div>
-                    
-                </form>
-            </div>
-        </div><!-- /.modal-content -->
-    </div><!-- /.modal-dialog -->
-</div><!-- /.modal -->
-
 @endsection
 
 @section('scripts')
@@ -138,19 +58,7 @@
     <script src="{{asset('admin/libs/datatables.net/js/jquery.dataTables.min.js')}}"></script>
     <script src="{{asset('admin/libs/datatables.net-bs4/js/dataTables.bootstrap4.min.js')}}"></script>
     <script>
-        function mudar_foto(files, id) {
-            var inp = document.getElementById('foto-upload'+id);
-            var file = files[0];
-            var reader = new FileReader();
-            reader.onload = function(){
-                console.log(this.result)
-                document.getElementById('foto-preview'+id).src = this.result;
-            };
-            reader.readAsDataURL(file);
-        }
-
         $(document).ready(function() {
-
             $('#datatable').DataTable( {
                 language:{
                     "emptyTable": "Nenhum registro encontrado",

@@ -30,9 +30,9 @@
                             <div class="row">
                                 <div class="col-12">
                                     @if($usuario->foto)
-                                        <img id="foto-preview" src="{{asset($usuario->foto)}}" style="max-height: 200px;" alt="">
+                                        <img class="escolher_imagem" id="foto-preview" src="{{asset($usuario->foto)}}" style="max-height: 200px;" alt="">
                                     @else
-                                        <img id="foto-preview" src="{{asset('admin/images/thumb-padrao.png')}}" style="max-height: 200px;" alt="">
+                                        <img class="escolher_imagem" id="foto-preview" src="{{asset('admin/images/thumb-padrao.png')}}" style="max-height: 200px;" alt="">
                                     @endif
                                 </div>
                             </div>

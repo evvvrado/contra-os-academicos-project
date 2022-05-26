@@ -20,6 +20,7 @@ class AutorsController extends Controller
     public function cadastrar(Request $request){
         $autor = new Autor;
         $autor->nome = $request->nome;
+        $autor->link = $request->link;
         $autor->resumo = $request->resumo;
         $autor->save();
 
@@ -36,6 +37,7 @@ class AutorsController extends Controller
 
     public function salvar(Request $request, Autor $autor){
         $autor->nome = $request->nome;
+        $autor->link = $request->link;
         $autor->resumo = $request->resumo;
         $autor->save();
 

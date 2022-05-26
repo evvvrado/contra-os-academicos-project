@@ -16,6 +16,7 @@ class CreateAutorsTable extends Migration
         Schema::create('autors', function (Blueprint $table) {
             $table->id();
             $table->string("nome", 200);
+            $table->string("link", 255)->nullable();
             $table->text("resumo");
             $table->string("foto", 255)->nullable();
             $table->boolean("ativo")->default(true);

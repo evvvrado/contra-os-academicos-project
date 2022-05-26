@@ -33,7 +33,7 @@
                             </div>
                             <div class="row">
                                 <div class="col-12">
-                                    <img id="foto-preview" src="{{asset('admin/images/thumb-padrao.png')}}" style="max-height: 200px;" alt="">
+                                    <img class="escolher_imagem" id="foto-preview" src="{{asset('admin/images/thumb-padrao.png')}}" style="max-height: 200px;" alt="">
                                 </div>
                             </div>
                             <div class="row mt-3">

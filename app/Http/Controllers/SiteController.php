@@ -6,13 +6,21 @@ use View;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Storage;
+use DB;
+use App\Models\Revista;
+use App\Models\Usuario;
 
 class SiteController extends Controller
 {
 
     public function index()
     {
-        return view("site.index");
+        $revistas = Revista::select(DB::raw("*"))
+        ->orderBy('id', 'Desc')
+        ->limit('3')
+        ->get();
+
+        return view("site.index", ["revistas" => $revistas]);
     }
 
     public function sobre()
@@ -29,11 +37,17 @@ class SiteController extends Controller
     {
         return view("site.biblioteca");
     }
-
+    // ------------------------------------------------
     public function revistas()
     {
         return view("site.revistas");
     }
+
+    public function revista(Revista $revista)
+    {
+        return view("site.revista_detalhe", ["revista" => $revista]);
+    }
+    // ------------------------------------------------
 
     public function contato()
     {
