@@ -22,7 +22,6 @@ class CreateCursosTable extends Migration
             $table->timestamp('updated_at')->useCurrent();
         });
     }
-
     /**
      * Reverse the migrations.
      *
