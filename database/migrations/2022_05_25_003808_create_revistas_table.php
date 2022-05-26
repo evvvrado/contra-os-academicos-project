@@ -24,7 +24,7 @@ class CreateRevistasTable extends Migration
             $table->foreign('categoria_id')->references('id')->on('setors')->onDelete('cascade');
             $table->unsignedBigInteger('autor_id');
             $table->foreign('autor_id')->references('id')->on('setors')->onDelete('cascade');
-            $table->text("visitas");
+            $table->text("visitas")->nullable();
             $table->timestamp('created_at')->useCurrent();
             $table->timestamp('updated_at')->useCurrent();
         });
