@@ -18,13 +18,13 @@ class CreateUsuariosTable extends Migration
     {
         Schema::create('usuarios', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('setor_id')->nullable();
-            $table->foreign('setor_id')->references('id')->on('setors')->onDelete('cascade');
             $table->string("email", 40);
             $table->string("usuario", 40);
             $table->string("senha", 255);
             $table->string("nome", 60);
             $table->string("foto", 100)->nullable();
+            $table->unsignedBigInteger('setor_id')->nullable();
+            $table->foreign('setor_id')->references('id')->on('setors')->onDelete('cascade');
             $table->boolean("ativo")->default(true);
             $table->timestamp('created_at')->useCurrent();
             $table->timestamp('updated_at')->useCurrent();

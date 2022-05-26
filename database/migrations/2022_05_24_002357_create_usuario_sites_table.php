@@ -19,7 +19,7 @@ class CreateUsuarioSitesTable extends Migration
             $table->string("email", 200);
             $table->string("senha", 200);
             $table->string("foto", 200);
-            $table->string("assinante", 200);
+            $table->boolean("assinante")->default(true);
             $table->timestamp('created_at')->useCurrent();
             $table->timestamp('updated_at')->useCurrent();
         });

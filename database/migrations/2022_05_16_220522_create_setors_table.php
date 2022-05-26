@@ -16,7 +16,7 @@ class CreateSetorsTable extends Migration
         Schema::create('setors', function (Blueprint $table) {
             $table->id();
             $table->string("setor", 50);
-            $table->string("status", 10)->default('Ativo');
+            $table->boolean("ativo")->default(true);
             $table->timestamp('created_at')->useCurrent();
             $table->timestamp('updated_at')->useCurrent();
         });

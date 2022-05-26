@@ -18,13 +18,13 @@ class CreateRevistasTable extends Migration
             $table->string("titulo", 200);
             $table->text("conteudo");
             $table->string("banner", 255)->nullable();
+            $table->integer("visitas")->nullable();
             $table->unsignedBigInteger("usuario_id");
             $table->foreign('usuario_id')->references('id')->on('usuarios')->onDelete('cascade');
             $table->unsignedBigInteger('categoria_id');
-            $table->foreign('categoria_id')->references('id')->on('setors')->onDelete('cascade');
+            $table->foreign('categoria_id')->references('id')->on('categorias')->onDelete('cascade');
             $table->unsignedBigInteger('autor_id');
-            $table->foreign('autor_id')->references('id')->on('setors')->onDelete('cascade');
-            $table->text("visitas")->nullable();
+            $table->foreign('autor_id')->references('id')->on('categorias')->onDelete('cascade');
             $table->timestamp('created_at')->useCurrent();
             $table->timestamp('updated_at')->useCurrent();
         });
