@@ -39,9 +39,7 @@ class UsuariosController extends Controller
         $usuario = new Usuario;
         $usuario->nome = $request->nome;
         $usuario->email = $request->email;
-        $usuario->acesso = $request->acesso;
         $usuario->usuario = $request->usuario;
-        $usuario->telefone = $request->telefone;
         $usuario->senha = Hash::make($request->senha);
 
         if($request->file("foto")){
