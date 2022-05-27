@@ -12,4 +12,8 @@ class Autor extends Model
     public function revista(){
         return $this->hasOne(Revista::class);
     }
+
+    public function blog(){
+        return $this->hasOne(Blog::class);
+    }
 }

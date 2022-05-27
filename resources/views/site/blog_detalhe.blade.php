@@ -9,34 +9,49 @@
             <main>
                 <div class="title-area">
                     <div class="roadmap">
-                        <a href="#">Revistas</a>
+                        <a href="#">Blogs</a>
                         /
-                        <a href="#">{{ $revista->categoria->nome }}</a>
+                        <a href="#">{{ $blog->categoria->nome }}</a>
                         /
-                        <a href="#">{{ Str::limit($revista->titulo, 9) }}</a>
+                        <a href="#">{{ Str::limit($blog->titulo, 9) }}</a>
                     </div>
                     <div class="info">
 
-                        <h1>{{ $revista->titulo }}</h1>
+                        <h1>{{ $blog->titulo }}</h1>
 
-                        <div class="author">
-                            <picture>
-                                <img src="{{ asset($revista->autor->foto) }}" alt="Foto do colunista">
-                            </picture>
+                        @if ($blog->tradutor_id != 1)
+                            <div class="author">
+                                <picture>
+                                    <img src="{{ asset($blog->tradutor->foto) }}" alt="Foto do colunista">
+                                </picture>
 
-                            <div>
-                                <span>Por {{ $revista->autor->nome }}</span>
                                 <div>
-                                    <span>{{ date( 'd' , strtotime($revista->created_at)) }} de {{ $mes }} de {{ date( 'Y' , strtotime($revista->created_at)) }}</span>
+                                    <span>Traduzido por {{ $blog->tradutor->nome }}</span>
+                                    <div>
+                                        <span>{{ date( 'd' , strtotime($blog->created_at)) }} de {{ $mes }} de {{ date( 'Y' , strtotime($blog->created_at)) }}</span>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
+                        @else 
+                            <div class="author">
+                                <picture>
+                                    <img src="{{ asset($blog->autor->foto) }}" alt="Foto do colunista">
+                                </picture>
+
+                                <div>
+                                    <span>Por {{ $blog->autor->nome }}</span>
+                                    <div>
+                                        <span>{{ date( 'd' , strtotime($blog->created_at)) }} de {{ $mes }} de {{ date( 'Y' , strtotime($blog->created_at)) }}</span>
+                                    </div>
+                                </div>
+                            </div>
+                        @endif
                     </div>
                 </div>
 
                 <div class="text-content">
                     <p>
-                        {!!$revista->conteudo!!}
+                        {!!$blog->conteudo!!}
                     </p>
                 </div>
 
@@ -57,6 +72,17 @@
                         </p>
 
                         <button class="button">Quero apoiar</button>
+                    </div>
+                </div>
+
+                <div class="bio">
+                    <picture>
+                        <img src="{{ asset($blog->autor->foto) }}" alt="Foto do Biografado">
+                    </picture>
+
+                    <div>
+                        <strong>{{ $blog->autor->nome }}</strong>
+                        <p>{{ $blog->autor->resumo }}</p>
                     </div>
                 </div>
 
@@ -95,14 +121,14 @@
             </main>
 
             <picture class="artigo-banner">
-                <img src="{{ asset($revista->banner) }}" alt="Imagem principal do artigo">
+                <img src="{{ asset($blog->banner) }}" alt="Imagem principal do artigo">
             </picture>
 
             <aside>
                 <div class="mais-autor">
                     <strong>Mais do autor</strong>
                     <picture>
-                        <img src="{{ asset($revista->autor->foto) }}" alt="">
+                        <img src="{{ asset($blog->autor->foto) }}" alt="">
                     </picture>
 
                     <ul>

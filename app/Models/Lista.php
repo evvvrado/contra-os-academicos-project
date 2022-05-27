@@ -8,4 +8,14 @@ use Illuminate\Database\Eloquent\Model;
 class Lista extends Model
 {
     use HasFactory;
+
+    public function usuario()
+    {
+        return $this->belongsTo(Usuario::class);
+    }
+
+    public function categoria()
+    {
+        return $this->belongsTo(Categoria::class);
+    }
 }

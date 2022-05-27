@@ -31,6 +31,8 @@
                 background-color: #f8f8fb !important;
                 border: 1px solid #f6f6f6 !important;
                 border-radius: 0.25rem !important;
+                max-width:100%; 
+                height: auto;
             }
         </style>
 

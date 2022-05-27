@@ -2,13 +2,14 @@
 
 namespace App\Http\Controllers;
 
-use View;
-use Illuminate\Http\Request;
-use Illuminate\Support\Str;
-use Illuminate\Support\Facades\Storage;
+// use View;
+// use Illuminate\Http\Request;
+// use Illuminate\Support\Str;
 use DB;
 use App\Models\Revista;
-use App\Models\Usuario;
+use App\Models\Blog;
+use App\Models\Lista;
+use Carbon\Carbon;
 
 class SiteController extends Controller
 {
@@ -17,10 +18,17 @@ class SiteController extends Controller
     {
         $revistas = Revista::select(DB::raw("*"))
         ->orderBy('id', 'Desc')
-        ->limit('3')
         ->get();
 
-        return view("site.index", ["revistas" => $revistas]);
+        $blogs = Blog::select(DB::raw("*"))
+        ->orderBy('id', 'Desc')
+        ->get();
+
+        $listas = Lista::select(DB::raw("*"))
+        ->orderBy('id', 'Desc')
+        ->get();
+
+        return view("site.index", ["revistas" => $revistas, "blogs" => $blogs, "listas" => $listas]);
     }
 
     public function sobre()
@@ -28,14 +36,28 @@ class SiteController extends Controller
         return view("site.sobre");
     }
 
-    public function blog()
+    // ------------------------------------------------
+    public function blogs()
     {
-        return view("site.blog");
+        $blogs = Blog::select(DB::raw("*"))
+        ->orderBy('id', 'Desc')
+        ->get();
+        
+        return view("site.blog", ["blogs" => $blogs]);
     }
 
-    public function biblioteca()
+    public function blog(Blog $blog)
     {
-        return view("site.biblioteca");
+        // Force locale
+        date_default_timezone_set('America/Sao_Paulo');
+        setlocale(LC_ALL, 'pt_BR.utf-8', 'ptb', 'pt_BR', 'portuguese-brazil', 'portuguese-brazilian', 'bra', 'brazil', 'br');
+        setlocale(LC_TIME, 'pt_BR.utf-8', 'ptb', 'pt_BR', 'portuguese-brazil', 'portuguese-brazilian', 'bra', 'brazil', 'br');
+
+        // Create Carbon date
+        $dt = Carbon::now();
+        $mes = $blog->created_at->formatLocalized('%B');
+
+        return view("site.blog_detalhe", ["blog" => $blog, "mes" => $mes]);
     }
     // ------------------------------------------------
     public function revistas()
@@ -45,9 +67,42 @@ class SiteController extends Controller
 
     public function revista(Revista $revista)
     {
-        return view("site.revista_detalhe", ["revista" => $revista]);
+        // Force locale
+        date_default_timezone_set('America/Sao_Paulo');
+        setlocale(LC_ALL, 'pt_BR.utf-8', 'ptb', 'pt_BR', 'portuguese-brazil', 'portuguese-brazilian', 'bra', 'brazil', 'br');
+        setlocale(LC_TIME, 'pt_BR.utf-8', 'ptb', 'pt_BR', 'portuguese-brazil', 'portuguese-brazilian', 'bra', 'brazil', 'br');
+
+        // Create Carbon date
+        $dt = Carbon::now();
+        $mes = $revista->created_at->formatLocalized('%B');
+
+        return view("site.revista_detalhe", ["revista" => $revista, "mes" => $mes]);
     }
     // ------------------------------------------------
+    public function listas()
+    {
+        return view("site.listas");
+    }
+
+    public function lista(Lista $lista)
+    {
+        // Force locale
+        date_default_timezone_set('America/Sao_Paulo');
+        setlocale(LC_ALL, 'pt_BR.utf-8', 'ptb', 'pt_BR', 'portuguese-brazil', 'portuguese-brazilian', 'bra', 'brazil', 'br');
+        setlocale(LC_TIME, 'pt_BR.utf-8', 'ptb', 'pt_BR', 'portuguese-brazil', 'portuguese-brazilian', 'bra', 'brazil', 'br');
+
+        // Create Carbon date
+        $dt = Carbon::now();
+        $mes = $lista->created_at->formatLocalized('%B');
+
+        return view("site.lista_detalhe", ["lista" => $lista, "mes" => $mes]);
+    }
+    // ------------------------------------------------
+    
+    public function biblioteca()
+    {
+        return view("site.biblioteca");
+    }
 
     public function contato()
     {

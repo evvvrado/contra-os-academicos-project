@@ -1,6 +1,6 @@
-@extends('site.template.main', ['titulo' => SIGLA . ' Artigo Interno'])
+@extends('site.template.main', ['titulo' => SIGLA . ' Lista Interna'])
 
-@section('body_attr', 'id=artigo')
+@section('body_attr', 'id=lista')
 
 @section('content')
 
@@ -9,26 +9,24 @@
             <main>
                 <div class="title-area">
                     <div class="roadmap">
-                        <a href="#">Revistas</a>
+                        <a href="#">Listas</a>
                         /
-                        <a href="#">{{ $revista->categoria->nome }}</a>
+                        <a href="#">{{ $lista->categoria->nome }}</a>
                         /
-                        <a href="#">{{ Str::limit($revista->titulo, 9) }}</a>
+                        <a href="#">{{ Str::limit($lista->titulo, 9) }}</a>
                     </div>
                     <div class="info">
 
-                        <h1>{{ $revista->titulo }}</h1>
+                        <h1>{{ $lista->titulo }}</h1>
 
                         <div class="author">
                             <picture>
-                                <img src="{{ asset($revista->autor->foto) }}" alt="Foto do colunista">
+                                <img src="{{ asset($lista->usuario->foto) }}" alt="Foto do colunista">
                             </picture>
 
                             <div>
-                                <span>Por {{ $revista->autor->nome }}</span>
-                                <div>
-                                    <span>{{ date( 'd' , strtotime($revista->created_at)) }} de {{ $mes }} de {{ date( 'Y' , strtotime($revista->created_at)) }}</span>
-                                </div>
+                                <span>Por {{ $lista->usuario->nome }}</span>
+                                <span>{{ date( 'd' , strtotime($lista->created_at)) }} de {{ $mes }} de {{ date( 'Y' , strtotime($lista->created_at)) }}</span>
                             </div>
                         </div>
                     </div>
@@ -36,7 +34,7 @@
 
                 <div class="text-content">
                     <p>
-                        {!!$revista->conteudo!!}
+                        {!!$lista->conteudo!!}
                     </p>
                 </div>
 
@@ -95,14 +93,14 @@
             </main>
 
             <picture class="artigo-banner">
-                <img src="{{ asset($revista->banner) }}" alt="Imagem principal do artigo">
+                <img src="{{ asset($lista->banner) }}" alt="Imagem principal do artigo">
             </picture>
 
             <aside>
                 <div class="mais-autor">
                     <strong>Mais do autor</strong>
                     <picture>
-                        <img src="{{ asset($revista->autor->foto) }}" alt="">
+                        <img src="{{ asset($lista->usuario->foto) }}" alt="">
                     </picture>
 
                     <ul>

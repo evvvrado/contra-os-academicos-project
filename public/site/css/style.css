@@ -1070,7 +1070,7 @@ section.hero div.niv a.card.main-card div.top-bar {
   width: 100%;
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: normal;
   flex-direction: row;
 }
 section.hero div.niv a.card.main-card div.top-bar span.categoria {
@@ -1080,6 +1080,7 @@ section.hero div.niv a.card.main-card div.top-bar span.categoria {
   border-radius: 0.4rem;
   font-family: "Palatino Linotype", sans-serif;
   color: #fff;
+  margin-right: 10px;
 }
 section.hero div.niv a.card.mini-card {
   height: 18.3rem;

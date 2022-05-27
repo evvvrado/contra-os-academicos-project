@@ -8,4 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 class Tradutor extends Model
 {
     use HasFactory;
+
+    public function blog(){
+        return $this->hasOne(Blog::class);
+    }
 }

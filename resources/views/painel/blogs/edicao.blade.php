@@ -15,24 +15,13 @@
 
 @include('painel.includes.errors')
 <div class="row">
-    <form action="{{route('painel.blog.cadastrar')}}" method="POST" enctype="multipart/form-data">
+    <form action="{{route('painel.blog.salvar', ['blog' => $blog])}}" method="POST" enctype="multipart/form-data">
         @csrf
         <div class="row">
             <div class="col-xl-9 col-lg-8">
                 <div class="card">
                     <div class="row justify-content-center">
                         <div class="col-xl-11">
-                            <div class="row mt-5">
-                                <div class="col-12 text-center">
-                                    <img class="escolher_imagem" id="foto-preview" src="{{asset($blog->banner)}}" style="max-height: 200px;" alt="">
-                                </div>
-                                <div class="row mt-3">
-                                    <div class="col-12 text-center">
-                                        <label class="btn btn-primary" for="foto-upload">Escolher</label>
-                                        <input name="banner" id="foto-upload" style="display: none;" type="file">
-                                    </div>
-                                </div>
-                            </div>
                             <div class="row">
                                 <div class="form-group col-lg-12">
                                     <label class="mt-3" for="titulo">Título</label>
@@ -41,7 +30,7 @@
                             </div>
 
                             <div class="row">
-                                <div class="form-group col-lg-12">
+                                <div class="form-group col-lg-12 pb-5">
                                     <label class="mt-3" for="conteudo">Conteúdo</label>
                                     <textarea required cols="80" class="conteudo" id="conteudo" name="conteudo" rows="10" data-sample-short>{{$blog->conteudo}}</textarea>
                                 </div>
@@ -55,9 +44,8 @@
                 <div class="card">
                     <div class="card-body p-4">
                         <div class="row">
-                            <div class="form-group col-lg-12">
-                                <label class="mt-3" for="referencias">Referências</label>
-                                <textarea required cols="80" class="form-control" id="referencias" name="referencias" rows="16" data-sample-short>{{$blog->referencias}}</textarea>
+                            <div class="col-lg-12 mt-2 mb-2 text-center" >
+                                <button type="submit" class="btn btn-primary px-5">Salvar</button>
                             </div>
                             <div class="form-group col-lg-12">
                                 <label class="mt-3" for="exclusivo" class="form-label">Conteúdo Exclusivo</label>
@@ -119,6 +107,24 @@
                                         <option @if($blog->tradutor_id == $tradutor->id) selected @endif value="{{$tradutor->id}}">{{$tradutor->nome}}</option>
                                     @endforeach
                                 </select>
+                            </div>
+
+                            <div class="form-group mt-3">
+                                <label class="form-label">Banner</label>
+                                <div class="col-12 text-center">
+                                    <img class="escolher_imagem" id="foto-preview" src="{{asset($blog->banner)}}" style="max-height: 105px;" alt="">
+                                </div>
+                                <div>
+                                    <div class="col-12 text-center mt-3">
+                                        <label class="btn btn-primary" for="foto-upload">Escolher</label>
+                                        <input name="banner" id="foto-upload" style="display: none;" type="file">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group col-lg-12">
+                                <label class="mt-3" for="referencias">Referências</label>
+                                <textarea required cols="80" class="form-control" id="referencias" name="referencias" rows="10" data-sample-short>{{$blog->referencias}}</textarea>
                             </div>
                         </div>
                     </div>
