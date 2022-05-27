@@ -204,7 +204,7 @@
 
                                     <hr>
 
-                                    {!!Str::limit($blog->conteudo, 104)!!}
+                                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the indu...</p>
                                 </div>
                             </a>
                         @endif
@@ -226,7 +226,7 @@
 
                                     <hr>
 
-                                    {!!Str::limit($revista->conteudo, 104)!!}
+                                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the indu...</p>
                                 </div>
                             </a>
                         @endif
@@ -249,7 +249,7 @@
 
                                     <hr>
 
-                                    {!!Str::limit($lista->conteudo, 104)!!}
+                                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the indu...</p>
                                 </div>
                             </a>
                         @endif
