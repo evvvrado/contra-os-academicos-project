@@ -67,7 +67,7 @@
                                     <select id="setor" name="setor" class="form-select">
                                         <option value="">Selecione</option>
                                         @php
-                                            $setores = Setor::where("status", "Ativo")->get();
+                                            $setores = Setor::whereAtivo(true)->get();
                                         @endphp
 
                                         @foreach($setores as $setor)
