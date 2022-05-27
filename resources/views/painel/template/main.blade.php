@@ -9,12 +9,12 @@
     <head>
         
         <meta charset="utf-8" />
-        <title>SISTEMA | Contra os Acadêmicos</title>
+        <title>Admin | Contra os Acadêmicos</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta content="Premium Multipurpose Admin & Dashboard Template" name="description" />
         <meta content="Themesbrand" name="author" />
-        <!-- App favicon -->
-        <link rel="shortcut icon" href="{{ asset('assets/images/favicon.ico')}}">
+        <link rel="shortcut icon" href="/favicon.ico" />
+        <link rel='icon' type='image/vnd.microsoft.icon' sizes='16x16 32x32 48x48 64x64 96x96 128x128 144x144 180x180 192x192 256x256' href='/favicon.ico' />
 
         <!-- Bootstrap Css -->
         <link href="{{ asset('admin/assets/css/bootstrap.min.css')}}" id="bootstrap-style" rel="stylesheet" type="text/css" />

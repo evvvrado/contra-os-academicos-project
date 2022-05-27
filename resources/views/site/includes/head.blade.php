@@ -38,8 +38,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 
 <link rel="shortcut icon" href="/favicon.ico" />
-<link rel='icon' type='image/vnd.microsoft.icon'
-    sizes='16x16 32x32 48x48 64x64 96x96 128x128 144x144 180x180 192x192 256x256' href='/favicon.ico' />
+<link rel='icon' type='image/vnd.microsoft.icon' sizes='16x16 32x32 48x48 64x64 96x96 128x128 144x144 180x180 192x192 256x256' href='/favicon.ico' />
 
 <link rel="preload" type='text/css' href="{{ asset('/site/css/style.css') }}" as="style" />
 <link rel="preload" type='application/javascript' href="{{ asset('/site/js/main.js') }}" as="script" />
