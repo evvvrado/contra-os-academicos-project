@@ -4,6 +4,8 @@
     <!-- DataTables -->
     <link href="{{asset('admin/libs/datatables.net-bs4/css/dataTables.bootstrap4.min.css')}}" rel="stylesheet" type="text/css" />
     <link href="{{asset('admin/libs/datatables.net-buttons-bs4/css/buttons.bootstrap4.min.css')}}" rel="stylesheet" type="text/css" />
+
+    <link href="{{asset('admin/assets/libs/sweetalert2/sweetalert2.min.css')}}" rel="stylesheet" type="text/css" />
 @endsection
 
 @section('titulo')
@@ -37,15 +39,23 @@
 
                         @foreach($blogs as $blog)
                             <tr>
-                                <td>{{ Str::limit($blog->titulo, 32 ) }}</td>
+                                <td style="position: relative;">{{ Str::limit($blog->titulo, 32 ) }}
+                                    @if($blog->status == 1)
+                                        <i style="position: absolute; right: 10px; top: 2px; color: green" class="bx bx-check"></i>
+                                    @elseif($blog->status == 2)
+                                        <i style="position: absolute; right: 10px; top: 2px; color: blue" class="bx bx-file"></i>
+                                    @elseif($blog->status == 3)
+                                        <i style="position: absolute; right: 10px; top: 2px; color: red" class="bx bx-x"></i>
+                                    @endif
+                                </td>
                                 <td>{{$blog->categoria->nome}}</td>
                                 <td class="text-center">{{$blog->visitas}}</td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
+                                <td class="text-center">0</td>
+                                <td class="text-center">0</td>
+                                <td>{{ \Carbon\Carbon::parse($blog->data)->format('d/m/Y')}}</td>
                                 <td class="text-center">
                                     <a href="{{ route('painel.blog.editar', ['blog' => $blog]) }}" class="btn btn-sm btn-success" role="button"><i class="bx bx bx-edit-alt"></i></a>
-                                    <a class="btn btn-sm btn-danger" href="" role="button"><i class="bx bx bx bx-window-close"></i></a>
+                                    <a onClick="deletar({{ $blog->id }})" class="btn btn-sm btn-danger" role="button"><i class="bx bx bx bx-window-close"></i></a>
                                 </td>
                             </tr>
                         @endforeach
@@ -63,7 +73,26 @@
     <!-- Required datatable js -->
     <script src="{{asset('admin/libs/datatables.net/js/jquery.dataTables.min.js')}}"></script>
     <script src="{{asset('admin/libs/datatables.net-bs4/js/dataTables.bootstrap4.min.js')}}"></script>
+
+    <!-- Sweet Alerts js -->
+    <script src="{{asset('admin/assets/libs/sweetalert2/sweetalert2.min.js')}}"></script>
+    
     <script>
+        function deletar(id) {
+            Swal.fire({
+                title: "Tem certeza?",
+                text: "Esse conteúdo irá para lixeira!",
+                icon: "warning",
+                showCancelButton: !0,
+                confirmButtonColor: "#34c38f",
+                cancelButtonColor: "#f46a6a",
+                confirmButtonText: "Sim, deletar!"
+            }).then(function(t) {
+                t.value && Swal.fire("Deletado!", "Movido para lixeira.", "success")
+                
+
+            })
+        }
         $(document).ready(function() {
             $('#datatable').DataTable( {
                 language:{

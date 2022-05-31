@@ -33,6 +33,9 @@ Route::middleware(['admin'])->group(function () {
     Route::get('/sistema/blog/editar/{blog}', [\App\Http\Controllers\BlogsController::class, 'editar'])->name("painel.blog.editar");
     Route::post('/sistema/blog/salvar/{blog}', [\App\Http\Controllers\BlogsController::class, 'salvar'])->name("painel.blog.salvar");
 
+    Route::post('/sistema/blog_visu/cadastrar', [\App\Http\Controllers\BlogVisusController::class, 'cadastrar'])->name("painel.blog_visu.cadastrar");
+    Route::get('/sistema/blog/visualizar/{blog}', [\App\Http\Controllers\BlogVisusController::class, 'visualizar'])->name("painel.blog.visualizar");
+
     // ROTAS DE LISTAS
     Route::get('/sistema/lista/consultar', [\App\Http\Controllers\ListasController::class, 'consultar'])->name("painel.lista");
     Route::get('/sistema/lista/cadastro', [\App\Http\Controllers\ListasController::class, 'cadastro'])->name("painel.lista.cadastro");

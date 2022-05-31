@@ -31,7 +31,7 @@
 
                                 <button onClick="salvar('rascunho')" type="submit" class="btn btn-primary waves-effect btn-label waves-light"><i class="bx bx-file-blank label-icon"></i> Rascunho</button>
 
-                                <button onClick="salvar('visualizar')" type="submit" class="btn btn-light waves-effect btn-label waves-light"><i class="bx bx-show-alt label-icon"></i> Visualizar</button>
+                                <button onClick="salvar('visualizar')" class="btn btn-light waves-effect btn-label waves-light visualizar"><i class="bx bx-show-alt label-icon"></i> Visualizar</button>
                             </div>
 
                             <div class="row">

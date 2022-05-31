@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Blog;
+use App\Models\BlogVisu;
 use Illuminate\Support\Facades\Storage;
 
 class BlogsController extends Controller
@@ -20,32 +21,71 @@ class BlogsController extends Controller
 
     public function cadastrar(Request $request){
         if($request->tipo_pub == "publicar") {
-            $status = 1;
+            $blog = new Blog;
+            $blog->titulo = $request->titulo;
+            $blog->conteudo = $request->conteudo;
+            $blog->resumo = $request->resumo;
+            $blog->referencias = $request->referencias;
+            $blog->usuario_id = $request->usuario;
+            $blog->exclusivo = $request->exclusivo;
+            $blog->categoria_id = $request->categoria;
+            $blog->autor_id = $request->autor;
+            $blog->tradutor_id = $request->tradutor;
+            $blog->status = 1;
+            $blog->save();
+            if($request->file("banner")){
+                Blog::whereId($blog->id)
+                ->update(['banner' => 'admin/imagens/blogs/'.$blog->id.'/'.$request->file('banner')->getClientOriginalName()]);
+
+                $request->file("banner")->move(public_path('/admin/imagens/blogs/'.$blog->id."/"), $request->file('banner')->getClientOriginalName());
+            }
+
+            toastr()->success("Cadastro realizado com sucesso!");
+            return redirect()->route("painel.blog");
         } elseif($request->tipo_pub == "rascunho") {
-            $status = 2;
+            $blog = new Blog;
+            $blog->titulo = $request->titulo;
+            $blog->conteudo = $request->conteudo;
+            $blog->resumo = $request->resumo;
+            $blog->referencias = $request->referencias;
+            $blog->usuario_id = $request->usuario;
+            $blog->exclusivo = $request->exclusivo;
+            $blog->categoria_id = $request->categoria;
+            $blog->autor_id = $request->autor;
+            $blog->tradutor_id = $request->tradutor;
+            $blog->status = 2;
+            $blog->save();
+            if($request->file("banner")){
+                Blog::whereId($blog->id)
+                ->update(['banner' => 'admin/imagens/blogs/'.$blog->id.'/'.$request->file('banner')->getClientOriginalName()]);
+
+                $request->file("banner")->move(public_path('/admin/imagens/blogs/'.$blog->id."/"), $request->file('banner')->getClientOriginalName());
+            }
+
+            toastr()->success("Cadastro realizado com sucesso!");
+            return redirect()->route("painel.blog");
+        } elseif($request->tipo_pub == "visualizar") {
+            $blog = new BlogVisu;
+            $blog->titulo = $request->titulo;
+            $blog->conteudo = $request->conteudo;
+            $blog->resumo = $request->resumo;
+            $blog->referencias = $request->referencias;
+            $blog->usuario_id = $request->usuario;
+            $blog->exclusivo = $request->exclusivo;
+            $blog->categoria_id = $request->categoria;
+            $blog->autor_id = $request->autor;
+            $blog->tradutor_id = $request->tradutor;
+            $blog->status = 1;
+            $blog->save();
+            if($request->file("banner")){
+                BlogVisu::whereId($blog->id)
+                ->update(['banner' => 'admin/imagens/blogs_visu/'.$blog->id.'/'.$request->file('banner')->getClientOriginalName()]);
+
+                $request->file("banner")->move(public_path('/admin/imagens/blogs_visu/'.$blog->id."/"), $request->file('banner')->getClientOriginalName());
+            }
+
+            return redirect()->route("painel.blog.visualizar", ['blog' => $blog]);
         }
-
-        $blog = new Blog;
-        $blog->titulo = $request->titulo;
-        $blog->conteudo = $request->conteudo;
-        $blog->resumo = $request->resumo;
-        $blog->referencias = $request->referencias;
-        $blog->usuario_id = $request->usuario;
-        $blog->exclusivo = $request->exclusivo;
-        $blog->categoria_id = $request->categoria;
-        $blog->autor_id = $request->autor;
-        $blog->tradutor_id = $request->tradutor;
-        $blog->status = $status;
-        $blog->save();
-        if($request->file("banner")){
-            Blog::whereId($blog->id)
-            ->update(['banner' => 'admin/imagens/blogs/'.$blog->id.'/'.$request->file('banner')->getClientOriginalName()]);
-
-            $request->file("banner")->move(public_path('/admin/imagens/blogs/'.$blog->id."/"), $request->file('banner')->getClientOriginalName());
-        }
-
-        toastr()->success("Cadastro realizado com sucesso!");
-        return redirect()->route("painel.blog");
     }
 
     public function editar(Blog $blog){
