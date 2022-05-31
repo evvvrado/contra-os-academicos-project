@@ -57,7 +57,7 @@
                                                     <div class="row mt-3">
                                                         <div class="col-12 text-center">
                                                             <label class="btn btn-primary" for="foto-upload{{ $autor->id }}">Escolher</label>
-                                                            <input onchange="mudar_foto(this.files, {{ $autor->id }})" name="foto" id="foto-upload{{ $autor->id }}" style="display: none;" type="file" required>
+                                                            <input onchange="mudar_foto(this.files, {{ $autor->id }})" name="foto" id="foto-upload{{ $autor->id }}" style="display: none;" type="file">
                                                         </div>
                                                     </div>
                                                 </div>

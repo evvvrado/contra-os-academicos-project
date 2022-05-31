@@ -55,14 +55,14 @@
                 <ul>
                     <li><a href="#">Artigos</a></li>
                     <li><a href="#">Biblioteca</a></li>
-                    <li><a href="#">Blog</a></li>
+                    <li><a href="{{ route('site.blog') }}">Blog</a></li>
                     <li><a href="#">Contato</a></li>
                     <li><a href="#">Cursos</a></li>
                     <li><a href="#">Enciclopédia</a></li>
                 </ul>
                 <ul>
                     <li><a href="#">Podcast</a></li>
-                    <li><a href="#">Colunistas</a></li>
+                    <li><a href="#">Colunas</a></li>
                     <li><a href="#">Fórum</a></li>
                     <li><a href="#">Listas</a></li>
                     <li><a href="#">Sobre</a></li>

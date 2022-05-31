@@ -22,6 +22,7 @@ class ListasController extends Controller
         $lista = new Lista;
         $lista->titulo = $request->titulo;
         $lista->conteudo = $request->conteudo;
+        $lista->resumo = $request->resumo;
         $lista->usuario_id = $request->usuario;
         $lista->categoria_id = $request->categoria;
         
@@ -46,6 +47,7 @@ class ListasController extends Controller
     public function salvar(Request $request, Lista $lista){
         $lista->titulo = $request->titulo;
         $lista->conteudo = $request->conteudo;
+        $lista->resumo = $request->resumo;
         $lista->usuario_id = $request->usuario;
         $lista->categoria_id = $request->categoria;
 

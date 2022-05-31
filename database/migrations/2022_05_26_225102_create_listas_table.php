@@ -18,7 +18,7 @@ class CreateListasTable extends Migration
             $table->string("titulo", 200);
             $table->text("conteudo");
             $table->string("banner", 255)->nullable();
-            $table->integer("visitas")->nullable();
+            $table->integer("visitas")->default(0);
             $table->unsignedBigInteger("usuario_id");
             $table->foreign('usuario_id')->references('id')->on('usuarios')->onDelete('cascade');
             $table->unsignedBigInteger('categoria_id');

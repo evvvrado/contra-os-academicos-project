@@ -19,25 +19,30 @@ class BlogsController extends Controller
     }
 
     public function cadastrar(Request $request){
+        if($request->tipo_pub == "publicar") {
+            $status = 1;
+        } elseif($request->tipo_pub == "rascunho") {
+            $status = 2;
+        }
+
         $blog = new Blog;
         $blog->titulo = $request->titulo;
         $blog->conteudo = $request->conteudo;
+        $blog->resumo = $request->resumo;
         $blog->referencias = $request->referencias;
         $blog->usuario_id = $request->usuario;
         $blog->exclusivo = $request->exclusivo;
         $blog->categoria_id = $request->categoria;
         $blog->autor_id = $request->autor;
         $blog->tradutor_id = $request->tradutor;
-        
+        $blog->status = $status;
         $blog->save();
-
         if($request->file("banner")){
             Blog::whereId($blog->id)
             ->update(['banner' => 'admin/imagens/blogs/'.$blog->id.'/'.$request->file('banner')->getClientOriginalName()]);
 
             $request->file("banner")->move(public_path('/admin/imagens/blogs/'.$blog->id."/"), $request->file('banner')->getClientOriginalName());
         }
-
 
         toastr()->success("Cadastro realizado com sucesso!");
         return redirect()->route("painel.blog");
@@ -50,6 +55,7 @@ class BlogsController extends Controller
     public function salvar(Request $request, Blog $blog){
         $blog->titulo = $request->titulo;
         $blog->conteudo = $request->conteudo;
+        $blog->resumo = $request->resumo;
         $blog->referencias = $request->referencias;
         $blog->usuario_id = $request->usuario;
         $blog->categoria_id = $request->categoria;

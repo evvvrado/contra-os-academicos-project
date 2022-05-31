@@ -23,6 +23,17 @@
                 <div class="card">
                     <div class="row justify-content-center">
                         <div class="col-xl-11">
+
+                            <input type="hidden" id="tipo_pub" name="tipo_pub" value="">
+
+                            <div class="col-lg-7 pt-3 d-flex justify-content-between">
+                                <button onClick="salvar('publicar')" type="submit" class="btn btn-success waves-effect btn-label waves-light"><i class="bx bx-check-double label-icon"></i> Publicar</button>
+
+                                <button onClick="salvar('rascunho')" type="submit" class="btn btn-primary waves-effect btn-label waves-light"><i class="bx bx-file-blank label-icon"></i> Rascunho</button>
+
+                                <button onClick="salvar('visualizar')" type="submit" class="btn btn-light waves-effect btn-label waves-light"><i class="bx bx-show-alt label-icon"></i> Visualizar</button>
+                            </div>
+
                             <div class="row">
                                 <div class="form-group col-lg-12">
                                     <label class="mt-3" for="titulo">Título</label>
@@ -31,9 +42,23 @@
                             </div>
 
                             <div class="row">
-                                <div class="form-group col-lg-12 pb-5">
+                                <div class="form-group col-lg-12">
                                     <label class="mt-3" for="conteudo">Conteúdo</label>
                                     <textarea required cols="80" class="conteudo" id="conteudo" name="conteudo" rows="10" data-sample-short></textarea>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="form-group col-lg-12">
+                                    <label class="mt-3" for="resumo">Resumo</label>
+                                    <textarea maxlength="104" required cols="80" class="form-control" id="resumo" name="resumo" rows="5" data-sample-short></textarea>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="form-group col-lg-12 pb-5">
+                                    <label class="mt-3" for="referencias">Referências</label>
+                                    <textarea cols="10" class="form-control" id="referencias" name="referencias" rows="16" data-sample-short></textarea>
                                 </div>
                             </div>
                         </div>
@@ -44,17 +69,14 @@
             <div class="col-xl-3 col-lg-4">
                 <div class="card">
                     <div class="card-body p-4">
-                        <div class="row">              
-                            <div class="col-lg-12 mt-2 mb-2 text-center" >
-                                <button type="submit" class="btn btn-primary px-5">Salvar</button>
-                            </div>
-                                          
+                        <div class="row">      
+
                             <div class="form-group col-lg-12">
                                 <label class="mt-3" for="exclusivo" class="form-label">Conteúdo Exclusivo</label>
                                 <select id="exclusivo" name="exclusivo" class="form-select" required>
                                     <option value="">Selecione</option>
                                     <option value="1">Sim</option>
-                                    <option value="0">Não</option>
+                                    <option value="0" select>Não</option>
                                 </select>
                             </div>
                             <div class="form-group col-lg-12">
@@ -123,11 +145,6 @@
                                     </div>
                                 </div>
                             </div>
-
-                            <div class="form-group col-lg-12">
-                                <label class="mt-3" for="referencias">Referências</label>
-                                <textarea required cols="10" class="form-control" id="referencias" name="referencias" rows="16" data-sample-short></textarea>
-                            </div>
                         </div>
                     </div>
                 </div>
@@ -143,6 +160,10 @@
 @section('scripts')
 
 <script>
+        function salvar(valor) {
+            $('#tipo_pub').val(valor);
+        }
+        
         $(document).ready(function(){
             var inp = document.getElementById('foto-upload');
             inp.addEventListener('change', function(e){
@@ -155,6 +176,13 @@
             },false);
 
             CKEDITOR.replace( 'conteudo', {
+                filebrowserBrowseUrl : '@filemanager_get_resource(dialog.php)?akey=@filemanager_get_key()&type=2&editor=ckeditor&fldr=',
+                filebrowserUploadUrl : '@filemanager_get_resource(dialog.php)?akey=@filemanager_get_key()&type=2&editor=ckeditor&fldr=',
+                filebrowserImageBrowseUrl : '@filemanager_get_resource(dialog.php)?akey=@filemanager_get_key()&type=1&editor=ckeditor&fldr=',
+                language : '<?php App::getLocale() ?>'
+            });
+
+            CKEDITOR.replace( 'referencias', {
                 filebrowserBrowseUrl : '@filemanager_get_resource(dialog.php)?akey=@filemanager_get_key()&type=2&editor=ckeditor&fldr=',
                 filebrowserUploadUrl : '@filemanager_get_resource(dialog.php)?akey=@filemanager_get_key()&type=2&editor=ckeditor&fldr=',
                 filebrowserImageBrowseUrl : '@filemanager_get_resource(dialog.php)?akey=@filemanager_get_key()&type=1&editor=ckeditor&fldr=',

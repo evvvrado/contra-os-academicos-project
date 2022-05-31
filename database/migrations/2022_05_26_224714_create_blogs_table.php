@@ -17,10 +17,10 @@ class CreateBlogsTable extends Migration
             $table->id();
             $table->string("titulo", 200);
             $table->text("conteudo");
-            $table->text("referencias");
+            $table->text("referencias")->nullable();
             $table->string("banner", 255)->nullable();
             $table->boolean("exclusivo");
-            $table->integer("visitas")->nullable();
+            $table->integer("visitas")->default(0);
             $table->unsignedBigInteger("usuario_id");
             $table->foreign('usuario_id')->references('id')->on('usuarios')->onDelete('cascade');
             $table->unsignedBigInteger('categoria_id');

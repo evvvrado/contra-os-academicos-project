@@ -30,9 +30,23 @@
                             </div>
 
                             <div class="row">
-                                <div class="form-group col-lg-12 pb-5">
+                                <div class="form-group col-lg-12">
                                     <label class="mt-3" for="conteudo">Conteúdo</label>
                                     <textarea required cols="80" class="conteudo" id="conteudo" name="conteudo" rows="10" data-sample-short>{{$blog->conteudo}}</textarea>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="form-group col-lg-12">
+                                    <label class="mt-3" for="resumo">Resumo</label>
+                                    <textarea maxlength="104" required cols="80" class="form-control" id="resumo" name="resumo" rows="5" data-sample-short>{{$blog->resumo}}</textarea>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="form-group col-lg-12 pb-5">
+                                    <label class="mt-3" for="referencias">Referências</label>
+                                    <textarea cols="80" class="form-control" id="referencias" name="referencias" rows="10" data-sample-short>{{$blog->referencias}}</textarea>
                                 </div>
                             </div>
                         </div>
@@ -121,11 +135,6 @@
                                     </div>
                                 </div>
                             </div>
-
-                            <div class="form-group col-lg-12">
-                                <label class="mt-3" for="referencias">Referências</label>
-                                <textarea required cols="80" class="form-control" id="referencias" name="referencias" rows="10" data-sample-short>{{$blog->referencias}}</textarea>
-                            </div>
                         </div>
                     </div>
                 </div>
@@ -151,6 +160,13 @@
             },false);
 
             CKEDITOR.replace( 'conteudo', {
+                filebrowserBrowseUrl : '@filemanager_get_resource(dialog.php)?akey=@filemanager_get_key()&type=2&editor=ckeditor&fldr=',
+                filebrowserUploadUrl : '@filemanager_get_resource(dialog.php)?akey=@filemanager_get_key()&type=2&editor=ckeditor&fldr=',
+                filebrowserImageBrowseUrl : '@filemanager_get_resource(dialog.php)?akey=@filemanager_get_key()&type=1&editor=ckeditor&fldr=',
+                language : '<?php App::getLocale() ?>'
+            });
+
+            CKEDITOR.replace( 'referencias', {
                 filebrowserBrowseUrl : '@filemanager_get_resource(dialog.php)?akey=@filemanager_get_key()&type=2&editor=ckeditor&fldr=',
                 filebrowserUploadUrl : '@filemanager_get_resource(dialog.php)?akey=@filemanager_get_key()&type=2&editor=ckeditor&fldr=',
                 filebrowserImageBrowseUrl : '@filemanager_get_resource(dialog.php)?akey=@filemanager_get_key()&type=1&editor=ckeditor&fldr=',

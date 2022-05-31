@@ -19,12 +19,15 @@
     <div class="col-12">
         <div class="card">
             <div class="card-body" style="overflow-x: scroll;">
-                <table id="datatable" class="table table-bordered dt-responsive  nowrap w-100">
+                <table id="datatable" class="table table-bordered dt-responsive wrap w-100">
                     <thead>
                         <tr>
                             <th>Título</th>
-                            <th>Subtítulo</th>
-                            <th>Autor</th>
+                            <th>Categoria</th>
+                            <th>Views</th>
+                            <th>Comentarios</th>
+                            <th>Compartilhamentos</th>
+                            <th>Publicação</th>
                             <th class="text-center">Ações</th>
                         </tr>
                     </thead>
@@ -34,12 +37,15 @@
 
                         @foreach($blogs as $blog)
                             <tr>
-                                <td>{{$blog->titulo}}</td>
-                                <td>{{$blog->sub_titulo}}</td>
+                                <td>{{ Str::limit($blog->titulo, 32 ) }}</td>
+                                <td>{{$blog->categoria->nome}}</td>
+                                <td class="text-center">{{$blog->visitas}}</td>
+                                <td></td>
+                                <td></td>
                                 <td></td>
                                 <td class="text-center">
-                                    <a href="{{ route('painel.blog.editar', ['blog' => $blog]) }}" class="btn btn-success" role="button">Editar</a>
-                                    <a class="btn btn-danger" href="" role="button">Deletar</a>
+                                    <a href="{{ route('painel.blog.editar', ['blog' => $blog]) }}" class="btn btn-sm btn-success" role="button"><i class="bx bx bx-edit-alt"></i></a>
+                                    <a class="btn btn-sm btn-danger" href="" role="button"><i class="bx bx bx bx-window-close"></i></a>
                                 </td>
                             </tr>
                         @endforeach

@@ -39,7 +39,7 @@
 
             <div class="col">
                 <div class="colunistas">
-                    <h2>Colunistas</h2>
+                    <h2>Colunas</h2>
 
                     <ul class="lista-colunistas">
                         <li>
@@ -123,7 +123,7 @@
                 <div class="content">
                     <div class="scroll">
                         @foreach($blogs as $key => $blog)
-                            @if($key < 5)
+                            @if($key < 4)
                                 <a href="{{ route('site.blog_detalhe', ['blog' => $blog]) }}" class="card" style="background-image: url('{{ asset($blog->banner) }}')">
                                     <span>Leia <i class="niv-arrow-right"></i></span>
                                     <strong>{{ $blog->titulo }}</strong>
@@ -193,7 +193,7 @@
             <div class="content-area">
                 <div class="scroll" data-filter="blogs" active>
                     @foreach($blogs as $key => $blog)
-                        @if($key < 9)
+                        @if($key < 8)
                             <a href="{{ route('site.blog_detalhe', ['blog' => $blog]) }}" class="box">
                                 <picture>
                                     <img src="{{ asset($blog->banner) }}" alt="">
@@ -204,7 +204,7 @@
 
                                     <hr>
 
-                                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the indu...</p>
+                                    <p>{{ Str::limit($blog->resumo, 104) }}</p>
                                 </div>
                             </a>
                         @endif
@@ -215,7 +215,7 @@
                 <div class="scroll" data-filter="revistas">
 
                     @foreach($revistas as $key => $revista)
-                        @if($key < 9)
+                        @if($key < 8)
                             <a href="{{ route('site.revista_detalhe', ['revista' => $revista]) }}" class="box">
                                 <picture>
                                     <img src="{{ asset($revista->banner) }}" alt="">
@@ -226,7 +226,7 @@
 
                                     <hr>
 
-                                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the indu...</p>
+                                    <p>{{ Str::limit($revista->resumo, 104) }}</p>
                                 </div>
                             </a>
                         @endif
@@ -238,7 +238,7 @@
 
                 <div class="scroll" data-filter="listas">
                     @foreach($listas as $key => $lista)
-                        @if($key < 9)
+                        @if($key < 8)
                             <a href="{{ route('site.lista_detalhe', ['lista' => $lista]) }}" class="box">
                                 <picture>
                                     <img src="{{ asset($lista->banner) }}" alt="">
@@ -249,7 +249,7 @@
 
                                     <hr>
 
-                                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the indu...</p>
+                                    <p>{{ Str::limit($lista->resumo, 104) }}</p>
                                 </div>
                             </a>
                         @endif

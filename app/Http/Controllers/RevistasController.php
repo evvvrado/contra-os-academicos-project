@@ -22,6 +22,7 @@ class RevistasController extends Controller
         $revista = new Revista;
         $revista->titulo = $request->titulo;
         $revista->conteudo = $request->conteudo;
+        $revista->resumo = $request->resumo;
         $revista->usuario_id = $request->usuario;
         $revista->autor_id = $request->autor;
         $revista->categoria_id = $request->categoria;
@@ -47,6 +48,7 @@ class RevistasController extends Controller
     public function salvar(Request $request, Revista $revista){
         $revista->titulo = $request->titulo;
         $revista->conteudo = $request->conteudo;
+        $revista->resumo = $request->resumo;
         $revista->usuario_id = $request->usuario;
         $revista->autor_id = $request->autor;
         $revista->categoria_id = $request->categoria;
