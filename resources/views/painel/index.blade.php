@@ -1,6 +1,6 @@
 @extends('painel.template.main')
 
-@section('styles')f
+@section('styles')
 @endsection
 
 @section('conteudo')

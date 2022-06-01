@@ -1,5 +1,6 @@
 <?php
 
+use Google\Service\CloudRun\Route as CloudRunRoute;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/sistema/login', [\App\Http\Controllers\PainelController::class, 'login'])->name("painel.login");
@@ -65,6 +66,29 @@ Route::middleware(['admin'])->group(function () {
     Route::get('/sistema/setores/cadastro', [\App\Http\Controllers\SetorsController::class, 'cadastro'])->name("painel.setores.cadastro");
     Route::post('/sistema/setores/cadastrar', [\App\Http\Controllers\SetorsController::class, 'cadastrar'])->name("painel.setores.cadastrar");
 });
+
+
+// ROTAS DO USUARIO DO SITE
+Route::get('/minha-area/login', [\App\Http\Controllers\UsuarioSitesController::class, 'login'])->name("minha_area.login");
+Route::post('/minha-area/logar', [\App\Http\Controllers\UsuarioSitesController::class, 'logar'])->name("minha_area.logar");
+
+Route::get('/minha-area/registro', [\App\Http\Controllers\UsuarioSitesController::class, 'registro'])->name("minha_area.registro");
+Route::post('/minha-area/registrar', [\App\Http\Controllers\UsuarioSitesController::class, 'registrar'])->name("minha_area.registrar");
+Route::get('/minha-area/autenticacao', [\App\Http\Controllers\UsuarioSitesController::class, 'autenticacao'])->name("minha_area.autenticacao");
+Route::post('/minha-area/autentica', [\App\Http\Controllers\UsuarioSitesController::class, 'autentica'])->name("minha_area.autentica");
+
+
+
+Route::middleware(['usuario_site'])->group(function () {
+    Route::get('/minha-area', [\App\Http\Controllers\UsuarioSitesController::class, 'index'])->name("minha_area.index");
+
+    Route::get('/sair', [\App\Http\Controllers\UsuarioSitesController::class, 'sair'])->name("minha_area.sair");
+});
+
+
+
+
+
 
 Route::get('/', [\App\Http\Controllers\SiteController::class, 'index'])->name("site.index");
 Route::get('/sobre', [\App\Http\Controllers\SiteController::class, 'sobre'])->name("site.sobre");
