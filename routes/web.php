@@ -9,7 +9,7 @@ Route::post('/sistema/logar', [\App\Http\Controllers\PainelController::class, 'l
 Route::middleware(['admin'])->group(function () {
     Route::get('/sistema', [\App\Http\Controllers\PainelController::class, 'index'])->name("painel.index");
 
-    Route::get('/sair', [\App\Http\Controllers\PainelController::class, 'sair'])->name("painel.sair");
+    Route::get('/painel/sair', [\App\Http\Controllers\PainelController::class, 'sair'])->name("painel.sair");
 
     // ROTAS DE CATEGORIAS
     Route::get('/sistema/categorias/consultar', [\App\Http\Controllers\CategoriasController::class, 'consultar'])->name("painel.categorias");
@@ -82,7 +82,7 @@ Route::post('/minha-area/autentica', [\App\Http\Controllers\UsuarioSitesControll
 Route::middleware(['usuario_site'])->group(function () {
     Route::get('/minha-area', [\App\Http\Controllers\UsuarioSitesController::class, 'index'])->name("minha_area.index");
 
-    Route::get('/sair', [\App\Http\Controllers\UsuarioSitesController::class, 'sair'])->name("minha_area.sair");
+    Route::get('/minha_area/sair', [\App\Http\Controllers\UsuarioSitesController::class, 'sair'])->name("minha_area.sair");
 });
 
 
