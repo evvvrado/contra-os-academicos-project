@@ -1,4 +1,4 @@
-@extends('site.template.main', ['titulo' => SIGLA . ' Artigo Interno'])
+@extends('site.template.main', ['titulo' => 'Blog | ' . $blog->titulo])
 
 @section('body_attr', 'id=artigo')
 
@@ -142,6 +142,8 @@
                         <button class="button">Quero compartilhar</button>
                     </div>
                 </div>
+
+                @include('site.includes.comentarios')
             </main>
 
             <picture class="artigo-banner">

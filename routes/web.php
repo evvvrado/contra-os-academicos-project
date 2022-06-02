@@ -82,6 +82,8 @@ Route::post('/minha-area/autentica', [\App\Http\Controllers\UsuarioSitesControll
 Route::middleware(['usuario_site'])->group(function () {
     Route::get('/minha-area', [\App\Http\Controllers\UsuarioSitesController::class, 'index'])->name("minha_area.index");
 
+    Route::post('/minha-area/comentar/{blog}', [\App\Http\Controllers\BlogComentariosController::class, 'comentar'])->name("minha_area.comentar");
+
     Route::get('/minha_area/sair', [\App\Http\Controllers\UsuarioSitesController::class, 'sair'])->name("minha_area.sair");
 });
 

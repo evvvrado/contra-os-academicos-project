@@ -111,11 +111,11 @@
                                                         </div>
                                                     </div>
                                                 </div>
+                                                <div class="mt-4">
+                                                    <input type="submit" class="btn btn-success w-md" value="Confirmar">
+                                                </div>
                                             </form>
     
-                                            <div class="mt-4">
-                                                <a href="{{ route('minha_area.index') }}" class="btn btn-success w-md">Confirmar</a>
-                                            </div>
                                         </div>
     
                                     </div>

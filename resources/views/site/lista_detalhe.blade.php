@@ -1,4 +1,4 @@
-@extends('site.template.main', ['titulo' => SIGLA . ' Lista Interna'])
+@extends('site.template.main', ['titulo' => 'Lista | ' . $lista->titulo])
 
 @section('body_attr', 'id=lista')
 

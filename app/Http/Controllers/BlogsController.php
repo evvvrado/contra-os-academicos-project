@@ -93,6 +93,12 @@ class BlogsController extends Controller
     }
 
     public function salvar(Request $request, Blog $blog){
+        if($request->tipo_pub == "publicar") {
+            $blog->status = 1;
+        } elseif($request->tipo_pub == "rascunho") {
+            $blog->status = 2;
+        }
+
         $blog->titulo = $request->titulo;
         $blog->conteudo = $request->conteudo;
         $blog->resumo = $request->resumo;

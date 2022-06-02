@@ -1,4 +1,4 @@
-@extends('site.template.main', ['titulo' => SIGLA . ' Artigo Interno'])
+@extends('site.template.main', ['titulo' => 'Revista | ' . $revista->titulo])
 
 @section('body_attr', 'id=artigo')
 

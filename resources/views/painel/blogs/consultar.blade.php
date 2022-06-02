@@ -26,11 +26,11 @@
                         <tr>
                             <th>Título</th>
                             <th>Categoria</th>
-                            <th>Views</th>
-                            <th>Comentarios</th>
-                            <th>Compartilhamentos</th>
-                            <th>Publicação</th>
-                            <th class="text-center">Ações</th>
+                            <th class="text-center"><i class="bx bx-show-alt"></i></th>
+                            <th class="text-center"><i class="bx bx-comment-dots"></i></th>
+                            <th class="text-center"><i class="bx bx-share-alt"></i></th>
+                            <th>Publicado</th>
+                            <th class="text-center"></th>
                         </tr>
                     </thead>
 
@@ -53,7 +53,7 @@
                                 <td class="text-center">0</td>
                                 <td class="text-center">0</td>
                                 <td>{{ \Carbon\Carbon::parse($blog->data)->format('d/m/Y')}}</td>
-                                <td class="text-center">
+                                <td >
                                     <a href="{{ route('painel.blog.editar', ['blog' => $blog]) }}" class="btn btn-sm btn-success" role="button"><i class="bx bx bx-edit-alt"></i></a>
                                     <a onClick="deletar({{ $blog->id }})" class="btn btn-sm btn-danger" role="button"><i class="bx bx bx bx-window-close"></i></a>
                                 </td>

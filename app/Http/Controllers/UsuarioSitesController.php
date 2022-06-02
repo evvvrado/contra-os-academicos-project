@@ -46,6 +46,16 @@ class UsuarioSitesController extends Controller
         return redirect()->route("minha_area.autenticacao");
     }
 
+    public function autenticacao()
+    {
+        return view("minha_area.autenticacao");
+    }
+
+    public function autentica()
+    {
+        return redirect()->route("site.index");
+    }
+
     public function logar(Request $request)
     {
         $usuario = UsuarioSite::where("email", $request->email)->first();
@@ -66,16 +76,6 @@ class UsuarioSitesController extends Controller
         }
 
         return redirect()->back();
-    }
-
-    public function autenticacao()
-    {
-        return view("minha_area.autenticacao");
-    }
-
-    public function autentica()
-    {
-        return view("minha_area.autenticacao");
     }
 
     public function sair()

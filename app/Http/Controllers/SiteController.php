@@ -10,6 +10,7 @@ use App\Models\Revista;
 use App\Models\Blog;
 use App\Models\Lista;
 use Carbon\Carbon;
+use App\Models\BlogComentario;
 
 class SiteController extends Controller
 {
@@ -17,14 +18,17 @@ class SiteController extends Controller
     public function index()
     {
         $revistas = Revista::select(DB::raw("*"))
+        ->whereStatus(1)
         ->orderBy('id', 'Desc')
         ->get();
 
         $blogs = Blog::select(DB::raw("*"))
+        ->whereStatus(1)
         ->orderBy('id', 'Desc')
         ->get();
 
         $listas = Lista::select(DB::raw("*"))
+        ->whereStatus(1)
         ->orderBy('id', 'Desc')
         ->get();
 
@@ -40,6 +44,7 @@ class SiteController extends Controller
     public function blogs()
     {
         $blogs = Blog::select(DB::raw("*"))
+        ->whereStatus(1)
         ->orderBy('id', 'Desc')
         ->get();
         
@@ -54,10 +59,11 @@ class SiteController extends Controller
         setlocale(LC_TIME, 'pt_BR.utf-8', 'ptb', 'pt_BR', 'portuguese-brazil', 'portuguese-brazilian', 'bra', 'brazil', 'br');
 
         // Create Carbon date
-        $dt = Carbon::now();
         $mes = $blog->created_at->formatLocalized('%B');
 
-        return view("site.blog_detalhe", ["blog" => $blog, "mes" => $mes]);
+        $comentarios = BlogComentario::where('blog_id', $blog->id)->get();
+
+        return view("site.blog_detalhe", ["blog" => $blog, "mes" => $mes, "comentarios" => $comentarios]);
     }
     // ------------------------------------------------
     public function revistas()

@@ -5,11 +5,13 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class UsuarioSite extends Model
+class BlogComentario extends Model
 {
     use HasFactory;
 
-    public function blog(){
-        return $this->hasOne(Blog::class);
+    public function usuario_site()
+    {
+        return $this->belongsTo(UsuarioSite::class);
     }
+
 }

@@ -87,7 +87,7 @@
 
                                 <hr>
 
-                                {!!Str::limit($blog->conteudo, 104)!!}
+                                {!!Str::limit($blog->resumo, 104)!!}
                             </div>
                         </a>
                     @endforeach

@@ -22,6 +22,19 @@
                 <div class="card">
                     <div class="row justify-content-center">
                         <div class="col-xl-11">
+
+                            <input type="hidden" id="tipo_pub" name="tipo_pub" value="">
+
+                            <div class="col-lg-5 pt-3 d-flex justify-content-between">
+                                @if($blog->status == 1)
+                                    <button onClick="salvar('rascunho')" type="submit" class="btn btn-primary waves-effect btn-label waves-light"><i class="bx bx-file-blank label-icon"></i> Rascunho</button>
+                                @elseif($blog->status == 2)
+                                    <button onClick="salvar('publicar')" type="submit" class="btn btn-success waves-effect btn-label waves-light"><i class="bx bx-check-double label-icon"></i> Publicar</button>
+                                @endif
+                                
+                                <button onClick="salvar('visualizar')" class="btn btn-light waves-effect btn-label waves-light visualizar"><i class="bx bx-show-alt label-icon"></i> Visualizar</button>
+                            </div>
+
                             <div class="row">
                                 <div class="form-group col-lg-12">
                                     <label class="mt-3" for="titulo">Título</label>
@@ -58,9 +71,6 @@
                 <div class="card">
                     <div class="card-body p-4">
                         <div class="row">
-                            <div class="col-lg-12 mt-2 mb-2 text-center" >
-                                <button type="submit" class="btn btn-primary px-5">Salvar</button>
-                            </div>
                             <div class="form-group col-lg-12">
                                 <label class="mt-3" for="exclusivo" class="form-label">Conteúdo Exclusivo</label>
                                 <select required id="exclusivo" name="exclusivo" class="form-select">
@@ -148,6 +158,10 @@
 @section('scripts')
 
 <script>
+        function salvar(valor) {
+            $('#tipo_pub').val(valor);
+        }
+
         $(document).ready(function(){
             var inp = document.getElementById('foto-upload');
             inp.addEventListener('change', function(e){

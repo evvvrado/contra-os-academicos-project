@@ -41,7 +41,7 @@
             </div>
 
             <div class="user-circle">
-                <a href="{{ route('minha_area.login') }}" title="Acessar área">
+                <a href="{{ route('minha_area.index') }}" title="Acessar área">
                     <img src="{{ asset('site/assets/img/icon_user_header.svg') }}" alt="Ícone de usuário">
                 </a>
             </div>
