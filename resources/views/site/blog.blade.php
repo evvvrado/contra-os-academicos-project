@@ -1,4 +1,4 @@
-@extends('site.template.main', ['titulo' => SIGLA . ' Nosso Blog'])
+@extends('site.template.main', ['titulo' => SIGLA . ' Blog'])
 
 @section('body_attr', 'id=blog')
 

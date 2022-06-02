@@ -1,4 +1,4 @@
-@extends('site.template.main', ['titulo' => SIGLA . ' Nossas Revistas'])
+@extends('site.template.main', ['titulo' => SIGLA . ' Revistas'])
 
 @section('body_attr', 'id=revistas')
 
