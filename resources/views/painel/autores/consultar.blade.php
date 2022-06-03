@@ -23,7 +23,7 @@
                     <thead>
                         <tr>
                             <th>Nome</th>
-                            <th class="text-center">Ações</th>
+                            <th class="text-center"></th>
                         </tr>
                     </thead>
 

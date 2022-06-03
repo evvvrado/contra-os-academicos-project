@@ -20,4 +20,8 @@ class Categoria extends Model
     public function lista(){
         return $this->hasOne(Lista::class);
     }
+
+    public function curso(){
+        return $this->hasOne(Curso::class);
+    }
 }

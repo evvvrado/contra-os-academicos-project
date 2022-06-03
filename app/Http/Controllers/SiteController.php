@@ -9,6 +9,7 @@ use DB;
 use App\Models\Revista;
 use App\Models\Blog;
 use App\Models\Lista;
+use App\Models\Curso;
 use Carbon\Carbon;
 use App\Models\BlogComentario;
 
@@ -32,7 +33,11 @@ class SiteController extends Controller
         ->orderBy('id', 'Desc')
         ->get();
 
-        return view("site.index", ["revistas" => $revistas, "blogs" => $blogs, "listas" => $listas]);
+        $cursos = Curso::select(DB::raw("*"))
+        ->orderBy('id', 'Desc')
+        ->get();
+
+        return view("site.index", ["revistas" => $revistas, "blogs" => $blogs, "listas" => $listas, "cursos" => $cursos]);
     }
 
     public function sobre()

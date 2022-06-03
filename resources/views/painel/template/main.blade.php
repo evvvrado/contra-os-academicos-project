@@ -225,6 +225,9 @@
                                         <li>
                                             <a href="{{ route('painel.revista') }}" key="t-invoice-list">Revistas</a>
                                         </li>
+                                        <li>
+                                            <a href="{{ route('painel.curso') }}" key="t-invoice-list">Cursos</a>
+                                        </li>
                                     </ul>
                                 </li>
 

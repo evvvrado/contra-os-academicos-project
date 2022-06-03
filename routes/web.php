@@ -51,6 +51,13 @@ Route::middleware(['admin'])->group(function () {
     Route::get('/sistema/revista/editar/{revista}', [\App\Http\Controllers\RevistasController::class, 'editar'])->name("painel.revista.editar");
     Route::post('/sistema/revista/salvar/{revista}', [\App\Http\Controllers\RevistasController::class, 'salvar'])->name("painel.revista.salvar");
 
+    // ROTAS DE CURSOS
+    Route::get('/sistema/curso/consultar', [\App\Http\Controllers\CursosController::class, 'consultar'])->name("painel.curso");
+    Route::get('/sistema/curso/cadastro', [\App\Http\Controllers\CursosController::class, 'cadastro'])->name("painel.curso.cadastro");
+    Route::post('/sistema/curso/cadastrar', [\App\Http\Controllers\CursosController::class, 'cadastrar'])->name("painel.curso.cadastrar");
+    Route::get('/sistema/curso/editar/{curso}', [\App\Http\Controllers\CursosController::class, 'editar'])->name("painel.curso.editar");
+    Route::post('/sistema/curso/salvar/{curso}', [\App\Http\Controllers\CursosController::class, 'salvar'])->name("painel.curso.salvar");
+
     // ROTAS DE USUÁRIOS
     Route::get('/sistema/usuarios', [\App\Http\Controllers\UsuariosController::class, 'consultar'])->name("painel.usuarios");
     Route::get('/sistema/usuarios/inativos', [\App\Http\Controllers\UsuariosController::class, 'consultar_inativos'])->name("painel.usuarios.inativos");

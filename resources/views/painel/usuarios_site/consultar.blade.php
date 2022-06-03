@@ -4,14 +4,12 @@
     <!-- DataTables -->
     <link href="{{asset('admin/libs/datatables.net-bs4/css/dataTables.bootstrap4.min.css')}}" rel="stylesheet" type="text/css" />
     <link href="{{asset('admin/libs/datatables.net-buttons-bs4/css/buttons.bootstrap4.min.css')}}" rel="stylesheet" type="text/css" />
+
+    <link href="{{asset('admin/assets/libs/sweetalert2/sweetalert2.min.css')}}" rel="stylesheet" type="text/css" />
 @endsection
 
 @section('titulo')
-    Listagem de Tradutores @if(isset($tipo)) {{$tipo}}  @endif
-@endsection
-
-@section('botoes')
-    <a name="" id="" class="btn btn-success" href="#" data-bs-toggle="modal" data-bs-target=".cadastrar_tradutor" role="button">Novo</a>
+    Listagem de Usuários do Site @if(isset($tipo)) {{$tipo}}  @endif
 @endsection
 
 @section('conteudo')
@@ -19,10 +17,12 @@
     <div class="col-12">
         <div class="card">
             <div class="card-body" style="overflow-x: scroll;">
-                <table id="datatable" class="table table-bordered dt-responsive  nowrap w-100">
+                <table id="datatable" class="table table-bordered dt-responsive wrap w-100">
                     <thead>
                         <tr>
                             <th>Nome</th>
+                            <th>E-mail</th>
+                            <th>Assinante</th>
                             <th class="text-center"></th>
                         </tr>
                     </thead>
@@ -30,56 +30,22 @@
 
                     <tbody>
 
-                        @foreach($tradutores as $tradutor)
+                        @foreach($blogs as $blog)
                             <tr>
-                                <td>{{$tradutor->nome}}</td>
+                                <td style="position: relative;">{{ $usu_site->nome }}</td>
+                                <td>{{ $usu_site->email }}</td>
                                 <td class="text-center">
-                                    <a href="#" data-bs-toggle="modal" data-bs-target=".editar_tradutor{{ $tradutor->id }}" class="btn btn-success" role="button">Editar</a>
-                                    <a class="btn btn-danger" href="" role="button">Inativar</a>
+                                    @if ($usu_site->assinante == true)
+                                        Sim
+                                    @else
+                                        Não  
+                                    @endif    
+                                </td>
+                                <td >
+                                    <a href="{{ route('painel.blog.editar', ['blog' => $blog]) }}" class="btn btn-sm btn-success" role="button"><i class="bx bx bx-edit-alt"></i></a>
+                                    <a onClick="deletar({{ $blog->id }})" class="btn btn-sm btn-danger" role="button"><i class="bx bx bx bx-window-close"></i></a>
                                 </td>
                             </tr>
-
-                            <!--  Large modal example -->
-                            <div class="modal fade editar_tradutor{{ $tradutor->id }}" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
-                                <div class="modal-dialog modal-lg">
-                                    <div class="modal-content">
-                                        <div class="modal-header">
-                                            <h5 class="modal-title" id="myLargeModalLabel">Editando Tradutor</h5>
-                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                        </div>
-                                        <div class="modal-body">
-                                            <form action="{{route('painel.tradutor.salvar', ['tradutor' => $tradutor])}}" method="POST" enctype="multipart/form-data">
-                                                @csrf
-                                                <div class="row">
-                                                    <div class="col-12 text-center">
-                                                        <img class="escolher_imagem" id="foto-preview{{ $tradutor->id }}" src="{{asset($tradutor->foto)}}" style="max-height: 200px;" alt="">
-                                                    </div>
-                                                    <div class="row mt-3">
-                                                        <div class="col-12 text-center">
-                                                            <label class="btn btn-primary" for="foto-upload{{ $tradutor->id }}">Escolher</label>
-                                                            <input onchange="mudar_foto(this.files, {{ $tradutor->id }})" name="foto" id="foto-upload{{ $tradutor->id }}" style="display: none;" type="file" required>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="row">
-                                                    <div class="col-lg-12">
-                                                        <label class="mt-3" for="nome">Nome</label>
-                                                        <input type="text" class="form-control" name="nome" id="nome" value="{{ $tradutor->nome }}" required>
-
-                                                        <label class="mt-3" for="resumo">Resumo</label>
-                                                        <textarea rows="8" class="form-control" name="resumo" id="resumo" required>{{ $tradutor->resumo }}</textarea>
-                                                    </div>
-                                            
-                                                    <div class="col-lg-4 mt-5" >
-                                                        <button type="submit" class="btn btn-primary px-5">Salvar</button>
-                                                    </div>
-                                                </div>
-                                                
-                                            </form>
-                                        </div>
-                                    </div><!-- /.modal-content -->
-                                </div><!-- /.modal-dialog -->
-                            </div><!-- /.modal -->
                         @endforeach
 
                     </tbody>
@@ -89,68 +55,33 @@
     </div> <!-- end col -->
 </div> <!-- end row -->
 
-<!--  Large modal example -->
-<div class="modal fade cadastrar_tradutor" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-lg">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="myLargeModalLabel">Cadastrando Tradutor</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                <form action="{{route('painel.tradutor.cadastrar')}}" method="POST" enctype="multipart/form-data">
-                    @csrf
-                    <div class="row">
-                        <div class="col-12 text-center">
-                            <img class="escolher_imagem" id="foto-preview0" src="{{asset('admin/imagens/thumb-padrao.png')}}" style="max-height: 200px;" alt="">
-                        </div>
-                        <div class="row mt-3">
-                            <div class="col-12 text-center">
-                                <label class="btn btn-primary" for="foto-upload0">Escolher</label>
-                                <input onchange="mudar_foto(this.files, 0)" name="foto" id="foto-upload0" style="display: none;" type="file" required>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-lg-12">
-                            <label class="mt-3" for="nome">Nome</label>
-                            <input type="text" class="form-control" name="nome" id="nome" required>
-
-                            <label class="mt-3" for="resumo">Resumo</label>
-                            <textarea rows="8" class="form-control" name="resumo" id="resumo" required></textarea>
-                        </div>
-                
-                        <div class="col-lg-4 mt-5" >
-                            <button type="submit" class="btn btn-primary px-5">Salvar</button>
-                        </div>
-                    </div>
-                    
-                </form>
-            </div>
-        </div><!-- /.modal-content -->
-    </div><!-- /.modal-dialog -->
-</div><!-- /.modal -->
-
 @endsection
 
 @section('scripts')
     <!-- Required datatable js -->
     <script src="{{asset('admin/libs/datatables.net/js/jquery.dataTables.min.js')}}"></script>
     <script src="{{asset('admin/libs/datatables.net-bs4/js/dataTables.bootstrap4.min.js')}}"></script>
+
+    <!-- Sweet Alerts js -->
+    <script src="{{asset('admin/assets/libs/sweetalert2/sweetalert2.min.js')}}"></script>
+    
     <script>
-        function mudar_foto(files, id) {
-            var inp = document.getElementById('foto-upload'+id);
-            var file = files[0];
-            var reader = new FileReader();
-            reader.onload = function(){
-                console.log(this.result)
-                document.getElementById('foto-preview'+id).src = this.result;
-            };
-            reader.readAsDataURL(file);
+        function deletar(id) {
+            Swal.fire({
+                title: "Tem certeza?",
+                text: "Esse conteúdo irá para lixeira!",
+                icon: "warning",
+                showCancelButton: !0,
+                confirmButtonColor: "#34c38f",
+                cancelButtonColor: "#f46a6a",
+                confirmButtonText: "Sim, deletar!"
+            }).then(function(t) {
+                t.value && Swal.fire("Deletado!", "Movido para lixeira.", "success")
+                
+
+            })
         }
-
         $(document).ready(function() {
-
             $('#datatable').DataTable( {
                 language:{
                     "emptyTable": "Nenhum registro encontrado",

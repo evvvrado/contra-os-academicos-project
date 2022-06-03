@@ -1,4 +1,4 @@
-@extends('site.template.main', ['titulo' => SIGLA . ' Nossa Biblioteca'])
+@extends('site.template.main', ['titulo' => SIGLA . ' Biblioteca'])
 
 @section('body_attr', 'id=biblioteca')
 
