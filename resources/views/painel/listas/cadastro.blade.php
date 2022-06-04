@@ -54,6 +54,16 @@
                             <div class="col-lg-12 mt-2 mb-2 text-center" >
                                 <button type="submit" class="btn btn-primary px-5">Salvar</button>
                             </div>
+
+                            <div class="form-group col-lg-12">
+                                <label class="mt-3" for="destaque" class="form-label">Destaque</label>
+                                <select required id="destaque" name="destaque" class="form-select">
+                                    <option value="">Selecione</option>
+                                        <option value="0">Não</option>
+                                        <option value="1">Sim</option>
+                                </select>
+                            </div>
+
                             <div class="form-group col-lg-12">
                                 <label class="mt-3" for="categoria" class="form-label">Categoria</label>
                                 <select id="categoria" name="categoria" class="form-select" required>

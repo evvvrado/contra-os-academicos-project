@@ -1,6 +1,6 @@
-@extends('site.template.main', ['titulo' => SIGLA . ' Revistas'])
+@extends('site.template.main', ['titulo' => SIGLA . ' Listas'])
 
-@section('body_attr', 'id=listas')
+@section('body_attr', 'id=biblioteca')
 
 @section('content')
 
@@ -9,102 +9,86 @@
             <div class="roadmap">
                 <a href="/">Início</a>
                 >>
-                <a href="{{ route('site.listas') }}">Lista</a>
+                <a href="{{ route('site.biblioteca') }}">Biblioteca</a>
             </div>
 
-            <h2 class="--bar">Revista</h2>
+            <h2 class="--bar">Listas de Leitura</h2>
         </div>
     </section>
 
-    <section class="complemento --listas">
+    <section class="complemento --biblioteca">
         <div class="niv">
-
-            <div class="indicador">
-                <span active></span>
-                <span></span>
-                <span></span>
-                <span></span>
+            <div class="title-area">
+                <a href="#">
+                    <picture>
+                        <img src="{{ asset('site/assets/img/icon_grade_biblioteca.svg') }}" alt="Ícone de grade">
+                    </picture>
+                    Lista por assunto
+                </a>
             </div>
 
-            <div class="banner-area">
+
+            <div class="boxes-area">
+                <button class="scroll-left">
+                    <img src="{{ asset('site/assets/img/arrow_left_biblioteca.svg') }}" alt="">
+                </button>
                 <div class="scroll">
-                    <div class="banner"
-                        style="background-image: url({{ asset('site/assets/img/banner_card_revista.jpg') }})">
-                        <h1>Resenha: O Saber e o Enigma (Parte 0)</h1>
+                    <div class="boxes">
+                        <a href="#" class="box-destaque"
+                            style="background-image: url({{ asset('site/assets/img/banner_assuntos5_biblioteca.jpg') }})">
+                            <h2>Grécia Antiga</h2>
+                        </a>
+                        <a href="#" class="box-destaque"
+                            style="background-image: url({{ asset('site/assets/img/banner_assuntos4_biblioteca.jpg') }})">
+                            <h2>Direito</h2>
+                        </a>
+                        <a href="#" class="box-destaque"
+                            style="background-image: url({{ asset('site/assets/img/banner_assuntos3_biblioteca.jpg') }})">
+                            <h2>Roma</h2>
+                        </a>
+                        <a href="#" class="box-destaque"
+                            style="background-image: url({{ asset('site/assets/img/banner_assuntos2_biblioteca.jpg') }})">
+                            <h2>História</h2>
+                        </a>
+                        <a href="#" class="box-destaque"
+                            style="background-image: url({{ asset('site/assets/img/banner_assuntos1_biblioteca.jpg') }})">
+                            <h2>Filosofia</h2>
+                        </a>
 
-                        <p>Por <strong>Contra os Acadêmicos</strong></p>
+
+
+                        <a href="#" class="box-destaque"
+                            style="background-image: url({{ asset('site/assets/img/banner_assuntos4_biblioteca.jpg') }})">
+                            <h2>Direito</h2>
+                        </a>
+                        <a href="#" class="box-destaque"
+                            style="background-image: url({{ asset('site/assets/img/banner_assuntos5_biblioteca.jpg') }})">
+                            <h2>Grécia Antiga</h2>
+                        </a>
+                        <a href="#" class="box-destaque"
+                            style="background-image: url({{ asset('site/assets/img/banner_assuntos3_biblioteca.jpg') }})">
+                            <h2>Roma</h2>
+                        </a>
+                        <a href="#" class="box-destaque"
+                            style="background-image: url({{ asset('site/assets/img/banner_assuntos1_biblioteca.jpg') }})">
+                            <h2>Filosofia</h2>
+                        </a>
+                        <a href="#" class="box-destaque"
+                            style="background-image: url({{ asset('site/assets/img/banner_assuntos2_biblioteca.jpg') }})">
+                            <h2>História</h2>
+                        </a>
+
+
                     </div>
-
-
-                    <div class="banner"
-                        style="background-image: url({{ asset('site/assets/img/banner_card_revista.jpg') }})">
-                        <h1>Resenha: O Saber e o Enigma (Parte I)</h1>
-
-                        <p>Por <strong>Contra os Acadêmicos</strong></p>
-                    </div>
-
-
-                    <div class="banner"
-                        style="background-image: url({{ asset('site/assets/img/banner_card_revista.jpg') }})">
-                        <h1>Resenha : O Saber e o Enigma (Parte II)</h1>
-
-                        <p>Por <strong>Contra os Acadêmicos</strong></p>
-                    </div>
-                    <div class="banner"
-                        style="background-image: url({{ asset('site/assets/img/banner_card_revista.jpg') }})">
-                        <h1>Resenha: O Saber e o Enigma (Parte 0)</h1>
-
-                        <p>Por <strong>Contra os Acadêmicos</strong></p>
-                    </div>
-
-
                 </div>
+                <button class="scroll-right">
+                    <img src="{{ asset('site/assets/img/arrow_right_biblioteca.svg') }}" alt="">
+                </button>
             </div>
-        </div>
     </section>
 
 
     <section class="publicacoes">
-        <aside>
-            <ul class="colunistas">
-                <li>
-                    <picture>
-                        <img src="{{ asset('site/assets/img/colunista1_blog.png') }}" alt="Foto do colunista">
-                    </picture>
-
-                    <span>Nome do colunista</span>
-                </li>
-                <li>
-                    <picture>
-                        <img src="{{ asset('site/assets/img/colunista2_blog.png') }}" alt="Foto do colunista">
-                    </picture>
-
-                    <span>Nome do colunista</span>
-                </li>
-                <li>
-                    <picture>
-                        <img src="{{ asset('site/assets/img/colunista3_blog.png') }}" alt="Foto do colunista">
-                    </picture>
-
-                    <span>Nome do colunista</span>
-                </li>
-                <li>
-                    <picture>
-                        <img src="{{ asset('site/assets/img/colunista4_blog.png') }}" alt="Foto do colunista">
-                    </picture>
-
-                    <span>Nome do colunista</span>
-                </li>
-                <li>
-                    <picture>
-                        <img src="{{ asset('site/assets/img/colunista5_blog.png') }}" alt="Foto do colunista">
-                    </picture>
-
-                    <span>Nome do colunista</span>
-                </li>
-            </ul>
-        </aside>
-
 
         <main>
             <div class="niv">
@@ -116,118 +100,21 @@
                 </div>
 
                 <div class="content-area">
-                    <a href="#" class="box">
-                        <picture>
-                            <img src="{{ asset('site/assets/img/picture_blog1_conteudo.jpg') }}" alt="">
-                        </picture>
-                        <div class="box-content">
-                            <span>Filosofia da consciências</span>
-                            <strong>Como vencer um debate sem precisar ter razão</strong>
+                    @foreach($listas as $key => $lista)
+                        <a href="{{ route('site.lista_detalhe', ['lista' => $lista]) }}" class="box">
+                            <picture>
+                                <img src="{{ asset($lista->banner) }}" alt="">
+                            </picture>
+                            <div class="box-content">
+                                <span>{{ $lista->categoria->nome }}</span>
+                                <strong>{{ $lista->titulo }}</strong>
 
-                            <hr>
+                                <hr>
 
-                            <p>A rigor este livro está mal batizado. O título pode sugerir ao leitor um manual de patifaria
-                                intelectual...</p>
-                        </div>
-                    </a>
-                    <a href="#" class="box">
-                        <picture>
-                            <img src="{{ asset('site/assets/img/picture_blog8_conteudo.jpg') }}" alt="">
-                        </picture>
-                        <div class="box-content">
-                            <span>Filosofia da consciências</span>
-                            <strong>Como vencer um debate sem precisar ter razão</strong>
-
-                            <hr>
-
-                            <p>A rigor este livro está mal batizado. O título pode sugerir ao leitor um manual de patifaria
-                                intelectual...</p>
-                        </div>
-                    </a>
-                    <a href="#" class="box">
-                        <picture>
-                            <img src="{{ asset('site/assets/img/picture_blog2_conteudo.jpg') }}" alt="">
-                        </picture>
-                        <div class="box-content">
-                            <span>Filosofia da consciências</span>
-                            <strong>Como vencer um debate sem precisar ter razão</strong>
-
-                            <hr>
-
-                            <p>A rigor este livro está mal batizado. O título pode sugerir ao leitor um manual de patifaria
-                                intelectual...</p>
-                        </div>
-                    </a>
-                    <a href="#" class="box">
-                        <picture>
-                            <img src="{{ asset('site/assets/img/picture_blog3_conteudo.jpg') }}" alt="">
-                        </picture>
-                        <div class="box-content">
-                            <span>Filosofia da consciências</span>
-                            <strong>Como vencer um debate sem precisar ter razão</strong>
-
-                            <hr>
-
-                            <p>A rigor este livro está mal batizado. O título pode sugerir ao leitor um manual de patifaria
-                                intelectual...</p>
-                        </div>
-                    </a>
-                    <a href="#" class="box">
-                        <picture>
-                            <img src="{{ asset('site/assets/img/picture_blog4_conteudo.jpg') }}" alt="">
-                        </picture>
-                        <div class="box-content">
-                            <span>Filosofia da consciências</span>
-                            <strong>Como vencer um debate sem precisar ter razão</strong>
-
-                            <hr>
-
-                            <p>A rigor este livro está mal batizado. O título pode sugerir ao leitor um manual de patifaria
-                                intelectual...</p>
-                        </div>
-                    </a>
-                    <a href="#" class="box">
-                        <picture>
-                            <img src="{{ asset('site/assets/img/picture_blog5_conteudo.jpg') }}" alt="">
-                        </picture>
-                        <div class="box-content">
-                            <span>Filosofia da consciências</span>
-                            <strong>Como vencer um debate sem precisar ter razão</strong>
-
-                            <hr>
-
-                            <p>A rigor este livro está mal batizado. O título pode sugerir ao leitor um manual de patifaria
-                                intelectual...</p>
-                        </div>
-                    </a>
-                    <a href="#" class="box">
-                        <picture>
-                            <img src="{{ asset('site/assets/img/picture_blog6_conteudo.jpg') }}" alt="">
-                        </picture>
-                        <div class="box-content">
-                            <span>Filosofia da consciências</span>
-                            <strong>Como vencer um debate sem precisar ter razão</strong>
-
-                            <hr>
-
-                            <p>A rigor este livro está mal batizado. O título pode sugerir ao leitor um manual de patifaria
-                                intelectual...</p>
-                        </div>
-                    </a>
-                    <a href="#" class="box">
-                        <picture>
-                            <img src="{{ asset('site/assets/img/picture_blog7_conteudo.jpg') }}" alt="">
-                        </picture>
-                        <div class="box-content">
-                            <span>Filosofia da consciências</span>
-                            <strong>Como vencer um debate sem precisar ter razão</strong>
-
-                            <hr>
-
-                            <p>A rigor este livro está mal batizado. O título pode sugerir ao leitor um manual de patifaria
-                                intelectual...</p>
-                        </div>
-                    </a>
+                                <p>{{ Str::limit($lista->resumo, 104) }}</p>
+                            </div>
+                        </a>
+                    @endforeach 
                 </div>
 
                 <div class="button-area">
@@ -248,57 +135,23 @@
 
 
                 <ul>
+                    @foreach($mais_lidas as $mais_lida)
                     <li>
                         <a href="#" class="box">
                             <picture>
-                                <img src="{{ asset('site/assets/img/picture_blog1_conteudo.jpg') }}" alt="">
+                                <img src="{{ asset($mais_lida->banner) }}" alt="">
                             </picture>
                             <div class="box-content">
-                                <span>Filosofia da consciências</span>
-                                <strong>Como vencer um debate sem precisar ter razão</strong>
+                                <span>{{ $mais_lida->categoria->nome }}</span>
+                                <strong>{{ $mais_lida->titulo }}</strong>
 
                                 <hr>
 
-                                <p>A rigor este livro está mal batizado. O título pode sugerir ao leitor um manual de
-                                    patifaria
-                                    intelectual...</p>
+                                <p>{{ Str::limit($mais_lida->resumo, 104) }}</p>
                             </div>
                         </a>
                     </li>
-                    <li>
-                        <a href="#" class="box">
-                            <picture>
-                                <img src="{{ asset('site/assets/img/picture_blog8_conteudo.jpg') }}" alt="">
-                            </picture>
-                            <div class="box-content">
-                                <span>Filosofia da consciências</span>
-                                <strong>Como vencer um debate sem precisar ter razão</strong>
-
-                                <hr>
-
-                                <p>A rigor este livro está mal batizado. O título pode sugerir ao leitor um manual de
-                                    patifaria
-                                    intelectual...</p>
-                            </div>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#" class="box">
-                            <picture>
-                                <img src="{{ asset('site/assets/img/picture_blog2_conteudo.jpg') }}" alt="">
-                            </picture>
-                            <div class="box-content">
-                                <span>Filosofia da consciências</span>
-                                <strong>Como vencer um debate sem precisar ter razão</strong>
-
-                                <hr>
-
-                                <p>A rigor este livro está mal batizado. O título pode sugerir ao leitor um manual de
-                                    patifaria
-                                    intelectual...</p>
-                            </div>
-                        </a>
-                    </li>
+                    @endforeach
                 </ul>
             </div>
         </aside>
@@ -308,38 +161,13 @@
 
 @section('scripts')
     <script>
-        var atualBanner = 0;
-
-        setInterval(() => {
-            if (atualBanner < 3) {
-                $('section.complemento.--revistas div.banner-area').scrollLeft($(
-                    'section.complemento.--revistas div.banner-area').scrollLeft() + $(
-                    'section.complemento.--revistas div.banner-area div.scroll div.banner').width())
-                atualBanner++;
-            } else {
-                $('section.complemento.--revistas div.banner-area').scrollLeft(0);
-                atualBanner = 0;
-            }
-
-
-            $('div.indicador span').removeAttr('active');
-            $(`div.indicador span:nth-child(${atualBanner + 1})`).attr('active', '');
-
-        }, 4000);
-
-
-        $('div.indicador span').click(function() {
-
-            atualBanner = $(this).index() + 1;
-
-
-            $('section.complemento.--revistas div.banner-area').scrollLeft(
-                $('section.complemento.--revistas div.banner-area div.scroll div.banner')[$(this).index()]
-                .offsetLeft
-            )
-
-            $('div.indicador span').removeAttr('active');
-            $(`div.indicador span:nth-child(${$(this).index() + 1})`).attr('active', '');
+        $('section.complemento.--biblioteca div.niv div.boxes-area button.scroll-left').click(() => {
+            $('section.complemento.--biblioteca div.niv div.boxes-area div.scroll').scrollLeft($(
+                'section.complemento.--biblioteca div.niv div.boxes-area div.scroll').scrollLeft() - 200);
+        })
+        $('section.complemento.--biblioteca div.niv div.boxes-area button.scroll-right').click(() => {
+            $('section.complemento.--biblioteca div.niv div.boxes-area div.scroll').scrollLeft($(
+                'section.complemento.--biblioteca div.niv div.boxes-area div.scroll').scrollLeft() + 200);
         })
     </script>
 

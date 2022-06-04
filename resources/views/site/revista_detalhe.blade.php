@@ -171,22 +171,6 @@
                         </li>
                     </ul>
                 </div>
-
-                <div class="atalhos">
-                    <h3>Atalhos</h3>
-                    <ul>
-                        <li><a href="">Filosofia da Religião</a></li>
-                        <li><a href="">Filosofia Política</a></li>
-                        <li><a href="">Historia</a></li>
-                        <li><a href="">História da Filosofia</a></li>
-                        <li><a href="">Lógica</a></li>
-                        <li><a href="">Metafísica</a></li>
-                        <li><a href="">Pedagogia</a></li>
-                        <li><a href="">Psicologia</a></li>
-                        <li><a href="">Resenha</a></li>
-                        <li><a href="">Semiótica</a></li>
-                    </ul>
-                </div>
             </aside>
         </div>
 

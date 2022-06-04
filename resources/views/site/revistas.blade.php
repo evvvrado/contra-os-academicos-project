@@ -65,46 +65,6 @@
 
 
     <section class="publicacoes">
-        <aside>
-            <ul class="colunistas">
-                <li>
-                    <picture>
-                        <img src="{{ asset('site/assets/img/colunista1_blog.png') }}" alt="Foto do colunista">
-                    </picture>
-
-                    <span>Nome do colunista</span>
-                </li>
-                <li>
-                    <picture>
-                        <img src="{{ asset('site/assets/img/colunista2_blog.png') }}" alt="Foto do colunista">
-                    </picture>
-
-                    <span>Nome do colunista</span>
-                </li>
-                <li>
-                    <picture>
-                        <img src="{{ asset('site/assets/img/colunista3_blog.png') }}" alt="Foto do colunista">
-                    </picture>
-
-                    <span>Nome do colunista</span>
-                </li>
-                <li>
-                    <picture>
-                        <img src="{{ asset('site/assets/img/colunista4_blog.png') }}" alt="Foto do colunista">
-                    </picture>
-
-                    <span>Nome do colunista</span>
-                </li>
-                <li>
-                    <picture>
-                        <img src="{{ asset('site/assets/img/colunista5_blog.png') }}" alt="Foto do colunista">
-                    </picture>
-
-                    <span>Nome do colunista</span>
-                </li>
-            </ul>
-        </aside>
-
 
         <main>
             <div class="niv">
@@ -116,118 +76,23 @@
                 </div>
 
                 <div class="content-area">
-                    <a href="#" class="box">
-                        <picture>
-                            <img src="{{ asset('site/assets/img/picture_blog1_conteudo.jpg') }}" alt="">
-                        </picture>
-                        <div class="box-content">
-                            <span>Filosofia da consciências</span>
-                            <strong>Como vencer um debate sem precisar ter razão</strong>
 
-                            <hr>
+                    @foreach($revistas as $revista)
+                        <a href="{{ route('site.revista_detalhe', ['revista' => $revista]) }}" class="box">
+                            <picture>
+                                <img src="{{ asset($revista->banner) }}" alt="">
+                            </picture>
+                            <div class="box-content">
+                                <span>{{ $revista->categoria->nome }}</span>
+                                <strong>{{ $revista->titulo }}</strong>
 
-                            <p>A rigor este livro está mal batizado. O título pode sugerir ao leitor um manual de patifaria
-                                intelectual...</p>
-                        </div>
-                    </a>
-                    <a href="#" class="box">
-                        <picture>
-                            <img src="{{ asset('site/assets/img/picture_blog8_conteudo.jpg') }}" alt="">
-                        </picture>
-                        <div class="box-content">
-                            <span>Filosofia da consciências</span>
-                            <strong>Como vencer um debate sem precisar ter razão</strong>
+                                <hr>
 
-                            <hr>
+                                <p>{{ Str::limit($revista->resumo, 104) }}</p>
+                            </div>
+                        </a>
+                    @endforeach 
 
-                            <p>A rigor este livro está mal batizado. O título pode sugerir ao leitor um manual de patifaria
-                                intelectual...</p>
-                        </div>
-                    </a>
-                    <a href="#" class="box">
-                        <picture>
-                            <img src="{{ asset('site/assets/img/picture_blog2_conteudo.jpg') }}" alt="">
-                        </picture>
-                        <div class="box-content">
-                            <span>Filosofia da consciências</span>
-                            <strong>Como vencer um debate sem precisar ter razão</strong>
-
-                            <hr>
-
-                            <p>A rigor este livro está mal batizado. O título pode sugerir ao leitor um manual de patifaria
-                                intelectual...</p>
-                        </div>
-                    </a>
-                    <a href="#" class="box">
-                        <picture>
-                            <img src="{{ asset('site/assets/img/picture_blog3_conteudo.jpg') }}" alt="">
-                        </picture>
-                        <div class="box-content">
-                            <span>Filosofia da consciências</span>
-                            <strong>Como vencer um debate sem precisar ter razão</strong>
-
-                            <hr>
-
-                            <p>A rigor este livro está mal batizado. O título pode sugerir ao leitor um manual de patifaria
-                                intelectual...</p>
-                        </div>
-                    </a>
-                    <a href="#" class="box">
-                        <picture>
-                            <img src="{{ asset('site/assets/img/picture_blog4_conteudo.jpg') }}" alt="">
-                        </picture>
-                        <div class="box-content">
-                            <span>Filosofia da consciências</span>
-                            <strong>Como vencer um debate sem precisar ter razão</strong>
-
-                            <hr>
-
-                            <p>A rigor este livro está mal batizado. O título pode sugerir ao leitor um manual de patifaria
-                                intelectual...</p>
-                        </div>
-                    </a>
-                    <a href="#" class="box">
-                        <picture>
-                            <img src="{{ asset('site/assets/img/picture_blog5_conteudo.jpg') }}" alt="">
-                        </picture>
-                        <div class="box-content">
-                            <span>Filosofia da consciências</span>
-                            <strong>Como vencer um debate sem precisar ter razão</strong>
-
-                            <hr>
-
-                            <p>A rigor este livro está mal batizado. O título pode sugerir ao leitor um manual de patifaria
-                                intelectual...</p>
-                        </div>
-                    </a>
-                    <a href="#" class="box">
-                        <picture>
-                            <img src="{{ asset('site/assets/img/picture_blog6_conteudo.jpg') }}" alt="">
-                        </picture>
-                        <div class="box-content">
-                            <span>Filosofia da consciências</span>
-                            <strong>Como vencer um debate sem precisar ter razão</strong>
-
-                            <hr>
-
-                            <p>A rigor este livro está mal batizado. O título pode sugerir ao leitor um manual de patifaria
-                                intelectual...</p>
-                        </div>
-                    </a>
-                    <a href="#" class="box">
-                        <picture>
-                            <img src="{{ asset('site/assets/img/picture_blog7_conteudo.jpg') }}" alt="">
-                        </picture>
-                        <div class="box-content">
-                            <span>Filosofia da consciências</span>
-                            <strong>Como vencer um debate sem precisar ter razão</strong>
-
-                            <hr>
-
-                            <p>A rigor este livro está mal batizado. O título pode sugerir ao leitor um manual de patifaria
-                                intelectual...</p>
-                        </div>
-                    </a>
                 </div>
 
                 <div class="button-area">
@@ -248,57 +113,23 @@
 
 
                 <ul>
+                    @foreach($mais_lidas as $mais_lida)
                     <li>
                         <a href="#" class="box">
                             <picture>
-                                <img src="{{ asset('site/assets/img/picture_blog1_conteudo.jpg') }}" alt="">
+                                <img src="{{ asset($mais_lida->banner) }}" alt="">
                             </picture>
                             <div class="box-content">
-                                <span>Filosofia da consciências</span>
-                                <strong>Como vencer um debate sem precisar ter razão</strong>
+                                <span>{{ $mais_lida->categoria->nome }}</span>
+                                <strong>{{ $mais_lida->titulo }}</strong>
 
                                 <hr>
 
-                                <p>A rigor este livro está mal batizado. O título pode sugerir ao leitor um manual de
-                                    patifaria
-                                    intelectual...</p>
+                                <p>{{ Str::limit($mais_lida->resumo, 104) }}</p>
                             </div>
                         </a>
                     </li>
-                    <li>
-                        <a href="#" class="box">
-                            <picture>
-                                <img src="{{ asset('site/assets/img/picture_blog8_conteudo.jpg') }}" alt="">
-                            </picture>
-                            <div class="box-content">
-                                <span>Filosofia da consciências</span>
-                                <strong>Como vencer um debate sem precisar ter razão</strong>
-
-                                <hr>
-
-                                <p>A rigor este livro está mal batizado. O título pode sugerir ao leitor um manual de
-                                    patifaria
-                                    intelectual...</p>
-                            </div>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#" class="box">
-                            <picture>
-                                <img src="{{ asset('site/assets/img/picture_blog2_conteudo.jpg') }}" alt="">
-                            </picture>
-                            <div class="box-content">
-                                <span>Filosofia da consciências</span>
-                                <strong>Como vencer um debate sem precisar ter razão</strong>
-
-                                <hr>
-
-                                <p>A rigor este livro está mal batizado. O título pode sugerir ao leitor um manual de
-                                    patifaria
-                                    intelectual...</p>
-                            </div>
-                        </a>
-                    </li>
+                    @endforeach
                 </ul>
             </div>
         </aside>

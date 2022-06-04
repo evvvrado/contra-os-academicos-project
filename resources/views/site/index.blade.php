@@ -42,62 +42,24 @@
                     <h2>Colunas</h2>
 
                     <ul class="lista-colunistas">
-                        <li>
-                            <picture>
-                                <img src="{{ asset('site/assets/img/pic_colunista1_hero.png') }}"
-                                    alt="Imagem do Colunista">
-                            </picture>
-                            <div>
-                                <span>
-                                    Por Artur Lira
-                                </span>
-                                <span>
-                                    Poética – Vinícius de Moraes
-                                </span>
-                            </div>
-                        </li>
-                        <li>
-                            <picture>
-                                <img src="{{ asset('site/assets/img/pic_colunista2_hero.png') }}"
-                                    alt="Imagem do Colunista">
-                            </picture>
-                            <div>
-                                <span>
-                                    Por Fernando Texeira
-                                </span>
-                                <span>
-                                    F for Fake
-                                </span>
-                            </div>
-                        </li>
-                        <li>
-                            <picture>
-                                <img src="{{ asset('site/assets/img/pic_colunista3_hero.png') }}"
-                                    alt="Imagem do Colunista">
-                            </picture>
-                            <div>
-                                <span>
-                                    Por Leandro Medeiros
-                                </span>
-                                <span>
-                                    O mundo como objeto de ilusão...
-                                </span>
-                            </div>
-                        </li>
-                        <li>
-                            <picture>
-                                <img src="{{ asset('site/assets/img/pic_colunista4_hero.png') }}"
-                                    alt="Imagem do Colunista">
-                            </picture>
-                            <div>
-                                <span>
-                                    Por Pedro Lucena
-                                </span>
-                                <span>
-                                    Viva...
-                                </span>
-                            </div>
-                        </li>
+                        @foreach ($revistas_randomicas as $revistas_randomica)
+                            <li>
+                                <a href="{{ route('site.revista_detalhe', ['revista' => $revistas_randomica]) }}">
+                                    <picture>
+                                        <img src="{{ asset($revistas_randomica->autor->foto) }}"
+                                            alt="Imagem do Colunista">
+                                    </picture>
+                                    <div>
+                                        <span>
+                                            Por {{ $revistas_randomica->autor->nome }}
+                                        </span>
+                                        <span>
+                                            {{ $revistas_randomica->titulo }}
+                                        </span>
+                                    </div>
+                                </a>
+                            </li>
+                        @endforeach
                     </ul>
 
 

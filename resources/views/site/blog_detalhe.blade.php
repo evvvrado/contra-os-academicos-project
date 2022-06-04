@@ -158,10 +158,11 @@
                     </picture>
 
                     <ul>
-                        <li><a href="#">Como vencer um debate sem precisar ter razão</a></li>
-                        <li><a href="#">O Verbo e o Símbolo – René Guénon</a></li>
-                        <li><a href="#">O que dizemos ser Deus</a></li>
-                        <li><a href="#">Joathas Bello: Deiformidade e Graça em Xavier Zubiri</a></li>
+                        @foreach ($mais_do_autors as $mais_do_autor)
+                            <li>
+                                <a href="{{ route('site.blog_detalhe', ['blog' => $mais_do_autor]) }}">{{ $mais_do_autor->titulo }}</a>
+                            </li>
+                        @endforeach
                     </ul>
                 </div>
 
@@ -169,74 +170,21 @@
                     <h3>Relacionados</h3>
 
                     <ul>
-                        <li>
-                            <a href="#" class="box">
-                                <picture>
-                                    <img src="{{ asset('site/assets/img/banner_relacionados_artigo.svg') }}"
-                                        alt="Banner relacionados">
-                                </picture>
-                                <div class="content">
-                                    <span>15/01/21</span>
-                                    <strong>O Verbo e o Símbolo – René Guénon</strong>
-                                    <p>Por Fernando Teixeira</p>
-                                </div>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#" class="box">
-                                <picture>
-                                    <img src="{{ asset('site/assets/img/banner_relacionados_artigo.svg') }}"
-                                        alt="Banner relacionados">
-                                </picture>
-                                <div class="content">
-                                    <span>15/01/21</span>
-                                    <strong>O Verbo e o Símbolo – René Guénon</strong>
-                                    <p>Por Fernando Teixeira</p>
-                                </div>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#" class="box">
-                                <picture>
-                                    <img src="{{ asset('site/assets/img/banner_relacionados_artigo.svg') }}"
-                                        alt="Banner relacionados">
-                                </picture>
-                                <div class="content">
-                                    <span>15/01/21</span>
-                                    <strong>O Verbo e o Símbolo – René Guénon</strong>
-                                    <p>Por Fernando Teixeira</p>
-                                </div>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#" class="box">
-                                <picture>
-                                    <img src="{{ asset('site/assets/img/banner_relacionados_artigo.svg') }}"
-                                        alt="Banner relacionados">
-                                </picture>
-                                <div class="content">
-                                    <span>15/01/21</span>
-                                    <strong>O Verbo e o Símbolo – René Guénon</strong>
-                                    <p>Por Fernando Teixeira</p>
-                                </div>
-                            </a>
-                        </li>
-                    </ul>
-                </div>
-
-                <div class="atalhos">
-                    <h3>Atalhos</h3>
-                    <ul>
-                        <li><a href="">Filosofia da Religião</a></li>
-                        <li><a href="">Filosofia Política</a></li>
-                        <li><a href="">Historia</a></li>
-                        <li><a href="">História da Filosofia</a></li>
-                        <li><a href="">Lógica</a></li>
-                        <li><a href="">Metafísica</a></li>
-                        <li><a href="">Pedagogia</a></li>
-                        <li><a href="">Psicologia</a></li>
-                        <li><a href="">Resenha</a></li>
-                        <li><a href="">Semiótica</a></li>
+                        @foreach ($blog_randomicos as $blog_randomico)     
+                            <li>
+                                <a href="{{ route('site.blog_detalhe', ['blog' => $blog_randomico]) }}" class="box">
+                                    <picture>
+                                        <img src="{{ asset($blog->banner) }}"
+                                            alt="Banner relacionados">
+                                    </picture>
+                                    <div class="content">
+                                        <span>{{ date_format($blog->created_at,"d/m/Y") }}</span>
+                                        <strong>{{ $blog_randomico->titulo }}</strong>
+                                        <p>Por {{ $blog_randomico->autor->nome }}</p>
+                                    </div>
+                                </a>
+                            </li>
+                        @endforeach
                     </ul>
                 </div>
             </aside>

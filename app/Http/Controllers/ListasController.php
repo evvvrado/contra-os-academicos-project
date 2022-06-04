@@ -25,6 +25,7 @@ class ListasController extends Controller
         $lista->resumo = $request->resumo;
         $lista->usuario_id = $request->usuario;
         $lista->categoria_id = $request->categoria;
+        $lista->destaque = $request->destaque;
         
         $lista->save();
 
@@ -50,6 +51,7 @@ class ListasController extends Controller
         $lista->resumo = $request->resumo;
         $lista->usuario_id = $request->usuario;
         $lista->categoria_id = $request->categoria;
+        $lista->destaque = $request->destaque;
 
         if($request->file("banner")){
             Storage::delete($lista->banner);

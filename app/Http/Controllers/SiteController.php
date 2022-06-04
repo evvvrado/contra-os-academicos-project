@@ -37,7 +37,12 @@ class SiteController extends Controller
         ->orderBy('id', 'Desc')
         ->get();
 
-        return view("site.index", ["revistas" => $revistas, "blogs" => $blogs, "listas" => $listas, "cursos" => $cursos]);
+        $revistas_randomicas = Revista::select(DB::raw("id, titulo, autor_id"))
+        ->inRandomOrder()
+        ->limit(4)
+        ->get();
+
+        return view("site.index", ["revistas" => $revistas, "blogs" => $blogs, "listas" => $listas, "cursos" => $cursos, "revistas_randomicas" => $revistas_randomicas]);
     }
 
     public function sobre()
@@ -68,12 +73,35 @@ class SiteController extends Controller
 
         $comentarios = BlogComentario::where('blog_id', $blog->id)->get();
 
-        return view("site.blog_detalhe", ["blog" => $blog, "mes" => $mes, "comentarios" => $comentarios]);
+        $blog_randomicos = Blog::select(DB::raw("*"))
+        ->inRandomOrder()
+        ->limit(4)
+        ->where('categoria_id', $blog->categoria_id)
+        ->get();
+
+        $mais_do_autors = Blog::select(DB::raw("id, titulo"))
+        ->inRandomOrder()
+        ->limit(4)
+        ->where('autor_id', $blog->autor_id)
+        ->get();
+
+        return view("site.blog_detalhe", ["blog" => $blog, "mes" => $mes, "comentarios" => $comentarios, "blog_randomicos" => $blog_randomicos, "mais_do_autors" => $mais_do_autors]);
     }
     // ------------------------------------------------
     public function revistas()
     {
-        return view("site.revistas");
+        $revistas = Revista::select(DB::raw("*"))
+        ->whereStatus(1)
+        ->orderBy('id', 'Desc')
+        ->get();
+
+        $mais_lidas = Revista::select(DB::raw("*"))
+        ->whereStatus(1)
+        ->orderBy('visitas', 'Desc')
+        ->limit(3)
+        ->get();
+
+        return view("site.revistas", ["revistas" => $revistas, "mais_lidas" => $mais_lidas]);
     }
 
     public function revista(Revista $revista)
@@ -92,7 +120,18 @@ class SiteController extends Controller
     // ------------------------------------------------
     public function listas()
     {
-        return view("site.listas");
+        $listas = Lista::select(DB::raw("*"))
+        ->whereStatus(1)
+        ->orderBy('id', 'Desc')
+        ->get();
+
+        $mais_lidas = Lista::select(DB::raw("*"))
+        ->whereStatus(1)
+        ->orderBy('visitas', 'Desc')
+        ->limit(3)
+        ->get();
+
+        return view("site.listas", ["listas" => $listas, "mais_lidas" => $mais_lidas]);
     }
 
     public function lista(Lista $lista)

@@ -54,6 +54,15 @@
                             </div>
 
                             <div class="form-group col-lg-12">
+                                <label class="mt-3" for="destaque" class="form-label">Destaque</label>
+                                <select required id="destaque" name="destaque" class="form-select">
+                                    <option value="">Selecione</option>
+                                        <option @if($lista->destaque == 0) selected @endif value="0">Não</option>
+                                        <option @if($lista->destaque == 1) selected @endif value="1">Sim</option>
+                                </select>
+                            </div>
+
+                            <div class="form-group col-lg-12">
                                 <label class="mt-3" for="categoria" class="form-label">Categoria</label>
                                 <select required id="categoria" name="categoria" class="form-select">
                                     <option value="">Selecione</option>
