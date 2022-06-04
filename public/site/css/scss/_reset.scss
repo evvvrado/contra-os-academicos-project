@@ -10,7 +10,7 @@ html {
   scroll-behavior: smooth;
 
   ::selection {
-    color: $primary;
+    color: $tertiary;
     background: $secondary;
   }
 
@@ -99,7 +99,7 @@ html {
 
     .niv {
       width: 100%;
-      max-width: calc(1032px + 30px);
+      max-width: calc(1216px + 30px);
       margin: 0 auto;
       padding: 0 15px;
     }

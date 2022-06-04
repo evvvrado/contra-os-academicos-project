@@ -3,67 +3,149 @@
 @section('body_attr', 'id=home')
 
 @section('content')
+
+    <section class="ant-hero">
+        <div class="niv">
+            <a href="#" class="main-card card"
+                style="background-image: url('{{ asset('site/assets/img/banner_mainbox_hero.jpg') }}')">
+
+                <div class="text">
+                    <picture>
+                        <img src="{{ asset('site/assets/img/logo_branca_footer.png') }}" alt="">
+                    </picture>
+
+                    <h1>{{ NAME }}</h1>
+                    <p>" Filosofia, mas só da boa! "</p>
+                </div>
+            </a>
+        </div>
+    </section>
+
     <section class="hero">
         <div class="niv">
-            @foreach($revistas as $key => $revista)
-                @if($key == 0)
-                    <a href="{{ route('site.revista_detalhe', ['revista' => $revista]) }}" class="main-card card" style="background: url('{{ asset($revista->banner) }}')">
+            <div class="container">
 
-                        <div class="top-bar">
-                            <span class="categoria">Revista</span>
-                            <span class="categoria">{{ $revista->categoria->nome }}</span>
-                            {{-- <a href="#" class="--plus">Ver mais</a> --}}
-                        </div>
+                <div class="top-title">
+                    <h2>
+                        <picture>
+                            <img src="{{ asset('site/assets/img/icon_fire_blog.png') }}" alt="Ícone de fogo">
+                        </picture>
+                        Revistas
+                    </h2>
+                    <a href="{{ route('site.revistas') }}" class="--plus">Ver mais</a>
+                </div>
 
-                        <div class="text">
+                <div class="content">
+                    @foreach ($revistas as $key => $revista)
+                        @if ($key == 0)
+                            <a href="{{ route('site.revista_detalhe', ['revista' => $revista]) }}" class="main-card card"
+                                style="background: url('{{ asset($revista->banner) }}')">
 
-                            <h1>{{ $revista->titulo }}</h1>
+                                <div class="top-bar">
+                                    <span class="categoria">Revista</span>
+                                    <span class="categoria">{{ $revista->categoria->nome }}</span>
+                                    {{-- <a href="#" class="--plus">Ver mais</a> --}}
+                                </div>
 
-                            <p>Por <strong>{{ $revista->autor->nome }}</strong></p>
-                        </div>
-                    </a>
-                @endif
-            @endforeach
+                                <div class="text">
 
-            <div class="col">
-                @foreach($revistas as $key => $revista)
-                    @if($key > 0 AND $key < 3)
-                        <a href="{{ route('site.revista_detalhe', ['revista' => $revista]) }}" class="mini-card card"
-                        style="background: url({{ asset($revista->banner) }})">
-                            <strong>{{ $revista->titulo }}</strong>
-                            <p>Por <strong>{{ $revista->autor->nome }}</strong></p>
-                        </a>
-                    @endif
-                @endforeach
-            </div>
+                                    <h1>{{ $revista->titulo }}</h1>
 
-            <div class="col">
-                <div class="colunistas">
-                    <h2>Colunas</h2>
+                                    <p>Por <strong>{{ $revista->autor->nome }}</strong></p>
+                                </div>
+                            </a>
+                        @endif
+                    @endforeach
 
-                    <ul class="lista-colunistas">
-                        @foreach ($revistas_randomicas as $revistas_randomica)
-                            <li>
-                                <a href="{{ route('site.revista_detalhe', ['revista' => $revistas_randomica]) }}">
-                                    <picture>
-                                        <img src="{{ asset($revistas_randomica->autor->foto) }}"
-                                            alt="Imagem do Colunista">
-                                    </picture>
-                                    <div>
-                                        <span>
-                                            Por {{ $revistas_randomica->autor->nome }}
-                                        </span>
-                                        <span>
-                                            {{ $revistas_randomica->titulo }}
-                                        </span>
-                                    </div>
+                    <div class="col">
+                        @foreach ($revistas as $key => $revista)
+                            @if ($key > 0 and $key < 3)
+                                <a href="{{ route('site.revista_detalhe', ['revista' => $revista]) }}"
+                                    class="mini-card card" style="background: url({{ asset($revista->banner) }})">
+                                    <strong>{{ $revista->titulo }}</strong>
+                                    <p>Por <strong>{{ $revista->autor->nome }}</strong></p>
                                 </a>
-                            </li>
+                            @endif
                         @endforeach
-                    </ul>
+                    </div>
+
+                    <div class="col">
+                        @foreach ($revistas as $key => $revista)
+                            @if ($key > 4 and $key < 6)
+                                <a href="{{ route('site.revista_detalhe', ['revista' => $revista]) }}"
+                                    class="mini-card card" style="background: url({{ asset($revista->banner) }})">
+                                    <strong>{{ $revista->titulo }}</strong>
+                                    <p>Por <strong>{{ $revista->autor->nome }}</strong></p>
+                                </a>
+                            @endif
+                        @endforeach
+                    </div>
+
+                    <div class="col">
+                        <div class="news-area">
+                            <h2>Nossa Newsletter</h2>
+                            <h3>O melhor do Contra os Acadêmicos no seu inbox</h3>
+
+                            <form action="javascript:void(0)" method="post">
+                                <label>
+                                    <span>Inscreva-se para receber o nosso conteúdo</span>
+
+                                    <input type="email" name="email-news" id="email-news" placeholder="Qual seu e-mail?">
+                                </label>
+
+                                <label class="checkbox">
+                                    <input type="checkbox" name="aceitar-termos" id="aceitar-termos">
+
+                                    <span>Li e aceito os <a href="#" class="--blue">termos de uso</a></span>
+                                </label>
+
+                                <div>
+
+                                    <button class="button">Cadastrar</button>
+
+                                    <div class="pictures">
+                                        <picture><img src="{{ asset('site/assets/img/picture_news.png') }}" alt="">
+                                        </picture>
+                                        <picture><img src="{{ asset('site/assets/img/picture_news-1.png') }}" alt="">
+                                        </picture>
+                                        <picture><img src="{{ asset('site/assets/img/picture_news-2.png') }}" alt="">
+                                        </picture>
+                                    </div>
+                                </div>
+                            </form>
+
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="colunistas">
+                            <h2>Colunas</h2>
+
+                            <ul class="lista-colunistas">
+                                @foreach ($revistas_randomicas as $revistas_randomica)
+                                    <li>
+                                        <a
+                                            href="{{ route('site.revista_detalhe', ['revista' => $revistas_randomica]) }}">
+                                            <picture>
+                                                <img src="{{ asset($revistas_randomica->autor->foto) }}"
+                                                    alt="Imagem do Colunista">
+                                            </picture>
+                                            <div>
+                                                <span>
+                                                    Por {{ $revistas_randomica->autor->nome }}
+                                                </span>
+                                                <span>
+                                                    {{ $revistas_randomica->titulo }}
+                                                </span>
+                                            </div>
+                                        </a>
+                                    </li>
+                                @endforeach
+                            </ul>
 
 
-                    <a href="#" class="--plus">Ver mais</a>
+                            <a href="#" class="--plus">Ver mais</a>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -71,6 +153,7 @@
 
     <section class="blog-news">
         <div class="niv">
+
             <div class="blog-area">
                 <div class="top-title">
                     <h2>
@@ -84,11 +167,13 @@
 
                 <div class="content">
                     <div class="scroll">
-                        @foreach($blogs as $key => $blog)
-                            @if($key < 4)
-                                <a href="{{ route('site.blog_detalhe', ['blog' => $blog]) }}" class="card" style="background-image: url('{{ asset($blog->banner) }}')">
-                                    <span>Leia <i class="niv-arrow-right"></i></span>
+                        @foreach ($blogs as $key => $blog)
+                            @if ($key < 4)
+                                <a href="{{ route('site.blog_detalhe', ['blog' => $blog]) }}" class="card"
+                                    style="background-image: url('{{ asset($blog->banner) }}')">
+
                                     <strong>{{ $blog->titulo }}</strong>
+                                    <p>Leia <i class="niv-arrow-right"></i></p>
                                 </a>
                             @endif
                         @endforeach
@@ -96,36 +181,7 @@
                 </div>
 
             </div>
-            <div class="news-area">
-                <h2>Nossa Newsletter</h2>
-                <h3>O melhor do Contra os Acadêmicos no seu inbox</h3>
 
-                <form action="javascript:void(0)" method="post">
-                    <label>
-                        <span>Inscreva-se para receber o nosso conteúdo</span>
-
-                        <input type="email" name="email-news" id="email-news" placeholder="Qual seu e-mail?">
-                    </label>
-
-                    <label class="checkbox">
-                        <input type="checkbox" name="aceitar-termos" id="aceitar-termos">
-
-                        <span>Li e aceito os <a href="#" class="--blue">termos de uso</a></span>
-                    </label>
-
-                    <div>
-
-                        <button class="button">Cadastrar</button>
-
-                        <div class="pictures">
-                            <picture><img src="{{ asset('site/assets/img/picture_news.png') }}" alt=""></picture>
-                            <picture><img src="{{ asset('site/assets/img/picture_news-1.png') }}" alt=""></picture>
-                            <picture><img src="{{ asset('site/assets/img/picture_news-2.png') }}" alt=""></picture>
-                        </div>
-                    </div>
-                </form>
-
-            </div>
         </div>
     </section>
 
@@ -154,8 +210,8 @@
 
             <div class="content-area">
                 <div class="scroll" data-filter="blogs" active>
-                    @foreach($blogs as $key => $blog)
-                        @if($key < 8)
+                    @foreach ($blogs as $key => $blog)
+                        @if ($key < 8)
                             <a href="{{ route('site.blog_detalhe', ['blog' => $blog]) }}" class="box">
                                 <picture>
                                     <img src="{{ asset($blog->banner) }}" alt="">
@@ -170,15 +226,16 @@
                                 </div>
                             </a>
                         @endif
-                    @endforeach 
+                    @endforeach
                 </div>
 
 
                 <div class="scroll" data-filter="revistas">
 
-                    @foreach($revistas as $key => $revista)
-                        @if($key < 8)
-                            <a href="{{ route('site.revista_detalhe', ['revista' => $revista]) }}" class="box">
+                    @foreach ($revistas as $key => $revista)
+                        @if ($key < 8)
+                            <a href="{{ route('site.revista_detalhe', ['revista' => $revista]) }}"
+                                class="box">
                                 <picture>
                                     <img src="{{ asset($revista->banner) }}" alt="">
                                 </picture>
@@ -192,15 +249,15 @@
                                 </div>
                             </a>
                         @endif
-                    @endforeach 
+                    @endforeach
 
                 </div>
 
 
 
                 <div class="scroll" data-filter="listas">
-                    @foreach($listas as $key => $lista)
-                        @if($key < 8)
+                    @foreach ($listas as $key => $lista)
+                        @if ($key < 8)
                             <a href="{{ route('site.lista_detalhe', ['lista' => $lista]) }}" class="box">
                                 <picture>
                                     <img src="{{ asset($lista->banner) }}" alt="">
@@ -215,7 +272,7 @@
                                 </div>
                             </a>
                         @endif
-                    @endforeach 
+                    @endforeach
                 </div>
 
 
@@ -389,8 +446,7 @@
             <div class="boxes-area">
                 <div class="scroll">
                     @foreach ($cursos as $curso)
-                        <a href="#" class="box-destaque"
-                            style="background-image: url({{ asset($curso->banner) }})">
+                        <a href="#" class="box-destaque" style="background-image: url({{ asset($curso->banner) }})">
                             <div class="tags">
                                 {{-- <span class="--filled">Novo</span> --}}
                                 <span>{{ $curso->categoria->nome }}</span>

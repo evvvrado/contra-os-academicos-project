@@ -1,11 +1,13 @@
 section.blog-news {
     padding-bottom: 2.2rem;
     div.niv {
-        @include flex(row, flex-start, space-between);
+        @include flex(column, flex-start, space-between);
+        gap: 1rem;
+
         div.blog-area {
             width: 100%;
-            max-width: 64.2rem;
-            height: 30.8rem;
+            // max-width: 64.2rem;
+            // height: 30.8rem;
 
             background-color: $preto-contra;
             border-radius: 4px;
@@ -41,130 +43,123 @@ section.blog-news {
                 div.scroll {
                     @include flex(row, flex-start, space-between);
                     width: 100%;
+                    gap: 1rem;
+
+                    // a.card {
+                    //     width: 100%;
+                    //     max-width: 14.3rem;
+                    //     height: 22.3rem;
+                    //     overflow: hidden;
+                    //     @include flex(column, flex-start, space-between);
+
+                    //     padding: 1.3rem;
+                    //     background-size: cover !important;
+                    //     background-position: center !important;
+
+                    //     border-radius: 0.4rem 0.4rem 0 0;
+
+                    //     span,
+                    //     strong {
+                    //         font-family: $font-secondary;
+                    //         font-weight: 700;
+                    //         font-size: 1.4rem;
+                    //         line-height: 1.9rem;
+                    //         color: $white;
+                    //     }
+                    //     span {
+                    //         vertical-align: middle;
+                    //         text-decoration-line: underline;
+                    //     }
+
+                    //     strong {
+                    //         height: 7rem;
+                    //         max-width: 10rem;
+                    //         position: relative;
+
+                    //         &:after {
+                    //             height: 0.2rem;
+                    //             width: 6.5rem;
+                    //             background-color: $tertiary;
+
+                    //             content: "";
+                    //             position: absolute;
+                    //             left: 0;
+                    //             top: -0.4rem;
+                    //         }
+                    //     }
+                    // }
+
                     a.card {
-                        width: 100%;
-                        max-width: 14.3rem;
-                        height: 22.3rem;
+                        border-radius: 0.4rem;
                         overflow: hidden;
+                        position: relative;
+                        background-size: cover !important;
+
+                        &::after {
+                            position: absolute;
+                            height: 100%;
+                            width: 100%;
+                            border-radius: 0.4rem;
+
+                            background: linear-gradient(180deg, rgba(0, 0, 0, 0) -29.41%, #242424 100%);
+                            content: "";
+                            top: 0;
+                            left: 0;
+                        }
+
+                        div.text {
+                            p,
+                            strong,
+                            h1,
+                            i {
+                                color: $branco-contra;
+                            }
+
+                            strong {
+                                font-size: 1.4rem;
+                            }
+
+                            h1 {
+                                @include limitText(13rem, 2);
+                            }
+
+                            z-index: 1;
+                        }
+
+                        height: 18.3rem;
+                        // width: 100%;
+                        width: 31rem;
+
+                        padding: 1.8rem 1.7rem;
+
                         @include flex(column, flex-start, space-between);
 
-                        padding: 1.3rem;
-                        background-size: cover !important;
-                        background-position: center !important;
+                        &:first-child {
+                            margin-bottom: 1rem;
+                        }
 
-                        border-radius: 0.4rem 0.4rem 0 0;
-
-                        span,
-                        strong {
+                        & > strong {
                             font-family: $font-secondary;
                             font-weight: 700;
+                            font-size: 1.8rem;
+                            line-height: 2.4rem;
+                            color: $branco-contra;
+                            z-index: 1;
+
+                            @include limitText(13.2rem, 5);
+                        }
+
+                        p,
+                        p strong {
                             font-size: 1.4rem;
-                            line-height: 1.9rem;
                             color: $white;
-                        }
-                        span {
-                            vertical-align: middle;
-                            text-decoration-line: underline;
+                            z-index: 1;
                         }
 
-                        strong {
-                            height: 7rem;
-                            max-width: 10rem;
-                            position: relative;
-
-                            &:after {
-                                height: 0.2rem;
-                                width: 6.5rem;
-                                background-color: $tertiary;
-
-                                content: "";
-                                position: absolute;
-                                left: 0;
-                                top: -0.4rem;
-                            }
+                        &:hover,
+                        &:focus {
+                            letter-spacing: 1px;
                         }
-                    }
-                }
-            }
-        }
-        div.news-area {
-            height: 30.8rem;
-            width: 100%;
-            max-width: 38rem;
-            background-color: $branco-contra;
-
-            border-radius: 4px;
-
-            padding: 2.2rem;
-
-            h3 {
-                font-size: 1.4rem;
-                color: $primary;
-                font-family: $font-secondary;
-                font-weight: 400;
-
-                margin-bottom: 3.7rem;
-
-                position: relative;
-
-                &::after {
-                    width: 18rem;
-                    height: 0.1rem;
-                    background-color: $primary;
-                    left: 0;
-                    bottom: -0.8rem;
-
-                    position: absolute;
-                    content: "";
-                }
-            }
-
-            form {
-                label {
-                    span {
-                        font-size: 1.4rem;
-                        color: $mid-cinza-contra;
-                    }
-                    input:not(input[type="checkbox"]) {
-                        width: 100%;
-                        margin-bottom: 1.1rem;
-                        margin-top: 1.1rem;
-                    }
-
-                    &.checkbox {
-                        margin-bottom: 2rem;
-                        display: flex;
-                        align-items: center;
-                        justify-content: flex-start;
-                        flex-direction: row;
-                        width: 100%;
-
-                        span {
-                            font-weight: 400;
-                            font-size: 1.2rem;
-                            line-height: 1.6rem;
-                            color: $mid-cinza-contra;
-                        }
-                        input[type="checkbox"] {
-                            background-color: $white;
-                        }
-                    }
-                }
-
-                & > div {
-                    @include flex(row, center, space-between);
-                    width: 100%;
-                    margin-top: 4.9rem;
-
-                    button.button {
-                        --width: 11.4rem;
-                        --height: 3.2rem;
-                        --font-size: 1.4rem;
-                    }
-
-                    div.pictures {
-                        @include flex(row, center, flex-start);
-                        gap: 0.7rem;
                     }
                 }
             }

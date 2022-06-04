@@ -11,7 +11,7 @@ define("URL", "https://contraosacademicos.com.br");
 define("IMGALT", "Imagem representativa");
 define("THEME", "#EAEAEA");
 
-define("FONTS", "https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&display=swap");
+define("FONTS", "https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&family=Quicksand:wght@500&display=swap");
 
 
 // define("EMAIL", "hyp8tec@gmail.com");

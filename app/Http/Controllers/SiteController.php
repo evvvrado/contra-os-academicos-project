@@ -39,7 +39,7 @@ class SiteController extends Controller
 
         $revistas_randomicas = Revista::select(DB::raw("id, titulo, autor_id"))
         ->inRandomOrder()
-        ->limit(4)
+        ->limit(6)
         ->get();
 
         return view("site.index", ["revistas" => $revistas, "blogs" => $blogs, "listas" => $listas, "cursos" => $cursos, "revistas_randomicas" => $revistas_randomicas]);
