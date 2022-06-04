@@ -24,7 +24,6 @@
     <section class="hero">
         <div class="niv">
             <div class="container">
-
                 <div class="top-title">
                     <h2>
                         <picture>
@@ -71,7 +70,7 @@
 
                     <div class="col">
                         @foreach ($revistas as $key => $revista)
-                            @if ($key > 4 and $key < 6)
+                            @if ($key > 3 and $key < 5)
                                 <a href="{{ route('site.revista_detalhe', ['revista' => $revista]) }}"
                                     class="mini-card card" style="background: url({{ asset($revista->banner) }})">
                                     <strong>{{ $revista->titulo }}</strong>
@@ -116,6 +115,7 @@
 
                         </div>
                     </div>
+
                     <div class="col">
                         <div class="colunistas">
                             <h2>Colunas</h2>

@@ -1236,7 +1236,7 @@ section.hero div.niv div.container a.card:hover, section.hero div.niv div.contai
   letter-spacing: 1px;
 }
 section.hero div.niv div.container div.col div.news-area {
-  height: 30.8rem;
+  height: 36.8rem;
   width: 57.6rem;
   background-color: #ffffff;
   border-radius: 4px;
@@ -1306,7 +1306,7 @@ section.hero div.niv div.container div.col div.news-area form > div div.pictures
   gap: 0.7rem;
 }
 section.hero div.niv div.container div.col div.colunistas {
-  height: 30.8rem;
+  height: 36.8rem;
   width: 100%;
   max-width: 63rem;
   border-radius: 0.4rem;
@@ -1339,11 +1339,11 @@ section.hero div.niv div.container div.col div.colunistas ul.lista-colunistas {
   justify-content: flex-start;
   flex-direction: row;
   flex-wrap: wrap;
-  gap: 1.4rem;
+  gap: 1rem;
   width: 100%;
 }
 section.hero div.niv div.container div.col div.colunistas ul.lista-colunistas li {
-  flex: 48%;
+  width: 100%;
 }
 section.hero div.niv div.container div.col div.colunistas ul.lista-colunistas li a {
   padding-bottom: 0.9rem;
@@ -1372,8 +1372,13 @@ section.hero div.niv div.container div.col div.colunistas ul.lista-colunistas li
   font-family: "Palatino Linotype", sans-serif;
   color: #ffffff;
   font-size: 1.9rem;
-  line-height: 1.3rem;
   display: block;
+  height: 5.2rem;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  text-overflow: ellipsis;
 }
 section.hero div.niv div.container div.col div.colunistas ul.lista-colunistas li a:hover, section.hero div.niv div.container div.col div.colunistas ul.lista-colunistas li a:active {
   opacity: 0.6;

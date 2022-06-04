@@ -166,7 +166,7 @@ section.hero {
 
             div.col {
                 div.news-area {
-                    height: 30.8rem;
+                    height: 36.8rem;
                     // width: 100%;
                     width: 57.6rem;
                     background-color: $branco-contra;
@@ -252,7 +252,7 @@ section.hero {
                     // height: 37.6rem;
                     // width: 24rem;
 
-                    height: 30.8rem;
+                    height: 36.8rem;
                     width: 100%;
                     max-width: 63rem;
 
@@ -295,12 +295,13 @@ section.hero {
                     ul.lista-colunistas {
                         @include flex(row, flex-start, flex-start);
                         flex-wrap: wrap;
-                        gap: 1.4rem;
+                        gap: 1rem;
                         width: 100%;
                         // margin-bottom: 2.3rem;
 
                         li {
-                            flex: 48%;
+                            // flex: 48%;
+                            width: 100%;
                             a {
                                 padding-bottom: 0.9rem;
                                 transition: 0.32s;
@@ -331,8 +332,9 @@ section.hero {
                                         font-family: $font-secondary;
                                         color: $branco-contra;
                                         font-size: 1.9rem;
-                                        line-height: 1.3rem;
                                         display: block;
+
+                                        @include limitText(5.2rem, 2);
                                     }
                                 }
 
