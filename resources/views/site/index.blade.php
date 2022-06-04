@@ -70,7 +70,7 @@
 
                     <div class="col">
                         @foreach ($revistas as $key => $revista)
-                            @if ($key > 3 and $key < 5)
+                            @if ($key > 2 and $key < 5)
                                 <a href="{{ route('site.revista_detalhe', ['revista' => $revista]) }}"
                                     class="mini-card card" style="background: url({{ asset($revista->banner) }})">
                                     <strong>{{ $revista->titulo }}</strong>
