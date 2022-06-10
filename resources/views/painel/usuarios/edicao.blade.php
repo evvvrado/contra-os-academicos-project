@@ -32,7 +32,7 @@
                                     @if($usuario->foto)
                                         <img class="escolher_imagem" id="foto-preview" src="{{asset($usuario->foto)}}" style="max-height: 200px;" alt="">
                                     @else
-                                        <img class="escolher_imagem" id="foto-preview" src="{{asset('admin/images/thumb-padrao.png')}}" style="max-height: 200px;" alt="">
+                                        <img class="escolher_imagem" id="foto-preview" src="{{asset('admin/imagens/usuarios/sem_foto.png')}}" style="max-height: 200px;" alt="">
                                     @endif
                                 </div>
                             </div>

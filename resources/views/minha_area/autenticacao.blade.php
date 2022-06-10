@@ -68,14 +68,13 @@
                                             <h4>Verifique seu e-mail</h4>
                                             <p class="mb-5">Por favor digite os 4 digitos de segurança enviados no e-mail <span class="font-weight-semibold">example@abc.com</span></p>
     
-                                            <form method="POST" action="{{ route('minha_area.autentica') }}">
+                                            <form id="form_validacao" method="POST" action="{{ route('minha_area.autentica') }}">
                                                 @csrf
                                                 <div class="row">
                                                     <div class="col-3">
                                                         <div class="mb-3">
                                                             <label for="digit1-input" class="visually-hidden">Dight 1</label>
-                                                            <input type="text"
-                                                                class="form-control form-control-lg text-center"
+                                                            <input name="pin_1" type="text" class="form-control form-control-lg text-center"
                                                                 onkeyup="moveToNext(this, 2)" maxLength="1"
                                                                 id="digit1-input">
                                                         </div>
@@ -84,8 +83,7 @@
                                                     <div class="col-3">
                                                         <div class="mb-3">
                                                             <label for="digit2-input" class="visually-hidden">Dight 2</label>
-                                                            <input type="text"
-                                                                class="form-control form-control-lg text-center"
+                                                            <input name="pin_2" type="text" class="form-control form-control-lg text-center"
                                                                 onkeyup="moveToNext(this, 3)" maxLength="1"
                                                                 id="digit2-input">
                                                         </div>
@@ -94,8 +92,7 @@
                                                     <div class="col-3">
                                                         <div class="mb-3">
                                                             <label for="digit3-input" class="visually-hidden">Dight 3</label>
-                                                            <input type="text"
-                                                                class="form-control form-control-lg text-center"
+                                                            <input name="pin_3" type="text" class="form-control form-control-lg text-center"
                                                                 onkeyup="moveToNext(this, 4)" maxLength="1"
                                                                 id="digit3-input">
                                                         </div>
@@ -104,9 +101,8 @@
                                                     <div class="col-3">
                                                         <div class="mb-3">
                                                             <label for="digit4-input" class="visually-hidden">Dight 4</label>
-                                                            <input type="text"
-                                                                class="form-control form-control-lg text-center"
-                                                                onkeyup="moveToNext(this, 4)" maxLength="1"
+                                                            <input name="pin_4" type="text" class="form-control form-control-lg text-center"
+                                                                onkeyup="valida_form()" maxLength="1"
                                                                 id="digit4-input">
                                                         </div>
                                                     </div>
@@ -152,6 +148,13 @@
 
     <!-- App js -->
     <script src="{{ asset('admin/assets/js/app.js') }}"></script>
+
+    <script>
+        function valida_form() {
+            document.getElementById("form_validacao").submit();
+            console.log('oi')
+        }
+    </script>
 
     @toastr_js
     @toastr_render

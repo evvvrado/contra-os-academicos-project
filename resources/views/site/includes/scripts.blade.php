@@ -4,3 +4,4 @@
     crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
 <script src="{{ asset('/site/js/main.js') }}"></script>
+

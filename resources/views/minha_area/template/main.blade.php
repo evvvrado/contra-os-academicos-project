@@ -16,6 +16,9 @@
         <!-- App Css-->
         <link href="{{ asset('admin/assets/css/app.min.css') }}" id="app-style" rel="stylesheet" type="text/css" />
 
+        @yield('styles')
+
+        @toastr_css
     </head>
 
     <body data-topbar="dark" data-layout="horizontal">
@@ -74,7 +77,7 @@
                                     </a>
                                     <div class="dropdown-menu" aria-labelledby="topnav-dashboard">
 
-                                        <a href="index.html" class="dropdown-item" key="t-default">Default</a>
+                                        <a href="{{ route('minha_area.index') }}" class="dropdown-item" key="t-default">Default</a>
                                     </div>
                                 </li>
 
@@ -139,11 +142,17 @@
         <!-- JAVASCRIPT -->
         <script src="{{ asset('admin/assets/libs/jquery/jquery.min.js') }}"></script>
         <script src="{{ asset('admin/assets/libs/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+        <script src="{{ asset('site/js/jquery.mask.js') }}"></script>
         {{-- <script src="{{ asset('admin/assets/libs/metismenu/metisMenu.min.js') }}"></script>
         <script src="{{ asset('admin/assets/libs/simplebar/simplebar.min.js') }}"></script>
         <script src="{{ asset('admin/assets/libs/node-waves/waves.min.js') }}"></script> --}}
 
         {{-- <script src="{{ asset('admin/assets/js/app.js') }}"></script> --}}
+
+        @toastr_js
+        @toastr_render
+
+        @yield('scripts')
     </body>
 
 </html>

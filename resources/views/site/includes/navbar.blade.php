@@ -46,9 +46,15 @@
                             Assinar
                         </a>
 
-                        <a href="{{ route('minha_area.index') }}" class="button">
-                            Login
-                        </a>
+                        @if(session()->get("usuario_site"))
+                            <a href="{{ route('minha_area.index') }}" class="button">
+                                Minha Área
+                            </a>
+                        @else 
+                            <a href="{{ route('minha_area.index') }}" class="button">
+                                Login
+                            </a>
+                        @endif
                     </div>
                 </div>
 

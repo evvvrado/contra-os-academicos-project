@@ -21,6 +21,9 @@
         <!-- App Css-->
         <link href="{{ asset('admin/assets/css/app.min.css')}}" id="app-style" rel="stylesheet" type="text/css" />
 
+        <!-- Sweet Alert-->
+        <link href="{{ asset('admin/assets/libs/sweetalert2/sweetalert2.min.css') }}" rel="stylesheet" type="text/css" />
+
         @yield('styles')
 
         <style>
@@ -202,6 +205,13 @@
                                 </li>
 
                                 <li>
+                                    <a href="{{ route('painel.usuarios_site') }}" class="waves-effect">
+                                        <i class="bx bxs-user-rectangle"></i>
+                                        <span>Usuários do Site</span>
+                                    </a>
+                                </li>
+
+                                <li>
                                     <a href="javascript: void(0);" class="has-arrow waves-effect">
                                         <i class="bx bx-receipt"></i>
                                         <span key="t-invoices">Conteúdo</span>
@@ -305,16 +315,13 @@
             <script src="{{ asset('admin/assets/libs/simplebar/simplebar.min.js')}}"></script>
             <script src="{{ asset('admin/assets/libs/node-waves/waves.min.js')}}"></script>
     
-            <!-- apexcharts -->
-            <script src="{{ asset('admin/assets/libs/apexcharts/apexcharts.min.js')}}"></script>
-    
-            <!-- dashboard init -->
-            <script src="{{ asset('admin/assets/js/pages/dashboard.init.js')}}"></script>
-    
             <!-- App js -->
             <script src="{{ asset('admin/assets/js/app.js')}}"></script>
 
             <script src="https://cdn.ckeditor.com/4.19.0/full/ckeditor.js"></script>
+
+            <!-- Sweet Alerts js -->
+            <script src="{{ asset('admin/assets/libs/sweetalert2/sweetalert2.min.js')}}"></script>
 
             @yield('scripts')
         </body>

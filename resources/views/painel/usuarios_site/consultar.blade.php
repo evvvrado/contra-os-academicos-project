@@ -22,32 +22,34 @@
                         <tr>
                             <th>Nome</th>
                             <th>E-mail</th>
-                            <th>Assinante</th>
-                            <th class="text-center"></th>
+                            <th class="text-center">Assinante</th>
+                            <th class="text-center">Ações</th>
                         </tr>
                     </thead>
 
 
                     <tbody>
 
-                        @foreach($blogs as $blog)
+                        @foreach($usuarios as $usuario)
                             <tr>
-                                <td style="position: relative;">{{ $usu_site->nome }}</td>
-                                <td>{{ $usu_site->email }}</td>
+                                <td style="position: relative;">{{ $usuario->nome }}</td>
+                                <td>{{ $usuario->email }}</td>
                                 <td class="text-center">
-                                    @if ($usu_site->assinante == true)
+                                    @if ($usuario->assinante == true)
                                         Sim
                                     @else
                                         Não  
                                     @endif    
                                 </td>
                                 <td >
-                                    <a href="{{ route('painel.blog.editar', ['blog' => $blog]) }}" class="btn btn-sm btn-success" role="button"><i class="bx bx bx-edit-alt"></i></a>
-                                    <a onClick="deletar({{ $blog->id }})" class="btn btn-sm btn-danger" role="button"><i class="bx bx bx bx-window-close"></i></a>
+                                    <select class="form-control">
+                                        <option value="">Selecione</option>
+                                        <option>Liberar Assinatura</option>
+                                    </select>
                                 </td>
                             </tr>
                         @endforeach
-
+                        <div onClick"deletar()" type="button" class="btn btn-primary waves-effect waves-light">Click me</div>
                     </tbody>
                 </table>
             </div>
@@ -66,7 +68,7 @@
     <script src="{{asset('admin/assets/libs/sweetalert2/sweetalert2.min.js')}}"></script>
     
     <script>
-        function deletar(id) {
+        function deletar() {
             Swal.fire({
                 title: "Tem certeza?",
                 text: "Esse conteúdo irá para lixeira!",
@@ -77,8 +79,6 @@
                 confirmButtonText: "Sim, deletar!"
             }).then(function(t) {
                 t.value && Swal.fire("Deletado!", "Movido para lixeira.", "success")
-                
-
             })
         }
         $(document).ready(function() {

@@ -51,7 +51,7 @@
                                 </div>
                             </div>
                             <div class="mt-4">
-                                <a href="#" class="btn btn-primary waves-effect waves-light btn-sm">Ver Perfil <i class="mdi mdi-arrow-right ms-1"></i></a>
+                                <a href="{{ route('minha_area.perfil') }}" class="btn btn-primary waves-effect waves-light btn-sm">Ver Perfil <i class="mdi mdi-arrow-right ms-1"></i></a>
                             </div>
                         </div>
                     </div>
@@ -59,6 +59,7 @@
             </div>
         </div>
     </div>
+    
     {{-- <div class="col-xl-8">
         <div class="row">
             <div class="col-md-4">

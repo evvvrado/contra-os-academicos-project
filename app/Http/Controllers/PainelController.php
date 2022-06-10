@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Hash;
 use App\Models\Usuario;
+use App\Models\UsuarioSite;
 
 class PainelController extends Controller
 {
@@ -52,5 +53,15 @@ class PainelController extends Controller
         Log::channel('acessos')->info('LOGIN: O usuario ' . session()->get("usuario")["usuario"] . ' saiu do sistema.');
         session()->forget("usuario");
         return redirect()->route("painel.login");
+    }
+
+
+
+    // USUARIOS DO SITE
+    public function usuarios_site()
+    {
+        $usuarios = UsuarioSite::all();
+
+        return view("painel.usuarios_site.consultar", ['usuarios' => $usuarios]);
     }
 }

@@ -20,4 +20,9 @@ class Usuario extends Model
     public function lista(){
         return $this->hasOne(Lista::class);
     }
+
+    public function setor()
+    {
+        return $this->belongsTo(Setor::class);
+    }
 }

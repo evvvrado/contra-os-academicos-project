@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Hash;
 use App\Models\UsuarioSite;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\EnviarEmailUsuarioSite;
+use Illuminate\Support\Facades\Storage;
 
 class UsuarioSitesController extends Controller
 {
@@ -15,12 +16,8 @@ class UsuarioSitesController extends Controller
     {
         return view("minha_area.index");
     }
-
-    public function login()
-    {
-        return view("minha_area.login");
-    }
-
+    
+    // ------------------------  BLOCO DE REGISTRO
     public function registro()
     {
         return view("minha_area.registro");
@@ -35,13 +32,13 @@ class UsuarioSitesController extends Controller
         $usuario_site->nome = $request->nome;
         $usuario_site->email = $request->email;
         $usuario_site->senha = Hash::make($request->senha);
-
-        Mail::to('joao.pedrolopes10@hotmail.com')
-        ->send(new EnviarEmailUsuarioSite());
-        
+        $usuario_site->pin = rand(1000,9999);
         $usuario_site->save();
 
-        session()->put(["usuario_site" => $usuario_site->toArray()]);
+        Mail::to($request->email)
+        ->send(new EnviarEmailUsuarioSite($usuario_site));
+
+        session()->put(["usuario_temporario" => $usuario_site->toArray()]);
 
         return redirect()->route("minha_area.autenticacao");
     }
@@ -51,9 +48,32 @@ class UsuarioSitesController extends Controller
         return view("minha_area.autenticacao");
     }
 
-    public function autentica()
+    public function autentica(Request $request)
     {
-        return redirect()->route("site.index");
+        $usuario_site = UsuarioSite::where("id", session()->get("usuario_temporario")["id"])->first();
+
+        $pin = $request->pin_1 . $request->pin_2 . $request->pin_3 . $request->pin_4;
+
+        if($pin == $usuario_site->pin) {
+            session()->forget("usuario_site");
+
+            session()->put(["usuario_site" => $usuario_site->toArray()]);
+
+            toastr()->success("Seja bem-vindo!");
+
+            return redirect()->route("site.index");
+        } else {
+            toastr()->error("Verifique seu pin!");
+
+            return view("minha_area.autenticacao", ["usuario_site" => $usuario_site]);
+        }
+    }
+
+    // ------------------------  BLOCO DE AÇÕES DE ACESSO
+
+    public function login()
+    {
+        return view("minha_area.login");
     }
 
     public function logar(Request $request)
@@ -83,5 +103,46 @@ class UsuarioSitesController extends Controller
         Log::channel('acessos')->info('LOGIN: O usuario ' . session()->get("usuario_site")["email"] . ' saiu do sistema.');
         session()->forget("usuario_site");
         return redirect()->route("minha_area.login");
+    }
+
+    // ---------------------------------------------
+
+    public function perfil()
+    {
+        $usuario_site = UsuarioSite::whereId(session()->get("usuario_site")["id"])->first();
+        return view("minha_area.perfil", ['usuario_site' => $usuario_site]);
+    }
+
+    public function perfil_salvar(Request $request, UsuarioSite $usuario_site)
+    {
+        $request->validate([
+            'email' => 'unique:usuario_sites,email,'.$usuario_site->id,
+        ]);
+
+        $usuario_site->nome = $request->nome;
+        $usuario_site->email = $request->email;
+        if($request->senha){
+            $usuario_site->senha = Hash::make($request->senha);
+        }
+
+        if($request->file("foto")){
+            Storage::delete($usuario_site->foto);
+            $usuario_site->foto = $request->file('foto')->store(
+                'site/imagens/usuarios/'.$usuario_site->id.'/', 'local'
+            );
+        }
+
+        $usuario_site->uf = $request->uf;
+        $usuario_site->cidade = $request->cidade;
+        $usuario_site->telefone = $request->telefone;
+        $usuario_site->sexo = $request->sexo;
+        $usuario_site->nascimento = $request->nascimento;
+        $usuario_site->escolaridade = $request->escolaridade;
+        $usuario_site->nascimento = date('Y-m-d', strtotime($request->nascimento));
+        $usuario_site->save();
+
+        toastr()->success("Cadastro atualizdo com sucesso!");
+
+        return view("minha_area.perfil", ['usuario_site' => $usuario_site]);
     }
 }

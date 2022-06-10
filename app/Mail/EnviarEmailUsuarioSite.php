@@ -6,6 +6,7 @@ use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
+use App\Models\UsuarioSite;
 
 class EnviarEmailUsuarioSite extends Mailable
 {
@@ -16,9 +17,10 @@ class EnviarEmailUsuarioSite extends Mailable
      *
      * @return void
      */
-    public function __construct()
+    public function __construct(UsuarioSite $usuariosite)
     {
         //
+        $this->usuariosite = $usuariosite;
     }
 
     /**
@@ -29,7 +31,9 @@ class EnviarEmailUsuarioSite extends Mailable
     public function build()
     {
         return $this->from('jeyp.music17@gmail.com')
-                ->view('emails.test');
+        ->subject('COA - Seu pin de acesso')
+        ->with(['usuario_site' => $this->usuariosite])
+        ->view('emails.test');
         // return $this->view('view.name');
     }
 }

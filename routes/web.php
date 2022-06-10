@@ -11,6 +11,9 @@ Route::middleware(['admin'])->group(function () {
 
     Route::get('/painel/sair', [\App\Http\Controllers\PainelController::class, 'sair'])->name("painel.sair");
 
+    // ROTAS DE USUÁRIOS DO SITE
+    Route::get('/sistema/usuarios_site/consultar', [\App\Http\Controllers\PainelController::class, 'usuarios_site'])->name("painel.usuarios_site");
+
     // ROTAS DE CATEGORIAS
     Route::get('/sistema/categorias/consultar', [\App\Http\Controllers\CategoriasController::class, 'consultar'])->name("painel.categorias");
     Route::get('/sistema/categorias/cadastro', [\App\Http\Controllers\CategoriasController::class, 'cadastro'])->name("painel.categoria.cadastro");
@@ -90,6 +93,9 @@ Route::middleware(['usuario_site'])->group(function () {
     Route::get('/minha-area', [\App\Http\Controllers\UsuarioSitesController::class, 'index'])->name("minha_area.index");
 
     Route::post('/minha-area/comentar/{blog}', [\App\Http\Controllers\BlogComentariosController::class, 'comentar'])->name("minha_area.comentar");
+
+    Route::get('/minha-area/perfil', [\App\Http\Controllers\UsuarioSitesController::class, 'perfil'])->name("minha_area.perfil");
+    Route::post('/minha-area/perfil/salvar/{usuario_site}', [\App\Http\Controllers\UsuarioSitesController::class, 'perfil_salvar'])->name("minha_area.perfil.salvar");
 
     Route::get('/minha_area/sair', [\App\Http\Controllers\UsuarioSitesController::class, 'sair'])->name("minha_area.sair");
 });
