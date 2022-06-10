@@ -68,12 +68,12 @@ html {
   **/
 }
 html ::-moz-selection {
-  color: #f2d027;
-  background: #3a1616;
+  color: #5b2222;
+  background: #f8f9fa;
 }
 html ::selection {
-  color: #f2d027;
-  background: #3a1616;
+  color: #5b2222;
+  background: #f8f9fa;
 }
 html::-webkit-scrollbar {
   width: 0.5rem;
@@ -429,6 +429,7 @@ a:not(a.button):hover, a:not(a.button):focus {
   justify-content: flex-end;
   flex-direction: column;
   background-color: red;
+  background-size: cover;
   position: relative;
 }
 .box-destaque:hover h2 {
@@ -511,21 +512,10 @@ header {
 
   **/
 }
-header._hi div[fluid] {
-  padding-top: 0.4rem;
-  padding-bottom: 0.4rem;
-}
-header._hi div[fluid].sub-menu, header._hi div[fluid].sub-menu[active] {
-  top: -20rem;
-}
-header._hi div[fluid] div.niv nav, header._hi div[fluid] div.niv > div {
-  position: relative;
-  top: -20rem;
-}
 header div[fluid] {
   background-color: #fff;
-  padding-top: 1.4rem;
-  padding-bottom: 1.4rem;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
   position: relative;
   z-index: 2;
   transition: 0.32s;
@@ -614,13 +604,14 @@ header div[fluid] div.niv nav ul li a:not(a[title=menu]) {
   position: relative;
 }
 header div[fluid] div.niv nav ul li a:not(a[title=menu])::before {
-  height: 100%;
-  width: 0;
+  height: 0.2rem;
+  width: 80%;
   background-color: #5b2222;
   transition: 0.32s ease-in-out;
-  left: -0.5rem;
   position: absolute;
   content: "";
+  transform: scaleX(0);
+  bottom: -1rem;
   z-index: -1;
   padding-right: 0;
   padding-left: 0;
@@ -629,9 +620,7 @@ header div[fluid] div.niv nav ul li a:not(a[title=menu]):hover, header div[fluid
   color: #fff;
 }
 header div[fluid] div.niv nav ul li a:not(a[title=menu]):hover::before, header div[fluid] div.niv nav ul li a:not(a[title=menu]):focus::before {
-  padding-right: 1.5rem;
-  padding-left: 1.5rem;
-  width: 100%;
+  transform: scaleX(1);
 }
 header div[fluid] div.niv > div {
   display: flex;
@@ -694,12 +683,14 @@ header div[fluid] div.niv > div div.buttons {
   flex-direction: row;
 }
 header div[fluid] div.niv > div div.buttons a.button {
-  --height: 4.2rem;
-  --width: 14.5rem;
+  --height: 3.5rem;
+  --width: 12.5rem;
+  font-size: 1.5rem;
+  font-family: "Open Sans", sans-serif;
 }
 header div[fluid] div.niv > div div.buttons a.button:first-child {
-  --background-color: #f2d027;
-  --font-color: #5b2222;
+  --background-color: #716f6f;
+  --font-color: #fff;
   border-top-right-radius: 0;
   border-bottom-right-radius: 0;
 }
@@ -722,6 +713,8 @@ header div[fluid].sub-menu {
   z-index: 1;
   top: -20rem;
   transition: 0.32s;
+  padding-top: 1.4rem;
+  padding-bottom: 1.4rem;
 }
 header div[fluid].sub-menu[active] {
   top: 0;
@@ -740,12 +733,13 @@ header div[fluid].sub-menu div.niv nav ul li a:not(a[title=menu]) {
   color: #fff;
   text-decoration: none;
   font-family: "Quicksand", sans-serif;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
 }
 header div[fluid].sub-menu div.niv nav ul li a:not(a[title=menu])::before {
   background-color: #fff;
-}
-header div[fluid].sub-menu div.niv nav ul li a:not(a[title=menu]):hover, header div[fluid].sub-menu div.niv nav ul li a:not(a[title=menu]):focus {
-  color: #5b2222;
 }
 @media (max-width: 1150px) {
   header div[fluid] div.niv {
@@ -1235,80 +1229,10 @@ section.hero div.niv div.container a.card.mini-card p strong {
 section.hero div.niv div.container a.card:hover, section.hero div.niv div.container a.card:focus {
   letter-spacing: 1px;
 }
-section.hero div.niv div.container div.col div.news-area {
-  height: 36.8rem;
-  width: 57.6rem;
-  background-color: #ffffff;
-  border-radius: 4px;
-  padding: 2.2rem;
-}
-section.hero div.niv div.container div.col div.news-area h3 {
-  font-size: 1.4rem;
-  color: #5b2222;
-  font-family: "Palatino Linotype", sans-serif;
-  font-weight: 400;
-  margin-bottom: 3.7rem;
-  position: relative;
-}
-section.hero div.niv div.container div.col div.news-area h3::after {
-  width: 18rem;
-  height: 0.1rem;
-  background-color: #5b2222;
-  left: 0;
-  bottom: -0.8rem;
-  position: absolute;
-  content: "";
-}
-section.hero div.niv div.container div.col div.news-area form label span {
-  font-size: 1.4rem;
-  color: #716f6f;
-}
-section.hero div.niv div.container div.col div.news-area form label input:not(input[type=checkbox]) {
-  width: 100%;
-  margin-bottom: 1.1rem;
-  margin-top: 1.1rem;
-}
-section.hero div.niv div.container div.col div.news-area form label.checkbox {
-  margin-bottom: 2rem;
-  display: flex;
-  align-items: center;
-  justify-content: flex-start;
-  flex-direction: row;
-  width: 100%;
-}
-section.hero div.niv div.container div.col div.news-area form label.checkbox span {
-  font-weight: 400;
-  font-size: 1.2rem;
-  line-height: 1.6rem;
-  color: #716f6f;
-}
-section.hero div.niv div.container div.col div.news-area form label.checkbox input[type=checkbox] {
-  background-color: #fff;
-}
-section.hero div.niv div.container div.col div.news-area form > div {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  flex-direction: row;
-  width: 100%;
-  margin-top: 4.9rem;
-}
-section.hero div.niv div.container div.col div.news-area form > div button.button {
-  --width: 11.4rem;
-  --height: 3.2rem;
-  --font-size: 1.4rem;
-}
-section.hero div.niv div.container div.col div.news-area form > div div.pictures {
-  display: flex;
-  align-items: center;
-  justify-content: flex-start;
-  flex-direction: row;
-  gap: 0.7rem;
-}
 section.hero div.niv div.container div.col div.colunistas {
-  height: 36.8rem;
+  height: 37.6rem;
+  max-width: 31rem;
   width: 100%;
-  max-width: 63rem;
   border-radius: 0.4rem;
   background-color: #242424;
   display: flex;
@@ -1459,7 +1383,7 @@ section.blog-news div.niv div.blog-area {
   width: 100%;
   background-color: #242424;
   border-radius: 4px;
-  padding: 2.1rem 2.4rem 1.8rem 2.4rem;
+  padding: 2.1rem 2.4rem 2.8rem 2.4rem;
 }
 section.blog-news div.niv div.blog-area div.top-title {
   width: 100%;
@@ -1554,6 +1478,76 @@ section.blog-news div.niv div.blog-area div.content div.scroll a.card p strong {
 }
 section.blog-news div.niv div.blog-area div.content div.scroll a.card:hover, section.blog-news div.niv div.blog-area div.content div.scroll a.card:focus {
   letter-spacing: 1px;
+}
+section.blog-news div.niv div.news-area {
+  height: 30.8rem;
+  width: 100%;
+  background-color: #ffffff;
+  border-radius: 4px;
+  padding: 2.2rem;
+}
+section.blog-news div.niv div.news-area h3 {
+  font-size: 1.4rem;
+  color: #5b2222;
+  font-family: "Palatino Linotype", sans-serif;
+  font-weight: 400;
+  margin-bottom: 3.7rem;
+  position: relative;
+}
+section.blog-news div.niv div.news-area h3::after {
+  width: 18rem;
+  height: 0.1rem;
+  background-color: #5b2222;
+  left: 0;
+  bottom: -0.8rem;
+  position: absolute;
+  content: "";
+}
+section.blog-news div.niv div.news-area form label span {
+  font-size: 1.4rem;
+  color: #716f6f;
+}
+section.blog-news div.niv div.news-area form label input:not(input[type=checkbox]) {
+  width: 100%;
+  margin-bottom: 1.1rem;
+  margin-top: 1.1rem;
+}
+section.blog-news div.niv div.news-area form label.checkbox {
+  margin-bottom: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  flex-direction: row;
+  width: 100%;
+}
+section.blog-news div.niv div.news-area form label.checkbox span {
+  font-weight: 400;
+  font-size: 1.2rem;
+  line-height: 1.6rem;
+  color: #716f6f;
+}
+section.blog-news div.niv div.news-area form label.checkbox input[type=checkbox] {
+  background-color: #fff;
+}
+section.blog-news div.niv div.news-area form > div {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-direction: row;
+  width: 100%;
+  margin-top: 4.9rem;
+}
+section.blog-news div.niv div.news-area form > div button.button {
+  --width: 11.4rem;
+  --height: 3.2rem;
+  --font-size: 1.4rem;
+}
+section.blog-news div.niv div.news-area form > div div.pictures {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  flex-direction: row;
+  gap: 0.7rem;
 }
 @media (max-width: 800px) {
   section.blog-news div.niv {
@@ -1973,6 +1967,7 @@ section.indicacao-cast div.niv div.contraCast-area div.banner-area {
   height: 20.9rem;
   width: 100%;
   background: url("/site/assets/img/banner_podcast.jpg");
+  background-size: cover;
   border-radius: 4px 4px 0 0;
 }
 section.indicacao-cast div.niv div.contraCast-area div.banner-area > div h2 {
@@ -2874,7 +2869,7 @@ section.artigo div.niv.--row {
 section.artigo div.niv.--row picture.artigo-banner {
   height: 22.6rem;
   width: 100%;
-  max-width: 55.2rem;
+  max-width: 70rem;
   position: absolute;
   top: 0;
   right: 0;
@@ -2883,7 +2878,7 @@ section.artigo div.niv.--row picture.artigo-banner {
 section.artigo div.niv.--row main {
   background-color: #fff;
   width: 100%;
-  max-width: 77.5rem;
+  max-width: 95.5rem;
   padding-top: 3.2rem;
   padding-left: 9rem;
   padding-bottom: 6.6rem;
@@ -2984,7 +2979,7 @@ section.artigo div.niv.--row main div.apoie-projeto {
   margin-bottom: 1.6rem;
   padding-bottom: 2.2rem;
   width: 100%;
-  max-width: 58.7rem;
+  max-width: 76.7rem;
   border: solid 1px #eaeaea;
   padding-top: 3.3rem;
   display: flex;
@@ -3058,7 +3053,7 @@ section.artigo div.niv.--row main div.bio {
   background-color: #fdf6d6;
   height: 23rem;
   width: 100%;
-  max-width: 58.7rem;
+  max-width: 76.7rem;
   margin-bottom: 3.5rem;
 }
 section.artigo div.niv.--row main div.bio picture {
@@ -3069,6 +3064,7 @@ section.artigo div.niv.--row main div.bio picture {
   border-radius: 100%;
 }
 section.artigo div.niv.--row main div.bio div {
+  width: 100%;
   max-width: 24.8rem;
 }
 section.artigo div.niv.--row main div.bio div strong {
@@ -3080,9 +3076,17 @@ section.artigo div.niv.--row main div.bio div strong {
   margin-bottom: 0.8rem;
   display: block;
 }
+section.artigo div.niv.--row main div.bio div p {
+  height: 12rem;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 7;
+  -webkit-box-orient: vertical;
+  text-overflow: ellipsis;
+}
 section.artigo div.niv.--row main div.actions {
   width: 100%;
-  max-width: 58.7rem;
+  max-width: 76.7rem;
   margin-bottom: 2.5rem;
   display: flex;
   align-items: center;
@@ -3138,6 +3142,7 @@ section.artigo div.niv.--row main div.actions div.buttons button.button:last-chi
 }
 section.artigo div.niv.--row aside {
   margin-top: 25.8rem;
+  width: 100%;
   max-width: 23.6rem;
   position: -webkit-sticky;
   position: sticky;
@@ -3282,7 +3287,7 @@ section.artigo div.niv.--row aside div.atalhos ul li a {
 }
 section.artigo div.niv div.cursos {
   width: 100%;
-  max-width: 77.5rem;
+  max-width: 95.5rem;
   background-color: #242424;
   margin-top: 2.5rem;
   padding: 1.8rem 2.6rem 2.6rem 2.6rem;

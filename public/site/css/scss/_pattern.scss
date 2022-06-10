@@ -206,6 +206,7 @@ a:not(a.button) {
 
   @include flex(column, flex-start, flex-end);
   background-color: red;
+  background-size: cover;
 
   &:hover {
     h2 {

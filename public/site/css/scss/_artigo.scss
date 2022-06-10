@@ -10,7 +10,7 @@ section.artigo {
             picture.artigo-banner {
                 height: 22.6rem;
                 width: 100%;
-                max-width: 55.2rem;
+                max-width: 70rem;
 
                 position: absolute;
                 top: 0;
@@ -25,7 +25,7 @@ section.artigo {
                 background-color: $white;
 
                 width: 100%;
-                max-width: 77.5rem;
+                max-width: 95.5rem;
                 padding-top: 3.2rem;
                 padding-left: 9rem;
                 padding-bottom: 6.6rem;
@@ -147,7 +147,7 @@ section.artigo {
                     padding-bottom: 2.2rem;
 
                     width: 100%;
-                    max-width: 58.7rem;
+                    max-width: 76.7rem;
                     border: solid 1px $cinza-contra;
                     padding-top: 3.3rem;
 
@@ -234,7 +234,7 @@ section.artigo {
 
                     height: 23rem;
                     width: 100%;
-                    max-width: 58.7rem;
+                    max-width: 76.7rem;
 
                     margin-bottom: 3.5rem;
 
@@ -251,6 +251,7 @@ section.artigo {
                     }
 
                     div {
+                        width: 100%;
                         max-width: 24.8rem;
 
                         strong {
@@ -263,12 +264,16 @@ section.artigo {
                             margin-bottom: 0.8rem;
                             display: block;
                         }
+
+                        p {
+                            @include limitText(12rem, 7);
+                        }
                     }
                 }
 
                 div.actions {
                     width: 100%;
-                    max-width: 58.7rem;
+                    max-width: 76.7rem;
                     margin-bottom: 2.5rem;
 
                     @include flex(row, center, space-between);
@@ -325,6 +330,7 @@ section.artigo {
 
             aside {
                 margin-top: 25.8rem;
+                width: 100%;
                 max-width: 23.6rem;
 
                 position: sticky;
@@ -503,7 +509,7 @@ section.artigo {
 
         div.cursos {
             width: 100%;
-            max-width: 77.5rem;
+            max-width: 95.5rem;
             background-color: $preto-contra;
             margin-top: 2.5rem;
             padding: 1.8rem 2.6rem 2.6rem 2.6rem;

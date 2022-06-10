@@ -165,96 +165,13 @@ section.hero {
             }
 
             div.col {
-                div.news-area {
-                    height: 36.8rem;
-                    // width: 100%;
-                    width: 57.6rem;
-                    background-color: $branco-contra;
-
-                    border-radius: 4px;
-
-                    padding: 2.2rem;
-
-                    h3 {
-                        font-size: 1.4rem;
-                        color: $primary;
-                        font-family: $font-secondary;
-                        font-weight: 400;
-
-                        margin-bottom: 3.7rem;
-
-                        position: relative;
-
-                        &::after {
-                            width: 18rem;
-                            height: 0.1rem;
-                            background-color: $primary;
-                            left: 0;
-                            bottom: -0.8rem;
-
-                            position: absolute;
-                            content: "";
-                        }
-                    }
-
-                    form {
-                        label {
-                            span {
-                                font-size: 1.4rem;
-                                color: $mid-cinza-contra;
-                            }
-                            input:not(input[type="checkbox"]) {
-                                width: 100%;
-                                margin-bottom: 1.1rem;
-                                margin-top: 1.1rem;
-                            }
-
-                            &.checkbox {
-                                margin-bottom: 2rem;
-                                display: flex;
-                                align-items: center;
-                                justify-content: flex-start;
-                                flex-direction: row;
-                                width: 100%;
-
-                                span {
-                                    font-weight: 400;
-                                    font-size: 1.2rem;
-                                    line-height: 1.6rem;
-                                    color: $mid-cinza-contra;
-                                }
-                                input[type="checkbox"] {
-                                    background-color: $white;
-                                }
-                            }
-                        }
-
-                        & > div {
-                            @include flex(row, center, space-between);
-                            width: 100%;
-                            margin-top: 4.9rem;
-
-                            button.button {
-                                --width: 11.4rem;
-                                --height: 3.2rem;
-                                --font-size: 1.4rem;
-                            }
-
-                            div.pictures {
-                                @include flex(row, center, flex-start);
-                                gap: 0.7rem;
-                            }
-                        }
-                    }
-                }
-
                 div.colunistas {
-                    // height: 37.6rem;
-                    // width: 24rem;
+                    height: 37.6rem;
+                    max-width: 31rem;
 
-                    height: 36.8rem;
+                    // height: 36.8rem;
                     width: 100%;
-                    max-width: 63rem;
+                    // max-width: 63rem;
 
                     border-radius: 0.4rem;
 

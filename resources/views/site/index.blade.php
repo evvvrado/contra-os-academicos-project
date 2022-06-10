@@ -68,7 +68,8 @@
                         @endforeach
                     </div>
 
-                    <div class="col">
+
+                    {{-- <div class="col">
                         @foreach ($revistas as $key => $revista)
                             @if ($key > 2 and $key < 5)
                                 <a href="{{ route('site.revista_detalhe', ['revista' => $revista]) }}"
@@ -78,43 +79,7 @@
                                 </a>
                             @endif
                         @endforeach
-                    </div>
-
-                    <div class="col">
-                        <div class="news-area">
-                            <h2>Nossa Newsletter</h2>
-                            <h3>O melhor do Contra os Acadêmicos no seu inbox</h3>
-
-                            <form action="javascript:void(0)" method="post">
-                                <label>
-                                    <span>Inscreva-se para receber o nosso conteúdo</span>
-
-                                    <input type="email" name="email-news" id="email-news" placeholder="Qual seu e-mail?">
-                                </label>
-
-                                <label class="checkbox">
-                                    <input type="checkbox" name="aceitar-termos" id="aceitar-termos">
-
-                                    <span>Li e aceito os <a href="#" class="--blue">termos de uso</a></span>
-                                </label>
-
-                                <div>
-
-                                    <button class="button">Cadastrar</button>
-
-                                    <div class="pictures">
-                                        <picture><img src="{{ asset('site/assets/img/picture_news.png') }}" alt="">
-                                        </picture>
-                                        <picture><img src="{{ asset('site/assets/img/picture_news-1.png') }}" alt="">
-                                        </picture>
-                                        <picture><img src="{{ asset('site/assets/img/picture_news-2.png') }}" alt="">
-                                        </picture>
-                                    </div>
-                                </div>
-                            </form>
-
-                        </div>
-                    </div>
+                    </div> --}}
 
                     <div class="col">
                         <div class="colunistas">
@@ -146,6 +111,7 @@
                             <a href="#" class="--plus">Ver mais</a>
                         </div>
                     </div>
+
                 </div>
             </div>
         </div>
@@ -173,12 +139,47 @@
                                     style="background-image: url('{{ asset($blog->banner) }}')">
 
                                     <strong>{{ $blog->titulo }}</strong>
-                                    <p>Leia <i class="niv-arrow-right"></i></p>
+                                    <p>Por <strong>{{ $blog->autor->nome }}</strong></p>
                                 </a>
                             @endif
                         @endforeach
                     </div>
                 </div>
+
+            </div>
+
+
+            <div class="news-area">
+                <h2>Nossa Newsletter</h2>
+                <h3>O melhor do Contra os Acadêmicos no seu inbox</h3>
+
+                <form action="javascript:void(0)" method="post">
+                    <label>
+                        <span>Inscreva-se para receber o nosso conteúdo</span>
+
+                        <input type="email" name="email-news" id="email-news" placeholder="Qual seu e-mail?">
+                    </label>
+
+                    <label class="checkbox">
+                        <input type="checkbox" name="aceitar-termos" id="aceitar-termos">
+
+                        <span>Li e aceito os <a href="#" class="--blue">termos de uso</a></span>
+                    </label>
+
+                    <div>
+
+                        <button class="button">Cadastrar</button>
+
+                        <div class="pictures">
+                            <picture><img src="{{ asset('site/assets/img/picture_news.png') }}" alt="">
+                            </picture>
+                            <picture><img src="{{ asset('site/assets/img/picture_news-1.png') }}" alt="">
+                            </picture>
+                            <picture><img src="{{ asset('site/assets/img/picture_news-2.png') }}" alt="">
+                            </picture>
+                        </div>
+                    </div>
+                </form>
 
             </div>
 
