@@ -85,14 +85,14 @@ section.conteudo {
                             font-family: $font-secondary;
                             font-weight: 700;
                             font-size: 1.2rem;
-                            line-height: 1.6rem;
+                            line-height: 1.8rem;
                             color: $primary;
                         }
 
                         strong {
                             font-family: $font-secondary;
                             font-weight: 700;
-                            font-size: 1.6rem;
+                            font-size: 1.8rem;
                             line-height: 2.2rem;
                             color: $preto-contra;
                             display: block;
@@ -110,7 +110,7 @@ section.conteudo {
 
                         p {
                             display: block;
-                            margin-top: 1.6rem;
+                            margin-top: 1.8rem;
                             color: $mid-cinza-contra;
 
                             @include limitText(5rem, 3);
