@@ -46,11 +46,11 @@
                             Assinar
                         </a>
 
-                        @if(session()->get("usuario_site"))
+                        @if (session()->get('usuario_site'))
                             <a href="{{ route('minha_area.index') }}" class="button">
                                 Minha Área
                             </a>
-                        @else 
+                        @else
                             <a href="{{ route('minha_area.index') }}" class="button">
                                 Login
                             </a>

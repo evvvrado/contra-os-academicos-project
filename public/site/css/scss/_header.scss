@@ -315,13 +315,39 @@ header {
     }
     @include responsive(900px) {
         div[fluid] {
+            @include padding-y(1rem);
+
             div.niv {
-                padding-right: 10rem;
+                justify-content: space-between;
+                nav {
+                    margin: 0;
+                }
+                & > div {
+                    div.buttons {
+                        display: none;
+                    }
+                    div.search-button {
+                        display: none;
+                    }
+                }
             }
         }
     }
+
     @include responsive(600px) {
         div[fluid] {
+            &.sub-menu {
+                top: -25rem;
+                height: 100%;
+                div.niv {
+                    nav {
+                        ul {
+                            @include flex(column, center, center);
+                            height: 100%;
+                        }
+                    }
+                }
+            }
             div.niv {
                 & > div a.button {
                     display: none;

@@ -737,11 +737,35 @@ header div[fluid].sub-menu div.niv nav ul li a:not(a[title=menu])::before {
   }
 }
 @media (max-width: 900px) {
+  header div[fluid] {
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+  }
   header div[fluid] div.niv {
-    padding-right: 10rem;
+    justify-content: space-between;
+  }
+  header div[fluid] div.niv nav {
+    margin: 0;
+  }
+  header div[fluid] div.niv > div div.buttons {
+    display: none;
+  }
+  header div[fluid] div.niv > div div.search-button {
+    display: none;
   }
 }
 @media (max-width: 600px) {
+  header div[fluid].sub-menu {
+    top: -25rem;
+    height: 100%;
+  }
+  header div[fluid].sub-menu div.niv nav ul {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    height: 100%;
+  }
   header div[fluid] div.niv > div a.button {
     display: none;
   }
@@ -1302,26 +1326,36 @@ section.hero div.niv div.container div.col div.colunistas ul.lista-colunistas li
   section.hero div.niv {
     flex-wrap: wrap;
   }
-  section.hero div.niv a.card.main-card {
+  section.hero div.niv div.container div.content a.card.main-card {
+    width: 100%;
     max-width: 100%;
     background-size: cover !important;
   }
-  section.hero div.niv a.card.mini-card {
+  section.hero div.niv div.container div.content div.col {
+    width: 100%;
+    max-width: 100%;
+  }
+  section.hero div.niv div.container div.content div.col div.colunistas {
+    width: 100%;
+    max-width: unset;
+  }
+  section.hero div.niv div.container div.content div.col a.card.mini-card {
+    width: 100%;
     max-width: 100%;
     background-size: cover !important;
-  }
-  section.hero div.niv div.col div.colunistas {
-    width: 36rem;
   }
 }
 @media (max-width: 600px) {
   section.hero div.niv div.col {
     width: 100%;
   }
-  section.hero div.niv div.col a.mini-card {
+  section.hero div.niv div.col a.card {
     background-position: center !important;
   }
-  section.hero div.niv div.col a.mini-card > strong {
+  section.hero div.niv div.col a.card.mini-card {
+    width: 100%;
+  }
+  section.hero div.niv div.col a.card > strong {
     font-size: 3rem;
   }
   section.hero div.niv div.col div.colunistas {
@@ -1701,6 +1735,9 @@ section.conteudo div.niv div.content-area div.scroll a.box div.box-content p {
   section.conteudo div.niv div.content-area div.scroll {
     gap: 1rem;
   }
+  section.conteudo div.niv div.content-area div.scroll a.box {
+    width: 35.6rem;
+  }
 }
 @media (max-width: 600px) {
   section.conteudo div.niv div.top-area {
@@ -1736,6 +1773,15 @@ section.lista-destaque {
   @include responsive(600px) {}
 
   **/
+  /**
+
+  @include responsive(1400px) {}
+  @include responsive(1200px) {}
+  @include responsive(992px) {}
+  @include responsive(730px) {}
+  @include responsive(600px) {}
+
+  **/
 }
 section.lista-destaque div.niv > h2 {
   color: #242424;
@@ -1760,7 +1806,12 @@ section.lista-destaque div.niv div.boxes-area div.scroll {
     flex-grow: 2/2;
   }
   section.lista-destaque div.niv div.boxes-area div.scroll a.box-destaque {
-    max-width: 20rem;
+    max-width: 36rem;
+  }
+}
+@media (max-width: 600px) {
+  section.lista-destaque div.niv div.boxes-area div.scroll a.box-destaque {
+    max-width: 100%;
   }
 }
 
@@ -3465,6 +3516,9 @@ section.artigo div.niv div.cursos div.card-area div.scroll a.box-destaque div.ta
 @media (max-width: 800px) {
   section.artigo div.niv.--row {
     flex-direction: column-reverse;
+  }
+  section.artigo div.niv.--row main {
+    padding-right: 6rem;
   }
   section.artigo div.niv.--row aside {
     display: none;

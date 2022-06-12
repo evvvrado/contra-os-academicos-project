@@ -26,7 +26,19 @@ section.lista-destaque {
                     flex-grow: 2/2;
 
                     a.box-destaque {
-                        max-width: 20rem;
+                        max-width: 36rem;
+                    }
+                }
+            }
+        }
+    }
+
+    @include responsive(600px) {
+        div.niv {
+            div.boxes-area {
+                div.scroll {
+                    a.box-destaque {
+                        max-width: 100%;
                     }
                 }
             }

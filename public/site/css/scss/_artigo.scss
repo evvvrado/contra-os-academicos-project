@@ -713,6 +713,9 @@ section.artigo {
         div.niv {
             &.--row {
                 flex-direction: column-reverse;
+                main {
+                    padding-right: 6rem;
+                }
                 aside {
                     display: none;
                 }

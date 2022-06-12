@@ -272,21 +272,31 @@ section.hero {
         div.niv {
             flex-wrap: wrap;
 
-            a.card {
-                &.main-card {
-                    max-width: 100%;
-                    background-size: cover !important;
-                }
+            div.container {
+                div.content {
+                    a.card {
+                        &.main-card {
+                            width: 100%;
+                            max-width: 100%;
+                            background-size: cover !important;
+                        }
+                    }
+                    div.col {
+                        width: 100%;
+                        max-width: 100%;
+                        div.colunistas {
+                            width: 100%;
+                            max-width: unset;
+                        }
 
-                &.mini-card {
-                    max-width: 100%;
-                    background-size: cover !important;
-                }
-            }
-
-            div.col {
-                div.colunistas {
-                    width: 36rem;
+                        a.card {
+                            &.mini-card {
+                                width: 100%;
+                                max-width: 100%;
+                                background-size: cover !important;
+                            }
+                        }
+                    }
                 }
             }
         }
@@ -296,7 +306,10 @@ section.hero {
         div.niv {
             div.col {
                 width: 100%;
-                a.mini-card {
+                a.card {
+                    &.mini-card {
+                        width: 100%;
+                    }
                     background-position: center !important;
                     & > strong {
                         font-size: 3rem;
