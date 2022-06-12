@@ -3144,10 +3144,10 @@ section.artigo div.niv.--row main div.bio div strong {
   display: block;
 }
 section.artigo div.niv.--row main div.bio div p {
-  height: 12rem;
+  height: 11rem;
   overflow: hidden;
   display: -webkit-box;
-  -webkit-line-clamp: 7;
+  -webkit-line-clamp: 5;
   -webkit-box-orient: vertical;
   text-overflow: ellipsis;
 }

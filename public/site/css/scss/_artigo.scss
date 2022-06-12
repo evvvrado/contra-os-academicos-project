@@ -342,7 +342,7 @@ section.artigo {
                         }
 
                         p {
-                            @include limitText(12rem, 7);
+                            @include limitText(11rem, 5);
                         }
                     }
                 }
