@@ -63,7 +63,7 @@ section.conteudo {
                     width: 100%;
                     // max-width: 24rem;
                     max-width: 38.6rem;
-                    height: 38.5rem;
+                    height: 41rem;
 
                     // height: 32.5rem;
                     overflow: hidden;
@@ -78,7 +78,7 @@ section.conteudo {
                     div.box-content {
                         background-color: $white;
                         width: 100%;
-                        height: 18rem;
+                        height: 21rem;
                         padding: 1.2rem;
 
                         span {
@@ -113,7 +113,7 @@ section.conteudo {
                             margin-top: 1.8rem;
                             color: $mid-cinza-contra;
 
-                            @include limitText(5rem, 3);
+                            @include limitText(7rem, 3);
                         }
                     }
                 }

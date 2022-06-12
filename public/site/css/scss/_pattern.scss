@@ -1,256 +1,258 @@
-// ========= PADRÃO USADO EM TEXTOS ========= //
+:not(.text-content) {
+  // ========= PADRÃO USADO EM TEXTOS ========= //
 
-h1 {
-  font-family: $font-title;
-  color: $branco-contra;
-
-  font-weight: 700;
-  font-size: 4.8rem;
-  line-height: 6.5rem;
-}
-h2 {
-  font-family: $font-title;
-  color: $preto-contra;
-
-  font-weight: 700;
-  font-size: 2.4rem;
-  line-height: 3.2rem;
-
-  &.--bar {
-    --bottom: 0;
-    --left: 0;
-    --right: unset;
-    --top: unset;
-
-    --width: 13.4rem;
-    --height: 0.7rem;
-    --item-color: #{$white};
-
-    position: relative;
-    z-index: 1;
-
-    &::after {
-      width: var(--width);
-      height: var(--height);
-
-      background-color: var(--item-color);
-
-      position: absolute;
-      content: "";
-
-      bottom: var(--bottom);
-      left: var(--left);
-      top: var(--top);
-      right: var(--right);
-      z-index: -1;
-    }
-  }
-}
-
-h3 {
-  color: unset;
-
-  &.hr-bar {
-    @include flex(row, center, flex-start);
-    i {
-      height: 4.3rem;
-      width: 0.5rem;
-      display: block;
-      background-color: $tertiary;
-
-      margin-right: 1.7rem;
-    }
-  }
-}
-h4 {
-  color: unset;
-}
-p {
-  color: unset;
-  font-size: 1.6rem;
-  font-family: $font-text;
-}
-
-// ========= PADRÃO USADO EM COMPONENTES ========= //
-
-form {
-  label {
-    display: block;
-    input,
-    textarea,
-    select {
-      background-color: $white;
-      border: 1px solid $cinza-contra;
-      border-radius: 4px;
-
-      height: 4.3rem;
-      padding-left: 1.7rem;
-
-      font-weight: 400;
-      font-size: 6;
-      line-height: 1.6rem;
-
-      &::placeholder {
-        color: $mid-cinza-contra;
-      }
-    }
-
-    input[type="checkbox"] {
-      all: unset;
-      background-color: $creme-contra;
-      border-radius: 0.4rem;
-      border: solid 1px $primary;
-
-      width: 6;
-      aspect-ratio: 1/1;
-
-      margin-right: 6;
-
-      &:checked {
-        background-color: $primary;
-      }
-    }
-  }
-}
-
-a:not(a.button) {
-  color: unset;
-  transition: 0.32s;
-
-  &.--plus {
+  h1 {
     font-family: $font-title;
-    color: $tertiary;
+    color: $branco-contra;
 
-    font-style: normal;
     font-weight: 700;
-    font-size: 1.4rem;
-    line-height: 100%;
-    padding-left: 1.8rem;
-
-    height: 1.9rem;
-
-    display: flex;
-    position: relative;
-    align-items: center;
-
-    &::after {
-      left: 0;
-      bottom: 0;
-      content: url("/site/assets/img/icon_plus_anchor.svg");
-      position: absolute;
-    }
-
-    &:hover {
-      letter-spacing: 0.095em;
-    }
+    font-size: 4.8rem;
+    line-height: 6.5rem;
   }
+  h2 {
+    font-family: $font-title;
+    color: $preto-contra;
 
-  &.--blue {
-    color: $anchor-blue;
-  }
+    font-weight: 700;
+    font-size: 2.4rem;
+    line-height: 3.2rem;
 
-  &:hover,
-  &:focus {
-    opacity: 0.7;
-  }
-}
+    &.--bar {
+      --bottom: 0;
+      --left: 0;
+      --right: unset;
+      --top: unset;
 
-.button:is(a, button) {
-  --width: 19.5rem;
-  --height: 4.2rem;
-  // --padding-x: 6.9rem;
-  // --padding-y: 0.7rem;
-  --font-size: 2rem;
-  --font-color: #{$white};
-  --background-color: #{$primary};
+      --width: 13.4rem;
+      --height: 0.7rem;
+      --item-color: #{$white};
 
-  background-color: var(--background-color);
-  border-radius: 4px;
-
-  font-family: $font-title;
-  font-style: normal;
-  font-weight: 400;
-  line-height: 100%;
-
-  transition: 0.32s;
-
-  height: var(--height);
-  width: var(--width);
-  // padding: var(--padding-x) var(--padding-y);
-  font-size: var(--font-size);
-  color: var(--font-color);
-
-  @extend %totalcenter;
-
-  &:hover,
-  &:focus {
-    background: var(--font-color);
-    border: solid 2px var(--background-color);
-    color: var(--background-color);
-  }
-
-  &:active {
-    border: 2px $mid-cinza-contra solid;
-  }
-}
-
-.box-destaque {
-  height: 33.5rem;
-  width: 100%;
-  // max-width: 24rem;
-  max-width: 29rem;
-
-  border-radius: 0.4rem;
-  z-index: 0;
-  padding: 2.4rem 2.8rem 3.4rem 2.4rem;
-
-  @include flex(column, flex-start, flex-end);
-  background-color: red;
-  background-size: cover;
-
-  &:hover {
-    h2 {
-      letter-spacing: 0.1rem;
+      position: relative;
+      z-index: 1;
 
       &::after {
-        width: 100%;
+        width: var(--width);
+        height: var(--height);
+
+        background-color: var(--item-color);
+
+        position: absolute;
+        content: "";
+
+        bottom: var(--bottom);
+        left: var(--left);
+        top: var(--top);
+        right: var(--right);
+        z-index: -1;
       }
     }
   }
 
-  h2 {
-    height: 6.4rem;
-    z-index: 2;
-    color: $white;
-    line-height: 3.2rem;
-    transition: 0.32s;
+  h3 {
+    color: unset;
 
-    position: relative;
+    &.hr-bar {
+      @include flex(row, center, flex-start);
+      i {
+        height: 4.3rem;
+        width: 0.5rem;
+        display: block;
+        background-color: $tertiary;
 
-    &::after {
-      transition: 0.32s;
-      position: absolute;
-      content: "";
-      bottom: -0.5rem;
-      left: 0;
+        margin-right: 1.7rem;
+      }
+    }
+  }
+  h4 {
+    color: unset;
+  }
+  p {
+    color: unset;
+    font-size: 1.6rem;
+    font-family: $font-text;
+  }
 
-      width: 5.2rem;
-      height: 0.2rem;
-      background-color: $tertiary;
+  // ========= PADRÃO USADO EM COMPONENTES ========= //
+
+  form {
+    label {
+      display: block;
+      input,
+      textarea,
+      select {
+        background-color: $white;
+        border: 1px solid $cinza-contra;
+        border-radius: 4px;
+
+        height: 4.3rem;
+        padding-left: 1.7rem;
+
+        font-weight: 400;
+        font-size: 6;
+        line-height: 1.6rem;
+
+        &::placeholder {
+          color: $mid-cinza-contra;
+        }
+      }
+
+      input[type="checkbox"] {
+        all: unset;
+        background-color: $creme-contra;
+        border-radius: 0.4rem;
+        border: solid 1px $primary;
+
+        width: 6;
+        aspect-ratio: 1/1;
+
+        margin-right: 6;
+
+        &:checked {
+          background-color: $primary;
+        }
+      }
     }
   }
 
-  position: relative;
-  &::before {
-    z-index: 1;
-    content: "";
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    left: 0;
-    top: 0;
+  a:not(a.button) {
+    color: unset;
+    transition: 0.32s;
 
-    background: linear-gradient(180deg, rgba(0, 0, 0, 0) -29.41%, #242424 100%);
+    &.--plus {
+      font-family: $font-title;
+      color: $tertiary;
+
+      font-style: normal;
+      font-weight: 700;
+      font-size: 1.4rem;
+      line-height: 100%;
+      padding-left: 1.8rem;
+
+      height: 1.9rem;
+
+      display: flex;
+      position: relative;
+      align-items: center;
+
+      &::after {
+        left: 0;
+        bottom: 0;
+        content: url("/site/assets/img/icon_plus_anchor.svg");
+        position: absolute;
+      }
+
+      &:hover {
+        letter-spacing: 0.095em;
+      }
+    }
+
+    &.--blue {
+      color: $anchor-blue;
+    }
+
+    &:hover,
+    &:focus {
+      opacity: 0.7;
+    }
+  }
+
+  .button:is(a, button) {
+    --width: 19.5rem;
+    --height: 4.2rem;
+    // --padding-x: 6.9rem;
+    // --padding-y: 0.7rem;
+    --font-size: 2rem;
+    --font-color: #{$white};
+    --background-color: #{$primary};
+
+    background-color: var(--background-color);
     border-radius: 4px;
+
+    font-family: $font-title;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 100%;
+
+    transition: 0.32s;
+
+    height: var(--height);
+    width: var(--width);
+    // padding: var(--padding-x) var(--padding-y);
+    font-size: var(--font-size);
+    color: var(--font-color);
+
+    @extend %totalcenter;
+
+    &:hover,
+    &:focus {
+      background: var(--font-color);
+      border: solid 2px var(--background-color);
+      color: var(--background-color);
+    }
+
+    &:active {
+      border: 2px $mid-cinza-contra solid;
+    }
+  }
+
+  .box-destaque {
+    height: 33.5rem;
+    width: 100%;
+    // max-width: 24rem;
+    max-width: 29rem;
+
+    border-radius: 0.4rem;
+    z-index: 0;
+    padding: 2.4rem 2.8rem 3.4rem 2.4rem;
+
+    @include flex(column, flex-start, flex-end);
+    background-color: red;
+    background-size: cover;
+
+    &:hover {
+      h2 {
+        letter-spacing: 0.1rem;
+
+        &::after {
+          width: 100%;
+        }
+      }
+    }
+
+    h2 {
+      height: 6.4rem;
+      z-index: 2;
+      color: $white;
+      line-height: 3.2rem;
+      transition: 0.32s;
+
+      position: relative;
+
+      &::after {
+        transition: 0.32s;
+        position: absolute;
+        content: "";
+        bottom: -0.5rem;
+        left: 0;
+
+        width: 5.2rem;
+        height: 0.2rem;
+        background-color: $tertiary;
+      }
+    }
+
+    position: relative;
+    &::before {
+      z-index: 1;
+      content: "";
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      left: 0;
+      top: 0;
+
+      background: linear-gradient(180deg, rgba(0, 0, 0, 0) -29.41%, #242424 100%);
+      border-radius: 4px;
+    }
   }
 }

@@ -9,7 +9,7 @@ section.nossa-equipe div.niv div.equipe-area div.membro picture img, section.art
      object-fit: cover;
 }
 
-div#referencias_modal div.niv div.box div.title-area button, section.trabalhe-conosco div.niv div.boxes-side div.red-box, section.apoie-projeto div.niv div.content-area div.clickable a, section.artigo div.niv div.cursos div.card-area div.scroll a.box-destaque div.tags span, section.artigo div.niv div.cursos div.title-area div button, section.artigo div.niv.--row main div.actions div.social-buttons div.icon picture, section.publicacoes aside ul.colunistas li span, section.complemento.--biblioteca div.niv div.boxes-area button, body#sobre section.banner div.niv picture.icon-arrow, section.parceiros div.niv div.partners a, section.cursos div.niv div.boxes-area div.scroll a.box-destaque div.tags span, section.indicacao-cast div.niv div.indicacao-area div.box.--livro div.box-content main div.--novidade::after, section.hero div.niv div.container a.card.main-card div.top-bar span.categoria, header div[fluid] div.niv > div div.search-button picture, header div[fluid] div.user-circle, .button:is(a, button) {
+div#referencias_modal div.niv div.box div.title-area button, section.trabalhe-conosco div.niv div.boxes-side div.red-box, section.apoie-projeto div.niv div.content-area div.clickable a, section.artigo div.niv div.cursos div.card-area div.scroll a.box-destaque div.tags span, section.artigo div.niv div.cursos div.title-area div button, section.artigo div.niv.--row main div.actions div.social-buttons div.icon picture, section.publicacoes aside ul.colunistas li span, section.complemento.--biblioteca div.niv div.boxes-area button, body#sobre section.banner div.niv picture.icon-arrow, section.parceiros div.niv div.partners a, section.cursos div.niv div.boxes-area div.scroll a.box-destaque div.tags span, section.indicacao-cast div.niv div.indicacao-area div.box.--livro div.box-content main div.--novidade::after, section.hero div.niv div.container a.card.main-card div.top-bar span.categoria, header div[fluid] div.niv > div div.search-button picture, header div[fluid] div.user-circle, :not(.text-content) .button:is(a, button) {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -252,22 +252,21 @@ html body {
     transform: translateX(-0.5rem);
   }
 }
-h1 {
+:not(.text-content) h1 {
   font-family: "Palatino Linotype", sans-serif;
   color: #ffffff;
   font-weight: 700;
   font-size: 4.8rem;
   line-height: 6.5rem;
 }
-
-h2 {
+:not(.text-content) h2 {
   font-family: "Palatino Linotype", sans-serif;
   color: #242424;
   font-weight: 700;
   font-size: 2.4rem;
   line-height: 3.2rem;
 }
-h2.--bar {
+:not(.text-content) h2.--bar {
   --bottom: 0;
   --left: 0;
   --right: unset;
@@ -278,7 +277,7 @@ h2.--bar {
   position: relative;
   z-index: 1;
 }
-h2.--bar::after {
+:not(.text-content) h2.--bar::after {
   width: var(--width);
   height: var(--height);
   background-color: var(--item-color);
@@ -290,40 +289,36 @@ h2.--bar::after {
   right: var(--right);
   z-index: -1;
 }
-
-h3 {
+:not(.text-content) h3 {
   color: unset;
 }
-h3.hr-bar {
+:not(.text-content) h3.hr-bar {
   display: flex;
   align-items: center;
   justify-content: flex-start;
   flex-direction: row;
 }
-h3.hr-bar i {
+:not(.text-content) h3.hr-bar i {
   height: 4.3rem;
   width: 0.5rem;
   display: block;
   background-color: #f2d027;
   margin-right: 1.7rem;
 }
-
-h4 {
+:not(.text-content) h4 {
   color: unset;
 }
-
-p {
+:not(.text-content) p {
   color: unset;
   font-size: 1.6rem;
   font-family: "Open Sans", sans-serif;
 }
-
-form label {
+:not(.text-content) form label {
   display: block;
 }
-form label input,
-form label textarea,
-form label select {
+:not(.text-content) form label input,
+:not(.text-content) form label textarea,
+:not(.text-content) form label select {
   background-color: #fff;
   border: 1px solid #eaeaea;
   border-radius: 4px;
@@ -333,18 +328,18 @@ form label select {
   font-size: 6;
   line-height: 1.6rem;
 }
-form label input::-moz-placeholder, form label textarea::-moz-placeholder, form label select::-moz-placeholder {
+:not(.text-content) form label input::-moz-placeholder, :not(.text-content) form label textarea::-moz-placeholder, :not(.text-content) form label select::-moz-placeholder {
   color: #716f6f;
 }
-form label input:-ms-input-placeholder, form label textarea:-ms-input-placeholder, form label select:-ms-input-placeholder {
+:not(.text-content) form label input:-ms-input-placeholder, :not(.text-content) form label textarea:-ms-input-placeholder, :not(.text-content) form label select:-ms-input-placeholder {
   color: #716f6f;
 }
-form label input::placeholder,
-form label textarea::placeholder,
-form label select::placeholder {
+:not(.text-content) form label input::placeholder,
+:not(.text-content) form label textarea::placeholder,
+:not(.text-content) form label select::placeholder {
   color: #716f6f;
 }
-form label input[type=checkbox] {
+:not(.text-content) form label input[type=checkbox] {
   all: unset;
   background-color: #fdf6d6;
   border-radius: 0.4rem;
@@ -353,15 +348,14 @@ form label input[type=checkbox] {
   aspect-ratio: 1/1;
   margin-right: 6;
 }
-form label input[type=checkbox]:checked {
+:not(.text-content) form label input[type=checkbox]:checked {
   background-color: #5b2222;
 }
-
-a:not(a.button) {
+:not(.text-content) a:not(a.button) {
   color: unset;
   transition: 0.32s;
 }
-a:not(a.button).--plus {
+:not(.text-content) a:not(a.button).--plus {
   font-family: "Palatino Linotype", sans-serif;
   color: #f2d027;
   font-style: normal;
@@ -374,23 +368,22 @@ a:not(a.button).--plus {
   position: relative;
   align-items: center;
 }
-a:not(a.button).--plus::after {
+:not(.text-content) a:not(a.button).--plus::after {
   left: 0;
   bottom: 0;
   content: url("/site/assets/img/icon_plus_anchor.svg");
   position: absolute;
 }
-a:not(a.button).--plus:hover {
+:not(.text-content) a:not(a.button).--plus:hover {
   letter-spacing: 0.095em;
 }
-a:not(a.button).--blue {
+:not(.text-content) a:not(a.button).--blue {
   color: #2f80ed;
 }
-a:not(a.button):hover, a:not(a.button):focus {
+:not(.text-content) a:not(a.button):hover, :not(.text-content) a:not(a.button):focus {
   opacity: 0.7;
 }
-
-.button:is(a, button) {
+:not(.text-content) .button:is(a, button) {
   --width: 19.5rem;
   --height: 4.2rem;
   --font-size: 2rem;
@@ -408,16 +401,15 @@ a:not(a.button):hover, a:not(a.button):focus {
   font-size: var(--font-size);
   color: var(--font-color);
 }
-.button:is(a, button):hover, .button:is(a, button):focus {
+:not(.text-content) .button:is(a, button):hover, :not(.text-content) .button:is(a, button):focus {
   background: var(--font-color);
   border: solid 2px var(--background-color);
   color: var(--background-color);
 }
-.button:is(a, button):active {
+:not(.text-content) .button:is(a, button):active {
   border: 2px #716f6f solid;
 }
-
-.box-destaque {
+:not(.text-content) .box-destaque {
   height: 33.5rem;
   width: 100%;
   max-width: 29rem;
@@ -432,13 +424,13 @@ a:not(a.button):hover, a:not(a.button):focus {
   background-size: cover;
   position: relative;
 }
-.box-destaque:hover h2 {
+:not(.text-content) .box-destaque:hover h2 {
   letter-spacing: 0.1rem;
 }
-.box-destaque:hover h2::after {
+:not(.text-content) .box-destaque:hover h2::after {
   width: 100%;
 }
-.box-destaque h2 {
+:not(.text-content) .box-destaque h2 {
   height: 6.4rem;
   z-index: 2;
   color: #fff;
@@ -446,7 +438,7 @@ a:not(a.button):hover, a:not(a.button):focus {
   transition: 0.32s;
   position: relative;
 }
-.box-destaque h2::after {
+:not(.text-content) .box-destaque h2::after {
   transition: 0.32s;
   position: absolute;
   content: "";
@@ -456,7 +448,7 @@ a:not(a.button):hover, a:not(a.button):focus {
   height: 0.2rem;
   background-color: #f2d027;
 }
-.box-destaque::before {
+:not(.text-content) .box-destaque::before {
   z-index: 1;
   content: "";
   position: absolute;
@@ -1652,7 +1644,7 @@ section.conteudo div.niv div.content-area div.scroll a.box {
   display: block;
   width: 100%;
   max-width: 38.6rem;
-  height: 38.5rem;
+  height: 41rem;
   overflow: hidden;
   border-radius: 0.4rem;
 }
@@ -1663,7 +1655,7 @@ section.conteudo div.niv div.content-area div.scroll a.box picture {
 section.conteudo div.niv div.content-area div.scroll a.box div.box-content {
   background-color: #fff;
   width: 100%;
-  height: 18rem;
+  height: 21rem;
   padding: 1.2rem;
 }
 section.conteudo div.niv div.content-area div.scroll a.box div.box-content span {
@@ -1698,7 +1690,7 @@ section.conteudo div.niv div.content-area div.scroll a.box div.box-content p {
   display: block;
   margin-top: 1.8rem;
   color: #716f6f;
-  height: 5rem;
+  height: 7rem;
   overflow: hidden;
   display: -webkit-box;
   -webkit-line-clamp: 3;
@@ -2943,7 +2935,8 @@ section.artigo div.niv.--row main div.title-area div.info div.author span:last-c
 }
 section.artigo div.niv.--row main div.text-content {
   margin-top: 4.1rem;
-  max-width: 59.2rem;
+  max-width: 77.2rem;
+  font-size: 1.8rem;
 }
 section.artigo div.niv.--row main div.text-content span.citation {
   margin-top: 3.8rem;
