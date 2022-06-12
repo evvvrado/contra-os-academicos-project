@@ -31,7 +31,7 @@ header {
 
     div[fluid] {
         background-color: $white;
-        @include padding-y(1rem);
+        // @include padding-y(1rem);
         position: relative;
 
         z-index: 2;

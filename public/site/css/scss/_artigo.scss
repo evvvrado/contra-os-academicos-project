@@ -104,6 +104,7 @@ section.artigo {
 
                 div.text-content {
                     margin-top: 4.1rem;
+                    max-width: 59.2rem;
 
                     span.citation {
                         margin-top: 3.8rem;
@@ -129,16 +130,16 @@ section.artigo {
                         }
                     }
 
-                    p {
-                        font-family: $font-secondary;
-                        font-weight: 400;
-                        font-size: 1.4rem;
-                        line-height: 1.9rem;
+                    // p {
+                    //     font-family: $font-secondary;
+                    //     font-weight: 400;
+                    //     font-size: 1.4rem;
+                    //     line-height: 1.9rem;
 
-                        color: $black;
+                    //     color: $black;
 
-                        max-width: 59.2rem;
-                    }
+                    //     max-width: 59.2rem;
+                    // }
                 }
 
                 div.apoie-projeto {

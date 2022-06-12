@@ -514,8 +514,6 @@ header {
 }
 header div[fluid] {
   background-color: #fff;
-  padding-top: 1rem;
-  padding-bottom: 1rem;
   position: relative;
   z-index: 2;
   transition: 0.32s;
@@ -1383,7 +1381,7 @@ section.blog-news div.niv div.blog-area {
   width: 100%;
   background-color: #242424;
   border-radius: 4px;
-  padding: 2.1rem 2.4rem 2.8rem 2.4rem;
+  padding: 3.5rem 2.4rem 3.5rem 2.4rem;
 }
 section.blog-news div.niv div.blog-area div.top-title {
   width: 100%;
@@ -2945,6 +2943,7 @@ section.artigo div.niv.--row main div.title-area div.info div.author span:last-c
 }
 section.artigo div.niv.--row main div.text-content {
   margin-top: 4.1rem;
+  max-width: 59.2rem;
 }
 section.artigo div.niv.--row main div.text-content span.citation {
   margin-top: 3.8rem;
@@ -2965,14 +2964,6 @@ section.artigo div.niv.--row main div.text-content span.citation p {
   font-size: 1.4rem;
   line-height: 1.9rem;
   color: #5b2222;
-}
-section.artigo div.niv.--row main div.text-content p {
-  font-family: "Palatino Linotype", sans-serif;
-  font-weight: 400;
-  font-size: 1.4rem;
-  line-height: 1.9rem;
-  color: #000;
-  max-width: 59.2rem;
 }
 section.artigo div.niv.--row main div.apoie-projeto {
   margin-top: 2.1rem;
