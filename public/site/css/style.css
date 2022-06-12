@@ -3039,7 +3039,7 @@ section.artigo div.niv.--row main div.text-content time,
 section.artigo div.niv.--row main div.text-content mark,
 section.artigo div.niv.--row main div.text-content audio,
 section.artigo div.niv.--row main div.text-content video {
-  all: initial;
+  all: inherit;
 }
 section.artigo div.niv.--row main div.apoie-projeto {
   margin-top: 2.1rem;
