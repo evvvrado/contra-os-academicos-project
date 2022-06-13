@@ -7,9 +7,10 @@ section.quem-somos {
         padding: 0;
 
         div.content {
-            max-height: 36.7rem;
+            // max-height: 36.7rem;
             overflow: hidden;
             transition: 0.32s;
+            padding-bottom: 3rem;
 
             &[complete] {
                 max-height: max-content;

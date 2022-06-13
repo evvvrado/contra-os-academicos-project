@@ -136,7 +136,7 @@ section.publicacoes {
                                 margin-top: 1.6rem;
                                 color: $mid-cinza-contra;
 
-                                @include limitText(5rem, 3);
+                                @include limitText(4.5rem, 2);
                             }
                         }
                     }
@@ -153,7 +153,7 @@ section.publicacoes {
     main {
         padding: 2.7rem 5.8rem 6.1rem 2.4rem;
         background-color: $white;
-        max-width: 83.2rem;
+        max-width: 89.2rem;
 
         div.niv {
             padding: 0;
@@ -196,7 +196,7 @@ section.publicacoes {
                 a.box {
                     display: block;
                     width: 100%;
-                    max-width: 24rem;
+                    max-width: 26rem;
                     height: 32.5rem;
                     border: 1px solid #eaeaea;
                     border-radius: 4px;
@@ -222,7 +222,6 @@ section.publicacoes {
                             line-height: 1.6rem;
                             color: $primary;
                         }
-
                         strong {
                             font-family: $font-secondary;
                             font-weight: 700;
@@ -247,7 +246,7 @@ section.publicacoes {
                             margin-top: 1.6rem;
                             color: $mid-cinza-contra;
 
-                            @include limitText(5rem, 3);
+                            @include limitText(4rem, 2);
                         }
                     }
                 }

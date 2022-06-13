@@ -17,7 +17,7 @@
     </section>
 
     <section class="publicacoes">
-        <aside>
+        {{-- <aside>
             <ul class="colunistas">
                 <li>
                     <picture>
@@ -55,7 +55,7 @@
                     <span>Nome do colunista</span>
                 </li>
             </ul>
-        </aside>
+        </aside> --}}
 
 
         <main>
@@ -76,18 +76,18 @@
                 </div>
 
                 <div class="content-area">
-                    @foreach($blogs as $blog)
+                    @foreach ($blogs as $blog)
                         <a href="{{ route('site.blog_detalhe', ['blog' => $blog]) }}" class="box">
                             <picture>
                                 <img src="{{ asset($blog->banner) }}" alt="">
                             </picture>
                             <div class="box-content">
-                                <span>{{ $blog->categoria->nome}}</span>
+                                <span>{{ $blog->categoria->nome }}</span>
                                 <strong>{{ $blog->titulo }}</strong>
 
                                 <hr>
 
-                                <p>{!!Str::limit($blog->resumo, 104)!!}</p>
+                                <p>{!! Str::limit($blog->resumo, 104) !!}</p>
                             </div>
                         </a>
                     @endforeach
@@ -98,6 +98,7 @@
                         Carregar mais conteúdo
                     </button>
                 </div>
+
             </div>
         </main>
 
@@ -165,6 +166,41 @@
                 </ul>
             </div>
         </aside>
+    </section>
+
+
+    <section class="blog-news">
+        <div class="niv">
+
+            <div class="blog-area">
+                <div class="top-title">
+                    <h2>
+                        <picture>
+                            <img src="{{ asset('site/assets/img/icon_fire_blog.png') }}" alt="Ícone de fogo">
+                        </picture>
+                        Em breve
+                    </h2>
+                    <a href="{{ route('site.blog') }}" class="--plus">Ver mais</a>
+                </div>
+
+                <div class="content">
+                    <div class="scroll">
+                        @foreach ($blogs as $key => $blog)
+                            @if ($key < 4)
+                                <a href="{{ route('site.blog_detalhe', ['blog' => $blog]) }}" class="card"
+                                    style="background-image: url('{{ asset($blog->banner) }}')">
+
+                                    <strong>{{ $blog->titulo }}</strong>
+                                    <p>Por <strong>{{ $blog->autor->nome }}</strong></p>
+                                </a>
+                            @endif
+                        @endforeach
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
     </section>
 
 @endsection

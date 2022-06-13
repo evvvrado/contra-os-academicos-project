@@ -225,6 +225,7 @@ section.artigo {
                     h6,
                     p {
                         margin-top: 12px !important;
+                        font-family: $font-secondary !important;
                     }
                 }
 
@@ -270,15 +271,6 @@ section.artigo {
                     div.content-side {
                         max-width: 36.5rem;
 
-                        div.buttons {
-                            @include flex(row, center, center);
-                            gap: 2rem;
-
-                            button:nth-child(2) {
-                                --width: 15rem;
-                            }
-                        }
-
                         strong {
                             font-family: $font-secondary;
                             font-weight: 700;
@@ -306,30 +298,74 @@ section.artigo {
                             line-height: 1.6rem;
                             color: $preto-contra;
                         }
+                    }
+                    div.buttons {
+                        @include flex(row, center, center);
+                        gap: 2rem;
 
-                        button.button {
-                            margin-top: 1rem;
-
-                            --width: 10rem;
-                            --height: 2.3rem;
-                            --background-color: #{$white};
-                            --font-color: #{$primary};
-                            --font-size: 1.2rem;
-
-                            border: solid 1px $primary;
-                            font-weight: bold;
+                        button:nth-child(2) {
+                            --width: 15rem;
                         }
                     }
 
+                    button.button {
+                        margin-top: 1rem;
+
+                        --width: 10rem;
+                        --height: 2.3rem;
+                        --background-color: #{$white};
+                        --font-color: #{$primary};
+                        --font-size: 1.2rem;
+
+                        border: solid 1px $primary;
+                        font-weight: bold;
+                    }
+
                     &.--alternative {
+                        flex-direction: column;
+                        gap: 2rem;
+                        border: none;
+
                         div.content-side {
+                            z-index: 2;
+                            border: solid 1px $cinza-contra;
+                            position: relative;
+                            width: 100%;
+                            max-width: 100%;
+
+                            padding-top: 3rem;
+                            padding-bottom: 3rem;
+
+                            @include flex(column, center, center);
+
+                            &::after {
+                                position: absolute;
+                                content: "";
+                                margin: auto auto;
+                                top: 0;
+                                left: 0;
+                                right: 0;
+                                bottom: 0;
+
+                                width: calc(100% - 15px);
+                                height: calc(100% - 15px);
+                                border: solid 1px $cinza-contra;
+
+                                z-index: 1;
+                            }
+
                             strong,
                             p {
+                                max-width: 36.5rem;
+
                                 text-align: center;
+                                font-family: $font-secondary;
                             }
 
                             strong {
-                                font-size: 2.4rem;
+                                &:nth-child(2) {
+                                    font-size: 2.4rem;
+                                }
                                 &::after {
                                     display: none;
                                 }

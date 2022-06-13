@@ -13,7 +13,7 @@
             </div>
 
             <h2 class="--bar">Entre em contato</h2>
-            <p>Dúvidas e sugestões entre em contato conosco:</p>
+            {{-- <p>Dúvidas e sugestões entre em contato conosco:</p> --}}
         </div>
     </section>
 

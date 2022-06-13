@@ -88,7 +88,7 @@
         padding-left: 1.7rem;
 
         font-weight: 400;
-        font-size: 6;
+        font-size: 1.4rem;
         line-height: 1.6rem;
 
         &::placeholder {
@@ -102,10 +102,10 @@
         border-radius: 0.4rem;
         border: solid 1px $primary;
 
-        width: 6;
+        width: 1.6rem;
         aspect-ratio: 1/1;
 
-        margin-right: 6;
+        margin-right: 1.6rem;
 
         &:checked {
           background-color: $primary;
@@ -220,7 +220,7 @@
     }
 
     h2 {
-      height: 6.4rem;
+      max-height: 6.4rem;
       z-index: 2;
       color: $white;
       line-height: 3.2rem;

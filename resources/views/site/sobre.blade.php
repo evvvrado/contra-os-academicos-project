@@ -84,7 +84,7 @@
                 </main>
             </div>
 
-            <div class="read-more"><span>Ver tudo</span></div>
+            {{-- <div class="read-more"><span>Ver tudo</span></div> --}}
         </div>
     </section>
 

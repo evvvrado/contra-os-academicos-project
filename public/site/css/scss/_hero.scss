@@ -84,6 +84,9 @@ section.hero {
 
                     h1 {
                         @include limitText(13rem, 2);
+
+                        height: unset;
+                        max-height: 13rem;
                     }
 
                     z-index: 1;
@@ -133,7 +136,7 @@ section.hero {
 
                     padding: 1.8rem 1.7rem;
 
-                    @include flex(column, flex-start, space-between);
+                    @include flex(column, flex-start, flex-end);
 
                     &:first-child {
                         margin-bottom: 1rem;
@@ -148,6 +151,8 @@ section.hero {
                         z-index: 1;
 
                         @include limitText(13.2rem, 5);
+                        height: unset;
+                        max-height: 13.2rem;
                     }
 
                     p,

@@ -212,7 +212,6 @@
                 </div>
 
                 <div class="apoie-projeto --alternative">
-
                     <div class="content-side">
                         <strong>MENSAGEM DA EQUIPE</strong>
 
@@ -224,10 +223,12 @@
                             Desde 2014 o Contra os Acadêmicos trabalha para divulgar a boa filosofia e incentivar a
                             autoeducação. Apoiando nosso projeto, você assegura a continuidade do nosso trabalho.
                         </p>
-                        <div class="buttons">
-                            <button class="button">Quero apoiar</button>
-                            <button class="button">Ler artigo completo</button>
-                        </div>
+                    </div>
+
+
+                    <div class="buttons">
+                        <button class="button">Quero apoiar</button>
+                        <button class="button">Ler artigo completo</button>
                     </div>
                 </div>
 
