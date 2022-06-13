@@ -51,11 +51,12 @@
                                 <div>
                                     <span>Traduzido por {{ $blog->tradutor->nome }}</span>
                                     <div>
-                                        <span>{{ date( 'd' , strtotime($blog->created_at)) }} de {{ $mes }} de {{ date( 'Y' , strtotime($blog->created_at)) }}</span>
+                                        <span>{{ date('d', strtotime($blog->created_at)) }} de {{ $mes }} de
+                                            {{ date('Y', strtotime($blog->created_at)) }}</span>
                                     </div>
                                 </div>
                             </div>
-                        @else 
+                        @else
                             <div class="author">
                                 <picture>
                                     <img src="{{ asset($blog->autor->foto) }}" alt="Foto do colunista">
@@ -64,7 +65,8 @@
                                 <div>
                                     <span>Por {{ $blog->autor->nome }}</span>
                                     <div>
-                                        <span>{{ date( 'd' , strtotime($blog->created_at)) }} de {{ $mes }} de {{ date( 'Y' , strtotime($blog->created_at)) }}</span>
+                                        <span>{{ date('d', strtotime($blog->created_at)) }} de {{ $mes }} de
+                                            {{ date('Y', strtotime($blog->created_at)) }}</span>
                                     </div>
                                 </div>
                             </div>
@@ -74,27 +76,27 @@
 
                 <div class="text-content">
                     <p>
-                        {!!$blog->conteudo!!}
+                        {!! $blog->conteudo !!}
                     </p>
                 </div>
 
-                <div class="apoie-projeto">
-                    <div class="avatar-side">
-                        <picture>
-                            <img src="{{ asset('site/assets/img/picture_apoie_artigo.jpg') }}" alt="Foto de uma pessoa">
-                        </picture>
+                <div class="apoie-projeto --alternative">
 
-                        <strong>Beatriz Dias</strong>
-                    </div>
                     <div class="content-side">
-                        <strong>Apoie o projeto</strong>
+                        <strong>MENSAGEM DA EQUIPE</strong>
+
+                        <strong>
+                            Seu apoio é mais importante do que nunca.
+                        </strong>
 
                         <p>
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum pharetra varius est, at
-                            feugiat justo blandit ac. Duis semper libero a porttitor ullamcorper.
+                            Desde 2014 o Contra os Acadêmicos trabalha para divulgar a boa filosofia e incentivar a
+                            autoeducação. Apoiando nosso projeto, você assegura a continuidade do nosso trabalho.
                         </p>
-
-                        <button class="button">Quero apoiar</button>
+                        <div class="buttons">
+                            <button class="button">Quero apoiar</button>
+                            <button class="button">Ler artigo completo</button>
+                        </div>
                     </div>
                 </div>
 
@@ -160,7 +162,8 @@
                     <ul>
                         @foreach ($mais_do_autors as $mais_do_autor)
                             <li>
-                                <a href="{{ route('site.blog_detalhe', ['blog' => $mais_do_autor]) }}">{{ $mais_do_autor->titulo }}</a>
+                                <a
+                                    href="{{ route('site.blog_detalhe', ['blog' => $mais_do_autor]) }}">{{ $mais_do_autor->titulo }}</a>
                             </li>
                         @endforeach
                     </ul>
@@ -170,15 +173,15 @@
                     <h3>Relacionados</h3>
 
                     <ul>
-                        @foreach ($blog_randomicos as $blog_randomico)     
+                        @foreach ($blog_randomicos as $blog_randomico)
                             <li>
-                                <a href="{{ route('site.blog_detalhe', ['blog' => $blog_randomico]) }}" class="box">
+                                <a href="{{ route('site.blog_detalhe', ['blog' => $blog_randomico]) }}"
+                                    class="box">
                                     <picture>
-                                        <img src="{{ asset($blog->banner) }}"
-                                            alt="Banner relacionados">
+                                        <img src="{{ asset($blog->banner) }}" alt="Banner relacionados">
                                     </picture>
                                     <div class="content">
-                                        <span>{{ date_format($blog->created_at,"d/m/Y") }}</span>
+                                        <span>{{ date_format($blog->created_at, 'd/m/Y') }}</span>
                                         <strong>{{ $blog_randomico->titulo }}</strong>
                                         <p>Por {{ $blog_randomico->autor->nome }}</p>
                                     </div>

@@ -211,25 +211,27 @@
                     </p>
                 </div>
 
-                <div class="apoie-projeto">
-                    <div class="avatar-side">
-                        <picture>
-                            <img src="{{ asset('site/assets/img/picture_apoie_artigo.jpg') }}" alt="Foto de uma pessoa">
-                        </picture>
+                <div class="apoie-projeto --alternative">
 
-                        <strong>Beatriz Dias</strong>
-                    </div>
                     <div class="content-side">
-                        <strong>Apoie o projeto</strong>
+                        <strong>MENSAGEM DA EQUIPE</strong>
+
+                        <strong>
+                            Seu apoio é mais importante do que nunca.
+                        </strong>
 
                         <p>
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum pharetra varius est, at
-                            feugiat justo blandit ac. Duis semper libero a porttitor ullamcorper.
+                            Desde 2014 o Contra os Acadêmicos trabalha para divulgar a boa filosofia e incentivar a
+                            autoeducação. Apoiando nosso projeto, você assegura a continuidade do nosso trabalho.
                         </p>
-
-                        <button class="button">Quero apoiar</button>
+                        <div class="buttons">
+                            <button class="button">Quero apoiar</button>
+                            <button class="button">Ler artigo completo</button>
+                        </div>
                     </div>
                 </div>
+
+
 
                 <div class="bio">
                     <picture>

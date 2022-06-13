@@ -282,7 +282,7 @@
 
     <section class="lista-destaque">
         <div class="niv">
-            <h2 class="--bar">Lista em destaque</h2>
+            <h2 class="--bar">Listas em destaque</h2>
 
             <div class="boxes-area">
                 <div class="scroll">

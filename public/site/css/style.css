@@ -3092,6 +3092,16 @@ section.artigo div.niv.--row main div.text-content audio,
 section.artigo div.niv.--row main div.text-content video {
   all: inherit;
 }
+section.artigo div.niv.--row main div.text-content span,
+section.artigo div.niv.--row main div.text-content h1,
+section.artigo div.niv.--row main div.text-content h2,
+section.artigo div.niv.--row main div.text-content h3,
+section.artigo div.niv.--row main div.text-content h4,
+section.artigo div.niv.--row main div.text-content h5,
+section.artigo div.niv.--row main div.text-content h6,
+section.artigo div.niv.--row main div.text-content p {
+  margin-top: 12px !important;
+}
 section.artigo div.niv.--row main div.apoie-projeto {
   margin-top: 2.1rem;
   margin-bottom: 1.6rem;
@@ -3129,6 +3139,16 @@ section.artigo div.niv.--row main div.apoie-projeto div.avatar-side strong {
 section.artigo div.niv.--row main div.apoie-projeto div.content-side {
   max-width: 36.5rem;
 }
+section.artigo div.niv.--row main div.apoie-projeto div.content-side div.buttons {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+  gap: 2rem;
+}
+section.artigo div.niv.--row main div.apoie-projeto div.content-side div.buttons button:nth-child(2) {
+  --width: 15rem;
+}
 section.artigo div.niv.--row main div.apoie-projeto div.content-side strong {
   font-family: "Palatino Linotype", sans-serif;
   font-weight: 700;
@@ -3161,6 +3181,16 @@ section.artigo div.niv.--row main div.apoie-projeto div.content-side button.butt
   --font-size: 1.2rem;
   border: solid 1px #5b2222;
   font-weight: bold;
+}
+section.artigo div.niv.--row main div.apoie-projeto.--alternative div.content-side strong,
+section.artigo div.niv.--row main div.apoie-projeto.--alternative div.content-side p {
+  text-align: center;
+}
+section.artigo div.niv.--row main div.apoie-projeto.--alternative div.content-side strong {
+  font-size: 2.4rem;
+}
+section.artigo div.niv.--row main div.apoie-projeto.--alternative div.content-side strong::after {
+  display: none;
 }
 section.artigo div.niv.--row main div.bio {
   display: flex;
