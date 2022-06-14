@@ -4,13 +4,17 @@
     <!-- DataTables -->
     <link href="{{asset('admin/libs/datatables.net-bs4/css/dataTables.bootstrap4.min.css')}}" rel="stylesheet" type="text/css" />
     <link href="{{asset('admin/libs/datatables.net-buttons-bs4/css/buttons.bootstrap4.min.css')}}" rel="stylesheet" type="text/css" />
-
     <link href="{{asset('admin/assets/libs/sweetalert2/sweetalert2.min.css')}}" rel="stylesheet" type="text/css" />
 @endsection
 
 @section('titulo')
     Listagem de Usuários do Site @if(isset($tipo)) {{$tipo}}  @endif
 @endsection
+
+
+@php
+    use App\Models\Assinatura;
+@endphp
 
 @section('conteudo')
 <div class="row mt-3">
@@ -31,8 +35,19 @@
                     <tbody>
 
                         @foreach($usuarios as $usuario)
-                            <tr>
-                                <td style="position: relative;">{{ $usuario->nome }}</td>
+                            @php
+                                $verifica = Assinatura::select(DB::raw("*"))
+                                ->whereUsuarioSiteId($usuario->id)
+                                ->whereStatus(1)
+                                ->first();
+
+                                $cor = "red";
+                                if($verifica) {
+                                    $cor = "green";
+                                }
+                            @endphp
+                            <tr>    
+                                <td style="position: relative;"><i class="bx bx-spa" style="color: {{ $cor }}"></i>{{ $usuario->nome }}</td>
                                 <td>{{ $usuario->email }}</td>
                                 <td class="text-center">
                                     @if ($usuario->assinante == true)
@@ -41,15 +56,13 @@
                                         Não  
                                     @endif    
                                 </td>
-                                <td >
-                                    <select class="form-control">
-                                        <option value="">Selecione</option>
-                                        <option>Liberar Assinatura</option>
-                                    </select>
+                                <td class="text-center">
+                                    <a href="{{ route('painel.usuarios_site.assinatura', ['usuario_site' => $usuario]) }}">
+                                        <i class="bx bx-shield-quarter"></i>
+                                    </a>
                                 </td>
                             </tr>
                         @endforeach
-                        <div onClick"deletar()" type="button" class="btn btn-primary waves-effect waves-light">Click me</div>
                     </tbody>
                 </table>
             </div>
@@ -68,19 +81,6 @@
     <script src="{{asset('admin/assets/libs/sweetalert2/sweetalert2.min.js')}}"></script>
     
     <script>
-        function deletar() {
-            Swal.fire({
-                title: "Tem certeza?",
-                text: "Esse conteúdo irá para lixeira!",
-                icon: "warning",
-                showCancelButton: !0,
-                confirmButtonColor: "#34c38f",
-                cancelButtonColor: "#f46a6a",
-                confirmButtonText: "Sim, deletar!"
-            }).then(function(t) {
-                t.value && Swal.fire("Deletado!", "Movido para lixeira.", "success")
-            })
-        }
         $(document).ready(function() {
             $('#datatable').DataTable( {
                 language:{

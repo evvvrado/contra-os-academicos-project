@@ -42,7 +42,13 @@ class SiteController extends Controller
         ->limit(3)
         ->get();
 
-        return view("site.index", ["revistas" => $revistas, "blogs" => $blogs, "listas" => $listas, "cursos" => $cursos, "revistas_randomicas" => $revistas_randomicas]);
+        $listas_destaques = Lista::select(DB::raw("*"))
+        ->whereStatus(1)
+        ->whereDestaque(true)
+        ->orderBy('id', 'Desc')
+        ->get();
+
+        return view("site.index", ["revistas" => $revistas, "blogs" => $blogs, "listas" => $listas, "cursos" => $cursos, "revistas_randomicas" => $revistas_randomicas, "listas_destaques" => $listas_destaques]);
     }
 
     public function sobre()

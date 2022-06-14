@@ -286,22 +286,12 @@
 
             <div class="boxes-area">
                 <div class="scroll">
-                    <a href="#" class="box-destaque"
-                        style="background-image: url({{ asset('site/assets/img/banner_lista4_destaque.jpg') }})">
-                        <h2>Grandes Compositores</h2>
-                    </a>
-                    <a href="#" class="box-destaque"
-                        style="background-image: url({{ asset('site/assets/img/banner_lista3_destaque.jpg') }})">
-                        <h2>Cinema</h2>
-                    </a>
-                    <a href="#" class="box-destaque"
-                        style="background-image: url({{ asset('site/assets/img/banner_lista2_destaque.jpg') }})">
-                        <h2>Parte 8 Rússia</h2>
-                    </a>
-                    <a href="#" class="box-destaque"
-                        style="background-image: url({{ asset('site/assets/img/banner_lista1_destaque.jpg') }})">
-                        <h2>Química</h2>
-                    </a>
+                    @foreach ($listas_destaques as $lista_destaque)
+                        <a href="#" class="box-destaque"
+                            style="background-image: url({{ asset($lista->banner) }})">
+                            <h2>{{ $lista->titulo }}</h2>
+                        </a>
+                    @endforeach
                 </div>
             </div>
         </div>

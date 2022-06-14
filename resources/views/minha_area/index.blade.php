@@ -32,7 +32,15 @@
                 <div class="row">
                     <div class="col-sm-4">
                         <div class="avatar-md profile-user-wid mb-4">
-                            <img src="{{ asset('admin/assets/images/users/avatar-1.jpg') }}" alt="" class="img-thumbnail rounded-circle">
+                            @php
+                                use App\Models\UsuarioSite;
+                                $usuario_site = UsuarioSite::whereId(session()->get("usuario_site")["id"])->first();
+                            @endphp
+                            @if($usuario_site->foto)
+                                <img src="{{asset($usuario_site->foto)}}" alt="" class="img-thumbnail rounded-circle">
+                            @else
+                                <img src="{{asset('admin/imagens/usuarios/sem_foto.png')}}" alt="" class="img-thumbnail rounded-circle">
+                            @endif
                         </div>
                         <h5 class="font-size-15 text-truncate">{{ session()->get('usuario_site')['nome'] }}</h5>
                     </div>

@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Hash;
 use App\Models\Usuario;
 use App\Models\UsuarioSite;
+use App\Models\Assinatura;
 
 class PainelController extends Controller
 {
@@ -63,5 +64,46 @@ class PainelController extends Controller
         $usuarios = UsuarioSite::all();
 
         return view("painel.usuarios_site.consultar", ['usuarios' => $usuarios]);
+    }
+
+    public function assinatura(UsuarioSite $usuario_site)
+    {
+        return view("painel.usuarios_site.assinatura", ['usuario_site' => $usuario_site]);
+    }
+
+    public function assinar(UsuarioSite $usuario_site, Request $request)
+    {
+        if($request->data_termino == "mes") {
+            $data_termino = date('Y/m/d', strtotime("+1 month",strtotime(date('Y/m/d'))));
+            $vitalicio = false;
+        } else {
+            $data_termino = "";
+            $vitalicio = true;
+        }
+
+        $assinatura = new Assinatura;
+        $assinatura->usuario_id = session()->get("usuario")["id"];
+        $assinatura->usuario_site_id = $usuario_site->id;
+        $assinatura->data_termino = $data_termino;
+        $assinatura->vitalicio = $vitalicio;
+        $assinatura->save();
+
+        $usuarios = UsuarioSite::all();
+
+        toastr()->success("Assinatura liberada para ".$usuario_site->nome);
+
+        return redirect()->route("painel.usuarios_site", ['usuarios' => $usuarios]);
+    }
+
+    public function finalizar_assinatura(Assinatura $assinatura)
+    {
+        $assinatura->status = false;
+        $assinatura->save();
+
+        $usuarios = UsuarioSite::all();
+
+        toastr()->success("Assinatura cancelada");
+
+        return redirect()->route("painel.usuarios_site", ['usuarios' => $usuarios]);
     }
 }

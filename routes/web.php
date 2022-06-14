@@ -13,6 +13,9 @@ Route::middleware(['admin'])->group(function () {
 
     // ROTAS DE USUÁRIOS DO SITE
     Route::get('/sistema/usuarios_site/consultar', [\App\Http\Controllers\PainelController::class, 'usuarios_site'])->name("painel.usuarios_site");
+    Route::get('/sistema/usuarios_site/assinatura/{usuario_site}', [\App\Http\Controllers\PainelController::class, 'assinatura'])->name("painel.usuarios_site.assinatura");
+    Route::post('/sistema/usuarios_site/assinar/{usuario_site}', [\App\Http\Controllers\PainelController::class, 'assinar'])->name("painel.usuarios_site.assinar");
+    Route::get('/sistema/usuarios_site/finalizar_assinatura/{assinatura}', [\App\Http\Controllers\PainelController::class, 'finalizar_assinatura'])->name("painel.usuarios_site.encerrar_assinatura");
 
     // ROTAS DE CATEGORIAS
     Route::get('/sistema/categorias/consultar', [\App\Http\Controllers\CategoriasController::class, 'consultar'])->name("painel.categorias");

@@ -74,7 +74,7 @@
                                                     <div class="col-3">
                                                         <div class="mb-3">
                                                             <label for="digit1-input" class="visually-hidden">Dight 1</label>
-                                                            <input name="pin_1" type="text" class="form-control form-control-lg text-center"
+                                                            <input id="pin_1" name="pin_1" type="text" class="form-control form-control-lg text-center"
                                                                 onkeyup="moveToNext(this, 2)" maxLength="1"
                                                                 id="digit1-input">
                                                         </div>
@@ -150,6 +150,10 @@
     <script src="{{ asset('admin/assets/js/app.js') }}"></script>
 
     <script>
+        $(document).ready(function () {
+            $("#pin_1").focus(); 
+        });
+
         function valida_form() {
             document.getElementById("form_validacao").submit();
             console.log('oi')

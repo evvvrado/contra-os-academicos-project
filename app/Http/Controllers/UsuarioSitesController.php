@@ -24,23 +24,27 @@ class UsuarioSitesController extends Controller
     }
 
     public function registrar(Request $request){
-        $request->validate([
-            'email' => 'unique:usuarios,email',
-        ]);
+        $testa_email = UsuarioSite::whereEmail($request->email)->first();
 
-        $usuario_site = new UsuarioSite;
-        $usuario_site->nome = $request->nome;
-        $usuario_site->email = $request->email;
-        $usuario_site->senha = Hash::make($request->senha);
-        $usuario_site->pin = rand(1000,9999);
-        $usuario_site->save();
+        if($testa_email) {
+            toastr()->warning("Você já está cadastrado!");
 
-        Mail::to($request->email)
-        ->send(new EnviarEmailUsuarioSite($usuario_site));
-
-        session()->put(["usuario_temporario" => $usuario_site->toArray()]);
-
-        return redirect()->route("minha_area.autenticacao");
+            return view("minha_area.login");
+        } else {
+            $usuario_site = new UsuarioSite;
+            $usuario_site->nome = $request->nome;
+            $usuario_site->email = $request->email;
+            $usuario_site->senha = Hash::make($request->senha);
+            $usuario_site->pin = rand(1000,9999);
+            $usuario_site->save();
+    
+            Mail::to($request->email)
+            ->send(new EnviarEmailUsuarioSite($usuario_site));
+    
+            session()->put(["usuario_temporario" => $usuario_site->toArray()]);
+    
+            return redirect()->route("minha_area.autenticacao");
+        }
     }
 
     public function autenticacao()
