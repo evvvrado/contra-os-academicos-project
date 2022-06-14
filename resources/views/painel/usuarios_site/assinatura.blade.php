@@ -24,12 +24,13 @@
                     ->whereUsuarioSiteId($usuario_site->id)
                     ->whereStatus(1)
                     ->first();
-
-                    $data = date_create($verifica->data_termino);
-                    $data_termino = date_format($data, 'd/m/Y');
                 @endphp
 
                 @if($verifica)
+                    @php
+                        $data = date_create($verifica->data_termino);
+                        $data_termino = date_format($data, 'd/m/Y');
+                    @endphp
                     <h2>Gerenciar Assinatura</h2>
                     <p>A assinatura de {{ $usuario_site->nome }} termina em <label class="alert alert-primary">{{ $data_termino }}</label></p>
                     <a class="btn btn-danger" href="{{ route('painel.usuarios_site.encerrar_assinatura', ['assinatura' => $verifica]) }}">Encerrar Assinatura</a>
