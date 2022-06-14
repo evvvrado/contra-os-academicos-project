@@ -25,9 +25,11 @@
 
                             <input type="hidden" id="tipo_pub" name="tipo_pub" value="">
 
-                            <div class="col-lg-5 pt-3 d-flex justify-content-between">
+                            <div class="col-lg-7 pt-3 d-flex justify-content-between">
                                 @if($blog->status == 1)
                                     <button onClick="salvar('rascunho')" type="submit" class="btn btn-primary waves-effect btn-label waves-light"><i class="bx bx-file-blank label-icon"></i> Rascunho</button>
+
+                                    <button onClick="salvar('publicar')" type="submit" class="btn btn-success waves-effect btn-label waves-light"><i class="bx bx-check-double label-icon"></i> Publicar</button>
                                 @elseif($blog->status == 2)
                                     <button onClick="salvar('publicar')" type="submit" class="btn btn-success waves-effect btn-label waves-light"><i class="bx bx-check-double label-icon"></i> Publicar</button>
                                 @endif
