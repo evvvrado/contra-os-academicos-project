@@ -80,6 +80,7 @@
                     </p>
                 </div>
 
+
                 <div class="apoie-projeto --alternative">
 
                     <div class="content-side">
@@ -93,12 +94,15 @@
                             Desde 2014 o Contra os Acadêmicos trabalha para divulgar a boa filosofia e incentivar a
                             autoeducação. Apoiando nosso projeto, você assegura a continuidade do nosso trabalho.
                         </p>
-                        <div class="buttons">
-                            <button class="button">Quero apoiar</button>
-                            <button class="button">Ler artigo completo</button>
-                        </div>
+                    </div>
+
+
+                    <div class="buttons">
+                        <button class="button">Quero apoiar</button>
+                        <button class="button">Ler artigo completo</button>
                     </div>
                 </div>
+
 
                 <div class="bio">
                     <picture>
@@ -175,8 +179,7 @@
                     <ul>
                         @foreach ($blog_randomicos as $blog_randomico)
                             <li>
-                                <a href="{{ route('site.blog_detalhe', ['blog' => $blog_randomico]) }}"
-                                    class="box">
+                                <a href="{{ route('site.blog_detalhe', ['blog' => $blog_randomico]) }}" class="box">
                                     <picture>
                                         <img src="{{ asset($blog->banner) }}" alt="Banner relacionados">
                                     </picture>

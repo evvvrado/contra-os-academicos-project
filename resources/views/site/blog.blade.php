@@ -169,40 +169,6 @@
     </section>
 
 
-    <section class="blog-news">
-        <div class="niv">
-
-            <div class="blog-area">
-                <div class="top-title">
-                    <h2>
-                        <picture>
-                            <img src="{{ asset('site/assets/img/icon_fire_blog.png') }}" alt="Ícone de fogo">
-                        </picture>
-                        Em breve
-                    </h2>
-                    <a href="{{ route('site.blog') }}" class="--plus">Ver mais</a>
-                </div>
-
-                <div class="content">
-                    <div class="scroll">
-                        @foreach ($blogs as $key => $blog)
-                            @if ($key < 4)
-                                <a href="{{ route('site.blog_detalhe', ['blog' => $blog]) }}" class="card"
-                                    style="background-image: url('{{ asset($blog->banner) }}')">
-
-                                    <strong>{{ $blog->titulo }}</strong>
-                                    <p>Por <strong>{{ $blog->autor->nome }}</strong></p>
-                                </a>
-                            @endif
-                        @endforeach
-                    </div>
-                </div>
-
-            </div>
-
-        </div>
-    </section>
-
 @endsection
 
 @section('scripts')

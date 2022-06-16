@@ -9,10 +9,11 @@
     <meta content="Premium Multipurpose Admin & Dashboard Template" name="description" />
     <meta content="Themesbrand" name="author" />
     <!-- App favicon -->
-    <link rel="shortcut icon" href="{{ asset('site/img/logo_login.png')}}">
+    <link rel="shortcut icon" href="{{ asset('site/img/logo_login.png') }}">
 
     <!-- Bootstrap Css -->
-    <link href="{{ asset('admin/assets/css/bootstrap.min.css') }}" id="bootstrap-style" rel="stylesheet" type="text/css" />
+    <link href="{{ asset('admin/assets/css/bootstrap.min.css') }}" id="bootstrap-style" rel="stylesheet"
+        type="text/css" />
     <!-- Icons Css -->
     <link href="{{ asset('admin/assets/css/icons.min.css') }}" rel="stylesheet" type="text/css" />
     <!-- App Css-->
@@ -21,22 +22,23 @@
     @toastr_css
 </head>
 
-<body>
+<body class=" bg-primary">
     <div class="account-pages my-5 pt-sm-5">
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-md-8 col-lg-6 col-xl-5">
                     <div class="card overflow-hidden">
-                        <div class="bg-primary bg-soft">
+                        <div class="bg-secondary">
                             <div class="row">
                                 <div class="col-7">
-                                    <div class="text-primary p-4">
-                                        <h5 class="text-primary">Bem-Vindo novamente !</h5>
+                                    <div class="text-white p-4">
+                                        <h5 class="text-white">Bem-Vindo novamente !</h5>
                                         <p>Faça login para continuar.</p>
                                     </div>
                                 </div>
                                 <div class="col-5 align-self-end">
-                                    <img src="{{ asset('admin/assets/images/profile-img.png')}}" alt="" class="img-fluid">
+                                    {{-- <img src="{{ asset('admin/assets/images/profile-img.png') }}" alt=""
+                                        class="img-fluid"> --}}
                                 </div>
                             </div>
                         </div>
@@ -45,7 +47,8 @@
                                 <a href="index.html" class="auth-logo-light">
                                     <div class="avatar-md profile-user-wid mb-4">
                                         <span class="avatar-title rounded-circle ">
-                                            <img src={{ asset('site/assets/img/logo_preta_header.png') }} alt="" class="rounded-circle" height="34">
+                                            <img src={{ asset('site/assets/img/logo_branca_footer.png') }}
+                                                alt="" class="rounded-circle" height="34">
                                         </span>
                                     </div>
                                 </a>
@@ -53,29 +56,35 @@
                                 <a href="index.html" class="auth-logo-dark">
                                     <div class="avatar-md profile-user-wid mb-4">
                                         <span class="avatar-title rounded-circle ">
-                                            <img src={{ asset('site/assets/img/logo_preta_header.png') }} alt="" class="rounded-circle" height="34">
+                                            <img src={{ asset('site/assets/img/logo_branca_footer.png') }}
+                                                alt="" class="rounded-circle" height="34">
                                         </span>
                                     </div>
                                 </a>
                             </div>
                             <div class="p-2">
-                                <form class="form-horizontal" action="{{route('painel.logar')}}" method="post">
+                                <form class="form-horizontal" action="{{ route('painel.logar') }}" method="post">
                                     @csrf
                                     <div class="mb-3">
                                         <label for="usuario" class="form-label">Usuário</label>
-                                        <input type="text" class="form-control" name="usuario" id="usuario" placeholder="Insira seu usuário" value="admin">
+                                        <input type="text" class="form-control" name="usuario" id="usuario"
+                                            placeholder="Insira seu usuário" value="admin">
                                     </div>
 
                                     <div class="mb-3">
                                         <label class="form-label">Senha</label>
                                         <div class="input-group auth-pass-inputgroup">
-                                            <input value="12345" id="senha" name="senha" type="password" class="form-control" placeholder="Insira sua senha" aria-label="Password" aria-describedby="password-addon">
-                                            <button class="btn btn-light" onClick="mostrar_senha()" type="button" id="password-addon"><i class="mdi mdi-eye-outline"></i></button>
+                                            <input value="12345" id="senha" name="senha" type="password"
+                                                class="form-control" placeholder="Insira sua senha"
+                                                aria-label="Password" aria-describedby="password-addon">
+                                            <button class="btn btn-light" onClick="mostrar_senha()" type="button"
+                                                id="password-addon"><i class="mdi mdi-eye-outline"></i></button>
                                         </div>
                                     </div>
 
                                     <div class="mt-3 d-grid">
-                                        <button class="btn btn-primary waves-effect waves-light" type="submit">Acessar</button>
+                                        <button class="btn btn-primary waves-effect waves-light"
+                                            type="submit">Acessar</button>
                                     </div>
 
                                     {{-- <div class="mt-4 text-center">

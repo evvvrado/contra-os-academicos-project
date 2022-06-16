@@ -29,7 +29,7 @@
                         <picture>
                             <img src="{{ asset('site/assets/img/icon_fire_blog.png') }}" alt="Ícone de fogo">
                         </picture>
-                        Revistas
+                        Revista
                     </h2>
                     <a href="{{ route('site.revistas') }}" class="--plus">Ver mais</a>
                 </div>
@@ -233,8 +233,7 @@
 
                     @foreach ($revistas as $key => $revista)
                         @if ($key < 8)
-                            <a href="{{ route('site.revista_detalhe', ['revista' => $revista]) }}"
-                                class="box">
+                            <a href="{{ route('site.revista_detalhe', ['revista' => $revista]) }}" class="box">
                                 <picture>
                                     <img src="{{ asset($revista->banner) }}" alt="">
                                 </picture>
@@ -435,7 +434,8 @@
             <div class="boxes-area">
                 <div class="scroll">
                     @foreach ($cursos as $curso)
-                        <a href="#" class="box-destaque" style="background-image: url({{ asset($curso->banner) }})">
+                        <a href="#" class="box-destaque"
+                            style="background-image: url({{ asset($curso->banner) }})">
                             <div class="tags">
                                 {{-- <span class="--filled">Novo</span> --}}
                                 <span>{{ $curso->categoria->nome }}</span>
@@ -457,11 +457,16 @@
             </h2>
 
             <div class="partners">
-                <a href="#"><img src="{{ asset('site/assets/img/logo_parceiro1.png') }}" alt="Logo parceiro"></a>
-                <a href="#"><img src="{{ asset('site/assets/img/logo_parceiro2.png') }}" alt="Logo parceiro"></a>
-                <a href="#"><img src="{{ asset('site/assets/img/logo_parceiro3.png') }}" alt="Logo parceiro"></a>
-                <a href="#"><img src="{{ asset('site/assets/img/logo_parceiro4.png') }}" alt="Logo parceiro"></a>
-                <a href="#"><img src="{{ asset('site/assets/img/logo_parceiro5.png') }}" alt="Logo parceiro"></a>
+                <a href="#"><img src="{{ asset('site/assets/img/logo_parceiro1.png') }}"
+                        alt="Logo parceiro"></a>
+                <a href="#"><img src="{{ asset('site/assets/img/logo_parceiro2.png') }}"
+                        alt="Logo parceiro"></a>
+                <a href="#"><img src="{{ asset('site/assets/img/logo_parceiro3.png') }}"
+                        alt="Logo parceiro"></a>
+                <a href="#"><img src="{{ asset('site/assets/img/logo_parceiro4.png') }}"
+                        alt="Logo parceiro"></a>
+                <a href="#"><img src="{{ asset('site/assets/img/logo_parceiro5.png') }}"
+                        alt="Logo parceiro"></a>
             </div>
         </div>
     </section>

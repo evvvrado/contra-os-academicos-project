@@ -96,12 +96,12 @@ section.hero {
                     height: 37.7rem;
                     width: 100%;
                     max-width: 57.6rem;
-                    padding: 2.5rem 3.5rem 4rem 1.7rem;
-
+                    padding: 1.8rem 1.7rem;
                     h1 {
                         font-size: 2.8rem;
                         line-height: 3rem;
                         vertical-align: bottom;
+                        margin-bottom: 2rem;
                     }
 
                     i {
@@ -153,6 +153,7 @@ section.hero {
                         @include limitText(13.2rem, 5);
                         height: unset;
                         max-height: 13.2rem;
+                        margin-bottom: 2rem;
                     }
 
                     p,

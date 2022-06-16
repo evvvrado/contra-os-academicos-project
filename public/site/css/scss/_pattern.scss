@@ -220,7 +220,8 @@
     }
 
     h2 {
-      max-height: 6.4rem;
+      @include limitText(11.1rem, 3);
+      padding-bottom: 1.5rem;
       z-index: 2;
       color: $white;
       line-height: 3.2rem;
@@ -232,7 +233,7 @@
         transition: 0.32s;
         position: absolute;
         content: "";
-        bottom: -0.5rem;
+        bottom: 0;
         left: 0;
 
         width: 5.2rem;

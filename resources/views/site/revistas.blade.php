@@ -77,7 +77,7 @@
 
                 <div class="content-area">
 
-                    @foreach($revistas as $revista)
+                    @foreach ($revistas as $revista)
                         <a href="{{ route('site.revista_detalhe', ['revista' => $revista]) }}" class="box">
                             <picture>
                                 <img src="{{ asset($revista->banner) }}" alt="">
@@ -91,7 +91,7 @@
                                 <p>{{ Str::limit($revista->resumo, 104) }}</p>
                             </div>
                         </a>
-                    @endforeach 
+                    @endforeach
 
                 </div>
 
@@ -101,6 +101,7 @@
                     </button>
                 </div>
             </div>
+
         </main>
 
 
@@ -113,26 +114,63 @@
 
 
                 <ul>
-                    @foreach($mais_lidas as $mais_lida)
-                    <li>
-                        <a href="#" class="box">
-                            <picture>
-                                <img src="{{ asset($mais_lida->banner) }}" alt="">
-                            </picture>
-                            <div class="box-content">
-                                <span>{{ $mais_lida->categoria->nome }}</span>
-                                <strong>{{ $mais_lida->titulo }}</strong>
+                    @foreach ($mais_lidas as $mais_lida)
+                        <li>
+                            <a href="#" class="box">
+                                <picture>
+                                    <img src="{{ asset($mais_lida->banner) }}" alt="">
+                                </picture>
+                                <div class="box-content">
+                                    <span>{{ $mais_lida->categoria->nome }}</span>
+                                    <strong>{{ $mais_lida->titulo }}</strong>
 
-                                <hr>
+                                    <hr>
 
-                                <p>{{ Str::limit($mais_lida->resumo, 104) }}</p>
-                            </div>
-                        </a>
-                    </li>
+                                    <p>{{ Str::limit($mais_lida->resumo, 104) }}</p>
+                                </div>
+                            </a>
+                        </li>
                     @endforeach
                 </ul>
             </div>
         </aside>
+    </section>
+
+
+
+
+    <section class="blog-news">
+        <div class="niv">
+
+            <div class="blog-area">
+                <div class="top-title">
+                    <h2>
+                        <picture>
+                            <img src="{{ asset('site/assets/img/icon_fire_blog.png') }}" alt="Ícone de fogo">
+                        </picture>
+                        Em breve
+                    </h2>
+                    <a href="{{ route('site.blog') }}" class="--plus">Ver mais</a>
+                </div>
+
+                <div class="content">
+                    <div class="scroll">
+                        @foreach ($revistas as $key => $blog)
+                            @if ($key < 4)
+                                <a href="{{ route('site.blog_detalhe', ['blog' => $blog]) }}" class="card"
+                                    style="background-image: url('{{ asset($blog->banner) }}')">
+
+                                    <strong>{{ $blog->titulo }}</strong>
+                                    <p>Por <strong>{{ $blog->autor->nome }}</strong></p>
+                                </a>
+                            @endif
+                        @endforeach
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
     </section>
 
 @endsection

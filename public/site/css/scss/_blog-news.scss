@@ -149,6 +149,7 @@ section.blog-news {
                             @include limitText(13.2rem, 5);
                             height: unset;
                             max-height: 13.2rem;
+                            margin-bottom: 2rem;
                         }
 
                         p,

@@ -70,12 +70,12 @@
             <div class="niv">
                 <nav>
                     <ul>
-                        <li><a href="#">BLOG</a></li>
-                        <li><a href="#">REVISTA</a></li>
-                        <li><a href="#">LISTAS</a></li>
+                        <li><a href="{{ route('site.blog') }}">BLOG</a></li>
+                        <li><a href="{{ route('site.revistas') }}">REVISTA</a></li>
+                        <li><a href="{{ route('site.listas') }}">LISTAS</a></li>
                         <li><a href="#">LIVRARIA</a></li>
-                        <li><a href="#">PROJETO</a></li>
-                        <li><a href="#">CONTATO</a></li>
+                        <li><a href="{{ route('site.sobre') }}">PROJETO</a></li>
+                        <li><a href="{{ route('site.contato') }}">CONTATO</a></li>
                     </ul>
                 </nav>
             </div>

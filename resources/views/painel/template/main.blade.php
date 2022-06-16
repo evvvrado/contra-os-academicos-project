@@ -54,10 +54,10 @@
                             <div class="navbar-brand-box">    
                                 <a href="{{ route('painel.index') }}" class="logo logo-light">
                                     <span class="logo-sm">
-                                        <img style="width: 21%; height: auto;" src="{{ asset('site/assets/img/logo_preta_header.png') }}" alt="" height="22">
+                                        <img style="width: 21%; height: auto;" src="{{ asset('site/assets/img/logo_branca_footer.png') }}" alt="" height="22">
                                     </span>
                                     <span class="logo-lg">
-                                        <img style="width: 21%; height: auto;" src="{{ asset('site/assets/img/logo_preta_header.png') }}" alt="" height="19">
+                                        <img style="width: 21%; height: auto;" src="{{ asset('site/assets/img/logo_branca_footer.png') }}" alt="" height="19">
                                     </span>
                                 </a>
                             </div>
