@@ -4232,7 +4232,33 @@ html div[fluid] .niv {
     margin: 0 auto;
     padding: 0 15px;
 }
-
+:not(.text-content) .button:is(a, button) {
+    --width: 195px;
+    --height: 42px;
+    --font-size: 20px;
+    --font-color: #fff;
+    --background-color: #5b2222;
+    background-color: var(--background-color);
+    border-radius: 4px;
+    font-family: "Palatino Linotype", sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 100%;
+    transition: 0.32s;
+    height: var(--height);
+    width: var(--width);
+    font-size: var(--font-size);
+    color: var(--font-color);
+}
+:not(.text-content) .button:is(a, button):hover,
+:not(.text-content) .button:is(a, button):focus {
+    background: var(--font-color);
+    border: solid 2px var(--background-color);
+    color: var(--background-color);
+}
+:not(.text-content) .button:is(a, button):active {
+    border: 2px #716f6f solid;
+}
 header {
     width: 100%;
     position: fixed;
