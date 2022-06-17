@@ -16,8 +16,11 @@
     <link href="{{ asset('admin/assets/css/icons.min.css') }}" rel="stylesheet" type="text/css" />
     <!-- App Css-->
     <link href="{{ asset('admin/assets/css/app.min.css') }}" id="app-style" rel="stylesheet" type="text/css" />
+    {{-- <link rel="stylesheet" href="{{ asset('site/css/style.css') }}"> --}}
 
     @yield('styles')
+
+    <script src="https://kit.fontawesome.com/8b74899bef.js" crossorigin="anonymous"></script>
 
     @toastr_css
 </head>
@@ -26,12 +29,12 @@
 use App\Models\UsuarioSite;
 @endphp
 
-<body data-topbar="dark" data-layout="horizontal">
+<body data-topbar="dark" data-layout="horizontal" class="minha-area">
 
     <!-- Begin page -->
     <div id="layout-wrapper">
 
-        <header id="page-topbar">
+        {{-- <header id="page-topbar">
             <div class="navbar-header">
                 <div class="d-flex">
                     <!-- LOGO -->
@@ -79,7 +82,67 @@ use App\Models\UsuarioSite;
 
                 </div>
             </div>
+        </header> --}}
+
+        <header>
+            <div fluid>
+                <div class="niv">
+                    <a href="/" title="Voltar para home" class="logo-header">
+                        <img src="{{ asset('site/assets/img/logo_preta_header.png') }}"
+                            alt="Logo Contras os Acadêmicos">
+                    </a>
+
+                    <nav>
+                        <ul style="opacity: 0; pointer-events: none">
+                            <li>
+                                <a href="javascript: void(0)" title="menu">
+                                    <img src="{{ asset('site/assets/img/icon_hamburguer_header.svg') }}"
+                                        alt="Ícone do menu">
+                                </a>
+                            </li>
+                        </ul>
+                    </nav>
+
+                    <div>
+
+
+                        <div class="search-button" style="opacity: 0; pointer-events: none">
+                            <input type="text">
+
+                            <picture>
+                                <img src="{{ asset('site/assets/img/icon_search_header.svg') }}"
+                                    alt="Ícone de pesquisa">
+                            </picture>
+                        </div>
+
+                        <div class="socials">
+                            <a href="#"><i class="fa-brands fa-facebook"></i></a>
+                            <a href="#"><i class="fa-brands fa-twitter"></i></a>
+                            <a href="#"><i class="fa-brands fa-youtube"></i></a>
+                            <a href="#"><i class="fa-brands fa-soundcloud"></i></a>
+
+                        </div>
+
+                        <div class="buttons">
+                            <a href="#" class="button">
+                                Assinar
+                            </a>
+
+                            <a href="{{ route('site.index') }}" class="button">
+                                Voltar p/ home
+                            </a>
+                        </div>
+                    </div>
+
+                </div>
+                {{-- <div class="user-circle">
+                    <a href="{{ route('minha_area.index') }}" title="Acessar área">
+                        <img src="{{ asset('site/assets/img/icon_user_header.svg') }}" alt="Ícone de usuário">
+                    </a>
+                </div> --}}
+            </div>
         </header>
+
 
         <div class="topnav">
             <div class="container-fluid">
@@ -136,11 +199,10 @@ use App\Models\UsuarioSite;
             </div>
             <!-- End Page-content -->
 
-            <footer class="footer">
+            {{-- <footer class="footer">
                 <div class="container-fluid">
                     <div class="row">
                         <div class="col-sm-6">
-                            {{-- <script>document.write(new Date().getFullYear())</script> © Skote. --}}
                         </div>
                         <div class="col-sm-6">
                             <div class="text-sm-end d-none d-sm-block">
@@ -149,7 +211,7 @@ use App\Models\UsuarioSite;
                         </div>
                     </div>
                 </div>
-            </footer>
+            </footer> --}}
         </div>
         <!-- end main content-->
 

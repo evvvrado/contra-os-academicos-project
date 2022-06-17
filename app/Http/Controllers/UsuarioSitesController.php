@@ -14,6 +14,10 @@ class UsuarioSitesController extends Controller
 {
     public function index()
     {
+    
+        $usuario_site = UsuarioSite::where("id", 3)->first();
+        session()->put(["usuario_site" => $usuario_site->toArray()]);
+        
         return view("minha_area.index");
     }
     
