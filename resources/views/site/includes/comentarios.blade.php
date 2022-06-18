@@ -168,9 +168,9 @@
                                 <p>
                                     {{ $comentario->conteudo }}
                                 </p>
-                                <small>[{{ date('d', strtotime($comentario->created_at)) }} de
+                                <small>{{ date('d', strtotime($comentario->created_at)) }} de
                                     {{ substr($comentario->created_at->formatLocalized('%B'), 0, 3) }},
-                                    {{ date('Y', strtotime($comentario->created_at)) }}]</small> &nbsp;
+                                    {{ date('Y', strtotime($comentario->created_at)) }}</small> &nbsp;
                             </div>
                         </li>
                     @endforeach
