@@ -285,7 +285,7 @@
 
             <div class="boxes-area">
                 <div class="scroll">
-                    @foreach ($listas_destaques as $lista_destaque)
+                    @foreach ($listas_destaques->slice(3) as $lista_destaque)
                         <a href="#" class="box-destaque"
                             style="background-image: url({{ asset($lista->banner) }})">
                             <h2>{{ $lista->titulo }}</h2>
@@ -375,7 +375,7 @@
                         <h3>online</h3>
                     </div>
 
-                    <a href="#" class="--plus">saiba mais</a>
+                    <a href="https://open.spotify.com/show/6GsLO1ybRUI53JgiYm5nTR" class="--plus">saiba mais</a>
                 </div>
                 <div class="content-area">
                     <ul>
@@ -459,8 +459,8 @@
             <div class="partners">
                 <a href="#"><img src="{{ asset('site/assets/img/logo_parceiro1.png') }}"
                         alt="Logo parceiro"></a>
-                <a href="#"><img src="{{ asset('site/assets/img/logo_parceiro2.png') }}"
-                        alt="Logo parceiro"></a>
+                {{-- <a href="#"><img src="{{ asset('site/assets/img/logo_parceiro2.png') }}"
+                        alt="Logo parceiro"></a> --}}
                 <a href="#"><img src="{{ asset('site/assets/img/logo_parceiro3.png') }}"
                         alt="Logo parceiro"></a>
                 <a href="#"><img src="{{ asset('site/assets/img/logo_parceiro4.png') }}"

@@ -34,10 +34,14 @@
                     </div>
 
                     <div class="socials">
-                        <a href="#"><i class="fa-brands fa-facebook"></i></a>
-                        <a href="#"><i class="fa-brands fa-twitter"></i></a>
-                        <a href="#"><i class="fa-brands fa-youtube"></i></a>
-                        <a href="#"><i class="fa-brands fa-soundcloud"></i></a>
+                        <a href="https://www.facebook.com/contraosacademicos/ "><i
+                                class="fa-brands fa-facebook"></i></a>
+                        <a href="https://twitter.com/Contracademicos"><i class="fa-brands fa-twitter"></i></a>
+                        <a href="https://www.youtube.com/contraosacademicos"><i class="fa-brands fa-youtube"></i></a>
+                        <a href="https://www.instagram.com/contraosacademicos/"><i
+                                class="fa-brands fa-instagram"></i></a>
+                        <a href="https://open.spotify.com/show/6GsLO1ybRUI53JgiYm5nTR"><i
+                                class="fa-brands fa-spotify"></i></a>
 
                     </div>
 
@@ -73,7 +77,7 @@
                         <li><a href="{{ route('site.blog') }}">BLOG</a></li>
                         <li><a href="{{ route('site.revistas') }}">REVISTA</a></li>
                         <li><a href="{{ route('site.listas') }}">LISTAS</a></li>
-                        <li><a href="#">LIVRARIA</a></li>
+                        <li><a href="https://livrariacontraosacademicos.com.br">LIVRARIA</a></li>
                         <li><a href="{{ route('site.sobre') }}">PROJETO</a></li>
                         <li><a href="{{ route('site.contato') }}">CONTATO</a></li>
                     </ul>

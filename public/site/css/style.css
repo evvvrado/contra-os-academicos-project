@@ -1813,6 +1813,13 @@ section.lista-destaque div.niv div.boxes-area div.scroll {
   align-items: flex-start;
   justify-content: space-between;
   flex-direction: row;
+  gap: 2rem;
+}
+section.lista-destaque div.niv div.boxes-area div.scroll a.box-destaque {
+  max-width: 100%;
+}
+section.lista-destaque div.niv div.boxes-area div.scroll a.box-destaque h2 {
+  height: 10.4rem;
 }
 @media (max-width: 800px) {
   section.lista-destaque div.niv div.boxes-area div.scroll {
@@ -2431,7 +2438,7 @@ section.complemento.--biblioteca div.niv div.boxes-area div.scroll div.boxes {
   gap: 13px;
 }
 section.complemento.--biblioteca div.niv div.boxes-area div.scroll div.boxes a.box-destaque {
-  width: 18.7rem;
+  width: 28rem;
   height: 25.8rem;
   padding-top: 2.9rem;
   justify-content: flex-start;
@@ -2439,6 +2446,7 @@ section.complemento.--biblioteca div.niv div.boxes-area div.scroll div.boxes a.b
 section.complemento.--biblioteca div.niv div.boxes-area div.scroll div.boxes a.box-destaque h2 {
   font-size: 1.6rem;
   height: unset;
+  max-height: 10.4rem;
 }
 section.complemento.--biblioteca div.niv div.boxes-area div.scroll div.boxes a.box-destaque:hover {
   opacity: 1;
@@ -2570,6 +2578,9 @@ section.publicacoes {
 
   **/
 }
+section.publicacoes aside {
+  width: 100%;
+}
 section.publicacoes aside ul.colunistas {
   margin-right: 2.8rem;
   margin-left: 5.8rem;
@@ -2694,6 +2705,7 @@ section.publicacoes main {
   padding: 2.7rem 5.8rem 6.1rem 2.4rem;
   background-color: #fff;
   max-width: 89.2rem;
+  width: 100%;
 }
 section.publicacoes main div.niv {
   padding: 0;
@@ -3559,7 +3571,7 @@ section.artigo div.niv div.cursos div.card-area div.scroll {
 }
 section.artigo div.niv div.cursos div.card-area div.scroll a.box-destaque {
   justify-content: space-between;
-  width: 17.2rem;
+  width: 21.67rem;
   height: 24rem;
   background-size: cover;
   scroll-snap-align: start;
@@ -3567,7 +3579,7 @@ section.artigo div.niv div.cursos div.card-area div.scroll a.box-destaque {
 section.artigo div.niv div.cursos div.card-area div.scroll a.box-destaque h2 {
   font-size: 1.7rem;
   line-height: 2.3rem;
-  height: 5.6rem;
+  height: 5.1rem;
 }
 section.artigo div.niv div.cursos div.card-area div.scroll a.box-destaque div.tags {
   width: 100%;

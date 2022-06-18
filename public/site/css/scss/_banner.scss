@@ -171,7 +171,7 @@ section.complemento {
                         gap: 13px;
 
                         a.box-destaque {
-                            width: 18.7rem;
+                            width: 28rem;
                             height: 25.8rem;
                             padding-top: 2.9rem;
                             justify-content: flex-start;
@@ -180,6 +180,7 @@ section.complemento {
                                 font-size: 1.6rem;
 
                                 height: unset;
+                                max-height: 10.4rem;
                             }
 
                             &:hover {

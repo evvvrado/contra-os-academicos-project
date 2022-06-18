@@ -100,6 +100,12 @@ class SiteController extends Controller
         ->whereStatus(1)
         ->orderBy('id', 'Desc')
         ->get();
+        
+        $blogs = Blog::select(DB::raw("*"))
+        ->whereStatus(1)
+        ->orderBy('id', 'Desc')
+        ->get();
+        
 
         $mais_lidas = Revista::select(DB::raw("*"))
         ->whereStatus(1)
@@ -107,7 +113,7 @@ class SiteController extends Controller
         ->limit(3)
         ->get();
 
-        return view("site.revistas", ["revistas" => $revistas, "mais_lidas" => $mais_lidas]);
+        return view("site.revistas", ["revistas" => $revistas, "mais_lidas" => $mais_lidas, "blogs" => $blogs]);
     }
 
     public function revista(Revista $revista)
