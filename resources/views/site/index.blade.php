@@ -199,7 +199,7 @@
                     </ul>
                 </div>
 
-                <a href="#" class="button">
+                <a href="javascript: $('#categorias_modal').showModal();" class="button">
                     <picture>
                         <img src="{{ asset('site/assets/img/icon_chocolate_conteudo.svg') }}" alt="Ícone chocolate">
                     </picture>

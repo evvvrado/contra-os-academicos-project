@@ -9,7 +9,7 @@ section.nossa-equipe div.niv div.equipe-area div.membro picture img, section.art
      object-fit: cover;
 }
 
-div#referencias_modal div.niv div.box div.title-area button, section.trabalhe-conosco div.niv div.boxes-side div.red-box, section.apoie-projeto div.niv div.content-area div.clickable a, section.artigo div.niv div.cursos div.card-area div.scroll a.box-destaque div.tags span, section.artigo div.niv div.cursos div.title-area div button, section.artigo div.niv.--row main div.actions div.social-buttons div.icon picture, section.publicacoes aside ul.colunistas li span, section.complemento.--biblioteca div.niv div.boxes-area button, body#sobre section.banner div.niv picture.icon-arrow, section.parceiros div.niv div.partners a, section.cursos div.niv div.boxes-area div.scroll a.box-destaque div.tags span, section.indicacao-cast div.niv div.indicacao-area div.box.--livro div.box-content main div.--novidade::after, section.hero div.niv div.container a.card.main-card div.top-bar span.categoria, header div[fluid] div.niv > div div.search-button picture, header div[fluid] div.user-circle, :not(.text-content) .button:is(a, button) {
+div.modal .niv .box div.title-area button, section.trabalhe-conosco div.niv div.boxes-side div.red-box, section.apoie-projeto div.niv div.content-area div.clickable a, section.artigo div.niv div.cursos div.card-area div.scroll a.box-destaque div.tags span, section.artigo div.niv div.cursos div.title-area div button, section.artigo div.niv.--row main div.actions div.social-buttons div.icon picture, section.publicacoes aside ul.colunistas li span, section.complemento.--biblioteca div.niv div.boxes-area button, body#sobre section.banner div.niv picture.icon-arrow, section.parceiros div.niv div.partners a, section.cursos div.niv div.boxes-area div.scroll a.box-destaque div.tags span, section.indicacao-cast div.niv div.indicacao-area div.box.--livro div.box-content main div.--novidade::after, section.hero div.niv div.container a.card.main-card div.top-bar span.categoria, header div[fluid] div.niv > div div.search-button picture, header div[fluid] div.user-circle, :not(.text-content) .button:is(a, button) {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -1451,6 +1451,7 @@ section.blog-news div.niv div.blog-area div.content div.scroll a.card {
   overflow: hidden;
   position: relative;
   background-size: cover !important;
+  background-position: center !important;
   height: 18.3rem;
   width: 31rem;
   padding: 1.8rem 1.7rem;
@@ -4315,6 +4316,86 @@ div.modal .niv .box {
   opacity: 0;
   padding: 1.7rem 2.3rem 1.5rem 1.7rem;
 }
+div.modal .niv .box div.title-area {
+  width: 100%;
+  margin-bottom: 1.6rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-direction: row;
+}
+div.modal .niv .box div.title-area button {
+  width: 1.8rem;
+  aspect-ratio: 1/1;
+  border: solid 2px #5b2222;
+  border-radius: 3px;
+  transition: 0.32s;
+}
+div.modal .niv .box div.title-area button img {
+  transition: 0.32s;
+}
+div.modal .niv .box div.title-area button:hover, div.modal .niv .box div.title-area button:active {
+  background-color: #5b2222;
+}
+div.modal .niv .box div.title-area button:hover img, div.modal .niv .box div.title-area button:active img {
+  filter: brightness(0) invert(1);
+}
+div.modal .niv .box div.title-area h2 {
+  font-family: "Open Sans", sans-serif;
+  font-weight: 700;
+  font-size: 1.6rem;
+  color: #242424;
+  position: relative;
+}
+div.modal .niv .box div.title-area h2::after {
+  width: 28.1rem;
+  background-color: #fdf6d6;
+  height: 0.3rem;
+  position: absolute;
+  content: "";
+  left: 0;
+  bottom: 0;
+}
+div.modal .niv .box div.title-area {
+  width: 100%;
+  margin-bottom: 1.6rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-direction: row;
+}
+div.modal .niv .box div.title-area button {
+  width: 1.8rem;
+  aspect-ratio: 1/1;
+  border: solid 2px #5b2222;
+  border-radius: 3px;
+  transition: 0.32s;
+}
+div.modal .niv .box div.title-area button img {
+  transition: 0.32s;
+}
+div.modal .niv .box div.title-area button:hover, div.modal .niv .box div.title-area button:active {
+  background-color: #5b2222;
+}
+div.modal .niv .box div.title-area button:hover img, div.modal .niv .box div.title-area button:active img {
+  filter: brightness(0) invert(1);
+}
+div.modal .niv .box div.title-area h2 {
+  font-family: "Open Sans", sans-serif;
+  font-weight: 700;
+  font-size: 1.6rem;
+  color: #242424;
+  position: relative;
+}
+div.modal .niv .box div.title-area h2::after {
+  width: 28.1rem;
+  background-color: #fdf6d6;
+  height: 0.3rem;
+  position: absolute;
+  content: "";
+  left: 0;
+  bottom: 0;
+}
 div.modal .close-modal {
   background-color: rgba(0, 0, 0, 0.39);
   cursor: pointer;
@@ -4327,46 +4408,6 @@ div.modal .close-modal {
   content: "";
 }
 
-div#referencias_modal div.niv div.box div.title-area {
-  width: 100%;
-  margin-bottom: 1.6rem;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  flex-direction: row;
-}
-div#referencias_modal div.niv div.box div.title-area button {
-  width: 1.8rem;
-  aspect-ratio: 1/1;
-  border: solid 2px #5b2222;
-  border-radius: 3px;
-  transition: 0.32s;
-}
-div#referencias_modal div.niv div.box div.title-area button img {
-  transition: 0.32s;
-}
-div#referencias_modal div.niv div.box div.title-area button:hover, div#referencias_modal div.niv div.box div.title-area button:active {
-  background-color: #5b2222;
-}
-div#referencias_modal div.niv div.box div.title-area button:hover img, div#referencias_modal div.niv div.box div.title-area button:active img {
-  filter: brightness(0) invert(1);
-}
-div#referencias_modal div.niv div.box div.title-area h2 {
-  font-family: "Open Sans", sans-serif;
-  font-weight: 700;
-  font-size: 1.6rem;
-  color: #242424;
-  position: relative;
-}
-div#referencias_modal div.niv div.box div.title-area h2::after {
-  width: 28.1rem;
-  background-color: #fdf6d6;
-  height: 0.3rem;
-  position: absolute;
-  content: "";
-  left: 0;
-  bottom: 0;
-}
 div#referencias_modal div.niv div.box div.content {
   padding-right: 2rem;
   max-height: 36rem;
@@ -4399,6 +4440,34 @@ div#referencias_modal div.niv div.box div.content div.scroll ul li {
   line-height: 180%;
   color: #716f6f;
   list-style: disc inside;
+}
+
+div#categorias_modal div.niv div.box {
+  max-width: 35rem;
+}
+div#categorias_modal div.niv div.box div.content {
+  height: 100%;
+}
+div#categorias_modal div.niv div.box form {
+  height: 100%;
+  padding-top: 3rem;
+}
+div#categorias_modal div.niv div.box form label {
+  margin-bottom: 3rem;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  flex-direction: row;
+  gap: 1rem;
+}
+div#categorias_modal div.niv div.box form label input[type=checkbox] {
+  background-color: #fff;
+}
+div#categorias_modal div.niv div.box form label input[type=checkbox]:checked {
+  background-color: #5b2222;
+}
+div#categorias_modal div.niv div.box form button {
+  margin: auto auto;
 }
 
 i.niv-arrow-right {

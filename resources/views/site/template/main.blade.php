@@ -11,8 +11,10 @@
 
 </head>
 
-<body @yield("body_attr")>
+<body @yield('body_attr')>
     @include('site.includes.navbar')
+
+    @include('site.includes.categorias')
 
     @yield('content')
 
@@ -23,11 +25,11 @@
     @toastr_js
     @toastr_render
     @livewireScripts()
-    @yield("scripts")
+    @yield('scripts')
 
     @php
         $protocolo = 'http';
-        $url = '://'.$_SERVER['HTTP_HOST'].$_SERVER['SCRIPT_NAME'].'?'.$_SERVER['QUERY_STRING'];
+        $url = '://' . $_SERVER['HTTP_HOST'] . $_SERVER['SCRIPT_NAME'] . '?' . $_SERVER['QUERY_STRING'];
     @endphp
 
     <script>
@@ -61,9 +63,9 @@
             document.body.removeChild(textArea);
         }
 
-            // Teste
-            var copyurl = document.querySelector('.copyurl');
-            copyurl.addEventListener('click', function(event) {
+        // Teste
+        var copyurl = document.querySelector('.copyurl');
+        copyurl.addEventListener('click', function(event) {
             copyTextToClipboard(window.location.protocol + "//" + window.location.host + window.location.pathname);
 
             alert('Link copiado para sua área de transferência!')

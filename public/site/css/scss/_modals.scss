@@ -52,27 +52,7 @@ div.modal {
             opacity: 0;
 
             padding: 1.7rem 2.3rem 1.5rem 1.7rem;
-        }
-    }
 
-    .close-modal {
-        background-color: rgba(0, 0, 0, 0.39);
-
-        cursor: pointer;
-
-        position: absolute;
-        top: 0;
-        left: 0;
-        height: 100%;
-        width: 100%;
-        z-index: 1;
-        content: "";
-    }
-}
-
-div#referencias_modal {
-    div.niv {
-        div.box {
             div.title-area {
                 width: 100%;
                 margin-bottom: 1.6rem;
@@ -120,7 +100,74 @@ div#referencias_modal {
                     }
                 }
             }
+            div.title-area {
+                width: 100%;
+                margin-bottom: 1.6rem;
+                @include flex(row, center, space-between);
 
+                button {
+                    width: 1.8rem;
+                    aspect-ratio: 1/1;
+
+                    @extend %totalcenter;
+                    border: solid 2px $primary;
+                    border-radius: 3px;
+                    transition: 0.32s;
+                    img {
+                        transition: 0.32s;
+                    }
+
+                    &:hover,
+                    &:active {
+                        background-color: $primary;
+                        img {
+                            filter: brightness(0) invert(1);
+                        }
+                    }
+                }
+
+                h2 {
+                    font-family: $font-primary;
+                    font-weight: 700;
+                    font-size: 1.6rem;
+                    color: $preto-contra;
+
+                    position: relative;
+
+                    &::after {
+                        width: 28.1rem;
+                        background-color: $creme-contra;
+                        height: 0.3rem;
+
+                        position: absolute;
+                        content: "";
+
+                        left: 0;
+                        bottom: 0;
+                    }
+                }
+            }
+        }
+    }
+
+    .close-modal {
+        background-color: rgba(0, 0, 0, 0.39);
+
+        cursor: pointer;
+
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 100%;
+        width: 100%;
+        z-index: 1;
+        content: "";
+    }
+}
+
+div#referencias_modal {
+    div.niv {
+        div.box {
             div.content {
                 padding-right: 2rem;
                 max-height: 36rem;
@@ -159,6 +206,41 @@ div#referencias_modal {
                             list-style: disc inside;
                         }
                     }
+                }
+            }
+        }
+    }
+}
+
+div#categorias_modal {
+    div.niv {
+        div.box {
+            max-width: 35rem;
+
+            div.content {
+                height: 100%;
+            }
+
+            form {
+                height: 100%;
+                padding-top: 3rem;
+                label {
+                    margin-bottom: 3rem;
+
+                    @include flex(row, center, flex-start);
+                    gap: 1rem;
+
+                    input[type="checkbox"] {
+                        background-color: $white;
+
+                        &:checked {
+                            background-color: $primary;
+                        }
+                    }
+                }
+
+                button {
+                    margin: auto auto;
                 }
             }
         }
