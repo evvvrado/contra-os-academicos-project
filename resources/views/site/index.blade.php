@@ -285,7 +285,7 @@
 
             <div class="boxes-area">
                 <div class="scroll">
-                    @foreach ($listas_destaques->slice(3) as $lista_destaque)
+                    @foreach ($listas_destaques->slice(0, 2) as $lista_destaque)
                         <a href="#" class="box-destaque"
                             style="background-image: url({{ asset($lista->banner) }})">
                             <h2>{{ $lista->titulo }}</h2>
