@@ -91,8 +91,8 @@
     .blog-comment .meta {
         font-size: 13px;
         color: #aaaaaa;
-        padding-bottom: 8px;
-        margin-bottom: 5px !important;
+        padding-bottom: 4px;
+        /* margin-bottom: 5px !important; */
         /* border-bottom: 1px solid #eee; */
     }
 
@@ -163,23 +163,18 @@
                                 alt="">
                             <div class="post-comments">
                                 <p class="meta">
-                                    <small>[{{ date('d', strtotime($comentario->created_at)) }} de
-                                        {{ substr($comentario->created_at->formatLocalized('%B'), 0, 3) }},
-                                        {{ date('Y', strtotime($comentario->created_at)) }}]</small> &nbsp;
-                                    <a class="custom_a" href="#">
-                                        {{ $comentario->usuario_site->nome }}
-                                    </a>:
-                                    <i class="pull-right">
-                                        <a class="custom_a" href="#"><small>Responder</small></a>
-                                    </i>
+                                    <a class="custom_a" href="#"> {{ $comentario->usuario_site->nome }}</a>:
                                 </p>
                                 <p>
                                     {{ $comentario->conteudo }}
                                 </p>
+                                <small>[{{ date('d', strtotime($comentario->created_at)) }} de
+                                    {{ substr($comentario->created_at->formatLocalized('%B'), 0, 3) }},
+                                    {{ date('Y', strtotime($comentario->created_at)) }}]</small> &nbsp;
                             </div>
                         </li>
                     @endforeach
-                    <li class="clearfix">
+                    {{-- <li class="clearfix">
                         <img src="{{ asset('admin/imagens/usuarios/sem_foto.png') }}" class="avatar" alt="">
                         <div class="post-comments">
                             <p class="meta">
@@ -190,7 +185,7 @@
                             </p>
                             <small>02 de jun, 2022</small> &nbsp;
                         </div>
-                    </li>
+                    </li> --}}
                 </ul>
             </div>
         </div>
