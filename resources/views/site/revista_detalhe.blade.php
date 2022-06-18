@@ -35,7 +35,7 @@
                     </div>
                 </div>
 
-                <div class="text-content">
+                <div class="text-content block-style">
                     <p>
                         {!! $revista->conteudo !!}
                     </p>

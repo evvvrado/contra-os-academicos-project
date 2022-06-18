@@ -85,7 +85,7 @@
                     </div>
                 </div>
 
-                <div class="text-content">
+                <div class="text-content block-style">
                     <p>
                         Como um sobrevivente do Holocausto Comunista, estou horrorizado ao testemunhar como minha amada
                         América, o país que me adotou, está sendo gradualmente transformado em uma utopia secularista e

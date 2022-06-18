@@ -74,7 +74,7 @@
                     </div>
                 </div>
 
-                <div class="text-content">
+                <div class="text-content block-style">
                     <p>
                         {!! $blog->conteudo !!}
                     </p>

@@ -33,7 +33,7 @@
                     </div>
                 </div>
 
-                <div class="text-content">
+                <div class="text-content block-style">
                     <p>
                         {!! $lista->conteudo !!}
                     </p>
