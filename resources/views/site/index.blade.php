@@ -41,7 +41,7 @@
                                 style="background: url('{{ asset($revista->banner) }}')">
 
                                 <div class="top-bar">
-                                    <span class="categoria">{{ $revista->categoria->nome }}</span>
+                                    {{-- <span class="categoria">{{ $revista->categoria->nome }}</span> --}}
                                 </div>
 
                                 <div class="text">

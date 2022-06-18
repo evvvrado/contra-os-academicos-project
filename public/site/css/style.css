@@ -3117,7 +3117,7 @@ section.artigo div.niv.--row main div.text-content time,
 section.artigo div.niv.--row main div.text-content mark,
 section.artigo div.niv.--row main div.text-content audio,
 section.artigo div.niv.--row main div.text-content video {
-  all: inherit;
+  all: revert;
 }
 section.artigo div.niv.--row main div.text-content span,
 section.artigo div.niv.--row main div.text-content h1,
