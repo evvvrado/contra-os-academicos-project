@@ -77,7 +77,9 @@ class SiteController extends Controller
         // Create Carbon date
         $mes = $blog->created_at->formatLocalized('%B');
 
-        $comentarios = BlogComentario::where('blog_id', $blog->id)->get();
+        $comentarios = BlogComentario::where('blog_id', $blog->id)
+        ->whereStatus(1)
+        ->get();
 
         $blog_randomicos = Blog::select(DB::raw("*"))
         ->inRandomOrder()

@@ -7,11 +7,11 @@
 @endsection
 
 @section('titulo')
-    Listagem de Listas @if(isset($tipo)) {{$tipo}}  @endif
+    Listagem de Comentários dos Blogs @if(isset($tipo)) {{$tipo}}  @endif
 @endsection
 
 @section('botoes')
-    <a name="" id="" class="btn btn-success" href="{{route('painel.lista.cadastro')}}" role="button">Novo</a>
+    <a name="" id="" class="btn btn-success" href="{{route('painel.curso.cadastro')}}" role="button">Novo</a>
 @endsection
 
 @section('conteudo')
@@ -22,12 +22,10 @@
                 <table id="datatable" class="table table-bordered dt-responsive  nowrap w-100">
                     <thead>
                         <tr>
-                            <th>Título</th>
-                            <th>Categoria</th>
-                            <th class="text-center"><i class="bx bx-show-alt"></i></th>
-                            <th class="text-center"><i class="bx bx-comment-dots"></i></th>
-                            <th class="text-center"><i class="bx bx-share-alt"></i></th>
-                            <th>Publicado</th>
+                            <th>Usuario</th>
+                            <th>Comentário</th>
+                            <th>Post</th>
+                            <th>Data</th>
                             <th class="text-center"></th>
                         </tr>
                     </thead>
@@ -35,29 +33,23 @@
 
                     <tbody>
 
-                        @foreach($listas as $lista)
+                        @foreach($comentarios as $comentario)
                             @php
-                                $date = new DateTime($lista->created_at);
-                                $data = $date->format('d/m/Y');
+                                $date = new DateTime($comentario->created_at);
+                                $data = $date->format('d/m/Y H:m:s');
                             @endphp
                             <tr>
-                                <td style="position: relative;">{{ Str::limit($lista->titulo, 32 ) }}
-                                    @if($lista->status == 1)
-                                        <i style="position: absolute; right: 10px; top: 2px; color: green" class="bx bx-check"></i>
-                                    @elseif($lista->status == 2)
-                                        <i style="position: absolute; right: 10px; top: 2px; color: blue" class="bx bx-file"></i>
-                                    @elseif($lista->status == 3)
-                                        <i style="position: absolute; right: 10px; top: 2px; color: red" class="bx bx-x"></i>
-                                    @endif
-                                </td>
-                                <td>{{$lista->categoria->nome}}</td>
-                                <td class="text-center">{{$lista->visitas}}</td>
-                                <td class="text-center">0</td>
-                                <td class="text-center">0</td>
+                                <td>{{$comentario->usuario_site->nome}}</td>
+                                <td>{{$comentario->conteudo}}</td>
+                                <td>{{$comentario->blog_id}}</td>
                                 <td>{{ $data }}</td>
                                 <td class="text-center">
-                                    <a href="{{ route('painel.lista.editar', ['lista' => $lista]) }}" class="btn btn-success" role="button">Editar</a>
-                                    <a class="btn btn-danger" href="" role="button">Deletar</a>                                </td>
+                                    @if($comentario->status == 1)
+                                        <a class="btn btn-danger" href="{{ route('painel.comentarios_blog.moderar', ['blogcomentario' => $comentario]) }}" role="button">Privar</a>
+                                    @else 
+                                        <a class="btn btn-warning" href="{{ route('painel.comentarios_blog.moderar', ['blogcomentario' => $comentario]) }}" role="button">Liberar</a>
+                                    @endif
+                                </td>
                             </tr>
                         @endforeach
 
@@ -77,8 +69,6 @@
     <script>
         $(document).ready(function() {
             $('#datatable').DataTable( {
-                "pageLength": 50,
-                "ordering": false,
                 language:{
                     "emptyTable": "Nenhum registro encontrado",
                     "info": "Mostrando de _START_ até _END_ de _TOTAL_ registros",

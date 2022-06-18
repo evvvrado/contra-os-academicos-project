@@ -38,6 +38,10 @@
                     <tbody>
 
                         @foreach($blogs as $blog)
+                            @php
+                                $date = new DateTime($blog->created_at);
+                                $data = $date->format('d/m/Y');
+                            @endphp
                             <tr>
                                 <td style="position: relative;">{{ Str::limit($blog->titulo, 32 ) }}
                                     @if($blog->status == 1)
@@ -52,7 +56,7 @@
                                 <td class="text-center">{{$blog->visitas}}</td>
                                 <td class="text-center">0</td>
                                 <td class="text-center">0</td>
-                                <td>{{ \Carbon\Carbon::parse($blog->data)->format('d/m/Y')}}</td>
+                                <td>{{ $data }}</td>
                                 <td >
                                     <a href="{{ route('painel.blog.editar', ['blog' => $blog]) }}" class="btn btn-sm btn-success" role="button"><i class="bx bx bx-edit-alt"></i></a>
                                     <a onClick="deletar({{ $blog->id }})" class="btn btn-sm btn-danger" role="button"><i class="bx bx bx bx-window-close"></i></a>
@@ -95,6 +99,8 @@
         }
         $(document).ready(function() {
             $('#datatable').DataTable( {
+                "pageLength": 50,
+                "ordering": false,
                 language:{
                     "emptyTable": "Nenhum registro encontrado",
                     "info": "Mostrando de _START_ até _END_ de _TOTAL_ registros",

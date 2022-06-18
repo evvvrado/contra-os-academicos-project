@@ -238,6 +238,9 @@
                                         <li>
                                             <a href="{{ route('painel.curso') }}" key="t-invoice-list">Cursos</a>
                                         </li>
+                                        <li>
+                                            <a href="{{ route('painel.comentarios.blog') }}" key="t-invoice-list">Comentários</a>
+                                        </li>
                                     </ul>
                                 </li>
 

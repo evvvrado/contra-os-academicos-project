@@ -76,34 +76,63 @@
 
                 <div class="text-content block-style">
                     <p>
-                        {!! $blog->conteudo !!}
+                        {!! Str::limit($blog->conteudo, 100) !!}
                     </p>
                 </div>
 
+                <?php 
+                    if (session()->get("usuario_site")["assinante"]) {
+                        if(session()->get("usuario_site")["assinante"] == 0 OR session()->get("usuario_site")["assinante"] == ""){
+                ?>
+                        <div class="apoie-projeto --alternative">
 
-                <div class="apoie-projeto --alternative">
+                            <div class="content-side">
+                                <strong>MENSAGEM DA EQUIPE</strong>
 
-                    <div class="content-side">
-                        <strong>MENSAGEM DA EQUIPE</strong>
+                                <strong>
+                                    Seu apoio é mais importante do que nunca.
+                                </strong>
 
-                        <strong>
-                            Seu apoio é mais importante do que nunca.
-                        </strong>
-
-                        <p>
-                            Desde 2014 o Contra os Acadêmicos trabalha para divulgar a boa filosofia e incentivar a
-                            autoeducação. Apoiando nosso projeto, você assegura a continuidade do nosso trabalho.
-                        </p>
-                    </div>
-
-
-                    <div class="buttons">
-                        <button class="button">Quero apoiar</button>
-                        <button class="button">Ler artigo completo</button>
-                    </div>
-                </div>
+                                <p>
+                                    Desde 2014 o Contra os Acadêmicos trabalha para divulgar a boa filosofia e incentivar a
+                                    autoeducação. Apoiando nosso projeto, você assegura a continuidade do nosso trabalho.
+                                </p>
+                            </div>
 
 
+                            <div class="buttons">
+                                {{-- <button class="button">Quero apoiar</button> --}}
+                                <button class="button">Ler artigo completo</button>
+                            </div>
+                        </div>
+                <?php
+                        }
+                    }  else {
+                ?>
+                        <div class="apoie-projeto --alternative">
+
+                            <div class="content-side">
+                                <strong>MENSAGEM DA EQUIPE</strong>
+
+                                <strong>
+                                    Seu apoio é mais importante do que nunca.
+                                </strong>
+
+                                <p>
+                                    Desde 2014 o Contra os Acadêmicos trabalha para divulgar a boa filosofia e incentivar a
+                                    autoeducação. Apoiando nosso projeto, você assegura a continuidade do nosso trabalho.
+                                </p>
+                            </div>
+
+
+                            <div class="buttons">
+                                {{-- <button class="button">Quero apoiar</button> --}}
+                                <button style="width: 100%; padding: 10px; " class="button">Ler artigo completo</button>
+                            </div>
+                        </div>
+                <?php 
+                    }
+                ?>
                 <div class="bio">
                     <picture>
                         <img src="{{ asset($blog->autor->foto) }}" alt="Foto do Biografado">
@@ -145,7 +174,7 @@
                     </div>
                     <div class="buttons">
                         <button class="button --references">Referências</button>
-                        <button class="button">Quero compartilhar</button>
+                        <button class="button copyurl">Quero compartilhar</button>
                     </div>
                 </div>
 

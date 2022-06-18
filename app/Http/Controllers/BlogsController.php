@@ -6,12 +6,16 @@ use Illuminate\Http\Request;
 use App\Models\Blog;
 use App\Models\BlogVisu;
 use Illuminate\Support\Facades\Storage;
+use DB;
 
 class BlogsController extends Controller
 {
     //
     public function consultar(){
-        $blogs = Blog::all();
+        $blogs = Blog::select(DB::raw("*"))
+        ->orderBy('id', 'Desc')
+        ->get();
+
         return view("painel.blogs.consultar", ["blogs" => $blogs]);
     }
 

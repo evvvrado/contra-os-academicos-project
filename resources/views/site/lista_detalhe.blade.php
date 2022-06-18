@@ -90,7 +90,7 @@
 
                     </div>
                     <div class="buttons">
-                        <button class="button">Quero compartilhar</button>
+                        <button class="button copyurl">Quero compartilhar</button>
                     </div>
                 </div>
             </main>

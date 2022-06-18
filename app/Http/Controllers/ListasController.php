@@ -5,12 +5,15 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Lista;
 use Illuminate\Support\Facades\Storage;
+use DB;
 
 class ListasController extends Controller
 {
     //
     public function consultar(){
-        $listas = Lista::all();
+        $listas = Lista::select(DB::raw("*"))
+        ->orderBy('id', 'Desc')
+        ->get();
         return view("painel.listas.consultar", ["listas" => $listas]);
     }
 

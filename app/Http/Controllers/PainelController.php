@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Hash;
 use App\Models\Usuario;
 use App\Models\UsuarioSite;
 use App\Models\Assinatura;
+use App\Models\BlogComentario;
 
 class PainelController extends Controller
 {
@@ -105,5 +106,28 @@ class PainelController extends Controller
         toastr()->success("Assinatura cancelada");
 
         return redirect()->route("painel.usuarios_site", ['usuarios' => $usuarios]);
+    }
+
+    // COMENTARIOS
+    public function comentarios_blog() {
+        $comentarios = BlogComentario::all();
+
+        return view("painel.comentarios.consultar", ['comentarios' => $comentarios]);
+    }
+
+    public function moderar_comentarios_blog(BlogComentario $blogcomentario) {
+        
+        if($blogcomentario->status == 1) {
+            $blogcomentario->status = 0;
+        } else {
+            $blogcomentario->status = 1;
+        }
+        $blogcomentario->save();
+
+        toastr()->success("Comentário moderado com sucesso");
+
+        $comentarios = BlogComentario::all();
+
+        return view("painel.comentarios.consultar", ['comentarios' => $comentarios]);
     }
 }

@@ -210,7 +210,7 @@
             <div class="content-area">
                 <div class="scroll" data-filter="blogs" active>
                     @foreach ($blogs as $key => $blog)
-                        @if ($key < 8)
+                        @if ($key < 9)
                             <a href="{{ route('site.blog_detalhe', ['blog' => $blog]) }}" class="box">
                                 <picture>
                                     <img src="{{ asset($blog->banner) }}" alt="">
@@ -232,7 +232,7 @@
                 <div class="scroll" data-filter="revistas">
 
                     @foreach ($revistas as $key => $revista)
-                        @if ($key < 8)
+                        @if ($key < 9)
                             <a href="{{ route('site.revista_detalhe', ['revista' => $revista]) }}" class="box">
                                 <picture>
                                     <img src="{{ asset($revista->banner) }}" alt="">
@@ -255,7 +255,7 @@
 
                 <div class="scroll" data-filter="listas">
                     @foreach ($listas as $key => $lista)
-                        @if ($key < 8)
+                        @if ($key < 9)
                             <a href="{{ route('site.lista_detalhe', ['lista' => $lista]) }}" class="box">
                                 <picture>
                                     <img src="{{ asset($lista->banner) }}" alt="">

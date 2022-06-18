@@ -23,9 +23,12 @@
                     <thead>
                         <tr>
                             <th>Título</th>
-                            <th>Subtítulo</th>
-                            <th>Autor</th>
-                            <th class="text-center">Ações</th>
+                            <th>Categoria</th>
+                            <th class="text-center"><i class="bx bx-show-alt"></i></th>
+                            <th class="text-center"><i class="bx bx-comment-dots"></i></th>
+                            <th class="text-center"><i class="bx bx-share-alt"></i></th>
+                            <th>Publicado</th>
+                            <th class="text-center"></th>
                         </tr>
                     </thead>
 
@@ -33,10 +36,25 @@
                     <tbody>
 
                         @foreach($revistas as $revista)
+                            @php
+                                $date = new DateTime($revista->created_at);
+                                $data = $date->format('d/m/Y');
+                            @endphp
                             <tr>
-                                <td>{{$revista->titulo}}</td>
-                                <td>{{$revista->sub_titulo}}</td>
-                                <td></td>
+                                <td style="position: relative;">{{ Str::limit($revista->titulo, 32 ) }}
+                                    @if($revista->status == 1)
+                                        <i style="position: absolute; right: 10px; top: 2px; color: green" class="bx bx-check"></i>
+                                    @elseif($revista->status == 2)
+                                        <i style="position: absolute; right: 10px; top: 2px; color: blue" class="bx bx-file"></i>
+                                    @elseif($revista->status == 3)
+                                        <i style="position: absolute; right: 10px; top: 2px; color: red" class="bx bx-x"></i>
+                                    @endif
+                                </td>
+                                <td>{{$revista->categoria->nome}}</td>
+                                <td class="text-center">{{$revista->visitas}}</td>
+                                <td class="text-center">0</td>
+                                <td class="text-center">0</td>
+                                <td>{{ $data }}</td>
                                 <td class="text-center">
                                     <a href="{{ route('painel.revista.editar', ['revista' => $revista]) }}" class="btn btn-success" role="button">Editar</a>
                                     <a class="btn btn-danger" href="" role="button">Deletar</a>
@@ -60,6 +78,8 @@
     <script>
         $(document).ready(function() {
             $('#datatable').DataTable( {
+                "pageLength": 50,
+                "ordering": false,
                 language:{
                     "emptyTable": "Nenhum registro encontrado",
                     "info": "Mostrando de _START_ até _END_ de _TOTAL_ registros",

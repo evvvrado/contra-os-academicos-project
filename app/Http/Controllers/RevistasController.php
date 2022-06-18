@@ -4,13 +4,16 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Revista;
+use DB;
 use Illuminate\Support\Facades\Storage;
 
 class RevistasController extends Controller
 {
     //
     public function consultar(){
-        $revistas = Revista::all();
+        $revistas = Revista::select(DB::raw("*"))
+        ->orderBy('id', 'Desc')
+        ->get();
         return view("painel.revistas.consultar", ["revistas" => $revistas]);
     }
 

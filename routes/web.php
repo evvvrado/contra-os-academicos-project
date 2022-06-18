@@ -11,6 +11,10 @@ Route::middleware(['admin'])->group(function () {
 
     Route::get('/painel/sair', [\App\Http\Controllers\PainelController::class, 'sair'])->name("painel.sair");
 
+    // ROTAS DE COMENTÁRIOS
+    Route::get('/sistema/comentarios/blog', [\App\Http\Controllers\PainelController::class, 'comentarios_blog'])->name("painel.comentarios.blog");
+    Route::get('/sistema/comentarios/blog/moderar/{blogcomentario}', [\App\Http\Controllers\PainelController::class, 'moderar_comentarios_blog'])->name("painel.comentarios_blog.moderar");
+
     // ROTAS DE USUÁRIOS DO SITE
     Route::get('/sistema/usuarios_site/consultar', [\App\Http\Controllers\PainelController::class, 'usuarios_site'])->name("painel.usuarios_site");
     Route::get('/sistema/usuarios_site/assinatura/{usuario_site}', [\App\Http\Controllers\PainelController::class, 'assinatura'])->name("painel.usuarios_site.assinatura");
