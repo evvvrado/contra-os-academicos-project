@@ -225,10 +225,10 @@
                             <li>
                                 <a href="{{ route('site.blog_detalhe', ['blog' => $blog_randomico]) }}" class="box">
                                     <picture>
-                                        <img src="{{ asset($blog->banner) }}" alt="Banner relacionados">
+                                        <img src="{{ asset($blog_randomico->banner) }}" alt="Banner relacionados">
                                     </picture>
                                     <div class="content">
-                                        <span>{{ date_format($blog->created_at, 'd/m/Y') }}</span>
+                                        <span>{{ date_format($blog_randomico->created_at, 'd/m/Y') }}</span>
                                         <strong>{{ $blog_randomico->titulo }}</strong>
                                         <p>Por {{ $blog_randomico->autor->nome }}</p>
                                     </div>
