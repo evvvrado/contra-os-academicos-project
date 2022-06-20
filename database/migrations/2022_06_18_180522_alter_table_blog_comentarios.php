@@ -16,7 +16,7 @@ class AlterTableBlogComentarios extends Migration
         //
         Schema::table('blog_comentarios', function (Blueprint $table) {
             //
-            $table->integer("curtidas");
+            $table->integer("curtidas")->default(0);
         });
     }
 

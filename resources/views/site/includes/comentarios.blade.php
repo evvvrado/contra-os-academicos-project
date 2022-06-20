@@ -144,19 +144,27 @@
         <div class="col-md-12">
             <div class="blog-comment">
                 <hr style="border-bottom: 1px solid #eee !important;">
-                <form method="post" action="{{ route('minha_area.comentar', ['blog' => $blog]) }}">
-                    @csrf
-                    <div class="mb-3">
-                        <label for="commentmessage-input" class="form-label">Comentar</label>
-                        <textarea name="conteudo" class="form-control" id="commentmessage-input" placeholder="Sua mensagem" rows="3"></textarea>
+                <?php 
+                    if (isset(session()->get("usuario_site")["assinante"])) {
+                ?>
+                        <form method="post" action="{{ route('minha_area.comentar', ['blog' => $blog]) }}">
+                            @csrf
+                            <div class="mb-3">
+                                <label for="commentmessage-input" class="form-label">Comentar</label>
+                                <textarea name="conteudo" class="form-control" id="commentmessage-input" placeholder="Sua mensagem" rows="3"></textarea>
 
-                        <button class="button" style="margin-top: 10px;">Enviar</button>
-                    </div>
-                </form>
-
+                                <button class="button" style="margin-top: 10px;">Enviar</button>
+                            </div>
+                        </form>
+                <?php
+                    }
+                ?>
                 <h3 class="text-success">Comentários</h3>
                 <hr />
                 <ul class="comments">
+                    @if($comentarios->count() == 0)
+                        Não há comentários nessa publicação.
+                    @endif 
                     @foreach ($comentarios as $comentario)
                         <li class="clearfix">
                             <img src="{{ asset('admin/imagens/usuarios/sem_foto.png') }}" class="avatar"

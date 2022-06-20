@@ -81,7 +81,7 @@
                 </div>
 
                 <?php 
-                    if (session()->get("usuario_site")["assinante"]) {
+                    if (isset(session()->get("usuario_site")["assinante"])) {
                         if(session()->get("usuario_site")["assinante"] == 0 OR session()->get("usuario_site")["assinante"] == ""){
                 ?>
                         <div class="apoie-projeto --alternative">
@@ -102,7 +102,7 @@
 
                             <div class="buttons">
                                 {{-- <button class="button">Quero apoiar</button> --}}
-                                <button class="button">Ler artigo completo</button>
+                                <button class="button" style="width: 100%; padding: 15px;">Ler artigo completo</button>
                             </div>
                         </div>
                 <?php
