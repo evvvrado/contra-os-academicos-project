@@ -73,64 +73,79 @@
                         @endif
                     </div>
                 </div>
+                        
+                <?php
 
-                <div class="text-content block-style">
-                    <p>
-                        {!! Str::limit($blog->conteudo, 100) !!}
-                    </p>
-                </div>
-
-                <?php 
-                    if (isset(session()->get("usuario_site")["assinante"])) {
-                        if(session()->get("usuario_site")["assinante"] == 0 OR session()->get("usuario_site")["assinante"] == ""){
+                    if($blog->exclusivo == "1") {
+                        if (isset(session()->get("usuario_site")["assinante"])) {
+                            if(session()->get("usuario_site")["assinante"] == 0 OR session()->get("usuario_site")["assinante"] == ""){
                 ?>
-                        <div class="apoie-projeto --alternative">
-
-                            <div class="content-side">
-                                <strong>MENSAGEM DA EQUIPE</strong>
-
-                                <strong>
-                                    Seu apoio é mais importante do que nunca.
-                                </strong>
-
+                            <div class="text-content block-style">
                                 <p>
-                                    Desde 2014 o Contra os Acadêmicos trabalha para divulgar a boa filosofia e incentivar a
-                                    autoeducação. Apoiando nosso projeto, você assegura a continuidade do nosso trabalho.
+                                    {!! Str::limit($blog->conteudo, 800) !!}
                                 </p>
                             </div>
+                            <div class="apoie-projeto --alternative">
+
+                                <div class="content-side">
+                                    <strong>MENSAGEM DA EQUIPE</strong>
+
+                                    <strong>
+                                        Seu apoio é mais importante do que nunca.
+                                    </strong>
+
+                                    <p>
+                                        Desde 2014 o Contra os Acadêmicos trabalha para divulgar a boa filosofia e incentivar a
+                                        autoeducação. Apoiando nosso projeto, você assegura a continuidade do nosso trabalho.
+                                    </p>
+                                </div>
 
 
-                            <div class="buttons">
-                                {{-- <button class="button">Quero apoiar</button> --}}
-                                <button class="button" style="width: 100%; padding: 15px;">Ler artigo completo</button>
+                                <div class="buttons">
+                                    {{-- <button class="button">Quero apoiar</button> --}}
+                                    <button class="button" style="width: 100%; padding: 15px;">Ler artigo completo</button>
+                                </div>
                             </div>
+                <?php
+                            }
+                        }  else {
+                ?>
+                            <div class="text-content block-style">
+                                <p>
+                                    {!! Str::limit($blog->conteudo, 800) !!}
+                                </p>
+                            </div>
+                            <div class="apoie-projeto --alternative">
+
+                                <div class="content-side">
+                                    <strong>MENSAGEM DA EQUIPE</strong>
+
+                                    <strong>
+                                        Seu apoio é mais importante do que nunca.
+                                    </strong>
+
+                                    <p>
+                                        Desde 2014 o Contra os Acadêmicos trabalha para divulgar a boa filosofia e incentivar a
+                                        autoeducação. Apoiando nosso projeto, você assegura a continuidade do nosso trabalho.
+                                    </p>
+                                </div>
+
+
+                                <div class="buttons">
+                                    {{-- <button class="button">Quero apoiar</button> --}}
+                                    <button style="width: 100%; padding: 10px; " class="button">Ler artigo completo</button>
+                                </div>
+                            </div>
+                <?php 
+                        }
+                    } else {
+                ?>
+                        <div class="text-content block-style">
+                            <p>
+                                {!! $blog->conteudo !!}
+                            </p>
                         </div>
                 <?php
-                        }
-                    }  else {
-                ?>
-                        <div class="apoie-projeto --alternative">
-
-                            <div class="content-side">
-                                <strong>MENSAGEM DA EQUIPE</strong>
-
-                                <strong>
-                                    Seu apoio é mais importante do que nunca.
-                                </strong>
-
-                                <p>
-                                    Desde 2014 o Contra os Acadêmicos trabalha para divulgar a boa filosofia e incentivar a
-                                    autoeducação. Apoiando nosso projeto, você assegura a continuidade do nosso trabalho.
-                                </p>
-                            </div>
-
-
-                            <div class="buttons">
-                                {{-- <button class="button">Quero apoiar</button> --}}
-                                <button style="width: 100%; padding: 10px; " class="button">Ler artigo completo</button>
-                            </div>
-                        </div>
-                <?php 
                     }
                 ?>
                 <div class="bio">
