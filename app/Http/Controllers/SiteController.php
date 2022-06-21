@@ -63,8 +63,14 @@ class SiteController extends Controller
         ->whereStatus(1)
         ->orderBy('id', 'Desc')
         ->get();
+
+        $mais_lidas = Blog::select(DB::raw("*"))
+        ->whereStatus(1)
+        ->orderBy('visitas', 'Desc')
+        ->limit(3)
+        ->get();
         
-        return view("site.blog", ["blogs" => $blogs]);
+        return view("site.blog", ["blogs" => $blogs, "mais_lidas" => $mais_lidas]);
     }
 
     public function blog(Blog $blog)
@@ -93,7 +99,11 @@ class SiteController extends Controller
         ->where('autor_id', $blog->autor_id)
         ->get();
 
-        return view("site.blog_detalhe", ["blog" => $blog, "mes" => $mes, "comentarios" => $comentarios, "blog_randomicos" => $blog_randomicos, "mais_do_autors" => $mais_do_autors]);
+        $cursos = Curso::select(DB::raw("*"))
+        ->orderBy('id', 'Desc')
+        ->get();
+
+        return view("site.blog_detalhe", ["blog" => $blog, "mes" => $mes, "comentarios" => $comentarios, "blog_randomicos" => $blog_randomicos, "mais_do_autors" => $mais_do_autors, "cursos" => $cursos]);
     }
     // ------------------------------------------------
     public function revistas()
@@ -108,7 +118,6 @@ class SiteController extends Controller
         ->orderBy('id', 'Desc')
         ->get();
         
-
         $mais_lidas = Revista::select(DB::raw("*"))
         ->whereStatus(1)
         ->orderBy('visitas', 'Desc')
@@ -129,7 +138,20 @@ class SiteController extends Controller
         $dt = Carbon::now();
         $mes = $revista->created_at->formatLocalized('%B');
 
-        return view("site.revista_detalhe", ["revista" => $revista, "mes" => $mes]);
+        $revista_randomicos = Revista::select(DB::raw("*"))
+        ->inRandomOrder()
+        ->limit(4)
+        ->where('categoria_id', $revista->categoria_id)
+        ->get();
+
+        $mais_do_autors = Revista::select(DB::raw("id, titulo"))
+        ->inRandomOrder()
+        ->limit(4)
+        ->where('autor_id', $revista->autor_id)
+        ->get();
+
+
+        return view("site.revista_detalhe", ["revista" => $revista, "mes" => $mes, "revista_randomicos" => $revista_randomicos, "mais_do_autors" => $mais_do_autors]);
     }
     // ------------------------------------------------
     public function listas()
@@ -159,14 +181,26 @@ class SiteController extends Controller
         $dt = Carbon::now();
         $mes = $lista->created_at->formatLocalized('%B');
 
-        return view("site.lista_detalhe", ["lista" => $lista, "mes" => $mes]);
+        $lista_randomicos = Lista::select(DB::raw("*"))
+        ->inRandomOrder()
+        ->limit(4)
+        ->where('categoria_id', $lista->categoria_id)
+        ->get();
+
+        $mais_do_autors = Lista::select(DB::raw("id, titulo"))
+        ->inRandomOrder()
+        ->limit(4)
+        ->where('usuario_id', $lista->usuario_id)
+        ->get();
+
+        return view("site.lista_detalhe", ["lista" => $lista, "mes" => $mes, "lista_randomicos" => $lista_randomicos, "mais_do_autors" => $mais_do_autors]);
     }
     // ------------------------------------------------
     
-    public function biblioteca()
-    {
-        return view("site.biblioteca");
-    }
+    // public function biblioteca()
+    // {
+    //     return view("site.biblioteca");
+    // }
 
     public function contato()
     {

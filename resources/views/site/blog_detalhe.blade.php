@@ -73,6 +73,28 @@
                         @endif
                     </div>
                 </div>
+
+                <div class="apoie-projeto --alternative">
+
+                    <div class="content-side">
+                        <strong>MENSAGEM DA EQUIPE</strong>
+
+                        <strong>
+                            Seu apoio é mais importante do que nunca.
+                        </strong>
+
+                        <p>
+                            Desde 2014 o Contra os Acadêmicos trabalha para divulgar a boa filosofia e incentivar a
+                            autoeducação. Apoiando nosso projeto, você assegura a continuidade do nosso trabalho.
+                        </p>
+                    </div>
+
+
+                    <div class="buttons">
+                        {{-- <button class="button">Quero apoiar</button> --}}
+                        <button class="button" style="width: 100%; padding: 15px;"><a href="https://www.paypal.com/donate/?hosted_button_id=SG3AY5GSPXAHN" target="_blank">Ler artigo completo</a></b>
+                    </div>
+                </div>
                         
                 <?php
 
@@ -85,27 +107,7 @@
                                     {!! Str::limit($blog->conteudo, 800) !!}
                                 </p>
                             </div>
-                            <div class="apoie-projeto --alternative">
-
-                                <div class="content-side">
-                                    <strong>MENSAGEM DA EQUIPE</strong>
-
-                                    <strong>
-                                        Seu apoio é mais importante do que nunca.
-                                    </strong>
-
-                                    <p>
-                                        Desde 2014 o Contra os Acadêmicos trabalha para divulgar a boa filosofia e incentivar a
-                                        autoeducação. Apoiando nosso projeto, você assegura a continuidade do nosso trabalho.
-                                    </p>
-                                </div>
-
-
-                                <div class="buttons">
-                                    {{-- <button class="button">Quero apoiar</button> --}}
-                                    <button class="button" style="width: 100%; padding: 15px;">Ler artigo completo</button>
-                                </div>
-                            </div>
+                            
                 <?php
                             }
                         }  else {
@@ -114,27 +116,6 @@
                                 <p>
                                     {!! Str::limit($blog->conteudo, 800) !!}
                                 </p>
-                            </div>
-                            <div class="apoie-projeto --alternative">
-
-                                <div class="content-side">
-                                    <strong>MENSAGEM DA EQUIPE</strong>
-
-                                    <strong>
-                                        Seu apoio é mais importante do que nunca.
-                                    </strong>
-
-                                    <p>
-                                        Desde 2014 o Contra os Acadêmicos trabalha para divulgar a boa filosofia e incentivar a
-                                        autoeducação. Apoiando nosso projeto, você assegura a continuidade do nosso trabalho.
-                                    </p>
-                                </div>
-
-
-                                <div class="buttons">
-                                    {{-- <button class="button">Quero apoiar</button> --}}
-                                    <button style="width: 100%; padding: 10px; " class="button">Ler artigo completo</button>
-                                </div>
                             </div>
                 <?php 
                         }
@@ -260,83 +241,16 @@
 
                 <div class="card-area">
                     <div class="scroll">
-                        <a href="#" class="box-destaque"
-                            style="background-image: url({{ asset('site/assets/img/banner_curso4_cursos.jpg') }})">
-                            <div class="tags">
-                                <span class="--filled">Novo</span>
-                                <span>Filosofia</span>
-                            </div>
-                            <h2>Filosofia Avançada</h2>
-                        </a>
-
-
-                        <a href="#" class="box-destaque"
-                            style="background-image: url({{ asset('site/assets/img/banner_curso3_cursos.jpg') }})">
-                            <div class="tags">
-                                <span>História</span>
-                            </div>
-                            <h2>A vida humana</h2>
-
-                        </a>
-
-
-                        <a href="#" class="box-destaque"
-                            style="background-image: url({{ asset('site/assets/img/banner_curso2_cursos.jpg') }})">
-                            <div class="tags">
-                                <span>História</span>
-                            </div>
-                            <h2>Descontrução Mundial</h2>
-
-                        </a>
-
-
-                        <a href="#" class="box-destaque"
-                            style="background-image: url({{ asset('site/assets/img/banner_curso1_cursos.jpg') }})">
-                            <div class="tags">
-                                <span>Arte</span>
-                            </div>
-                            <h2>Michelangelo</h2>
-                        </a>
-
-
-
-
-                        <a href="#" class="box-destaque"
-                            style="background-image: url({{ asset('site/assets/img/banner_curso2_cursos.jpg') }})">
-                            <div class="tags">
-                                <span>História</span>
-                            </div>
-                            <h2>Descontrução Mundial</h2>
-
-                        </a>
-                        <a href="#" class="box-destaque"
-                            style="background-image: url({{ asset('site/assets/img/banner_curso4_cursos.jpg') }})">
-                            <div class="tags">
-                                <span class="--filled">Novo</span>
-                                <span>Filosofia</span>
-                            </div>
-                            <h2>Filosofia Avançada</h2>
-                        </a>
-
-
-                        <a href="#" class="box-destaque"
-                            style="background-image: url({{ asset('site/assets/img/banner_curso3_cursos.jpg') }})">
-                            <div class="tags">
-                                <span>História</span>
-                            </div>
-                            <h2>A vida humana</h2>
-
-                        </a>
-
-
-
-                        <a href="#" class="box-destaque"
-                            style="background-image: url({{ asset('site/assets/img/banner_curso1_cursos.jpg') }})">
-                            <div class="tags">
-                                <span>Arte</span>
-                            </div>
-                            <h2>Michelangelo</h2>
-                        </a>
+                        @foreach ($cursos as $curso)
+                            <a href="#" class="box-destaque"
+                                style="background-image: url({{ asset($curso->banner) }})">
+                                <div class="tags">
+                                    {{-- <span class="--filled">Novo</span> --}}
+                                    <span>{{ $curso->categoria->nome }}</span>
+                                </div>
+                                <h2>{{ $curso->titulo }}</h2>
+                            </a>
+                        @endforeach
                     </div>
                 </div>
 

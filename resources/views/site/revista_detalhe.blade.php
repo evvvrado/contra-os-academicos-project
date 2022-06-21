@@ -58,8 +58,8 @@
 
 
                     <div class="buttons">
-                        <button class="button">Quero apoiar</button>
-                        <button class="button">Ler artigo completo</button>
+                        {{-- <button class="button">Quero apoiar</button> --}}
+                        <button class="button" style="width: 100%; padding: 15px;"><a href="https://www.paypal.com/donate/?hosted_button_id=SG3AY5GSPXAHN" target="_blank">Ler artigo completo</a></b>
                     </div>
                 </div>
 
@@ -109,10 +109,12 @@
                     </picture>
 
                     <ul>
-                        <li><a href="#">Como vencer um debate sem precisar ter razão</a></li>
-                        <li><a href="#">O Verbo e o Símbolo – René Guénon</a></li>
-                        <li><a href="#">O que dizemos ser Deus</a></li>
-                        <li><a href="#">Joathas Bello: Deiformidade e Graça em Xavier Zubiri</a></li>
+                        @foreach ($mais_do_autors as $mais_do_autor)
+                            <li>
+                                <a
+                                    href="{{ route('site.revista_detalhe', ['revista' => $mais_do_autor]) }}">{{ $mais_do_autor->titulo }}</a>
+                            </li>
+                        @endforeach
                     </ul>
                 </div>
 
@@ -120,58 +122,20 @@
                     <h3>Relacionados</h3>
 
                     <ul>
-                        <li>
-                            <a href="#" class="box">
-                                <picture>
-                                    <img src="{{ asset('site/assets/img/banner_relacionados_artigo.svg') }}"
-                                        alt="Banner relacionados">
-                                </picture>
-                                <div class="content">
-                                    <span>15/01/21</span>
-                                    <strong>O Verbo e o Símbolo – René Guénon</strong>
-                                    <p>Por Fernando Teixeira</p>
-                                </div>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#" class="box">
-                                <picture>
-                                    <img src="{{ asset('site/assets/img/banner_relacionados_artigo.svg') }}"
-                                        alt="Banner relacionados">
-                                </picture>
-                                <div class="content">
-                                    <span>15/01/21</span>
-                                    <strong>O Verbo e o Símbolo – René Guénon</strong>
-                                    <p>Por Fernando Teixeira</p>
-                                </div>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#" class="box">
-                                <picture>
-                                    <img src="{{ asset('site/assets/img/banner_relacionados_artigo.svg') }}"
-                                        alt="Banner relacionados">
-                                </picture>
-                                <div class="content">
-                                    <span>15/01/21</span>
-                                    <strong>O Verbo e o Símbolo – René Guénon</strong>
-                                    <p>Por Fernando Teixeira</p>
-                                </div>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#" class="box">
-                                <picture>
-                                    <img src="{{ asset('site/assets/img/banner_relacionados_artigo.svg') }}"
-                                        alt="Banner relacionados">
-                                </picture>
-                                <div class="content">
-                                    <span>15/01/21</span>
-                                    <strong>O Verbo e o Símbolo – René Guénon</strong>
-                                    <p>Por Fernando Teixeira</p>
-                                </div>
-                            </a>
-                        </li>
+                        @foreach ($revista_randomicos as $revista_randomico)
+                            <li>
+                                <a href="{{ route('site.revista_detalhe', ['revista' => $revista_randomico]) }}" class="box">
+                                    <picture>
+                                        <img src="{{ asset($revista_randomico->banner) }}" alt="Banner relacionados">
+                                    </picture>
+                                    <div class="content">
+                                        <span>{{ date_format($revista_randomico->created_at, 'd/m/Y') }}</span>
+                                        <strong>{{ $revista_randomico->titulo }}</strong>
+                                        <p>Por {{ $revista_randomico->autor->nome }}</p>
+                                    </div>
+                                </a>
+                            </li>
+                        @endforeach
                     </ul>
                 </div>
             </aside>

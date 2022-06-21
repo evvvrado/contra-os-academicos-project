@@ -117,13 +117,13 @@ Route::get('/sobre', [\App\Http\Controllers\SiteController::class, 'sobre'])->na
 Route::get('/blog', [\App\Http\Controllers\SiteController::class, 'blogs'])->name("site.blog");
 Route::get('/blog/{blog}', [\App\Http\Controllers\SiteController::class, 'blog'])->name("site.blog_detalhe");
 
-Route::get('/biblioteca', [\App\Http\Controllers\SiteController::class, 'biblioteca'])->name("site.biblioteca");
+// Route::get('/biblioteca', [\App\Http\Controllers\SiteController::class, 'biblioteca'])->name("site.biblioteca");
 
 Route::get('/revistas', [\App\Http\Controllers\SiteController::class, 'revistas'])->name("site.revistas");
 Route::get('/revista/{revista}', [\App\Http\Controllers\SiteController::class, 'revista'])->name("site.revista_detalhe");
 
-Route::get('/listas', [\App\Http\Controllers\SiteController::class, 'listas'])->name("site.listas");
-Route::get('/lista/{lista}', [\App\Http\Controllers\SiteController::class, 'lista'])->name("site.lista_detalhe");
+Route::get('/biblioteca', [\App\Http\Controllers\SiteController::class, 'listas'])->name("site.listas");
+Route::get('/biblioteca/{lista}', [\App\Http\Controllers\SiteController::class, 'lista'])->name("site.lista_detalhe");
 
 Route::get('/contato', [\App\Http\Controllers\SiteController::class, 'contato'])->name("site.contato");
 Route::get('/artigo', [\App\Http\Controllers\SiteController::class, 'artigo'])->name("site.artigo");

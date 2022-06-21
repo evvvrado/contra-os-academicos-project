@@ -112,57 +112,23 @@
 
 
                 <ul>
-                    <li>
-                        <a href="#" class="box">
-                            <picture>
-                                <img src="{{ asset('site/assets/img/picture_blog1_conteudo.jpg') }}" alt="">
-                            </picture>
-                            <div class="box-content">
-                                <span>Filosofia da consciências</span>
-                                <strong>Como vencer um debate sem precisar ter razão</strong>
+                    @foreach ($mais_lidas as $mais_lida)
+                        <li>
+                            <a href="#" class="box">
+                                <picture>
+                                    <img src="{{ asset($mais_lida->banner) }}" alt="">
+                                </picture>
+                                <div class="box-content">
+                                    <span>{{ $mais_lida->categoria->nome }}</span>
+                                    <strong>{{ $mais_lida->titulo }}</strong>
 
-                                <hr>
+                                    <hr>
 
-                                <p>A rigor este livro está mal batizado. O título pode sugerir ao leitor um manual de
-                                    patifaria
-                                    intelectual...</p>
-                            </div>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#" class="box">
-                            <picture>
-                                <img src="{{ asset('site/assets/img/picture_blog8_conteudo.jpg') }}" alt="">
-                            </picture>
-                            <div class="box-content">
-                                <span>Filosofia da consciências</span>
-                                <strong>Como vencer um debate sem precisar ter razão</strong>
-
-                                <hr>
-
-                                <p>A rigor este livro está mal batizado. O título pode sugerir ao leitor um manual de
-                                    patifaria
-                                    intelectual...</p>
-                            </div>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#" class="box">
-                            <picture>
-                                <img src="{{ asset('site/assets/img/picture_blog2_conteudo.jpg') }}" alt="">
-                            </picture>
-                            <div class="box-content">
-                                <span>Filosofia da consciências</span>
-                                <strong>Como vencer um debate sem precisar ter razão</strong>
-
-                                <hr>
-
-                                <p>A rigor este livro está mal batizado. O título pode sugerir ao leitor um manual de
-                                    patifaria
-                                    intelectual...</p>
-                            </div>
-                        </a>
-                    </li>
+                                    <p>{{ Str::limit($mais_lida->resumo, 104) }}</p>
+                                </div>
+                            </a>
+                        </li>
+                    @endforeach
                 </ul>
             </div>
         </aside>

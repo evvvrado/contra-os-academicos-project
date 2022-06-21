@@ -34,13 +34,13 @@
                     </div>
 
                     <div class="socials">
-                        <a href="https://www.facebook.com/contraosacademicos/ "><i
+                        <a target="_blank" href="https://www.facebook.com/contraosacademicos/ "><i
                                 class="fa-brands fa-facebook"></i></a>
-                        <a href="https://twitter.com/Contracademicos"><i class="fa-brands fa-twitter"></i></a>
-                        <a href="https://www.youtube.com/contraosacademicos"><i class="fa-brands fa-youtube"></i></a>
-                        <a href="https://www.instagram.com/contraosacademicos/"><i
+                        <a target="_blank" href="https://twitter.com/Contracademicos"><i class="fa-brands fa-twitter"></i></a>
+                        <a target="_blank" href="https://www.youtube.com/contraosacademicos"><i class="fa-brands fa-youtube"></i></a>
+                        <a target="_blank" href="https://www.instagram.com/contraosacademicos/"><i
                                 class="fa-brands fa-instagram"></i></a>
-                        <a href="https://open.spotify.com/show/6GsLO1ybRUI53JgiYm5nTR"><i
+                        <a target="_blank" href="https://open.spotify.com/show/6GsLO1ybRUI53JgiYm5nTR"><i
                                 class="fa-brands fa-spotify"></i></a>
 
                     </div>
