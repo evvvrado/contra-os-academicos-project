@@ -54,7 +54,7 @@
 
                 <ul>
                     <li><a href="#">Artigos</a></li>
-                    <li><a href="{{ route('site.lista') }}">Biblioteca</a></li>
+                    <li><a href="">Biblioteca</a></li>
                     <li><a href="{{ route('site.blog') }}">Blog</a></li>
                     <li><a href="#">Contato</a></li>
                     <li><a href="#">Cursos</a></li>
