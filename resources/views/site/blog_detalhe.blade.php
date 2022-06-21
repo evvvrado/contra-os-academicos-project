@@ -73,28 +73,6 @@
                         @endif
                     </div>
                 </div>
-
-                <div class="apoie-projeto --alternative">
-
-                    <div class="content-side">
-                        <strong>MENSAGEM DA EQUIPE</strong>
-
-                        <strong>
-                            Seu apoio é mais importante do que nunca.
-                        </strong>
-
-                        <p>
-                            Desde 2014 o Contra os Acadêmicos trabalha para divulgar a boa filosofia e incentivar a
-                            autoeducação. Apoiando nosso projeto, você assegura a continuidade do nosso trabalho.
-                        </p>
-                    </div>
-
-
-                    <div class="buttons">
-                        {{-- <button class="button">Quero apoiar</button> --}}
-                        <button class="button" style="width: 100%; padding: 15px;"><a href="https://www.paypal.com/donate/?hosted_button_id=SG3AY5GSPXAHN" target="_blank">Ler artigo completo</a></b>
-                    </div>
-                </div>
                         
                 <?php
 
@@ -129,6 +107,29 @@
                 <?php
                     }
                 ?>
+
+                <div class="apoie-projeto --alternative">
+
+                    <div class="content-side">
+                        <strong>MENSAGEM DA EQUIPE</strong>
+
+                        <strong>
+                            Seu apoio é mais importante do que nunca.
+                        </strong>
+
+                        <p>
+                            Desde 2014 o Contra os Acadêmicos trabalha para divulgar a boa filosofia e incentivar a
+                            autoeducação. Apoiando nosso projeto, você assegura a continuidade do nosso trabalho.
+                        </p>
+                    </div>
+
+
+                    <div class="buttons">
+                        {{-- <button class="button">Quero apoiar</button> --}}
+                        <button class="button" style="width: 100%; padding: 15px;"><a href="https://www.paypal.com/donate/?hosted_button_id=SG3AY5GSPXAHN" target="_blank">Quero apoiar</a></b>
+                    </div>
+                </div>
+
                 <div class="bio">
                     <picture>
                         <img src="{{ asset($blog->autor->foto) }}" alt="Foto do Biografado">
