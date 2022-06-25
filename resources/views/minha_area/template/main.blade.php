@@ -114,7 +114,15 @@ use App\Models\UsuarioSite;
                                 </div>
                             </li>
 
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle arrow-none" href="{{ route('minha_area.sair') }}" id="topnav-dashboard"
+                                    role="button">
+                                    <i class="bx bx-power-off me-2"></i><span key="t-dashboards">Sair</span>
+                                </a>
+                            </li>
+
                         </ul>
+                        
                     </div>
                 </nav>
             </div>

@@ -101,11 +101,12 @@
                                     </div>
         
                                     <div class="mt-4">
-                                        <form action="">
+                                        <form action="{{ route('minha_area.logar') }}" method="post">
+                                            @csrf
             
                                             <div class="mb-3">
                                                 <label for="email" class="form-label">E-mail</label>
-                                                <input type="email" class="form-control" id="email" placeholder="Digite seu e-mail">
+                                                <input name="email" type="email" class="form-control" id="email" placeholder="Digite seu e-mail">
                                             </div>
                     
                                             <div class="mb-3">
@@ -114,7 +115,7 @@
                                                 </div>
                                                 <label class="form-label">Password</label>
                                                 <div class="input-group auth-pass-inputgroup">
-                                                    <input type="password" class="form-control" placeholder="Digite sua senha" aria-label="Password" aria-describedby="password-addon">
+                                                    <input name="senha" type="password" class="form-control" placeholder="Digite sua senha" aria-label="Password" aria-describedby="password-addon">
                                                     <button class="btn btn-light " type="button" id="password-addon"><i class="mdi mdi-eye-outline"></i></button>
                                                 </div>
                                             </div>

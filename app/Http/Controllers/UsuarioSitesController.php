@@ -15,8 +15,8 @@ class UsuarioSitesController extends Controller
     public function index()
     {
     
-        $usuario_site = UsuarioSite::where("id", 18)->first();
-        session()->put(["usuario_site" => $usuario_site->toArray()]);
+        // $usuario_site = UsuarioSite::where("id", 18)->first();
+        // session()->put(["usuario_site" => $usuario_site->toArray()]);
         
         return view("minha_area.index");
     }
@@ -95,7 +95,7 @@ class UsuarioSitesController extends Controller
             if (Hash::check($request->senha, $usuario->senha)) {
                 session()->put(["usuario_site" => $usuario->toArray()]);
                 Log::channel('acessos')->info('LOGIN: O usuario ' . $usuario->email . ' logou no sistema.');
-                return redirect()->route("minha_areaindex");
+                return redirect()->route("minha_area.index");
             } else {
                 toastr()->error("Informações de usuário incorretas!");
             }

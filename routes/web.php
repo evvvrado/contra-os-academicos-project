@@ -101,7 +101,7 @@ Route::get('/minha-area/autenticacao', [\App\Http\Controllers\UsuarioSitesContro
 Route::post('/minha-area/autentica', [\App\Http\Controllers\UsuarioSitesController::class, 'autentica'])->name("minha_area.autentica");
 
 
-// Route::middleware(['usuario_site'])->group(function () {
+Route::middleware(['usuario_site'])->group(function () {
     Route::get('/minha-area', [\App\Http\Controllers\UsuarioSitesController::class, 'index'])->name("minha_area.index");
 
     Route::post('/minha-area/comentar/{blog}', [\App\Http\Controllers\BlogComentariosController::class, 'comentar'])->name("minha_area.comentar");
@@ -110,7 +110,7 @@ Route::post('/minha-area/autentica', [\App\Http\Controllers\UsuarioSitesControll
     Route::post('/minha-area/perfil/salvar/{usuario_site}', [\App\Http\Controllers\UsuarioSitesController::class, 'perfil_salvar'])->name("minha_area.perfil.salvar");
 
     Route::get('/minha_area/sair', [\App\Http\Controllers\UsuarioSitesController::class, 'sair'])->name("minha_area.sair");
-// });
+});
 
 
 
