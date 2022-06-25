@@ -1,6 +1,6 @@
-@extends('site.template.main', ['titulo' => 'Lista | ' . $lista->titulo])
+@extends('site.template.main', ['titulo' => 'Revista | ' . $revista->titulo])
 
-@section('body_attr', 'id=lista')
+@section('body_attr', 'id=artigo')
 
 @section('content')
 
@@ -9,25 +9,27 @@
             <main>
                 <div class="title-area">
                     <div class="roadmap">
-                        <a href="#">Listas</a>
+                        <a href="#">Revistas</a>
                         /
-                        <a href="#">{{ $lista->categoria->nome }}</a>
+                        <a href="#">{{ $revista->categoria->nome }}</a>
                         /
-                        <a href="#">{{ Str::limit($lista->titulo, 9) }}</a>
+                        <a href="#">{{ Str::limit($revista->titulo, 9) }}</a>
                     </div>
                     <div class="info">
 
-                        <h1>{{ $lista->titulo }}</h1>
+                        <h1>{{ $revista->titulo }}</h1>
 
                         <div class="author">
                             <picture>
-                                <img src="{{ asset($lista->usuario->foto) }}" alt="Foto do colunista">
+                                <img src="{{ asset($revista->autor->foto) }}" alt="Foto do colunista">
                             </picture>
 
                             <div>
-                                <span>Por {{ $lista->usuario->nome }}</span>
-                                <span>{{ date('d', strtotime($lista->created_at)) }} de {{ $mes }} de
-                                    {{ date('Y', strtotime($lista->created_at)) }}</span>
+                                <span>Por {{ $revista->autor->nome }}</span>
+                                <div>
+                                    <span>{{ date('d', strtotime($revista->created_at)) }} de {{ $mes }} de
+                                        {{ date('Y', strtotime($revista->created_at)) }}</span>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -35,7 +37,7 @@
 
                 <div class="text-content block-style">
                     <p>
-                        {!! $lista->conteudo !!}
+                        {!! $revista->conteudo !!}
                     </p>
                 </div>
 
@@ -56,8 +58,8 @@
 
 
                     <div class="buttons">
-                        {{-- <button class="button">Quero apoiar</button> --}}
-                        <button class="button" style="width: 100%; padding: 15px;"><a href="https://www.paypal.com/donate/?hosted_button_id=SG3AY5GSPXAHN" target="_blank">Quero apoiar</a></b>
+                        <button class="button">Assinar</button>
+                        <button class="button"><a href="https://www.paypal.com/donate/?hosted_button_id=SG3AY5GSPXAHN" target="_blank">Quero apoiar</a></b>
                     </div>
                 </div>
 
@@ -75,15 +77,6 @@
                             </picture>
                             <span>23</span>
                         </div>
-                        {{-- <div class="icon">
-                            <picture>
-                                <img src="{{ asset('site/assets/img/icon_share_artigo.svg') }}" alt="Ícone">
-                            </picture>
-                            <span>04</span>
-                        </div> --}}
-                        <div class="icon" active>
-                            @livewire('lista-curtir-acao', ['lista' => $lista])
-                        </div>
 
                     </div>
                     <div class="buttons">
@@ -93,45 +86,19 @@
             </main>
 
             <picture class="artigo-banner">
-                <img src="{{ asset($lista->banner) }}" alt="Imagem principal do artigo">
+                <img src="{{ asset($revista->banner) }}" alt="Imagem principal do artigo">
             </picture>
 
             <aside>
                 <div class="mais-autor">
                     <strong>Mais do autor</strong>
                     <picture>
-                        <img src="{{ asset($lista->usuario->foto) }}" alt="">
+                        <img src="{{ asset($revista->autor->foto) }}" alt="">
                     </picture>
-
-                    <ul>
-                        @foreach ($mais_do_autors as $mais_do_autor)
-                            <li>
-                                <a
-                                    href="{{ route('site.blog_detalhe', ['blog' => $mais_do_autor]) }}">{{ $mais_do_autor->titulo }}</a>
-                            </li>
-                        @endforeach
-                    </ul>
                 </div>
 
                 <div class="relacionados">
                     <h3>Relacionados</h3>
-
-                    <ul>
-                        @foreach ($lista_randomicos as $lista_randomico)
-                            <li>
-                                <a href="{{ route('site.lista_detalhe', ['lista' => $lista_randomico]) }}" class="box">
-                                    <picture>
-                                        <img src="{{ asset($lista_randomico->banner) }}" alt="Banner relacionados">
-                                    </picture>
-                                    <div class="content">
-                                        <span>{{ date_format($lista_randomico->created_at, 'd/m/Y') }}</span>
-                                        <strong>{{ $lista_randomico->titulo }}</strong>
-                                        <p>Por {{ $lista_randomico->usuario->nome }}</p>
-                                    </div>
-                                </a>
-                            </li>
-                        @endforeach
-                    </ul>
                 </div>
             </aside>
         </div>
@@ -259,14 +226,6 @@
         $('button.--references').click(() => {
             $('#referencias_modal').showModal();
         })
-
-        window.addEventListener('toastr:error', event => {
-            toastr.error(event.detail.message);
-        });
-
-        window.addEventListener('toastr:success', event => {
-            toastr.success(event.detail.message);
-        });
     </script>
 
 @endsection

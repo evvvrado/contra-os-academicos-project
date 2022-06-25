@@ -75,15 +75,6 @@
                             </picture>
                             <span>23</span>
                         </div>
-                        {{-- <div class="icon">
-                            <picture>
-                                <img src="{{ asset('site/assets/img/icon_share_artigo.svg') }}" alt="Ícone">
-                            </picture>
-                            <span>04</span>
-                        </div> --}}
-                        <div class="icon" active>
-                            @livewire('lista-curtir-acao', ['lista' => $lista])
-                        </div>
 
                     </div>
                     <div class="buttons">
@@ -102,36 +93,10 @@
                     <picture>
                         <img src="{{ asset($lista->usuario->foto) }}" alt="">
                     </picture>
-
-                    <ul>
-                        @foreach ($mais_do_autors as $mais_do_autor)
-                            <li>
-                                <a
-                                    href="{{ route('site.blog_detalhe', ['blog' => $mais_do_autor]) }}">{{ $mais_do_autor->titulo }}</a>
-                            </li>
-                        @endforeach
-                    </ul>
                 </div>
 
                 <div class="relacionados">
                     <h3>Relacionados</h3>
-
-                    <ul>
-                        @foreach ($lista_randomicos as $lista_randomico)
-                            <li>
-                                <a href="{{ route('site.lista_detalhe', ['lista' => $lista_randomico]) }}" class="box">
-                                    <picture>
-                                        <img src="{{ asset($lista_randomico->banner) }}" alt="Banner relacionados">
-                                    </picture>
-                                    <div class="content">
-                                        <span>{{ date_format($lista_randomico->created_at, 'd/m/Y') }}</span>
-                                        <strong>{{ $lista_randomico->titulo }}</strong>
-                                        <p>Por {{ $lista_randomico->usuario->nome }}</p>
-                                    </div>
-                                </a>
-                            </li>
-                        @endforeach
-                    </ul>
                 </div>
             </aside>
         </div>
@@ -259,14 +224,6 @@
         $('button.--references').click(() => {
             $('#referencias_modal').showModal();
         })
-
-        window.addEventListener('toastr:error', event => {
-            toastr.error(event.detail.message);
-        });
-
-        window.addEventListener('toastr:success', event => {
-            toastr.success(event.detail.message);
-        });
     </script>
 
 @endsection

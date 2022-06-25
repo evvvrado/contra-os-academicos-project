@@ -155,17 +155,14 @@
                             </picture>
                             <span>23</span>
                         </div>
-                        <div class="icon">
+                        {{-- <div class="icon">
                             <picture>
                                 <img src="{{ asset('site/assets/img/icon_share_artigo.svg') }}" alt="Ícone">
                             </picture>
                             <span>04</span>
-                        </div>
+                        </div> --}}
                         <div class="icon" active>
-                            <picture>
-                                <img src="{{ asset('site/assets/img/icon_heart_artigo.svg') }}" alt="Ícone">
-                            </picture>
-                            <span>200</span>
+                            @livewire('blog-curtir-acao', ['blog' => $blog])
                         </div>
 
                     </div>
@@ -278,6 +275,14 @@
         $('button.--references').click(() => {
             $('#referencias_modal').showModal();
         })
+
+        window.addEventListener('toastr:error', event => {
+            toastr.error(event.detail.message);
+        });
+
+        window.addEventListener('toastr:success', event => {
+            toastr.success(event.detail.message);
+        });
     </script>
 
 @endsection

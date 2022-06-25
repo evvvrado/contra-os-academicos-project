@@ -1,43 +1,112 @@
-@extends('site.template.main', ['titulo' => 'Lista | ' . $lista->titulo])
+@extends('site.template.main', ['titulo' => 'Blog | ' . $blog->titulo])
 
-@section('body_attr', 'id=lista')
+@section('body_attr', 'id=artigo')
 
 @section('content')
+
+    <div id="referencias_modal" class="modal">
+        <div class="niv">
+            <div class="box">
+                <div class="title-area">
+                    <h2>Referências</h2>
+
+                    <button class="cancel">
+                        <img src="{{ asset('site/assets/img/icon_close_modal.svg') }}" alt="Ícone de fechar"
+                            title="Fechar caixa">
+                    </button>
+                </div>
+
+                <div class="content">
+                    <div class="scroll">
+                        {!! $blog->referencias !!}
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="close-modal"></div>
+    </div>
 
     <section class="artigo">
         <div class="niv --row">
             <main>
                 <div class="title-area">
                     <div class="roadmap">
-                        <a href="#">Listas</a>
+                        <a href="#">Blogs</a>
                         /
-                        <a href="#">{{ $lista->categoria->nome }}</a>
+                        <a href="#">{{ $blog->categoria->nome }}</a>
                         /
-                        <a href="#">{{ Str::limit($lista->titulo, 9) }}</a>
+                        <a href="#">{{ Str::limit($blog->titulo, 9) }}</a>
                     </div>
                     <div class="info">
 
-                        <h1>{{ $lista->titulo }}</h1>
+                        <h1>{{ $blog->titulo }}</h1>
 
-                        <div class="author">
-                            <picture>
-                                <img src="{{ asset($lista->usuario->foto) }}" alt="Foto do colunista">
-                            </picture>
+                        @if ($blog->tradutor_id != 1)
+                            <div class="author">
+                                <picture>
+                                    <img src="{{ asset($blog->tradutor->foto) }}" alt="Foto do colunista">
+                                </picture>
 
-                            <div>
-                                <span>Por {{ $lista->usuario->nome }}</span>
-                                <span>{{ date('d', strtotime($lista->created_at)) }} de {{ $mes }} de
-                                    {{ date('Y', strtotime($lista->created_at)) }}</span>
+                                <div>
+                                    <span>Traduzido por {{ $blog->tradutor->nome }}</span>
+                                    <div>
+                                        <span>{{ date('d', strtotime($blog->created_at)) }} de {{ $mes }} de
+                                            {{ date('Y', strtotime($blog->created_at)) }}</span>
+                                    </div>
+                                </div>
                             </div>
-                        </div>
+                        @else
+                            <div class="author">
+                                <picture>
+                                    <img src="{{ asset($blog->autor->foto) }}" alt="Foto do colunista">
+                                </picture>
+
+                                <div>
+                                    <span>Por {{ $blog->autor->nome }}</span>
+                                    <div>
+                                        <span>{{ date('d', strtotime($blog->created_at)) }} de {{ $mes }} de
+                                            {{ date('Y', strtotime($blog->created_at)) }}</span>
+                                    </div>
+                                </div>
+                            </div>
+                        @endif
                     </div>
                 </div>
+                        
+                <?php
 
-                <div class="text-content block-style">
-                    <p>
-                        {!! $lista->conteudo !!}
-                    </p>
-                </div>
+                    if($blog->exclusivo == "1") {
+                        if (isset(session()->get("usuario_site")["assinante"])) {
+                            if(session()->get("usuario_site")["assinante"] == 0 OR session()->get("usuario_site")["assinante"] == ""){
+                ?>
+                            <div class="text-content block-style">
+                                <p>
+                                    {!! Str::limit($blog->conteudo, 800) !!}
+                                </p>
+                            </div>
+                            
+                <?php
+                            }
+                        }  else {
+                ?>
+                            <div class="text-content block-style">
+                                <p>
+                                    {!! Str::limit($blog->conteudo, 800) !!}
+                                </p>
+                            </div>
+                <?php 
+                        }
+                    } else {
+                ?>
+                        <div class="text-content block-style">
+                            <p>
+                                {!! $blog->conteudo !!}
+                            </p>
+                        </div>
+                <?php
+                    }
+                ?>
 
                 <div class="apoie-projeto --alternative">
 
@@ -61,6 +130,17 @@
                     </div>
                 </div>
 
+                <div class="bio">
+                    <picture>
+                        <img src="{{ asset($blog->autor->foto) }}" alt="Foto do Biografado">
+                    </picture>
+
+                    <div>
+                        <strong>{{ $blog->autor->nome }}</strong>
+                        <p>{{ $blog->autor->resumo }}</p>
+                    </div>
+                </div>
+
                 <div class="actions">
                     <div class="social-buttons">
                         <div class="icon">
@@ -75,63 +155,29 @@
                             </picture>
                             <span>23</span>
                         </div>
-                        {{-- <div class="icon">
-                            <picture>
-                                <img src="{{ asset('site/assets/img/icon_share_artigo.svg') }}" alt="Ícone">
-                            </picture>
-                            <span>04</span>
-                        </div> --}}
-                        <div class="icon" active>
-                            @livewire('lista-curtir-acao', ['lista' => $lista])
-                        </div>
 
                     </div>
                     <div class="buttons">
+                        <button class="button --references">Referências</button>
                         <button class="button copyurl">Quero compartilhar</button>
                     </div>
                 </div>
             </main>
 
             <picture class="artigo-banner">
-                <img src="{{ asset($lista->banner) }}" alt="Imagem principal do artigo">
+                <img src="{{ asset($blog->banner) }}" alt="Imagem principal do artigo">
             </picture>
 
             <aside>
                 <div class="mais-autor">
                     <strong>Mais do autor</strong>
                     <picture>
-                        <img src="{{ asset($lista->usuario->foto) }}" alt="">
+                        <img src="{{ asset($blog->autor->foto) }}" alt="">
                     </picture>
-
-                    <ul>
-                        @foreach ($mais_do_autors as $mais_do_autor)
-                            <li>
-                                <a
-                                    href="{{ route('site.blog_detalhe', ['blog' => $mais_do_autor]) }}">{{ $mais_do_autor->titulo }}</a>
-                            </li>
-                        @endforeach
-                    </ul>
                 </div>
 
                 <div class="relacionados">
                     <h3>Relacionados</h3>
-
-                    <ul>
-                        @foreach ($lista_randomicos as $lista_randomico)
-                            <li>
-                                <a href="{{ route('site.lista_detalhe', ['lista' => $lista_randomico]) }}" class="box">
-                                    <picture>
-                                        <img src="{{ asset($lista_randomico->banner) }}" alt="Banner relacionados">
-                                    </picture>
-                                    <div class="content">
-                                        <span>{{ date_format($lista_randomico->created_at, 'd/m/Y') }}</span>
-                                        <strong>{{ $lista_randomico->titulo }}</strong>
-                                        <p>Por {{ $lista_randomico->usuario->nome }}</p>
-                                    </div>
-                                </a>
-                            </li>
-                        @endforeach
-                    </ul>
                 </div>
             </aside>
         </div>
@@ -259,14 +305,6 @@
         $('button.--references').click(() => {
             $('#referencias_modal').showModal();
         })
-
-        window.addEventListener('toastr:error', event => {
-            toastr.error(event.detail.message);
-        });
-
-        window.addEventListener('toastr:success', event => {
-            toastr.success(event.detail.message);
-        });
     </script>
 
 @endsection

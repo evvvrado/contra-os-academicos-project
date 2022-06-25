@@ -55,9 +55,10 @@
                                 <td class="text-center">0</td>
                                 <td class="text-center">0</td>
                                 <td>{{ $data }}</td>
-                                <td class="text-center">
-                                    <a href="{{ route('painel.lista.editar', ['lista' => $lista]) }}" class="btn btn-success" role="button">Editar</a>
-                                    <a class="btn btn-danger" href="" role="button">Deletar</a>                                </td>
+                                <td >
+                                    <a href="{{ route('painel.lista.editar', ['lista' => $lista]) }}" class="btn btn-sm btn-success" role="button"><i class="bx bx bx-edit-alt"></i></a>
+                                    <a onClick="deletar({{ $lista->id }})" class="btn btn-sm btn-danger" role="button"><i class="bx bx bx bx-window-close"></i></a>
+                                </td>
                             </tr>
                         @endforeach
 

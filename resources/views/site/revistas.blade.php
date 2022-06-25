@@ -77,7 +77,7 @@
 
                 <div class="content-area">
 
-                    @foreach ($revistas as $revista)
+                    {{-- @foreach ($revistas as $revista)
                         <a href="{{ route('site.revista_detalhe', ['revista' => $revista]) }}" class="box">
                             <picture>
                                 <img src="{{ asset($revista->banner) }}" alt="">
@@ -91,14 +91,9 @@
                                 <p>{{ Str::limit($revista->resumo, 104) }}</p>
                             </div>
                         </a>
-                    @endforeach
+                    @endforeach --}}
+                    @livewire('carregar-mais-revista')
 
-                </div>
-
-                <div class="button-area">
-                    <button class="button">
-                        Carregar mais conteúdo
-                    </button>
                 </div>
             </div>
 

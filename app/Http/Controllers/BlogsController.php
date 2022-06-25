@@ -101,6 +101,27 @@ class BlogsController extends Controller
             $blog->status = 1;
         } elseif($request->tipo_pub == "rascunho") {
             $blog->status = 2;
+        } elseif($request->tipo_pub == "visualizar") {
+            $blog = new BlogVisu;
+            $blog->titulo = $request->titulo;
+            $blog->conteudo = $request->conteudo;
+            $blog->resumo = $request->resumo;
+            $blog->referencias = $request->referencias;
+            $blog->usuario_id = $request->usuario;
+            $blog->exclusivo = $request->exclusivo;
+            $blog->categoria_id = $request->categoria;
+            $blog->autor_id = $request->autor;
+            $blog->tradutor_id = $request->tradutor;
+            $blog->status = 1;
+            $blog->save();
+            if($request->file("banner")){
+                BlogVisu::whereId($blog->id)
+                ->update(['banner' => 'admin/imagens/blogs_visu/'.$blog->id.'/'.$request->file('banner')->getClientOriginalName()]);
+
+                $request->file("banner")->move(public_path('/admin/imagens/blogs_visu/'.$blog->id."/"), $request->file('banner')->getClientOriginalName());
+            }
+
+            return redirect()->route("painel.blog.visualizar", ['blog' => $blog]);
         }
 
         $blog->titulo = $request->titulo;

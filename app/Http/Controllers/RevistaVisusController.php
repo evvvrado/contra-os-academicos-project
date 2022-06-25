@@ -2,14 +2,13 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-use App\Models\BlogVisu;
+use App\Models\RevistaVisu;
 use Carbon\Carbon;
 
-class BlogVisusController extends Controller
+class RevistaVisusController extends Controller
 {
     //
-    public function visualizar(BlogVisu $blog)
+    public function visualizar(RevistaVisu $revista)
     {
         // Force locale
         date_default_timezone_set('America/Sao_Paulo');
@@ -18,8 +17,8 @@ class BlogVisusController extends Controller
 
         // Create Carbon date
         $dt = Carbon::now();
-        $mes = $blog->created_at->formatLocalized('%B');
+        $mes = $revista->created_at->formatLocalized('%B');
 
-        return view("site.blog_detalhe_visu", ["blog" => $blog, "mes" => $mes]);
+        return view("site.revista_detalhe_visu", ["revista" => $revista, "mes" => $mes]);
     }
 }

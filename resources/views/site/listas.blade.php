@@ -34,50 +34,13 @@
                 </button>
                 <div class="scroll">
                     <div class="boxes">
-                        <a href="#" class="box-destaque"
-                            style="background-image: url({{ asset('site/assets/img/banner_assuntos5_biblioteca.jpg') }})">
-                            <h2>Grécia Antiga</h2>
-                        </a>
-                        <a href="#" class="box-destaque"
-                            style="background-image: url({{ asset('site/assets/img/banner_assuntos4_biblioteca.jpg') }})">
-                            <h2>Direito</h2>
-                        </a>
-                        <a href="#" class="box-destaque"
-                            style="background-image: url({{ asset('site/assets/img/banner_assuntos3_biblioteca.jpg') }})">
-                            <h2>Roma</h2>
-                        </a>
-                        <a href="#" class="box-destaque"
-                            style="background-image: url({{ asset('site/assets/img/banner_assuntos2_biblioteca.jpg') }})">
-                            <h2>História</h2>
-                        </a>
-                        <a href="#" class="box-destaque"
-                            style="background-image: url({{ asset('site/assets/img/banner_assuntos1_biblioteca.jpg') }})">
-                            <h2>Filosofia</h2>
-                        </a>
 
-
-
-                        <a href="#" class="box-destaque"
-                            style="background-image: url({{ asset('site/assets/img/banner_assuntos4_biblioteca.jpg') }})">
-                            <h2>Direito</h2>
-                        </a>
-                        <a href="#" class="box-destaque"
-                            style="background-image: url({{ asset('site/assets/img/banner_assuntos5_biblioteca.jpg') }})">
-                            <h2>Grécia Antiga</h2>
-                        </a>
-                        <a href="#" class="box-destaque"
-                            style="background-image: url({{ asset('site/assets/img/banner_assuntos3_biblioteca.jpg') }})">
-                            <h2>Roma</h2>
-                        </a>
-                        <a href="#" class="box-destaque"
-                            style="background-image: url({{ asset('site/assets/img/banner_assuntos1_biblioteca.jpg') }})">
-                            <h2>Filosofia</h2>
-                        </a>
-                        <a href="#" class="box-destaque"
-                            style="background-image: url({{ asset('site/assets/img/banner_assuntos2_biblioteca.jpg') }})">
-                            <h2>História</h2>
-                        </a>
-
+                        @foreach($lista_randomicos as $lista_randomico)
+                            <a href="{{ route('site.lista_detalhe', ['lista' => $lista_randomico]) }}" class="box-destaque"
+                                style="background-image: url({{ asset($lista_randomico->banner) }})">
+                                <h2>{{ $lista_randomico->categoria->nome }}</h2>
+                            </a>
+                        @endforeach
 
                     </div>
                 </div>
@@ -100,7 +63,7 @@
                 </div>
 
                 <div class="content-area">
-                    @foreach($listas as $key => $lista)
+                    {{-- @foreach($listas as $key => $lista)
                         <a href="{{ route('site.lista_detalhe', ['lista' => $lista]) }}" class="box">
                             <picture>
                                 <img src="{{ asset($lista->banner) }}" alt="">
@@ -114,13 +77,8 @@
                                 <p>{{ Str::limit($lista->resumo, 104) }}</p>
                             </div>
                         </a>
-                    @endforeach 
-                </div>
-
-                <div class="button-area">
-                    <button class="button">
-                        Carregar mais conteúdo
-                    </button>
+                    @endforeach  --}}
+                    @livewire('carregar-mais-lista')
                 </div>
             </div>
         </main>

@@ -55,9 +55,9 @@
                                 <td class="text-center">0</td>
                                 <td class="text-center">0</td>
                                 <td>{{ $data }}</td>
-                                <td class="text-center">
-                                    <a href="{{ route('painel.revista.editar', ['revista' => $revista]) }}" class="btn btn-success" role="button">Editar</a>
-                                    <a class="btn btn-danger" href="" role="button">Deletar</a>
+                                <td >
+                                    <a href="{{ route('painel.revista.editar', ['revista' => $revista]) }}" class="btn btn-sm btn-success" role="button"><i class="bx bx bx-edit-alt"></i></a>
+                                    <a onClick="deletar({{ $revista->id }})" class="btn btn-sm btn-danger" role="button"><i class="bx bx bx bx-window-close"></i></a>
                                 </td>
                             </tr>
                         @endforeach

@@ -76,7 +76,7 @@
                 </div>
 
                 <div class="content-area">
-                    @foreach ($blogs as $blog)
+                    {{-- @foreach ($blogs as $blog)
                         <a href="{{ route('site.blog_detalhe', ['blog' => $blog]) }}" class="box">
                             <picture>
                                 <img src="{{ asset($blog->banner) }}" alt="">
@@ -90,14 +90,11 @@
                                 <p>{!! Str::limit($blog->resumo, 104) !!}</p>
                             </div>
                         </a>
-                    @endforeach
+                    @endforeach --}}
+                    @livewire('carregar-mais-blog')
                 </div>
-
-                <div class="button-area">
-                    <button class="button">
-                        Carregar mais conteúdo
-                    </button>
-                </div>
+                
+                
 
             </div>
         </main>

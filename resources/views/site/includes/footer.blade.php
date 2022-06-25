@@ -53,16 +53,12 @@
                 <h2>Categorias</h2>
 
                 <ul>
-                    <li><a href="#">Artigos</a></li>
-                    <li><a href="">Biblioteca</a></li>
                     <li><a href="{{ route('site.blog') }}">Blog</a></li>
-                    <li><a href="#">Contato</a></li>
+                    <li><a href="{{ route('site.contato') }}">Contato</a></li>
                     <li><a href="#">Cursos</a></li>
-                    <li><a href="#">Enciclopédia</a></li>
+                    <li><a href="#">Podcast</a></li>
                 </ul>
                 <ul>
-                    <li><a href="#">Podcast</a></li>
-                    <li><a href="#">Colunas</a></li>
                     <li><a href="#">Fórum</a></li>
                     <li><a href="#">Listas</a></li>
                     <li><a href="#">Sobre</a></li>

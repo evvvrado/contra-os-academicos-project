@@ -379,6 +379,17 @@
                 </div>
                 <div class="content-area">
                     <ul>
+                        <li style="background-color: white">
+                            <iframe src="https://castbox.fm/app/castbox/player/id4849712?v=8.22.11&autoplay=0" frameborder="0" width="100%" height="240"></iframe>
+                        </li>
+                        <li style="background-color: white">
+                            <iframe src="https://castbox.fm/app/castbox/player/id4849712?v=8.22.11&autoplay=0" frameborder="0" width="100%" height="240"></iframe>
+                        </li>
+                        <li style="background-color: white">
+                            <iframe src="https://castbox.fm/app/castbox/player/id4849712?v=8.22.11&autoplay=0" frameborder="0" width="100%" height="240"></iframe>
+                        </li>
+                    </ul>
+                    {{-- <ul>
                         <li>
                             <main>
                                 <small>Episódio 1</small>
@@ -421,7 +432,7 @@
                                 <img src="{{ asset('site/assets/img/icon_play_podcast.svg') }}" alt="ícone de play">
                             </aside>
                         </li>
-                    </ul>
+                    </ul> --}}
                 </div>
             </div>
         </div>

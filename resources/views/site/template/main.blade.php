@@ -4,14 +4,17 @@
 <head>
     <title>{{ $titulo }}</title>
 
+    @livewireStyles
+
     @include('site.includes.head')
     @toastr_css
-    @livewireStyles()
+    
     @yield('styles')
 
 </head>
 
 <body @yield('body_attr')>
+
     @include('site.includes.navbar')
 
     @include('site.includes.categorias')
@@ -20,11 +23,14 @@
 
     @include('site.includes.footer')
 
-    @include('site.includes.scripts')
+    @livewireScripts
 
+    @include('site.includes.scripts')
     @toastr_js
     @toastr_render
-    @livewireScripts()
+    
+    
+
     @yield('scripts')
 
     @php

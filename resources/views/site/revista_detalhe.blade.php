@@ -35,11 +35,39 @@
                     </div>
                 </div>
 
-                <div class="text-content block-style">
-                    <p>
-                        {!! $revista->conteudo !!}
-                    </p>
-                </div>
+                <?php
+
+                    if($revista->exclusivo == "1") {
+                        if (isset(session()->get("usuario_site")["assinante"])) {
+                            if(session()->get("usuario_site")["assinante"] == 0 OR session()->get("usuario_site")["assinante"] == ""){
+                ?>
+                            <div class="text-content block-style">
+                                <p>
+                                    {!! Str::limit($revista->conteudo, 800) !!}
+                                </p>
+                            </div>
+                            
+                <?php
+                            }
+                        }  else {
+                ?>
+                            <div class="text-content block-style">
+                                <p>
+                                    {!! Str::limit($revista->conteudo, 800) !!}
+                                </p>
+                            </div>
+                <?php 
+                        }
+                    } else {
+                ?>
+                        <div class="text-content block-style">
+                            <p>
+                                {!! $revista->conteudo !!}
+                            </p>
+                        </div>
+                <?php
+                    }
+                ?>
 
                 <div class="apoie-projeto --alternative">
 
@@ -77,17 +105,14 @@
                             </picture>
                             <span>23</span>
                         </div>
-                        <div class="icon">
+                        {{-- <div class="icon">
                             <picture>
                                 <img src="{{ asset('site/assets/img/icon_share_artigo.svg') }}" alt="Ícone">
                             </picture>
                             <span>04</span>
-                        </div>
+                        </div> --}}
                         <div class="icon" active>
-                            <picture>
-                                <img src="{{ asset('site/assets/img/icon_heart_artigo.svg') }}" alt="Ícone">
-                            </picture>
-                            <span>200</span>
+                            @livewire('revista-curtir-acao', ['revista' => $revista])
                         </div>
 
                     </div>
@@ -264,6 +289,14 @@
         $('button.--references').click(() => {
             $('#referencias_modal').showModal();
         })
+
+        window.addEventListener('toastr:error', event => {
+            toastr.error(event.detail.message);
+        });
+
+        window.addEventListener('toastr:success', event => {
+            toastr.success(event.detail.message);
+        });
     </script>
 
 @endsection

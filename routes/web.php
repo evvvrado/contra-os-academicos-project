@@ -54,12 +54,18 @@ Route::middleware(['admin'])->group(function () {
     Route::get('/sistema/lista/editar/{lista}', [\App\Http\Controllers\ListasController::class, 'editar'])->name("painel.lista.editar");
     Route::post('/sistema/lista/salvar/{lista}', [\App\Http\Controllers\ListasController::class, 'salvar'])->name("painel.lista.salvar");
 
+    Route::post('/sistema/lista_visu/cadastrar', [\App\Http\Controllers\ListaVisusController::class, 'cadastrar'])->name("painel.lista_visu.cadastrar");
+    Route::get('/sistema/lista/visualizar/{lista}', [\App\Http\Controllers\ListaVisusController::class, 'visualizar'])->name("painel.lista.visualizar");
+
     // ROTAS DE REVISTAS
     Route::get('/sistema/revista/consultar', [\App\Http\Controllers\RevistasController::class, 'consultar'])->name("painel.revista");
     Route::get('/sistema/revista/cadastro', [\App\Http\Controllers\RevistasController::class, 'cadastro'])->name("painel.revista.cadastro");
     Route::post('/sistema/revista/cadastrar', [\App\Http\Controllers\RevistasController::class, 'cadastrar'])->name("painel.revista.cadastrar");
     Route::get('/sistema/revista/editar/{revista}', [\App\Http\Controllers\RevistasController::class, 'editar'])->name("painel.revista.editar");
     Route::post('/sistema/revista/salvar/{revista}', [\App\Http\Controllers\RevistasController::class, 'salvar'])->name("painel.revista.salvar");
+
+    Route::post('/sistema/revista_visu/cadastrar', [\App\Http\Controllers\RevistaVisusController::class, 'cadastrar'])->name("painel.revista_visu.cadastrar");
+    Route::get('/sistema/revista/visualizar/{revista}', [\App\Http\Controllers\RevistaVisusController::class, 'visualizar'])->name("painel.revista.visualizar");
 
     // ROTAS DE CURSOS
     Route::get('/sistema/curso/consultar', [\App\Http\Controllers\CursosController::class, 'consultar'])->name("painel.curso");
