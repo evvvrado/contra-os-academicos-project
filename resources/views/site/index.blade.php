@@ -178,7 +178,7 @@
     <section class="indicacao-cast">
         <div class="niv">
             <div class="indicacao-area">
-                <div class="box --livro">
+                {{-- <div class="box --livro">
                     <div class="box-top">
                         <div>
 
@@ -220,9 +220,9 @@
                             </div>
                         </main>
                     </div>
-                </div>
+                </div> --}}
 
-                {{-- <div class="box --video">
+                <div class="box --video">
                     <div class="box-top">
                         <div>
 
@@ -235,11 +235,9 @@
                         </a>
                     </div>
                     <div class="box-content">
-                        <picture>
-                            <img src="{{ asset('site/assets/img/video_indicacao.png') }}" alt="Vídeo Indicado">
-                        </picture>
+                        <iframe width="100%" height="100%" src="https://www.youtube.com/embed/4iKoJU8kPfs" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                     </div>
-                </div> --}}
+                </div>
             </div>
 
             <div class="contraCast-area">
