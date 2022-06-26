@@ -147,136 +147,15 @@
             </div>
 
 
-            <div class="news-area">
-                <h2>Nossa Newsletter</h2>
-                <h3>O melhor do Contra os Acadêmicos no seu inbox</h3>
-
-                <form action="javascript:void(0)" method="post">
-                    <label>
-                        <span>Inscreva-se para receber o nosso conteúdo</span>
-
-                        <input type="email" name="email-news" id="email-news" placeholder="Qual seu e-mail?">
-                    </label>
-
-                    <label class="checkbox">
-                        <input type="checkbox" name="aceitar-termos" id="aceitar-termos">
-
-                        <span>Li e aceito os <a href="#" class="--blue">termos de uso</a></span>
-                    </label>
-
-                    <div>
-
-                        <button class="button">Cadastrar</button>
-
-                        <div class="pictures">
-                            <picture><img src="{{ asset('site/assets/img/picture_news.png') }}" alt="">
-                            </picture>
-                            <picture><img src="{{ asset('site/assets/img/picture_news-1.png') }}" alt="">
-                            </picture>
-                            <picture><img src="{{ asset('site/assets/img/picture_news-2.png') }}" alt="">
-                            </picture>
-                        </div>
-                    </div>
-                </form>
-
+            <div id="news-area" class="news-area">
+                @livewire('emails-news-add')
             </div>
 
         </div>
     </section>
 
     <section class="conteudo">
-        <div class="niv">
-            <div class="top-area">
-                <h2 class="--bar">
-                    Conteúdo
-                </h2>
-
-                <div class="filtros">
-                    <ul>
-                        <li active data-filter="blogs">Blog</li>
-                        <li data-filter="revistas">Revista</li>
-                        <li data-filter="listas">Lista</li>
-                    </ul>
-                </div>
-
-                <a href="javascript: $('#categorias_modal').showModal();" class="button">
-                    <picture>
-                        <img src="{{ asset('site/assets/img/icon_chocolate_conteudo.svg') }}" alt="Ícone chocolate">
-                    </picture>
-                    Categorias
-                </a>
-            </div>
-
-            <div class="content-area">
-                <div class="scroll" data-filter="blogs" active>
-                    @foreach ($blogs as $key => $blog)
-                        @if ($key < 9)
-                            <a href="{{ route('site.blog_detalhe', ['blog' => $blog]) }}" class="box">
-                                <picture>
-                                    <img src="{{ asset($blog->banner) }}" alt="">
-                                </picture>
-                                <div class="box-content">
-                                    <span>{{ $blog->categoria->nome }}</span>
-                                    <strong>{{ $blog->titulo }}</strong>
-
-                                    <hr>
-
-                                    <p>{{ Str::limit($blog->resumo, 104) }}</p>
-                                </div>
-                            </a>
-                        @endif
-                    @endforeach
-                </div>
-
-
-                <div class="scroll" data-filter="revistas">
-
-                    @foreach ($revistas as $key => $revista)
-                        @if ($key < 9)
-                            <a href="{{ route('site.revista_detalhe', ['revista' => $revista]) }}" class="box">
-                                <picture>
-                                    <img src="{{ asset($revista->banner) }}" alt="">
-                                </picture>
-                                <div class="box-content">
-                                    <span>{{ $revista->categoria->nome }}</span>
-                                    <strong>{{ $revista->titulo }}</strong>
-
-                                    <hr>
-
-                                    <p>{{ Str::limit($revista->resumo, 104) }}</p>
-                                </div>
-                            </a>
-                        @endif
-                    @endforeach
-
-                </div>
-
-
-
-                <div class="scroll" data-filter="listas">
-                    @foreach ($listas as $key => $lista)
-                        @if ($key < 9)
-                            <a href="{{ route('site.lista_detalhe', ['lista' => $lista]) }}" class="box">
-                                <picture>
-                                    <img src="{{ asset($lista->banner) }}" alt="">
-                                </picture>
-                                <div class="box-content">
-                                    <span>{{ $lista->categoria->nome }}</span>
-                                    <strong>{{ $lista->titulo }}</strong>
-
-                                    <hr>
-
-                                    <p>{{ Str::limit($lista->resumo, 104) }}</p>
-                                </div>
-                            </a>
-                        @endif
-                    @endforeach
-                </div>
-
-
-
-            </div>
-        </div>
+        @livewire('conteudo-index')
     </section>
 
     <section class="lista-destaque">
@@ -287,8 +166,8 @@
                 <div class="scroll">
                     @foreach ($listas_destaques->take(3) as $lista_destaque)
                         <a href="#" class="box-destaque"
-                            style="background-image: url({{ asset($lista->banner) }})">
-                            <h2>{{ $lista->titulo }}</h2>
+                            style="background-image: url({{ asset($lista_destaque->banner) }})">
+                            <h2>{{ $lista_destaque->titulo }}</h2>
                         </a>
                     @endforeach
                 </div>
@@ -380,13 +259,7 @@
                 <div class="content-area">
                     <ul>
                         <li style="background-color: white">
-                            <iframe src="https://castbox.fm/app/castbox/player/id4849712?v=8.22.11&autoplay=0" frameborder="0" width="100%" height="240"></iframe>
-                        </li>
-                        <li style="background-color: white">
-                            <iframe src="https://castbox.fm/app/castbox/player/id4849712?v=8.22.11&autoplay=0" frameborder="0" width="100%" height="240"></iframe>
-                        </li>
-                        <li style="background-color: white">
-                            <iframe src="https://castbox.fm/app/castbox/player/id4849712?v=8.22.11&autoplay=0" frameborder="0" width="100%" height="240"></iframe>
+                            <iframe style="border-radius:12px" src="https://open.spotify.com/embed/episode/5P25nwbzYYfWzRAUoiR0t2?utm_source=generator&theme=0" width="100%" height="240" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"></iframe>
                         </li>
                     </ul>
                     {{-- <ul>
@@ -484,5 +357,12 @@
 @endsection
 
 @section('scripts')
+
+<script>
+    window.addEventListener('sumir_news', event => {
+        document.getElementById("news-area").style.display = "none";
+        toastr.success(event.detail.message);
+    });
+</script>
 
 @endsection

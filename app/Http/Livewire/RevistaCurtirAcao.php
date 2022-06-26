@@ -30,9 +30,9 @@ class RevistaCurtirAcao extends Component
 
                 $this->likes--;
 
-                $this->dispatchBrowserEvent( 'toastr:success', [
-                    'message' =>  'Você descurtiu essa publicação',
-                ]);
+                // $this->dispatchBrowserEvent( 'toastr:success', [
+                //     'message' =>  'Você descurtiu essa publicação',
+                // ]);
             } else {
                 $revista = new RevistaCurtir;
                 $revista->usuario_site_id = session()->get('usuario_site')['id'];
@@ -41,9 +41,9 @@ class RevistaCurtirAcao extends Component
 
                 $this->likes++;
 
-                $this->dispatchBrowserEvent( 'toastr:success', [
-                    'message' =>  'Você curtiu essa publicação',
-                ]);
+                // $this->dispatchBrowserEvent( 'toastr:success', [
+                //     'message' =>  'Você curtiu essa publicação',
+                // ]);
             }
         }else{
             $this->dispatchBrowserEvent( 'toastr:error', [

@@ -33,7 +33,7 @@
                     @endphp
                     <h2>Gerenciar Assinatura</h2>
                     <p>A assinatura de {{ $usuario_site->nome }} termina em <label class="alert alert-primary">{{ $data_termino }}</label></p>
-                    <a class="btn btn-danger" href="{{ route('painel.usuarios_site.encerrar_assinatura', ['assinatura' => $verifica]) }}">Encerrar Assinatura</a>
+                    <a class="btn btn-danger" href="{{ route('painel.usuarios_site.encerrar_assinatura', ['assinatura' => $verifica, 'usuario_site' => $usuario_site]) }}">Encerrar Assinatura</a>
                 @else
                     <h2>Liberar Assinatura</h2>
                     <form action="{{ route('painel.usuarios_site.assinar', ['usuario_site' => $usuario_site]) }}" method="post">

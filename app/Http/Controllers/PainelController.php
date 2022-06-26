@@ -89,6 +89,9 @@ class PainelController extends Controller
         $assinatura->vitalicio = $vitalicio;
         $assinatura->save();
 
+        $usuario_site->assinante = 1;
+        $usuario_site->save();
+
         $usuarios = UsuarioSite::all();
 
         toastr()->success("Assinatura liberada para ".$usuario_site->nome);

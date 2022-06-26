@@ -105,12 +105,25 @@
                             <div class="form-group mt-3">
                                 <label class="form-label">Banner</label>
                                 <div class="col-12 text-center">
-                                    <img class="escolher_imagem" id="foto-preview" src="{{asset('admin/imagens/thumb-padrao.png')}}" style="max-height: 105px;" alt="">
+                                    <img class="escolher_imagem" id="foto-preview1" src="{{asset('admin/imagens/thumb-padrao.png')}}" style="max-height: 105px;" alt="">
                                 </div>
                                 <div>
                                     <div class="col-12 text-center mt-3">
-                                        <label class="btn btn-primary" for="foto-upload">Escolher</label>
-                                        <input name="banner" id="foto-upload" style="display: none;" type="file">
+                                        <label class="btn btn-primary" for="foto-upload1">Escolher</label>
+                                        <input onchange="mudar_foto(this.files, 1)" name="banner" id="foto-upload1" style="display: none;" type="file">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group mt-3">
+                                <label class="form-label">Destaque</label>
+                                <div class="col-12 text-center">
+                                    <img class="escolher_imagem" id="foto-preview2" src="{{asset('admin/imagens/thumb-padrao.png')}}" style="max-height: 105px;" alt="">
+                                </div>
+                                <div>
+                                    <div class="col-12 text-center mt-3">
+                                        <label class="btn btn-primary" for="foto-upload2">Escolher</label>
+                                        <input onchange="mudar_foto(this.files, 2)" name="banner_destaque" id="foto-upload2" style="display: none;" type="file">
                                     </div>
                                 </div>
                             </div>
@@ -134,16 +147,17 @@
             $('#tipo_pub').val(valor);
         }
 
+        function mudar_foto(files, id) {
+            var inp = document.getElementById('foto-upload'+id);
+            var file = files[0];
+            var reader = new FileReader();
+            reader.onload = function(){
+                console.log(this.result)
+                document.getElementById('foto-preview'+id).src = this.result;
+            };
+            reader.readAsDataURL(file);
+        }
         $(document).ready(function(){
-            var inp = document.getElementById('foto-upload');
-            inp.addEventListener('change', function(e){
-                var file = this.files[0];
-                var reader = new FileReader();
-                reader.onload = function(){
-                    document.getElementById('foto-preview').src = this.result;
-                    };
-                reader.readAsDataURL(file);
-            },false);
 
             CKEDITOR.replace( 'conteudo', {
                 filebrowserBrowseUrl : '@filemanager_get_resource(dialog.php)?akey=@filemanager_get_key()&type=2&editor=ckeditor&fldr=',

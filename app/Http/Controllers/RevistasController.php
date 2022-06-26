@@ -41,6 +41,13 @@ class RevistasController extends Controller
                 $request->file("banner")->move(public_path('/admin/imagens/revistas/'.$revista->id."/"), $request->file('banner')->getClientOriginalName());
             }
 
+            if($request->file("banner_destaque")){
+                Revista::whereId($revista->id)
+                ->update(['banner_destaque' => 'admin/imagens/revistas/'.$revista->id.'/'.$request->file('banner_destaque')->getClientOriginalName()]);
+
+                $request->file("banner_destaque")->move(public_path('/admin/imagens/revistas/'.$revista->id."/"), $request->file('banner_destaque')->getClientOriginalName());
+            }
+
 
             toastr()->success("Cadastro realizado com sucesso!");
             return redirect()->route("painel.revista");
@@ -60,6 +67,13 @@ class RevistasController extends Controller
                 ->update(['banner' => 'admin/imagens/revistas/'.$revista->id.'/'.$request->file('banner')->getClientOriginalName()]);
 
                 $request->file("banner")->move(public_path('/admin/imagens/revistas/'.$revista->id."/"), $request->file('banner')->getClientOriginalName());
+            }
+
+            if($request->file("banner_destaque")){
+                Revista::whereId($revista->id)
+                ->update(['banner_destaque' => 'admin/imagens/revistas/'.$revista->id.'/'.$request->file('banner_destaque')->getClientOriginalName()]);
+
+                $request->file("banner_destaque")->move(public_path('/admin/imagens/revistas/'.$revista->id."/"), $request->file('banner_destaque')->getClientOriginalName());
             }
 
 
@@ -102,7 +116,6 @@ class RevistasController extends Controller
             $revista->usuario_id = $request->usuario;
             $revista->autor_id = $request->autor;
             $revista->categoria_id = $request->categoria;
-            $revista->status = 2;
             $revista->save();
 
             if($request->file("banner")){
@@ -111,7 +124,6 @@ class RevistasController extends Controller
 
                 $request->file("banner")->move(public_path('/admin/imagens/revistas_visu/'.$revista->id."/"), $request->file('banner')->getClientOriginalName());
             }
-
 
             return redirect()->route("painel.revista.visualizar", ['revista' => $revista]);
         }
@@ -130,6 +142,13 @@ class RevistasController extends Controller
             ->update(['banner' => 'admin/imagens/revistas/'.$revista->id.'/'.$request->file('banner')->getClientOriginalName()]);
 
             $request->file("banner")->move(public_path('/admin/imagens/revistas/'.$revista->id."/"), $request->file('banner')->getClientOriginalName());
+        }
+
+        if($request->file("banner_destaque")){
+            Revista::whereId($revista->id)
+            ->update(['banner_destaque' => 'admin/imagens/revistas/'.$revista->id.'/'.$request->file('banner_destaque')->getClientOriginalName()]);
+
+            $request->file("banner_destaque")->move(public_path('/admin/imagens/revistas/'.$revista->id."/"), $request->file('banner_destaque')->getClientOriginalName());
         }
 
         $revista->save();

@@ -95,7 +95,7 @@ class UsuarioSitesController extends Controller
             if (Hash::check($request->senha, $usuario->senha)) {
                 session()->put(["usuario_site" => $usuario->toArray()]);
                 Log::channel('acessos')->info('LOGIN: O usuario ' . $usuario->email . ' logou no sistema.');
-                return redirect()->route("minha_area.index");
+                return redirect()->route("site.index");
             } else {
                 toastr()->error("Informações de usuário incorretas!");
             }

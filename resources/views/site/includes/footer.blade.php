@@ -17,28 +17,28 @@
 
                 <ul class="social">
                     <li>
-                        <a href="{{ FACEBOOK }}">
+                        <a href="{{ FACEBOOK }}" target="_blank">
                             <img src="{{ asset('site/assets/img/icon_facebook_footer.svg') }}" alt="Ícone rede social"
                                 title="Acessar Facebook">
 
                         </a>
                     </li>
                     <li>
-                        <a href="{{ INSTAGRAM }}">
+                        <a href="{{ INSTAGRAM }}" target="_blank">
                             <img src="{{ asset('site/assets/img/icon_instagram_footer.svg') }}"
                                 alt="Ícone rede social" title="Acessar Instagram">
 
                         </a>
                     </li>
                     <li>
-                        <a href="{{ TWITTER }}">
+                        <a href="{{ TWITTER }}" target="_blank">
                             <img src="{{ asset('site/assets/img/icon_twiter_footer.svg') }}" alt="Ícone rede social"
                                 title="Acessar Twitter">
 
                         </a>
                     </li>
                     <li>
-                        <a href="{{ YOUTUBE }}">
+                        <a href="{{ YOUTUBE }}" target="_blank">
                             <img src="{{ asset('site/assets/img/icon_youtube_footer.svg') }}" alt="Ícone rede social"
                                 title="Acessar Youtube">
 
@@ -50,7 +50,7 @@
             </div>
 
             <div class="categorias-content">
-                <h2>Categorias</h2>
+                <h2>Mapa do site</h2>
 
                 <ul>
                     <li><a href="{{ route('site.blog') }}">Blog</a></li>
