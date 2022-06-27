@@ -227,15 +227,15 @@
                         <div>
 
                             <p>Indicação</p>
-                            <h2>Livro em Destaque</h2>
+                            <h2>Vídeo em Destaque</h2>
                         </div>
 
-                        <a href="#" class="--plus">
-                            Ir para livraria
-                        </a>
+                        {{-- <a href="#" class="--plus">
+                            Ir para livraria style="margin-top: -80px;"
+                        </a> --}}
                     </div>
                     <div class="box-content">
-                        <iframe width="100%" height="100%" src="https://www.youtube.com/embed/4iKoJU8kPfs" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                        <iframe  width="100%" height="100%" src="https://www.youtube.com/embed/4iKoJU8kPfs" frameborder="0" ></iframe>
                     </div>
                 </div>
             </div>
@@ -357,6 +357,21 @@
 @section('scripts')
 
 <script>
+
+    // function funcao() {
+    //     var input = document.getElementById("input_pesquisa");
+    //     var texto = input.value;
+    //     if(texto != "") {
+    //         const div_search = document.getElementById('div_search');
+        
+    //         div_search.classList.replace('d-none', 'd-block'); 
+    //     } else {
+    //         const div_search = document.getElementById('div_search');
+        
+    //         div_search.classList.replace('d-block', 'd-none'); 
+    //     }
+    // }
+
     window.addEventListener('sumir_news', event => {
         document.getElementById("news-area").style.display = "none";
         toastr.success(event.detail.message);

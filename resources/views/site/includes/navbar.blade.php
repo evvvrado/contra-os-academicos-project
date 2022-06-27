@@ -25,13 +25,7 @@
                 <div>
 
 
-                    <div class="search-button">
-                        <input type="text">
-
-                        <picture>
-                            <img src="{{ asset('site/assets/img/icon_search_header.svg') }}" alt="Ícone de pesquisa">
-                        </picture>
-                    </div>
+                    @livewire('pesquisa-index')
 
                     <div class="socials">
                         <a target="_blank" href="https://www.facebook.com/contraosacademicos/ "><i
