@@ -197,47 +197,37 @@
                                 alt="">
                             <div class="post-comments">
                                 <p class="meta">
-                                    <a class="custom_a" href="#"> {{ $comentario->usuario_site->nome }}</a>:
+                                    <a class="custom_a" style="margin-right: 1rem" href="#">
+                                        {{ $comentario->usuario_site->nome }}</a>
+                                    <small>{{ date('d', strtotime($comentario->created_at)) }} de
+                                        {{ substr($comentario->created_at->formatLocalized('%B'), 0, 3) }},
+                                        {{ date('Y', strtotime($comentario->created_at)) }}</small> &nbsp;
+
                                 </p>
                                 <p>
                                     {{ $comentario->conteudo }}
                                 </p>
-                                <small>{{ date('d', strtotime($comentario->created_at)) }} de
-                                    {{ substr($comentario->created_at->formatLocalized('%B'), 0, 3) }},
-                                    {{ date('Y', strtotime($comentario->created_at)) }}</small> &nbsp;
+
+
+                                <br>
+                                <small>Essa avaliação foi útil?</small>
+
+                                <div class="actions-comment">
+                                    <button>
+                                        <img src="{{ asset('site/assets/img/icon_like.svg') }}" alt="">
+                                    </button>
+
+                                    <button>
+                                        <img src="{{ asset('site/assets/img/icon_dislike.svg') }}" alt="">
+                                    </button>
+                                    |
+                                    <button>
+                                        <small>DENUNCIAR</small>
+                                    </button>
+                                </div>
                             </div>
                         </li>
                     @endforeach
-                    <li class="clearfix">
-                        <img src="{{ asset('admin/imagens/usuarios/sem_foto.png') }}" class="avatar" alt="">
-                        <div class="post-comments">
-                            <p class="meta">
-                                <a class="custom_a" href="#" style="margin-right: 1rem">JohnDoe</a>
-                                <small>02 de jun, 2022</small> &nbsp;
-                            </p>
-                            <p>
-                                Teste sub comentario
-                            </p>
-
-                            <br>
-                            <small>Essa avaliação foi útil?</small>
-
-                            <div class="actions-comment">
-                                <button>
-                                    <img src="{{ asset('site/assets/img/icon_like.svg') }}" alt="">
-                                </button>
-
-                                <button>
-                                    <img src="{{ asset('site/assets/img/icon_dislike.svg') }}" alt="">
-                                </button>
-                                |
-                                <button>
-                                    <small>DENUNCIAR</small>
-                                </button>
-                            </div>
-
-                        </div>
-                    </li>
                 </ul>
             </div>
         </div>
