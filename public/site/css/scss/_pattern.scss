@@ -208,6 +208,7 @@
     @include flex(column, flex-start, flex-end);
     background-color: red;
     background-size: cover;
+    background-position: center !important;
 
     &:hover {
       h2 {

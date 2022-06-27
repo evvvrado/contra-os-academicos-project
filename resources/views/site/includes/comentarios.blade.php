@@ -127,6 +127,32 @@
         font-weight: bold;
     }
 
+    div.actions-comment {
+        margin-top: 1rem;
+
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        gap: 1rem;
+    }
+
+    div.actions-comment button:not(button:last-child) {
+        width: 2.5rem;
+        height: 2.5rem;
+        border-radius: 100%;
+        background: #eaeaea;
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        transition: .32s;
+    }
+
+    div.actions-comment button:hover {
+        opacity: .7;
+    }
+
     small {
         font-size: 10px !important;
     }
@@ -147,24 +173,24 @@
                 <?php 
                     if (isset(session()->get("usuario_site")["assinante"])) {
                 ?>
-                        <form method="post" action="{{ route('minha_area.comentar', ['blog' => $blog]) }}">
-                            @csrf
-                            <div class="mb-3">
-                                <label for="commentmessage-input" class="form-label">Comentar</label>
-                                <textarea name="conteudo" class="form-control" id="commentmessage-input" placeholder="Sua mensagem" rows="3"></textarea>
+                <form method="post" action="{{ route('minha_area.comentar', ['blog' => $blog]) }}">
+                    @csrf
+                    <div class="mb-3">
+                        <label for="commentmessage-input" class="form-label">Comentar</label>
+                        <textarea name="conteudo" class="form-control" id="commentmessage-input" placeholder="Sua mensagem" rows="3"></textarea>
 
-                                <button class="button" style="margin-top: 10px;">Enviar</button>
-                            </div>
-                        </form>
+                        <button class="button" style="margin-top: 10px;">Enviar</button>
+                    </div>
+                </form>
                 <?php
                     }
                 ?>
                 <h3 class="text-success">Comentários</h3>
                 <hr />
                 <ul class="comments">
-                    @if($comentarios->count() == 0)
+                    @if ($comentarios->count() == 0)
                         Não há comentários nessa publicação.
-                    @endif 
+                    @endif
                     @foreach ($comentarios as $comentario)
                         <li class="clearfix">
                             <img src="{{ asset('admin/imagens/usuarios/sem_foto.png') }}" class="avatar"
@@ -182,18 +208,36 @@
                             </div>
                         </li>
                     @endforeach
-                    {{-- <li class="clearfix">
+                    <li class="clearfix">
                         <img src="{{ asset('admin/imagens/usuarios/sem_foto.png') }}" class="avatar" alt="">
                         <div class="post-comments">
                             <p class="meta">
-                                <a class="custom_a" href="#">JohnDoe</a>:
+                                <a class="custom_a" href="#" style="margin-right: 1rem">JohnDoe</a>
+                                <small>02 de jun, 2022</small> &nbsp;
                             </p>
                             <p>
                                 Teste sub comentario
                             </p>
-                            <small>02 de jun, 2022</small> &nbsp;
+
+                            <br>
+                            <small>Essa avaliação foi útil?</small>
+
+                            <div class="actions-comment">
+                                <button>
+                                    <img src="{{ asset('site/assets/img/icon_like.svg') }}" alt="">
+                                </button>
+
+                                <button>
+                                    <img src="{{ asset('site/assets/img/icon_dislike.svg') }}" alt="">
+                                </button>
+                                |
+                                <button>
+                                    <small>DENUNCIAR</small>
+                                </button>
+                            </div>
+
                         </div>
-                    </li> --}}
+                    </li>
                 </ul>
             </div>
         </div>

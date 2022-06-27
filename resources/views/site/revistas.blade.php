@@ -137,13 +137,13 @@
     <section class="blog-news">
         <div class="niv">
 
-            <div class="blog-area">
+            <div class="blog-area --reduced">
                 <div class="top-title">
                     <h2>
                         <picture>
                             <img src="{{ asset('site/assets/img/icon_fire_blog.png') }}" alt="Ícone de fogo">
                         </picture>
-                        Blog
+                        Em breve
                     </h2>
                     <a href="{{ route('site.blog') }}" class="--plus">Ver mais</a>
                 </div>
