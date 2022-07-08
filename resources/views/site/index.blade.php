@@ -259,6 +259,9 @@
                         <li style="background-color: white">
                             <iframe style="border-radius:12px" src="https://open.spotify.com/embed/episode/5P25nwbzYYfWzRAUoiR0t2?utm_source=generator&theme=0" width="100%" height="240" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"></iframe>
                         </li>
+                        <li style="background-color: white">
+                            <iframe style="border-radius:12px" src="https://open.spotify.com/embed/episode/0C4n9GLAVC6sAIppxK3ihW?utm_source=generator&theme=0" width="100%" height="240" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"></iframe>
+                        </li>
                     </ul>
                     {{-- <ul>
                         <li>
@@ -316,8 +319,7 @@
             <div class="boxes-area">
                 <div class="scroll">
                     @foreach ($cursos as $curso)
-                        <a href="#" class="box-destaque"
-                            style="background-image: url({{ asset($curso->banner) }})">
+                        <a href="#" class="box-destaque" style="background-image: url('{{ asset($curso->banner) }}')">
                             <div class="tags">
                                 {{-- <span class="--filled">Novo</span> --}}
                                 <span>{{ $curso->categoria->nome }}</span>
