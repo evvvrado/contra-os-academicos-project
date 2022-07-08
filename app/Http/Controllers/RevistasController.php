@@ -12,10 +12,7 @@ class RevistasController extends Controller
 {
     //
     public function consultar(){
-        $revistas = Revista::select(DB::raw("*"))
-        ->orderBy('id', 'Desc')
-        ->get();
-        return view("painel.revistas.consultar", ["revistas" => $revistas]);
+        return view("painel.revistas.consultar");
     }
 
     public function cadastro(){

@@ -116,7 +116,7 @@
                                 <div>
                                     <div class="col-12 text-center mt-3">
                                         <label class="btn btn-primary" for="foto-upload1">Escolher</label>
-                                        <input name="banner" id="foto-upload1" style="display: none;" type="file">
+                                        <input onchange="mudar_foto(this.files, 1)" name="banner" id="foto-upload1" style="display: none;" type="file">
                                     </div>
                                 </div>
                             </div>

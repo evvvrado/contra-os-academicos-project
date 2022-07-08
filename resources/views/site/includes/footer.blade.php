@@ -11,7 +11,7 @@
                 <p>Surgiu com o objetivo de melhorar o acesso aos estudos de Filosofia para todos aqueles que desejam
                     aprofundar-se na busca pelo conhecimento e, principalmente, pela verdade.</p>
 
-                <a href="#" class="button">
+                <a href="https://www.paypal.com/donate/?hosted_button_id=SG3AY5GSPXAHN" target="_blank" class="button">
                     Quero apoiar
                 </a>
 

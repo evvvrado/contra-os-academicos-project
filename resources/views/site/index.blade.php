@@ -165,7 +165,7 @@
             <div class="boxes-area">
                 <div class="scroll">
                     @foreach ($listas_destaques->take(3) as $lista_destaque)
-                        <a href="#" class="box-destaque"
+                        <a href="{{ route('site.lista_detalhe', ['lista' => $lista_destaque]) }}" class="box-destaque"
                             style="background-image: url({{ asset($lista_destaque->banner) }})">
                             <h2>{{ $lista_destaque->titulo }}</h2>
                         </a>

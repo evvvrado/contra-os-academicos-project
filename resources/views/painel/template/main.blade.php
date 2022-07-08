@@ -22,9 +22,11 @@
         <link href="{{ asset('admin/assets/css/app.min.css')}}" id="app-style" rel="stylesheet" type="text/css" />
 
         <!-- Sweet Alert-->
-        <link href="{{ asset('admin/assets/libs/sweetalert2/sweetalert2.min.css') }}" rel="stylesheet" type="text/css" />
+        {{-- <link href="{{ asset('admin/assets/libs/sweetalert2/sweetalert2.min.css') }}" rel="stylesheet" type="text/css" /> --}}
 
         @yield('styles')
+
+        @livewireStyles()
 
         <style>
             .escolher_imagem {
@@ -324,7 +326,10 @@
             <script src="https://cdn.ckeditor.com/4.19.0/full/ckeditor.js"></script>
 
             <!-- Sweet Alerts js -->
-            <script src="{{ asset('admin/assets/libs/sweetalert2/sweetalert2.min.js')}}"></script>
+            {{-- <script src="{{ asset('admin/assets/libs/sweetalert2/sweetalert2.min.js')}}"></script> --}}
+            <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+            @livewireScripts()
 
             @yield('scripts')
         </body>
