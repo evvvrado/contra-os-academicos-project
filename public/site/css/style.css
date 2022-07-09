@@ -798,6 +798,9 @@ div#div_search ul li {
 div#div_search ul li:not(:last-child) {
   border-bottom: 0.1rem rgba(0, 0, 0, 0.137) solid;
 }
+div#div_search ul li:last-child {
+  border-radius: 0 0 2rem 2rem;
+}
 div#div_search ul li a {
   display: block;
   width: 100%;

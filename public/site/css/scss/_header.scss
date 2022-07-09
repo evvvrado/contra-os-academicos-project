@@ -396,6 +396,10 @@ div#div_search {
                 border-bottom: 0.1rem rgba(0, 0, 0, 0.137) solid;
             }
 
+            &:last-child {
+                border-radius: 0 0 2rem 2rem;
+            }
+
             a {
                 display: block;
                 width: 100%;
