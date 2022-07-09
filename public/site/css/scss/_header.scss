@@ -185,14 +185,15 @@ header {
                         z-index: 1;
 
                         background-color: $cinza-contra;
-                        height: 2.8rem;
-                        border-radius: 1.5rem 0 0 1.5rem;
+                        height: 3.8rem;
+                        border-radius: 5.5rem;
                         font-size: 1.6rem;
 
                         transform: scaleX(0);
                         transform-origin: right;
                         transition: 0.32s;
                         padding: 0 2rem;
+                        padding-right: 5rem;
 
                         &[open] {
                             transform: scaleX(1);
@@ -206,6 +207,9 @@ header {
                         background-color: $cinza-contra;
                         @extend %totalcenter;
                         border-radius: 100%;
+
+                        position: relative;
+                        left: -3rem;
 
                         cursor: pointer;
                         transition: 0.32s;
@@ -368,18 +372,28 @@ header {
 
 div#div_search {
     position: absolute;
-    border: 0.1rem $border-active solid;
-    width: 10rem;
-    top: 3.4rem;
-    width: 100%;
-    background-color: white;
-    border-radius: 0.5rem;
+    // border: 0.1rem $border-active solid;
+    // border-radius: 0.5rem;
+
+    margin: 0 auto;
+    left: 0;
+    right: 0;
+
+    transform: translateX(-1rem);
+    padding-top: 3rem;
+    top: 1.4rem;
+    width: 92%;
+    background-color: $cinza-contra;
+
+    box-shadow: 0px 0px 25px -10px $preto-contra;
+
+    border-radius: 0 0 2rem 2rem;
 
     ul {
         li {
             padding: 1rem;
             &:not(:last-child) {
-                border-bottom: 0.1rem $border-active solid;
+                border-bottom: 0.1rem rgba(0, 0, 0, 0.137) solid;
             }
 
             a {
