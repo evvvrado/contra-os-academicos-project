@@ -3231,6 +3231,7 @@ section.artigo div.niv.--row main div.apoie-projeto div.buttons button:nth-child
 }
 section.artigo div.niv.--row main div.apoie-projeto button.button {
   margin-top: 1rem;
+  z-index: 20;
   --width: 10rem;
   --height: 2.3rem;
   --background-color: #fff;
