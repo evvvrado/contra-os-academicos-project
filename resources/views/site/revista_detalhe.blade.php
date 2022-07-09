@@ -41,30 +41,30 @@
                         if (isset(session()->get("usuario_site")["assinante"])) {
                             if(session()->get("usuario_site")["assinante"] == 0 OR session()->get("usuario_site")["assinante"] == ""){
                 ?>
-                            <div class="text-content block-style">
-                                <p>
-                                    {!! Str::limit($revista->conteudo, 800) !!}
-                                </p>
-                            </div>
-                            
+                <div class="text-content block-style">
+                    <p>
+                        {!! Str::limit($revista->conteudo, 800) !!}
+                    </p>
+                </div>
+
                 <?php
                             }
                         }  else {
                 ?>
-                            <div class="text-content block-style">
-                                <p>
-                                    {!! Str::limit($revista->conteudo, 800) !!}
-                                </p>
-                            </div>
+                <div class="text-content block-style">
+                    <p>
+                        {!! Str::limit($revista->conteudo, 800) !!}
+                    </p>
+                </div>
                 <?php 
                         }
                     } else {
                 ?>
-                        <div class="text-content block-style">
-                            <p>
-                                {!! $revista->conteudo !!}
-                            </p>
-                        </div>
+                <div class="text-content block-style">
+                    <p>
+                        {!! $revista->conteudo !!}
+                    </p>
+                </div>
                 <?php
                     }
                 ?>
@@ -82,13 +82,16 @@
                             Desde 2014 o Contra os Acadêmicos trabalha para divulgar a boa filosofia e incentivar a
                             autoeducação. Apoiando nosso projeto, você assegura a continuidade do nosso trabalho.
                         </p>
+
+
+                        <div class="buttons">
+                            <button class="button">Assinar</button>
+                            <button class="button"><a href="https://www.paypal.com/donate/?hosted_button_id=SG3AY5GSPXAHN"
+                                    target="_blank">Quero apoiar</a></b>
+                        </div>
                     </div>
 
 
-                    <div class="buttons">
-                        <button class="button">Assinar</button>
-                        <button class="button"><a href="https://www.paypal.com/donate/?hosted_button_id=SG3AY5GSPXAHN" target="_blank">Quero apoiar</a></b>
-                    </div>
                 </div>
 
                 <div class="actions">
@@ -149,7 +152,8 @@
                     <ul>
                         @foreach ($revista_randomicos as $revista_randomico)
                             <li>
-                                <a href="{{ route('site.revista_detalhe', ['revista' => $revista_randomico]) }}" class="box">
+                                <a href="{{ route('site.revista_detalhe', ['revista' => $revista_randomico]) }}"
+                                    class="box">
                                     <picture>
                                         <img src="{{ asset($revista_randomico->banner) }}" alt="Banner relacionados">
                                     </picture>

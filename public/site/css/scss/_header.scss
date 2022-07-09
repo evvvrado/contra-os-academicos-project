@@ -229,6 +229,7 @@ header {
 
                 div.buttons {
                     @include flex(row, center, center);
+                    gap: 1rem;
 
                     a.button {
                         --height: 3.5rem;
@@ -238,15 +239,17 @@ header {
 
                         font-family: $font-primary;
 
+                        border-radius: 4rem;
+
                         &:first-child {
                             --background-color: #{$mid-cinza-contra};
                             --font-color: #{$white};
-                            border-top-right-radius: 0;
-                            border-bottom-right-radius: 0;
+                            // border-top-right-radius: 0;
+                            // border-bottom-right-radius: 0;
                         }
                         &:last-child {
-                            border-top-left-radius: 0;
-                            border-bottom-left-radius: 0;
+                            // border-top-left-radius: 0;
+                            // border-bottom-left-radius: 0;
                         }
                     }
                 }
@@ -360,5 +363,34 @@ header {
     }
 
     @include responsive(400px) {
+    }
+}
+
+div#div_search {
+    position: absolute;
+    border: 0.1rem $border-active solid;
+    width: 10rem;
+    top: 3.4rem;
+    width: 100%;
+    background-color: white;
+    border-radius: 0.5rem;
+
+    ul {
+        li {
+            padding: 1rem;
+            &:not(:last-child) {
+                border-bottom: 0.1rem $border-active solid;
+            }
+
+            a {
+                display: block;
+                width: 100%;
+            }
+
+            &:hover {
+                background-color: $primary;
+                color: $white;
+            }
+        }
     }
 }

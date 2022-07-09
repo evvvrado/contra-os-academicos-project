@@ -54,13 +54,16 @@
                             Desde 2014 o Contra os Acadêmicos trabalha para divulgar a boa filosofia e incentivar a
                             autoeducação. Apoiando nosso projeto, você assegura a continuidade do nosso trabalho.
                         </p>
-                    </div>
 
 
-                    <div class="buttons">
-                        <button class="button">Assinar</button>
-                        <button class="button"><a href="https://www.paypal.com/donate/?hosted_button_id=SG3AY5GSPXAHN" target="_blank">Quero apoiar</a></b>
+
+                        <div class="buttons">
+                            <button class="button">Assinar</button>
+                            <button class="button"><a href="https://www.paypal.com/donate/?hosted_button_id=SG3AY5GSPXAHN"
+                                    target="_blank">Quero apoiar</a></b>
+                        </div>
                     </div>
+
                 </div>
 
                 <div class="actions">

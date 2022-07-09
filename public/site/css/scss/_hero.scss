@@ -57,6 +57,7 @@ section.hero {
                 overflow: hidden;
                 position: relative;
                 background-size: cover !important;
+                background-position: center !important;
 
                 &::after {
                     position: absolute;
