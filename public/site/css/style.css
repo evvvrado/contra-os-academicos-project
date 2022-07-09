@@ -69,11 +69,11 @@ html {
 }
 html ::-moz-selection {
   color: #5b2222;
-  background: #f8f9fa;
+  background: #ffb8b8;
 }
 html ::selection {
   color: #5b2222;
-  background: #f8f9fa;
+  background: #ffb8b8;
 }
 html::-webkit-scrollbar {
   width: 0.5rem;
