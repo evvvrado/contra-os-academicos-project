@@ -30,8 +30,10 @@
                     <div class="socials">
                         <a target="_blank" href="https://www.facebook.com/contraosacademicos/ "><i
                                 class="fa-brands fa-facebook"></i></a>
-                        <a target="_blank" href="https://twitter.com/Contracademicos"><i class="fa-brands fa-twitter"></i></a>
-                        <a target="_blank" href="https://www.youtube.com/contraosacademicos"><i class="fa-brands fa-youtube"></i></a>
+                        <a target="_blank" href="https://twitter.com/Contracademicos"><i
+                                class="fa-brands fa-twitter"></i></a>
+                        <a target="_blank" href="https://www.youtube.com/contraosacademicos"><i
+                                class="fa-brands fa-youtube"></i></a>
                         <a target="_blank" href="https://www.instagram.com/contraosacademicos/"><i
                                 class="fa-brands fa-instagram"></i></a>
                         <a target="_blank" href="https://open.spotify.com/show/6GsLO1ybRUI53JgiYm5nTR"><i
@@ -41,7 +43,7 @@
 
                     <div class="buttons">
                         <a href="#" class="button">
-                            Assinar
+                            Assine
                         </a>
 
                         @if (session()->get('usuario_site'))
