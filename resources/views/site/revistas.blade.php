@@ -151,7 +151,7 @@
                 <div class="content">
                     <div class="scroll">
                         @foreach ($blogs as $key => $blog)
-                            @if ($key < 4)
+                            @if ($key < 3)
                                 <a href="{{ route('site.blog_detalhe', ['blog' => $blog]) }}" class="card"
                                     style="background-image: url('{{ asset($blog->banner) }}')">
 
