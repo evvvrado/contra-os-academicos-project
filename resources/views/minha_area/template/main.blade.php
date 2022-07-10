@@ -45,7 +45,7 @@ use App\Models\UsuarioSite;
                     <div>
 
 
-                        @livewire('pesquisa-index')
+                        {{-- @livewire('pesquisa-index') --}}
 
                         <div class="socials">
                             <a target="_blank" href="https://www.facebook.com/contraosacademicos/ "><i
@@ -84,21 +84,6 @@ use App\Models\UsuarioSite;
                         <img src="{{ asset('site/assets/img/icon_user_header.svg') }}" alt="Ícone de usuário">
                     </a>
                 </div> --}}
-            </div>
-
-            <div fluid class="sub-menu">
-                <div class="niv">
-                    <nav>
-                        <ul>
-                            <li><a href="{{ route('site.blog') }}">BLOG</a></li>
-                            <li><a href="{{ route('site.revistas') }}">REVISTA</a></li>
-                            <li><a href="{{ route('site.listas') }}">LISTAS</a></li>
-                            <li><a href="https://livrariacontraosacademicos.com.br">LIVRARIA</a></li>
-                            <li><a href="{{ route('site.sobre') }}">PROJETO</a></li>
-                            <li><a href="{{ route('site.contato') }}">CONTATO</a></li>
-                        </ul>
-                    </nav>
-                </div>
             </div>
         </header>
 
