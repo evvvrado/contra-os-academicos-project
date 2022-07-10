@@ -4402,14 +4402,14 @@ body.minha-area header div[fluid] div.niv > div div.buttons {
     align-items: center;
     justify-content: center;
     flex-direction: row;
-    gap: 1rem;
+    gap: 10px;
 }
 body.minha-area header div[fluid] div.niv > div div.buttons a.button {
-    --height: 3.5rem;
-    --width: 12.5rem;
-    font-size: 1.5rem;
+    --height: 35px;
+    --width: 125px;
+    font-size: 15px;
     font-family: "Open Sans", sans-serif;
-    border-radius: 4rem;
+    border-radius: 40px;
 }
 body.minha-area header div[fluid] div.niv > div div.buttons a.button:first-child {
     --background-color: #716f6f;
