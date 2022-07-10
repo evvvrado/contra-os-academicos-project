@@ -192,10 +192,16 @@ class SiteController extends Controller
     //     return view("site.biblioteca");
     // }
 
+        public function lancamento()
+    {
+        return view("site.lancamento");
+    }
+
     public function contato()
     {
         return view("site.contato");
     }
+    
 
     public function artigo()
     {

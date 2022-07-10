@@ -1,8 +1,8 @@
-section.nossa-equipe div.niv div.equipe-area div.membro picture, section.artigo div.niv.--row aside div.relacionados ul li a.box picture, section.artigo div.niv.--row aside div.mais-autor > picture, section.artigo div.niv.--row main div.bio picture, section.artigo div.niv.--row main div.apoie-projeto div.avatar-side picture, section.artigo div.niv.--row main div.title-area div.info div.author picture, section.artigo div.niv.--row picture.artigo-banner, section.publicacoes main div.niv div.content-area a.box picture, section.publicacoes aside div.mais-listas ul li a.box picture, section.publicacoes aside ul.colunistas li picture, section.indicacao-cast div.niv div.indicacao-area div.box.--video div.box-content, section.indicacao-cast div.niv div.indicacao-area div.box.--livro div.box-content main div.--novidade picture, section.conteudo div.niv div.content-area div.scroll a.box picture, section.hero div.niv div.container div.col div.colunistas ul.lista-colunistas li a picture {
+body#lancamento section.lancamento-depoimentos div.niv div.scroll div.niv-area div.depoimento div.info picture, section.nossa-equipe div.niv div.equipe-area div.membro picture, section.artigo div.niv.--row aside div.relacionados ul li a.box picture, section.artigo div.niv.--row aside div.mais-autor > picture, section.artigo div.niv.--row main div.bio picture, section.artigo div.niv.--row main div.apoie-projeto div.avatar-side picture, section.artigo div.niv.--row main div.title-area div.info div.author picture, section.artigo div.niv.--row picture.artigo-banner, section.publicacoes main div.niv div.content-area a.box picture, section.publicacoes aside div.mais-listas ul li a.box picture, section.publicacoes aside ul.colunistas li picture, section.indicacao-cast div.niv div.indicacao-area div.box.--video div.box-content, section.indicacao-cast div.niv div.indicacao-area div.box.--livro div.box-content main div.--novidade picture, section.conteudo div.niv div.content-area div.scroll a.box picture, section.hero div.niv div.container div.col div.colunistas ul.lista-colunistas li a picture {
   overflow: hidden;
   display: block;
 }
-section.nossa-equipe div.niv div.equipe-area div.membro picture img, section.artigo div.niv.--row aside div.relacionados ul li a.box picture img, section.artigo div.niv.--row aside div.mais-autor > picture img, section.artigo div.niv.--row main div.bio picture img, section.artigo div.niv.--row main div.apoie-projeto div.avatar-side picture img, section.artigo div.niv.--row main div.title-area div.info div.author picture img, section.artigo div.niv.--row picture.artigo-banner img, section.publicacoes main div.niv div.content-area a.box picture img, section.publicacoes aside div.mais-listas ul li a.box picture img, section.publicacoes aside ul.colunistas li picture img, section.indicacao-cast div.niv div.indicacao-area div.box.--video div.box-content img, section.indicacao-cast div.niv div.indicacao-area div.box.--livro div.box-content main div.--novidade picture img, section.conteudo div.niv div.content-area div.scroll a.box picture img, section.hero div.niv div.container div.col div.colunistas ul.lista-colunistas li a picture img {
+body#lancamento section.lancamento-depoimentos div.niv div.scroll div.niv-area div.depoimento div.info picture img, section.nossa-equipe div.niv div.equipe-area div.membro picture img, section.artigo div.niv.--row aside div.relacionados ul li a.box picture img, section.artigo div.niv.--row aside div.mais-autor > picture img, section.artigo div.niv.--row main div.bio picture img, section.artigo div.niv.--row main div.apoie-projeto div.avatar-side picture img, section.artigo div.niv.--row main div.title-area div.info div.author picture img, section.artigo div.niv.--row picture.artigo-banner img, section.publicacoes main div.niv div.content-area a.box picture img, section.publicacoes aside div.mais-listas ul li a.box picture img, section.publicacoes aside ul.colunistas li picture img, section.indicacao-cast div.niv div.indicacao-area div.box.--video div.box-content img, section.indicacao-cast div.niv div.indicacao-area div.box.--livro div.box-content main div.--novidade picture img, section.conteudo div.niv div.content-area div.scroll a.box picture img, section.hero div.niv div.container div.col div.colunistas ul.lista-colunistas li a picture img {
   height: 100%;
   width: 100%;
   -o-object-fit: cover;
@@ -4303,6 +4303,370 @@ section.ant-hero div.niv a.card.main-card i {
 section.ant-hero div.niv a.card.main-card:hover {
   cursor: unset;
   opacity: 1;
+}
+
+body#lancamento section.lancamento-hero {
+  padding-top: 22.1rem;
+  background: url("../assets/img/lancamento/hero-banner.jpg") no-repeat;
+  background-color: #5b2222;
+  padding-bottom: 3.1rem;
+}
+body#lancamento section.lancamento-hero div.niv {
+  text-align: center;
+}
+body#lancamento section.lancamento-hero div.niv h1 {
+  font-size: 6.4rem;
+  line-height: 8.6rem;
+  position: relative;
+  margin-bottom: 4.2rem;
+  display: block;
+}
+body#lancamento section.lancamento-hero div.niv h1::after {
+  position: absolute;
+  content: "";
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+  bottom: 0;
+  width: 100%;
+  max-width: 26.9rem;
+  height: 1px;
+  background-color: #f2d027;
+}
+body#lancamento section.lancamento-hero div.niv p {
+  color: #fff;
+  max-width: 40.6rem;
+  display: block;
+  margin: 0 auto;
+  font-size: 1.8rem;
+  margin-bottom: 8.7rem;
+}
+body#lancamento section.lancamento-hero div.niv small {
+  font-family: "Palatino Linotype", sans-serif;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 1.2rem;
+  line-height: 1.6rem;
+  text-align: center;
+  color: #fff;
+}
+body#lancamento section.lancamento-hero div.niv > a {
+  display: block;
+  margin: 0 auto;
+  width: -webkit-max-content;
+  width: -moz-max-content;
+  width: max-content;
+  margin-top: 2.1rem;
+}
+body#lancamento section.lancamento-beneficios {
+  background-color: #5b2222;
+}
+body#lancamento section.lancamento-beneficios div.niv h2 {
+  font-family: "Palatino Linotype", sans-serif;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 4.5474rem;
+  line-height: 100%;
+  color: #fff;
+}
+body#lancamento section.lancamento-beneficios div.niv h2.--fire {
+  position: relative;
+  width: -webkit-max-content;
+  width: -moz-max-content;
+  width: max-content;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+  gap: 2rem;
+}
+body#lancamento section.lancamento-beneficios div.niv h2.--fire::before {
+  content: url("../assets/img/lancamento/title-fire.png");
+}
+body#lancamento section.lancamento-beneficios div.niv div.content-list {
+  margin-top: 2.6rem;
+}
+body#lancamento section.lancamento-beneficios div.niv div.content-list ul {
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  flex-direction: row;
+  width: 100%;
+  /**
+
+  @include responsive(1400px) {}
+  @include responsive(1200px) {}
+  @include responsive(992px) {}
+  @include responsive(730px) {}
+  @include responsive(600px) {}
+
+  **/
+}
+@media (max-width: 800px) {
+  body#lancamento section.lancamento-beneficios div.niv div.content-list ul {
+    flex-direction: column;
+  }
+}
+body#lancamento section.lancamento-beneficios div.niv div.content-list ul li {
+  width: 100%;
+  background-color: #fdf6d6;
+  height: 34.5rem;
+  padding: 4.3rem;
+  text-align: center;
+}
+body#lancamento section.lancamento-beneficios div.niv div.content-list ul li strong {
+  font-family: "Palatino Linotype", sans-serif;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 5.6rem;
+  line-height: 7.6rem;
+  color: #242424;
+}
+body#lancamento section.lancamento-beneficios div.niv div.content-list ul li hr {
+  margin: 2.6rem auto;
+  height: 1px;
+  width: 5.4rem;
+  background-color: #f2d027;
+}
+body#lancamento section.lancamento-beneficios div.niv div.content-list ul li p {
+  font-size: 1.6rem;
+}
+body#lancamento section.lancamento-destaque {
+  padding-top: 11.7rem;
+  padding-bottom: 7.1rem;
+  margin-top: -5.3rem;
+  background: url("../assets/img/lancamento/beneficios-banner.jpg") no-repeat;
+  background-color: #5b2222;
+  /**
+
+  @include responsive(1400px) {}
+  @include responsive(1200px) {}
+  @include responsive(992px) {}
+  @include responsive(730px) {}
+  @include responsive(600px) {}
+
+  **/
+}
+@media (max-width: 600px) {
+  body#lancamento section.lancamento-destaque {
+    background-size: auto 42%;
+  }
+}
+body#lancamento section.lancamento-destaque div.niv {
+  margin-bottom: 7.1rem;
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  flex-direction: row;
+  gap: 9.8rem;
+  /**
+
+  @include responsive(1400px) {}
+  @include responsive(1200px) {}
+  @include responsive(992px) {}
+  @include responsive(730px) {}
+  @include responsive(600px) {}
+
+  **/
+}
+@media (max-width: 800px) {
+  body#lancamento section.lancamento-destaque div.niv {
+    flex-direction: column;
+    gap: 3rem;
+    align-items: center;
+    text-align: center;
+  }
+  body#lancamento section.lancamento-destaque div.niv div.niv-text-side a.button {
+    margin: 0 auto;
+  }
+}
+body#lancamento section.lancamento-destaque div.niv div.niv-text-side {
+  max-width: 40rem;
+}
+body#lancamento section.lancamento-destaque div.niv div.niv-text-side p {
+  margin-top: 2rem;
+  color: #fff;
+  margin-bottom: 4.2rem;
+  display: block;
+  font-size: 1.8rem;
+}
+body#lancamento section.lancamento-destaque div.niv div.niv-text-side a.button {
+  --background-color: #f2d027;
+  --font-color: #5b2222;
+  --height: 5.2rem;
+}
+body#lancamento section.lancamento-depoimentos {
+  padding-bottom: 5rem;
+  background: linear-gradient(180deg, #5b2222 50%, white 50%);
+}
+body#lancamento section.lancamento-depoimentos div.niv div.scroll {
+  max-width: 100%;
+  overflow: hidden;
+  -ms-scroll-snap-type: x mandatory;
+      scroll-snap-type: x mandatory;
+  /**
+
+  @include responsive(1400px) {}
+  @include responsive(1200px) {}
+  @include responsive(992px) {}
+  @include responsive(730px) {}
+  @include responsive(600px) {}
+
+  **/
+}
+body#lancamento section.lancamento-depoimentos div.niv div.scroll div.niv-area {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  flex-direction: row;
+  gap: 3.2rem;
+  width: -webkit-max-content;
+  width: -moz-max-content;
+  width: max-content;
+}
+body#lancamento section.lancamento-depoimentos div.niv div.scroll div.niv-area div.depoimento {
+  scroll-snap-align: center;
+  height: 30.6rem;
+  width: 59.4rem;
+  padding: 2rem 5.6rem;
+  background-color: #fff;
+  border-radius: 0.4rem;
+  border: solid 1px #f8f9fa;
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  flex-direction: column;
+  gap: 1.7rem;
+}
+body#lancamento section.lancamento-depoimentos div.niv div.scroll div.niv-area div.depoimento > p {
+  font-family: "Palatino Linotype", sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 1.8rem;
+  line-height: 150%;
+  color: #716f6f;
+}
+body#lancamento section.lancamento-depoimentos div.niv div.scroll div.niv-area div.depoimento div.info {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  flex-direction: row;
+  gap: 1.7rem;
+}
+body#lancamento section.lancamento-depoimentos div.niv div.scroll div.niv-area div.depoimento div.info picture {
+  width: 5.1rem;
+  height: 5.1rem;
+}
+body#lancamento section.lancamento-depoimentos div.niv div.scroll div.niv-area div.depoimento div.info strong {
+  font-family: "Palatino Linotype", sans-serif;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 2.2rem;
+  line-height: 100%;
+  color: #5b2222;
+}
+@media (max-width: 600px) {
+  body#lancamento section.lancamento-depoimentos div.niv div.scroll {
+    overflow: scroll;
+  }
+  body#lancamento section.lancamento-depoimentos div.niv div.scroll::-webkit-scrollbar {
+    display: none;
+  }
+  body#lancamento section.lancamento-depoimentos div.niv div.scroll div.niv-area div.depoimento {
+    max-width: 80vw;
+    height: auto;
+  }
+}
+body#lancamento section.lancamento-depoimentos div.niv div.indicators {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+  gap: 2rem;
+  margin-top: 4.3rem;
+}
+body#lancamento section.lancamento-depoimentos div.niv div.indicators span {
+  width: 1.6rem;
+  height: 1.6rem;
+  border-radius: 100%;
+  background-color: #eaeaea;
+}
+body#lancamento section.lancamento-depoimentos div.niv div.indicators span[active] {
+  background-color: #5b2222;
+}
+body#lancamento section.lancamento-professores {
+  padding-top: 12rem;
+  background-color: #fff;
+}
+body#lancamento section.lancamento-professores div.niv h2 {
+  font-family: "Palatino Linotype", sans-serif;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 4.5474rem;
+  line-height: 6.1rem;
+  color: #5b2222;
+  text-align: center;
+  margin-top: 1.9rem;
+  margin-bottom: 3.5rem;
+}
+body#lancamento section.lancamento-professores div.niv p {
+  max-width: 68.1rem;
+  display: block;
+  margin: 0 auto;
+  font-size: 1.8rem;
+  text-align: center;
+}
+body#lancamento section.lancamento-professores div.niv picture {
+  width: -webkit-max-content;
+  width: -moz-max-content;
+  width: max-content;
+  display: block;
+  margin-top: 3.5rem;
+  margin-bottom: 3.5rem;
+  margin-left: auto;
+  margin-right: auto;
+}
+body#lancamento section.lancamento-professores div.niv div.scroll {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-direction: row;
+  /**
+
+  @include responsive(1400px) {}
+  @include responsive(1200px) {}
+  @include responsive(992px) {}
+  @include responsive(730px) {}
+  @include responsive(600px) {}
+
+  **/
+}
+body#lancamento section.lancamento-professores div.niv div.scroll div.professor {
+  width: 38.7rem;
+  height: 50.4rem;
+  background-color: #5b2222;
+  border-radius: 0.4rem;
+  padding-bottom: 6rem;
+  padding-left: 4rem;
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-start;
+  flex-direction: row;
+}
+body#lancamento section.lancamento-professores div.niv div.scroll div.professor strong {
+  font-family: "Palatino Linotype", sans-serif;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 3.3rem;
+  line-height: 4.5rem;
+  color: #fff;
+}
+@media (max-width: 600px) {
+  body#lancamento section.lancamento-professores div.niv div.scroll {
+    flex-direction: column;
+    gap: 2rem;
+  }
 }
 
 div.modal {

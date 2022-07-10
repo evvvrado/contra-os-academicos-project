@@ -1,0 +1,342 @@
+body#lancamento {
+    section.lancamento-hero {
+        padding-top: 22.1rem;
+        background: url("../assets/img/lancamento/hero-banner.jpg") no-repeat;
+        background-color: $primary;
+        padding-bottom: 3.1rem;
+
+        div.niv {
+            text-align: center;
+
+            h1 {
+                font-size: 6.4rem;
+                line-height: 8.6rem;
+                position: relative;
+                margin-bottom: 4.2rem;
+                display: block;
+
+                &::after {
+                    position: absolute;
+                    content: "";
+                    left: 0;
+                    right: 0;
+                    margin: 0 auto;
+                    bottom: 0;
+                    width: 100%;
+                    max-width: 26.9rem;
+                    height: 1px;
+                    background-color: $tertiary;
+                }
+            }
+
+            p {
+                color: $white;
+                max-width: 40.6rem;
+                display: block;
+                margin: 0 auto;
+                font-size: 1.8rem;
+                margin-bottom: 8.7rem;
+            }
+
+            small {
+                font-family: $font-title;
+                font-style: normal;
+                font-weight: 500;
+                font-size: 1.2rem;
+                line-height: 1.6rem;
+                text-align: center;
+                color: $white;
+            }
+
+            & > a {
+                display: block;
+                margin: 0 auto;
+                width: max-content;
+                margin-top: 2.1rem;
+            }
+        }
+    }
+
+    section.lancamento-beneficios {
+        background-color: $primary;
+        div.niv {
+            h2 {
+                font-family: $font-title;
+                font-style: normal;
+                font-weight: 700;
+                font-size: 4.5474rem;
+                line-height: 100%;
+                color: $white;
+
+                &.--fire {
+                    position: relative;
+                    width: max-content;
+
+                    @include flex(row, center, center);
+                    gap: 2rem;
+
+                    &::before {
+                        // position: absolute;
+                        content: url("../assets/img/lancamento/title-fire.png");
+                    }
+                }
+            }
+
+            div.content-list {
+                margin-top: 2.6rem;
+                ul {
+                    @include flex(row, flex-start, flex-start);
+                    // flex-wrap: wrap;
+                    width: 100%;
+
+                    @include responsive(800px) {
+                        flex-direction: column;
+                    }
+
+                    li {
+                        width: 100%;
+                        background-color: $creme-contra;
+                        height: 34.5rem;
+                        padding: 4.3rem;
+                        text-align: center;
+
+                        strong {
+                            font-family: $font-title;
+                            font-style: normal;
+                            font-weight: 700;
+                            font-size: 5.6rem;
+                            line-height: 7.6rem;
+                            color: $preto-contra;
+                        }
+
+                        hr {
+                            margin: 2.6rem auto;
+
+                            height: 1px;
+                            width: 5.4rem;
+
+                            background-color: $tertiary;
+                        }
+
+                        p {
+                            font-size: 1.6rem;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    section.lancamento-destaque {
+        padding-top: 11.7rem;
+        padding-bottom: 7.1rem;
+        margin-top: -5.3rem;
+        background: url("../assets/img/lancamento/beneficios-banner.jpg") no-repeat;
+        background-color: $primary;
+
+        @include responsive(600px) {
+            background-size: auto 42%;
+        }
+
+        div.niv {
+            margin-bottom: 7.1rem;
+
+            @include flex(row, flex-start, flex-start);
+            gap: 9.8rem;
+
+            @include responsive(800px) {
+                flex-direction: column;
+                gap: 3rem;
+                align-items: center;
+                text-align: center;
+
+                div.niv-text-side {
+                    a.button {
+                        margin: 0 auto;
+                    }
+                }
+            }
+
+            div.niv-text-side {
+                max-width: 40rem;
+
+                p {
+                    margin-top: 2rem;
+                    color: $white;
+                    margin-bottom: 4.2rem;
+                    display: block;
+                    font-size: 1.8rem;
+                }
+
+                a.button {
+                    --background-color: #{$tertiary};
+                    --font-color: #{$primary};
+                    --height: 5.2rem;
+                }
+            }
+        }
+    }
+
+    section.lancamento-depoimentos {
+        // padding-top: 7.1rem;
+        padding-bottom: 5rem;
+        background: linear-gradient(180deg, rgba(91, 34, 34, 1) 50%, rgba(255, 255, 255, 1) 50%);
+
+        div.niv {
+            // box-shadow: 0px 0px 4rem -1rem rgba(0, 0, 0, 0.301);
+            div.scroll {
+                max-width: 100%;
+                overflow: hidden;
+                scroll-snap-type: x mandatory;
+                div.niv-area {
+                    @include flex(row, center, flex-start);
+                    gap: 3.2rem;
+                    width: max-content;
+
+                    div.depoimento {
+                        scroll-snap-align: center;
+                        height: 30.6rem;
+                        width: 59.4rem;
+                        padding: 2rem 5.6rem;
+                        background-color: $white;
+                        border-radius: 0.4rem;
+                        border: solid 1px $light;
+
+                        @include flex(column, flex-start, flex-start);
+                        gap: 1.7rem;
+
+                        & > p {
+                            font-family: $font-title;
+                            font-style: normal;
+                            font-weight: 400;
+                            font-size: 1.8rem;
+                            line-height: 150%;
+                            color: $mid-cinza-contra;
+                        }
+
+                        div.info {
+                            @include flex(row, center, flex-start);
+                            gap: 1.7rem;
+
+                            picture {
+                                @extend %picframe;
+                                width: 5.1rem;
+                                height: 5.1rem;
+                            }
+
+                            strong {
+                                font-family: $font-title;
+                                font-style: normal;
+                                font-weight: 700;
+                                font-size: 2.2rem;
+                                line-height: 100%;
+                                color: $primary;
+                            }
+                        }
+                    }
+                }
+
+                @include responsive(600px) {
+                    overflow: scroll;
+
+                    &::-webkit-scrollbar {
+                        display: none;
+                    }
+
+                    div.niv-area {
+                        div.depoimento {
+                            max-width: 80vw;
+                            height: auto;
+                        }
+                    }
+                }
+            }
+
+            div.indicators {
+                width: 100%;
+                @include flex(row, center, center);
+                gap: 2rem;
+                margin-top: 4.3rem;
+
+                span {
+                    width: 1.6rem;
+                    height: 1.6rem;
+                    border-radius: 100%;
+                    background-color: $cinza-contra;
+
+                    &[active] {
+                        background-color: $primary;
+                    }
+                }
+            }
+        }
+    }
+
+    section.lancamento-professores {
+        padding-top: 12rem;
+        background-color: $white;
+
+        div.niv {
+            h2 {
+                font-family: $font-title;
+                font-style: normal;
+                font-weight: 700;
+                font-size: 4.5474rem;
+                line-height: 6.1rem;
+                color: $primary;
+
+                text-align: center;
+                margin-top: 1.9rem;
+                margin-bottom: 3.5rem;
+            }
+
+            p {
+                max-width: 68.1rem;
+                display: block;
+                margin: 0 auto;
+                font-size: 1.8rem;
+
+                text-align: center;
+            }
+
+            picture {
+                width: max-content;
+                display: block;
+                margin-top: 3.5rem;
+                margin-bottom: 3.5rem;
+                margin-left: auto;
+                margin-right: auto;
+            }
+
+            div.scroll {
+                @include flex(row, center, space-between);
+                div.professor {
+                    width: 38.7rem;
+                    height: 50.4rem;
+
+                    background-color: $primary;
+                    border-radius: 0.4rem;
+
+                    padding-bottom: 6rem;
+                    padding-left: 4rem;
+
+                    @include flex(row, flex-end, flex-start);
+
+                    strong {
+                        font-family: $font-title;
+                        font-style: normal;
+                        font-weight: 700;
+                        font-size: 3.3rem;
+                        line-height: 4.5rem;
+                        color: $white;
+                    }
+                }
+
+                @include responsive(600px) {
+                    flex-direction: column;
+                    gap: 2rem;
+                }
+            }
+        }
+    }
+}

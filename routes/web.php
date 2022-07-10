@@ -114,6 +114,7 @@ Route::middleware(['usuario_site'])->group(function () {
 
 Route::get('/', [\App\Http\Controllers\SiteController::class, 'index'])->name("site.index");
 Route::get('/sobre', [\App\Http\Controllers\SiteController::class, 'sobre'])->name("site.sobre");
+Route::get('/lancamento', [\App\Http\Controllers\SiteController::class, 'lancamento'])->name("site.lancamento");
 
 Route::get('/blog', [\App\Http\Controllers\SiteController::class, 'blogs'])->name("site.blog");
 Route::get('/blog/{blog}', [\App\Http\Controllers\SiteController::class, 'blog'])->name("site.blog_detalhe");

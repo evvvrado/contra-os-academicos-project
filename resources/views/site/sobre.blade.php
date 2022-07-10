@@ -105,9 +105,9 @@
                         <img src="{{ asset('site/assets/img/picture_membro1_sobre.png') }}" alt="Foto membro da equipe">
                     </picture>
 
-                    <strong>Beatriz Dias</strong>
+                    <strong>Lucas<br> Plaça</strong>
 
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. </p>
+                    {{-- <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. </p> --}}
 
                     <hr>
                 </div>
@@ -116,9 +116,9 @@
                         <img src="{{ asset('site/assets/img/picture_membro2_sobre.png') }}" alt="Foto membro da equipe">
                     </picture>
 
-                    <strong>Beatriz Dias</strong>
+                    <strong>Valéria Campelo</strong>
 
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. </p>
+                    {{-- <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. </p> --}}
 
                     <hr>
                 </div>
@@ -127,9 +127,9 @@
                         <img src="{{ asset('site/assets/img/picture_membro3_sobre.png') }}" alt="Foto membro da equipe">
                     </picture>
 
-                    <strong>Beatriz Dias</strong>
+                    <strong>Bruno Fontana</strong>
 
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. </p>
+                    {{-- <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. </p> --}}
 
                     <hr>
                 </div>
@@ -138,9 +138,9 @@
                         <img src="{{ asset('site/assets/img/picture_membro4_sobre.png') }}" alt="Foto membro da equipe">
                     </picture>
 
-                    <strong>Beatriz Dias</strong>
+                    <strong>Lázaro Macêdo</strong>
 
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. </p>
+                    {{-- <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. </p> --}}
 
                     <hr>
                 </div>
@@ -160,10 +160,10 @@
             </div>
 
             <div class="content-area">
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum pharetra varius est, at feugiat justo
-                    blandit ac. Duis semper libero a porttitor ullamcorper. Donec eget augue quis nisl auctor ultrices.
-                    Mauris sit amet finibus dolor. Nunc faucibus maximus sapien, ut accumsan lorem tempor eget. Sed ut ex
-                    euismod erat mollis venenatis.</p>
+                <p>
+                    Desde 2014 o Contra os Acadêmicos trabalha para divulgar a boa filosofia e incentivar a autoeducação.
+                    Apoiando nosso projeto, você assegura a conntinuidade do nosso trabalho.
+                </p>
 
                 <div class="clickable">
                     <a href="#">

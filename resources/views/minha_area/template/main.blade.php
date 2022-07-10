@@ -43,7 +43,7 @@ use App\Models\UsuarioSite;
                     </a>
 
                     <nav>
-                        <ul style="opacity: 0; pointer-events: none">
+                        <ul>
                             <li>
                                 <a href="javascript: void(0)" title="menu">
                                     <img src="{{ asset('site/assets/img/icon_hamburguer_header.svg') }}"
@@ -56,31 +56,36 @@ use App\Models\UsuarioSite;
                     <div>
 
 
-                        <div class="search-button" style="opacity: 0; pointer-events: none">
-                            <input type="text">
-
-                            <picture>
-                                <img src="{{ asset('site/assets/img/icon_search_header.svg') }}"
-                                    alt="Ícone de pesquisa">
-                            </picture>
-                        </div>
+                        @livewire('pesquisa-index')
 
                         <div class="socials">
-                            <a href="#"><i class="fa-brands fa-facebook"></i></a>
-                            <a href="#"><i class="fa-brands fa-twitter"></i></a>
-                            <a href="#"><i class="fa-brands fa-youtube"></i></a>
-                            <a href="#"><i class="fa-brands fa-soundcloud"></i></a>
+                            <a target="_blank" href="https://www.facebook.com/contraosacademicos/ "><i
+                                    class="fa-brands fa-facebook"></i></a>
+                            <a target="_blank" href="https://twitter.com/Contracademicos"><i
+                                    class="fa-brands fa-twitter"></i></a>
+                            <a target="_blank" href="https://www.youtube.com/contraosacademicos"><i
+                                    class="fa-brands fa-youtube"></i></a>
+                            <a target="_blank" href="https://www.instagram.com/contraosacademicos/"><i
+                                    class="fa-brands fa-instagram"></i></a>
+                            <a target="_blank" href="https://open.spotify.com/show/6GsLO1ybRUI53JgiYm5nTR"><i
+                                    class="fa-brands fa-spotify"></i></a>
 
                         </div>
 
                         <div class="buttons">
                             <a href="#" class="button">
-                                Assinar
+                                Assine
                             </a>
 
-                            <a href="{{ route('site.index') }}" class="button">
-                                Voltar p/ home
-                            </a>
+                            @if (session()->get('usuario_site'))
+                                <a href="{{ route('minha_area.index') }}" class="button">
+                                    Minha Área
+                                </a>
+                            @else
+                                <a href="{{ route('minha_area.index') }}" class="button">
+                                    Login
+                                </a>
+                            @endif
                         </div>
                     </div>
 
@@ -90,6 +95,21 @@ use App\Models\UsuarioSite;
                         <img src="{{ asset('site/assets/img/icon_user_header.svg') }}" alt="Ícone de usuário">
                     </a>
                 </div> --}}
+            </div>
+
+            <div fluid class="sub-menu">
+                <div class="niv">
+                    <nav>
+                        <ul>
+                            <li><a href="{{ route('site.blog') }}">BLOG</a></li>
+                            <li><a href="{{ route('site.revistas') }}">REVISTA</a></li>
+                            <li><a href="{{ route('site.listas') }}">LISTAS</a></li>
+                            <li><a href="https://livrariacontraosacademicos.com.br">LIVRARIA</a></li>
+                            <li><a href="{{ route('site.sobre') }}">PROJETO</a></li>
+                            <li><a href="{{ route('site.contato') }}">CONTATO</a></li>
+                        </ul>
+                    </nav>
+                </div>
             </div>
         </header>
 
@@ -115,14 +135,14 @@ use App\Models\UsuarioSite;
                             </li>
 
                             <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle arrow-none" href="{{ route('minha_area.sair') }}" id="topnav-dashboard"
-                                    role="button">
+                                <a class="nav-link dropdown-toggle arrow-none" href="{{ route('minha_area.sair') }}"
+                                    id="topnav-dashboard" role="button">
                                     <i class="bx bx-power-off me-2"></i><span key="t-dashboards">Sair</span>
                                 </a>
                             </li>
 
                         </ul>
-                        
+
                     </div>
                 </nav>
             </div>
@@ -158,12 +178,12 @@ use App\Models\UsuarioSite;
                                                 <h5 class="text-white">Bem-Vindo !</h5>
                                             </div>
                                         </div>
-                
+
                                     </div>
                                 </div>
                                 <div class="card-body pt-0">
                                     <div class="row">
-                
+
                                         <div class="col-sm-4">
                                             <div class="avatar-md profile-user-wid mb-4">
                                                 @php
@@ -173,16 +193,17 @@ use App\Models\UsuarioSite;
                                                     <img src="{{ asset($usuario_site->foto) }}" alt=""
                                                         class="img-thumbnail rounded-circle">
                                                 @else
-                                                    <img src="{{ asset('admin/imagens/usuarios/sem_foto.png') }}" alt=""
-                                                        class="img-thumbnail rounded-circle">
+                                                    <img src="{{ asset('admin/imagens/usuarios/sem_foto.png') }}"
+                                                        alt="" class="img-thumbnail rounded-circle">
                                                 @endif
                                             </div>
-                                            <h5 class="font-size-15 text-truncate">{{ session()->get('usuario_site')['nome'] }}</h5>
+                                            <h5 class="font-size-15 text-truncate">
+                                                {{ session()->get('usuario_site')['nome'] }}</h5>
                                         </div>
-                
+
                                         <div class="col-sm-8">
                                             <div class="pt-4">
-                
+
                                                 <div class="row">
                                                     <div class="col-6">
                                                         <h5 class="font-size-15">125</h5>
@@ -195,15 +216,15 @@ use App\Models\UsuarioSite;
                                                 </div>
                                                 <div class="mt-4">
                                                     <a href="{{ route('minha_area.perfil') }}"
-                                                        class="btn btn-primary waves-effect waves-light btn-sm text-white">Ver Perfil <i
-                                                            class="mdi mdi-arrow-right ms-1"></i></a>
+                                                        class="btn btn-primary waves-effect waves-light btn-sm text-white">Ver
+                                                        Perfil <i class="mdi mdi-arrow-right ms-1"></i></a>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                
+
                             <div class="card">
                                 <div class="card-body">
                                     <div class="mb-4 h4 card-title">Informações pessoais</div>
@@ -217,7 +238,7 @@ use App\Models\UsuarioSite;
                                                 <tr>
                                                     <th scope="row">Telefone :</th>
                                                     <td>
-                                                        @if($usuario_site->telefone)
+                                                        @if ($usuario_site->telefone)
                                                             {{ $usuario_site->telefone }}
                                                         @else
                                                             Não cadastrado
@@ -231,8 +252,8 @@ use App\Models\UsuarioSite;
                                                 <tr>
                                                     <th scope="row">Localização :</th>
                                                     <td>
-                                                        @if($usuario_site->cidade AND $usuario_site->uf)
-                                                        {{ $usuario_site->cidade }}, {{ $usuario_site->uf }}
+                                                        @if ($usuario_site->cidade and $usuario_site->uf)
+                                                            {{ $usuario_site->cidade }}, {{ $usuario_site->uf }}
                                                         @else
                                                             Não cadastrado
                                                         @endif
@@ -243,11 +264,11 @@ use App\Models\UsuarioSite;
                                     </div>
                                 </div>
                             </div>
-                
+
                             <div class="card">
                                 <div class="card-body">
                                     <h4 class="card-title mb-4">Notifications</h4>
-                
+
                                     <ul class="list-group" data-simplebar="init" style="max-height: 390px;">
                                         <div class="simplebar-wrapper" style="margin: 0px;">
                                             <div class="simplebar-height-auto-observer-wrapper">
@@ -255,23 +276,28 @@ use App\Models\UsuarioSite;
                                             </div>
                                             <div class="simplebar-mask">
                                                 <div class="simplebar-offset" style="right: -15px; bottom: 0px;">
-                                                    <div class="simplebar-content-wrapper" style="height: auto; overflow: hidden scroll;">
+                                                    <div class="simplebar-content-wrapper"
+                                                        style="height: auto; overflow: hidden scroll;">
                                                         <div class="simplebar-content" style="padding: 0px;">
                                                             <li class="list-group-item border-0">
                                                                 <div class="media">
                                                                     <div class="avatar-xs me-3">
-                                                                        <span class="avatar-title rounded-circle bg-light">
-                                                                            <img src="assets/images/companies/img-1.png" alt=""
-                                                                                height="18">
+                                                                        <span
+                                                                            class="avatar-title rounded-circle bg-light">
+                                                                            <img src="assets/images/companies/img-1.png"
+                                                                                alt="" height="18">
                                                                         </span>
                                                                     </div>
                                                                     <div class="media-body">
-                                                                        <h5 class="font-size-14">Donec vitae sapien ut</h5>
-                                                                        <p class="text-muted">If several languages coalesce, the grammar of
+                                                                        <h5 class="font-size-14">Donec vitae sapien ut
+                                                                        </h5>
+                                                                        <p class="text-muted">If several languages
+                                                                            coalesce, the grammar of
                                                                             the resulting language</p>
-                
+
                                                                         <div class="float-end">
-                                                                            <p class="text-muted mb-0"><i class="mdi mdi-account me-1"></i>
+                                                                            <p class="text-muted mb-0"><i
+                                                                                    class="mdi mdi-account me-1"></i>
                                                                                 Joseph</p>
                                                                         </div>
                                                                         <p class="text-muted mb-0">12 Mar, 2020</p>
@@ -281,18 +307,23 @@ use App\Models\UsuarioSite;
                                                             <li class="list-group-item border-0">
                                                                 <div class="media">
                                                                     <div class="avatar-xs me-3">
-                                                                        <span class="avatar-title rounded-circle bg-light">
-                                                                            <img src="assets/images/companies/img-2.png" alt=""
-                                                                                height="18">
+                                                                        <span
+                                                                            class="avatar-title rounded-circle bg-light">
+                                                                            <img src="assets/images/companies/img-2.png"
+                                                                                alt="" height="18">
                                                                         </span>
                                                                     </div>
                                                                     <div class="media-body">
-                                                                        <h5 class="font-size-14">Cras ultricies mi eu turpis</h5>
-                                                                        <p class="text-muted">To an English person, it will seem like
-                                                                            simplified English, as a skeptical cambridge</p>
-                
+                                                                        <h5 class="font-size-14">Cras ultricies mi eu
+                                                                            turpis</h5>
+                                                                        <p class="text-muted">To an English person, it
+                                                                            will seem like
+                                                                            simplified English, as a skeptical cambridge
+                                                                        </p>
+
                                                                         <div class="float-end">
-                                                                            <p class="text-muted mb-0"><i class="mdi mdi-account me-1"></i>
+                                                                            <p class="text-muted mb-0"><i
+                                                                                    class="mdi mdi-account me-1"></i>
                                                                                 Jerry</p>
                                                                         </div>
                                                                         <p class="text-muted mb-0">13 Mar, 2020</p>
@@ -302,18 +333,22 @@ use App\Models\UsuarioSite;
                                                             <li class="list-group-item border-0">
                                                                 <div class="media">
                                                                     <div class="avatar-xs me-3">
-                                                                        <span class="avatar-title rounded-circle bg-light">
-                                                                            <img src="assets/images/companies/img-3.png" alt=""
-                                                                                height="18">
+                                                                        <span
+                                                                            class="avatar-title rounded-circle bg-light">
+                                                                            <img src="assets/images/companies/img-3.png"
+                                                                                alt="" height="18">
                                                                         </span>
                                                                     </div>
                                                                     <div class="media-body">
-                                                                        <h5 class="font-size-14">Duis arcu tortor suscipit</h5>
-                                                                        <p class="text-muted">It va esser tam simplic quam occidental in
+                                                                        <h5 class="font-size-14">Duis arcu tortor
+                                                                            suscipit</h5>
+                                                                        <p class="text-muted">It va esser tam simplic
+                                                                            quam occidental in
                                                                             fact, it va esser occidental.</p>
-                
+
                                                                         <div class="float-end">
-                                                                            <p class="text-muted mb-0"><i class="mdi mdi-account me-1"></i>
+                                                                            <p class="text-muted mb-0"><i
+                                                                                    class="mdi mdi-account me-1"></i>
                                                                                 Calvin</p>
                                                                         </div>
                                                                         <p class="text-muted mb-0">14 Mar, 2020</p>
@@ -323,19 +358,23 @@ use App\Models\UsuarioSite;
                                                             <li class="list-group-item border-0">
                                                                 <div class="media">
                                                                     <div class="avatar-xs me-3">
-                                                                        <span class="avatar-title rounded-circle bg-light">
-                                                                            <img src="assets/images/companies/img-1.png" alt=""
-                                                                                height="18">
+                                                                        <span
+                                                                            class="avatar-title rounded-circle bg-light">
+                                                                            <img src="assets/images/companies/img-1.png"
+                                                                                alt="" height="18">
                                                                         </span>
                                                                     </div>
                                                                     <div class="media-body">
-                                                                        <h5 class="font-size-14">Donec vitae sapien ut</h5>
-                                                                        <p class="text-muted">If several languages coalesce, the grammar of
+                                                                        <h5 class="font-size-14">Donec vitae sapien ut
+                                                                        </h5>
+                                                                        <p class="text-muted">If several languages
+                                                                            coalesce, the grammar of
                                                                             the resulting language</p>
-                
+
                                                                         <div class="float-end">
                                                                             <p class="text-muted mb-0"><i
-                                                                                    class="mdi mdi-account me-1"></i> Joseph</p>
+                                                                                    class="mdi mdi-account me-1"></i>
+                                                                                Joseph</p>
                                                                         </div>
                                                                         <p class="text-muted mb-0">12 Mar, 2020</p>
                                                                     </div>
@@ -345,7 +384,8 @@ use App\Models\UsuarioSite;
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div class="simplebar-placeholder" style="width: auto; height: 493px;"></div>
+                                            <div class="simplebar-placeholder" style="width: auto; height: 493px;">
+                                            </div>
                                         </div>
                                         <div class="simplebar-track simplebar-horizontal" style="visibility: hidden;">
                                             <div class="simplebar-scrollbar"
@@ -353,20 +393,21 @@ use App\Models\UsuarioSite;
                                         </div>
                                         <div class="simplebar-track simplebar-vertical" style="visibility: visible;">
                                             <div class="simplebar-scrollbar"
-                                                style="height: 308px; transform: translate3d(0px, 0px, 0px); display: block;"></div>
+                                                style="height: 308px; transform: translate3d(0px, 0px, 0px); display: block;">
+                                            </div>
                                         </div>
                                     </ul>
                                 </div>
                             </div>
-                
-                
+
+
                         </div>
                         <div class="col-xl-8">
                             @yield('conteudo')
                         </div>
                     </div>
 
-                    
+
                     <!-- end row -->
 
                 </div> <!-- container-fluid -->
