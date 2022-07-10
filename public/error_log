@@ -1,0 +1,179 @@
+[12-May-2022 22:18:37 America/Fortaleza] PHP Warning:  require(/home4/cont5405/homolog.contraosacademicos.com.br/public/vendor/autoload.php): failed to open stream: No such file or directory in /home4/cont5405/homolog.contraosacademicos.com.br/public/index.php on line 34
+[12-May-2022 22:18:37 America/Fortaleza] PHP Fatal error:  require(): Failed opening required '/home4/cont5405/homolog.contraosacademicos.com.br/public/vendor/autoload.php' (include_path='.:/opt/cpanel/ea-php74/root/usr/share/pear') in /home4/cont5405/homolog.contraosacademicos.com.br/public/index.php on line 34
+[12-May-2022 22:18:39 America/Fortaleza] PHP Warning:  require(/home4/cont5405/homolog.contraosacademicos.com.br/public/vendor/autoload.php): failed to open stream: No such file or directory in /home4/cont5405/homolog.contraosacademicos.com.br/public/index.php on line 34
+[12-May-2022 22:18:39 America/Fortaleza] PHP Fatal error:  require(): Failed opening required '/home4/cont5405/homolog.contraosacademicos.com.br/public/vendor/autoload.php' (include_path='.:/opt/cpanel/ea-php74/root/usr/share/pear') in /home4/cont5405/homolog.contraosacademicos.com.br/public/index.php on line 34
+[12-May-2022 22:18:40 America/Fortaleza] PHP Warning:  require(/home4/cont5405/homolog.contraosacademicos.com.br/public/vendor/autoload.php): failed to open stream: No such file or directory in /home4/cont5405/homolog.contraosacademicos.com.br/public/index.php on line 34
+[12-May-2022 22:18:40 America/Fortaleza] PHP Fatal error:  require(): Failed opening required '/home4/cont5405/homolog.contraosacademicos.com.br/public/vendor/autoload.php' (include_path='.:/opt/cpanel/ea-php74/root/usr/share/pear') in /home4/cont5405/homolog.contraosacademicos.com.br/public/index.php on line 34
+[12-May-2022 22:18:42 America/Fortaleza] PHP Warning:  require(/home4/cont5405/homolog.contraosacademicos.com.br/public/vendor/autoload.php): failed to open stream: No such file or directory in /home4/cont5405/homolog.contraosacademicos.com.br/public/index.php on line 34
+[12-May-2022 22:18:42 America/Fortaleza] PHP Fatal error:  require(): Failed opening required '/home4/cont5405/homolog.contraosacademicos.com.br/public/vendor/autoload.php' (include_path='.:/opt/cpanel/ea-php74/root/usr/share/pear') in /home4/cont5405/homolog.contraosacademicos.com.br/public/index.php on line 34
+[12-May-2022 22:18:49 America/Fortaleza] PHP Warning:  require(/home4/cont5405/homolog.contraosacademicos.com.br/public/vendor/autoload.php): failed to open stream: No such file or directory in /home4/cont5405/homolog.contraosacademicos.com.br/public/index.php on line 34
+[12-May-2022 22:18:49 America/Fortaleza] PHP Fatal error:  require(): Failed opening required '/home4/cont5405/homolog.contraosacademicos.com.br/public/vendor/autoload.php' (include_path='.:/opt/cpanel/ea-php74/root/usr/share/pear') in /home4/cont5405/homolog.contraosacademicos.com.br/public/index.php on line 34
+[12-May-2022 22:18:52 America/Fortaleza] PHP Warning:  require(/home4/cont5405/homolog.contraosacademicos.com.br/public/vendor/autoload.php): failed to open stream: No such file or directory in /home4/cont5405/homolog.contraosacademicos.com.br/public/index.php on line 34
+[12-May-2022 22:18:52 America/Fortaleza] PHP Fatal error:  require(): Failed opening required '/home4/cont5405/homolog.contraosacademicos.com.br/public/vendor/autoload.php' (include_path='.:/opt/cpanel/ea-php74/root/usr/share/pear') in /home4/cont5405/homolog.contraosacademicos.com.br/public/index.php on line 34
+[12-May-2022 22:19:09 America/Fortaleza] PHP Warning:  require(/home4/cont5405/homolog.contraosacademicos.com.br/public/vendor/autoload.php): failed to open stream: No such file or directory in /home4/cont5405/homolog.contraosacademicos.com.br/public/index.php on line 34
+[12-May-2022 22:19:09 America/Fortaleza] PHP Fatal error:  require(): Failed opening required '/home4/cont5405/homolog.contraosacademicos.com.br/public/vendor/autoload.php' (include_path='.:/opt/cpanel/ea-php74/root/usr/share/pear') in /home4/cont5405/homolog.contraosacademicos.com.br/public/index.php on line 34
+[12-May-2022 22:19:28 America/Fortaleza] PHP Warning:  require(/home4/cont5405/homolog.contraosacademicos.com.br/public/vendor/autoload.php): failed to open stream: No such file or directory in /home4/cont5405/homolog.contraosacademicos.com.br/public/index.php on line 34
+[12-May-2022 22:19:28 America/Fortaleza] PHP Warning:  require(/home4/cont5405/homolog.contraosacademicos.com.br/public/vendor/autoload.php): failed to open stream: No such file or directory in /home4/cont5405/homolog.contraosacademicos.com.br/public/index.php on line 34
+[12-May-2022 22:19:28 America/Fortaleza] PHP Fatal error:  require(): Failed opening required '/home4/cont5405/homolog.contraosacademicos.com.br/public/vendor/autoload.php' (include_path='.:/opt/cpanel/ea-php73/root/usr/share/pear') in /home4/cont5405/homolog.contraosacademicos.com.br/public/index.php on line 34
+[12-May-2022 22:19:37 America/Fortaleza] PHP Warning:  require(/home4/cont5405/homolog.contraosacademicos.com.br/public/vendor/autoload.php): failed to open stream: No such file or directory in /home4/cont5405/homolog.contraosacademicos.com.br/public/index.php on line 34
+[12-May-2022 22:19:37 America/Fortaleza] PHP Fatal error:  require(): Failed opening required '/home4/cont5405/homolog.contraosacademicos.com.br/public/vendor/autoload.php' (include_path='.:/opt/cpanel/ea-php74/root/usr/share/pear') in /home4/cont5405/homolog.contraosacademicos.com.br/public/index.php on line 34
+[12-May-2022 22:19:44 America/Fortaleza] PHP Warning:  require(/home4/cont5405/homolog.contraosacademicos.com.br/public/vendor/autoload.php): failed to open stream: No such file or directory in /home4/cont5405/homolog.contraosacademicos.com.br/public/index.php on line 34
+[12-May-2022 22:19:44 America/Fortaleza] PHP Fatal error:  require(): Failed opening required '/home4/cont5405/homolog.contraosacademicos.com.br/public/vendor/autoload.php' (include_path='.:/opt/cpanel/ea-php74/root/usr/share/pear') in /home4/cont5405/homolog.contraosacademicos.com.br/public/index.php on line 34
+[12-May-2022 22:25:28 America/Fortaleza] PHP Warning:  require(/home4/cont5405/homolog.contraosacademicos.com.br/public/vendor/autoload.php): failed to open stream: No such file or directory in /home4/cont5405/homolog.contraosacademicos.com.br/public/index.php on line 34
+[12-May-2022 22:25:28 America/Fortaleza] PHP Fatal error:  require(): Failed opening required '/home4/cont5405/homolog.contraosacademicos.com.br/public/vendor/autoload.php' (include_path='.:/opt/cpanel/ea-php74/root/usr/share/pear') in /home4/cont5405/homolog.contraosacademicos.com.br/public/index.php on line 34
+[12-May-2022 22:25:36 America/Fortaleza] PHP Warning:  require(/home4/cont5405/homolog.contraosacademicos.com.br/public/vendor/autoload.php): failed to open stream: No such file or directory in /home4/cont5405/homolog.contraosacademicos.com.br/public/index.php on line 34
+[12-May-2022 22:25:36 America/Fortaleza] PHP Fatal error:  require(): Failed opening required '/home4/cont5405/homolog.contraosacademicos.com.br/public/vendor/autoload.php' (include_path='.:/opt/cpanel/ea-php74/root/usr/share/pear') in /home4/cont5405/homolog.contraosacademicos.com.br/public/index.php on line 34
+[25-May-2022 22:51:51 UTC] PHP Fatal error:  Uncaught ReflectionException: Class view does not exist in /home4/cont5405/homolog.contraosacademicos.com.br/vendor/laravel/framework/src/Illuminate/Container/Container.php:877
+Stack trace:
+#0 /home4/cont5405/homolog.contraosacademicos.com.br/vendor/laravel/framework/src/Illuminate/Container/Container.php(877): ReflectionClass->__construct('view')
+#1 /home4/cont5405/homolog.contraosacademicos.com.br/vendor/laravel/framework/src/Illuminate/Container/Container.php(758): Illuminate\Container\Container->build('view')
+#2 /home4/cont5405/homolog.contraosacademicos.com.br/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(851): Illuminate\Container\Container->resolve('view', Array, true)
+#3 /home4/cont5405/homolog.contraosacademicos.com.br/vendor/laravel/framework/src/Illuminate/Container/Container.php(694): Illuminate\Foundation\Application->resolve('view', Array)
+#4 /home4/cont5405/homolog.contraosacademicos.com.br/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(836): Illuminate\ in /home4/cont5405/homolog.contraosacademicos.com.br/vendor/laravel/framework/src/Illuminate/Container/Container.php on line 879
+[25-May-2022 22:51:54 UTC] PHP Fatal error:  Uncaught ReflectionException: Class view does not exist in /home4/cont5405/homolog.contraosacademicos.com.br/vendor/laravel/framework/src/Illuminate/Container/Container.php:877
+Stack trace:
+#0 /home4/cont5405/homolog.contraosacademicos.com.br/vendor/laravel/framework/src/Illuminate/Container/Container.php(877): ReflectionClass->__construct('view')
+#1 /home4/cont5405/homolog.contraosacademicos.com.br/vendor/laravel/framework/src/Illuminate/Container/Container.php(758): Illuminate\Container\Container->build('view')
+#2 /home4/cont5405/homolog.contraosacademicos.com.br/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(851): Illuminate\Container\Container->resolve('view', Array, true)
+#3 /home4/cont5405/homolog.contraosacademicos.com.br/vendor/laravel/framework/src/Illuminate/Container/Container.php(694): Illuminate\Foundation\Application->resolve('view', Array)
+#4 /home4/cont5405/homolog.contraosacademicos.com.br/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(836): Illuminate\ in /home4/cont5405/homolog.contraosacademicos.com.br/vendor/laravel/framework/src/Illuminate/Container/Container.php on line 879
+[25-May-2022 22:51:55 UTC] PHP Fatal error:  Uncaught ReflectionException: Class view does not exist in /home4/cont5405/homolog.contraosacademicos.com.br/vendor/laravel/framework/src/Illuminate/Container/Container.php:877
+Stack trace:
+#0 /home4/cont5405/homolog.contraosacademicos.com.br/vendor/laravel/framework/src/Illuminate/Container/Container.php(877): ReflectionClass->__construct('view')
+#1 /home4/cont5405/homolog.contraosacademicos.com.br/vendor/laravel/framework/src/Illuminate/Container/Container.php(758): Illuminate\Container\Container->build('view')
+#2 /home4/cont5405/homolog.contraosacademicos.com.br/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(851): Illuminate\Container\Container->resolve('view', Array, true)
+#3 /home4/cont5405/homolog.contraosacademicos.com.br/vendor/laravel/framework/src/Illuminate/Container/Container.php(694): Illuminate\Foundation\Application->resolve('view', Array)
+#4 /home4/cont5405/homolog.contraosacademicos.com.br/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(836): Illuminate\ in /home4/cont5405/homolog.contraosacademicos.com.br/vendor/laravel/framework/src/Illuminate/Container/Container.php on line 879
+[25-May-2022 22:52:05 UTC] PHP Fatal error:  Uncaught ReflectionException: Class view does not exist in /home4/cont5405/homolog.contraosacademicos.com.br/vendor/laravel/framework/src/Illuminate/Container/Container.php:877
+Stack trace:
+#0 /home4/cont5405/homolog.contraosacademicos.com.br/vendor/laravel/framework/src/Illuminate/Container/Container.php(877): ReflectionClass->__construct('view')
+#1 /home4/cont5405/homolog.contraosacademicos.com.br/vendor/laravel/framework/src/Illuminate/Container/Container.php(758): Illuminate\Container\Container->build('view')
+#2 /home4/cont5405/homolog.contraosacademicos.com.br/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(851): Illuminate\Container\Container->resolve('view', Array, true)
+#3 /home4/cont5405/homolog.contraosacademicos.com.br/vendor/laravel/framework/src/Illuminate/Container/Container.php(694): Illuminate\Foundation\Application->resolve('view', Array)
+#4 /home4/cont5405/homolog.contraosacademicos.com.br/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(836): Illuminate\ in /home4/cont5405/homolog.contraosacademicos.com.br/vendor/laravel/framework/src/Illuminate/Container/Container.php on line 879
+[25-May-2022 22:53:47 UTC] PHP Fatal error:  Uncaught ReflectionException: Class view does not exist in /home4/cont5405/homolog.contraosacademicos.com.br/vendor/laravel/framework/src/Illuminate/Container/Container.php:877
+Stack trace:
+#0 /home4/cont5405/homolog.contraosacademicos.com.br/vendor/laravel/framework/src/Illuminate/Container/Container.php(877): ReflectionClass->__construct('view')
+#1 /home4/cont5405/homolog.contraosacademicos.com.br/vendor/laravel/framework/src/Illuminate/Container/Container.php(758): Illuminate\Container\Container->build('view')
+#2 /home4/cont5405/homolog.contraosacademicos.com.br/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(851): Illuminate\Container\Container->resolve('view', Array, true)
+#3 /home4/cont5405/homolog.contraosacademicos.com.br/vendor/laravel/framework/src/Illuminate/Container/Container.php(694): Illuminate\Foundation\Application->resolve('view', Array)
+#4 /home4/cont5405/homolog.contraosacademicos.com.br/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(836): Illuminate\ in /home4/cont5405/homolog.contraosacademicos.com.br/vendor/laravel/framework/src/Illuminate/Container/Container.php on line 879
+[25-May-2022 22:53:48 UTC] PHP Fatal error:  Uncaught ReflectionException: Class view does not exist in /home4/cont5405/homolog.contraosacademicos.com.br/vendor/laravel/framework/src/Illuminate/Container/Container.php:877
+Stack trace:
+#0 /home4/cont5405/homolog.contraosacademicos.com.br/vendor/laravel/framework/src/Illuminate/Container/Container.php(877): ReflectionClass->__construct('view')
+#1 /home4/cont5405/homolog.contraosacademicos.com.br/vendor/laravel/framework/src/Illuminate/Container/Container.php(758): Illuminate\Container\Container->build('view')
+#2 /home4/cont5405/homolog.contraosacademicos.com.br/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(851): Illuminate\Container\Container->resolve('view', Array, true)
+#3 /home4/cont5405/homolog.contraosacademicos.com.br/vendor/laravel/framework/src/Illuminate/Container/Container.php(694): Illuminate\Foundation\Application->resolve('view', Array)
+#4 /home4/cont5405/homolog.contraosacademicos.com.br/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(836): Illuminate\ in /home4/cont5405/homolog.contraosacademicos.com.br/vendor/laravel/framework/src/Illuminate/Container/Container.php on line 879
+[25-May-2022 22:54:17 UTC] PHP Fatal error:  Uncaught ReflectionException: Class view does not exist in /home4/cont5405/homolog.contraosacademicos.com.br/vendor/laravel/framework/src/Illuminate/Container/Container.php:877
+Stack trace:
+#0 /home4/cont5405/homolog.contraosacademicos.com.br/vendor/laravel/framework/src/Illuminate/Container/Container.php(877): ReflectionClass->__construct('view')
+#1 /home4/cont5405/homolog.contraosacademicos.com.br/vendor/laravel/framework/src/Illuminate/Container/Container.php(758): Illuminate\Container\Container->build('view')
+#2 /home4/cont5405/homolog.contraosacademicos.com.br/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(851): Illuminate\Container\Container->resolve('view', Array, true)
+#3 /home4/cont5405/homolog.contraosacademicos.com.br/vendor/laravel/framework/src/Illuminate/Container/Container.php(694): Illuminate\Foundation\Application->resolve('view', Array)
+#4 /home4/cont5405/homolog.contraosacademicos.com.br/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(836): Illuminate\ in /home4/cont5405/homolog.contraosacademicos.com.br/vendor/laravel/framework/src/Illuminate/Container/Container.php on line 879
+[25-May-2022 22:54:25 UTC] PHP Fatal error:  Uncaught ReflectionException: Class view does not exist in /home4/cont5405/homolog.contraosacademicos.com.br/vendor/laravel/framework/src/Illuminate/Container/Container.php:877
+Stack trace:
+#0 /home4/cont5405/homolog.contraosacademicos.com.br/vendor/laravel/framework/src/Illuminate/Container/Container.php(877): ReflectionClass->__construct('view')
+#1 /home4/cont5405/homolog.contraosacademicos.com.br/vendor/laravel/framework/src/Illuminate/Container/Container.php(758): Illuminate\Container\Container->build('view')
+#2 /home4/cont5405/homolog.contraosacademicos.com.br/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(851): Illuminate\Container\Container->resolve('view', Array, true)
+#3 /home4/cont5405/homolog.contraosacademicos.com.br/vendor/laravel/framework/src/Illuminate/Container/Container.php(694): Illuminate\Foundation\Application->resolve('view', Array)
+#4 /home4/cont5405/homolog.contraosacademicos.com.br/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(836): Illuminate\ in /home4/cont5405/homolog.contraosacademicos.com.br/vendor/laravel/framework/src/Illuminate/Container/Container.php on line 879
+[25-May-2022 22:55:58 UTC] PHP Fatal error:  Uncaught ReflectionException: Class view does not exist in /home4/cont5405/homolog.contraosacademicos.com.br/vendor/laravel/framework/src/Illuminate/Container/Container.php:877
+Stack trace:
+#0 /home4/cont5405/homolog.contraosacademicos.com.br/vendor/laravel/framework/src/Illuminate/Container/Container.php(877): ReflectionClass->__construct('view')
+#1 /home4/cont5405/homolog.contraosacademicos.com.br/vendor/laravel/framework/src/Illuminate/Container/Container.php(758): Illuminate\Container\Container->build('view')
+#2 /home4/cont5405/homolog.contraosacademicos.com.br/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(851): Illuminate\Container\Container->resolve('view', Array, true)
+#3 /home4/cont5405/homolog.contraosacademicos.com.br/vendor/laravel/framework/src/Illuminate/Container/Container.php(694): Illuminate\Foundation\Application->resolve('view', Array)
+#4 /home4/cont5405/homolog.contraosacademicos.com.br/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(836): Illuminate\ in /home4/cont5405/homolog.contraosacademicos.com.br/vendor/laravel/framework/src/Illuminate/Container/Container.php on line 879
+[25-May-2022 22:57:44 UTC] PHP Fatal error:  Uncaught ReflectionException: Class view does not exist in /home4/cont5405/homolog.contraosacademicos.com.br/vendor/laravel/framework/src/Illuminate/Container/Container.php:877
+Stack trace:
+#0 /home4/cont5405/homolog.contraosacademicos.com.br/vendor/laravel/framework/src/Illuminate/Container/Container.php(877): ReflectionClass->__construct('view')
+#1 /home4/cont5405/homolog.contraosacademicos.com.br/vendor/laravel/framework/src/Illuminate/Container/Container.php(758): Illuminate\Container\Container->build('view')
+#2 /home4/cont5405/homolog.contraosacademicos.com.br/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(851): Illuminate\Container\Container->resolve('view', Array, true)
+#3 /home4/cont5405/homolog.contraosacademicos.com.br/vendor/laravel/framework/src/Illuminate/Container/Container.php(694): Illuminate\Foundation\Application->resolve('view', Array)
+#4 /home4/cont5405/homolog.contraosacademicos.com.br/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(836): Illuminate\ in /home4/cont5405/homolog.contraosacademicos.com.br/vendor/laravel/framework/src/Illuminate/Container/Container.php on line 879
+[25-May-2022 22:59:02 UTC] PHP Fatal error:  Uncaught ReflectionException: Class view does not exist in /home4/cont5405/homolog.contraosacademicos.com.br/vendor/laravel/framework/src/Illuminate/Container/Container.php:877
+Stack trace:
+#0 /home4/cont5405/homolog.contraosacademicos.com.br/vendor/laravel/framework/src/Illuminate/Container/Container.php(877): ReflectionClass->__construct('view')
+#1 /home4/cont5405/homolog.contraosacademicos.com.br/vendor/laravel/framework/src/Illuminate/Container/Container.php(758): Illuminate\Container\Container->build('view')
+#2 /home4/cont5405/homolog.contraosacademicos.com.br/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(851): Illuminate\Container\Container->resolve('view', Array, true)
+#3 /home4/cont5405/homolog.contraosacademicos.com.br/vendor/laravel/framework/src/Illuminate/Container/Container.php(694): Illuminate\Foundation\Application->resolve('view', Array)
+#4 /home4/cont5405/homolog.contraosacademicos.com.br/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(836): Illuminate\ in /home4/cont5405/homolog.contraosacademicos.com.br/vendor/laravel/framework/src/Illuminate/Container/Container.php on line 879
+[25-May-2022 22:59:03 UTC] PHP Fatal error:  Uncaught ReflectionException: Class view does not exist in /home4/cont5405/homolog.contraosacademicos.com.br/vendor/laravel/framework/src/Illuminate/Container/Container.php:877
+Stack trace:
+#0 /home4/cont5405/homolog.contraosacademicos.com.br/vendor/laravel/framework/src/Illuminate/Container/Container.php(877): ReflectionClass->__construct('view')
+#1 /home4/cont5405/homolog.contraosacademicos.com.br/vendor/laravel/framework/src/Illuminate/Container/Container.php(758): Illuminate\Container\Container->build('view')
+#2 /home4/cont5405/homolog.contraosacademicos.com.br/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(851): Illuminate\Container\Container->resolve('view', Array, true)
+#3 /home4/cont5405/homolog.contraosacademicos.com.br/vendor/laravel/framework/src/Illuminate/Container/Container.php(694): Illuminate\Foundation\Application->resolve('view', Array)
+#4 /home4/cont5405/homolog.contraosacademicos.com.br/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(836): Illuminate\ in /home4/cont5405/homolog.contraosacademicos.com.br/vendor/laravel/framework/src/Illuminate/Container/Container.php on line 879
+[25-May-2022 22:59:07 UTC] PHP Fatal error:  Uncaught ReflectionException: Class view does not exist in /home4/cont5405/homolog.contraosacademicos.com.br/vendor/laravel/framework/src/Illuminate/Container/Container.php:877
+Stack trace:
+#0 /home4/cont5405/homolog.contraosacademicos.com.br/vendor/laravel/framework/src/Illuminate/Container/Container.php(877): ReflectionClass->__construct('view')
+#1 /home4/cont5405/homolog.contraosacademicos.com.br/vendor/laravel/framework/src/Illuminate/Container/Container.php(758): Illuminate\Container\Container->build('view')
+#2 /home4/cont5405/homolog.contraosacademicos.com.br/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(851): Illuminate\Container\Container->resolve('view', Array, true)
+#3 /home4/cont5405/homolog.contraosacademicos.com.br/vendor/laravel/framework/src/Illuminate/Container/Container.php(694): Illuminate\Foundation\Application->resolve('view', Array)
+#4 /home4/cont5405/homolog.contraosacademicos.com.br/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(836): Illuminate\ in /home4/cont5405/homolog.contraosacademicos.com.br/vendor/laravel/framework/src/Illuminate/Container/Container.php on line 879
+[25-May-2022 22:59:09 UTC] PHP Fatal error:  Uncaught ReflectionException: Class view does not exist in /home4/cont5405/homolog.contraosacademicos.com.br/vendor/laravel/framework/src/Illuminate/Container/Container.php:877
+Stack trace:
+#0 /home4/cont5405/homolog.contraosacademicos.com.br/vendor/laravel/framework/src/Illuminate/Container/Container.php(877): ReflectionClass->__construct('view')
+#1 /home4/cont5405/homolog.contraosacademicos.com.br/vendor/laravel/framework/src/Illuminate/Container/Container.php(758): Illuminate\Container\Container->build('view')
+#2 /home4/cont5405/homolog.contraosacademicos.com.br/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(851): Illuminate\Container\Container->resolve('view', Array, true)
+#3 /home4/cont5405/homolog.contraosacademicos.com.br/vendor/laravel/framework/src/Illuminate/Container/Container.php(694): Illuminate\Foundation\Application->resolve('view', Array)
+#4 /home4/cont5405/homolog.contraosacademicos.com.br/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(836): Illuminate\ in /home4/cont5405/homolog.contraosacademicos.com.br/vendor/laravel/framework/src/Illuminate/Container/Container.php on line 879
+[25-May-2022 22:59:18 UTC] PHP Fatal error:  Uncaught ReflectionException: Class view does not exist in /home4/cont5405/homolog.contraosacademicos.com.br/vendor/laravel/framework/src/Illuminate/Container/Container.php:877
+Stack trace:
+#0 /home4/cont5405/homolog.contraosacademicos.com.br/vendor/laravel/framework/src/Illuminate/Container/Container.php(877): ReflectionClass->__construct('view')
+#1 /home4/cont5405/homolog.contraosacademicos.com.br/vendor/laravel/framework/src/Illuminate/Container/Container.php(758): Illuminate\Container\Container->build('view')
+#2 /home4/cont5405/homolog.contraosacademicos.com.br/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(851): Illuminate\Container\Container->resolve('view', Array, true)
+#3 /home4/cont5405/homolog.contraosacademicos.com.br/vendor/laravel/framework/src/Illuminate/Container/Container.php(694): Illuminate\Foundation\Application->resolve('view', Array)
+#4 /home4/cont5405/homolog.contraosacademicos.com.br/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(836): Illuminate\ in /home4/cont5405/homolog.contraosacademicos.com.br/vendor/laravel/framework/src/Illuminate/Container/Container.php on line 879
+[25-May-2022 23:00:08 UTC] PHP Fatal error:  Uncaught ReflectionException: Class view does not exist in /home4/cont5405/homolog.contraosacademicos.com.br/vendor/laravel/framework/src/Illuminate/Container/Container.php:877
+Stack trace:
+#0 /home4/cont5405/homolog.contraosacademicos.com.br/vendor/laravel/framework/src/Illuminate/Container/Container.php(877): ReflectionClass->__construct('view')
+#1 /home4/cont5405/homolog.contraosacademicos.com.br/vendor/laravel/framework/src/Illuminate/Container/Container.php(758): Illuminate\Container\Container->build('view')
+#2 /home4/cont5405/homolog.contraosacademicos.com.br/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(851): Illuminate\Container\Container->resolve('view', Array, true)
+#3 /home4/cont5405/homolog.contraosacademicos.com.br/vendor/laravel/framework/src/Illuminate/Container/Container.php(694): Illuminate\Foundation\Application->resolve('view', Array)
+#4 /home4/cont5405/homolog.contraosacademicos.com.br/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(836): Illuminate\ in /home4/cont5405/homolog.contraosacademicos.com.br/vendor/laravel/framework/src/Illuminate/Container/Container.php on line 879
+[25-May-2022 23:00:41 UTC] PHP Fatal error:  Uncaught ReflectionException: Class view does not exist in /home4/cont5405/homolog.contraosacademicos.com.br/vendor/laravel/framework/src/Illuminate/Container/Container.php:877
+Stack trace:
+#0 /home4/cont5405/homolog.contraosacademicos.com.br/vendor/laravel/framework/src/Illuminate/Container/Container.php(877): ReflectionClass->__construct('view')
+#1 /home4/cont5405/homolog.contraosacademicos.com.br/vendor/laravel/framework/src/Illuminate/Container/Container.php(758): Illuminate\Container\Container->build('view')
+#2 /home4/cont5405/homolog.contraosacademicos.com.br/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(851): Illuminate\Container\Container->resolve('view', Array, true)
+#3 /home4/cont5405/homolog.contraosacademicos.com.br/vendor/laravel/framework/src/Illuminate/Container/Container.php(694): Illuminate\Foundation\Application->resolve('view', Array)
+#4 /home4/cont5405/homolog.contraosacademicos.com.br/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(836): Illuminate\ in /home4/cont5405/homolog.contraosacademicos.com.br/vendor/laravel/framework/src/Illuminate/Container/Container.php on line 879
+[25-May-2022 23:01:07 UTC] PHP Fatal error:  Uncaught ReflectionException: Class view does not exist in /home4/cont5405/homolog.contraosacademicos.com.br/vendor/laravel/framework/src/Illuminate/Container/Container.php:877
+Stack trace:
+#0 /home4/cont5405/homolog.contraosacademicos.com.br/vendor/laravel/framework/src/Illuminate/Container/Container.php(877): ReflectionClass->__construct('view')
+#1 /home4/cont5405/homolog.contraosacademicos.com.br/vendor/laravel/framework/src/Illuminate/Container/Container.php(758): Illuminate\Container\Container->build('view')
+#2 /home4/cont5405/homolog.contraosacademicos.com.br/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(851): Illuminate\Container\Container->resolve('view', Array, true)
+#3 /home4/cont5405/homolog.contraosacademicos.com.br/vendor/laravel/framework/src/Illuminate/Container/Container.php(694): Illuminate\Foundation\Application->resolve('view', Array)
+#4 /home4/cont5405/homolog.contraosacademicos.com.br/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(836): Illuminate\ in /home4/cont5405/homolog.contraosacademicos.com.br/vendor/laravel/framework/src/Illuminate/Container/Container.php on line 879
+[25-May-2022 23:01:46 UTC] PHP Fatal error:  Uncaught ReflectionException: Class view does not exist in /home4/cont5405/homolog.contraosacademicos.com.br/vendor/laravel/framework/src/Illuminate/Container/Container.php:877
+Stack trace:
+#0 /home4/cont5405/homolog.contraosacademicos.com.br/vendor/laravel/framework/src/Illuminate/Container/Container.php(877): ReflectionClass->__construct('view')
+#1 /home4/cont5405/homolog.contraosacademicos.com.br/vendor/laravel/framework/src/Illuminate/Container/Container.php(758): Illuminate\Container\Container->build('view')
+#2 /home4/cont5405/homolog.contraosacademicos.com.br/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(851): Illuminate\Container\Container->resolve('view', Array, true)
+#3 /home4/cont5405/homolog.contraosacademicos.com.br/vendor/laravel/framework/src/Illuminate/Container/Container.php(694): Illuminate\Foundation\Application->resolve('view', Array)
+#4 /home4/cont5405/homolog.contraosacademicos.com.br/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(836): Illuminate\ in /home4/cont5405/homolog.contraosacademicos.com.br/vendor/laravel/framework/src/Illuminate/Container/Container.php on line 879
+[25-May-2022 23:02:35 UTC] PHP Fatal error:  Uncaught ReflectionException: Class view does not exist in /home4/cont5405/homolog.contraosacademicos.com.br/vendor/laravel/framework/src/Illuminate/Container/Container.php:877
+Stack trace:
+#0 /home4/cont5405/homolog.contraosacademicos.com.br/vendor/laravel/framework/src/Illuminate/Container/Container.php(877): ReflectionClass->__construct('view')
+#1 /home4/cont5405/homolog.contraosacademicos.com.br/vendor/laravel/framework/src/Illuminate/Container/Container.php(758): Illuminate\Container\Container->build('view')
+#2 /home4/cont5405/homolog.contraosacademicos.com.br/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(851): Illuminate\Container\Container->resolve('view', Array, true)
+#3 /home4/cont5405/homolog.contraosacademicos.com.br/vendor/laravel/framework/src/Illuminate/Container/Container.php(694): Illuminate\Foundation\Application->resolve('view', Array)
+#4 /home4/cont5405/homolog.contraosacademicos.com.br/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(836): Illuminate\ in /home4/cont5405/homolog.contraosacademicos.com.br/vendor/laravel/framework/src/Illuminate/Container/Container.php on line 879
+[25-May-2022 23:03:22 UTC] PHP Fatal error:  Uncaught ReflectionException: Class view does not exist in /home4/cont5405/homolog.contraosacademicos.com.br/vendor/laravel/framework/src/Illuminate/Container/Container.php:877
+Stack trace:
+#0 /home4/cont5405/homolog.contraosacademicos.com.br/vendor/laravel/framework/src/Illuminate/Container/Container.php(877): ReflectionClass->__construct('view')
+#1 /home4/cont5405/homolog.contraosacademicos.com.br/vendor/laravel/framework/src/Illuminate/Container/Container.php(758): Illuminate\Container\Container->build('view')
+#2 /home4/cont5405/homolog.contraosacademicos.com.br/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(851): Illuminate\Container\Container->resolve('view', Array, true)
+#3 /home4/cont5405/homolog.contraosacademicos.com.br/vendor/laravel/framework/src/Illuminate/Container/Container.php(694): Illuminate\Foundation\Application->resolve('view', Array)
+#4 /home4/cont5405/homolog.contraosacademicos.com.br/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(836): Illuminate\ in /home4/cont5405/homolog.contraosacademicos.com.br/vendor/laravel/framework/src/Illuminate/Container/Container.php on line 879
+[25-May-2022 23:03:31 UTC] PHP Fatal error:  Uncaught ReflectionException: Class view does not exist in /home4/cont5405/homolog.contraosacademicos.com.br/vendor/laravel/framework/src/Illuminate/Container/Container.php:877
+Stack trace:
+#0 /home4/cont5405/homolog.contraosacademicos.com.br/vendor/laravel/framework/src/Illuminate/Container/Container.php(877): ReflectionClass->__construct('view')
+#1 /home4/cont5405/homolog.contraosacademicos.com.br/vendor/laravel/framework/src/Illuminate/Container/Container.php(758): Illuminate\Container\Container->build('view')
+#2 /home4/cont5405/homolog.contraosacademicos.com.br/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(851): Illuminate\Container\Container->resolve('view', Array, true)
+#3 /home4/cont5405/homolog.contraosacademicos.com.br/vendor/laravel/framework/src/Illuminate/Container/Container.php(694): Illuminate\Foundation\Application->resolve('view', Array)
+#4 /home4/cont5405/homolog.contraosacademicos.com.br/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(836): Illuminate\ in /home4/cont5405/homolog.contraosacademicos.com.br/vendor/laravel/framework/src/Illuminate/Container/Container.php on line 879
