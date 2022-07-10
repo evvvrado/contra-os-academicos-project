@@ -4233,37 +4233,32 @@ html div[fluid] .niv {
     padding: 0 15px;
 }
 
-body.minha-area header div[fluid] div.user-circle,
-body.minha-area header div[fluid] div.niv > div div.search-button picture {
-    display: flex;
-    align-items: center;
-    justify-content: center;
+body.minha-area header .button:is(a, button) {
+    --width: 195px;
+    --height: 42px;
+    --font-size: 20px;
+    --font-color: #fff;
+    --background-color: #5b2222;
+    background-color: var(--background-color);
+    border-radius: 4px;
+    font-family: "Palatino Linotype", sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 100%;
+    transition: 0.32s;
+    height: var(--height);
+    width: var(--width);
+    font-size: var(--font-size);
+    color: var(--font-color);
 }
-:root {
-    --black: #000;
-    --white: #fff;
-    --blue: #007bff;
-    --indigo: #6610f2;
-    --purple: #6f42c1;
-    --pink: #e83e8c;
-    --red: #dc3545;
-    --orange: #fd7e14;
-    --yellow: #ffc107;
-    --green: #28a745;
-    --teal: #20c997;
-    --cyan: #17a2b8;
-    --white: #fff;
-    --grey: #6c757d;
-    --grey-dark: #343a40;
-    --success: #28a745;
-    --info: #17a2b8;
-    --warning: #ffc107;
-    --danger: #dc3545;
-    --light: #f8f9fa;
-    --dark: #343a40;
-    --muted: #616161;
-    --hyp8-dark: #202020;
-    --opacity-bg: rgba(0, 0, 0, 0.74);
+body.minha-area header .button:is(a, button):hover,
+body.minha-area header .button:is(a, button):focus {
+    background: var(--font-color);
+    border: solid 2px var(--background-color);
+    color: var(--background-color);
+}
+body.minha-area header .button:is(a, button):active {
+    border: 2px #716f6f solid;
 }
 body.minha-area header {
     width: 100%;
@@ -4272,50 +4267,6 @@ body.minha-area header {
     left: 0;
     z-index: 6;
     transition: 0.3s;
-    /** @include responsive(1400px) {
-	}
-	 @include responsive(1200px) {
-	}
-	 @include responsive(992px) {
-	}
-	 @include responsive(730px) {
-	}
-	 @include responsive(600px) {
-	}
-	 **/
-    /** @include responsive(1400px) {
-	}
-	 @include responsive(1200px) {
-	}
-	 @include responsive(992px) {
-	}
-	 @include responsive(730px) {
-	}
-	 @include responsive(600px) {
-	}
-	 **/
-    /** @include responsive(1400px) {
-	}
-	 @include responsive(1200px) {
-	}
-	 @include responsive(992px) {
-	}
-	 @include responsive(730px) {
-	}
-	 @include responsive(600px) {
-	}
-	 **/
-    /** @include responsive(1400px) {
-	}
-	 @include responsive(1200px) {
-	}
-	 @include responsive(992px) {
-	}
-	 @include responsive(730px) {
-	}
-	 @include responsive(600px) {
-	}
-	 **/
 }
 body.minha-area header div[fluid] {
     background-color: #fff;
@@ -4323,50 +4274,22 @@ body.minha-area header div[fluid] {
     z-index: 2;
     transition: 0.32s;
 }
-body.minha-area header div[fluid] div.user-circle {
-    position: absolute;
-    right: 3.1rem;
-    cursor: pointer;
-    top: 0;
-    bottom: 0;
-    margin: auto 0;
-    height: 4.4rem;
-    width: 4.4rem;
-    background: #eaeaea;
-    border-radius: 4.4rem;
-    transition: 0.32s;
-    user-select: none;
-}
-body.minha-area header div[fluid] div.user-circle img {
-    transition: 0.32s;
-}
-body.minha-area header div[fluid] div.user-circle:hover,
-body.minha-area header div[fluid] div.user-circle:focus {
-    background-color: #5b2222;
-}
-body.minha-area header div[fluid] div.user-circle:hover img,
-body.minha-area header div[fluid] div.user-circle:focus img {
-    filter: brightness(100);
-}
-body.minha-area header div[fluid] div.user-circle:active {
-    background-color: #a73535 a9;
-}
 body.minha-area header div[fluid] div.niv {
     display: flex;
     align-items: center;
     justify-content: flex-start;
     flex-direction: row;
-    padding-right: 2.8rem;
-    padding-left: 2.8rem;
+    padding-right: 28px;
+    padding-left: 28px;
 }
-body.minha-area header div[fluid] div.niv a.logo-header img {
+body.minha-area header div[fluid] div.niv a.logo-body.minha-area header img {
     transition: 0.32s;
 }
 body.minha-area header div[fluid] div.niv nav {
     width: 100%;
-    max-width: 14.7rem;
+    max-width: 147px;
     margin-right: auto;
-    margin-left: 11.5rem;
+    margin-left: 115px;
     position: relative;
     top: 0;
     transition: 0.32s;
@@ -4376,11 +4299,11 @@ body.minha-area header div[fluid] div.niv nav ul {
     align-items: center;
     justify-content: flex-start;
     flex-direction: row;
-    gap: 1.6rem;
+    gap: 16px;
 }
 body.minha-area header div[fluid] div.niv nav ul li a[title="menu"] {
     display: block;
-    padding: 2.4rem;
+    padding: 24px;
     transition: 0.32s;
 }
 body.minha-area header div[fluid] div.niv nav ul li a[title="menu"] img {
@@ -4394,46 +4317,12 @@ body.minha-area header div[fluid] div.niv nav ul li a[title="menu"]:focus img {
 body.minha-area header div[fluid] div.niv nav ul li a[title="menu"]:active {
     transform: scale(0);
 }
-body.minha-area header div[fluid] div.niv nav ul li a:not(a[title="menu"]) {
-    color: #716f6f;
-    font-family: "
-	Open Sans", sans-serif;
-    font-weight: 700;
-    font-size: 1.6rem;
-    line-height: 2.2rem;
-    text-decoration-line: underline;
-    transition: 0.32s;
-    z-index: 1;
-    position: relative;
-}
-body.minha-area header div[fluid] div.niv nav ul li a:not(a[title="menu"])::before {
-    height: 0.2rem;
-    width: 80%;
-    background-color: #5b2222;
-    transition: 0.32s ease-in-out;
-    position: absolute;
-    content: "
-	";
-    transform: scaleX(0);
-    bottom: -1rem;
-    z-index: -1;
-    padding-right: 0;
-    padding-left: 0;
-}
-body.minha-area header div[fluid] div.niv nav ul li a:not(a[title="menu"]):hover,
-body.minha-area header div[fluid] div.niv nav ul li a:not(a[title="menu"]):focus {
-    color: #fff;
-}
-body.minha-area header div[fluid] div.niv nav ul li a:not(a[title="menu"]):hover::before,
-body.minha-area header div[fluid] div.niv nav ul li a:not(a[title="menu"]):focus::before {
-    transform: scaleX(1);
-}
 body.minha-area header div[fluid] div.niv > div {
     display: flex;
     align-items: center;
     justify-content: flex-end;
     flex-direction: row;
-    gap: 3.3rem;
+    gap: 33px;
     position: relative;
     top: 0;
     transition: 0.32s;
@@ -4446,31 +4335,28 @@ body.minha-area header div[fluid] div.niv > div div.search-button {
     flex-direction: row;
 }
 body.minha-area header div[fluid] div.niv > div div.search-button input {
-    margin-right: -1rem;
+    margin-right: -10px;
     z-index: 1;
     background-color: #eaeaea;
-    height: 3.8rem;
-    border-radius: 5.5rem;
-    font-size: 1.6rem;
+    height: 28px;
+    border-radius: 15px 0 0 15px;
+    font-size: 16px;
     transform: scaleX(0);
     transform-origin: right;
     transition: 0.32s;
-    padding: 0 2rem;
-    padding-right: 5rem;
-}
-body.minha-area header div[fluid] div.niv > div div.search-button input[open] {
-    transform: scaleX(1);
+    padding: 0 20px;
 }
 body.minha-area header div[fluid] div.niv > div div.search-button picture {
-    height: 3.2rem;
-    width: 3.2rem;
+    height: 32px;
+    width: 32px;
     z-index: 2;
     background-color: #eaeaea;
     border-radius: 100%;
-    position: relative;
-    left: -3rem;
     cursor: pointer;
     transition: 0.32s;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
     user-select: none;
 }
 body.minha-area header div[fluid] div.niv > div div.search-button picture:hover,
@@ -4482,7 +4368,73 @@ body.minha-area header div[fluid] div.niv > div div.search-button picture:focus 
     filter: brightness(100);
 }
 body.minha-area header div[fluid] div.niv > div div.search-button picture:active {
-    background-color: #a73535 a9;
+    background-color: #a73535a9;
+}
+body.minha-area header div[fluid] div.niv > div div.buttons {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+}
+body.minha-area header div[fluid] div.niv > div div.buttons a.button {
+    --height: 35px;
+    --width: 125px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 15px;
+    font-family: "Open Sans", sans-serif;
+}
+body.minha-area header div[fluid] div.niv > div div.buttons a.button:first-child {
+    --background-color: #716f6f;
+    --font-color: #fff;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+}
+body.minha-area header div[fluid] div.niv > div div.buttons a.button:last-child {
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+}
+body.minha-area header div[fluid] div.niv > div div.socials {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    flex-direction: row;
+    gap: 20px;
+}
+body.minha-area header div[fluid] div.niv > div div.socials a {
+    color: #6c757d;
+}
+@media (max-width: 1150px) {
+    body.minha-area header div[fluid] div.niv {
+        padding-right: 50px;
+    }
+}
+@media (max-width: 900px) {
+    body.minha-area header div[fluid] {
+        padding-top: 10px;
+        padding-bottom: 10px;
+    }
+    body.minha-area header div[fluid] div.niv {
+        justify-content: space-between;
+    }
+    body.minha-area header div[fluid] div.niv nav {
+        margin: 0;
+    }
+    body.minha-area header div[fluid] div.niv > div div.buttons {
+        display: none;
+    }
+    body.minha-area header div[fluid] div.niv > div div.search-button {
+        display: none;
+    }
+}
+@media (max-width: 600px) {
+    body.minha-area header div[fluid] div.niv > div a.button {
+        display: none;
+    }
+    body.minha-area header div[fluid] div.niv nav {
+        margin-left: auto;
+    }
 }
 body.minha-area header div[fluid] div.niv > div div.buttons {
     display: flex;
@@ -4503,92 +4455,7 @@ body.minha-area header div[fluid] div.niv > div div.buttons a.button:first-child
     --background-color: #716f6f;
     --font-color: #fff;
 }
-body.minha-area header div[fluid] div.niv > div div.socials {
-    display: flex;
-    align-items: center;
-    justify-content: flex-start;
-    flex-direction: row;
-    gap: 2rem;
-}
-body.minha-area header div[fluid] div.niv > div div.socials a {
-    color: #6c757d;
-}
-body.minha-area header div[fluid].sub-menu {
-    background-color: #5b2222;
-    z-index: 1;
-    top: -20rem;
-    transition: 0.32s;
-    padding-top: 1.4rem;
-    padding-bottom: 1.4rem;
-}
-body.minha-area header div[fluid].sub-menu[active] {
-    top: 0;
-}
-body.minha-area header div[fluid].sub-menu strong {
-    color: #fff;
-}
-body.minha-area header div[fluid].sub-menu div.niv nav {
-    max-width: unset;
-    margin-left: unset;
-}
-body.minha-area header div[fluid].sub-menu div.niv nav ul li {
-    min-width: 10rem;
-}
-body.minha-area header div[fluid].sub-menu div.niv nav ul li a:not(a[title="menu"]) {
-    color: #fff;
-    text-decoration: none;
-    font-family: "
-	Quicksand", sans-serif;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: row;
-}
-body.minha-area header div[fluid].sub-menu div.niv nav ul li a:not(a[title="menu"])::before {
-    background-color: #fff;
-}
-@media (max-width: 1150px) {
-    body.minha-area header div[fluid] div.niv {
-        padding-right: 5rem;
-    }
-}
-@media (max-width: 900px) {
-    body.minha-area header div[fluid] {
-        padding-top: 1rem;
-        padding-bottom: 1rem;
-    }
-    body.minha-area header div[fluid] div.niv {
-        justify-content: space-between;
-    }
-    body.minha-area header div[fluid] div.niv nav {
-        margin: 0;
-    }
-    body.minha-area header div[fluid] div.niv > div div.buttons {
-        display: none;
-    }
-    body.minha-area header div[fluid] div.niv > div div.search-button {
-        display: none;
-    }
-}
-@media (max-width: 600px) {
-    body.minha-area header div[fluid].sub-menu {
-        top: -25rem;
-        height: 100%;
-    }
-    body.minha-area header div[fluid].sub-menu div.niv nav ul {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        flex-direction: column;
-        height: 100%;
-    }
-    body.minha-area header div[fluid] div.niv > div a.button {
-        display: none;
-    }
-    body.minha-area header div[fluid] div.niv nav {
-        margin-left: auto;
-    }
-}
+
 body.minha-area div#div_search {
     position: absolute;
     margin: 0 auto;
