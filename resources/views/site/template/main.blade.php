@@ -73,7 +73,8 @@
         var copyurl = document.querySelector('.copyurl');
         copyurl.addEventListener('click', function(event) {
             copyTextToClipboard(window.location.protocol + "//" + window.location.host + window.location.pathname);
-
+            // message = "Link copiado para sua área de transferência!";
+            // toastr.success(event.detail.message);
             alert('Link copiado para sua área de transferência!')
         });
     </script>

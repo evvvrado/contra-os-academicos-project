@@ -26,6 +26,18 @@
                             href="{{ route('site.blog_detalhe', ['blog' => $blog_pesquisa]) }}">{{ $blog_pesquisa->titulo }}</a>
                     </li>
                 @endforeach
+                @foreach ($listas_pesquisa as $lista_pesquisa)
+                    <li>
+                        <a
+                            href="{{ route('site.lista_detalhe', ['lista' => $lista_pesquisa]) }}">{{ $lista_pesquisa->titulo }}</a>
+                    </li>
+                @endforeach
+                @foreach ($revistas_pesquisa as $revista_pesquisa)
+                    <li>
+                        <a
+                            href="{{ route('site.revista_detalhe', ['revista' => $revista_pesquisa]) }}">{{ $revista_pesquisa->titulo }}</a>
+                    </li>
+                @endforeach
             </ul>
         </div>
     @endif

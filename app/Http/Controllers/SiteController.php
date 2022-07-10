@@ -140,8 +140,11 @@ class SiteController extends Controller
         ->where('autor_id', $revista->autor_id)
         ->get();
 
+        $cursos = Curso::select(DB::raw("*"))
+        ->orderBy('id', 'Desc')
+        ->get();
 
-        return view("site.revista_detalhe", ["revista" => $revista, "mes" => $mes, "revista_randomicos" => $revista_randomicos, "mais_do_autors" => $mais_do_autors]);
+        return view("site.revista_detalhe", ["revista" => $revista, "mes" => $mes, "revista_randomicos" => $revista_randomicos, "mais_do_autors" => $mais_do_autors, "cursos" => $cursos]);
     }
     // ------------------------------------------------
     public function listas()
@@ -183,7 +186,11 @@ class SiteController extends Controller
         ->where('usuario_id', $lista->usuario_id)
         ->get();
 
-        return view("site.lista_detalhe", ["lista" => $lista, "mes" => $mes, "lista_randomicos" => $lista_randomicos, "mais_do_autors" => $mais_do_autors]);
+        $cursos = Curso::select(DB::raw("*"))
+        ->orderBy('id', 'Desc')
+        ->get();
+
+        return view("site.lista_detalhe", ["lista" => $lista, "mes" => $mes, "lista_randomicos" => $lista_randomicos, "mais_do_autors" => $mais_do_autors, "cursos" => $cursos]);
     }
     // ------------------------------------------------
     

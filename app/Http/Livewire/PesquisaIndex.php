@@ -4,11 +4,15 @@ namespace App\Http\Livewire;
 
 use Livewire\Component;
 use App\Models\Blog;
+use App\Models\Revista;
+use App\Models\Lista;
 
 class PesquisaIndex extends Component
 {
     public $pesquisas; 
     public $blogs;
+    public $revistas;
+    public $listas;
 
     public function render()
     {
@@ -18,6 +22,8 @@ class PesquisaIndex extends Component
             $pesquisas = "";
         }
         $this->blogs = Blog::where('titulo', 'like', $pesquisas)->get();
-        return view('livewire.pesquisa-index', ['blogs_pesquisa' => $this->blogs]);
+        $this->revistas = Lista::where('titulo', 'like', $pesquisas)->get();
+        $this->listas = Revista::where('titulo', 'like', $pesquisas)->get();
+        return view('livewire.pesquisa-index', ['blogs_pesquisa' => $this->blogs, 'revistas_pesquisa' => $this->revistas, 'listas_pesquisa' => $this->listas]);
     }
 }
