@@ -42,17 +42,6 @@ use App\Models\UsuarioSite;
                             alt="Logo Contras os Acadêmicos">
                     </a>
 
-                    <nav>
-                        <ul>
-                            <li>
-                                <a href="javascript: void(0)" title="menu">
-                                    <img src="{{ asset('site/assets/img/icon_hamburguer_header.svg') }}"
-                                        alt="Ícone do menu">
-                                </a>
-                            </li>
-                        </ul>
-                    </nav>
-
                     <div>
 
 
