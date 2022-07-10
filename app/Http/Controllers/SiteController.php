@@ -192,8 +192,7 @@ class SiteController extends Controller
     //     return view("site.biblioteca");
     // }
 
-        public function lancamento()
-    {
+    public function lancamento(){
         $cursos = Curso::select(DB::raw("*"))
         ->orderBy('id', 'Desc')
         ->get();
