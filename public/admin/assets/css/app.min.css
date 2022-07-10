@@ -4408,6 +4408,9 @@ body.minha-area header div[fluid] div.niv > div div.buttons a.button {
     --height: 35px;
     --width: 125px;
     font-size: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     font-family: "Open Sans", sans-serif;
     border-radius: 40px;
 }
