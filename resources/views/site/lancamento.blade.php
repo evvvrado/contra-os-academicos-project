@@ -195,10 +195,96 @@
         </div>
     </section>
 
+
+    <section class="cursos">
+        <div class="niv">
+            <h2>Cursos</h2>
+
+            <div class="boxes-area">
+                <div class="scroll">
+                    @foreach ($cursos as $curso)
+                        <a href="#" class="box-destaque"
+                            style="background-image: url('{{ asset($curso->banner) }}')">
+                            <div class="tags">
+                                {{-- <span class="--filled">Novo</span> --}}
+                                <span>{{ $curso->categoria->nome }}</span>
+                            </div>
+                            <h2>{{ $curso->titulo }}</h2>
+                        </a>
+                    @endforeach
+                </div>
+            </div>
+
+            <a href="#" class="--plus">Ver todos os cursos</a>
+        </div>
+    </section>
+
+    <section class="lancamento-time">
+        <div class="niv">
+            <div class="niv-top-area">
+                <div class="left-side">
+                    <h2>Nosso time de professores</h2>
+                    <p>
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum pharetra varius est, at feugiat
+                        justo blandit ac. Duis semper libero a porttitor ullamcorper. Donec eget augue quis nisl auctor
+                        ultrices. Mauris sit amet finibus dolor. Nunc faucibus maximus sapien, ut accumsan lorem tempor
+                        eget. Sed ut ex euismod erat mollis venenatis.</p>
+                </div>
+
+                <div class="right-side">
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum pharetra varius est, at feugiat
+                        justo blandit ac. Duis semper libero a porttitor ullamcorper. Donec eget augue quis nisl auctor
+                        ultrices. Mauris sit amet finibus dolor. Nunc faucibus maximus sapien, ut accumsan lorem tempor
+                        eget. Sed ut ex euismod erat mollis venenatis.</p>
+                </div>
+            </div>
+
+            <div class="niv-bottom-area">
+                <picture>
+                    <img src="{{ asset('site/assets/img/lancamento/time-logo.png') }}" alt="Logo do projeto">
+                </picture>
+
+                <strong>
+                    Todos os materiais enviados serão primeiro analisados pelos nossos editores e, se de acordo com os
+                    critérios citados, publicados em seguida.
+                </strong>
+
+                <p>
+                    Envie o seu material para o e-mail contraosacademicos@gmail.com para que possamos avaliá-lo. Agradecemos
+                    pela colaboração!
+                </p>
+
+                <a href="#" class="button">
+                    Seja assinante!
+                </a>
+            </div>
+        </div>
+    </section>
+
 @endsection
 
 @section('scripts')
 
-    <script></script>
+    <script>
+        $('body#lancamento section.lancamento-depoimentos div.niv div.indicators span').click(function() {
+            $('body#lancamento section.lancamento-depoimentos div.niv div.indicators span').removeAttr('active');
+            $(this).attr('active', '');
+
+
+            switch ($(this).index()) {
+                case 0:
+                    $('body#lancamento section.lancamento-depoimentos div.niv div.scroll').scrollLeft(0);
+                    break;
+                case 1:
+                    $('body#lancamento section.lancamento-depoimentos div.niv div.scroll').scrollLeft(
+                        $('body#lancamento section.lancamento-depoimentos div.niv div.scroll').height() * 3)
+                    break;
+                case 2:
+                    $('body#lancamento section.lancamento-depoimentos div.niv div.scroll').scrollLeft(
+                        $('body#lancamento section.lancamento-depoimentos div.niv div.scroll').height() * 5)
+                    break;
+            }
+        })
+    </script>
 
 @endsection

@@ -194,7 +194,12 @@ class SiteController extends Controller
 
         public function lancamento()
     {
-        return view("site.lancamento");
+        $cursos = Curso::select(DB::raw("*"))
+        ->orderBy('id', 'Desc')
+        ->get();
+
+
+        return view("site.lancamento", ["cursos" => $cursos]);
     }
 
     public function contato()

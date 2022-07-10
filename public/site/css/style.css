@@ -4504,6 +4504,7 @@ body#lancamento section.lancamento-depoimentos div.niv div.scroll {
   overflow: hidden;
   -ms-scroll-snap-type: x mandatory;
       scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
   /**
 
   @include responsive(1400px) {}
@@ -4525,7 +4526,7 @@ body#lancamento section.lancamento-depoimentos div.niv div.scroll div.niv-area {
   width: max-content;
 }
 body#lancamento section.lancamento-depoimentos div.niv div.scroll div.niv-area div.depoimento {
-  scroll-snap-align: center;
+  scroll-snap-align: start;
   height: 30.6rem;
   width: 59.4rem;
   padding: 2rem 5.6rem;
@@ -4585,15 +4586,30 @@ body#lancamento section.lancamento-depoimentos div.niv div.indicators {
   flex-direction: row;
   gap: 2rem;
   margin-top: 4.3rem;
+  /**
+
+  @include responsive(1400px) {}
+  @include responsive(1200px) {}
+  @include responsive(992px) {}
+  @include responsive(730px) {}
+  @include responsive(600px) {}
+
+  **/
 }
 body#lancamento section.lancamento-depoimentos div.niv div.indicators span {
   width: 1.6rem;
+  cursor: pointer;
   height: 1.6rem;
   border-radius: 100%;
   background-color: #eaeaea;
 }
 body#lancamento section.lancamento-depoimentos div.niv div.indicators span[active] {
   background-color: #5b2222;
+}
+@media (max-width: 600px) {
+  body#lancamento section.lancamento-depoimentos div.niv div.indicators {
+    display: none;
+  }
 }
 body#lancamento section.lancamento-professores {
   padding-top: 12rem;
@@ -4666,6 +4682,108 @@ body#lancamento section.lancamento-professores div.niv div.scroll div.professor 
   body#lancamento section.lancamento-professores div.niv div.scroll {
     flex-direction: column;
     gap: 2rem;
+  }
+}
+body#lancamento section.cursos {
+  margin-top: -4rem;
+}
+body#lancamento section.lancamento-time {
+  padding-bottom: 9rem;
+}
+body#lancamento section.lancamento-time div.niv {
+  /**
+
+  @include responsive(1400px) {}
+  @include responsive(1200px) {}
+  @include responsive(992px) {}
+  @include responsive(730px) {}
+  @include responsive(600px) {}
+
+  **/
+}
+body#lancamento section.lancamento-time div.niv div.niv-top-area {
+  padding-top: 7.5rem;
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  flex-direction: row;
+  gap: 6.8rem;
+}
+body#lancamento section.lancamento-time div.niv div.niv-top-area div.left-side {
+  padding-left: 3.5rem;
+  max-width: 56.4rem;
+  padding-bottom: 5rem;
+}
+body#lancamento section.lancamento-time div.niv div.niv-top-area div.left-side h2 {
+  font-family: "Palatino Linotype", sans-serif;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 4.5474rem;
+  line-height: 6.1rem;
+  color: #5b2222;
+  display: block;
+  margin-bottom: 3.2rem;
+}
+body#lancamento section.lancamento-time div.niv div.niv-top-area div.left-side p {
+  font-style: normal;
+  font-weight: 400;
+  font-size: 1.8rem;
+  line-height: 2.5rem;
+  color: #716f6f;
+}
+body#lancamento section.lancamento-time div.niv div.niv-top-area div.right-side {
+  padding: 4.4rem 5.7rem;
+  background-color: #5b2222;
+  max-width: 40.4rem;
+}
+body#lancamento section.lancamento-time div.niv div.niv-top-area div.right-side p {
+  font-family: "Palatino Linotype", sans-serif;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 1.8rem;
+  line-height: 2.4rem;
+  color: #fff;
+}
+body#lancamento section.lancamento-time div.niv div.niv-bottom-area {
+  margin-top: -2rem;
+  padding-top: 7.1rem;
+  padding-bottom: 4rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  text-align: center;
+  background: url("../assets/img/lancamento/time-banner.png");
+}
+body#lancamento section.lancamento-time div.niv div.niv-bottom-area strong,
+body#lancamento section.lancamento-time div.niv div.niv-bottom-area p {
+  color: #fff;
+  max-width: 61rem;
+  margin-bottom: 2rem;
+}
+body#lancamento section.lancamento-time div.niv div.niv-bottom-area strong {
+  margin-top: 3.6rem;
+  font-size: 2.1rem;
+  font-family: "Palatino Linotype", sans-serif;
+}
+body#lancamento section.lancamento-time div.niv div.niv-bottom-area a.button {
+  --background-color: #f2d027;
+  --font-color: #5b2222;
+  --height: 5.2rem;
+}
+@media (max-width: 800px) {
+  body#lancamento section.lancamento-time div.niv div.niv-top-area {
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+    text-align: center;
+  }
+  body#lancamento section.lancamento-time div.niv div.niv-top-area div.left-side {
+    padding: 0;
+  }
+  body#lancamento section.lancamento-time div.niv div.niv-bottom-area p,
+body#lancamento section.lancamento-time div.niv div.niv-bottom-area strong {
+    max-width: 80vw;
   }
 }
 
