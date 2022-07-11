@@ -50,6 +50,8 @@ section.nossa-equipe {
                 max-width: 20.7rem;
                 padding: 1.6rem 3.4rem 2.5rem 2.1rem;
 
+                @include flex(column, center, center);
+
                 picture {
                     width: 100%;
                     max-width: 12.9rem;
@@ -67,6 +69,7 @@ section.nossa-equipe {
                     color: $primary;
                     display: block;
                     margin-bottom: 0.3rem;
+                    text-align: center;
                 }
 
                 p {

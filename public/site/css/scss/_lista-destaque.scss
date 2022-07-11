@@ -19,7 +19,8 @@ section.lista-destaque {
                 a.box-destaque {
                     max-width: 100%;
                     h2 {
-                        height: 10.4rem;
+                        height: unset;
+                        max-height: 10.4rem;
                     }
                 }
             }
