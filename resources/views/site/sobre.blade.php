@@ -166,11 +166,12 @@
                 </p>
 
                 <div class="clickable">
-                    <a href="#">
+                    <a href="https://www.paypal.com/donate/?hosted_button_id=SG3AY5GSPXAHN"
+                    target="_blank">
                         <img src="{{ asset('site/assets/img/logo_paypal_apoie.svg') }}" alt="Ícone PAYPAL">
                     </a>
                     <a href="#">
-                        <img src="{{ asset('site/assets/img/logo_pix_apoie.svg') }}" alt="Ícone PIX">
+                        <img src="{{ asset('site/imagens/pix.jpeg') }}" alt="Ícone PIX">
                     </a>
                 </div>
             </div>
