@@ -116,6 +116,8 @@ Route::get('/', [\App\Http\Controllers\SiteController::class, 'index'])->name("s
 Route::get('/sobre', [\App\Http\Controllers\SiteController::class, 'sobre'])->name("site.sobre");
 Route::get('/lancamento', [\App\Http\Controllers\SiteController::class, 'lancamento'])->name("site.lancamento");
 
+Route::get('/em_breve', [\App\Http\Controllers\SiteController::class, 'em_breve'])->name("site.em_breve");
+
 Route::get('/blog', [\App\Http\Controllers\SiteController::class, 'blogs'])->name("site.blog");
 Route::get('/blog/{blog}', [\App\Http\Controllers\SiteController::class, 'blog'])->name("site.blog_detalhe");
 
