@@ -156,89 +156,23 @@
 
                 <div class="card-area">
                     <div class="scroll">
-                        <a href="#" class="box-destaque"
-                            style="background-image: url({{ asset('site/assets/img/banner_curso4_cursos.jpg') }})">
-                            <div class="tags">
-                                <span class="--filled">Novo</span>
-                                <span>Filosofia</span>
-                            </div>
-                            <h2>Filosofia Avançada</h2>
-                        </a>
-
-
-                        <a href="#" class="box-destaque"
-                            style="background-image: url({{ asset('site/assets/img/banner_curso3_cursos.jpg') }})">
-                            <div class="tags">
-                                <span>História</span>
-                            </div>
-                            <h2>A vida humana</h2>
-
-                        </a>
-
-
-                        <a href="#" class="box-destaque"
-                            style="background-image: url({{ asset('site/assets/img/banner_curso2_cursos.jpg') }})">
-                            <div class="tags">
-                                <span>História</span>
-                            </div>
-                            <h2>Descontrução Mundial</h2>
-
-                        </a>
-
-
-                        <a href="#" class="box-destaque"
-                            style="background-image: url({{ asset('site/assets/img/banner_curso1_cursos.jpg') }})">
-                            <div class="tags">
-                                <span>Arte</span>
-                            </div>
-                            <h2>Michelangelo</h2>
-                        </a>
-
-
-
-
-                        <a href="#" class="box-destaque"
-                            style="background-image: url({{ asset('site/assets/img/banner_curso2_cursos.jpg') }})">
-                            <div class="tags">
-                                <span>História</span>
-                            </div>
-                            <h2>Descontrução Mundial</h2>
-
-                        </a>
-                        <a href="#" class="box-destaque"
-                            style="background-image: url({{ asset('site/assets/img/banner_curso4_cursos.jpg') }})">
-                            <div class="tags">
-                                <span class="--filled">Novo</span>
-                                <span>Filosofia</span>
-                            </div>
-                            <h2>Filosofia Avançada</h2>
-                        </a>
-
-
-                        <a href="#" class="box-destaque"
-                            style="background-image: url({{ asset('site/assets/img/banner_curso3_cursos.jpg') }})">
-                            <div class="tags">
-                                <span>História</span>
-                            </div>
-                            <h2>A vida humana</h2>
-
-                        </a>
-
-
-
-                        <a href="#" class="box-destaque"
-                            style="background-image: url({{ asset('site/assets/img/banner_curso1_cursos.jpg') }})">
-                            <div class="tags">
-                                <span>Arte</span>
-                            </div>
-                            <h2>Michelangelo</h2>
-                        </a>
+                        @foreach ($cursos as $curso)
+                            <a href="#" class="box-destaque"
+                                style="background-image: url('{{ asset($curso->banner) }}')">
+                                <div class="tags">
+                                    {{-- <span class="--filled">Novo</span> --}}
+                                    <span>{{ $curso->categoria->nome }}</span>
+                                </div>
+                                <h2>{{ $curso->titulo }}</h2>
+                            </a>
+                        @endforeach
                     </div>
                 </div>
 
                 <a href="#" class="--plus">Acessar todos os cursos</a>
             </div>
         </div>
+    </section>
     </section>
 @endsection
 

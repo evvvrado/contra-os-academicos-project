@@ -239,7 +239,7 @@ use App\Models\UsuarioSite;
                                 </div>
                             </div>
 
-                            <div class="card">
+                            {{-- <div class="card">
                                 <div class="card-body">
                                     <h4 class="card-title mb-4">Notifications</h4>
 
@@ -372,7 +372,7 @@ use App\Models\UsuarioSite;
                                         </div>
                                     </ul>
                                 </div>
-                            </div>
+                            </div> --}}
 
 
                         </div>

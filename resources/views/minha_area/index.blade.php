@@ -14,7 +14,7 @@
 @endsection
 
 @section('conteudo')
-    <div class="row">
+    {{-- <div class="row">
         <div class="col-4">
             <div class="text-center card">
                 <div class="card-body c-pointer">
@@ -55,7 +55,7 @@
             </div>
         </div>
 
-    </div>
+    </div> --}}
 @endsection
 
 @section('scripts')
