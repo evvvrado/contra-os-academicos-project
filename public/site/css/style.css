@@ -438,6 +438,8 @@ html body {
   -webkit-line-clamp: 3;
   -webkit-box-orient: vertical;
   text-overflow: ellipsis;
+  height: unset;
+  max-height: 11.1rem;
   padding-bottom: 1.5rem;
   z-index: 2;
   color: #fff;
@@ -1215,7 +1217,7 @@ section.hero div.niv div.container a.card div.text h1 {
   max-height: 13rem;
 }
 section.hero div.niv div.container a.card.main-card {
-  height: 37.7rem;
+  height: 39.7rem;
   width: 100%;
   max-width: 57.6rem;
   padding: 1.8rem 1.7rem;
@@ -1250,7 +1252,7 @@ section.hero div.niv div.container a.card.main-card div.top-bar span.categoria {
   color: #fff;
 }
 section.hero div.niv div.container a.card.mini-card {
-  height: 18.3rem;
+  height: 19.3rem;
   width: 31rem;
   padding: 1.8rem 1.7rem;
   display: flex;
@@ -1288,7 +1290,7 @@ section.hero div.niv div.container a.card:hover, section.hero div.niv div.contai
   letter-spacing: 1px;
 }
 section.hero div.niv div.container div.col div.colunistas {
-  height: 37.6rem;
+  height: 39.6rem;
   max-width: 31rem;
   width: 100%;
   border-radius: 0.4rem;
@@ -1855,7 +1857,8 @@ section.lista-destaque div.niv div.boxes-area div.scroll a.box-destaque {
   max-width: 100%;
 }
 section.lista-destaque div.niv div.boxes-area div.scroll a.box-destaque h2 {
-  height: 10.4rem;
+  height: unset;
+  max-height: 10.4rem;
 }
 @media (max-width: 800px) {
   section.lista-destaque div.niv div.boxes-area div.scroll {
@@ -3851,6 +3854,10 @@ section.nossa-equipe div.niv div.equipe-area {
 section.nossa-equipe div.niv div.equipe-area div.membro {
   max-width: 20.7rem;
   padding: 1.6rem 3.4rem 2.5rem 2.1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
 }
 section.nossa-equipe div.niv div.equipe-area div.membro picture {
   width: 100%;
@@ -3865,6 +3872,7 @@ section.nossa-equipe div.niv div.equipe-area div.membro strong {
   color: #5b2222;
   display: block;
   margin-bottom: 0.3rem;
+  text-align: center;
 }
 section.nossa-equipe div.niv div.equipe-area div.membro p {
   font-style: normal;

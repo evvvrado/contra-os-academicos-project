@@ -206,7 +206,6 @@ class SiteController extends Controller
         return view("site.contato");
     }
     
-
     public function artigo()
     {
         return view("site.artigo");
