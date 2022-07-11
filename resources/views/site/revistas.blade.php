@@ -145,7 +145,6 @@
                         </picture>
                         Em breve
                     </h2>
-                    <a href="{{ route('site.blog') }}" class="--plus">Ver mais</a>
                 </div>
 
                 <div class="content">

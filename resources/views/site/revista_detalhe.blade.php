@@ -36,35 +36,32 @@
                 </div>
 
                 <?php
-
-                    if($revista->exclusivo == "1") {
-                        if (isset(session()->get("usuario_site")["assinante"])) {
-                            if(session()->get("usuario_site")["assinante"] == 0 OR session()->get("usuario_site")["assinante"] == ""){
+                    if (isset(session()->get("usuario_site")["assinante"])) {
+                        if(session()->get("usuario_site")["assinante"] == 0 OR session()->get("usuario_site")["assinante"] == ""){
                 ?>
-                <div class="text-content block-style">
-                    <p>
-                        {!! Str::limit($revista->conteudo, 800) !!}
-                    </p>
-                </div>
+                            <div class="text-content block-style">
+                                <p>
+                                    {!! Str::limit($revista->conteudo, 800) !!}
+                                </p>
+                            </div>
 
                 <?php
-                            }
                         }  else {
                 ?>
-                <div class="text-content block-style">
-                    <p>
-                        {!! Str::limit($revista->conteudo, 800) !!}
-                    </p>
-                </div>
+                            <div class="text-content block-style">
+                                <p>
+                                    {!! $revista->conteudo !!}
+                                </p>
+                            </div>
                 <?php 
                         }
                     } else {
                 ?>
-                <div class="text-content block-style">
-                    <p>
-                        {!! $revista->conteudo !!}
-                    </p>
-                </div>
+                        <div class="text-content block-style">
+                            <p>
+                                {!! Str::limit($revista->conteudo, 800) !!}
+                            </p>
+                        </div>
                 <?php
                     }
                 ?>
@@ -96,7 +93,7 @@
 
                 <div class="actions">
                     <div class="social-buttons">
-                        <div class="icon">
+                        {{-- <div class="icon">
                             <picture>
                                 <img src="{{ asset('site/assets/img/icon_eye_artigo.svg') }}" alt="Ícone">
                             </picture>
@@ -107,7 +104,7 @@
                                 <img src="{{ asset('site/assets/img/icon_chat_artigo.svg') }}" alt="Ícone">
                             </picture>
                             <span>23</span>
-                        </div>
+                        </div> --}}
                         {{-- <div class="icon">
                             <picture>
                                 <img src="{{ asset('site/assets/img/icon_share_artigo.svg') }}" alt="Ícone">

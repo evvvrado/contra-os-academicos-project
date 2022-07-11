@@ -38,7 +38,7 @@
                         @foreach($lista_randomicos as $lista_randomico)
                             <a href="{{ route('site.lista_detalhe', ['lista' => $lista_randomico]) }}" class="box-destaque"
                                 style="background-image: url({{ asset($lista_randomico->banner) }})">
-                                <h2>{{ $lista_randomico->categoria->nome }}</h2>
+                                <h2>{{ $lista_randomico->titulo }}</h2>
                             </a>
                         @endforeach
 

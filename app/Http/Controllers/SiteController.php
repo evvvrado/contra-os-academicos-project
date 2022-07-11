@@ -56,6 +56,11 @@ class SiteController extends Controller
         return view("site.sobre");
     }
 
+    public function em_breve()
+    {
+        return view("site.em_breve");
+    }
+
     // ------------------------------------------------
     public function blogs()
     {

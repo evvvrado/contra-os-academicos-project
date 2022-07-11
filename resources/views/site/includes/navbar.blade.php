@@ -42,7 +42,7 @@
                     </div>
 
                     <div class="buttons">
-                        <a href="#" class="button">
+                        <a href="{{ route('site.em_breve') }}" class="button">
                             Assine
                         </a>
 
