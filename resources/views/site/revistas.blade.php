@@ -121,35 +121,7 @@
 
                                     <hr>
 
-                                    <?php
-                                        if (isset(session()->get("usuario_site")["assinante"])) {
-                                            if(session()->get("usuario_site")["assinante"] == 0 OR session()->get("usuario_site")["assinante"] == ""){
-                                    ?>
-                                                <div class="text-content block-style">
-                                                    <p>
-                                                        {!! Str::limit($blog->conteudo, 800) !!}
-                                                    </p>
-                                                </div>
-                                    <?php
-                                            } else {
-                                    ?>
-                                                <div class="text-content block-style">
-                                                    <p>
-                                                        {!! Str::limit($blog->conteudo, 800) !!}
-                                                    </p>
-                                                </div>
-                                    <?php 
-                                            }
-                                        } else {
-                                    ?>
-                                            <div class="text-content block-style">
-                                                <p>
-                                                    {!! $blog->conteudo !!}
-                                                </p>
-                                            </div>
-                                    <?php
-                                        }
-                                    ?>
+                                    <p>{{ Str::limit($mais_lida->resumo, 104) }}</p>
                                 </div>
                             </a>
                         </li>

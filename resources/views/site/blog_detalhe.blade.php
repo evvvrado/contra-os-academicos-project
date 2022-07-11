@@ -171,7 +171,7 @@
                     </div>
                     <div class="buttons">
                         <button class="button --references">Referências</button>
-                        @livewire('blog-compartilhar-acao');
+                        <button class="button copyurl">Quero compartilhar</button>
                     </div>
                 </div>
 

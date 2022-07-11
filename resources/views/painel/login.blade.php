@@ -68,13 +68,13 @@
                                     <div class="mb-3">
                                         <label for="usuario" class="form-label">Usuário</label>
                                         <input type="text" class="form-control" name="usuario" id="usuario"
-                                            placeholder="Insira seu usuário" value="admin">
+                                            placeholder="Insira seu usuário">
                                     </div>
 
                                     <div class="mb-3">
                                         <label class="form-label">Senha</label>
                                         <div class="input-group auth-pass-inputgroup">
-                                            <input value="12345" id="senha" name="senha" type="password"
+                                            <input id="senha" name="senha" type="password"
                                                 class="form-control" placeholder="Insira sua senha"
                                                 aria-label="Password" aria-describedby="password-addon">
                                             <button class="btn btn-light" onClick="mostrar_senha()" type="button"
