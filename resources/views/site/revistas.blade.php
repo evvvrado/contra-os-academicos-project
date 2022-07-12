@@ -28,34 +28,14 @@
 
             <div class="banner-area">
                 <div class="scroll">
-                    <div class="banner"
-                        style="background-image: url({{ asset('site/assets/img/banner_card_revista.jpg') }})">
-                        <h1>Resenha: O Saber e o Enigma (Parte 0)</h1>
 
-                        <p>Por <strong>Contra os Acadêmicos</strong></p>
-                    </div>
+                    @foreach ($destaques as $destaque)
+                        <div class="banner" style="background-image: url('{{ asset($destaque->banner_destaque) }}')">
+                            <h1>{{ $destaque->titulo }}</h1>
 
-
-                    <div class="banner"
-                        style="background-image: url({{ asset('site/assets/img/banner_card_revista.jpg') }})">
-                        <h1>Resenha: O Saber e o Enigma (Parte I)</h1>
-
-                        <p>Por <strong>Contra os Acadêmicos</strong></p>
-                    </div>
-
-
-                    <div class="banner"
-                        style="background-image: url({{ asset('site/assets/img/banner_card_revista.jpg') }})">
-                        <h1>Resenha : O Saber e o Enigma (Parte II)</h1>
-
-                        <p>Por <strong>Contra os Acadêmicos</strong></p>
-                    </div>
-                    <div class="banner"
-                        style="background-image: url({{ asset('site/assets/img/banner_card_revista.jpg') }})">
-                        <h1>Resenha: O Saber e o Enigma (Parte 0)</h1>
-
-                        <p>Por <strong>Contra os Acadêmicos</strong></p>
-                    </div>
+                            <p>Por <strong>{{ $destaque->autor->nome }}</strong></p>
+                        </div>
+                    @endforeach
 
 
                 </div>

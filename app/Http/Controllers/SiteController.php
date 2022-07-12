@@ -151,7 +151,14 @@ class SiteController extends Controller
         ->limit(3)
         ->get();
 
-        return view("site.revistas", ["mais_lidas" => $mais_lidas, "blogs" => $blogs]);
+        $destaques = Revista::select(DB::raw("*"))
+        ->whereStatus(1)
+        ->whereNotNull('banner_destaque')
+        ->limit(4)
+        ->orderBy('id', 'Desc')
+        ->get();
+
+        return view("site.revistas", ["mais_lidas" => $mais_lidas, "blogs" => $blogs, "destaques" => $destaques]);
     }
 
     public function revista(Revista $revista)
