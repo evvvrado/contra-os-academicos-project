@@ -4,19 +4,24 @@
 
 @section('content')
 
+<style>
+    section.ant-hero div.niv a.card::after {
+        background: none !important;
+    }
+</style>
+
     <section class="ant-hero">
         <div class="niv">
-            <a href="#" class="main-card card"
-                style="background-image: url('{{ asset('site/assets/img/banner_mainbox_hero.jpg') }}')">
+            <a href="#" class="main-card card" style="background-image: url('{{ asset('site/assets/img/banner_mainbox_hero.jpg') }}');background-position: 0;">
 
-                <div class="text">
+                {{-- <div class="text">
                     <picture>
                         <img src="{{ asset('site/assets/img/logo_branca_footer.png') }}" alt="">
                     </picture>
 
                     <h1>{{ NAME }}</h1>
                     <p>" Filosofia, mas só da boa! "</p>
-                </div>
+                </div> --}}
             </a>
         </div>
     </section>

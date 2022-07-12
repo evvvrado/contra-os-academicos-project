@@ -38,9 +38,9 @@
                     @foreach ($destaques as $destaque)
                         <a href="{{ route('site.revista_detalhe', ['revista' => $destaque]) }}">
                             <div class="banner" style="background-image: url('{{ asset($destaque->banner_destaque) }}')">
-                                <h1>{{ $destaque->titulo }}</h1>
+                                {{-- <h1>{{ $destaque->titulo }}</h1>
     
-                                <p>Por <strong>{{ $destaque->autor->nome }}</strong></p>
+                                <p>Por <strong>{{ $destaque->autor->nome }}</strong></p> --}}
                             </div>
                         </a>
                     @endforeach
