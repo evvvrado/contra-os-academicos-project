@@ -20,7 +20,7 @@ class SiteController extends Controller
         $url = explode("/", $_GET['url']);
         $parte_1 = $url[1];
         $parte_2 = $url[2];
-        $horas = 1;
+        $horas = 24;
 
         $nome_cookie = $parte_1.'-'.$parte_2;
 
