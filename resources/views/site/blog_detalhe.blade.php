@@ -146,18 +146,18 @@
 
                 <div class="actions">
                     <div class="social-buttons">
-                        {{-- <div class="icon">
+                        <div class="icon">
                             <picture>
                                 <img src="{{ asset('site/assets/img/icon_eye_artigo.svg') }}" alt="Ícone">
                             </picture>
-                            <span>1306</span>
+                            <span>{{ $blog->visitas }}</span>
                         </div>
                         <div class="icon">
                             <picture>
                                 <img src="{{ asset('site/assets/img/icon_chat_artigo.svg') }}" alt="Ícone">
                             </picture>
-                            <span>23</span>
-                        </div> --}}
+                            <span>{{ $comentarios->count() }}</span>
+                        </div>
                         {{-- <div class="icon">
                             <picture>
                                 <img src="{{ asset('site/assets/img/icon_share_artigo.svg') }}" alt="Ícone">

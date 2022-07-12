@@ -131,3 +131,7 @@ Route::get('/biblioteca/{lista}', [\App\Http\Controllers\SiteController::class, 
 
 Route::get('/contato', [\App\Http\Controllers\SiteController::class, 'contato'])->name("site.contato");
 Route::get('/artigo', [\App\Http\Controllers\SiteController::class, 'artigo'])->name("site.artigo");
+
+
+// AJAX
+Route::get('/contabiliza_views/{url}', [\App\Http\Controllers\SiteController::class, 'CountView'])->name("contabilizar_view");

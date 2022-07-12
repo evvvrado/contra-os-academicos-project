@@ -38,6 +38,29 @@
         $url = '://' . $_SERVER['HTTP_HOST'] . $_SERVER['SCRIPT_NAME'] . '?' . $_SERVER['QUERY_STRING'];
     @endphp
 
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+    <script type="text/javascript">
+
+        jQuery(document).ready(function(){
+            jQuery.ajax({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                },
+                url: "{{ url('/contabiliza_views/{url}') }}",
+                method: 'get',
+                data: {
+                    url: window.location.pathname
+                },
+                success: function(result){
+                    console.log(result);
+                },
+                error: function(){
+                    console.log('AJAX load did not work');
+                }
+            });
+        });
+    </script>
+
     <script>
         function copyTextToClipboard(text) {
             var textArea = document.createElement("textarea");
@@ -67,8 +90,7 @@
             }
 
             document.body.removeChild(textArea);
-        }
-
+        }   
         // Teste
         var copyurl = document.querySelector('.copyurl');
         copyurl.addEventListener('click', function(event) {

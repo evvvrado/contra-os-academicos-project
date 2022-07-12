@@ -16,6 +16,38 @@ use App\Models\BlogComentario;
 class SiteController extends Controller
 {
 
+    public function CountView($url) {
+        $url = explode("/", $_GET['url']);
+        $parte_1 = $url[1];
+        $parte_2 = $url[2];
+        $horas = 1;
+
+        $nome_cookie = $parte_1.'-'.$parte_2;
+
+        // Comando para setar o cookie
+        setcookie($nome_cookie, true, time() + (3600 * $horas));
+
+        // Verificação do cookie
+        if (isset($_COOKIE[$nome_cookie]) && $_COOKIE[$nome_cookie] == true ) {
+            // Faz nada...
+        } else {
+            switch ($parte_1) {
+                case 'blog':
+                    Blog::whereId($parte_2)
+                    ->increment('visitas');
+                    break;
+                case 'revista':
+                    Revista::whereId($parte_2)
+                    ->increment('visitas');
+                    break;
+                case 'lista':
+                    Lista::whereId($parte_2)
+                    ->increment('visitas');
+                    break;
+            }
+        }
+    }
+
     public function index()
     {
         $revistas = Revista::select(DB::raw("*"))
