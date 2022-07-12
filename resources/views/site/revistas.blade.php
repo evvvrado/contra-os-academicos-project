@@ -20,21 +20,29 @@
         <div class="niv">
 
             <div class="indicador">
-                <span active></span>
-                <span></span>
-                <span></span>
-                <span></span>
+                @php
+                    $ativo = "active";
+
+                    foreach ($destaques as $destaque) {
+                @endphp
+                        <span {{ $ativo }}></span>
+                @php
+                        $ativo = "";
+                    }
+                @endphp
             </div>
 
             <div class="banner-area">
                 <div class="scroll">
 
                     @foreach ($destaques as $destaque)
-                        <div class="banner" style="background-image: url('{{ asset($destaque->banner_destaque) }}')">
-                            <h1>{{ $destaque->titulo }}</h1>
-
-                            <p>Por <strong>{{ $destaque->autor->nome }}</strong></p>
-                        </div>
+                        <a href="{{ route('site.revista_detalhe', ['revista' => $destaque]) }}">
+                            <div class="banner" style="background-image: url('{{ asset($destaque->banner_destaque) }}')">
+                                <h1>{{ $destaque->titulo }}</h1>
+    
+                                <p>Por <strong>{{ $destaque->autor->nome }}</strong></p>
+                            </div>
+                        </a>
                     @endforeach
 
 
@@ -91,7 +99,7 @@
                 <ul>
                     @foreach ($mais_lidas as $mais_lida)
                         <li>
-                            <a href="#" class="box">
+                            <a href="{{ route('site.revista_detalhe', ['revista' => $mais_lida]) }}" class="box">
                                 <picture>
                                     <img src="{{ asset($mais_lida->banner) }}" alt="">
                                 </picture>
