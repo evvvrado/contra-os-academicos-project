@@ -621,6 +621,9 @@ header div[fluid] div.niv nav ul li a:not(a[title=menu]):hover, header div[fluid
 header div[fluid] div.niv nav ul li a:not(a[title=menu]):hover::before, header div[fluid] div.niv nav ul li a:not(a[title=menu]):focus::before {
   transform: scaleX(1);
 }
+header div[fluid] div.niv nav ul li.mobile-login {
+  display: none;
+}
 header div[fluid] div.niv > div {
   display: flex;
   align-items: center;
@@ -764,7 +767,7 @@ header div[fluid].sub-menu div.niv nav ul li a:not(a[title=menu])::before {
 }
 @media (max-width: 600px) {
   header div[fluid].sub-menu {
-    top: -25rem;
+    top: -45rem;
     height: 100%;
   }
   header div[fluid].sub-menu div.niv nav ul {
@@ -773,6 +776,12 @@ header div[fluid].sub-menu div.niv nav ul li a:not(a[title=menu])::before {
     justify-content: center;
     flex-direction: column;
     height: 100%;
+  }
+  header div[fluid].sub-menu div.niv nav ul li.mobile-login {
+    display: block;
+  }
+  header div[fluid].sub-menu div.niv nav ul li.mobile-login a {
+    color: #f2d027 !important;
   }
   header div[fluid] div.niv > div a.button {
     display: none;
@@ -2578,6 +2587,7 @@ section.complemento.--revistas div.banner-area div.scroll div.banner p {
 @media (max-width: 600px) {
   section.complemento.--revistas div.banner-area div.scroll div.banner {
     width: 100%;
+    min-width: calc(100vw - 3rem);
   }
 }
 
@@ -3172,6 +3182,25 @@ section.artigo div.niv.--row main div.text-content p {
 section.artigo div.niv.--row main div.text-content a {
   color: #dc3545;
 }
+section.artigo div.niv.--row main div.text-content blockquote {
+  /**
+
+  @include responsive(1400px) {}
+  @include responsive(1200px) {}
+  @include responsive(992px) {}
+  @include responsive(730px) {}
+  @include responsive(600px) {}
+
+  **/
+}
+@media (max-width: 600px) {
+  section.artigo div.niv.--row main div.text-content blockquote {
+    -webkit-margin-start: 10px;
+            margin-inline-start: 10px;
+    -webkit-margin-end: 10px;
+            margin-inline-end: 10px;
+  }
+}
 section.artigo div.niv.--row main div.apoie-projeto {
   margin-top: 2.1rem;
   margin-bottom: 1.6rem;
@@ -3674,30 +3703,36 @@ section.artigo div.niv div.cursos div.card-area div.scroll a.box-destaque div.ta
   section.artigo div.niv.--row main div.text-content p {
     font-size: 1.8rem;
   }
-  section.artigo div.niv.--row main div.apoie-projeto {
+  section.artigo div.niv.--row main div.apoie-projeto.--alternative {
     height: unset;
     flex-direction: column;
-    padding-right: 3rem;
-    padding-left: 3rem;
+    padding-right: 0;
+    padding-left: 0;
     text-align: center;
   }
-  section.artigo div.niv.--row main div.apoie-projeto div.avatar-side strong {
+  section.artigo div.niv.--row main div.apoie-projeto.--alternative div.avatar-side strong {
     font-size: 2.8rem;
   }
-  section.artigo div.niv.--row main div.apoie-projeto div.content-side strong::after {
+  section.artigo div.niv.--row main div.apoie-projeto.--alternative div.content-side strong::after {
     display: none;
   }
-  section.artigo div.niv.--row main div.apoie-projeto div.content-side strong {
+  section.artigo div.niv.--row main div.apoie-projeto.--alternative div.content-side strong {
     margin-bottom: 1rem;
     font-size: 2.4rem;
+    max-width: 29.5rem;
   }
-  section.artigo div.niv.--row main div.apoie-projeto div.content-side p {
+  section.artigo div.niv.--row main div.apoie-projeto.--alternative div.content-side p {
     font-size: 1.6rem;
+    max-width: 29.5rem;
   }
-  section.artigo div.niv.--row main div.apoie-projeto div.content-side button {
+  section.artigo div.niv.--row main div.apoie-projeto.--alternative div.content-side button {
     margin: 0 auto;
     margin-top: 4rem;
-    transform: scale(1.2);
+    transform: scale(1.7);
+  }
+  section.artigo div.niv.--row main div.apoie-projeto.--alternative div.content-side .buttons {
+    flex-direction: column;
+    gap: 0;
   }
   section.artigo div.niv.--row main div.bio {
     flex-direction: column;

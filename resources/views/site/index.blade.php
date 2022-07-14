@@ -4,15 +4,16 @@
 
 @section('content')
 
-<style>
-    section.ant-hero div.niv a.card::after {
-        background: none !important;
-    }
-</style>
+    <style>
+        section.ant-hero div.niv a.card::after {
+            background: none !important;
+        }
+    </style>
 
     <section class="ant-hero">
         <div class="niv">
-            <a href="#" class="main-card card" style="background-image: url('{{ asset('site/assets/img/banner_mainbox_hero.jpg') }}');background-position: 0;">
+            <a href="#" class="main-card card"
+                style="background-image: url('{{ asset('site/assets/img/banner_mainbox_hero.jpg') }}');background-position: center;">
 
                 {{-- <div class="text">
                     <picture>
@@ -240,7 +241,8 @@
                         </a> --}}
                     </div>
                     <div class="box-content">
-                        <iframe  width="100%" height="100%" src="https://www.youtube.com/embed/4iKoJU8kPfs" frameborder="0" ></iframe>
+                        <iframe width="100%" height="100%" src="https://www.youtube.com/embed/4iKoJU8kPfs"
+                            frameborder="0"></iframe>
                     </div>
                 </div>
             </div>
@@ -262,10 +264,16 @@
                 <div class="content-area">
                     <ul>
                         <li style="background-color: white">
-                            <iframe style="border-radius:12px" src="https://open.spotify.com/embed/episode/5P25nwbzYYfWzRAUoiR0t2?utm_source=generator&theme=0" width="100%" height="240" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"></iframe>
+                            <iframe style="border-radius:12px"
+                                src="https://open.spotify.com/embed/episode/5P25nwbzYYfWzRAUoiR0t2?utm_source=generator&theme=0"
+                                width="100%" height="240" frameBorder="0" allowfullscreen=""
+                                allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"></iframe>
                         </li>
                         <li style="background-color: white">
-                            <iframe style="border-radius:12px" src="https://open.spotify.com/embed/episode/0C4n9GLAVC6sAIppxK3ihW?utm_source=generator&theme=0" width="100%" height="240" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"></iframe>
+                            <iframe style="border-radius:12px"
+                                src="https://open.spotify.com/embed/episode/0C4n9GLAVC6sAIppxK3ihW?utm_source=generator&theme=0"
+                                width="100%" height="240" frameBorder="0" allowfullscreen=""
+                                allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"></iframe>
                         </li>
                     </ul>
                     {{-- <ul>
@@ -324,7 +332,8 @@
             <div class="boxes-area">
                 <div class="scroll">
                     @foreach ($cursos as $curso)
-                        <a href="#" class="box-destaque" style="background-image: url('{{ asset($curso->banner) }}')">
+                        <a href="#" class="box-destaque"
+                            style="background-image: url('{{ asset($curso->banner) }}')">
                             <div class="tags">
                                 {{-- <span class="--filled">Novo</span> --}}
                                 <span>{{ $curso->categoria->nome }}</span>
@@ -363,26 +372,25 @@
 
 @section('scripts')
 
-<script>
+    <script>
+        // function funcao() {
+        //     var input = document.getElementById("input_pesquisa");
+        //     var texto = input.value;
+        //     if(texto != "") {
+        //         const div_search = document.getElementById('div_search');
 
-    // function funcao() {
-    //     var input = document.getElementById("input_pesquisa");
-    //     var texto = input.value;
-    //     if(texto != "") {
-    //         const div_search = document.getElementById('div_search');
-        
-    //         div_search.classList.replace('d-none', 'd-block'); 
-    //     } else {
-    //         const div_search = document.getElementById('div_search');
-        
-    //         div_search.classList.replace('d-block', 'd-none'); 
-    //     }
-    // }
+        //         div_search.classList.replace('d-none', 'd-block'); 
+        //     } else {
+        //         const div_search = document.getElementById('div_search');
 
-    window.addEventListener('sumir_news', event => {
-        document.getElementById("news-area").style.display = "none";
-        toastr.success(event.detail.message);
-    });
-</script>
+        //         div_search.classList.replace('d-block', 'd-none'); 
+        //     }
+        // }
+
+        window.addEventListener('sumir_news', event => {
+            document.getElementById("news-area").style.display = "none";
+            toastr.success(event.detail.message);
+        });
+    </script>
 
 @endsection

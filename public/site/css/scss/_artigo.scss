@@ -231,6 +231,13 @@ section.artigo {
                     a {
                         color: $red;
                     }
+
+                    blockquote {
+                        @include responsive(600px) {
+                            margin-inline-start: 10px;
+                            margin-inline-end: 10px;
+                        }
+                    }
                 }
 
                 div.apoie-projeto {
@@ -826,10 +833,10 @@ section.artigo {
                         }
                     }
 
-                    div.apoie-projeto {
+                    div.apoie-projeto.--alternative {
                         height: unset;
                         flex-direction: column;
-                        @include padding-x(3rem);
+                        @include padding-x(0);
                         text-align: center;
 
                         div.avatar-side {
@@ -846,15 +853,22 @@ section.artigo {
                             strong {
                                 margin-bottom: 1rem;
                                 font-size: 2.4rem;
+                                max-width: 29.5rem;
                             }
                             p {
                                 font-size: 1.6rem;
+                                max-width: 29.5rem;
                             }
 
                             button {
                                 margin: 0 auto;
                                 margin-top: 4rem;
-                                transform: scale(1.2);
+                                transform: scale(1.7);
+                            }
+
+                            .buttons {
+                                flex-direction: column;
+                                gap: 0;
                             }
                         }
                     }

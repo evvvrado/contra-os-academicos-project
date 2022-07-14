@@ -270,6 +270,7 @@ section.complemento {
                 div.scroll {
                     div.banner {
                         width: 100%;
+                        min-width: calc(100vw - 3rem);
                     }
                 }
             }

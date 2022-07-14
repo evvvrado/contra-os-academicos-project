@@ -165,6 +165,10 @@ header {
                                 }
                             }
                         }
+
+                        &.mobile-login {
+                            display: none;
+                        }
                     }
                 }
             }
@@ -344,13 +348,21 @@ header {
     @include responsive(600px) {
         div[fluid] {
             &.sub-menu {
-                top: -25rem;
+                top: -45rem;
                 height: 100%;
                 div.niv {
                     nav {
                         ul {
                             @include flex(column, center, center);
                             height: 100%;
+
+                            li.mobile-login {
+                                display: block;
+
+                                a {
+                                    color: $tertiary !important;
+                                }
+                            }
                         }
                     }
                 }

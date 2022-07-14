@@ -76,6 +76,17 @@
                         <li><a href="https://livrariacontraosacademicos.com.br">LIVRARIA</a></li>
                         <li><a href="{{ route('site.sobre') }}">PROJETO</a></li>
                         <li><a href="{{ route('site.contato') }}">CONTATO</a></li>
+                        <li class="mobile-login">
+                            @if (session()->get('usuario_site'))
+                                <a href="{{ route('minha_area.index') }}">
+                                    Minha Área
+                                </a>
+                            @else
+                                <a href="{{ route('minha_area.index') }}">
+                                    Login
+                                </a>
+                            @endif
+                        </li>
                     </ul>
                 </nav>
             </div>
