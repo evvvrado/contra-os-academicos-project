@@ -81,8 +81,8 @@ class UsuarioSitesController extends Controller
 
     public function login()
     {
-        return view("site.em_breve");
-        // return view("minha_area.login");
+        // return view("site.em_breve");
+        return view("minha_area.login");
     }
 
     public function logar(Request $request)

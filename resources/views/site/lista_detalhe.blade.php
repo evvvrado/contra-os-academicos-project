@@ -75,12 +75,12 @@
                             </picture>
                             <span>{{ $comentarios->count() }}</span>
                         </div> --}}
-                        {{-- <div class="icon">
+                        <div class="icon">
                             <picture>
                                 <img src="{{ asset('site/assets/img/icon_share_artigo.svg') }}" alt="Ícone">
                             </picture>
-                            <span>04</span>
-                        </div> --}}
+                            <span>{{ $lista->compartilhamentos }}</span>
+                        </div>
                         <div class="icon" active>
                             @livewire('lista-curtir-acao', ['lista' => $lista])
                         </div>

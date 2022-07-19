@@ -105,12 +105,12 @@
                             </picture>
                             <span>{{ $comentarios->count() }}</span>
                         </div> --}}
-                        {{-- <div class="icon">
+                        <div class="icon">
                             <picture>
                                 <img src="{{ asset('site/assets/img/icon_share_artigo.svg') }}" alt="Ícone">
                             </picture>
-                            <span>04</span>
-                        </div> --}}
+                            <span>{{ $revista->compartilhamentos }}</span>
+                        </div>
                         <div class="icon" active>
                             @livewire('revista-curtir-acao', ['revista' => $revista])
                         </div>
@@ -120,6 +120,8 @@
                         <button class="button copyurl">Quero compartilhar</button>
                     </div>
                 </div>
+
+                @livewire('site.revista.comentarios', ['revista' => $revista])
             </main>
 
             <picture class="artigo-banner">

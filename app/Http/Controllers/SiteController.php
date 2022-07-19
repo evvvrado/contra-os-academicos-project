@@ -22,7 +22,7 @@ class SiteController extends Controller
         $parte_2 = $url[2];
         $horas = 24;
 
-        $nome_cookie = $parte_1.'-'.$parte_2;
+        $nome_cookie = 'view-'.$parte_1.'-'.$parte_2;
 
         // Comando para setar o cookie
         setcookie($nome_cookie, true, time() + (3600 * $horas));
@@ -40,9 +40,41 @@ class SiteController extends Controller
                     Revista::whereId($parte_2)
                     ->increment('visitas');
                     break;
-                case 'lista':
+                case 'biblioteca':
                     Lista::whereId($parte_2)
                     ->increment('visitas');
+                    break;
+            }
+        }
+    }
+
+    public function CountCompartilhamento($url) {
+        $url = explode("/", $_GET['url']);
+        $parte_1 = $url[1];
+        $parte_2 = $url[2];
+        $horas = 24;
+
+        $nome_cookie = 'share-'.$parte_1.'-'.$parte_2;
+
+        // Comando para setar o cookie
+        setcookie($nome_cookie, true, time() + (3600 * $horas));
+
+        // Verificação do cookie
+        if (isset($_COOKIE[$nome_cookie]) && $_COOKIE[$nome_cookie] == true ) {
+            // Faz nada...
+        } else {
+            switch ($parte_1) {
+                case 'blog':
+                    Blog::whereId($parte_2)
+                    ->increment('compartilhamentos');
+                    break;
+                case 'revista':
+                    Revista::whereId($parte_2)
+                    ->increment('compartilhamentos');
+                    break;
+                case 'biblioteca':
+                    Lista::whereId($parte_2)
+                    ->increment('compartilhamentos');
                     break;
             }
         }

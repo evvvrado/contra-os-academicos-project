@@ -132,6 +132,13 @@ Route::get('/biblioteca/{lista}', [\App\Http\Controllers\SiteController::class, 
 Route::get('/contato', [\App\Http\Controllers\SiteController::class, 'contato'])->name("site.contato");
 Route::get('/artigo', [\App\Http\Controllers\SiteController::class, 'artigo'])->name("site.artigo");
 
+Route::get('/teste', [\App\Http\Controllers\SiteController::class, 'teste'])->name("site.teste");
+
+Route::post('pay', [\App\Http\Controllers\PagamentoController::class, 'pay'])->name('payment');
+Route::get('success', [\App\Http\Controllers\PagamentoController::class, 'success']);
+Route::get('error', [\App\Http\Controllers\PagamentoController::class, 'error']);
+
 
 // AJAX
 Route::get('/contabiliza_views/{url}', [\App\Http\Controllers\SiteController::class, 'CountView'])->name("contabilizar_view");
+Route::get('/contabiliza_compartilhamento/{url}', [\App\Http\Controllers\SiteController::class, 'CountCompartilhamento'])->name("contabilizar_compartilhamento");

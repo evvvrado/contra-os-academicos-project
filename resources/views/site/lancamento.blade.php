@@ -254,9 +254,12 @@
                     pela colaboração!
                 </p>
 
-                <a href="#" class="button">
-                    Seja assinante!
-                </a>
+                <form method="post" action="{{ route('payment') }}">
+                    @csrf
+                    <input type="hidden" value="120" name="amount">
+                    <input type="submit" class="button" value="Seja assinante!">
+                </form>
+
             </div>
         </div>
     </section>

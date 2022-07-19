@@ -158,12 +158,12 @@
                             </picture>
                             <span>{{ $comentarios->count() }}</span>
                         </div>
-                        {{-- <div class="icon">
+                        <div class="icon">
                             <picture>
                                 <img src="{{ asset('site/assets/img/icon_share_artigo.svg') }}" alt="Ícone">
                             </picture>
-                            <span>04</span>
-                        </div> --}}
+                            <span>{{ $blog->compartilhamentos }}</span>
+                        </div>
                         <div class="icon" active>
                             @livewire('blog-curtir-acao', ['blog' => $blog])
                         </div>
