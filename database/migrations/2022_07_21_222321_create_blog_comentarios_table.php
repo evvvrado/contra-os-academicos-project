@@ -21,8 +21,10 @@ class CreateBlogComentariosTable extends Migration
             $table->unsignedBigInteger("usuario_site_id");
             $table->foreign('usuario_site_id')->references('id')->on('usuario_sites')->onDelete('cascade');
             $table->integer("status")->default(1);
-            $table->timestamp('created_at')->useCurrent();
-            $table->timestamp('updated_at')->useCurrent();
+            $table->integer("curtidas")->default(0);
+            $table->integer("descurtidas")->default(0);
+            $table->integer("denuncias")->default(0);
+            $table->timestamps();
         });
     }
 

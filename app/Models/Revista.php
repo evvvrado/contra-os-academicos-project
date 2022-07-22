@@ -23,4 +23,9 @@ class Revista extends Model
     {
         return $this->belongsTo(Autor::class);
     }
+
+    public function comentario()
+    {
+        return $this->hasMany(RevistaComentario::class);
+    }
 }

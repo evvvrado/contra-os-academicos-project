@@ -5,7 +5,7 @@ namespace App\Http\Livewire\Site\Revista;
 use Livewire\Component;
 use App\Models\RevistaComentario;
 use App\Models\Revista;
-use App\Models\RevistaComentarioRegistros;
+use App\Models\RevistaComentarioRegistro;
 
 class Comentarios extends Component
 {
@@ -34,42 +34,82 @@ class Comentarios extends Component
         $this->conteudo = "";
     }
 
-    public function curtir() {
-        $verifica = RevistaComentarioRegistros::whereRevistaId($this->revista->id)
-        ->whereUsuarioSiteId(session()->get('usuario_site')['id'])
-        ->first();
-        if($verifica) {
-            $verifica->delete();
-            $comentario = new RevistaComentarioRegistros;
-            $comentario->revista_id = $this->revista->id;
-            $comentario->usuario_site_id = session()->get('usuario_site')['id'];
-            $comentario->acao = 'like';
-            $comentario->save();
+    public function curtir($comentario_id) {
+        if(isset(session()->get('usuario_site')['id'])) {
+            $verifica = RevistaComentarioRegistro::whereRevistaId($this->revista->id)
+            ->whereUsuarioSiteId(session()->get('usuario_site')['id'])
+            ->whereRevistaComentarioId($comentario_id)
+            ->whereAcao('like')
+            ->orWhere('acao', 'deslike')
+            ->first();
+            if($verifica) {
+                if($verifica->acao == 'like'){
+                    $verifica->delete();
+                }
+                else {
+                    $verifica->acao = 'like';
+                    $verifica->save();
+                }
+            } else {
+                $comentario = new RevistaComentarioRegistro;
+                $comentario->revista_comentario_id = $comentario_id;
+                $comentario->revista_id = $this->revista->id;
+                $comentario->usuario_site_id = session()->get('usuario_site')['id'];
+                $comentario->acao = 'like';
+                $comentario->save();
+            }
         } else {
-            $comentario = new RevistaComentarioRegistros;
-            $comentario->revista_id = $this->revista->id;
-            $comentario->usuario_site_id = session()->get('usuario_site')['id'];
-            $comentario->acao = 'like';
-            $comentario->save();
+            $this->dispatchBrowserEvent( 'toastr:error', [
+                'message' =>  'Você precisa estar logado',
+            ]);
         }
     }
 
-    public function descurtir() {
-        $verifica = RevistaComentarioRegistros::whereRevistaId($this->revista->id)
+    public function descurtir($comentario_id) {
+        if(isset(session()->get('usuario_site')['id'])) {
+            $verifica = RevistaComentarioRegistro::whereRevistaId($this->revista->id)
+            ->whereUsuarioSiteId(session()->get('usuario_site')['id'])
+            ->whereRevistaComentarioId($comentario_id)
+            ->whereAcao('like')
+            ->orWhere('acao', 'deslike')
+            ->first();
+            if($verifica) {
+                if($verifica->acao == 'deslike'){
+                    $verifica->delete();
+                }
+                else {
+                    $verifica->acao = 'deslike';
+                    $verifica->save();
+                }
+            } else {
+                $comentario = new RevistaComentarioRegistro;
+                $comentario->revista_comentario_id = $comentario_id;
+                $comentario->revista_id = $this->revista->id;
+                $comentario->usuario_site_id = session()->get('usuario_site')['id'];
+                $comentario->acao = 'deslike';
+                $comentario->save();
+            }
+        } else {
+            $this->dispatchBrowserEvent( 'toastr:error', [
+                'message' =>  'Você precisa estar logado',
+            ]);
+        }
+    }
+
+    public function denunciar($comentario_id) {
+        $verifica = RevistaComentarioRegistro::whereRevistaId($this->revista->id)
         ->whereUsuarioSiteId(session()->get('usuario_site')['id'])
+        ->whereRevistaComentarioId($comentario_id)
+        ->whereAcao('denuncia')
         ->first();
         if($verifica) {
             $verifica->delete();
-            $comentario = new RevistaComentarioRegistros;
-            $comentario->revista_id = $this->revista->id;
-            $comentario->usuario_site_id = session()->get('usuario_site')['id'];
-            $comentario->acao = 'deslike';
-            $comentario->save();
         } else {
-            $comentario = new RevistaComentarioRegistros;
+            $comentario = new RevistaComentarioRegistro;
+            $comentario->revista_comentario_id = $comentario_id;
             $comentario->revista_id = $this->revista->id;
             $comentario->usuario_site_id = session()->get('usuario_site')['id'];
-            $comentario->acao = 'deslike';
+            $comentario->acao = 'denuncia';
             $comentario->save();
         }
     }

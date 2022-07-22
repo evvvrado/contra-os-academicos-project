@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateRevistaComentariosTable extends Migration
+class CreateListaComentariosTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,19 +13,18 @@ class CreateRevistaComentariosTable extends Migration
      */
     public function up()
     {
-        Schema::create('revista_comentarios', function (Blueprint $table) {
+        Schema::create('lista_comentarios', function (Blueprint $table) {
             $table->id();
             $table->string("conteudo", 255);
-            $table->unsignedBigInteger("revista_id");
-            $table->foreign('revista_id')->references('id')->on('revistas')->onDelete('cascade');
+            $table->unsignedBigInteger("lista_id");
+            $table->foreign('lista_id')->references('id')->on('listas')->onDelete('cascade');
             $table->unsignedBigInteger("usuario_site_id");
             $table->foreign('usuario_site_id')->references('id')->on('usuario_sites')->onDelete('cascade');
             $table->integer("status")->default(1);
             $table->integer("curtidas")->default(0);
             $table->integer("descurtidas")->default(0);
             $table->integer("denuncias")->default(0);
-            $table->timestamp('created_at')->useCurrent();
-            $table->timestamp('updated_at')->useCurrent();
+            $table->timestamps();
         });
     }
 
@@ -36,6 +35,6 @@ class CreateRevistaComentariosTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('revista_comentarios');
+        Schema::dropIfExists('lista_comentarios');
     }
 }

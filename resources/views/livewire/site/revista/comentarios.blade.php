@@ -1,6 +1,6 @@
 <div>
     @php
-        use App\Models\RevistaComentarioRegistros;
+        use App\Models\RevistaComentarioRegistro;
     @endphp
     <style>
         body {
@@ -179,7 +179,7 @@
                     ?>
                             <div class="mb-3">
                                 <label for="commentmessage-input" class="form-label">Comentar</label>
-                                <textarea wire:model="conteudo" class="form-control" id="commentmessage-input" placeholder="Sua mensagem" rows="3">{{ $conteudo }}</textarea>
+                                <textarea wire:model.defer="conteudo" class="form-control" id="commentmessage-input" placeholder="Sua mensagem" rows="3">{{ $conteudo }}</textarea>
         
                                 <button class="button" style="margin-top: 10px;" wire:click="comentar()">Enviar</button>
                             </div>
@@ -208,46 +208,70 @@
                                     <p>
                                         {{ $comentario->conteudo }}
                                     </p>
-    
-    
-                                    <br>
-                                    <small>Essa avaliação foi útil?</small>
 
                                     <?php
-                                        $verifica = RevistaComentarioRegistros::whereRevistaId($revista->id)
-                                        ->whereUsuarioSiteId(session()->get('usuario_site')['id'])
-                                        ->first();
-
-                                        if($verifica){
-                                            switch ($verifica->acao) {
-                                                case 'like':
-                                                    $cor_like = "filter: invert(18%) sepia(65%) saturate(4669%) hue-rotate(144deg) brightness(89%) contrast(91%);";
-                                                    $cor_deslike = "";
-                                                    break;
-                                                case 'deslike':
+                                        if(isset(session()->get('usuario_site')['id'])) {
+                                            if(session()->get('usuario_site')['id'] != $comentario->usuario_site->id) {
+                                    ?>
+                                                <br>
+                                                <small>Essa avaliação foi útil?</small>
+                                    <?
+                                                $cor_like = "filter: none";
+                                                $cor_deslike = "filter: none";
+        
+                                                $verifica = RevistaComentarioRegistro::whereRevistaId($revista->id)
+                                                ->whereUsuarioSiteId(session()->get('usuario_site')['id'])
+                                                ->whereRevistaComentarioId($comentario->id)
+                                                ->first();
+    
+                                                if($verifica){
+                                                    switch ($verifica->acao) {
+                                                        case 'like':
+                                                            $cor_like = "filter: invert(18%) sepia(65%) saturate(4669%) hue-rotate(144deg) brightness(89%) contrast(91%);";
+                                                            $cor_deslike = "";
+                                                            break;
+                                                        case 'deslike':
+                                                            $cor_like = "filter: none";
+                                                            $cor_deslike = "filter: invert(9%) sepia(81%) saturate(6241%) hue-rotate(4deg) brightness(94%) contrast(97%);";
+                                                            break;
+                                                    }
+                                                } else {
                                                     $cor_like = "filter: none";
-                                                    $cor_deslike = "filter: invert(9%) sepia(81%) saturate(6241%) hue-rotate(4deg) brightness(94%) contrast(97%);";
-                                                    break;
+                                                    $cor_deslike = "filter: none";
+                                                }
+    
+                                                $verifica = RevistaComentarioRegistro::whereRevistaId($revista->id)
+                                                ->whereUsuarioSiteId(session()->get('usuario_site')['id'])
+                                                ->whereRevistaComentarioId($comentario->id)
+                                                ->whereAcao('denuncia')
+                                                ->first();
+    
+                                                if($verifica){
+                                                    $cor_denuncia = "red";
+                                                    $texto_denuncia = "Retirar denúncia";
+                                                } else {
+                                                    $cor_denuncia = "";
+                                                    $texto_denuncia = "DENUNCIAR";
+                                                }
+                                    ?>
+        
+                                                <div class="actions-comment">
+                                                    <button wire:click="curtir({{ $comentario->id }})">
+                                                        <img src="{{ asset('site/assets/img/icon_like.svg') }}" style="{{ $cor_like }}" alt="">
+                                                    </button>
+                
+                                                    <button wire:click="descurtir({{ $comentario->id }})">
+                                                        <img src="{{ asset('site/assets/img/icon_dislike.svg') }}" style="{{ $cor_deslike }}" alt="">
+                                                    </button>
+                                                    |
+                                                    <button wire:click="denunciar({{ $comentario->id }})">
+                                                        <small style="color: {{ $cor_denuncia }}">{{ $texto_denuncia }}</small>
+                                                    </button>
+                                                </div>
+                                    <?php
                                             }
-                                        } else {
-                                            $cor_like = "filter: none";
-                                            $cor_deslike = "filter: none";
                                         }
                                     ?>
-    
-                                    <div class="actions-comment">
-                                        <button wire:click="curtir">
-                                            <img src="{{ asset('site/assets/img/icon_like.svg') }}" style="{{ $cor_like }}" alt="">
-                                        </button>
-    
-                                        <button wire:click="descurtir">
-                                            <img src="{{ asset('site/assets/img/icon_dislike.svg') }}" style="{{ $cor_deslike }}" alt="">
-                                        </button>
-                                        |
-                                        <button>
-                                            <small>DENUNCIAR</small>
-                                        </button>
-                                    </div>
                                 </div>
                             </li>
                         @endforeach
@@ -256,9 +280,11 @@
             </div>
         </div>
 
-        <button class="button" wire:click="carregarMais()" style="margin: auto;">
-            Ver mais
-        </button>
+        @if ($porpagina < $revista->comentario->count()) 
+            <button class="button" wire:click="carregarMais()" style="margin: auto;">
+                Ver mais
+            </button>
+        @endif
     </div>
     
 </div>

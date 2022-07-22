@@ -134,9 +134,9 @@ Route::get('/artigo', [\App\Http\Controllers\SiteController::class, 'artigo'])->
 
 Route::get('/teste', [\App\Http\Controllers\SiteController::class, 'teste'])->name("site.teste");
 
-Route::post('pay', [\App\Http\Controllers\PagamentoController::class, 'pay'])->name('payment');
-Route::get('success', [\App\Http\Controllers\PagamentoController::class, 'success']);
-Route::get('error', [\App\Http\Controllers\PagamentoController::class, 'error']);
+Route::post('pay', [\App\Http\Controllers\PagamentosController::class, 'pay'])->name('payment');
+Route::get('success', [\App\Http\Controllers\PagamentosController::class, 'success']);
+Route::get('error', [\App\Http\Controllers\PagamentosController::class, 'error']);
 
 
 // AJAX

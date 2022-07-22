@@ -15,6 +15,8 @@ class CreateRevistaComentarioRegistrosTable extends Migration
     {
         Schema::create('revista_comentario_registros', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger("revista_comentario_id");
+            $table->foreign('revista_comentario_id')->references('id')->on('revista_comentarios')->onDelete('cascade');
             $table->unsignedBigInteger('revista_id');
             $table->foreign('revista_id')->references('id')->on('revistas')->onDelete('cascade');
             $table->unsignedBigInteger('usuario_site_id');

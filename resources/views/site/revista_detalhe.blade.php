@@ -99,12 +99,12 @@
                             </picture>
                             <span>{{ $revista->visitas }}</span>
                         </div>
-                        {{-- <div class="icon">
+                        <div class="icon">
                             <picture>
                                 <img src="{{ asset('site/assets/img/icon_chat_artigo.svg') }}" alt="Ícone">
                             </picture>
-                            <span>{{ $comentarios->count() }}</span>
-                        </div> --}}
+                            <span>{{ $revista->comentario->count() }}</span>
+                        </div>
                         <div class="icon">
                             <picture>
                                 <img src="{{ asset('site/assets/img/icon_share_artigo.svg') }}" alt="Ícone">
