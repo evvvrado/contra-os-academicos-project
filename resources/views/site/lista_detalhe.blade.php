@@ -69,12 +69,12 @@
                             </picture>
                             <span>{{ $lista->visitas }}</span>
                         </div>
-                        {{-- <div class="icon">
+                        <div class="icon">
                             <picture>
                                 <img src="{{ asset('site/assets/img/icon_chat_artigo.svg') }}" alt="Ícone">
                             </picture>
-                            <span>{{ $comentarios->count() }}</span>
-                        </div> --}}
+                            <span>{{ $lista->comentario->count() }}</span>
+                        </div>
                         <div class="icon">
                             <picture>
                                 <img src="{{ asset('site/assets/img/icon_share_artigo.svg') }}" alt="Ícone">
@@ -90,6 +90,8 @@
                         <button class="button copyurl">Quero compartilhar</button>
                     </div>
                 </div>
+
+                @livewire('site.lista.comentarios', ['lista' => $lista])
             </main>
 
             <picture class="artigo-banner">

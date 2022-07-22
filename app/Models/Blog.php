@@ -28,4 +28,9 @@ class Blog extends Model
     {
         return $this->belongsTo(Tradutor::class);
     }
+
+    public function comentario()
+    {
+        return $this->hasMany(BlogComentario::class);
+    }
 }

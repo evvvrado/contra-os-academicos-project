@@ -156,7 +156,7 @@
                             <picture>
                                 <img src="{{ asset('site/assets/img/icon_chat_artigo.svg') }}" alt="Ícone">
                             </picture>
-                            <span>{{ $comentarios->count() }}</span>
+                            <span>{{ $blog->comentario->count() }}</span>
                         </div>
                         <div class="icon">
                             <picture>
@@ -175,7 +175,7 @@
                     </div>
                 </div>
 
-                @include('site.includes.comentarios')
+                @livewire('site.blog.comentarios', ['blog' => $blog])
             </main>
 
             <picture class="artigo-banner">

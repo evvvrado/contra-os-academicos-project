@@ -18,4 +18,9 @@ class Lista extends Model
     {
         return $this->belongsTo(Categoria::class);
     }
+
+    public function comentario()
+    {
+        return $this->hasMany(ListaComentario::class);
+    }
 }

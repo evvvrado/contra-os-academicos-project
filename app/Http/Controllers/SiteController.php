@@ -11,7 +11,6 @@ use App\Models\Blog;
 use App\Models\Lista;
 use App\Models\Curso;
 use Carbon\Carbon;
-use App\Models\BlogComentario;
 
 class SiteController extends Controller
 {
@@ -147,10 +146,6 @@ class SiteController extends Controller
         // Create Carbon date
         $mes = $blog->created_at->formatLocalized('%B');
 
-        $comentarios = BlogComentario::where('blog_id', $blog->id)
-        ->whereStatus(1)
-        ->get();
-
         $blog_randomicos = Blog::select(DB::raw("*"))
         ->inRandomOrder()
         ->limit(4)
@@ -167,7 +162,7 @@ class SiteController extends Controller
         ->orderBy('id', 'Desc')
         ->get();
 
-        return view("site.blog_detalhe", ["blog" => $blog, "mes" => $mes, "comentarios" => $comentarios, "blog_randomicos" => $blog_randomicos, "mais_do_autors" => $mais_do_autors, "cursos" => $cursos]);
+        return view("site.blog_detalhe", ["blog" => $blog, "mes" => $mes, "blog_randomicos" => $blog_randomicos, "mais_do_autors" => $mais_do_autors, "cursos" => $cursos]);
     }
     // ------------------------------------------------
     public function revistas()
