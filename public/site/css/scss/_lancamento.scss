@@ -42,7 +42,7 @@ body#lancamento {
                 font-family: $font-title;
                 font-style: normal;
                 font-weight: 500;
-                font-size: 1.2rem;
+                font-size: 1.6rem;
                 line-height: 1.6rem;
                 text-align: center;
                 color: $white;
@@ -96,7 +96,7 @@ body#lancamento {
                     li {
                         width: 100%;
                         background-color: $creme-contra;
-                        height: 34.5rem;
+                        height: 40.5rem;
                         padding: 4.3rem;
                         text-align: center;
 
@@ -179,7 +179,7 @@ body#lancamento {
 
     section.lancamento-depoimentos {
         // padding-top: 7.1rem;
-        padding-bottom: 5rem;
+        padding-bottom: 12rem;
         background: linear-gradient(180deg, rgba(91, 34, 34, 1) 50%, rgba(255, 255, 255, 1) 50%);
 
         div.niv {
@@ -196,7 +196,7 @@ body#lancamento {
 
                     div.depoimento {
                         scroll-snap-align: start;
-                        height: 30.6rem;
+                        height: 20.6rem;
                         width: 59.4rem;
                         padding: 2rem 5.6rem;
                         background-color: $white;
@@ -409,12 +409,52 @@ body#lancamento {
 
                 text-align: center;
                 background: url("../assets/img/lancamento/time-banner.png");
+                background-size: cover;
+
+                position: relative;
+
+                div.absolute {
+                    position: absolute;
+                    right: 15rem;
+                    top: 15rem;
+
+                    background-color: $primary;
+                    border-radius: 100%;
+                    padding: 2rem;
+
+                    @extend %totalcenter;
+
+                    max-width: 18rem;
+                    aspect-ratio: 1/1;
+
+                    strong {
+                        font-size: 1.8rem;
+                    }
+
+                    @include responsive(800px) {
+                        position: static;
+                        margin: 3rem;
+                    }
+                }
 
                 strong,
                 p {
                     color: $white;
                     max-width: 61rem;
                     margin-bottom: 2rem;
+
+                    & > strong {
+                        font-size: 3rem;
+                        color: $tertiary;
+                    }
+                }
+
+                p {
+                    font-size: 2.2rem;
+                }
+
+                s {
+                    text-decoration: line-through;
                 }
 
                 strong {
@@ -423,10 +463,22 @@ body#lancamento {
                     font-family: $font-title;
                 }
 
-                a.button {
+                .button {
                     --background-color: #{$tertiary};
                     --font-color: #{$primary};
                     --height: 5.2rem;
+                }
+
+                ul {
+                    @include flex(row, center, center);
+                    gap: 3rem;
+                    flex-wrap: wrap;
+                    max-width: 36rem;
+                    margin-bottom: 2rem;
+
+                    li {
+                        color: $white;
+                    }
                 }
             }
 

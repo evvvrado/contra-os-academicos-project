@@ -9,7 +9,7 @@ body#lancamento section.lancamento-depoimentos div.niv div.scroll div.niv-area d
      object-fit: cover;
 }
 
-div.modal .niv .box div.title-area button, section.trabalhe-conosco div.niv div.boxes-side div.red-box, section.apoie-projeto div.niv div.content-area div.clickable a, section.artigo div.niv div.cursos div.card-area div.scroll a.box-destaque div.tags span, section.artigo div.niv div.cursos div.title-area div button, section.artigo div.niv.--row main div.actions div.social-buttons div.icon picture, section.publicacoes aside ul.colunistas li span, section.complemento.--biblioteca div.niv div.boxes-area button, body#sobre section.banner div.niv picture.icon-arrow, section.parceiros div.niv div.partners a, section.cursos div.niv div.boxes-area div.scroll a.box-destaque div.tags span, section.indicacao-cast div.niv div.indicacao-area div.box.--livro div.box-content main div.--novidade::after, section.hero div.niv div.container a.card.main-card div.top-bar span.categoria, header div[fluid] div.niv > div div.search-button picture, header div[fluid] div.user-circle, :not(.text-content) .button:is(a, button) {
+div.modal .niv .box div.title-area button, body#lancamento section.lancamento-time div.niv div.niv-bottom-area div.absolute, section.trabalhe-conosco div.niv div.boxes-side div.red-box, section.apoie-projeto div.niv div.content-area div.clickable a, section.artigo div.niv div.cursos div.card-area div.scroll a.box-destaque div.tags span, section.artigo div.niv div.cursos div.title-area div button, section.artigo div.niv.--row main div.actions div.social-buttons div.icon picture, section.publicacoes aside ul.colunistas li span, section.complemento.--biblioteca div.niv div.boxes-area button, body#sobre section.banner div.niv picture.icon-arrow, section.parceiros div.niv div.partners a, section.cursos div.niv div.boxes-area div.scroll a.box-destaque div.tags span, section.indicacao-cast div.niv div.indicacao-area div.box.--livro div.box-content main div.--novidade::after, section.hero div.niv div.container a.card.main-card div.top-bar span.categoria, header div[fluid] div.niv > div div.search-button picture, header div[fluid] div.user-circle, :not(.text-content) .button:is(a, button) {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -2993,6 +2993,10 @@ section.artigo div.niv.--row picture.artigo-banner {
   border-radius: 0 0 0 1.2rem;
 }
 section.artigo div.niv.--row main {
+  width: 100%;
+  max-width: 95.5rem;
+}
+section.artigo div.niv.--row main div.main-content {
   background-color: #fff;
   width: 100%;
   max-width: 95.5rem;
@@ -4388,7 +4392,7 @@ body#lancamento section.lancamento-hero div.niv small {
   font-family: "Palatino Linotype", sans-serif;
   font-style: normal;
   font-weight: 500;
-  font-size: 1.2rem;
+  font-size: 1.6rem;
   line-height: 1.6rem;
   text-align: center;
   color: #fff;
@@ -4453,7 +4457,7 @@ body#lancamento section.lancamento-beneficios div.niv div.content-list ul {
 body#lancamento section.lancamento-beneficios div.niv div.content-list ul li {
   width: 100%;
   background-color: #fdf6d6;
-  height: 34.5rem;
+  height: 40.5rem;
   padding: 4.3rem;
   text-align: center;
 }
@@ -4539,7 +4543,7 @@ body#lancamento section.lancamento-destaque div.niv div.niv-text-side a.button {
   --height: 5.2rem;
 }
 body#lancamento section.lancamento-depoimentos {
-  padding-bottom: 5rem;
+  padding-bottom: 12rem;
   background: linear-gradient(180deg, #5b2222 50%, white 50%);
 }
 body#lancamento section.lancamento-depoimentos div.niv div.scroll {
@@ -4570,7 +4574,7 @@ body#lancamento section.lancamento-depoimentos div.niv div.scroll div.niv-area {
 }
 body#lancamento section.lancamento-depoimentos div.niv div.scroll div.niv-area div.depoimento {
   scroll-snap-align: start;
-  height: 30.6rem;
+  height: 20.6rem;
   width: 59.4rem;
   padding: 2rem 5.6rem;
   background-color: #fff;
@@ -4797,6 +4801,36 @@ body#lancamento section.lancamento-time div.niv div.niv-bottom-area {
   flex-direction: column;
   text-align: center;
   background: url("../assets/img/lancamento/time-banner.png");
+  background-size: cover;
+  position: relative;
+}
+body#lancamento section.lancamento-time div.niv div.niv-bottom-area div.absolute {
+  position: absolute;
+  right: 15rem;
+  top: 15rem;
+  background-color: #5b2222;
+  border-radius: 100%;
+  padding: 2rem;
+  max-width: 18rem;
+  aspect-ratio: 1/1;
+  /**
+
+  @include responsive(1400px) {}
+  @include responsive(1200px) {}
+  @include responsive(992px) {}
+  @include responsive(730px) {}
+  @include responsive(600px) {}
+
+  **/
+}
+body#lancamento section.lancamento-time div.niv div.niv-bottom-area div.absolute strong {
+  font-size: 1.8rem;
+}
+@media (max-width: 800px) {
+  body#lancamento section.lancamento-time div.niv div.niv-bottom-area div.absolute {
+    position: static;
+    margin: 3rem;
+  }
 }
 body#lancamento section.lancamento-time div.niv div.niv-bottom-area strong,
 body#lancamento section.lancamento-time div.niv div.niv-bottom-area p {
@@ -4804,15 +4838,39 @@ body#lancamento section.lancamento-time div.niv div.niv-bottom-area p {
   max-width: 61rem;
   margin-bottom: 2rem;
 }
+body#lancamento section.lancamento-time div.niv div.niv-bottom-area strong > strong,
+body#lancamento section.lancamento-time div.niv div.niv-bottom-area p > strong {
+  font-size: 3rem;
+  color: #f2d027;
+}
+body#lancamento section.lancamento-time div.niv div.niv-bottom-area p {
+  font-size: 2.2rem;
+}
+body#lancamento section.lancamento-time div.niv div.niv-bottom-area s {
+  text-decoration: line-through;
+}
 body#lancamento section.lancamento-time div.niv div.niv-bottom-area strong {
   margin-top: 3.6rem;
   font-size: 2.1rem;
   font-family: "Palatino Linotype", sans-serif;
 }
-body#lancamento section.lancamento-time div.niv div.niv-bottom-area a.button {
+body#lancamento section.lancamento-time div.niv div.niv-bottom-area .button {
   --background-color: #f2d027;
   --font-color: #5b2222;
   --height: 5.2rem;
+}
+body#lancamento section.lancamento-time div.niv div.niv-bottom-area ul {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+  gap: 3rem;
+  flex-wrap: wrap;
+  max-width: 36rem;
+  margin-bottom: 2rem;
+}
+body#lancamento section.lancamento-time div.niv div.niv-bottom-area ul li {
+  color: #fff;
 }
 @media (max-width: 800px) {
   body#lancamento section.lancamento-time div.niv div.niv-top-area {
