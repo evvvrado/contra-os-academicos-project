@@ -7,121 +7,160 @@
     <section class="artigo">
         <div class="niv --row">
             <main>
-                <div class="title-area">
-                    <div class="roadmap">
-                        <a href="#">Revistas</a>
-                        /
-                        <a href="#">{{ $revista->categoria->nome }}</a>
-                        /
-                        <a href="#">{{ Str::limit($revista->titulo, 9) }}</a>
-                    </div>
-                    <div class="info">
+                <div class="main-content">
+                    <div class="title-area">
+                        <div class="roadmap">
+                            <a href="#">Revistas</a>
+                            /
+                            <a href="#">{{ $revista->categoria->nome }}</a>
+                            /
+                            <a href="#">{{ Str::limit($revista->titulo, 9) }}</a>
+                        </div>
+                        <div class="info">
 
-                        <h1>{{ $revista->titulo }}</h1>
+                            <h1>{{ $revista->titulo }}</h1>
 
-                        <div class="author">
-                            <picture>
-                                <img src="{{ asset($revista->autor->foto) }}" alt="Foto do colunista">
-                            </picture>
+                            <div class="author">
+                                <picture>
+                                    <img src="{{ asset($revista->autor->foto) }}" alt="Foto do colunista">
+                                </picture>
 
-                            <div>
-                                <span>Por {{ $revista->autor->nome }}</span>
                                 <div>
-                                    <span>{{ date('d', strtotime($revista->created_at)) }} de {{ $mes }} de
-                                        {{ date('Y', strtotime($revista->created_at)) }}</span>
+                                    <span>Por {{ $revista->autor->nome }}</span>
+                                    <div>
+                                        <span>{{ date('d', strtotime($revista->created_at)) }} de {{ $mes }} de
+                                            {{ date('Y', strtotime($revista->created_at)) }}</span>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
 
-                <?php
+                    <?php
                     if (isset(session()->get("usuario_site")["assinante"])) {
                         if(session()->get("usuario_site")["assinante"] == 0 OR session()->get("usuario_site")["assinante"] == ""){
                 ?>
-                            <div class="text-content block-style">
-                                <p>
-                                    {!! Str::limit($revista->conteudo, 800) !!}
-                                </p>
-                            </div>
+                    <div class="text-content block-style">
+                        <p>
+                            {!! Str::limit($revista->conteudo, 800) !!}
+                        </p>
+                    </div>
 
-                <?php
+                    <?php
                         }  else {
                 ?>
-                            <div class="text-content block-style">
-                                <p>
-                                    {!! $revista->conteudo !!}
-                                </p>
-                            </div>
-                <?php 
+                    <div class="text-content block-style">
+                        <p>
+                            {!! $revista->conteudo !!}
+                        </p>
+                    </div>
+                    <?php 
                         }
                     } else {
                 ?>
-                        <div class="text-content block-style">
-                            <p>
-                                {!! Str::limit($revista->conteudo, 800) !!}
-                            </p>
-                        </div>
-                <?php
+                    <div class="text-content block-style">
+                        <p>
+                            {!! Str::limit($revista->conteudo, 800) !!}
+                        </p>
+                    </div>
+                    <?php
                     }
                 ?>
 
-                <div class="apoie-projeto --alternative">
+                    <div class="apoie-projeto --alternative">
 
-                    <div class="content-side">
-                        <strong>MENSAGEM DA EQUIPE</strong>
+                        <div class="content-side">
+                            <strong>MENSAGEM DA EQUIPE</strong>
 
-                        <strong>
-                            Seu apoio é mais importante do que nunca.
-                        </strong>
+                            <strong>
+                                Seu apoio é mais importante do que nunca.
+                            </strong>
 
-                        <p>
-                            Desde 2014 o Contra os Acadêmicos trabalha para divulgar a boa filosofia e incentivar a
-                            autoeducação. Apoiando nosso projeto, você assegura a continuidade do nosso trabalho.
-                        </p>
+                            <p>
+                                Desde 2014 o Contra os Acadêmicos trabalha para divulgar a boa filosofia e incentivar a
+                                autoeducação. Apoiando nosso projeto, você assegura a continuidade do nosso trabalho.
+                            </p>
 
 
+                            <div class="buttons">
+                                <button class="button">Assinar</button>
+                                <button class="button"><a
+                                        href="https://www.paypal.com/donate/?hosted_button_id=SG3AY5GSPXAHN"
+                                        target="_blank">Quero apoiar</a></b>
+                            </div>
+                        </div>
+
+
+                    </div>
+
+                    <div class="actions">
+                        <div class="social-buttons">
+                            <div class="icon">
+                                <picture>
+                                    <img src="{{ asset('site/assets/img/icon_eye_artigo.svg') }}" alt="Ícone">
+                                </picture>
+                                <span>{{ $revista->visitas }}</span>
+                            </div>
+                            <div class="icon">
+                                <picture>
+                                    <img src="{{ asset('site/assets/img/icon_chat_artigo.svg') }}" alt="Ícone">
+                                </picture>
+                                <span>{{ $revista->comentario->count() }}</span>
+                            </div>
+                            <div class="icon">
+                                <picture>
+                                    <img src="{{ asset('site/assets/img/icon_share_artigo.svg') }}" alt="Ícone">
+                                </picture>
+                                <span>{{ $revista->compartilhamentos }}</span>
+                            </div>
+                            <div class="icon" active>
+                                @livewire('revista-curtir-acao', ['revista' => $revista])
+                            </div>
+
+                        </div>
                         <div class="buttons">
-                            <button class="button">Assinar</button>
-                            <button class="button"><a href="https://www.paypal.com/donate/?hosted_button_id=SG3AY5GSPXAHN"
-                                    target="_blank">Quero apoiar</a></b>
+                            <button class="button copyurl">Quero compartilhar</button>
                         </div>
                     </div>
 
-
+                    @livewire('site.revista.comentarios', ['revista' => $revista])
                 </div>
 
-                <div class="actions">
-                    <div class="social-buttons">
-                        <div class="icon">
-                            <picture>
-                                <img src="{{ asset('site/assets/img/icon_eye_artigo.svg') }}" alt="Ícone">
-                            </picture>
-                            <span>{{ $revista->visitas }}</span>
-                        </div>
-                        <div class="icon">
-                            <picture>
-                                <img src="{{ asset('site/assets/img/icon_chat_artigo.svg') }}" alt="Ícone">
-                            </picture>
-                            <span>{{ $revista->comentario->count() }}</span>
-                        </div>
-                        <div class="icon">
-                            <picture>
-                                <img src="{{ asset('site/assets/img/icon_share_artigo.svg') }}" alt="Ícone">
-                            </picture>
-                            <span>{{ $revista->compartilhamentos }}</span>
-                        </div>
-                        <div class="icon" active>
-                            @livewire('revista-curtir-acao', ['revista' => $revista])
-                        </div>
 
+                <div class="cursos">
+                    <div class="title-area">
+                        <picture><img src="{{ asset('site/assets/img/logos_fade_artigo.png') }}" alt="Logo sumindo efeito">
+                        </picture>
+
+                        <h3 class="--hr-bar">Cursos em destaque</h3>
+
+                        <div>
+                            <button class="scroll-left">
+                                <img src="{{ asset('site/assets/img/arrow_left_biblioteca.svg') }}" alt="">
+                            </button>
+                            <button class="scroll-right">
+                                <img src="{{ asset('site/assets/img/arrow_right_biblioteca.svg') }}" alt="">
+                            </button>
+                        </div>
                     </div>
-                    <div class="buttons">
-                        <button class="button copyurl">Quero compartilhar</button>
+
+                    <div class="card-area">
+                        <div class="scroll">
+                            @foreach ($cursos as $curso)
+                                <a href="#" class="box-destaque"
+                                    style="background-image: url('{{ asset($curso->banner) }}')">
+                                    <div class="tags">
+                                        {{-- <span class="--filled">Novo</span> --}}
+                                        <span>{{ $curso->categoria->nome }}</span>
+                                    </div>
+                                    <h2>{{ $curso->titulo }}</h2>
+                                </a>
+                            @endforeach
+                        </div>
                     </div>
+
+                    <a href="#" class="--plus">Acessar todos os cursos</a>
                 </div>
-
-                @livewire('site.revista.comentarios', ['revista' => $revista])
             </main>
 
             <picture class="artigo-banner">
@@ -169,42 +208,6 @@
             </aside>
         </div>
 
-        <div class="niv">
-            <div class="cursos">
-                <div class="title-area">
-                    <picture><img src="{{ asset('site/assets/img/logos_fade_artigo.png') }}" alt="Logo sumindo efeito">
-                    </picture>
-
-                    <h3 class="--hr-bar">Cursos em destaque</h3>
-
-                    <div>
-                        <button class="scroll-left">
-                            <img src="{{ asset('site/assets/img/arrow_left_biblioteca.svg') }}" alt="">
-                        </button>
-                        <button class="scroll-right">
-                            <img src="{{ asset('site/assets/img/arrow_right_biblioteca.svg') }}" alt="">
-                        </button>
-                    </div>
-                </div>
-
-                <div class="card-area">
-                    <div class="scroll">
-                        @foreach ($cursos as $curso)
-                            <a href="#" class="box-destaque"
-                                style="background-image: url('{{ asset($curso->banner) }}')">
-                                <div class="tags">
-                                    {{-- <span class="--filled">Novo</span> --}}
-                                    <span>{{ $curso->categoria->nome }}</span>
-                                </div>
-                                <h2>{{ $curso->titulo }}</h2>
-                            </a>
-                        @endforeach
-                    </div>
-                </div>
-
-                <a href="#" class="--plus">Acessar todos os cursos</a>
-            </div>
-        </div>
     </section>
     </section>
 @endsection

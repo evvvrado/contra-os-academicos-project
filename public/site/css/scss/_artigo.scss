@@ -22,13 +22,17 @@ section.artigo {
             }
 
             main {
-                background-color: $white;
-
                 width: 100%;
                 max-width: 95.5rem;
-                padding-top: 3.2rem;
-                padding-left: 9rem;
-                padding-bottom: 6.6rem;
+                div.main-content {
+                    background-color: $white;
+
+                    width: 100%;
+                    max-width: 95.5rem;
+                    padding-top: 3.2rem;
+                    padding-left: 9rem;
+                    padding-bottom: 6.6rem;
+                }
 
                 div.title-area {
                     div.roadmap,
