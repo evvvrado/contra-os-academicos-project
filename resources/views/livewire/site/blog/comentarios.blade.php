@@ -215,7 +215,7 @@
                                     ?>
                                                 <br>
                                                 <small>Essa avaliação foi útil?</small>
-                                    <?
+                                    <?php
                                                 $cor_like = "filter: none";
                                                 $cor_deslike = "filter: none";
         

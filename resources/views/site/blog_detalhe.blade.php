@@ -168,6 +168,8 @@
                             @livewire('blog-curtir-acao', ['blog' => $blog])
                         </div>
 
+                        @livewire('site.blog.favoritar', ['blog' => $blog])
+
                     </div>
                     <div class="buttons">
                         <button class="button --references">Referências</button>
