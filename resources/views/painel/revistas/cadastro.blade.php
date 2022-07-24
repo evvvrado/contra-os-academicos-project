@@ -53,6 +53,13 @@
                                     <textarea maxlength="104" required cols="80" class="form-control" id="resumo" name="resumo" rows="5" data-sample-short></textarea>
                                 </div>
                             </div>
+
+                            <div class="row">
+                                <div class="form-group col-lg-12 pb-5">
+                                    <label class="mt-3" for="referencias">Referências</label>
+                                    <textarea cols="10" class="form-control" id="referencias" name="referencias" rows="16" data-sample-short></textarea>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>

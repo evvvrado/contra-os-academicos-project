@@ -117,6 +117,10 @@
                                 @livewire('revista-curtir-acao', ['revista' => $revista])
                             </div>
 
+                            <div class="icon" active style="margin-top: -23px;">
+                                @livewire('site.revista.favoritar', ['revista' => $revista])
+                            </div>
+
                         </div>
                         <div class="buttons">
                             <button class="button copyurl">Quero compartilhar</button>

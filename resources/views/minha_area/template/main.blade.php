@@ -22,6 +22,8 @@
 
     <script src="https://kit.fontawesome.com/8b74899bef.js" crossorigin="anonymous"></script>
 
+    @livewireStyles
+
     @toastr_css
 </head>
 
@@ -422,6 +424,8 @@ use App\Models\UsuarioSite;
 
     @toastr_js
     @toastr_render
+
+    @livewireScripts
 
     @yield('scripts')
 </body>

@@ -25,6 +25,7 @@ class RevistasController extends Controller
             $revista->titulo = $request->titulo;
             $revista->conteudo = $request->conteudo;
             $revista->resumo = $request->resumo;
+            $revista->referencias = $request->referencias;
             $revista->usuario_id = $request->usuario;
             $revista->autor_id = $request->autor;
             $revista->categoria_id = $request->categoria;
@@ -53,6 +54,7 @@ class RevistasController extends Controller
             $revista->titulo = $request->titulo;
             $revista->conteudo = $request->conteudo;
             $revista->resumo = $request->resumo;
+            $revista->referencias = $request->referencias;
             $revista->usuario_id = $request->usuario;
             $revista->autor_id = $request->autor;
             $revista->categoria_id = $request->categoria;
@@ -128,6 +130,7 @@ class RevistasController extends Controller
         $revista->titulo = $request->titulo;
         $revista->conteudo = $request->conteudo;
         $revista->resumo = $request->resumo;
+        $revista->referencias = $request->referencias;
         $revista->usuario_id = $request->usuario;
         $revista->autor_id = $request->autor;
         $revista->categoria_id = $request->categoria;

@@ -28,6 +28,7 @@ class ListasController extends Controller
             $lista->titulo = $request->titulo;
             $lista->conteudo = $request->conteudo;
             $lista->resumo = $request->resumo;
+            $lista->referencias = $request->referencias;
             $lista->usuario_id = $request->usuario;
             $lista->categoria_id = $request->categoria;
             $lista->destaque = $request->destaque;
@@ -49,6 +50,7 @@ class ListasController extends Controller
             $lista->titulo = $request->titulo;
             $lista->conteudo = $request->conteudo;
             $lista->resumo = $request->resumo;
+            $lista->referencias = $request->referencias;
             $lista->usuario_id = $request->usuario;
             $lista->categoria_id = $request->categoria;
             $lista->destaque = $request->destaque;
@@ -119,6 +121,7 @@ class ListasController extends Controller
         $lista->titulo = $request->titulo;
         $lista->conteudo = $request->conteudo;
         $lista->resumo = $request->resumo;
+        $lista->referencias = $request->referencias;
         $lista->usuario_id = $request->usuario;
         $lista->categoria_id = $request->categoria;
         $lista->destaque = $request->destaque;

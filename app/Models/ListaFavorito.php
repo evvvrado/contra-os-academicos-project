@@ -8,4 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 class ListaFavorito extends Model
 {
     use HasFactory;
+
+    public function lista(){
+        return $this->belongsTo(Lista::class);
+    }
 }

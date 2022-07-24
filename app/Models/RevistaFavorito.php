@@ -8,4 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 class RevistaFavorito extends Model
 {
     use HasFactory;
+
+    public function revista(){
+        return $this->belongsTo(Revista::class);
+    }
 }

@@ -275,6 +275,10 @@
                                 width="100%" height="240" frameBorder="0" allowfullscreen=""
                                 allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"></iframe>
                         </li>
+                        <li style="background-color: white">
+                            <iframe style="border-radius:12px" src="https://open.spotify.com/embed/episode/4bX1zGIcSqmJQm4qLb9irC?utm_source=generator" width="100%" height="240" frameBorder="0" allowfullscreen=""
+                            allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"></iframe>
+                        </li>
                     </ul>
                     {{-- <ul>
                         <li>

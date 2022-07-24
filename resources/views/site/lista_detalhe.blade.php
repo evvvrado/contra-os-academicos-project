@@ -88,6 +88,10 @@
                                 @livewire('lista-curtir-acao', ['lista' => $lista])
                             </div>
 
+                            <div class="icon" active style="margin-top: -23px;">
+                                @livewire('site.lista.favoritar', ['lista' => $lista])
+                            </div>
+
                         </div>
                         <div class="buttons">
                             <button class="button copyurl">Quero compartilhar</button>

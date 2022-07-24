@@ -10,12 +10,13 @@ use App\Models\Revista;
 use App\Models\Blog;
 use App\Models\Lista;
 use App\Models\Curso;
+use App\Models\UsuarioSiteUltimosAcesso;
 use Carbon\Carbon;
 
 class SiteController extends Controller
 {
 
-    public function CountView($url) {
+    public function CountView($url) {        
         $url = explode("/", $_GET['url']);
         $parte_1 = $url[1];
         $parte_2 = $url[2];
@@ -25,6 +26,63 @@ class SiteController extends Controller
 
         // Comando para setar o cookie
         setcookie($nome_cookie, true, time() + (3600 * $horas));
+
+        switch ($parte_1) {
+            case 'blog':
+                $verifica = UsuarioSiteUltimosAcesso::whereUsuarioSiteId(session()->get('usuario_site')['id'])
+                ->whereBlogId($parte_2);
+                if($verifica) {
+                    $verifica->delete();
+                    $ultimo_acesso = new UsuarioSiteUltimosAcesso;
+                    $ultimo_acesso->usuario_site_id = session()->get('usuario_site')['id'];
+                    $ultimo_acesso->blog_id = $parte_2;
+                    $ultimo_acesso->tipo = 'blog';
+                    $ultimo_acesso->save();
+                } else {
+                    $ultimo_acesso = new UsuarioSiteUltimosAcesso;
+                    $ultimo_acesso->usuario_site_id = session()->get('usuario_site')['id'];
+                    $ultimo_acesso->blog_id = $parte_2;
+                    $ultimo_acesso->tipo = 'blog';
+                    $ultimo_acesso->save();
+                }
+                break;
+            case 'revista':
+                $verifica = UsuarioSiteUltimosAcesso::whereUsuarioSiteId(session()->get('usuario_site')['id'])
+                ->whereRevistaId($parte_2);
+                if($verifica) {
+                    $verifica->delete();
+                    $ultimo_acesso = new UsuarioSiteUltimosAcesso;
+                    $ultimo_acesso->usuario_site_id = session()->get('usuario_site')['id'];
+                    $ultimo_acesso->revista_id = $parte_2;
+                    $ultimo_acesso->tipo = 'revista';
+                    $ultimo_acesso->save();
+                } else {
+                    $ultimo_acesso = new UsuarioSiteUltimosAcesso;
+                    $ultimo_acesso->usuario_site_id = session()->get('usuario_site')['id'];
+                    $ultimo_acesso->revista_id = $parte_2;
+                    $ultimo_acesso->tipo = 'revista';
+                    $ultimo_acesso->save();
+                }
+                break;
+            case 'biblioteca':
+                $verifica = UsuarioSiteUltimosAcesso::whereUsuarioSiteId(session()->get('usuario_site')['id'])
+                ->whereListaId($parte_2);
+                if($verifica) {
+                    $verifica->delete();
+                    $ultimo_acesso = new UsuarioSiteUltimosAcesso;
+                    $ultimo_acesso->usuario_site_id = session()->get('usuario_site')['id'];
+                    $ultimo_acesso->lista_id = $parte_2;
+                    $ultimo_acesso->tipo = 'lista';
+                    $ultimo_acesso->save();
+                } else {
+                    $ultimo_acesso = new UsuarioSiteUltimosAcesso;
+                    $ultimo_acesso->usuario_site_id = session()->get('usuario_site')['id'];
+                    $ultimo_acesso->lista_id = $parte_2;
+                    $ultimo_acesso->tipo = 'lista';
+                    $ultimo_acesso->save();
+                }
+                break;
+        }
 
         // Verificação do cookie
         if (isset($_COOKIE[$nome_cookie]) && $_COOKIE[$nome_cookie] == true ) {
