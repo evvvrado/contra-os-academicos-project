@@ -290,7 +290,7 @@
 
     <section class="cursos">
         <div class="niv">
-            <h2>Cursos</h2>
+            <h2>Cultura de todas as formas</h2>
 
             <div class="boxes-area">
                 <div class="scroll">
