@@ -214,6 +214,44 @@
 
                     <a href="#" class="--plus">Acessar todos os cursos</a>
                 </div>
+<<<<<<< HEAD
+
+                <div class="actions">
+                    <div class="social-buttons">
+                        <div class="icon">
+                            <picture>
+                                <img src="{{ asset('site/assets/img/icon_eye_artigo.svg') }}" alt="Ícone">
+                            </picture>
+                            <span>{{ $blog->visitas }}</span>
+                        </div>
+                        <div class="icon">
+                            <picture>
+                                <img src="{{ asset('site/assets/img/icon_chat_artigo.svg') }}" alt="Ícone">
+                            </picture>
+                            <span>{{ $blog->comentario->count() }}</span>
+                        </div>
+                        <div class="icon">
+                            <picture>
+                                <img src="{{ asset('site/assets/img/icon_share_artigo.svg') }}" alt="Ícone">
+                            </picture>
+                            <span>{{ $blog->compartilhamentos }}</span>
+                        </div>
+                        <div class="icon" active>
+                            @livewire('blog-curtir-acao', ['blog' => $blog])
+                        </div>
+
+                        @livewire('site.blog.favoritar', ['blog' => $blog])
+
+                    </div>
+                    <div class="buttons">
+                        <button class="button --references">Referências</button>
+                        <button class="button copyurl">Quero compartilhar</button>
+                    </div>
+                </div>
+
+                @livewire('site.blog.comentarios', ['blog' => $blog])
+=======
+>>>>>>> 7ef0788531dd083d2231a3d8dc31a662d5493e03
             </main>
 
             <picture class="artigo-banner">

@@ -180,11 +180,11 @@ use App\Models\UsuarioSite;
 
                                                 <div class="row">
                                                     <div class="col-6">
-                                                        <h5 class="font-size-15">125</h5>
+                                                        <h5 class="font-size-15">{{ $usuario_site->blog_comentarios->count() + $usuario_site->lista_comentarios->count() + $usuario_site->revista_comentarios->count() }}</h5>
                                                         <p class="text-muted mb-0">Comentários</p>
                                                     </div>
                                                     <div class="col-6">
-                                                        <h5 class="font-size-15">324</h5>
+                                                        <h5 class="font-size-15">{{ $usuario_site->blog_curtidas->count() + $usuario_site->lista_curtidas->count() + $usuario_site->revista_curtidas->count() }}</h5>
                                                         <p class="text-muted mb-0">Likes</p>
                                                     </div>
                                                 </div>
