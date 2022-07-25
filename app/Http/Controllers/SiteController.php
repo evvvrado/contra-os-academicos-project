@@ -55,9 +55,9 @@ class SiteController extends Controller
         setcookie($nome_cookie, true, time() + (3600 * $horas));
 
 
-        if(session()->get('usuario_site') != ""){
+        if(session()->get("usuario_site")){
             switch ($parte_1) {
-                case 'blog':
+                case 'blog_detalhe':
                     $verifica = UsuarioSiteUltimosAcesso::whereUsuarioSiteId(session()->get('usuario_site')['id'])
                     ->whereBlogId($parte_2);
                     if($verifica) {
@@ -75,7 +75,7 @@ class SiteController extends Controller
                         $ultimo_acesso->save();
                     }
                     break;
-                case 'revista':
+                case 'revista_detalhe':
                     $verifica = UsuarioSiteUltimosAcesso::whereUsuarioSiteId(session()->get('usuario_site')['id'])
                     ->whereRevistaId($parte_2);
                     if($verifica) {
@@ -93,7 +93,7 @@ class SiteController extends Controller
                         $ultimo_acesso->save();
                     }
                     break;
-                case 'biblioteca':
+                case 'biblioteca_detalhe':
                     $verifica = UsuarioSiteUltimosAcesso::whereUsuarioSiteId(session()->get('usuario_site')['id'])
                     ->whereListaId($parte_2);
                     if($verifica) {
@@ -119,15 +119,15 @@ class SiteController extends Controller
             // Faz nada...
         } else {
             switch ($parte_1) {
-                case 'blog':
+                case 'blog_detalhe':
                     Blog::whereId($parte_2)
                     ->increment('visitas');
                     break;
-                case 'revista':
+                case 'revista_detalhe':
                     Revista::whereId($parte_2)
                     ->increment('visitas');
                     break;
-                case 'biblioteca':
+                case 'biblioteca_detalhe':
                     Lista::whereId($parte_2)
                     ->increment('visitas');
                     break;
