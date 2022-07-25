@@ -353,7 +353,7 @@
 
                 <form method="post" action="{{ route('payment') }}">
                     @csrf
-                    <input type="hidden" value="178.80" name="amount">
+                    <input type="hidden" value="14.90" name="amount">
                     <button type="submit" class="button">Seja assinante</button>
                 </form>
 
