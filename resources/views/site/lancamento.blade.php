@@ -75,17 +75,16 @@
 
             <div class="niv-text-side">
                 <p>
-                    Contra os Acadêmicos oferece uma mistura estimulante de conhecimento de ponta, humor inteligente,
+                    O Contra os Acadêmicos oferece uma mistura estimulante de conhecimento de ponta, humor inteligente,
                     orientação para a vida e instruções para a autoeducação. Concluindo a sua assinatura, você terá acesso a
                     todo conteúdo do nosso portal.<br><br>
-
-                    Cultura de todas as formas.
-
                 </p>
 
-                <a href="#" class="button">
-                    Assinar
-                </a>
+                <form method="post" action="{{ route('payment') }}">
+                    @csrf
+                    <input type="hidden" value="178.80" name="amount">
+                    <button style="background-color: #f2d027; color: #5b2222;" type="submit" class="button">Assinar</button>
+                </form>
             </div>
         </div>
     </section>
@@ -326,8 +325,8 @@
 
             <div class="niv-bottom-area">
 
-                <div class="absolute">
-                    <strong> -35% off na primeira semana de lançamento</strong>
+                <div class="absolute" style="margin-top: 1.5rem;">
+                    <strong> 35% off na primeira semana de lançamento</strong>
                 </div>
 
                 <picture>
@@ -343,7 +342,7 @@
                     12x <s> R$ 22,90</s> <strong>R$ 14,90</strong>
                 </p>
 
-                <ul>
+                <ul style="gap: 1rem;">
                     <li>✔ Revista Contra os Acadêmicos</li>
                     <li>✔ Artigos</li>
                     <li>✔ Ensaios</li>
