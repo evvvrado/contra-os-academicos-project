@@ -17,6 +17,7 @@ class CarregarMaisRevista extends Component
     public function render()
     {
         $revistas = Revista::paginate($this->porpagina)
+        ->where('em_breve', 0)
         ->where('status', 1);
 
         return view('livewire.carregar-mais-revista', ['revistas' => $revistas]);

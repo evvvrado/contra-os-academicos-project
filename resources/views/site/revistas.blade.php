@@ -137,13 +137,12 @@
 
                 <div class="content">
                     <div class="scroll">
-                        @foreach ($blogs as $key => $blog)
+                        @foreach ($em_breves as $key => $em_breve)
                             @if ($key < 3)
-                                <a href="{{ route('site.blog_detalhe', ['blog' => $blog]) }}" class="card"
-                                    style="background-image: url('{{ asset($blog->banner) }}')">
+                                <a href="#" class="card" style="background-image: url('{{ asset($em_breve->banner) }}')">
 
-                                    <strong>{{ $blog->titulo }}</strong>
-                                    <p>Por <strong>{{ $blog->autor->nome }}</strong></p>
+                                    <strong>{{ $em_breve->titulo }}</strong>
+                                    <p>Por <strong>{{ $em_breve->autor->nome }}</strong></p>
                                 </a>
                             @endif
                         @endforeach

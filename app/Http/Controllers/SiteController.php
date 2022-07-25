@@ -171,6 +171,7 @@ class SiteController extends Controller
     {
         $revistas = Revista::select(DB::raw("*"))
         ->whereStatus(1)
+        ->whereEmBreve(0)
         ->orderBy('id', 'Desc')
         ->get();
 
@@ -190,6 +191,7 @@ class SiteController extends Controller
 
         $revistas_randomicas = Revista::select(DB::raw("id, titulo, autor_id"))
         ->inRandomOrder()
+        ->whereEmBreve(0)
         ->limit(3)
         ->get();
 
@@ -289,25 +291,28 @@ class SiteController extends Controller
     // ------------------------------------------------
     public function revistas()
     {        
-        $blogs = Blog::select(DB::raw("*"))
+        $em_breves = Revista::select(DB::raw("*"))
         ->whereStatus(1)
+        ->whereEmBreve(1)
         ->orderBy('id', 'Desc')
         ->get();
         
         $mais_lidas = Revista::select(DB::raw("*"))
         ->whereStatus(1)
+        ->whereEmBreve(0)
         ->orderBy('visitas', 'Desc')
         ->limit(3)
         ->get();
 
         $destaques = Revista::select(DB::raw("*"))
         ->whereStatus(1)
+        ->whereEmBreve(0)
         ->whereNotNull('banner_destaque')
         ->limit(4)
         ->orderBy('id', 'Desc')
         ->get();
 
-        return view("site.revistas", ["mais_lidas" => $mais_lidas, "blogs" => $blogs, "destaques" => $destaques]);
+        return view("site.revistas", ["mais_lidas" => $mais_lidas, "em_breves" => $em_breves, "destaques" => $destaques]);
     }
 
     public function revista(Revista $revista)
@@ -323,12 +328,14 @@ class SiteController extends Controller
 
         $revista_randomicos = Revista::select(DB::raw("*"))
         ->inRandomOrder()
+        ->whereEmBreve(0)
         ->limit(4)
         ->where('categoria_id', $revista->categoria_id)
         ->get();
 
         $mais_do_autors = Revista::select(DB::raw("id, titulo"))
         ->inRandomOrder()
+        ->whereEmBreve(0)
         ->limit(4)
         ->where('autor_id', $revista->autor_id)
         ->get();
@@ -357,12 +364,14 @@ class SiteController extends Controller
 
         $revista_randomicos = Revista::select(DB::raw("*"))
         ->inRandomOrder()
+        ->whereEmBreve(0)
         ->limit(4)
         ->where('categoria_id', $revista->categoria_id)
         ->get();
 
         $mais_do_autors = Revista::select(DB::raw("id, titulo"))
         ->inRandomOrder()
+        ->whereEmBreve(0)
         ->limit(4)
         ->where('autor_id', $revista->autor_id)
         ->get();

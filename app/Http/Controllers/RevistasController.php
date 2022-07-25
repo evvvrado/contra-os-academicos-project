@@ -28,6 +28,7 @@ class RevistasController extends Controller
             $revista->referencias = $request->referencias;
             $revista->usuario_id = $request->usuario;
             $revista->autor_id = $request->autor;
+            $revista->em_breve = $request->em_breve;
             $revista->categoria_id = $request->categoria;
             $revista->status = 1;
             $revista->save();
@@ -57,6 +58,7 @@ class RevistasController extends Controller
             $revista->referencias = $request->referencias;
             $revista->usuario_id = $request->usuario;
             $revista->autor_id = $request->autor;
+            $revista->em_breve = $request->em_breve;
             $revista->categoria_id = $request->categoria;
             $revista->status = 2;
             $revista->save();
@@ -84,6 +86,7 @@ class RevistasController extends Controller
             $revista->conteudo = $request->conteudo;
             $revista->usuario_id = $request->usuario;
             $revista->autor_id = $request->autor;
+            $revista->em_breve = $request->em_breve;
             $revista->categoria_id = $request->categoria;
             $revista->save();
 
@@ -114,6 +117,7 @@ class RevistasController extends Controller
             $revista->conteudo = $request->conteudo;
             $revista->usuario_id = $request->usuario;
             $revista->autor_id = $request->autor;
+            $revista->em_breve = $request->em_breve;
             $revista->categoria_id = $request->categoria;
             $revista->save();
 
@@ -133,6 +137,7 @@ class RevistasController extends Controller
         $revista->referencias = $request->referencias;
         $revista->usuario_id = $request->usuario;
         $revista->autor_id = $request->autor;
+        $revista->em_breve = $request->em_breve;
         $revista->categoria_id = $request->categoria;
 
         if($request->file("banner")){

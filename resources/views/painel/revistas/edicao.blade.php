@@ -100,6 +100,15 @@
                                     @endforeach
                                 </select>
                             </div>
+                            
+                            <div class="form-group col-lg-12">
+                                <label class="mt-3" for="em_breve" class="form-label">Em breve</label>
+                                <select required id="em_breve" name="em_breve" class="form-select">
+                                    <option value="">Selecione</option>                                   
+                                    <option @if($revista->em_breve == 0) selected @endif value="0">Não</option>
+                                    <option @if($revista->em_breve == 1) selected @endif value="1">Sim</option>
+                                </select>
+                            </div>
 
                             <div class="form-group col-lg-12">
                                 <label class="mt-3" for="usuario" class="form-label">Usuário</label>

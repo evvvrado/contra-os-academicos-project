@@ -4,6 +4,29 @@
 
 @section('content')
 
+    <div id="referencias_modal" class="modal">
+        <div class="niv">
+            <div class="box">
+                <div class="title-area">
+                    <h2>Referências</h2>
+
+                    <button class="cancel">
+                        <img src="{{ asset('site/assets/img/icon_close_modal.svg') }}" alt="Ícone de fechar"
+                            title="Fechar caixa">
+                    </button>
+                </div>
+
+                <div class="content">
+                    <div class="scroll">
+                        {!! $revista->referencias !!}
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="close-modal"></div>
+    </div>
+
     <section class="artigo">
         <div class="niv --row">
             <main>
@@ -123,6 +146,7 @@
 
                         </div>
                         <div class="buttons">
+                            <button class="button --references">Referências</button>
                             <button class="button copyurl">Quero compartilhar</button>
                         </div>
                     </div>

@@ -95,6 +95,16 @@
                                     @endforeach
                                 </select>
                             </div>
+
+                            <div class="form-group col-lg-12">
+                                <label class="mt-3" for="em_breve" class="form-label">Em breve</label>
+                                <select required id="em_breve" name="em_breve" class="form-select">
+                                    <option value="">Selecione</option>                                   
+                                    <option value="0">Não</option>
+                                    <option value="1">Sim</option>
+                                </select>
+                            </div>
+
                             <div class="form-group col-lg-12">
                                 <label class="mt-3" for="usuario" class="form-label">Usuário</label>
                                 <select id="usuario" name="usuario" class="form-select" required>

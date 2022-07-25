@@ -34,19 +34,20 @@ class ConteudoIndex extends Component
         $blogs = Blog::select(DB::raw("*"))
         ->whereStatus(1)
         ->whereIn('categoria_id', $this->categoria_sql)
-        ->orderBy('id', 'Desc')
+        ->orderBy('visitas', 'Asc')
         ->get();
 
         $revistas = Revista::select(DB::raw("*"))
         ->whereStatus(1)
+        ->whereEmBreve(0)
         ->whereIn('categoria_id', $this->categoria_sql)
-        ->orderBy('id', 'Desc')
+        ->orderBy('visitas', 'Asc')
         ->get();
 
         $listas = Lista::select(DB::raw("*"))
         ->whereStatus(1)
         ->whereIn('categoria_id', $this->categoria_sql)
-        ->orderBy('id', 'Desc')
+        ->orderBy('visitas', 'Asc')
         ->get();
         // dd($blogs);
         return view('livewire.conteudo-index', ['blogs' => $blogs, 'revistas' => $revistas, 'listas' => $listas]);
