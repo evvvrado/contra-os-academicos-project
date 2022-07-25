@@ -12,9 +12,36 @@ use App\Models\Lista;
 use App\Models\Curso;
 use App\Models\UsuarioSiteUltimosAcesso;
 use Carbon\Carbon;
+use Illuminate\Support\Str;
 
 class SiteController extends Controller
 {
+
+    public function script() {
+        $blogs = Blog::all();
+        foreach($blogs as $blog) {
+            $slug = Str::of($blog->titulo)->slug('-');
+
+            $blog->slug = $slug;
+            $blog->save();
+        }
+
+        $revistas = Revista::all();
+        foreach($revistas as $revista) {
+            $slug = Str::of($revista->titulo)->slug('-');
+
+            $revista->slug = $slug;
+            $revista->save();
+        }
+
+        $lista = Lista::all();
+        foreach($lista as $lista) {
+            $slug = Str::of($lista->titulo)->slug('-');
+
+            $lista->slug = $slug;
+            $lista->save();
+        }
+    }   
 
     public function CountView($url) {        
         $url = explode("/", $_GET['url']);
@@ -225,6 +252,40 @@ class SiteController extends Controller
 
         return view("site.blog_detalhe", ["blog" => $blog, "mes" => $mes, "blog_randomicos" => $blog_randomicos, "mais_do_autors" => $mais_do_autors, "cursos" => $cursos]);
     }
+
+    public function blog_slug($slug)
+    {
+        $blog = Blog::whereSlug($slug)->first();
+        
+        if(!$blog) { return view("site.erros.erro_404"); }
+        
+        // Force locale
+        date_default_timezone_set('America/Sao_Paulo');
+        setlocale(LC_ALL, 'pt_BR.utf-8', 'ptb', 'pt_BR', 'portuguese-brazil', 'portuguese-brazilian', 'bra', 'brazil', 'br');
+        setlocale(LC_TIME, 'pt_BR.utf-8', 'ptb', 'pt_BR', 'portuguese-brazil', 'portuguese-brazilian', 'bra', 'brazil', 'br');
+
+        // Create Carbon date
+        $mes = $blog->created_at->formatLocalized('%B');
+
+        $blog_randomicos = Blog::select(DB::raw("*"))
+        ->inRandomOrder()
+        ->limit(4)
+        ->where('categoria_id', $blog->categoria_id)
+        ->get();
+
+        $mais_do_autors = Blog::select(DB::raw("id, titulo"))
+        ->inRandomOrder()
+        ->limit(4)
+        ->where('autor_id', $blog->autor_id)
+        ->get();
+
+        $cursos = Curso::select(DB::raw("*"))
+        ->orderBy('id', 'Desc')
+        ->get();
+
+        return view("site.blog_detalhe", ["blog" => $blog, "mes" => $mes, "blog_randomicos" => $blog_randomicos, "mais_do_autors" => $mais_do_autors, "cursos" => $cursos]);
+    }
+
     // ------------------------------------------------
     public function revistas()
     {        
@@ -251,6 +312,40 @@ class SiteController extends Controller
 
     public function revista(Revista $revista)
     {
+        // Force locale
+        date_default_timezone_set('America/Sao_Paulo');
+        setlocale(LC_ALL, 'pt_BR.utf-8', 'ptb', 'pt_BR', 'portuguese-brazil', 'portuguese-brazilian', 'bra', 'brazil', 'br');
+        setlocale(LC_TIME, 'pt_BR.utf-8', 'ptb', 'pt_BR', 'portuguese-brazil', 'portuguese-brazilian', 'bra', 'brazil', 'br');
+
+        // Create Carbon date
+        $dt = Carbon::now();
+        $mes = $revista->created_at->formatLocalized('%B');
+
+        $revista_randomicos = Revista::select(DB::raw("*"))
+        ->inRandomOrder()
+        ->limit(4)
+        ->where('categoria_id', $revista->categoria_id)
+        ->get();
+
+        $mais_do_autors = Revista::select(DB::raw("id, titulo"))
+        ->inRandomOrder()
+        ->limit(4)
+        ->where('autor_id', $revista->autor_id)
+        ->get();
+
+        $cursos = Curso::select(DB::raw("*"))
+        ->orderBy('id', 'Desc')
+        ->get();
+
+        return view("site.revista_detalhe", ["revista" => $revista, "mes" => $mes, "revista_randomicos" => $revista_randomicos, "mais_do_autors" => $mais_do_autors, "cursos" => $cursos]);
+    }
+
+    public function revista_slug($slug)
+    {
+        $revista = Revista::whereSlug($slug)->first();
+        
+        if(!$revista) { return view("site.erros.erro_404"); }
+
         // Force locale
         date_default_timezone_set('America/Sao_Paulo');
         setlocale(LC_ALL, 'pt_BR.utf-8', 'ptb', 'pt_BR', 'portuguese-brazil', 'portuguese-brazilian', 'bra', 'brazil', 'br');
@@ -324,6 +419,40 @@ class SiteController extends Controller
 
         return view("site.lista_detalhe", ["lista" => $lista, "mes" => $mes, "lista_randomicos" => $lista_randomicos, "mais_do_autors" => $mais_do_autors, "cursos" => $cursos]);
     }
+
+    public function lista_slug($slug)
+    {
+        $lista = Lista::whereSlug($slug)->first();
+        
+        if(!$lista) { return view("site.erros.erro_404"); }
+
+        // Force locale
+        date_default_timezone_set('America/Sao_Paulo');
+        setlocale(LC_ALL, 'pt_BR.utf-8', 'ptb', 'pt_BR', 'portuguese-brazil', 'portuguese-brazilian', 'bra', 'brazil', 'br');
+        setlocale(LC_TIME, 'pt_BR.utf-8', 'ptb', 'pt_BR', 'portuguese-brazil', 'portuguese-brazilian', 'bra', 'brazil', 'br');
+
+        // Create Carbon date
+        $dt = Carbon::now();
+        $mes = $lista->created_at->formatLocalized('%B');
+
+        $lista_randomicos = Lista::select(DB::raw("*"))
+        ->inRandomOrder()
+        ->limit(4)
+        ->where('categoria_id', $lista->categoria_id)
+        ->get();
+
+        $mais_do_autors = Lista::select(DB::raw("id, titulo"))
+        ->inRandomOrder()
+        ->limit(4)
+        ->where('usuario_id', $lista->usuario_id)
+        ->get();
+
+        $cursos = Curso::select(DB::raw("*"))
+        ->orderBy('id', 'Desc')
+        ->get();
+
+        return view("site.lista_detalhe", ["lista" => $lista, "mes" => $mes, "lista_randomicos" => $lista_randomicos, "mais_do_autors" => $mais_do_autors, "cursos" => $cursos]);
+    }
     // ------------------------------------------------
     
     // public function biblioteca()
@@ -336,6 +465,7 @@ class SiteController extends Controller
         ->orderBy('id', 'Desc')
         ->get();
 
+        setcookie('criar_conta', false, time() + 1);
 
         return view("site.lancamento", ["cursos" => $cursos]);
     }

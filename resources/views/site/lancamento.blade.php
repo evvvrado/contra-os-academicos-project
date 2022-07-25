@@ -6,8 +6,8 @@
 
     <section class="lancamento-hero ">
         <div class="niv">
-            <h1>Artigos, ensaios,<br> resenhas, revista...</h1>
-            <p>Tenha acesso a todos<br> os conteúdos exclusivos do CoA.</p>
+            <h1>Junte-se a nós!</h1>
+            <p>Artigos, ensaíos, resenhas, revistas...<br>Tenha acesso a todos os conteúdos exclusivos do CoA.</p>
 
             <small>Continue lendo para<br>entender melhor!</small>
 
@@ -353,7 +353,7 @@
 
                 <form method="post" action="{{ route('payment') }}">
                     @csrf
-                    <input type="hidden" value="14.90" name="amount">
+                    <input type="hidden" value="178.80" name="amount">
                     <button type="submit" class="button">Seja assinante</button>
                 </form>
 

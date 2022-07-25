@@ -114,20 +114,22 @@ Route::middleware(['usuario_site'])->group(function () {
 
 Route::get('/', [\App\Http\Controllers\SiteController::class, 'index'])->name("site.index");
 Route::get('/sobre', [\App\Http\Controllers\SiteController::class, 'sobre'])->name("site.sobre");
-Route::get('/lancamento', [\App\Http\Controllers\SiteController::class, 'lancamento'])->name("site.lancamento");
+Route::get('/assine', [\App\Http\Controllers\SiteController::class, 'lancamento'])->name("site.lancamento");
 
 Route::get('/em_breve', [\App\Http\Controllers\SiteController::class, 'em_breve'])->name("site.em_breve");
 
 Route::get('/blog', [\App\Http\Controllers\SiteController::class, 'blogs'])->name("site.blog");
-Route::get('/blog/{blog}', [\App\Http\Controllers\SiteController::class, 'blog'])->name("site.blog_detalhe");
-
+Route::get('/blog_detalhe/{blog}', [\App\Http\Controllers\SiteController::class, 'blog'])->name("site.blog_detalhe");
+Route::get('/blog/{slug}', [\App\Http\Controllers\SiteController::class, 'blog_slug'])->name("site.blog_detalhe_slug");
 // Route::get('/biblioteca', [\App\Http\Controllers\SiteController::class, 'biblioteca'])->name("site.biblioteca");
 
 Route::get('/revistas', [\App\Http\Controllers\SiteController::class, 'revistas'])->name("site.revistas");
-Route::get('/revista/{revista}', [\App\Http\Controllers\SiteController::class, 'revista'])->name("site.revista_detalhe");
+Route::get('/revista_detalhe/{revista}', [\App\Http\Controllers\SiteController::class, 'revista'])->name("site.revista_detalhe");
+Route::get('/revista/{slug}', [\App\Http\Controllers\SiteController::class, 'revista_slug'])->name("site.revista_detalhe_slug");
 
 Route::get('/biblioteca', [\App\Http\Controllers\SiteController::class, 'listas'])->name("site.listas");
-Route::get('/biblioteca/{lista}', [\App\Http\Controllers\SiteController::class, 'lista'])->name("site.lista_detalhe");
+Route::get('/biblioteca_detalhe/{lista}', [\App\Http\Controllers\SiteController::class, 'lista'])->name("site.lista_detalhe");
+Route::get('/biblioteca/{slug}', [\App\Http\Controllers\SiteController::class, 'lista_slug'])->name("site.lista_detalhe_slug");
 
 Route::get('/contato', [\App\Http\Controllers\SiteController::class, 'contato'])->name("site.contato");
 Route::get('/artigo', [\App\Http\Controllers\SiteController::class, 'artigo'])->name("site.artigo");
@@ -138,7 +140,12 @@ Route::post('pay', [\App\Http\Controllers\PagamentosController::class, 'pay'])->
 Route::get('success', [\App\Http\Controllers\PagamentosController::class, 'success']);
 Route::get('error', [\App\Http\Controllers\PagamentosController::class, 'error']);
 
+Route::get('/script_slug', [\App\Http\Controllers\SiteController::class, 'script'])->name("site.script_slug");
+
 
 // AJAX
 Route::get('/contabiliza_views/{url}', [\App\Http\Controllers\SiteController::class, 'CountView'])->name("contabilizar_view");
 Route::get('/contabiliza_compartilhamento/{url}', [\App\Http\Controllers\SiteController::class, 'CountCompartilhamento'])->name("contabilizar_compartilhamento");
+
+// PAGINAS DE ERRO
+Route::fallback(function () { return view('site/erros/erro_404'); });

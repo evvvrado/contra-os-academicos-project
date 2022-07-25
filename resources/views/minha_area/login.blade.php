@@ -77,6 +77,20 @@
                                         </div>
                                     </div>
                                 </div> --}}
+
+                                @if(isset($_COOKIE['criar_conta']) && $_COOKIE['criar_conta'] == 1)
+                                    <div class="alert alert-warning" role="alert">
+                                        <strong>MUITA ATENÇÃO!</strong> <br>
+                                        <br>
+                                        Você precisa estar logado em sua conta para prosseguir com a assinatura. Siga os passos abaixo com muita atenção: <br> 
+                                        <br>
+                                        * Faça login ou registre sua conta em nossa plataforma; <br>
+                                        * Seu endereço de e-mail DEVE ser o mesmo que sua conta do paypal, para que o sistema possa identificar o pagamento e liberar sua assinatura; <br>
+                                        <br>
+                                        <br>
+                                        Caso tenha alguma dúvida, sinta-se livre para entrar em contato conosco!
+                                    </div>
+                                @endif 
                             </div>
                         </div>
                     </div>

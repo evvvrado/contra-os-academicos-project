@@ -9,7 +9,7 @@
 <meta name="description" content="{{ DESCRIPTION }}" />
 <meta property="og:description" content="{{ DESCRIPTION }}" />
 <meta name="keywords" content="{{ KEYWORDS }}" />
-<meta name="author" content="Everaldo Júnior - @evvvrado & João Pedro Lopes Souza - @jeypmusic" />
+<meta name="author" content="Everaldo Júnior - @evvvrado & João Pedro Lopes Souza - @jpedrols" />
 
 <meta property="og:title" content="{{ TITLE }}" />
 <meta property='og:site_name' content='{{ TITLE }}'>

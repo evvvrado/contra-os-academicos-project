@@ -17,27 +17,32 @@ class PagamentosController extends Controller
         $this->gateway->setSecret('EG5Ln5ytnOMrzRqB7l-5DJla54f0JombP0JIw2BmTbU5_wA_yMujSRoTmH2CwC4_Xd2nkmhRiKZ-3aq0');
         $this->gateway->setTestMode(false);
     }
-
+    
     public function pay(Request $request)
     {
-        try {
+        if(session()->get('usuario_site') != ""){
+            try {
 
-            $response = $this->gateway->purchase(array(
-                'amount' => $request->amount,
-                'currency' => 'BRL',
-                'returnUrl' => url('success'),
-                'cancelUrl' => url('error')
-            ))->send();
+                $response = $this->gateway->purchase(array(
+                    'amount' => $request->amount,
+                    'currency' => 'BRL',
+                    'returnUrl' => url('success'),
+                    'cancelUrl' => url('error')
+                ))->send();
 
-            if ($response->isRedirect()) {
-                $response->redirect();
+                if ($response->isRedirect()) {
+                    $response->redirect();
+                }
+                else{
+                    return $response->getMessage();
+                }
+
+            } catch (\Throwable $th) {
+                return $th->getMessage();
             }
-            else{
-                return $response->getMessage();
-            }
-
-        } catch (\Throwable $th) {
-            return $th->getMessage();
+        } else {
+            setcookie('criar_conta', true, time() + 10);
+            return redirect()->route("minha_area.login");
         }
     }
 
