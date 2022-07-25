@@ -42,7 +42,7 @@
                             <label class="mt-3" for="data_termino" class="form-label">Término da assinatura</label>
                             <div class="mb-4">
                                 <div class="input-group" id="datepicker2">
-                                    <input type="text" class="form-control" placeholder="dd-mm-yyyy"
+                                    <input type="text" class="form-control" placeholder="00-00-0000"
                                         data-date-format="dd-mm-yyyy" data-date-container='#datepicker2' data-provide="datepicker"
                                         data-date-autoclose="true" name="data_termino">
 
