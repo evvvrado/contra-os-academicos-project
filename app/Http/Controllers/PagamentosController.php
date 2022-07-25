@@ -14,8 +14,8 @@ class PagamentosController extends Controller
     public function __construct() {
         $this->gateway = Omnipay::create('PayPal_Rest');
         $this->gateway->setClientId('ARGQV_s5LpEy_OHe7ijcz4HMvfSN7HvVCyVDX7MacLbGnK4ElO-uL6r2TV1cCrc38FmAGy-IUYdKDWGF');
-        $this->gateway->setSecret('EKW8PY5F7fWdh93RaCmU0RFIE-S7W-i94ZCdHApWzHE6l3BcMAfNCdH8gLdihIC0PCQnRQpihfAN7qnC');
-        $this->gateway->setTestMode(true);
+        $this->gateway->setSecret('EG5Ln5ytnOMrzRqB7l-5DJla54f0JombP0JIw2BmTbU5_wA_yMujSRoTmH2CwC4_Xd2nkmhRiKZ-3aq0');
+        $this->gateway->setTestMode(false);
     }
 
     public function pay(Request $request)
