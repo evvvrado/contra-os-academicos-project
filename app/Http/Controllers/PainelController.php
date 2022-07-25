@@ -99,10 +99,13 @@ class PainelController extends Controller
         return redirect()->route("painel.usuarios_site", ['usuarios' => $usuarios]);
     }
 
-    public function finalizar_assinatura(Assinatura $assinatura)
+    public function finalizar_assinatura(Assinatura $assinatura, UsuarioSite $usuario_site)
     {
         $assinatura->status = false;
         $assinatura->save();
+
+        $usuario_site->assinante = 0;
+        $usuario_site->save();
 
         $usuarios = UsuarioSite::all();
 
