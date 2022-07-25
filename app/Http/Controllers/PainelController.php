@@ -9,6 +9,7 @@ use App\Models\Usuario;
 use App\Models\UsuarioSite;
 use App\Models\Assinatura;
 use App\Models\BlogComentario;
+use Carbon\Carbon;
 
 class PainelController extends Controller
 {
@@ -74,19 +75,18 @@ class PainelController extends Controller
 
     public function assinar(UsuarioSite $usuario_site, Request $request)
     {
-        if($request->data_termino == "mes") {
-            $data_termino = date('Y/m/d', strtotime("+1 month",strtotime(date('Y/m/d'))));
-            $vitalicio = false;
-        } else {
-            $data_termino = "";
-            $vitalicio = true;
-        }
+        // if($request->data_termino == "mes") {
+        //     $data_termino = date('Y/m/d', strtotime("+1 month",strtotime(date('Y/m/d'))));
+        //     $vitalicio = false;
+        // } else {
+        //     $data_termino = "";
+        //     $vitalicio = true;
+        // }
 
         $assinatura = new Assinatura;
         $assinatura->usuario_id = session()->get("usuario")["id"];
         $assinatura->usuario_site_id = $usuario_site->id;
-        $assinatura->data_termino = $data_termino;
-        $assinatura->vitalicio = $vitalicio;
+        $assinatura->data_termino = Carbon::parse($request->data_termino)->format('Y/m/d');
         $assinatura->save();
 
         $usuario_site->assinante = 1;

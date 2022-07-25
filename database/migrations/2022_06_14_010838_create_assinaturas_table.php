@@ -20,7 +20,6 @@ class CreateAssinaturasTable extends Migration
             $table->unsignedBigInteger('usuario_site_id');
             $table->foreign('usuario_site_id')->references('id')->on('usuario_sites')->onDelete('cascade');
             $table->date('data_termino')->nullable();
-            $table->boolean('vitalicio')->nullable();
             $table->integer("status")->default(1);
             $table->timestamp('created_at')->useCurrent();
             $table->timestamp('updated_at')->useCurrent();
