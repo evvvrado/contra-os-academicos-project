@@ -20,7 +20,7 @@
         <div class="niv">
 
             <div class="indicador">
-                @php
+                {{-- @php
                     $ativo = "active";
 
                     foreach ($destaques as $destaque) {
@@ -29,21 +29,42 @@
                 @php
                         $ativo = "";
                     }
-                @endphp
+                @endphp --}}
+                <span active>  </span>
+                <span></span></span>
+                <span></span>
             </div>
+
+            <style>
+                .retirar:hover {
+                    opacity: 100 !important;
+                }
+            </style>
 
             <div class="banner-area">
                 <div class="scroll">
 
-                    @foreach ($destaques as $destaque)
+                    {{-- @foreach ($destaques as $destaque)
                         <a href="{{ route('site.revista_detalhe', ['revista' => $destaque]) }}">
                             <div class="banner" style="background-image: url('{{ asset($destaque->banner_destaque) }}'); background-position: center;">
-                                {{-- <h1>{{ $destaque->titulo }}</h1>
-    
-                                <p>Por <strong>{{ $destaque->autor->nome }}</strong></p> --}}
                             </div>
                         </a>
-                    @endforeach
+                    @endforeach --}}
+
+                    <a class="retirar">
+                        <div class="banner" style="background-image: url('{{ asset('site/assets/img/destaque/1.jpg') }}'); background-position: center;">
+                        </div>
+                    </a>
+
+                    <a class="retirar">
+                        <div class="banner" style="background-image: url('{{ asset('site/assets/img/destaque/2.jpg') }}'); background-position: center;">
+                        </div>
+                    </a>
+
+                    <a class="retirar">
+                        <div class="banner" style="background-image: url('{{ asset('site/assets/img/destaque/3.jpg') }}'); background-position: center;">
+                        </div>
+                    </a>
 
 
                 </div>
