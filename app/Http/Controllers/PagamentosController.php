@@ -13,8 +13,8 @@ class PagamentosController extends Controller
 
     public function __construct() {
         $this->gateway = Omnipay::create('PayPal_Rest');
-        $this->gateway->setClientId(env('PAYPAL_CLIENT_ID'));
-        $this->gateway->setSecret(env('PAYPAL_CLIENT_SECRET'));
+        $this->gateway->setClientId('ARGQV_s5LpEy_OHe7ijcz4HMvfSN7HvVCyVDX7MacLbGnK4ElO-uL6r2TV1cCrc38FmAGy-IUYdKDWGF');
+        $this->gateway->setSecret('EKW8PY5F7fWdh93RaCmU0RFIE-S7W-i94ZCdHApWzHE6l3BcMAfNCdH8gLdihIC0PCQnRQpihfAN7qnC');
         $this->gateway->setTestMode(true);
     }
 
@@ -24,7 +24,7 @@ class PagamentosController extends Controller
 
             $response = $this->gateway->purchase(array(
                 'amount' => $request->amount,
-                'currency' => env('PAYPAL_CURRENCY'),
+                'currency' => 'BRL',
                 'returnUrl' => url('success'),
                 'cancelUrl' => url('error')
             ))->send();
@@ -60,7 +60,7 @@ class PagamentosController extends Controller
                 $pagamento->pagador_id = $arr['payer']['payer_info']['payer_id'];
                 $pagamento->pagador_email = $arr['payer']['payer_info']['email'];
                 $pagamento->valor = $arr['transactions'][0]['amount']['total'];
-                $pagamento->moeda = env('PAYPAL_CURRENCY');
+                $pagamento->moeda = 'BRL';
                 $pagamento->pagamento_status = $arr['state'];
 
                 $pagamento->save();
