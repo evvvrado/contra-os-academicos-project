@@ -30,7 +30,7 @@
                         $ativo = "";
                     }
                 @endphp
-                <span active>  </span>
+                <span>  </span>
                 <span></span></span>
                 <span></span>
             </div>
