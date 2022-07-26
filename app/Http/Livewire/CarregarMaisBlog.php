@@ -17,7 +17,10 @@ class CarregarMaisBlog extends Component
     public function render()
     {
         $blogs = Blog::paginate($this->porpagina)
-        ->where('status', 1);
+        ->where('status', 1)
+        ->orderById('Desc');
+
+        $blogs = $blogs->sortDesc();
 
         return view('livewire.carregar-mais-blog', ['blogs' => $blogs]);
     }

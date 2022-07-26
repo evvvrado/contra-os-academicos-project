@@ -17,7 +17,10 @@ class CarregarMaisLista extends Component
     public function render()
     {
         $listas = Lista::paginate($this->porpagina)
-        ->where('status', 1);
+        ->where('status', 1)
+        ->orderBy('id', 'Desc');
+
+        $listas = $listas->sortDesc();
 
         return view('livewire.carregar-mais-lista', ['listas' => $listas]);
     }

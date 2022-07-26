@@ -20,6 +20,8 @@ class CarregarMaisRevista extends Component
         ->where('em_breve', 0)
         ->where('status', 1);
 
+        $revistas = $revistas->sortDesc();
+
         return view('livewire.carregar-mais-revista', ['revistas' => $revistas]);
     }
 }
