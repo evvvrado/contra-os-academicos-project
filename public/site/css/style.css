@@ -3684,9 +3684,9 @@ section.artigo div.niv div.cursos div.card-area div.scroll a.box-destaque div.ta
   section.artigo div.niv.--row {
     flex-direction: column-reverse;
   }
-  section.artigo div.niv.--row main {
+  /* section.artigo div.niv.--row main {
     padding-right: 6rem;
-  }
+  } */
   section.artigo div.niv.--row aside {
     display: none;
   }
@@ -3698,10 +3698,10 @@ section.artigo div.niv div.cursos div.card-area div.scroll a.box-destaque div.ta
   }
 }
 @media (max-width: 600px) {
-  section.artigo div.niv.--row main {
+  /* section.artigo div.niv.--row main {
     padding-left: 3rem;
     padding-right: 3rem;
-  }
+  } */
 }
 @media (max-width: 500px) {
   section.artigo div.niv.--row main div.text-content p {
