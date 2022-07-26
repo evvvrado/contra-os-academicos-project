@@ -60,35 +60,48 @@
                     </div>
 
                     <?php
-                    if (isset(session()->get("usuario_site")["assinante"])) {
-                        if(session()->get("usuario_site")["assinante"] == 0 OR session()->get("usuario_site")["assinante"] == ""){
-                ?>
-                    <div class="text-content block-style">
-                        <p>
-                            {!! Str::limit($revista->conteudo, 800) !!}
-                        </p>
-                    </div>
+                        if($revista->id != 17)
+                            if (isset(session()->get("usuario_site")["assinante"])) {
+                                if(session()->get("usuario_site")["assinante"] == 0 OR session()->get("usuario_site")["assinante"] == "")
+                                {
+                    ?>
+                                    <div class="text-content block-style">
+                                        <p>
+                                            {!! Str::limit($revista->conteudo, 800) !!}
+                                        </p>
+                                    </div>
 
                     <?php
-                        }  else {
-                ?>
-                    <div class="text-content block-style">
-                        <p>
-                            {!! $revista->conteudo !!}
-                        </p>
-                    </div>
+                                }  
+                                else {
+                    ?>
+                                    <div class="text-content block-style">
+                                        <p>
+                                            {!! $revista->conteudo !!}
+                                        </p>
+                                    </div>
                     <?php 
-                        }
-                    } else {
-                ?>
-                    <div class="text-content block-style">
-                        <p>
-                            {!! Str::limit($revista->conteudo, 800) !!}
-                        </p>
-                    </div>
+                                }
+                            } 
+                            else {
+                    ?>
+                                <div class="text-content block-style">
+                                    <p>
+                                        {!! Str::limit($revista->conteudo, 800) !!}
+                                    </p>
+                                </div>
                     <?php
-                    }
-                ?>
+                            }
+                        else {
+                    ?>
+                            <div class="text-content block-style">
+                                <p>
+                                    {!! $revista->conteudo !!}
+                                </p>
+                            </div>
+                    <?php
+                        }
+                    ?>
 
                     <div class="apoie-projeto --alternative">
 
