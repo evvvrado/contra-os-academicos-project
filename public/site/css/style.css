@@ -4219,6 +4219,14 @@ section.trabalhe-conosco div.niv div.list-side ul li p {
   section.trabalhe-conosco div.niv div.list-side ul li:not(:last-child) {
     margin-bottom: 5rem;
   }
+
+  section.artigo div.niv.--row main div.main-content {
+    padding-left: 3rem;
+  }
+  section.artigo div.niv.--row main div.text-content img {
+    max-width: 100%;
+    height: auto;
+  }
 }
 
 section.envie-seu-trabalho div.niv {
