@@ -42,17 +42,32 @@
                     </div>
 
                     <div class="buttons">
-                        <a href="{{ route('site.lancamento') }}" class="button">
-                            Assine
-                        </a>
 
                         @if (session()->get('usuario_site'))
-                            <a href="{{ route('minha_area.index') }}" class="button">
-                                Minha Área
-                            </a>
+                            <div class="user-nav">
+                                <a href="{{ route('minha_area.index') }}">
+                                    <picture>
+                                        <img src="{{ asset(App\Models\UsuarioSite::whereId(session()->get('usuario_site')['id'])->first()->foto ? App\Models\UsuarioSite::whereId(session()->get('usuario_site')['id'])->first()->foto : 'admin/imagens/listas/1/sem_foto.png') }}"
+                                            alt="">
+                                    </picture>
+                                </a>
+
+                                <div class="user-item">
+                                    <a href="#">
+                                        <i class="fa-solid fa-bell"></i>
+                                    </a>
+                                </div>
+                                <div class="user-item">
+                                    <i class="fa-solid fa-arrow-right-from-bracket"></i>
+                                </div>
+                            </div>
                         @else
+                            <a href="{{ route('site.lancamento') }}" class="button">
+                                ASSINE
+                            </a>
+
                             <a href="{{ route('minha_area.index') }}" class="button">
-                                Login
+                                LOGIN
                             </a>
                         @endif
                     </div>
@@ -77,15 +92,21 @@
                         <li><a href="{{ route('site.sobre') }}">PROJETO</a></li>
                         <li><a href="{{ route('site.contato') }}">CONTATO</a></li>
                         <li class="mobile-login">
-                            @if (session()->get('usuario_site'))
-                                <a href="{{ route('minha_area.index') }}">
-                                    Minha Área
+                            <div class="buttons">
+                                <a href="{{ route('site.lancamento') }}" class="button">
+                                    ASSINE
                                 </a>
-                            @else
-                                <a href="{{ route('minha_area.index') }}">
-                                    Login
-                                </a>
-                            @endif
+
+                                @if (session()->get('usuario_site'))
+                                    <a href="{{ route('minha_area.index') }}" class="button">
+                                        MINHA ÁREA
+                                    </a>
+                                @else
+                                    <a href="{{ route('minha_area.index') }}" class="button">
+                                        LOGIN
+                                    </a>
+                                @endif
+                            </div>
                         </li>
                     </ul>
                 </nav>

@@ -1,8 +1,8 @@
-body#lancamento section.lancamento-depoimentos div.niv div.scroll div.niv-area div.depoimento div.info picture, section.nossa-equipe div.niv div.equipe-area div.membro picture, section.artigo div.niv.--row aside div.relacionados ul li a.box picture, section.artigo div.niv.--row aside div.mais-autor > picture, section.artigo div.niv.--row main div.bio picture, section.artigo div.niv.--row main div.apoie-projeto div.avatar-side picture, section.artigo div.niv.--row main div.title-area div.info div.author picture, section.artigo div.niv.--row picture.artigo-banner, section.publicacoes main div.niv div.content-area a.box picture, section.publicacoes aside div.mais-listas ul li a.box picture, section.publicacoes aside ul.colunistas li picture, section.indicacao-cast div.niv div.indicacao-area div.box.--video div.box-content, section.indicacao-cast div.niv div.indicacao-area div.box.--livro div.box-content main div.--novidade picture, section.conteudo div.niv div.content-area div.scroll a.box picture, section.hero div.niv div.container div.col div.colunistas ul.lista-colunistas li a picture {
+body#lancamento section.lancamento-depoimentos div.niv div.scroll div.niv-area div.depoimento div.info picture, section.nossa-equipe div.niv div.equipe-area div.membro picture, section.artigo div.niv.--row aside div.relacionados ul li a.box picture, section.artigo div.niv.--row aside div.mais-autor > picture, section.artigo div.niv.--row main div.bio picture, section.artigo div.niv.--row main div.apoie-projeto div.avatar-side picture, section.artigo div.niv.--row main div.title-area div.info div.author picture, section.artigo div.niv.--row picture.artigo-banner, section.publicacoes main div.niv div.content-area a.box picture, section.publicacoes aside div.mais-listas ul li a.box picture, section.publicacoes aside ul.colunistas li picture, section.indicacao-cast div.niv div.indicacao-area div.box.--video div.box-content, section.indicacao-cast div.niv div.indicacao-area div.box.--livro div.box-content main div.--novidade picture, section.conteudo div.niv div.content-area div.scroll a.box picture, section.hero div.niv div.container div.col div.colunistas ul.lista-colunistas li a picture, header div[fluid] div.niv > div div.buttons div.user-nav a > picture {
   overflow: hidden;
   display: block;
 }
-body#lancamento section.lancamento-depoimentos div.niv div.scroll div.niv-area div.depoimento div.info picture img, section.nossa-equipe div.niv div.equipe-area div.membro picture img, section.artigo div.niv.--row aside div.relacionados ul li a.box picture img, section.artigo div.niv.--row aside div.mais-autor > picture img, section.artigo div.niv.--row main div.bio picture img, section.artigo div.niv.--row main div.apoie-projeto div.avatar-side picture img, section.artigo div.niv.--row main div.title-area div.info div.author picture img, section.artigo div.niv.--row picture.artigo-banner img, section.publicacoes main div.niv div.content-area a.box picture img, section.publicacoes aside div.mais-listas ul li a.box picture img, section.publicacoes aside ul.colunistas li picture img, section.indicacao-cast div.niv div.indicacao-area div.box.--video div.box-content img, section.indicacao-cast div.niv div.indicacao-area div.box.--livro div.box-content main div.--novidade picture img, section.conteudo div.niv div.content-area div.scroll a.box picture img, section.hero div.niv div.container div.col div.colunistas ul.lista-colunistas li a picture img {
+body#lancamento section.lancamento-depoimentos div.niv div.scroll div.niv-area div.depoimento div.info picture img, section.nossa-equipe div.niv div.equipe-area div.membro picture img, section.artigo div.niv.--row aside div.relacionados ul li a.box picture img, section.artigo div.niv.--row aside div.mais-autor > picture img, section.artigo div.niv.--row main div.bio picture img, section.artigo div.niv.--row main div.apoie-projeto div.avatar-side picture img, section.artigo div.niv.--row main div.title-area div.info div.author picture img, section.artigo div.niv.--row picture.artigo-banner img, section.publicacoes main div.niv div.content-area a.box picture img, section.publicacoes aside div.mais-listas ul li a.box picture img, section.publicacoes aside ul.colunistas li picture img, section.indicacao-cast div.niv div.indicacao-area div.box.--video div.box-content img, section.indicacao-cast div.niv div.indicacao-area div.box.--livro div.box-content main div.--novidade picture img, section.conteudo div.niv div.content-area div.scroll a.box picture img, section.hero div.niv div.container div.col div.colunistas ul.lista-colunistas li a picture img, header div[fluid] div.niv > div div.buttons div.user-nav a > picture img {
   height: 100%;
   width: 100%;
   -o-object-fit: cover;
@@ -688,6 +688,31 @@ header div[fluid] div.niv > div div.buttons {
   flex-direction: row;
   gap: 1rem;
 }
+header div[fluid] div.niv > div div.buttons div.user-nav {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+  gap: 3rem;
+  padding: 1rem;
+  background-color: #eaeaea;
+  border-radius: 1rem;
+}
+header div[fluid] div.niv > div div.buttons div.user-nav a > picture {
+  width: 3.5rem;
+  height: 3.5rem;
+  border-radius: 100%;
+}
+header div[fluid] div.niv > div div.buttons div.user-nav div.user-item i {
+  color: #5b2222;
+}
+header div[fluid] div.niv > div div.buttons div.user-nav div.user-item:last-child {
+  cursor: pointer;
+  transition: 0.32s;
+}
+header div[fluid] div.niv > div div.buttons div.user-nav div.user-item:last-child:hover {
+  transform: scale(1.05);
+}
 header div[fluid] div.niv > div div.buttons a.button {
   --height: 3.5rem;
   --width: 12.5rem;
@@ -718,7 +743,7 @@ header div[fluid].sub-menu {
   padding-bottom: 1.4rem;
 }
 header div[fluid].sub-menu[active] {
-  top: 0;
+  top: 3rem;
 }
 header div[fluid].sub-menu strong {
   color: #fff;
@@ -757,11 +782,9 @@ header div[fluid].sub-menu div.niv nav ul li a:not(a[title=menu])::before {
   }
   header div[fluid] div.niv nav {
     margin: 0;
+    max-width: 10.7rem;
   }
   header div[fluid] div.niv > div div.buttons {
-    display: none;
-  }
-  header div[fluid] div.niv > div div.search-button {
     display: none;
   }
 }
@@ -785,6 +808,23 @@ header div[fluid].sub-menu div.niv nav ul li a:not(a[title=menu])::before {
   }
   header div[fluid] div.niv > div a.button {
     display: none;
+  }
+  header div[fluid] div.niv > div div.search-button {
+    margin: 0;
+  }
+  header div[fluid] div.niv > div div.search-button input {
+    position: fixed;
+    width: 100vw;
+    height: 4.2rem;
+    border-radius: 0;
+    top: 8rem;
+    left: 0;
+  }
+  header div[fluid] div.niv > div div.search-button div#div_search {
+    position: fixed;
+    left: 1rem;
+    top: 12rem;
+    width: 100vw;
   }
   header div[fluid] div.niv nav {
     margin-left: auto;
@@ -3684,9 +3724,9 @@ section.artigo div.niv div.cursos div.card-area div.scroll a.box-destaque div.ta
   section.artigo div.niv.--row {
     flex-direction: column-reverse;
   }
-  /* section.artigo div.niv.--row main {
+  section.artigo div.niv.--row main div.main-content {
     padding-right: 6rem;
-  } */
+  }
   section.artigo div.niv.--row aside {
     display: none;
   }
@@ -3698,14 +3738,26 @@ section.artigo div.niv div.cursos div.card-area div.scroll a.box-destaque div.ta
   }
 }
 @media (max-width: 600px) {
-  /* section.artigo div.niv.--row main {
+  section.artigo div.niv.--row main div.main-content {
     padding-left: 3rem;
     padding-right: 3rem;
-  } */
+  }
 }
 @media (max-width: 500px) {
+  section.artigo {
+    padding-right: 0;
+    padding-left: 0;
+  }
+  section.artigo div.niv {
+    padding-right: 0;
+    padding-left: 0;
+  }
   section.artigo div.niv.--row main div.text-content p {
     font-size: 1.8rem;
+  }
+  section.artigo div.niv.--row main div.cursos-content {
+    padding-right: 3rem;
+    padding-left: 3rem;
   }
   section.artigo div.niv.--row main div.apoie-projeto.--alternative {
     height: unset;
@@ -4218,15 +4270,6 @@ section.trabalhe-conosco div.niv div.list-side ul li p {
   }
   section.trabalhe-conosco div.niv div.list-side ul li:not(:last-child) {
     margin-bottom: 5rem;
-  }
-
-  section.artigo div.niv.--row main div.main-content {
-    padding-left: 2rem;
-    padding-right: 2rem;
-  }
-  section.artigo div.niv.--row main div.text-content img {
-    max-width: 100%;
-    height: auto;
   }
 }
 
@@ -5061,13 +5104,143 @@ div#referencias_modal div.niv div.box div.content div.scroll {
   height: -webkit-max-content;
   height: -moz-max-content;
   height: max-content;
+  font-size: 1.8rem;
 }
-div#referencias_modal div.niv div.box div.content div.scroll ul li {
+div#referencias_modal div.niv div.box div.content div.scroll span.citation {
+  margin-top: 3.8rem;
+  padding-bottom: 1.7rem;
+  margin-bottom: 1.7rem;
+  display: block;
+  border-bottom: 1px solid #eaeaea;
+}
+div#referencias_modal div.niv div.box div.content div.scroll span.citation h1 {
+  font-weight: 700;
+  font-size: 2.4rem;
+  line-height: 3.2rem;
+  color: #000;
+}
+div#referencias_modal div.niv div.box div.content div.scroll span.citation p {
+  font-family: "Palatino Linotype", sans-serif;
   font-weight: 400;
-  font-size: 1.2rem;
-  line-height: 180%;
-  color: #716f6f;
-  list-style: disc inside;
+  font-size: 1.4rem;
+  line-height: 1.9rem;
+  color: #5b2222;
+}
+div#referencias_modal div.niv div.box div.content div.scroll html,
+div#referencias_modal div.niv div.box div.content div.scroll body,
+div#referencias_modal div.niv div.box div.content div.scroll div,
+div#referencias_modal div.niv div.box div.content div.scroll span,
+div#referencias_modal div.niv div.box div.content div.scroll applet,
+div#referencias_modal div.niv div.box div.content div.scroll object,
+div#referencias_modal div.niv div.box div.content div.scroll iframe,
+div#referencias_modal div.niv div.box div.content div.scroll h1,
+div#referencias_modal div.niv div.box div.content div.scroll h2,
+div#referencias_modal div.niv div.box div.content div.scroll h3,
+div#referencias_modal div.niv div.box div.content div.scroll h4,
+div#referencias_modal div.niv div.box div.content div.scroll h5,
+div#referencias_modal div.niv div.box div.content div.scroll h6,
+div#referencias_modal div.niv div.box div.content div.scroll p,
+div#referencias_modal div.niv div.box div.content div.scroll blockquote,
+div#referencias_modal div.niv div.box div.content div.scroll pre,
+div#referencias_modal div.niv div.box div.content div.scroll a,
+div#referencias_modal div.niv div.box div.content div.scroll abbr,
+div#referencias_modal div.niv div.box div.content div.scroll acronym,
+div#referencias_modal div.niv div.box div.content div.scroll address,
+div#referencias_modal div.niv div.box div.content div.scroll big,
+div#referencias_modal div.niv div.box div.content div.scroll cite,
+div#referencias_modal div.niv div.box div.content div.scroll code,
+div#referencias_modal div.niv div.box div.content div.scroll del,
+div#referencias_modal div.niv div.box div.content div.scroll dfn,
+div#referencias_modal div.niv div.box div.content div.scroll em,
+div#referencias_modal div.niv div.box div.content div.scroll img,
+div#referencias_modal div.niv div.box div.content div.scroll ins,
+div#referencias_modal div.niv div.box div.content div.scroll kbd,
+div#referencias_modal div.niv div.box div.content div.scroll q,
+div#referencias_modal div.niv div.box div.content div.scroll s,
+div#referencias_modal div.niv div.box div.content div.scroll samp,
+div#referencias_modal div.niv div.box div.content div.scroll small,
+div#referencias_modal div.niv div.box div.content div.scroll strike,
+div#referencias_modal div.niv div.box div.content div.scroll strong,
+div#referencias_modal div.niv div.box div.content div.scroll sub,
+div#referencias_modal div.niv div.box div.content div.scroll sup,
+div#referencias_modal div.niv div.box div.content div.scroll tt,
+div#referencias_modal div.niv div.box div.content div.scroll var,
+div#referencias_modal div.niv div.box div.content div.scroll b,
+div#referencias_modal div.niv div.box div.content div.scroll u,
+div#referencias_modal div.niv div.box div.content div.scroll i,
+div#referencias_modal div.niv div.box div.content div.scroll center,
+div#referencias_modal div.niv div.box div.content div.scroll dl,
+div#referencias_modal div.niv div.box div.content div.scroll dt,
+div#referencias_modal div.niv div.box div.content div.scroll dd,
+div#referencias_modal div.niv div.box div.content div.scroll ol,
+div#referencias_modal div.niv div.box div.content div.scroll ul,
+div#referencias_modal div.niv div.box div.content div.scroll li,
+div#referencias_modal div.niv div.box div.content div.scroll fieldset,
+div#referencias_modal div.niv div.box div.content div.scroll form,
+div#referencias_modal div.niv div.box div.content div.scroll label,
+div#referencias_modal div.niv div.box div.content div.scroll legend,
+div#referencias_modal div.niv div.box div.content div.scroll table,
+div#referencias_modal div.niv div.box div.content div.scroll caption,
+div#referencias_modal div.niv div.box div.content div.scroll tbody,
+div#referencias_modal div.niv div.box div.content div.scroll tfoot,
+div#referencias_modal div.niv div.box div.content div.scroll thead,
+div#referencias_modal div.niv div.box div.content div.scroll tr,
+div#referencias_modal div.niv div.box div.content div.scroll th,
+div#referencias_modal div.niv div.box div.content div.scroll td,
+div#referencias_modal div.niv div.box div.content div.scroll article,
+div#referencias_modal div.niv div.box div.content div.scroll aside,
+div#referencias_modal div.niv div.box div.content div.scroll canvas,
+div#referencias_modal div.niv div.box div.content div.scroll details,
+div#referencias_modal div.niv div.box div.content div.scroll embed,
+div#referencias_modal div.niv div.box div.content div.scroll figure,
+div#referencias_modal div.niv div.box div.content div.scroll figcaption,
+div#referencias_modal div.niv div.box div.content div.scroll footer,
+div#referencias_modal div.niv div.box div.content div.scroll header,
+div#referencias_modal div.niv div.box div.content div.scroll hgroup,
+div#referencias_modal div.niv div.box div.content div.scroll menu,
+div#referencias_modal div.niv div.box div.content div.scroll nav,
+div#referencias_modal div.niv div.box div.content div.scroll output,
+div#referencias_modal div.niv div.box div.content div.scroll ruby,
+div#referencias_modal div.niv div.box div.content div.scroll section,
+div#referencias_modal div.niv div.box div.content div.scroll summary,
+div#referencias_modal div.niv div.box div.content div.scroll time,
+div#referencias_modal div.niv div.box div.content div.scroll mark,
+div#referencias_modal div.niv div.box div.content div.scroll audio,
+div#referencias_modal div.niv div.box div.content div.scroll video {
+  all: revert;
+}
+div#referencias_modal div.niv div.box div.content div.scroll span,
+div#referencias_modal div.niv div.box div.content div.scroll h1,
+div#referencias_modal div.niv div.box div.content div.scroll h2,
+div#referencias_modal div.niv div.box div.content div.scroll h3,
+div#referencias_modal div.niv div.box div.content div.scroll h4,
+div#referencias_modal div.niv div.box div.content div.scroll h5,
+div#referencias_modal div.niv div.box div.content div.scroll h6,
+div#referencias_modal div.niv div.box div.content div.scroll p {
+  margin-top: 12px !important;
+  font-family: "Open Sans", sans-serif !important;
+}
+div#referencias_modal div.niv div.box div.content div.scroll a {
+  color: #dc3545;
+}
+div#referencias_modal div.niv div.box div.content div.scroll blockquote {
+  /**
+
+  @include responsive(1400px) {}
+  @include responsive(1200px) {}
+  @include responsive(992px) {}
+  @include responsive(730px) {}
+  @include responsive(600px) {}
+
+  **/
+}
+@media (max-width: 600px) {
+  div#referencias_modal div.niv div.box div.content div.scroll blockquote {
+    -webkit-margin-start: 10px;
+            margin-inline-start: 10px;
+    -webkit-margin-end: 10px;
+            margin-inline-end: 10px;
+  }
 }
 
 div#categorias_modal div.niv div.box {

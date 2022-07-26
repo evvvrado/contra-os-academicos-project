@@ -801,7 +801,9 @@ section.artigo {
             &.--row {
                 flex-direction: column-reverse;
                 main {
-                    padding-right: 6rem;
+                    div.main-content {
+                        padding-right: 6rem;
+                    }
                 }
                 aside {
                     display: none;
@@ -820,21 +822,29 @@ section.artigo {
         div.niv {
             &.--row {
                 main {
-                    padding-left: 3rem;
-                    padding-right: 3rem;
+                    div.main-content {
+                        padding-left: 3rem;
+                        padding-right: 3rem;
+                    }
                 }
             }
         }
     }
 
     @include responsive(500px) {
+        @include padding-x(0);
         div.niv {
+            @include padding-x(0);
             &.--row {
                 main {
                     div.text-content {
                         p {
                             font-size: 1.8rem;
                         }
+                    }
+
+                    div.cursos-content {
+                        @include padding-x(3rem);
                     }
 
                     div.apoie-projeto.--alternative {

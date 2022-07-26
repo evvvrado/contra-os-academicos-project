@@ -196,14 +196,147 @@ div#referencias_modal {
                 div.scroll {
                     height: max-content;
 
-                    ul {
-                        li {
-                            font-weight: 400;
-                            font-size: 1.2rem;
-                            line-height: 180%;
-                            color: $mid-cinza-contra;
+                    // ul {
+                    //     li {
+                    //         font-weight: 400;
+                    //         font-size: 1.2rem;
+                    //         line-height: 180%;
+                    //         color: $mid-cinza-contra;
 
-                            list-style: disc inside;
+                    //         list-style: disc inside;
+                    //     }
+                    // }
+
+                    font-size: 1.8rem;
+
+                    span.citation {
+                        margin-top: 3.8rem;
+                        padding-bottom: 1.7rem;
+                        margin-bottom: 1.7rem;
+                        display: block;
+
+                        h1 {
+                            font-weight: 700;
+                            font-size: 2.4rem;
+                            line-height: 3.2rem;
+                            color: $black;
+                        }
+
+                        border-bottom: 1px solid #eaeaea;
+
+                        p {
+                            font-family: $font-secondary;
+                            font-weight: 400;
+                            font-size: 1.4rem;
+                            line-height: 1.9rem;
+                            color: $primary;
+                        }
+                    }
+
+                    html,
+                    body,
+                    div,
+                    span,
+                    applet,
+                    object,
+                    iframe,
+                    h1,
+                    h2,
+                    h3,
+                    h4,
+                    h5,
+                    h6,
+                    p,
+                    blockquote,
+                    pre,
+                    a,
+                    abbr,
+                    acronym,
+                    address,
+                    big,
+                    cite,
+                    code,
+                    del,
+                    dfn,
+                    em,
+                    img,
+                    ins,
+                    kbd,
+                    q,
+                    s,
+                    samp,
+                    small,
+                    strike,
+                    strong,
+                    sub,
+                    sup,
+                    tt,
+                    var,
+                    b,
+                    u,
+                    i,
+                    center,
+                    dl,
+                    dt,
+                    dd,
+                    ol,
+                    ul,
+                    li,
+                    fieldset,
+                    form,
+                    label,
+                    legend,
+                    table,
+                    caption,
+                    tbody,
+                    tfoot,
+                    thead,
+                    tr,
+                    th,
+                    td,
+                    article,
+                    aside,
+                    canvas,
+                    details,
+                    embed,
+                    figure,
+                    figcaption,
+                    footer,
+                    header,
+                    hgroup,
+                    menu,
+                    nav,
+                    output,
+                    ruby,
+                    section,
+                    summary,
+                    time,
+                    mark,
+                    audio,
+                    video {
+                        all: revert;
+                    }
+
+                    span,
+                    h1,
+                    h2,
+                    h3,
+                    h4,
+                    h5,
+                    h6,
+                    p {
+                        margin-top: 12px !important;
+                        font-family: $font-primary !important;
+                    }
+
+                    a {
+                        color: $red;
+                    }
+
+                    blockquote {
+                        @include responsive(600px) {
+                            margin-inline-start: 10px;
+                            margin-inline-end: 10px;
                         }
                     }
                 }

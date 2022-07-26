@@ -65,40 +65,40 @@
                                 if(session()->get("usuario_site")["assinante"] == 0 OR session()->get("usuario_site")["assinante"] == "")
                                 {
                     ?>
-                                    <div class="text-content block-style">
-                                        <p>
-                                            {!! Str::limit($revista->conteudo, 800) !!}
-                                        </p>
-                                    </div>
+                    <div class="text-content block-style">
+                        <p>
+                            {!! Str::limit($revista->conteudo, 800) !!}
+                        </p>
+                    </div>
 
                     <?php
                                 }  
                                 else {
                     ?>
-                                    <div class="text-content block-style">
-                                        <p>
-                                            {!! $revista->conteudo !!}
-                                        </p>
-                                    </div>
+                    <div class="text-content block-style">
+                        <p>
+                            {!! $revista->conteudo !!}
+                        </p>
+                    </div>
                     <?php 
                                 }
                             } 
                             else {
                     ?>
-                                <div class="text-content block-style">
-                                    <p>
-                                        {!! Str::limit($revista->conteudo, 800) !!}
-                                    </p>
-                                </div>
+                    <div class="text-content block-style">
+                        <p>
+                            {!! Str::limit($revista->conteudo, 800) !!}
+                        </p>
+                    </div>
                     <?php
                             }
                         else {
                     ?>
-                            <div class="text-content block-style">
-                                <p>
-                                    {!! $revista->conteudo !!}
-                                </p>
-                            </div>
+                    <div class="text-content block-style">
+                        <p>
+                            {!! $revista->conteudo !!}
+                        </p>
+                    </div>
                     <?php
                         }
                     ?>
@@ -172,39 +172,42 @@
                 </div>
 
 
-                <div class="cursos">
-                    <div class="title-area">
-                        <picture><img src="{{ asset('site/assets/img/logos_fade_artigo.png') }}" alt="Logo sumindo efeito">
-                        </picture>
+                <div class="cursos-content">
+                    <div class="cursos">
+                        <div class="title-area">
+                            <picture><img src="{{ asset('site/assets/img/logos_fade_artigo.png') }}"
+                                    alt="Logo sumindo efeito">
+                            </picture>
 
-                        <h3 class="--hr-bar">Cursos em destaque</h3>
+                            <h3 class="--hr-bar">Cursos em destaque</h3>
 
-                        <div>
-                            <button class="scroll-left">
-                                <img src="{{ asset('site/assets/img/arrow_left_biblioteca.svg') }}" alt="">
-                            </button>
-                            <button class="scroll-right">
-                                <img src="{{ asset('site/assets/img/arrow_right_biblioteca.svg') }}" alt="">
-                            </button>
+                            <div>
+                                <button class="scroll-left">
+                                    <img src="{{ asset('site/assets/img/arrow_left_biblioteca.svg') }}" alt="">
+                                </button>
+                                <button class="scroll-right">
+                                    <img src="{{ asset('site/assets/img/arrow_right_biblioteca.svg') }}" alt="">
+                                </button>
+                            </div>
                         </div>
-                    </div>
 
-                    <div class="card-area">
-                        <div class="scroll">
-                            @foreach ($cursos as $curso)
-                                <a href="#" class="box-destaque"
-                                    style="background-image: url('{{ asset($curso->banner) }}')">
-                                    <div class="tags">
-                                        {{-- <span class="--filled">Novo</span> --}}
-                                        <span>{{ $curso->categoria->nome }}</span>
-                                    </div>
-                                    <h2>{{ $curso->titulo }}</h2>
-                                </a>
-                            @endforeach
+                        <div class="card-area">
+                            <div class="scroll">
+                                @foreach ($cursos as $curso)
+                                    <a href="#" class="box-destaque"
+                                        style="background-image: url('{{ asset($curso->banner) }}')">
+                                        <div class="tags">
+                                            {{-- <span class="--filled">Novo</span> --}}
+                                            <span>{{ $curso->categoria->nome }}</span>
+                                        </div>
+                                        <h2>{{ $curso->titulo }}</h2>
+                                    </a>
+                                @endforeach
+                            </div>
                         </div>
-                    </div>
 
-                    <a href="#" class="--plus">Acessar todos os cursos</a>
+                        <a href="#" class="--plus">Acessar todos os cursos</a>
+                    </div>
                 </div>
             </main>
 

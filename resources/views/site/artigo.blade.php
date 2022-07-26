@@ -333,106 +333,109 @@
                     </div>
                 </div>
 
-                <div class="cursos">
-                    <div class="title-area">
-                        <picture><img src="{{ asset('site/assets/img/logos_fade_artigo.png') }}" alt="Logo sumindo efeito">
-                        </picture>
+                <div class="cursos-content">
+                    <div class="cursos">
+                        <div class="title-area">
+                            <picture><img src="{{ asset('site/assets/img/logos_fade_artigo.png') }}"
+                                    alt="Logo sumindo efeito">
+                            </picture>
 
-                        <h3 class="--hr-bar">Cursos em destaque</h3>
+                            <h3 class="--hr-bar">Cursos em destaque</h3>
 
-                        <div>
-                            <button class="scroll-left">
-                                <img src="{{ asset('site/assets/img/arrow_left_biblioteca.svg') }}" alt="">
-                            </button>
-                            <button class="scroll-right">
-                                <img src="{{ asset('site/assets/img/arrow_right_biblioteca.svg') }}" alt="">
-                            </button>
+                            <div>
+                                <button class="scroll-left">
+                                    <img src="{{ asset('site/assets/img/arrow_left_biblioteca.svg') }}" alt="">
+                                </button>
+                                <button class="scroll-right">
+                                    <img src="{{ asset('site/assets/img/arrow_right_biblioteca.svg') }}" alt="">
+                                </button>
+                            </div>
                         </div>
-                    </div>
 
-                    <div class="card-area">
-                        <div class="scroll">
-                            <a href="#" class="box-destaque"
-                                style="background-image: url({{ asset('site/assets/img/banner_curso4_cursos.jpg') }})">
-                                <div class="tags">
-                                    <span class="--filled">Novo</span>
-                                    <span>Filosofia</span>
-                                </div>
-                                <h2>Filosofia Avançada</h2>
-                            </a>
-
-
-                            <a href="#" class="box-destaque"
-                                style="background-image: url({{ asset('site/assets/img/banner_curso3_cursos.jpg') }})">
-                                <div class="tags">
-                                    <span>História</span>
-                                </div>
-                                <h2>A vida humana</h2>
-
-                            </a>
+                        <div class="card-area">
+                            <div class="scroll">
+                                <a href="#" class="box-destaque"
+                                    style="background-image: url({{ asset('site/assets/img/banner_curso4_cursos.jpg') }})">
+                                    <div class="tags">
+                                        <span class="--filled">Novo</span>
+                                        <span>Filosofia</span>
+                                    </div>
+                                    <h2>Filosofia Avançada</h2>
+                                </a>
 
 
-                            <a href="#" class="box-destaque"
-                                style="background-image: url({{ asset('site/assets/img/banner_curso2_cursos.jpg') }})">
-                                <div class="tags">
-                                    <span>História</span>
-                                </div>
-                                <h2>Descontrução Mundial</h2>
+                                <a href="#" class="box-destaque"
+                                    style="background-image: url({{ asset('site/assets/img/banner_curso3_cursos.jpg') }})">
+                                    <div class="tags">
+                                        <span>História</span>
+                                    </div>
+                                    <h2>A vida humana</h2>
 
-                            </a>
+                                </a>
 
 
-                            <a href="#" class="box-destaque"
-                                style="background-image: url({{ asset('site/assets/img/banner_curso1_cursos.jpg') }})">
-                                <div class="tags">
-                                    <span>Arte</span>
-                                </div>
-                                <h2>Michelangelo</h2>
-                            </a>
+                                <a href="#" class="box-destaque"
+                                    style="background-image: url({{ asset('site/assets/img/banner_curso2_cursos.jpg') }})">
+                                    <div class="tags">
+                                        <span>História</span>
+                                    </div>
+                                    <h2>Descontrução Mundial</h2>
 
+                                </a>
+
+
+                                <a href="#" class="box-destaque"
+                                    style="background-image: url({{ asset('site/assets/img/banner_curso1_cursos.jpg') }})">
+                                    <div class="tags">
+                                        <span>Arte</span>
+                                    </div>
+                                    <h2>Michelangelo</h2>
+                                </a>
 
 
 
-                            <a href="#" class="box-destaque"
-                                style="background-image: url({{ asset('site/assets/img/banner_curso2_cursos.jpg') }})">
-                                <div class="tags">
-                                    <span>História</span>
-                                </div>
-                                <h2>Descontrução Mundial</h2>
 
-                            </a>
-                            <a href="#" class="box-destaque"
-                                style="background-image: url({{ asset('site/assets/img/banner_curso4_cursos.jpg') }})">
-                                <div class="tags">
-                                    <span class="--filled">Novo</span>
-                                    <span>Filosofia</span>
-                                </div>
-                                <h2>Filosofia Avançada</h2>
-                            </a>
+                                <a href="#" class="box-destaque"
+                                    style="background-image: url({{ asset('site/assets/img/banner_curso2_cursos.jpg') }})">
+                                    <div class="tags">
+                                        <span>História</span>
+                                    </div>
+                                    <h2>Descontrução Mundial</h2>
 
-
-                            <a href="#" class="box-destaque"
-                                style="background-image: url({{ asset('site/assets/img/banner_curso3_cursos.jpg') }})">
-                                <div class="tags">
-                                    <span>História</span>
-                                </div>
-                                <h2>A vida humana</h2>
-
-                            </a>
+                                </a>
+                                <a href="#" class="box-destaque"
+                                    style="background-image: url({{ asset('site/assets/img/banner_curso4_cursos.jpg') }})">
+                                    <div class="tags">
+                                        <span class="--filled">Novo</span>
+                                        <span>Filosofia</span>
+                                    </div>
+                                    <h2>Filosofia Avançada</h2>
+                                </a>
 
 
+                                <a href="#" class="box-destaque"
+                                    style="background-image: url({{ asset('site/assets/img/banner_curso3_cursos.jpg') }})">
+                                    <div class="tags">
+                                        <span>História</span>
+                                    </div>
+                                    <h2>A vida humana</h2>
 
-                            <a href="#" class="box-destaque"
-                                style="background-image: url({{ asset('site/assets/img/banner_curso1_cursos.jpg') }})">
-                                <div class="tags">
-                                    <span>Arte</span>
-                                </div>
-                                <h2>Michelangelo</h2>
-                            </a>
+                                </a>
+
+
+
+                                <a href="#" class="box-destaque"
+                                    style="background-image: url({{ asset('site/assets/img/banner_curso1_cursos.jpg') }})">
+                                    <div class="tags">
+                                        <span>Arte</span>
+                                    </div>
+                                    <h2>Michelangelo</h2>
+                                </a>
+                            </div>
                         </div>
-                    </div>
 
-                    <a href="#" class="--plus">Acessar todos os cursos</a>
+                        <a href="#" class="--plus">Acessar todos os cursos</a>
+                    </div>
                 </div>
             </main>
 
