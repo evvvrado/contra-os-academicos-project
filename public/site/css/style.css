@@ -4221,7 +4221,8 @@ section.trabalhe-conosco div.niv div.list-side ul li p {
   }
 
   section.artigo div.niv.--row main div.main-content {
-    padding-left: 3rem;
+    padding-left: 2rem;
+    padding-right: 2rem;
   }
   section.artigo div.niv.--row main div.text-content img {
     max-width: 100%;
