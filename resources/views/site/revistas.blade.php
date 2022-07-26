@@ -30,7 +30,7 @@
                         $ativo = "";
                     }
                 @endphp
-                <span>  </span>
+                <span></span>
                 <span></span></span>
                 <span></span>
             </div>
@@ -45,7 +45,7 @@
                 <div class="scroll">
 
                     @foreach ($destaques as $destaque)
-                        <a href="{{ route('site.revista_detalhe', ['revista' => $destaque]) }}">
+                        <a class="retirar" href="{{ route('site.revista_detalhe', ['revista' => $destaque]) }}">
                             <div class="banner" style="background-image: url('{{ asset($destaque->banner_destaque) }}'); background-position: center;">
                             </div>
                         </a>
