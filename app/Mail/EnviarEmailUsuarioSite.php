@@ -30,10 +30,10 @@ class EnviarEmailUsuarioSite extends Mailable
      */
     public function build()
     {
-        return $this->from('jeyp.music17@gmail.com')
+        return $this->from('contraosacademicos@gmail.com')
         ->subject('COA - Seu pin de acesso')
         ->with(['usuario_site' => $this->usuariosite])
-        ->view('emails.test');
+        ->view('emails.template_pin');
         // return $this->view('view.name');
     }
 }

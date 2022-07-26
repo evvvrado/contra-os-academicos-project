@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class AlterTableUsuSite extends Migration
+class AlterTableUsuarioSites extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,11 @@ class AlterTableUsuSite extends Migration
      */
     public function up()
     {
+        //
         Schema::table('usuario_sites', function (Blueprint $table) {
             //
-            $table->string("pin", 5)->nullable();
+            $table->boolean("verificado")->default(false)->nullable();
+            $table->string("hash", 200)->nullable();
         });
     }
 

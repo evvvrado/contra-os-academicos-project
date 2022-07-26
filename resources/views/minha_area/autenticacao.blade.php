@@ -74,36 +74,28 @@
                                                     <div class="col-3">
                                                         <div class="mb-3">
                                                             <label for="digit1-input" class="visually-hidden">Dight 1</label>
-                                                            <input id="pin_1" name="pin_1" type="text" class="form-control form-control-lg text-center"
-                                                                onkeyup="moveToNext(this, 2)" maxLength="1"
-                                                                id="digit1-input">
+                                                            <input id="pin_1" name="pin_1" type="text" class="form-control form-control-lg text-center" onkeyup="moveToNext(this, 2)" maxLength="1" id="digit1-input">
                                                         </div>
                                                     </div>
     
                                                     <div class="col-3">
                                                         <div class="mb-3">
                                                             <label for="digit2-input" class="visually-hidden">Dight 2</label>
-                                                            <input name="pin_2" type="text" class="form-control form-control-lg text-center"
-                                                                onkeyup="moveToNext(this, 3)" maxLength="1"
-                                                                id="digit2-input">
+                                                            <input name="pin_2" type="text" class="form-control form-control-lg text-center" onkeyup="moveToNext(this, 3)" maxLength="1" id="digit2-input">
                                                         </div>
                                                     </div>
     
                                                     <div class="col-3">
                                                         <div class="mb-3">
                                                             <label for="digit3-input" class="visually-hidden">Dight 3</label>
-                                                            <input name="pin_3" type="text" class="form-control form-control-lg text-center"
-                                                                onkeyup="moveToNext(this, 4)" maxLength="1"
-                                                                id="digit3-input">
+                                                            <input name="pin_3" type="text" class="form-control form-control-lg text-center" onkeyup="moveToNext(this, 4)" maxLength="1" id="digit3-input">
                                                         </div>
                                                     </div>
     
                                                     <div class="col-3">
                                                         <div class="mb-3">
                                                             <label for="digit4-input" class="visually-hidden">Dight 4</label>
-                                                            <input name="pin_4" type="text" class="form-control form-control-lg text-center"
-                                                                onkeyup="valida_form()" maxLength="1"
-                                                                id="digit4-input">
+                                                            <input name="pin_4" type="text" class="form-control form-control-lg text-center" onkeyup="valida_form()" maxLength="1" id="digit4-input">
                                                         </div>
                                                     </div>
                                                 </div>
@@ -149,7 +141,31 @@
     <!-- App js -->
     <script src="{{ asset('admin/assets/js/app.js') }}"></script>
 
-    <script>
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+    <script type="text/javascript">
+        jQuery(document).ready(function(){
+            setInterval(() => {
+                jQuery.ajax({
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    },
+                    url: "{{ url('/sistema/verifica_autenticacao') }}",
+                    method: 'get',
+                    success: function(result){
+                        if(result == 0) {
+                            window.location.href = "{{ route('minha_area.perfil') }}";
+                        } else if(result == 2) {
+                            window.location.href = "{{ route('site.index') }}";
+                        }
+                    },
+                    error: function(){
+                        console.log('Ajax não funcionou');
+                    }
+                });
+            }, 2500);
+        });
+
+        
         $(document).ready(function () {
             $("#pin_1").focus(); 
         });

@@ -40,6 +40,7 @@ class UsuarioSitesController extends Controller
             $usuario_site->email = $request->email;
             $usuario_site->senha = Hash::make($request->senha);
             $usuario_site->pin = rand(1000,9999);
+            $usuario_site->hash = sha1(rand(1000,9999)) . sha1(time());
             $usuario_site->save();
     
             Mail::to($request->email)
@@ -63,7 +64,7 @@ class UsuarioSitesController extends Controller
         $pin = $request->pin_1 . $request->pin_2 . $request->pin_3 . $request->pin_4;
 
         if($pin == $usuario_site->pin) {
-            session()->forget("usuario_site");
+            session()->forget("usuario_temporario");
 
             session()->put(["usuario_site" => $usuario_site->toArray()]);
 
@@ -93,18 +94,23 @@ class UsuarioSitesController extends Controller
         //     die();
         // }
         if ($usuario) {
-            if (Hash::check($request->senha, $usuario->senha)) {
-                session()->put(["usuario_site" => $usuario->toArray()]);
-                Log::channel('acessos')->info('LOGIN: O usuario ' . $usuario->email . ' logou no sistema.');
+            if ($usuario->verificado == false) {
+                toastr()->error("Verifique seu email para ativar sua conta!");
                 return redirect()->route("site.index");
             } else {
-                toastr()->error("Informações de usuário incorretas!");
+                if (Hash::check($request->senha, $usuario->senha)) {
+                    session()->put(["usuario_site" => $usuario->toArray()]);
+                    Log::channel('acessos')->info('LOGIN: O usuario ' . $usuario->email . ' logou no sistema.');
+                    return redirect()->route("site.index");
+                } else {
+                    toastr()->error("Informações de usuário incorretas!");
+                    return redirect()->route("minha_area.index");
+                }
             }
         } else {
             toastr()->error("Informações de usuário incorretas!");
+            return redirect()->route("minha_area.index");
         }
-
-        return redirect()->back();
     }
 
     public function sair()
