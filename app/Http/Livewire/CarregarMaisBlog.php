@@ -17,8 +17,7 @@ class CarregarMaisBlog extends Component
     public function render()
     {
         $blogs = Blog::paginate($this->porpagina)
-        ->where('status', 1)
-        ->orderById('Desc');
+        ->where('status', 1);
 
         $blogs = $blogs->sortDesc();
 

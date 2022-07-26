@@ -17,8 +17,7 @@ class CarregarMaisLista extends Component
     public function render()
     {
         $listas = Lista::paginate($this->porpagina)
-        ->where('status', 1)
-        ->orderBy('id', 'Desc');
+        ->where('status', 1);
 
         $listas = $listas->sortDesc();
 
