@@ -20,7 +20,7 @@
         <div class="niv">
 
             <div class="indicador">
-                {{-- @php
+                @php
                     $ativo = "active";
 
                     foreach ($destaques as $destaque) {
@@ -29,7 +29,7 @@
                 @php
                         $ativo = "";
                     }
-                @endphp --}}
+                @endphp
                 <span active>  </span>
                 <span></span></span>
                 <span></span>
@@ -44,12 +44,12 @@
             <div class="banner-area">
                 <div class="scroll">
 
-                    {{-- @foreach ($destaques as $destaque)
+                    @foreach ($destaques as $destaque)
                         <a href="{{ route('site.revista_detalhe', ['revista' => $destaque]) }}">
                             <div class="banner" style="background-image: url('{{ asset($destaque->banner_destaque) }}'); background-position: center;">
                             </div>
                         </a>
-                    @endforeach --}}
+                    @endforeach
 
                     <a class="retirar">
                         <div class="banner" style="background-image: url('{{ asset('site/assets/img/destaque/2.jpg') }}'); background-position: center;">
