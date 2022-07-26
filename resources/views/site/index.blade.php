@@ -13,7 +13,7 @@
     <section class="ant-hero">
         <div class="niv">
             <a href="#" class="main-card card"
-                style="height: 600px; background-image: url('{{ asset('site/assets/img/destaque/capa.jpg') }}');background-position: center;">
+                style="background-image: url('{{ asset('site/assets/img/destaque/capa.png') }}');background-position: center;">
 
                 {{-- <div class="text">
                     <picture>

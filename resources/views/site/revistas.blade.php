@@ -52,17 +52,17 @@
                     @endforeach --}}
 
                     <a class="retirar">
-                        <div class="banner" style="background-image: url('{{ asset('site/assets/img/destaque/1.jpg') }}'); background-position: center;">
-                        </div>
-                    </a>
-
-                    <a class="retirar">
                         <div class="banner" style="background-image: url('{{ asset('site/assets/img/destaque/2.jpg') }}'); background-position: center;">
                         </div>
                     </a>
 
                     <a class="retirar">
                         <div class="banner" style="background-image: url('{{ asset('site/assets/img/destaque/3.jpg') }}'); background-position: center;">
+                        </div>
+                    </a>
+
+                    <a class="retirar">
+                        <div class="banner" style="background-image: url('{{ asset('site/assets/img/destaque/4.jpg') }}'); background-position: center;">
                         </div>
                     </a>
 
