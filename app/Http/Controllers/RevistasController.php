@@ -7,6 +7,7 @@ use App\Models\Revista;
 use App\Models\RevistaVisu;
 use DB;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Str;
 
 class RevistasController extends Controller
 {
@@ -30,6 +31,8 @@ class RevistasController extends Controller
             $revista->autor_id = $request->autor;
             $revista->em_breve = $request->em_breve;
             $revista->categoria_id = $request->categoria;
+            $slug = Str::of($request->titulo)->slug('-');
+            $revista->slug = $slug;
             $revista->status = 1;
             $revista->save();
 
@@ -60,6 +63,8 @@ class RevistasController extends Controller
             $revista->autor_id = $request->autor;
             $revista->em_breve = $request->em_breve;
             $revista->categoria_id = $request->categoria;
+            $slug = Str::of($request->titulo)->slug('-');
+            $revista->slug = $slug;
             $revista->status = 2;
             $revista->save();
 
@@ -88,6 +93,8 @@ class RevistasController extends Controller
             $revista->autor_id = $request->autor;
             $revista->em_breve = $request->em_breve;
             $revista->categoria_id = $request->categoria;
+            $slug = Str::of($request->titulo)->slug('-');
+            $revista->slug = $slug;
             $revista->save();
 
             if($request->file("banner")){
@@ -119,6 +126,8 @@ class RevistasController extends Controller
             $revista->autor_id = $request->autor;
             $revista->em_breve = $request->em_breve;
             $revista->categoria_id = $request->categoria;
+            $slug = Str::of($request->titulo)->slug('-');
+            $revista->slug = $slug;
             $revista->save();
 
             if($request->file("banner")){
@@ -139,6 +148,8 @@ class RevistasController extends Controller
         $revista->autor_id = $request->autor;
         $revista->em_breve = $request->em_breve;
         $revista->categoria_id = $request->categoria;
+        $slug = Str::of($request->titulo)->slug('-');
+        $revista->slug = $slug;
 
         if($request->file("banner")){
             Storage::delete($revista->banner);

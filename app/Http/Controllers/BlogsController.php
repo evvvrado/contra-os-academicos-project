@@ -7,6 +7,7 @@ use App\Models\Blog;
 use App\Models\BlogVisu;
 use Illuminate\Support\Facades\Storage;
 use DB;
+use Illuminate\Support\Str;
 
 class BlogsController extends Controller
 {
@@ -36,6 +37,8 @@ class BlogsController extends Controller
             $blog->autor_id = $request->autor;
             $blog->tradutor_id = $request->tradutor;
             $blog->status = 1;
+            $slug = Str::of($request->titulo)->slug('-');
+            $blog->slug = $slug;
             $blog->save();
             if($request->file("banner")){
                 Blog::whereId($blog->id)
@@ -58,6 +61,8 @@ class BlogsController extends Controller
             $blog->autor_id = $request->autor;
             $blog->tradutor_id = $request->tradutor;
             $blog->status = 2;
+            $slug = Str::of($request->titulo)->slug('-');
+            $blog->slug = $slug;
             $blog->save();
             if($request->file("banner")){
                 Blog::whereId($blog->id)
@@ -80,6 +85,8 @@ class BlogsController extends Controller
             $blog->autor_id = $request->autor;
             $blog->tradutor_id = $request->tradutor;
             $blog->status = 1;
+            $slug = Str::of($request->titulo)->slug('-');
+            $blog->slug = $slug;
             $blog->save();
             if($request->file("banner")){
                 BlogVisu::whereId($blog->id)
@@ -113,6 +120,8 @@ class BlogsController extends Controller
             $blog->autor_id = $request->autor;
             $blog->tradutor_id = $request->tradutor;
             $blog->status = 1;
+            $slug = Str::of($request->titulo)->slug('-');
+            $blog->slug = $slug;
             $blog->save();
             if($request->file("banner")){
                 BlogVisu::whereId($blog->id)
@@ -133,6 +142,8 @@ class BlogsController extends Controller
         $blog->exclusivo = $request->exclusivo;
         $blog->autor_id = $request->autor;
         $blog->tradutor_id = $request->tradutor;
+        $slug = Str::of($request->titulo)->slug('-');
+        $blog->slug = $slug;
 
         if($request->file("banner")){
             Storage::delete($blog->banner);
