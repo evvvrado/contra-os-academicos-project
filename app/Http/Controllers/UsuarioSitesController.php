@@ -178,13 +178,19 @@ class UsuarioSitesController extends Controller
         $usuario_site = UsuarioSite::whereId($request->id)->first();
 
         if($usuario_site AND $request->hash == $usuario_site->hash) {
-            UsuarioSite::where('hash', $request->hash)
-            ->whereId($request->id)
-            ->update(['senha' => Hash::make($request->nova_senha), 'hash' => sha1(rand(1000,9999)) . sha1(time())]);
+            if($request->nova_senha == $request->nova_senha_2) {
+                UsuarioSite::where('hash', $request->hash)
+                ->whereId($request->id)
+                ->update(['senha' => Hash::make($request->nova_senha), 'hash' => sha1(rand(1000,9999)) . sha1(time())]);
+    
+                toastr()->success("Senha atualizada!");
+                
+                return redirect()->route("minha_area.login");
+            } else {
+                toastr()->warning("Digite a mesma senha nos campos abaixo");
 
-            toastr()->success("Senha atualizada!");
-            
-            return redirect()->route("minha_area.login");
+                return redirect()->route("minha_area.nova_senha", ['id' => $usuario_site->id, 'hash' => $usuario_site->hash]);
+            }
         }
         else {
             toastr()->error("Registro não encontrado!");
