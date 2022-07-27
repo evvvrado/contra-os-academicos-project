@@ -39,9 +39,12 @@
                                     <td class="text-center">0</td>
                                     <td class="text-center">0</td>
                                     <td>{{ $data }}</td>
-                                    <td >
+                                    <td class="text-center">
                                         <a href="{{ route('painel.revista.editar', ['revista' => $revista]) }}" class="btn btn-sm btn-success" role="button"><i class="bx bx bx-edit-alt"></i></a>
                                         <a class="btn btn-sm btn-danger" wire:click="$emit('del',{{ $revista->id }})" role="button"><i class="bx bx bx bx-window-close"></i></a>
+                                        <div class="btn btn-sm btn-info">
+                                            <i class="bx bx-link-alt" onClick="copiar_slug('https://contraosacademicos.com.br/revista/{{ $revista->slug }}')"></i>
+                                        </div>
                                     </td>
                                 </tr>
                             @endforeach
