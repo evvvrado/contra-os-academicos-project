@@ -58,7 +58,9 @@
                                     </a>
                                 </div>
                                 <div class="user-item">
-                                    <i class="fa-solid fa-arrow-right-from-bracket"></i>
+                                    <a href="{{ route('minha_area.sair') }}">
+                                        <i class="fa-solid fa-arrow-right-from-bracket"></i>
+                                    </a>
                                 </div>
                             </div>
                         @else

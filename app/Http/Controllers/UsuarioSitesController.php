@@ -128,7 +128,12 @@ class UsuarioSitesController extends Controller
     public function login()
     {
         // return view("site.em_breve");
-        return view("minha_area.login");
+        if(!session()->get("usuario_site")) {
+            return view("minha_area.login");
+        } else {
+            toastr()->success("Você está logado!");
+            return redirect()->route("site.index");
+        }
     }
 
     public function logar(Request $request)
