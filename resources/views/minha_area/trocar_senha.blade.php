@@ -78,19 +78,6 @@
                                     </div>
                                 </div> --}}
 
-                                @if(isset($_COOKIE['criar_conta']) && $_COOKIE['criar_conta'] == 1)
-                                    <div class="alert alert-warning" role="alert">
-                                        <strong>MUITA ATENÇÃO!</strong> <br>
-                                        <br>
-                                        Você precisa estar logado em sua conta para prosseguir com a assinatura. Siga os passos abaixo com muita atenção: <br> 
-                                        <br>
-                                        * Faça login ou registre sua conta em nossa plataforma; <br>
-                                        * Seu endereço de e-mail DEVE ser o mesmo que sua conta do paypal, para que o sistema possa identificar o pagamento e liberar sua assinatura; <br>
-                                        <br>
-                                        <br>
-                                        Caso tenha alguma dúvida, sinta-se livre para entrar em contato conosco!
-                                    </div>
-                                @endif 
                             </div>
                         </div>
                     </div>
@@ -110,50 +97,25 @@
                                 <div class="my-auto">
                                     
                                     <div>
-                                        <h5 class="text-primary">Bem-Vindo de volta !</h5>
-                                        <p class="text-muted">Faça login abaixo.</p>
+                                        <h5 class="text-primary">Trocar senha</h5>
+                                        <p class="text-muted">Insira seu e-mail para recuperação da senha</p>
                                     </div>
         
                                     <div class="mt-4">
-                                        <form action="{{ route('minha_area.logar') }}" method="post">
+                                        <form action="{{ route('minha_area.trocar_senha_solicitacao') }}" method="post">
                                             @csrf
             
                                             <div class="mb-3">
                                                 <label for="email" class="form-label">E-mail</label>
                                                 <input name="email" type="email" class="form-control" id="email" placeholder="Digite seu e-mail">
                                             </div>
-                    
-                                            <div class="mb-3">
-                                                <div class="float-end">
-                                                    <a href="{{ route('minha_area.trocar_senha') }}" class="text-muted">Esqueci minha senha</a>
-                                                </div>
-                                                <label class="form-label">Senha</label>
-                                                <div class="input-group auth-pass-inputgroup">
-                                                    <input name="senha" type="password" class="form-control" placeholder="Digite sua senha" aria-label="Password" aria-describedby="password-addon">
-                                                    <button class="btn btn-light " type="button" id="password-addon"><i class="mdi mdi-eye-outline"></i></button>
-                                                </div>
-                                            </div>
-                    
-                                            <div class="form-check">
-                                                <input class="form-check-input" type="checkbox" id="remember-check">
-                                                <label class="form-check-label" for="remember-check">
-                                                    Lembrar meus dados
-                                                </label>
-                                            </div>
                                             
                                             <div class="mt-3 d-grid">
-                                                <button class="btn btn-primary waves-effect waves-light" type="submit">Acessar</button>
+                                                <button class="btn btn-primary waves-effect waves-light" type="submit">Solicitar</button>
                                             </div>
 
                                         </form>
-                                        <div class="mt-5 text-center">
-                                            <p>Não possui uma conta ? <a href="{{ route('minha_area.registro') }}" class="fw-medium text-primary"> Criar conta </a> </p>
-                                        </div>
                                     </div>
-                                </div>
-
-                                <div class="mt-4 mt-md-5 text-center">
-                                    {{-- <p class="mb-0">© <script>document.write(new Date().getFullYear())</script> Contra os Acadêmicos</p> --}}
                                 </div>
                             </div>
                             

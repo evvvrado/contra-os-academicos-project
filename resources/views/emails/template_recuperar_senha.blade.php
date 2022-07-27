@@ -18,18 +18,14 @@
                                             </tr>
                                             <tr style="font-family: 'Helvetica Neue',Helvetica,Arial,sans-serif; box-sizing: border-box; font-size: 14px; margin: 0;">
                                                 <td class="content-block" style="font-family: 'Helvetica Neue',Helvetica,Arial,sans-serif; box-sizing: border-box; font-size: 14px; vertical-align: top; margin: 0; padding: 0 0 50px;" valign="top">
-                                                    Estamos quase finalizando seu cadastro!
-                                                    Você pode inserir o pin na tela de cadastro ou se preferir apenas clique no botão <b>verificar</b> logo abaixo.
-                                                </td>
-                                            </tr>
-                                            <tr style="font-family: 'Helvetica Neue',Helvetica,Arial,sans-serif; box-sizing: border-box; font-size: 14px; margin: 0;">
-                                                <td class="content-block" style="font-family: 'Helvetica Neue',Helvetica,Arial,sans-serif; box-sizing: border-box; font-size: 14px; vertical-align: top; margin: 0; padding: 0 0 20px;" valign="top">
-                                                    Seu pin de acesso é <b>{{ $usuario_site->pin }}</b>
+                                                    Você solicitou a atualização de sua senha através de nosso site. <br>
+                                                    Caso não tenha sido você, ignore essa mensagem. <br><br>
+                                                    Recupere sua senha clicando no botão abaixo
                                                 </td>
                                             </tr>
                                             <tr style="font-family: 'Helvetica Neue',Helvetica,Arial,sans-serif; box-sizing: border-box; font-size: 14px; margin: 0;">
                                                 <td class="content-block" itemprop="handler" itemscope="" itemtype="http://schema.org/HttpActionHandler" style="font-family: 'Helvetica Neue',Helvetica,Arial,sans-serif; box-sizing: border-box; font-size: 14px; vertical-align: top; margin: 0; padding: 0 0 20px;" valign="top">
-                                                    <a href="{{ route('painel.verificar_conta', ['id' => $usuario_site->id, 'hash' => $usuario_site->hash]) }}" itemprop="url" style="font-family: 'Helvetica Neue',Helvetica,Arial,sans-serif; box-sizing: border-box; font-size: 14px; color: #FFF; text-decoration: none; line-height: 2em; font-weight: bold; text-align: center; cursor: pointer; display: inline-block; border-radius: 5px; text-transform: capitalize; background-color: #451919; margin: 0; border-color: #451919; border-style: solid; border-width: 8px 16px;">Verificar</a>
+                                                    <a href="{{ route('minha_area.nova_senha', ['id' => $usuario_site->id, 'hash' => $usuario_site->hash]) }}" itemprop="url" style="font-family: 'Helvetica Neue',Helvetica,Arial,sans-serif; box-sizing: border-box; font-size: 14px; color: #FFF; text-decoration: none; line-height: 2em; font-weight: bold; text-align: center; cursor: pointer; display: inline-block; border-radius: 5px; text-transform: capitalize; background-color: #451919; margin: 0; border-color: #451919; border-style: solid; border-width: 8px 16px;">Trocar senha</a>
                                                 </td>
                                             </tr>
                                             <tr style="font-family: 'Helvetica Neue',Helvetica,Arial,sans-serif; box-sizing: border-box; font-size: 14px; margin: 0;">

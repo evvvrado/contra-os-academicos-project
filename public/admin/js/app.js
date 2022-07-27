@@ -228,6 +228,12 @@
                     ? n(this).siblings("input").attr("type", "input")
                     : n(this).siblings("input").attr("type", "password"));
         }),
+        n("#password-addon2").on("click", function () {
+            0 < n(this).siblings("input").length &&
+                ("password" == n(this).siblings("input").attr("type")
+                    ? n(this).siblings("input").attr("type", "input")
+                    : n(this).siblings("input").attr("type", "password"));
+        }),
         "null" != t && t !== s && a(t),
         n(".language").on("click", function (e) {
             a(n(this).attr("data-lang"));
