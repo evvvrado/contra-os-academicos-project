@@ -26,49 +26,6 @@ class PainelController extends Controller
         return view("painel.login");
     }
 
-    public function verificar_autenticacao() {
-        if(session()->get("usuario_temporario")["id"] != "") {
-            $verifica = UsuarioSite::whereId(session()->get("usuario_temporario")["id"])
-            ->whereVerificado(true)
-            ->first();
-
-            if($verifica != "") {
-                return 0;
-                session()->forget("usuario_temporario");
-            } else {
-                return 1;
-            }
-        } else {
-            return 0;
-        }
-    }
-
-    public function verificar_conta(Request $request) {
-        $usuario_site = UsuarioSite::whereId($request->id)->first();
-
-        if($usuario_site != null) {
-            if($request->hash == $usuario_site->hash) {
-                
-                session()->put(["usuario_site" => $usuario_site->toArray()]);
-
-                Log::channel('acessos')->info('LOGIN: O usuario ' . $usuario_site->usuario . ' logou no sistema.');
-                sleep(2);
-                UsuarioSite::where('hash', $request->hash)
-                ->update(['verificado' => true]);
-
-                toastr()->success("Sua conta foi verificada com sucesso!");
-                
-                return redirect()->route("site.index");
-            }
-        }
-        else {
-
-            toastr()->error("Registro não encontrado!");
-                
-            return redirect()->route("site.index");
-        }
-    }
-
     public function logar(Request $request)
     {
         $usuario = Usuario::where("usuario", $request->usuario)->first();

@@ -7,7 +7,9 @@ use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Hash;
 use App\Models\UsuarioSite;
 use Illuminate\Support\Facades\Mail;
-use App\Mail\EnviarEmailUsuarioSite;
+use App\Mail\UsuarioSite\Pin;
+use App\Mail\UsuarioSite\RecuperarSenha;
+use App\Mail\UsuarioSite\PinRecuperar;
 use Illuminate\Support\Facades\Storage;
 
 class UsuarioSitesController extends Controller
@@ -44,7 +46,7 @@ class UsuarioSitesController extends Controller
             $usuario_site->save();
     
             Mail::to($request->email)
-            ->send(new EnviarEmailUsuarioSite($usuario_site));
+            ->send(new Pin($usuario_site));
     
             session()->put(["usuario_temporario" => $usuario_site->toArray()]);
     
@@ -78,6 +80,49 @@ class UsuarioSitesController extends Controller
         }
     }
 
+    public function verificar_autenticacao() {
+        if(session()->get("usuario_temporario")["id"] != "") {
+            $verifica = UsuarioSite::whereId(session()->get("usuario_temporario")["id"])
+            ->whereVerificado(true)
+            ->first();
+
+            if($verifica != "") {
+                return 0;
+                session()->forget("usuario_temporario");
+            } else {
+                return 1;
+            }
+        } else {
+            return 0;
+        }
+    }
+
+    public function verificar_conta(Request $request) {
+        $usuario_site = UsuarioSite::whereId($request->id)->first();
+
+        if($usuario_site != null) {
+            if($request->hash == $usuario_site->hash) {
+                
+                session()->put(["usuario_site" => $usuario_site->toArray()]);
+
+                Log::channel('acessos')->info('LOGIN: O usuario ' . $usuario_site->usuario . ' logou no sistema.');
+                sleep(2);
+                UsuarioSite::where('hash', $request->hash)
+                ->update(['verificado' => true]);
+
+                toastr()->success("Sua conta foi verificada com sucesso!");
+                
+                return redirect()->route("site.index");
+            }
+        }
+        else {
+
+            toastr()->error("Registro não encontrado!");
+                
+            return redirect()->route("site.index");
+        }
+    }
+
     // ------------------------  BLOCO DE AÇÕES DE ACESSO
 
     public function login()
@@ -95,6 +140,9 @@ class UsuarioSitesController extends Controller
         // }
         if ($usuario) {
             if ($usuario->verificado == false) {
+                Mail::to($request->email)
+                ->send(new PinRecuperar($usuario));
+
                 toastr()->error("Verifique seu email para ativar sua conta!");
                 return redirect()->route("site.index");
             } else {

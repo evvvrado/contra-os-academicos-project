@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Mail;
+namespace App\Mail\UsuarioSite;
 
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
@@ -8,7 +8,7 @@ use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
 use App\Models\UsuarioSite;
 
-class EnviarEmailUsuarioSite extends Mailable
+class Pin extends Mailable
 {
     use Queueable, SerializesModels;
 
