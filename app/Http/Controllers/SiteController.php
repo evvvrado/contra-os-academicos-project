@@ -264,7 +264,7 @@ class SiteController extends Controller
         $listas_destaques = Lista::select(DB::raw("*"))
         ->whereStatus(1)
         ->whereDestaque(true)
-        ->orderBy('id', 'Desc')
+        ->orderBy('visitas', 'Desc')
         ->get();
 
         return view("site.index", ["revistas" => $revistas, "blogs" => $blogs, "listas" => $listas, "cursos" => $cursos, "revistas_randomicas" => $revistas_randomicas, "listas_destaques" => $listas_destaques]);
