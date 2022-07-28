@@ -16,7 +16,7 @@ class ContatoView extends Component
 
 
     public function enviar_email() {
-        Mail::to('contraosacademicos@gmail.com.br')
+        Mail::to('contraosacademicos@gmail.com')
         ->send(new Contato(['nome' => $this->nome, 'email' => $this->email, 'assunto' => $this->assunto, 'mensagem' => $this->mensagem]));
 
         $this->ok = 'sim';
