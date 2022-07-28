@@ -4,3 +4,13 @@
 [12-May-2022 22:09:43 America/Fortaleza] PHP Warning:  require(/home4/cont5405/homolog.contraosacademicos.com.br/../vendor/autoload.php): failed to open stream: No such file or directory in /home4/cont5405/homolog.contraosacademicos.com.br/index.php on line 34
 [12-May-2022 22:09:43 America/Fortaleza] PHP Warning:  require(/home4/cont5405/homolog.contraosacademicos.com.br/../vendor/autoload.php): failed to open stream: No such file or directory in /home4/cont5405/homolog.contraosacademicos.com.br/index.php on line 34
 [12-May-2022 22:09:43 America/Fortaleza] PHP Fatal error:  require(): Failed opening required '/home4/cont5405/homolog.contraosacademicos.com.br/../vendor/autoload.php' (include_path='.:/opt/cpanel/ea-php73/root/usr/share/pear') in /home4/cont5405/homolog.contraosacademicos.com.br/index.php on line 34
+[28-Jul-2022 15:35:43 America/Fortaleza] PHP Fatal error:  Uncaught Error: Class 'Illuminate\Foundation\Application' not found in /home4/cont5405/public_html/bootstrap/app.php:14
+Stack trace:
+#0 /home4/cont5405/public_html/artisan(20): require_once()
+#1 {main}
+  thrown in /home4/cont5405/public_html/bootstrap/app.php on line 14
+[28-Jul-2022 15:35:55 America/Fortaleza] PHP Fatal error:  Uncaught Error: Class 'Illuminate\Foundation\Application' not found in /home4/cont5405/public_html/bootstrap/app.php:14
+Stack trace:
+#0 /home4/cont5405/public_html/artisan(20): require_once()
+#1 {main}
+  thrown in /home4/cont5405/public_html/bootstrap/app.php on line 14
