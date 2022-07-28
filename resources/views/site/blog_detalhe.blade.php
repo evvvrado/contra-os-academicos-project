@@ -123,7 +123,7 @@
 
                         <div class="content-side">
                             <strong>MENSAGEM DA EQUIPE</strong>
-
+d
                             <strong>
                                 Seu apoio é mais importante do que nunca.
                             </strong>
