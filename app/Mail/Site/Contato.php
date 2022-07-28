@@ -34,7 +34,7 @@ class Contato extends Mailable
         return $this->from($this->email)
         ->subject('COA Novo Contato')
         ->with(['nome' => $this->nome, 'email' => $this->email, 'assunto' => $this->assunto, 'mensagem' => $this->mensagem ])
-        ->view('emails.site.contato');
+        ->view('emails.Site.contato');
         // return $this->view('view.name');
     }
 }
