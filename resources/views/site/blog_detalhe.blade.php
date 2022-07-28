@@ -135,11 +135,16 @@
 
 
                             <div class="buttons">
-                                {{-- <button class="button">Quero apoiar</button> --}}
-                                <button class="button" style="width: 100%; padding: 15px;"><a
-                                        href="https://www.paypal.com/donate/?hosted_button_id=SG3AY5GSPXAHN"
-                                        target="_blank">Quero
-                                        apoiar</a></b>
+                                <form style="z-index: 10" method="post" action="{{ route('payment') }}">
+                                    @csrf
+                                    <input type="hidden" value="178.80" name="amount">
+                                    <button type="submit" class="button">Assinar</button>
+                                </form>
+                                <button class="button" style="width: 100%; padding: 15px;">
+                                    <a href="https://www.paypal.com/donate/?hosted_button_id=SG3AY5GSPXAHN" target="_blank">
+                                        Quero apoiar
+                                    </a>
+                                </button>
                             </div>
                         </div>
                     </div>
