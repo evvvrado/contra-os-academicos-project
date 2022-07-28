@@ -2,6 +2,25 @@
 
 use Google\Service\CloudRun\Route as CloudRunRoute;
 use Illuminate\Support\Facades\Route;
+use Dacastro4\LaravelGmail\Facade\LaravelGmail;
+
+
+
+Route::get('/teste', [\App\Http\Controllers\SiteController::class, 'teste'])->name("site.teste");
+Route::get('/oauth/gmail', function (){
+    return LaravelGmail::redirect();
+});
+
+Route::get('/oauth/gmail/callback', function (){
+    LaravelGmail::makeToken();
+    return redirect()->to('/');
+});
+
+Route::get('/oauth/gmail/logout', function (){
+    LaravelGmail::logout(); //It returns exception if fails
+    return redirect()->to('/');
+});
+
 
 Route::get('/sistema/login', [\App\Http\Controllers\PainelController::class, 'login'])->name("painel.login");
 Route::post('/sistema/logar', [\App\Http\Controllers\PainelController::class, 'logar'])->name("painel.logar");
@@ -141,8 +160,6 @@ Route::get('/biblioteca/{slug}', [\App\Http\Controllers\SiteController::class, '
 
 Route::get('/contato', [\App\Http\Controllers\SiteController::class, 'contato'])->name("site.contato");
 Route::get('/artigo', [\App\Http\Controllers\SiteController::class, 'artigo'])->name("site.artigo");
-
-Route::get('/teste', [\App\Http\Controllers\SiteController::class, 'teste'])->name("site.teste");
 
 Route::post('pay', [\App\Http\Controllers\PagamentosController::class, 'pay'])->name('payment');
 Route::get('success', [\App\Http\Controllers\PagamentosController::class, 'success']);

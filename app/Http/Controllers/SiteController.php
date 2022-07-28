@@ -16,6 +16,9 @@ use Illuminate\Support\Str;
 
 class SiteController extends Controller
 {
+    public function teste() {
+        return view('site.teste');
+    }
 
     public function script() {
         $blogs = Blog::all();
