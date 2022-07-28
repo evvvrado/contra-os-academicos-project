@@ -18,25 +18,7 @@
     </section>
 
     <section class="contato">
-        <div class="niv">
-            <form action="javascript:void(0)" method="post">
-                <label>
-                    <input type="text" name="nome" placeholder="Nome">
-                </label>
-                <label>
-                    <input type="email" name="e-mail" placeholder="E-mail">
-                </label>
-                <label>
-                    <input type="text" name="assunto" placeholder="Assunto">
-                </label>
-
-                <label>
-                    <textarea placeholder="Escreva sua Mensagem" name="mensagem"></textarea>
-                </label>
-
-                <button class="button">Enviar</button>
-            </form>
-        </div>
+        @livewire('site.contato-view')
     </section>
 
 @endsection
