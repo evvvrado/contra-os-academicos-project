@@ -234,7 +234,6 @@ class SiteController extends Controller
 
     public function index()
     {
-        dd(sha1(rand(1000,9999)));
         $revistas = Revista::select(DB::raw("*"))
         ->whereStatus(1)
         ->whereEmBreve(0)
