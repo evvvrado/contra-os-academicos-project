@@ -257,3 +257,13 @@ $('header div[fluid] div.niv nav ul li a[title=menu]').click(() => {
 $('header div[fluid] div.niv > div div.search-button picture').click(() => {
     $('header div[fluid] div.niv > div div.search-button input').toggleAttr('open');
 })
+
+function _showSearch() {
+    let search = document.getElementById('search-niv');
+
+    if (search.classList.contains('show--search')) {
+        search.classList.remove('show--search');
+    } else {
+        search.classList.add('show--search');
+    }
+}

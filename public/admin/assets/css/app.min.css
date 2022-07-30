@@ -4464,3 +4464,45 @@ body.minha-area header div[fluid] div.niv > div div.socials a {
 .c-pointer {
     cursor: pointer;
 }
+
+div.buttons div.user-nav a picture {
+    overflow: hidden;
+    display: block;
+}
+div.buttons div.user-nav a picture img {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+}
+div.buttons {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+    gap: 10px;
+}
+div.buttons div.user-nav {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+    gap: 30px;
+    padding: 10px;
+    background-color: #eaeaea;
+    border-radius: 10px;
+}
+div.buttons div.user-nav a picture {
+    width: 35px;
+    height: 35px;
+    border-radius: 100%;
+}
+div.buttons div.user-nav div.user-item i {
+    color: #5b2222;
+}
+div.buttons div.user-nav div.user-item:last-child {
+    cursor: pointer;
+    transition: 0.32s;
+}
+div.buttons div.user-nav div.user-item:last-child:hover {
+    transform: scale(1.05);
+}

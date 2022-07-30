@@ -6,7 +6,7 @@
 
     <header>
         <div fluid>
-            <div class="niv">
+            <div class="niv" id="search-niv">
                 <a href="/" title="Voltar para home" class="logo-header">
                     <img src="{{ asset('site/assets/img/logo_preta_header.png') }}" alt="Logo Contras os Acadêmicos">
                 </a>

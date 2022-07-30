@@ -317,7 +317,7 @@ header {
 
             @include responsive(600px) {
                 &[active] {
-                    top: 3rem;
+                    padding-top: 5rem;
                 }
             }
 
@@ -404,6 +404,16 @@ header {
                 }
             }
             div.niv {
+                &.show--search {
+                    & > div {
+                        div.search-button {
+                            input {
+                                top: 8rem;
+                            }
+                        }
+                    }
+                }
+
                 & > div a.button {
                     display: none;
                 }
@@ -417,11 +427,12 @@ header {
                         margin: 0;
 
                         input {
+                            z-index: 1;
                             position: fixed;
                             width: 100vw;
                             height: 4.2rem;
                             border-radius: 0;
-                            top: 8rem;
+                            top: -50rem;
                             left: 0;
                         }
 

@@ -13,7 +13,7 @@
     <input id="input_pesquisa" onClick="muda_classe()" placeholder="Digite sua pesquisa..." class="input_pesquisa"
         type="text" wire:model="pesquisas" open="open">
 
-    <picture>
+    <picture onclick="_showSearch()">
         <img src="{{ asset('site/assets/img/icon_search_header.svg') }}" alt="Ícone de pesquisa">
     </picture>
 

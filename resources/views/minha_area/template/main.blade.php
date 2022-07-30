@@ -10,8 +10,7 @@
     <link rel="shortcut icon" href="/favicon.ico" />
 
     <!-- Bootstrap Css -->
-    <link href="{{ asset('admin/assets/css/bootstrap.min.css') }}" id="bootstrap-style" rel="stylesheet"
-        type="text/css" />
+    <link href="{{ asset('admin/assets/css/bootstrap.min.css') }}" id="bootstrap-style" rel="stylesheet" type="text/css" />
     <!-- Icons Css -->
     <link href="{{ asset('admin/assets/css/icons.min.css') }}" rel="stylesheet" type="text/css" />
     <!-- App Css-->
@@ -63,18 +62,35 @@ use App\Models\UsuarioSite;
 
                         </div>
 
+
                         <div class="buttons">
-                            <a href="#" class="button">
-                                Assine
+                            <a href="{{ route('site.lancamento') }}" class="button">
+                                ASSINE
                             </a>
 
                             @if (session()->get('usuario_site'))
-                                <a href="{{ route('minha_area.index') }}" class="button">
-                                    Minha Área
-                                </a>
+                                <div class="user-nav">
+                                    <a href="{{ route('minha_area.index') }}">
+                                        <picture>
+                                            <img src="{{ asset(App\Models\UsuarioSite::whereId(session()->get('usuario_site')['id'])->first()->foto ? App\Models\UsuarioSite::whereId(session()->get('usuario_site')['id'])->first()->foto : 'admin/imagens/listas/1/sem_foto.png') }}"
+                                                alt="">
+                                        </picture>
+                                    </a>
+
+                                    <div class="user-item">
+                                        <a href="#">
+                                            <i class="fa-solid fa-bell"></i>
+                                        </a>
+                                    </div>
+                                    <div class="user-item">
+                                        <a href="{{ route('minha_area.sair') }}">
+                                            <i class="fa-solid fa-arrow-right-from-bracket"></i>
+                                        </a>
+                                    </div>
+                                </div>
                             @else
                                 <a href="{{ route('minha_area.index') }}" class="button">
-                                    Login
+                                    LOGIN
                                 </a>
                             @endif
                         </div>
@@ -182,11 +198,15 @@ use App\Models\UsuarioSite;
 
                                                 <div class="row">
                                                     <div class="col-6">
-                                                        <h5 class="font-size-15">{{ $usuario_site->blog_comentarios->count() + $usuario_site->lista_comentarios->count() + $usuario_site->revista_comentarios->count() }}</h5>
+                                                        <h5 class="font-size-15">
+                                                            {{ $usuario_site->blog_comentarios->count() + $usuario_site->lista_comentarios->count() + $usuario_site->revista_comentarios->count() }}
+                                                        </h5>
                                                         <p class="text-muted mb-0">Comentários</p>
                                                     </div>
                                                     <div class="col-6">
-                                                        <h5 class="font-size-15">{{ $usuario_site->blog_curtidas->count() + $usuario_site->lista_curtidas->count() + $usuario_site->revista_curtidas->count() }}</h5>
+                                                        <h5 class="font-size-15">
+                                                            {{ $usuario_site->blog_curtidas->count() + $usuario_site->lista_curtidas->count() + $usuario_site->revista_curtidas->count() }}
+                                                        </h5>
                                                         <p class="text-muted mb-0">Likes</p>
                                                     </div>
                                                 </div>

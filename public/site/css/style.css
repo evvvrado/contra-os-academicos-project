@@ -756,7 +756,7 @@ header div[fluid].sub-menu[active] {
 }
 @media (max-width: 600px) {
   header div[fluid].sub-menu[active] {
-    top: 3rem;
+    padding-top: 5rem;
   }
 }
 header div[fluid].sub-menu strong {
@@ -820,6 +820,9 @@ header div[fluid].sub-menu div.niv nav ul li a:not(a[title=menu])::before {
   header div[fluid].sub-menu div.niv nav ul li.mobile-login a {
     color: #f2d027 !important;
   }
+  header div[fluid] div.niv.show--search > div div.search-button input {
+    top: 8rem;
+  }
   header div[fluid] div.niv > div a.button {
     display: none;
   }
@@ -827,11 +830,12 @@ header div[fluid].sub-menu div.niv nav ul li a:not(a[title=menu])::before {
     margin: 0;
   }
   header div[fluid] div.niv > div div.search-button input {
+    z-index: 1;
     position: fixed;
     width: 100vw;
     height: 4.2rem;
     border-radius: 0;
-    top: 8rem;
+    top: -50rem;
     left: 0;
   }
   header div[fluid] div.niv > div div.search-button div#div_search {
