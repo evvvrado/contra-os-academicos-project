@@ -57,9 +57,12 @@
                                 <td class="text-center">0</td>
                                 <td class="text-center">0</td>
                                 <td>{{ $data }}</td>
-                                <td >
+                                <td class="text-center">
                                     <a href="{{ route('painel.blog.editar', ['blog' => $blog]) }}" class="btn btn-sm btn-success" role="button"><i class="bx bx bx-edit-alt"></i></a>
                                     <a onClick="deletar({{ $blog->id }})" class="btn btn-sm btn-danger" role="button"><i class="bx bx bx bx-window-close"></i></a>
+                                    <div class="btn btn-sm btn-info">
+                                        <i class="bx bx-link-alt" onClick="copiar_slug('https://contraosacademicos.com.br/blog/{{ $blog->slug }}')"></i>
+                                    </div>
                                 </td>
                             </tr>
                         @endforeach

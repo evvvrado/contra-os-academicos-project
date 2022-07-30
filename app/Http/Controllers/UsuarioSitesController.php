@@ -7,7 +7,9 @@ use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Hash;
 use App\Models\UsuarioSite;
 use Illuminate\Support\Facades\Mail;
-use App\Mail\EnviarEmailUsuarioSite;
+use App\Mail\UsuarioSite\Pin;
+use App\Mail\UsuarioSite\RecuperarSenha;
+use App\Mail\UsuarioSite\PinRecuperar;
 use Illuminate\Support\Facades\Storage;
 
 class UsuarioSitesController extends Controller
@@ -44,7 +46,7 @@ class UsuarioSitesController extends Controller
             $usuario_site->save();
     
             Mail::to($request->email)
-            ->send(new EnviarEmailUsuarioSite($usuario_site));
+            ->send(new Pin($usuario_site));
     
             session()->put(["usuario_temporario" => $usuario_site->toArray()]);
     
@@ -78,12 +80,134 @@ class UsuarioSitesController extends Controller
         }
     }
 
+    public function verificar_autenticacao() {
+        if(session()->get("usuario_temporario")["id"] != "") {
+            $verifica = UsuarioSite::whereId(session()->get("usuario_temporario")["id"])
+            ->whereVerificado(1)
+            ->first();
+
+            if($verifica != "") {
+                return 0;
+                session()->forget("usuario_temporario");
+            } else {
+                return 1;
+            }
+        } else {
+            return 0;
+        }
+    }
+
+    public function verificar_conta(Request $request) {
+        $usuario_site = UsuarioSite::whereId($request->id)->first();
+
+        if($usuario_site) {
+            if($request->hash == $usuario_site->hash) {
+                session()->put(["usuario_site" => $usuario_site->toArray()]);
+
+                Log::channel('acessos')->info('LOGIN: O usuario ' . $usuario_site->usuario . ' logou no sistema.');
+                sleep(2);
+                UsuarioSite::where('hash', $request->hash)
+                ->update(['verificado' => 1, 'hash' => sha1(rand(1000,9999)) . sha1(time())]);
+
+                toastr()->success("Sua conta foi verificada com sucesso!");                
+            } else {
+                toastr()->error("Esse link expirou");
+            }
+            return redirect()->route("site.index");
+        }
+        else {
+            toastr()->error("Registro não encontrado!");
+                
+            return redirect()->route("site.index");
+        }
+    }
+
     // ------------------------  BLOCO DE AÇÕES DE ACESSO
+
+    public function trocar_senha()
+    {
+        if(!session()->get("usuario_site")) {
+            return view("minha_area.trocar_senha");
+        } else {
+            toastr()->success("Você está logado!");
+            return redirect()->route("site.index");
+        }
+    }
+
+    public function trocar_senha_solicitacao(Request $request) {
+        $verifica = UsuarioSite::whereEmail($request->email)
+        ->whereVerificado(1)
+        ->first();
+
+        toastr()->success("Verifique sua caixa de e-mail!");
+
+        if($verifica) {
+            $verifica = UsuarioSite::whereEmail($request->email)
+            ->whereVerificado(1)
+            ->update(['hash' => sha1(rand(1000,9999)) . sha1(time())]);
+
+            $verifica = UsuarioSite::whereEmail($request->email)
+            ->whereVerificado(1)
+            ->first();
+
+            Mail::to($request->email)
+            ->send(new RecuperarSenha($verifica));
+
+            return view("minha_area.login");
+        } else {
+            return view("minha_area.login");
+        }
+    }
+
+    public function nova_senha(Request $request)
+    {
+        $verifica = UsuarioSite::whereHash($request->hash)
+        ->whereVerificado(1)
+        ->whereId($request->id)
+        ->first();
+
+        if($verifica) {
+            return view("minha_area.nova_senha");
+        } else {
+            toastr()->error("Faça uma nova solicitação de mudança de senha");
+            return redirect()->route("minha_area.login");
+        }
+    }
+
+    public function trocar_senha_act(Request $request) {
+        $usuario_site = UsuarioSite::whereId($request->id)->first();
+
+        if($usuario_site AND $request->hash == $usuario_site->hash) {
+            if($request->nova_senha == $request->nova_senha_2) {
+                UsuarioSite::where('hash', $request->hash)
+                ->whereId($request->id)
+                ->update(['senha' => Hash::make($request->nova_senha), 'hash' => sha1(rand(1000,9999)) . sha1(time())]);
+    
+                toastr()->success("Senha atualizada!");
+                
+                return redirect()->route("minha_area.login");
+            } else {
+                toastr()->warning("Digite a mesma senha nos campos abaixo");
+
+                return redirect()->route("minha_area.nova_senha", ['id' => $usuario_site->id, 'hash' => $usuario_site->hash]);
+            }
+        }
+        else {
+            toastr()->error("Registro não encontrado!");
+                
+            return redirect()->route("minha_area.login");
+        }
+    }
 
     public function login()
     {
         // return view("site.em_breve");
-        return view("minha_area.login");
+        if(!session()->get("usuario_site")) {
+            return view("minha_area.login");
+        } else {
+            toastr()->success("Você está logado!");
+            return redirect()->route("site.index");
+        }
     }
 
     public function logar(Request $request)
@@ -94,7 +218,10 @@ class UsuarioSitesController extends Controller
         //     die();
         // }
         if ($usuario) {
-            if ($usuario->verificado == false) {
+            if ($usuario->verificado == 0) {
+                Mail::to($request->email)
+                ->send(new PinRecuperar($usuario));
+
                 toastr()->error("Verifique seu email para ativar sua conta!");
                 return redirect()->route("site.index");
             } else {

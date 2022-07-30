@@ -64,7 +64,7 @@
                         @foreach ($revistas as $key => $revista)
                             @if ($key > 0 and $key < 3)
                                 <a href="{{ route('site.revista_detalhe', ['revista' => $revista]) }}"
-                                    class="mini-card card" style="background: url({{ asset($revista->banner) }})">
+                                    class="mini-card card" style="background: url('{{ asset($revista->banner) }}')">
                                     <strong>{{ $revista->titulo }}</strong>
                                     <p>Por <strong>{{ $revista->autor->nome }}</strong></p>
                                 </a>

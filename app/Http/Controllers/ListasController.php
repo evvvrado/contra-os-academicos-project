@@ -7,6 +7,7 @@ use App\Models\Lista;
 use App\Models\ListaVisu;
 use Illuminate\Support\Facades\Storage;
 use DB;
+use Illuminate\Support\Str;
 
 class ListasController extends Controller
 {
@@ -32,6 +33,8 @@ class ListasController extends Controller
             $lista->usuario_id = $request->usuario;
             $lista->categoria_id = $request->categoria;
             $lista->destaque = $request->destaque;
+            $slug = Str::of($request->titulo)->slug('-');
+            $lista->slug = $slug;
             $lista->status = 1;
             
             $lista->save();
@@ -54,6 +57,8 @@ class ListasController extends Controller
             $lista->usuario_id = $request->usuario;
             $lista->categoria_id = $request->categoria;
             $lista->destaque = $request->destaque;
+            $slug = Str::of($request->titulo)->slug('-');
+            $lista->slug = $slug;
             $lista->status = 2;
             
             $lista->save();
@@ -125,6 +130,8 @@ class ListasController extends Controller
         $lista->usuario_id = $request->usuario;
         $lista->categoria_id = $request->categoria;
         $lista->destaque = $request->destaque;
+        $slug = Str::of($request->titulo)->slug('-');
+        $lista->slug = $slug;
 
         if($request->file("banner")){
             Storage::delete($lista->banner);

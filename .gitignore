@@ -4,6 +4,10 @@
 /public/admin/images
 /public/admin/imagens
 /public/site/imagens/
+/public
+.htaccess
+error_log
+public/error_log
 /storage/*.key
 /vendor
 .env

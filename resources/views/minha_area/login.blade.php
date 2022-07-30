@@ -125,9 +125,9 @@
                     
                                             <div class="mb-3">
                                                 <div class="float-end">
-                                                    <a href="" class="text-muted">Esqueci minha senha</a>
+                                                    <a href="{{ route('minha_area.trocar_senha') }}" class="text-muted">Esqueci minha senha</a>
                                                 </div>
-                                                <label class="form-label">Password</label>
+                                                <label class="form-label">Senha</label>
                                                 <div class="input-group auth-pass-inputgroup">
                                                     <input name="senha" type="password" class="form-control" placeholder="Digite sua senha" aria-label="Password" aria-describedby="password-addon">
                                                     <button class="btn btn-light " type="button" id="password-addon"><i class="mdi mdi-eye-outline"></i></button>

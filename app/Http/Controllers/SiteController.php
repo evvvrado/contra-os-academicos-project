@@ -16,6 +16,9 @@ use Illuminate\Support\Str;
 
 class SiteController extends Controller
 {
+    public function teste() {
+        return view('site.teste');
+    }
 
     public function script() {
         $blogs = Blog::all();
@@ -51,13 +54,27 @@ class SiteController extends Controller
 
         $nome_cookie = 'view-'.$parte_1.'-'.$parte_2;
 
-        // Comando para setar o cookie
-        setcookie($nome_cookie, true, time() + (3600 * $horas));
-
-
         if(session()->get("usuario_site")){
             switch ($parte_1) {
                 case 'blog_detalhe':
+                    $verifica = UsuarioSiteUltimosAcesso::whereUsuarioSiteId(session()->get('usuario_site')['id'])
+                    ->whereBlogId($parte_2);
+                    if($verifica) {
+                        $verifica->delete();
+                        $ultimo_acesso = new UsuarioSiteUltimosAcesso;
+                        $ultimo_acesso->usuario_site_id = session()->get('usuario_site')['id'];
+                        $ultimo_acesso->blog_id = $parte_2;
+                        $ultimo_acesso->tipo = 'blog';
+                        $ultimo_acesso->save();
+                    } else {
+                        $ultimo_acesso = new UsuarioSiteUltimosAcesso;
+                        $ultimo_acesso->usuario_site_id = session()->get('usuario_site')['id'];
+                        $ultimo_acesso->blog_id = $parte_2;
+                        $ultimo_acesso->tipo = 'blog';
+                        $ultimo_acesso->save();
+                    }
+                    break;
+                case 'blog':
                     $verifica = UsuarioSiteUltimosAcesso::whereUsuarioSiteId(session()->get('usuario_site')['id'])
                     ->whereBlogId($parte_2);
                     if($verifica) {
@@ -93,7 +110,43 @@ class SiteController extends Controller
                         $ultimo_acesso->save();
                     }
                     break;
+                case 'revista':
+                    $verifica = UsuarioSiteUltimosAcesso::whereUsuarioSiteId(session()->get('usuario_site')['id'])
+                    ->whereRevistaId($parte_2);
+                    if($verifica) {
+                        $verifica->delete();
+                        $ultimo_acesso = new UsuarioSiteUltimosAcesso;
+                        $ultimo_acesso->usuario_site_id = session()->get('usuario_site')['id'];
+                        $ultimo_acesso->revista_id = $parte_2;
+                        $ultimo_acesso->tipo = 'revista';
+                        $ultimo_acesso->save();
+                    } else {
+                        $ultimo_acesso = new UsuarioSiteUltimosAcesso;
+                        $ultimo_acesso->usuario_site_id = session()->get('usuario_site')['id'];
+                        $ultimo_acesso->revista_id = $parte_2;
+                        $ultimo_acesso->tipo = 'revista';
+                        $ultimo_acesso->save();
+                    }
+                    break;
                 case 'biblioteca_detalhe':
+                    $verifica = UsuarioSiteUltimosAcesso::whereUsuarioSiteId(session()->get('usuario_site')['id'])
+                    ->whereListaId($parte_2);
+                    if($verifica) {
+                        $verifica->delete();
+                        $ultimo_acesso = new UsuarioSiteUltimosAcesso;
+                        $ultimo_acesso->usuario_site_id = session()->get('usuario_site')['id'];
+                        $ultimo_acesso->lista_id = $parte_2;
+                        $ultimo_acesso->tipo = 'lista';
+                        $ultimo_acesso->save();
+                    } else {
+                        $ultimo_acesso = new UsuarioSiteUltimosAcesso;
+                        $ultimo_acesso->usuario_site_id = session()->get('usuario_site')['id'];
+                        $ultimo_acesso->lista_id = $parte_2;
+                        $ultimo_acesso->tipo = 'lista';
+                        $ultimo_acesso->save();
+                    }
+                    break;
+                case 'biblioteca':
                     $verifica = UsuarioSiteUltimosAcesso::whereUsuarioSiteId(session()->get('usuario_site')['id'])
                     ->whereListaId($parte_2);
                     if($verifica) {
@@ -118,8 +171,15 @@ class SiteController extends Controller
         if (isset($_COOKIE[$nome_cookie]) && $_COOKIE[$nome_cookie] == true ) {
             // Faz nada...
         } else {
+            // Comando para setar o cookie
+            setcookie($nome_cookie, true, time() + (3600 * $horas));
+
             switch ($parte_1) {
                 case 'blog_detalhe':
+                    Blog::whereId($parte_2)
+                    ->increment('visitas');
+                    break;
+                case 'blog':
                     Blog::whereId($parte_2)
                     ->increment('visitas');
                     break;
@@ -127,7 +187,15 @@ class SiteController extends Controller
                     Revista::whereId($parte_2)
                     ->increment('visitas');
                     break;
+                case 'revista':
+                    Revista::whereId($parte_2)
+                    ->increment('visitas');
+                    break;
                 case 'biblioteca_detalhe':
+                    Lista::whereId($parte_2)
+                    ->increment('visitas');
+                    break;
+                case 'biblioteca':
                     Lista::whereId($parte_2)
                     ->increment('visitas');
                     break;
@@ -143,13 +211,13 @@ class SiteController extends Controller
 
         $nome_cookie = 'share-'.$parte_1.'-'.$parte_2;
 
-        // Comando para setar o cookie
-        setcookie($nome_cookie, true, time() + (3600 * $horas));
-
         // Verificação do cookie
         if (isset($_COOKIE[$nome_cookie]) && $_COOKIE[$nome_cookie] == true ) {
             // Faz nada...
         } else {
+            // Comando para setar o cookie
+            setcookie($nome_cookie, true, time() + (3600 * $horas));
+
             switch ($parte_1) {
                 case 'blog':
                     Blog::whereId($parte_2)
@@ -192,13 +260,14 @@ class SiteController extends Controller
         $revistas_randomicas = Revista::select(DB::raw("id, titulo, autor_id"))
         ->inRandomOrder()
         ->whereEmBreve(0)
+        ->whereStatus(1)
         ->limit(3)
         ->get();
 
         $listas_destaques = Lista::select(DB::raw("*"))
         ->whereStatus(1)
         ->whereDestaque(true)
-        ->orderBy('id', 'Desc')
+        ->orderBy('visitas', 'Desc')
         ->get();
 
         return view("site.index", ["revistas" => $revistas, "blogs" => $blogs, "listas" => $listas, "cursos" => $cursos, "revistas_randomicas" => $revistas_randomicas, "listas_destaques" => $listas_destaques]);
@@ -240,12 +309,14 @@ class SiteController extends Controller
         ->inRandomOrder()
         ->limit(4)
         ->where('categoria_id', $blog->categoria_id)
+        ->whereStatus(1)
         ->get();
 
         $mais_do_autors = Blog::select(DB::raw("id, titulo"))
         ->inRandomOrder()
         ->limit(4)
         ->where('autor_id', $blog->autor_id)
+        ->whereStatus(1)
         ->get();
 
         $cursos = Curso::select(DB::raw("*"))
@@ -273,12 +344,14 @@ class SiteController extends Controller
         ->inRandomOrder()
         ->limit(4)
         ->where('categoria_id', $blog->categoria_id)
+        ->whereStatus(1)
         ->get();
 
         $mais_do_autors = Blog::select(DB::raw("id, titulo"))
         ->inRandomOrder()
         ->limit(4)
         ->where('autor_id', $blog->autor_id)
+        ->whereStatus(1)
         ->get();
 
         $cursos = Curso::select(DB::raw("*"))
@@ -329,15 +402,17 @@ class SiteController extends Controller
         $revista_randomicos = Revista::select(DB::raw("*"))
         ->inRandomOrder()
         ->whereEmBreve(0)
-        ->limit(4)
+        ->whereStatus(1)
         ->where('categoria_id', $revista->categoria_id)
+        ->limit(4)
         ->get();
 
         $mais_do_autors = Revista::select(DB::raw("id, titulo"))
         ->inRandomOrder()
         ->whereEmBreve(0)
-        ->limit(4)
+        ->whereStatus(1)
         ->where('autor_id', $revista->autor_id)
+        ->limit(4)
         ->get();
 
         $cursos = Curso::select(DB::raw("*"))
@@ -365,15 +440,17 @@ class SiteController extends Controller
         $revista_randomicos = Revista::select(DB::raw("*"))
         ->inRandomOrder()
         ->whereEmBreve(0)
-        ->limit(4)
+        ->whereStatus(1)
         ->where('categoria_id', $revista->categoria_id)
+        ->limit(4)
         ->get();
 
         $mais_do_autors = Revista::select(DB::raw("id, titulo"))
         ->inRandomOrder()
         ->whereEmBreve(0)
-        ->limit(4)
+        ->whereStatus(1)
         ->where('autor_id', $revista->autor_id)
+        ->limit(4)
         ->get();
 
         $cursos = Curso::select(DB::raw("*"))
@@ -393,6 +470,7 @@ class SiteController extends Controller
 
         $lista_randomicos = Lista::select(DB::raw("*"))
         ->inRandomOrder()
+        ->whereStatus(1)
         ->limit(10)
         ->get();
 
@@ -413,12 +491,14 @@ class SiteController extends Controller
         $lista_randomicos = Lista::select(DB::raw("*"))
         ->inRandomOrder()
         ->limit(4)
+        ->whereStatus(1)
         ->where('categoria_id', $lista->categoria_id)
         ->get();
 
         $mais_do_autors = Lista::select(DB::raw("id, titulo"))
         ->inRandomOrder()
         ->limit(4)
+        ->whereStatus(1)
         ->where('usuario_id', $lista->usuario_id)
         ->get();
 
@@ -447,12 +527,14 @@ class SiteController extends Controller
         $lista_randomicos = Lista::select(DB::raw("*"))
         ->inRandomOrder()
         ->limit(4)
+        ->whereStatus(1)
         ->where('categoria_id', $lista->categoria_id)
         ->get();
 
         $mais_do_autors = Lista::select(DB::raw("id, titulo"))
         ->inRandomOrder()
         ->limit(4)
+        ->whereStatus(1)
         ->where('usuario_id', $lista->usuario_id)
         ->get();
 
