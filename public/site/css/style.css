@@ -741,9 +741,23 @@ header div[fluid].sub-menu {
   transition: 0.32s;
   padding-top: 1.4rem;
   padding-bottom: 1.4rem;
+  /**
+
+  @include responsive(1400px) {}
+  @include responsive(1200px) {}
+  @include responsive(992px) {}
+  @include responsive(730px) {}
+  @include responsive(600px) {}
+
+  **/
 }
 header div[fluid].sub-menu[active] {
-  top: 3rem;
+  top: 0;
+}
+@media (max-width: 600px) {
+  header div[fluid].sub-menu[active] {
+    top: 3rem;
+  }
 }
 header div[fluid].sub-menu strong {
   color: #fff;

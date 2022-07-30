@@ -42,6 +42,9 @@
                     </div>
 
                     <div class="buttons">
+                        <a href="{{ route('site.lancamento') }}" class="button">
+                            ASSINE
+                        </a>
 
                         @if (session()->get('usuario_site'))
                             <div class="user-nav">
@@ -62,10 +65,6 @@
                                 </div>
                             </div>
                         @else
-                            <a href="{{ route('site.lancamento') }}" class="button">
-                                ASSINE
-                            </a>
-
                             <a href="{{ route('minha_area.index') }}" class="button">
                                 LOGIN
                             </a>
@@ -100,6 +99,9 @@
                                 @if (session()->get('usuario_site'))
                                     <a href="{{ route('minha_area.index') }}" class="button">
                                         MINHA ÁREA
+                                    </a>
+                                    <a href="{{ route('minha_area.sair') }}" class="button">
+                                        SAIR
                                     </a>
                                 @else
                                     <a href="{{ route('minha_area.index') }}" class="button">

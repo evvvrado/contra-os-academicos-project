@@ -311,9 +311,14 @@ header {
             transition: 0.32s;
 
             @include padding-y(1.4rem);
-
             &[active] {
-                top: 3rem;
+                top: 0;
+            }
+
+            @include responsive(600px) {
+                &[active] {
+                    top: 3rem;
+                }
             }
 
             strong {
