@@ -21,6 +21,11 @@ class CarregarMaisBlog extends Component
 
         $blogs= json_decode( json_encode($blogs), true);
 
+        foreach($blogs as $blog) {
+            echo $blog->titulo;
+        }
+        die();
+
         return view('livewire.carregar-mais-blog', ['blogs' => $blogs]);
     }
 }
