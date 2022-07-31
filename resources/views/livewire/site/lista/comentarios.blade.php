@@ -194,7 +194,7 @@
                         @endif
                         @foreach ($comentarios as $comentario)
                             <li class="clearfix">
-                                @if(!isnull($comentario->usuario_site->foto))
+                                @if(!is_null($comentario->usuario_site->foto))
                                     <img src="{{ asset($comentario->usuario_site->foto) }}" class="avatar" alt="">
                                 @else 
                                     <img src="{{ asset('admin/imagens/usuarios/sem_foto.png') }}" class="avatar" alt="">
