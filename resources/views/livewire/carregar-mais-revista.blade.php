@@ -20,9 +20,12 @@ flex-wrap: wrap;">
         </a>
     @endforeach
     <div wire:loading>Carregando...</div>
-    <div class="button-area">
-        <button class="button" wire:click="carregarMais()">
-            Carregar mais conteúdo
-        </button>
-    </div>
+
+    @if($porpagina <= $revista->count())
+        <div class="button-area">
+            <button class="button" wire:click="carregarMais()">
+                Carregar mais conteúdo
+            </button>
+        </div>
+    @endif
 </div>

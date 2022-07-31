@@ -22,10 +22,11 @@ flex-wrap: wrap;">
 
     <div wire:loading>Carregando...</div>
 
-
-    <div class="button-area">
-        <button class="button" wire:click="carregarMais()">
-            Carregar mais conteúdo
-        </button>
-    </div>
+    @if($porpagina <= $blogs->count())
+        <div class="button-area">
+            <button class="button" wire:click="carregarMais()">
+                Carregar mais conteúdo
+            </button>
+        </div>
+    @endif
 </div>
