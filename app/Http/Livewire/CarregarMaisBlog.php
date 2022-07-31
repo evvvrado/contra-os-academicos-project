@@ -22,7 +22,7 @@ class CarregarMaisBlog extends Component
         $blogs= json_decode( json_encode($blogs), true);
 
         foreach($blogs as $blog) {
-            echo $blog->titulo;
+            echo $blog['titulo'];
         }
         die();
 
