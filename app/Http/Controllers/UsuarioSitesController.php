@@ -231,12 +231,12 @@ class UsuarioSitesController extends Controller
                     return redirect()->route("site.index");
                 } else {
                     toastr()->error("Informações de usuário incorretas!");
-                    return redirect()->route("minha_area.index");
+                    return view("minha_area.login");
                 }
             }
         } else {
             toastr()->error("Informações de usuário incorretas!");
-            return redirect()->route("minha_area.index");
+            return view("minha_area.login");
         }
     }
 

@@ -194,8 +194,11 @@
                         @endif
                         @foreach ($comentarios as $comentario)
                             <li class="clearfix">
-                                <img src="{{ asset('admin/imagens/usuarios/sem_foto.png') }}" class="avatar"
-                                    alt="">
+                                @if(!isnull($comentario->usuario_site->foto))
+                                    <img src="{{ asset($comentario->usuario_site->foto) }}" class="avatar" alt="">
+                                @else 
+                                    <img src="{{ asset('admin/imagens/usuarios/sem_foto.png') }}" class="avatar" alt="">
+                                @endif
                                 <div class="post-comments">
                                     <p class="meta">
                                         <a class="custom_a" style="margin-right: 1rem" href="#">
