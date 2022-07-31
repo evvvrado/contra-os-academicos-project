@@ -17,8 +17,7 @@ class CarregarMaisBlog extends Component
 
     public function render()
     {
-        $blogs = DB::select("select * from blogs where status = 1 order by id desc limit ".$this->porpagina)
-        ->get();
+        $blogs = DB::select("select * from blogs where status = 1 order by id desc limit ".$this->porpagina);
 
         return view('livewire.carregar-mais-blog', ['blogs' => $blogs]);
     }
