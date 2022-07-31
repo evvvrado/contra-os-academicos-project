@@ -20,11 +20,6 @@ class CarregarMaisBlog extends Component
         $blogs = DB::select("select * from blogs where status = 1 order by id desc limit ".$this->porpagina);
 
         $blogs= json_decode( json_encode($blogs), true);
-        dd($blogs);
-        $blogs = Blog::paginate($this->porpagina)
-        ->where('status', 1);
-
-        dd($blogs);
 
         return view('livewire.carregar-mais-blog', ['blogs' => $blogs]);
     }
