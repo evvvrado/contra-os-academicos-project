@@ -16,11 +16,10 @@ class CarregarMaisRevista extends Component
 
     public function render()
     {
-        $revistas = Revista::paginate($this->porpagina)
-        ->where('em_breve', 0)
-        ->where('status', 1);
-
-        $revistas = $revistas->sortDesc();
+        $revistas = Revista::where('em_breve', 0)
+        ->orderBy('id', 'Desc')
+        ->where('status', 1)
+        ->paginate($this->porpagina);
 
         return view('livewire.carregar-mais-revista', ['revistas' => $revistas]);
     }
