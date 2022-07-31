@@ -21,8 +21,6 @@ class CarregarMaisBlog extends Component
         foreach($blogs as $blog){
             echo $blog->titulo;
         }
-        die();
-        dd($blogs);
 
         return view('livewire.carregar-mais-blog', ['blogs' => $blogs]);
     }
